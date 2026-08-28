@@ -28,6 +28,7 @@ STATUS_OK = 1
 STATUS_ERROR = 2
 STATUS_TIMEOUT = 3
 STATUS_CANCELLED = 4
+STATUS_AMBIGUOUS = 5
 
 
 @dataclass(frozen=True)
@@ -170,4 +171,3 @@ class EnvelopeCodec:
         operation_id = plain[4:36].rstrip(b"\0").decode("utf-8")
         return DecodedResult(plain[0], operation_id, bytes(plain[48:48 + payload_length]),
                              header.session, header.slot)
-

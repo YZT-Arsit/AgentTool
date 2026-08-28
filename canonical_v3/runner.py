@@ -96,7 +96,8 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
                           kernel: ControlKernel,
                           providers: tuple[LocalProviderDefinition, ...] = DEFAULT_PROVIDERS,
                           external_provider_endpoints: dict[str, str] | None = None,
-                          provider_timeout_ms: int = 2000) -> dict[str, object]:
+                          provider_timeout_ms: int = 2000,
+                          kernel_sequence: tuple[ControlKernel, ...] | None = None) -> dict[str, object]:
     """Execute the canonical trusted-kernel -> opaque-proxy -> Gateway path."""
     root, output = root.resolve(), output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -118,11 +119,14 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
     try:
         endpoints: dict[str, str] = {}
         effectful: dict[str, bool] = {}
+        effect_semantics: dict[str, str] = {}
         external_provider_endpoints = dict(external_provider_endpoints or {})
         for ordinal, definition in enumerate(providers):
             if definition.name in external_provider_endpoints:
                 endpoints[definition.name] = external_provider_endpoints[definition.name]
                 effectful[definition.name] = definition.effectful
+                effect_semantics[definition.name] = ("NON_IDEMPOTENT_EFFECT" if definition.effectful
+                                                     else "READ_ONLY")
                 continue
             command = [
                 str(binaries["provider"]), "--listen", "127.0.0.1:0", "--name", definition.name,
@@ -137,8 +141,11 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
             provider_processes.append(process)
             endpoints[definition.name] = _read_ready(process).split()[1]
             effectful[definition.name] = definition.effectful
+            effect_semantics[definition.name] = ("IDEMPOTENT_EFFECT" if definition.effectful
+                                                 else "READ_ONLY")
         private_provider_config = output / "trusted_provider_config.json"
         _write_json(private_provider_config, {"endpoints": endpoints, "effectful": effectful,
+                                              "effect_semantics": effect_semantics,
                                               "timeout_ms": provider_timeout_ms,
                                               "allow_generic_http": False})
         total = profile.sessions * profile.slots
@@ -175,10 +182,13 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
         if not public_ready.get("ready"):
             raise RuntimeError("Cloud Slot Proxy did not become ready")
 
+        if kernel_sequence is not None and len(kernel_sequence) != profile.sessions:
+            raise ValueError("kernel_sequence must contain one trusted kernel reference per public session")
         trusted_trace: list[dict[str, object]] = []
         delivered_results = 0
         for session in range(profile.sessions):
-            descriptor = kernel.tick()
+            active_kernel = kernel_sequence[session] if kernel_sequence is not None else kernel
+            descriptor = active_kernel.tick()
             for slot in range(1, profile.slots + 1):
                 if slot == 1 and descriptor is not None:
                     frame = codec.encode_request(session, slot, action=descriptor.action,
@@ -193,12 +203,12 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
                 decoded = codec.decode_response(responses.get(timeout=30))
                 if decoded is not None:
                     delivered_results += 1
-                    accepted = kernel.accept_result(decoded) or accepted
+                    accepted = active_kernel.accept_result(decoded) or accepted
             trusted_trace.append({
-                "session": session, "private_opcode": kernel.ticks[-1].private_opcode,
+                "session": session, "private_opcode": active_kernel.ticks[-1].private_opcode,
                 "emitted_action": descriptor is not None, "accepted_result": accepted,
-                "logical_agent_id": kernel.state.logical_agent_id,
-                "returned": kernel.state.returned,
+                "logical_agent_id": active_kernel.state.logical_agent_id,
+                "returned": active_kernel.state.returned,
             })
 
         proxy.join(timeout=30)
@@ -225,8 +235,11 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
         summary = next(row for row in worker_rows if row.get("kind") == "SUMMARY")
         result = {
             "profile_id": profile.profile_id, "public_frames_each_direction": total,
-            "delivered_results": delivered_results, "returned": kernel.state.returned,
-            "logical_agent_id_private": kernel.state.logical_agent_id,
+            "delivered_results": delivered_results,
+            "returned": (all(item.state.returned for item in set(kernel_sequence))
+                         if kernel_sequence is not None else kernel.state.returned),
+            "logical_agent_id_private": ("MULTIPLE_PRIVATE_KERNELS" if kernel_sequence is not None
+                                           else kernel.state.logical_agent_id),
             "real_heavy_operations": int(summary["real_operations"]),
             "dummy_heavy_operations": int(summary["dummy_heavy_ops"]),
             "effect_count": sum(bool(row.get("effect")) for row in worker_rows),

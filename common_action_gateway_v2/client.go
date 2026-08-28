@@ -139,9 +139,14 @@ func RunCloudClient(config ClientConfig) error {
 				receiveErr = err
 				return
 			}
+			header, err := ParsePublicHeader(frame)
+			if err != nil {
+				receiveErr = err
+				return
+			}
 			received := MonotonicNowNS()
-			responseDiagnostics.Append(TimingEvent{Direction: "RESPONSE", Session: binary.BigEndian.Uint32(frame[0:4]),
-				Slot: binary.BigEndian.Uint32(frame[4:8]), ActualReceiveNS: received,
+			responseDiagnostics.Append(TimingEvent{Direction: "RESPONSE", Session: header.Session,
+				Slot: header.Slot, ActualReceiveNS: received,
 				FrameBytes: len(frame), Destination: "CommonActionGatewayV2"})
 		}
 	}()

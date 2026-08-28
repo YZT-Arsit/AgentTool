@@ -164,6 +164,7 @@ class ControlKernel:
         if result.status != 1:
             self.state.failure_class = {
                 2: "PROVIDER_ERROR", 3: "PROVIDER_TIMEOUT", 4: "PROVIDER_CANCELLED",
+                5: "AMBIGUOUS_EFFECT_RECONCILIATION_REQUIRED",
             }.get(result.status, "PROVIDER_INVALID_STATUS")
             self.state.current_event = ControlEvent.ERROR
         elif self.state.pending_opcode == Opcode.LLM:

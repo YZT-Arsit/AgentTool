@@ -25,8 +25,8 @@ class RuntimeState(StrEnum):
     TOOL_ERROR = "TOOL_ERROR"
     MODEL_ERROR = "MODEL_ERROR"
     BOUND_EXCEEDED = "BOUND_EXCEEDED"
-    AGENT_CALL_READY = "AGENT_CALL_READY"
-    AGENT_RETURN = "AGENT_RETURN"
+    CALL_AGENT = "CALL_AGENT"
+    RETURN_AGENT = "RETURN_AGENT"
 
 
 class StateScope(StrEnum):
@@ -89,10 +89,13 @@ class AgentProgramV2:
     handoff_targets: Mapping[str, int]
     max_model_rounds: int = 8
     agent_tool_targets: Mapping[str, int] = field(default_factory=dict)
+    max_call_depth: int = 8
 
     def __post_init__(self) -> None:
         if self.max_model_rounds < 1:
             raise ValueError("model round bound must be positive")
+        if self.max_call_depth < 1:
+            raise ValueError("Agent call-stack bound must be positive")
         if len(set(self.tool_handles.values())) != len(self.tool_handles):
             raise ValueError("Tool handles must be unique within one Agent")
 

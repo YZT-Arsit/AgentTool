@@ -15,10 +15,11 @@ import (
 )
 
 type ProviderConfig struct {
-	Endpoints        map[string]string `json:"endpoints"`
-	Effectful        map[string]bool   `json:"effectful,omitempty"`
-	TimeoutMS        int               `json:"timeout_ms"`
-	AllowGenericHTTP bool              `json:"allow_generic_http"`
+	Endpoints        map[string]string          `json:"endpoints"`
+	Effectful        map[string]bool            `json:"effectful,omitempty"`
+	EffectSemantics  map[string]EffectSemantics `json:"effect_semantics,omitempty"`
+	TimeoutMS        int                        `json:"timeout_ms"`
+	AllowGenericHTTP bool                       `json:"allow_generic_http"`
 }
 
 func LoadProviderConfig(path string) (ProviderConfig, error) {
@@ -39,12 +40,14 @@ func LoadProviderConfig(path string) (ProviderConfig, error) {
 type ProviderAdapter interface {
 	Execute(context.Context, PrivateOperation) ResultRecord
 	IsEffectful(byte) bool
+	Semantics(byte) EffectSemantics
 }
 
 type HTTPProviderAdapter struct {
 	client       *http.Client
 	endpoints    map[byte]string
 	effectful    map[string]bool
+	semantics    map[string]EffectSemantics
 	allowGeneric bool
 }
 
@@ -66,6 +69,9 @@ func (a *LocalProviderAdapter) Execute(ctx context.Context, op PrivateOperation)
 func (a *LocalProviderAdapter) IsEffectful(provider byte) bool {
 	return a.delegate.IsEffectful(provider)
 }
+func (a *LocalProviderAdapter) Semantics(provider byte) EffectSemantics {
+	return a.delegate.Semantics(provider)
+}
 
 func NewGenericHTTPProviderAdapter(config ProviderConfig) (*GenericHTTPProviderAdapter, error) {
 	if !config.AllowGenericHTTP {
@@ -83,6 +89,9 @@ func (a *GenericHTTPProviderAdapter) Execute(ctx context.Context, op PrivateOper
 }
 func (a *GenericHTTPProviderAdapter) IsEffectful(provider byte) bool {
 	return a.delegate.IsEffectful(provider)
+}
+func (a *GenericHTTPProviderAdapter) Semantics(provider byte) EffectSemantics {
+	return a.delegate.Semantics(provider)
 }
 
 func providerName(code byte) string {
@@ -139,12 +148,27 @@ func NewHTTPProviderAdapter(config ProviderConfig) (*HTTPProviderAdapter, error)
 	}
 	return &HTTPProviderAdapter{
 		client:    &http.Client{Transport: transport, Timeout: time.Duration(config.TimeoutMS) * time.Millisecond},
-		endpoints: endpoints, effectful: config.Effectful, allowGeneric: config.AllowGenericHTTP,
+		endpoints: endpoints, effectful: config.Effectful, semantics: config.EffectSemantics,
+		allowGeneric: config.AllowGenericHTTP,
 	}, nil
 }
 
 func (a *HTTPProviderAdapter) IsEffectful(provider byte) bool {
-	return a.effectful[providerName(provider)]
+	return a.Semantics(provider) != ReadOnly
+}
+
+func (a *HTTPProviderAdapter) Semantics(provider byte) EffectSemantics {
+	name := providerName(provider)
+	if value, ok := a.semantics[name]; ok {
+		return value
+	}
+	// Compatibility for existing local experiment configurations. This does not
+	// confer provider idempotency: an old boolean effect flag is conservatively
+	// treated as NON_IDEMPOTENT_EFFECT.
+	if a.effectful[name] {
+		return NonIdempotentEffect
+	}
+	return ReadOnly
 }
 
 type providerRequest struct {

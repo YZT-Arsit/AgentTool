@@ -1,0 +1,28 @@
+{
+  "endpoints": {
+    "FAST": "http://127.0.0.1:52337/execute",
+    "MEDIUM": "http://127.0.0.1:52338/execute",
+    "SLOW": "http://127.0.0.1:52339/execute",
+    "LOCAL_MODEL": "http://127.0.0.1:52340/execute",
+    "READ_ONLY_TOOL": "http://127.0.0.1:52341/execute",
+    "EFFECTFUL_TOOL": "http://127.0.0.1:52342/execute"
+  },
+  "effectful": {
+    "FAST": false,
+    "MEDIUM": false,
+    "SLOW": false,
+    "LOCAL_MODEL": false,
+    "READ_ONLY_TOOL": false,
+    "EFFECTFUL_TOOL": true
+  },
+  "effect_semantics": {
+    "FAST": "READ_ONLY",
+    "MEDIUM": "READ_ONLY",
+    "SLOW": "READ_ONLY",
+    "LOCAL_MODEL": "READ_ONLY",
+    "READ_ONLY_TOOL": "READ_ONLY",
+    "EFFECTFUL_TOOL": "IDEMPOTENT_EFFECT"
+  },
+  "timeout_ms": 2000,
+  "allow_generic_http": false
+}

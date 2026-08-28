@@ -108,10 +108,17 @@ private fail-closed error recorded by the Worker; it cannot change the public sc
   development.
 
 Provider emulators implement real HTTP servers and delay responses in their own processes. The
-Worker does not emulate downstream latency with `time.Sleep`. Each operation ID is executed at
-most once by the Worker and emulator. NOOP is discarded before provider routing and creates no
-effect or result record. Success, error, timeout, and cancellation all map to the same fixed
-internal result format.
+Worker does not emulate downstream latency with `time.Sleep`. NOOP is discarded before provider
+routing and creates no effect or result record. Success, error, timeout, cancellation, and
+ambiguous effect state all map to the same fixed internal result format.
+
+Provider behavior is explicitly declared as `READ_ONLY`, `IDEMPOTENT_EFFECT`, or
+`NON_IDEMPOTENT_EFFECT`. Before dispatch, the Worker durably records `PREPARED` in a local
+copy-on-write/fsync operation journal. A committed result is recoverable after restart. A prepared
+or failed idempotent operation may be retried with the same operation ID under the provider's
+contract. A prepared/ambiguous non-idempotent operation is not retried automatically and fails
+closed for reconciliation. The Gateway does not claim exactly-once for providers that cannot
+support idempotency or reconciliation.
 
 ## 7. Linux reference timing path
 

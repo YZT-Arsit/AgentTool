@@ -79,7 +79,7 @@ The connection is established once and remains active for all public sessions. S
 all slots are derived only from `PublicProfile`. Neither the Worker nor result ring can alter
 `Slots`, cadence, gap, or connection teardown.
 
-The continuation integration test produced:
+The pre-journal continuation integration test produced:
 
 - FAST result delivered by public slot 2;
 - SLOW result delivered by public slot 8;
@@ -88,6 +88,12 @@ The continuation integration test produced:
 - scheduled frames continued after both results;
 - two real effects and zero dummy heavy operations.
 
+After durable journal hardening, local Windows development observed delivery in
+slots 4 and 10 respectively. This latency increase is preserved; the current
+invariant is that both results use already-scheduled slots, the fast completion
+precedes the slow completion, and neither extends the 12-slot session. It is not
+a timing-privacy result.
+
 If a result is not present at a cutoff, WAIT is sent and the result remains private until another
 already-existing slot. A result after `H` cannot extend the tunnel and is fail-closed/undelivered.
 
@@ -95,8 +101,13 @@ already-existing slot. A result after `H` cannot extend the tunnel and is fail-c
 
 The Worker performs real HTTP request/response I/O. Local tests configure only loopback URLs.
 Non-loopback endpoints require `allow_generic_http=true` and are disabled in all V2 runs.
-Success, provider error, timeout, and cancellation map into one fixed `ResultRecord`; they do not
-alter public scheduling. Duplicate operation IDs are suppressed before provider execution.
+Success, provider error, timeout, cancellation, and ambiguous non-idempotent state map into one
+fixed `ResultRecord`; they do not alter public scheduling. Providers declare `READ_ONLY`,
+`IDEMPOTENT_EFFECT`, or `NON_IDEMPOTENT_EFFECT`. The Worker durably prepares an operation before
+dispatch and commits its bounded result afterward. A restarted non-idempotent operation in an
+uncertain state is not retried and returns reconciliation-required status; exactly-once is not
+claimed without provider support. Unit tests cover crash after prepare, retry after restart for an
+idempotent provider, durable committed-result recovery, and ambiguous failure.
 
 ## Build and test status
 
@@ -104,7 +115,10 @@ alter public scheduling. Duplicate operation IDs are suppressed before provider 
 - Linux command/package cross-build: PASS.
 - Linux test execution: NOT RUN on this Windows host.
 - Python process/invariant/continuation tests: PASS.
-- Full repository Python regression suite: 131 passed.
+- Current focused Python validation: 26 passed, 1 deselected.
+- Current broad Python run: 163 passed, 1 skipped, and one environment setup error; the affected
+  case reran with a repository-local temporary directory and then skipped because Windows
+  Application Control blocked the local Pacer executable.
 - V1 files and `results_timing_closure/confirmatory_final_*`: unchanged.
 
 ## Remaining implementation limitations
@@ -115,4 +129,5 @@ alter public scheduling. Duplicate operation IDs are suppressed before provider 
 - `SO_TXTIME`/ETF is represented only as an explicitly unimplemented future timed-datagram
   capability; using it correctly needs Linux qdisc/capability setup and non-TCP framing.
 - Resource/microarchitectural isolation is not established.
-- The memory-mapped rings are volatile experimental IPC, not durable production queues.
+- The memory-mapped rings are volatile experimental IPC, not durable production queues. The
+  effect journal is durable local state, but is neither replicated nor malicious-storage robust.

@@ -1,0 +1,51 @@
+{
+  "freeze_id": "LONG-HORIZON-STRUCTURAL-V1-20260828",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "scope": "structural_and_receiver_visible_serialized_size_only",
+  "timing_confirmation": "PROHIBITED_IN_CURRENT_CONTAINER",
+  "public_profile": {
+    "name": "LONG_HORIZON_STRUCTURAL_V1",
+    "frame_bytes": 1024,
+    "slots_per_session": 3,
+    "observations_per_case": 32,
+    "sessions_per_observation": 4,
+    "total_sessions": 128,
+    "request_delta_ns": 10000000,
+    "response_delta_ns": 10000000,
+    "mask_ns": 2000000,
+    "start_delay_ns": 200000000,
+    "inter_session_gap_ns": 5000000
+  },
+  "families": [
+    {"family": "AGENT_IDENTITY", "class_0": "A repeated 32", "class_1": "B repeated 32"},
+    {"family": "HANDOFF_IDENTITY", "class_0": "A-B-C repeated", "class_1": "A-D-E repeated"},
+    {"family": "TOOL_CLASS", "class_0": "LOCAL repeated 32", "class_1": "REMOTE repeated 32"},
+    {"family": "FREQUENCY", "class_0": "DATA 28 + LEGAL 4", "class_1": "DATA 16 + LEGAL 16"},
+    {"family": "RARE_TARGET", "class_0": "DATA repeated 32", "class_1": "DATA 31 + LEGAL once at frozen position 17"},
+    {"family": "TRANSITION_PATTERN", "class_0": "A-B alternating", "class_1": "A-C alternating"},
+    {"family": "REPEATED_TARGET", "class_0": "A-A pairs", "class_1": "A-B pairs"},
+    {"family": "CROSS_SESSION_LINKAGE", "class_0": "same A across paired epochs", "class_1": "A then B across paired epochs"}
+  ],
+  "exact_invariants": [
+    "destination",
+    "direction_sequence",
+    "frame_count",
+    "frame_bytes",
+    "slot_indices",
+    "session_indices",
+    "public_profile_id",
+    "persistent_tunnel_count"
+  ],
+  "forbidden_features": [
+    "timing",
+    "logical_agent_id",
+    "tool_name",
+    "provider",
+    "operation_id",
+    "private_opcode",
+    "private_result"
+  ],
+  "aggregation_observation_counts": [1, 2, 4, 8, 16, 32],
+  "classifier_policy": "grouped local falsification only after exact invariant comparison; no parameter tuning",
+  "pass_policy": "all exact invariants equal within every family and no forbidden field in serialized public trace"
+}

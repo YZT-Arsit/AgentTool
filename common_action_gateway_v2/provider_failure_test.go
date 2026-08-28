@@ -114,3 +114,23 @@ func TestProviderErrorAndConnectionInterruptionMapToPrivateError(t *testing.T) {
 		t.Fatalf("connection interruption status=%d", interruptResult.Status)
 	}
 }
+
+func TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative(t *testing.T) {
+	adapter, err := NewHTTPProviderAdapter(ProviderConfig{EffectSemantics: map[string]EffectSemantics{
+		"READ_ONLY_TOOL": ReadOnly, "EFFECTFUL_TOOL": IdempotentEffect,
+	}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if adapter.Semantics(ProviderReadOnly) != ReadOnly ||
+		adapter.Semantics(ProviderEffectful) != IdempotentEffect {
+		t.Fatal("explicit effect semantics were not preserved")
+	}
+	legacy, err := NewHTTPProviderAdapter(ProviderConfig{Effectful: map[string]bool{"EFFECTFUL_TOOL": true}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if legacy.Semantics(ProviderEffectful) != NonIdempotentEffect {
+		t.Fatal("legacy boolean effect flag must not imply idempotency")
+	}
+}

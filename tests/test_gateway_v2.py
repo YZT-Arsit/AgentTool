@@ -65,8 +65,10 @@ def test_v2_nominal_schedule_equality_fast_slow_continuation(tmp_path: Path) -> 
     delivery = _jsonl(tmp_path / "v2/pacer_private_delivery.jsonl")
     fast = next(row for row in delivery if row.get("operation_id") == "fast-op")
     slow = next(row for row in delivery if row.get("operation_id") == "slow-op")
-    assert int(fast["slot"]) <= 2
-    assert int(slow["slot"]) <= 8
+    # Durable PREPARED/COMMITTED fsyncs intentionally add trusted-path latency.
+    # Delivery may move to a later already-scheduled slot, but may not extend the
+    # public session or make the slow completion overtake the fast completion.
+    assert 1 <= int(fast["slot"]) < int(slow["slot"]) <= profile.slots
     assert any(int(row["session"]) == 0 and int(row["slot"]) > int(fast["slot"]) for row in delivery)
     assert any(int(row["session"]) == 1 and int(row["slot"]) > int(slow["slot"]) for row in delivery)
 

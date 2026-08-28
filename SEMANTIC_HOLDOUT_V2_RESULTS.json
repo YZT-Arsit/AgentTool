@@ -1,0 +1,33 @@
+{
+  "holdout_id": "SEMANTIC-HOLDOUT-V2-20260828",
+  "execution_policy": "RUN_ONCE_NO_TUNING",
+  "cases": 20,
+  "semantic_passes": 8,
+  "tool_cases": 14,
+  "tool_passes": 4,
+  "by_framework": {
+    "Microsoft Agent Framework": {
+      "cases": 8,
+      "passes": 6
+    },
+    "OpenAI Agents SDK": {
+      "cases": 12,
+      "passes": 2
+    }
+  },
+  "failed_case_ids": [
+    "SHV2-OAI-003",
+    "SHV2-OAI-004",
+    "SHV2-OAI-005",
+    "SHV2-OAI-006",
+    "SHV2-OAI-007",
+    "SHV2-OAI-008",
+    "SHV2-OAI-009",
+    "SHV2-OAI-010",
+    "SHV2-OAI-011",
+    "SHV2-OAI-012",
+    "SHV2-MAF-007",
+    "SHV2-MAF-008"
+  ],
+  "development_72_interpretation": "DEVELOPMENT_REGRESSION_ONLY"
+}

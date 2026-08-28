@@ -211,5 +211,40 @@ def test_openai_agent_as_tool_lowers_to_private_call_stack_without_public_handof
     resumed = json.loads(json.loads(result.next_model_context)[0])
     assert resumed[-1] == {"role": "tool", "content": "child-result",
                            "call_id": "agent-call-1", "tool_name": "child_specialist"}
-    assert any(step.state.name == "AGENT_CALL_READY" for step in runtime.private_steps)
-    assert any(step.state.name == "AGENT_RETURN" for step in runtime.private_steps)
+    assert any(step.state.name == "CALL_AGENT" for step in runtime.private_steps)
+    assert any(step.state.name == "RETURN_AGENT" for step in runtime.private_steps)
+    assert "CALL_AGENT" in json.loads(result.state_updates)
+    assert "RETURN_AGENT" in json.loads(result.state_updates)
+
+
+def test_microsoft_agent_as_tool_lowers_to_same_private_call_stack() -> None:
+    from agent_framework import Agent
+    from agent_control_virtualization.framework_fixtures import _LocalMicrosoftClient
+
+    client = _LocalMicrosoftClient()
+    child = Agent(client, name="MAF Child", instructions="Return child result.")
+    parent = Agent(client, name="MAF Parent", instructions="Call child.",
+                   tools=[child.as_tool(name="maf_child")])
+    compiled = compile_workload_v2(FrameworkWorkload(
+        "maf-agent-as-tool", "Microsoft Agent Framework",
+        "external_stage9/agent-framework/python/packages/core/tests/core/test_agent_hooks.py",
+        [parent, child],
+    ), 720)
+    assert compiled.audit.agent_tools == 1
+    assert compiled.audit.unsupported_reasons == ()
+    assert compiled.bundle.agents[0].agent_tool_targets == {"maf_child": 721}
+    parent_model = ScriptedModel([
+        ModelDecision(DecisionKind.TOOL_CALL,
+                      tool_call=ToolCall("maf_child", {"task": "bounded task"}, "maf-call-1")),
+        ModelDecision(DecisionKind.FINAL, final_text="parent:child-result"),
+    ])
+    child_model = ScriptedModel([ModelDecision(DecisionKind.FINAL, final_text="child-result")])
+    runtime = AgentRuntimeV2(compiled.bundle, {720: parent_model, 721: child_model}, {})
+    result = runtime.execute(720, "task")
+    assert result.termination_class == "RETURN"
+    assert result.sanitized_final_result == "parent:child-result"
+    assert json.loads(result.handoff_targets) == []
+    assert "CALL_AGENT" in json.loads(result.state_updates)
+    assert "RETURN_AGENT" in json.loads(result.state_updates)
+    assert {step.logical_agent_id for step in runtime.private_steps} == {720, 721}
+    assert runtime.public_identity == "AgentControlExecutorV2"

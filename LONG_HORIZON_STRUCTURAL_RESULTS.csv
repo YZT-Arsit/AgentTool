@@ -1,0 +1,17 @@
+family,class,exact_pair_projection_equal,public_events,frame_bytes_values,destination_values,real_heavy_operations,dummy_heavy_operations,effect_count,one_persistent_tunnel
+AGENT_IDENTITY,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+AGENT_IDENTITY,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+HANDOFF_IDENTITY,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+HANDOFF_IDENTITY,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+TOOL_CLASS,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+TOOL_CLASS,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+FREQUENCY,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+FREQUENCY,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+RARE_TARGET,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+RARE_TARGET,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+TRANSITION_PATTERN,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+TRANSITION_PATTERN,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+REPEATED_TARGET,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+REPEATED_TARGET,1,True,768,1024,CommonActionGatewayV2,32,0,0,True
+CROSS_SESSION_LINKAGE,0,True,768,1024,CommonActionGatewayV2,32,0,0,True
+CROSS_SESSION_LINKAGE,1,True,768,1024,CommonActionGatewayV2,32,0,0,True

@@ -1,0 +1,1156 @@
+{
+  "case_count": 20,
+  "cases": [
+    {
+      "behavior_family": "MODEL_FINAL",
+      "case_id": "SHV2-OAI-001",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "alpha-summary"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 1,
+        "sanitized_final_result": "alpha-summary",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Summarize alpha.",
+      "source": {
+        "lines": "20-42",
+        "path": "external_stage10/openai-agents-python/examples/basic/usage_tracking.py",
+        "sha256": "7e7b8eab58ad1c453f8320f0348fcba677b3403b8c44793273e6eb7d85f32bcd"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "MODEL_FINAL",
+      "case_id": "SHV2-OAI-002",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "beta-summary"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 1,
+        "sanitized_final_result": "beta-summary",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Summarize beta.",
+      "source": {
+        "lines": "20-42",
+        "path": "external_stage10/openai-agents-python/examples/basic/usage_tracking.py",
+        "sha256": "7e7b8eab58ad1c453f8320f0348fcba677b3403b8c44793273e6eb7d85f32bcd"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-003",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Tokyo"
+          },
+          "call_id": "oai-weather-003",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-weather-003",
+          "kind": "TOOL_RESULT",
+          "result": "Tokyo|14-20C|Sunny with wind.",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Tokyo is Sunny with wind."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Tokyo is Sunny with wind.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Tokyo"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-weather-003"
+        ],
+        "tool_results": [
+          "Tokyo|14-20C|Sunny with wind."
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Tokyo?",
+      "source": {
+        "lines": "20-42",
+        "path": "external_stage10/openai-agents-python/examples/basic/usage_tracking.py",
+        "sha256": "7e7b8eab58ad1c453f8320f0348fcba677b3403b8c44793273e6eb7d85f32bcd"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-004",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Oslo"
+          },
+          "call_id": "oai-weather-004",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-weather-004",
+          "kind": "TOOL_RESULT",
+          "result": "Oslo|3-8C|Clear",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Oslo is Clear."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Oslo is Clear.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Oslo"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-weather-004"
+        ],
+        "tool_results": [
+          "Oslo|3-8C|Clear"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Oslo?",
+      "source": {
+        "lines": "20-42",
+        "path": "external_stage10/openai-agents-python/examples/basic/usage_tracking.py",
+        "sha256": "7e7b8eab58ad1c453f8320f0348fcba677b3403b8c44793273e6eb7d85f32bcd"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-005",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Kyoto"
+          },
+          "call_id": "oai-forced-005",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-forced-005",
+          "kind": "TOOL_RESULT",
+          "result": "Kyoto|14-20C|Sunny with wind",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Kyoto is Sunny with wind."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Kyoto is Sunny with wind.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Kyoto"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-forced-005"
+        ],
+        "tool_results": [
+          "Kyoto|14-20C|Sunny with wind"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Kyoto?",
+      "source": {
+        "lines": "20-81",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/forcing_tool_use.py",
+        "sha256": "ae853bd4a1afdeea5bda983424612a7cf9a868ec6175bfbb64f133e7d4f702c4"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-006",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Lima"
+          },
+          "call_id": "oai-forced-006",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-forced-006",
+          "kind": "TOOL_RESULT",
+          "result": "Lima|18-24C|Cloudy",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Lima is Cloudy."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Lima is Cloudy.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Lima"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-forced-006"
+        ],
+        "tool_results": [
+          "Lima|18-24C|Cloudy"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Lima?",
+      "source": {
+        "lines": "20-81",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/forcing_tool_use.py",
+        "sha256": "ae853bd4a1afdeea5bda983424612a7cf9a868ec6175bfbb64f133e7d4f702c4"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "LOGICAL_HANDOFF",
+      "case_id": "SHV2-OAI-007",
+      "deterministic_script": [
+        {
+          "actor": "triage_agent",
+          "call_id": "route-007",
+          "kind": "HANDOFF",
+          "target": "french_agent"
+        },
+        {
+          "actor": "french_agent",
+          "kind": "FINAL",
+          "text": "Bonsoir."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [
+          "french_agent"
+        ],
+        "model_calls": 2,
+        "sanitized_final_result": "Bonsoir.",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "HANDOFF",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Answer in French.",
+      "source": {
+        "lines": "15-34",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/routing.py",
+        "sha256": "b9b57061f5238335743ca54137df0210fd07f146613afb3783bf2a4c5650a71b"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "LOGICAL_HANDOFF",
+      "case_id": "SHV2-OAI-008",
+      "deterministic_script": [
+        {
+          "actor": "triage_agent",
+          "call_id": "route-008",
+          "kind": "HANDOFF",
+          "target": "spanish_agent"
+        },
+        {
+          "actor": "spanish_agent",
+          "kind": "FINAL",
+          "text": "Buenas noches."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [
+          "spanish_agent"
+        ],
+        "model_calls": 2,
+        "sanitized_final_result": "Buenas noches.",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "HANDOFF",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Answer in Spanish.",
+      "source": {
+        "lines": "15-34",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/routing.py",
+        "sha256": "b9b57061f5238335743ca54137df0210fd07f146613afb3783bf2a4c5650a71b"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "AGENT_AS_TOOL_CALL_RETURN",
+      "case_id": "SHV2-OAI-009",
+      "deterministic_script": [
+        {
+          "actor": "parent",
+          "arguments": {
+            "source": "Spanish",
+            "target": "French",
+            "text": "Hola"
+          },
+          "call_id": "agent-tool-009",
+          "kind": "CALL_AGENT",
+          "tool": "translate_text"
+        },
+        {
+          "actor": "child",
+          "kind": "RETURN_AGENT",
+          "result": "Bonjour"
+        },
+        {
+          "actor": "parent",
+          "kind": "FINAL",
+          "text": "Translation: Bonjour"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 3,
+        "sanitized_final_result": "Translation: Bonjour",
+        "selected_tools": [
+          "translate_text"
+        ],
+        "state_updates": [
+          "MODEL",
+          "CALL_AGENT",
+          "MODEL",
+          "RETURN_AGENT",
+          "MODEL_RESUME_READY",
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "source": "Spanish",
+            "target": "French",
+            "text": "Hola"
+          }
+        ],
+        "tool_call_ids": [
+          "agent-tool-009"
+        ],
+        "tool_results": [
+          "Bonjour"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Translate Hola from Spanish to French.",
+      "source": {
+        "lines": "11-50",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools_structured.py",
+        "sha256": "85ba8781e3e8f3e598be95652f0d067fb81749a56b31d59190587826fe1cce9d"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "AGENT_AS_TOOL_CALL_RETURN",
+      "case_id": "SHV2-OAI-010",
+      "deterministic_script": [
+        {
+          "actor": "parent",
+          "arguments": {
+            "source": "English",
+            "target": "Italian",
+            "text": "hello"
+          },
+          "call_id": "agent-tool-010",
+          "kind": "CALL_AGENT",
+          "tool": "translate_text"
+        },
+        {
+          "actor": "child",
+          "kind": "RETURN_AGENT",
+          "result": "ciao"
+        },
+        {
+          "actor": "parent",
+          "kind": "FINAL",
+          "text": "Translation: ciao"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 3,
+        "sanitized_final_result": "Translation: ciao",
+        "selected_tools": [
+          "translate_text"
+        ],
+        "state_updates": [
+          "MODEL",
+          "CALL_AGENT",
+          "MODEL",
+          "RETURN_AGENT",
+          "MODEL_RESUME_READY",
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "source": "English",
+            "target": "Italian",
+            "text": "hello"
+          }
+        ],
+        "tool_call_ids": [
+          "agent-tool-010"
+        ],
+        "tool_results": [
+          "ciao"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Translate hello from English to Italian.",
+      "source": {
+        "lines": "11-50",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools_structured.py",
+        "sha256": "85ba8781e3e8f3e598be95652f0d067fb81749a56b31d59190587826fe1cce9d"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-011",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Seoul"
+          },
+          "call_id": "oai-weather-011",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-weather-011",
+          "kind": "TOOL_RESULT",
+          "result": "Seoul|9-15C|Rain",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Seoul is Rain."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Seoul is Rain.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Seoul"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-weather-011"
+        ],
+        "tool_results": [
+          "Seoul|9-15C|Rain"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Seoul?",
+      "source": {
+        "lines": "20-42",
+        "path": "external_stage10/openai-agents-python/examples/basic/usage_tracking.py",
+        "sha256": "7e7b8eab58ad1c453f8320f0348fcba677b3403b8c44793273e6eb7d85f32bcd"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-OAI-012",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "city": "Tunis"
+          },
+          "call_id": "oai-forced-012",
+          "kind": "TOOL_CALL",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "tool",
+          "call_id": "oai-forced-012",
+          "kind": "TOOL_RESULT",
+          "result": "Tunis|17-23C|Wind",
+          "tool": "get_weather"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "Tunis is Wind."
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "Tunis is Wind.",
+        "selected_tools": [
+          "get_weather"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "city": "Tunis"
+          }
+        ],
+        "tool_call_ids": [
+          "oai-forced-012"
+        ],
+        "tool_results": [
+          "Tunis|17-23C|Wind"
+        ]
+      },
+      "framework": "OpenAI Agents SDK",
+      "public_task": "Weather in Tunis?",
+      "source": {
+        "lines": "20-81",
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/forcing_tool_use.py",
+        "sha256": "ae853bd4a1afdeea5bda983424612a7cf9a868ec6175bfbb64f133e7d4f702c4"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_FINAL",
+      "case_id": "SHV2-MAF-001",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "gamma-final"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 1,
+        "sanitized_final_result": "gamma-final",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Return gamma.",
+      "source": {
+        "lines": "4873-4911",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_observability.py",
+        "sha256": "b332a9e1a53e71ec74fd70c9421a506cd17d8fc0d48824fc5a899f0ef9f5738f"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "MODEL_FINAL",
+      "case_id": "SHV2-MAF-002",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "delta-final"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 1,
+        "sanitized_final_result": "delta-final",
+        "selected_tools": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": []
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Return delta.",
+      "source": {
+        "lines": "4873-4911",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_observability.py",
+        "sha256": "b332a9e1a53e71ec74fd70c9421a506cd17d8fc0d48824fc5a899f0ef9f5738f"
+      },
+      "tool_containing": false
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-MAF-003",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "user_query": "issue-3"
+          },
+          "call_id": "maf-tool-003",
+          "kind": "TOOL_CALL",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "tool",
+          "call_id": "maf-tool-003",
+          "kind": "TOOL_RESULT",
+          "result": "Investigated issue-3",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-3"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "done-3",
+        "selected_tools": [
+          "start_todo_investigation"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "user_query": "issue-3"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-tool-003"
+        ],
+        "tool_results": [
+          "Investigated issue-3"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Investigate issue 3.",
+      "source": {
+        "lines": "721-771",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-MAF-004",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "user_query": "issue-4"
+          },
+          "call_id": "maf-tool-004",
+          "kind": "TOOL_CALL",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "tool",
+          "call_id": "maf-tool-004",
+          "kind": "TOOL_RESULT",
+          "result": "Investigated issue-4",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-4"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "done-4",
+        "selected_tools": [
+          "start_todo_investigation"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "user_query": "issue-4"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-tool-004"
+        ],
+        "tool_results": [
+          "Investigated issue-4"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Investigate issue 4.",
+      "source": {
+        "lines": "721-771",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-MAF-005",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "user_query": "issue-5"
+          },
+          "call_id": "maf-tool-005",
+          "kind": "TOOL_CALL",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "tool",
+          "call_id": "maf-tool-005",
+          "kind": "TOOL_RESULT",
+          "result": "Investigated issue-5",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-5"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "done-5",
+        "selected_tools": [
+          "start_todo_investigation"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "user_query": "issue-5"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-tool-005"
+        ],
+        "tool_results": [
+          "Investigated issue-5"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Investigate issue 5.",
+      "source": {
+        "lines": "721-771",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "case_id": "SHV2-MAF-006",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "arguments": {
+            "user_query": "issue-6"
+          },
+          "call_id": "maf-tool-006",
+          "kind": "TOOL_CALL",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "tool",
+          "call_id": "maf-tool-006",
+          "kind": "TOOL_RESULT",
+          "result": "Investigated issue-6",
+          "tool": "start_todo_investigation"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-6"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 2,
+        "sanitized_final_result": "done-6",
+        "selected_tools": [
+          "start_todo_investigation"
+        ],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "user_query": "issue-6"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-tool-006"
+        ],
+        "tool_results": [
+          "Investigated issue-6"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Investigate issue 6.",
+      "source": {
+        "lines": "721-771",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "AGENT_AS_TOOL_CALL_RETURN",
+      "case_id": "SHV2-MAF-007",
+      "deterministic_script": [
+        {
+          "actor": "parent",
+          "arguments": {
+            "task": "bounded task seven"
+          },
+          "call_id": "maf-agent-tool-007",
+          "kind": "CALL_AGENT",
+          "tool": "sub_agent"
+        },
+        {
+          "actor": "child",
+          "kind": "RETURN_AGENT",
+          "result": "sub-result-seven"
+        },
+        {
+          "actor": "parent",
+          "kind": "FINAL",
+          "text": "parent-result-seven"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 3,
+        "sanitized_final_result": "parent-result-seven",
+        "selected_tools": [
+          "sub_agent"
+        ],
+        "state_updates": [
+          "MODEL",
+          "CALL_AGENT",
+          "MODEL",
+          "RETURN_AGENT",
+          "MODEL_RESUME_READY",
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "task": "bounded task seven"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-agent-tool-007"
+        ],
+        "tool_results": [
+          "sub-result-seven"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Delegate bounded task seven.",
+      "source": {
+        "lines": "1686-1707",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agent_hooks.py",
+        "sha256": "f5f9738a2f7448229c9ac1beb0763234c1a62bfbaf22b3b7f336b53464ede473"
+      },
+      "tool_containing": true
+    },
+    {
+      "behavior_family": "AGENT_AS_TOOL_CALL_RETURN",
+      "case_id": "SHV2-MAF-008",
+      "deterministic_script": [
+        {
+          "actor": "parent",
+          "arguments": {
+            "task": "bounded task eight"
+          },
+          "call_id": "maf-agent-tool-008",
+          "kind": "CALL_AGENT",
+          "tool": "sub_agent"
+        },
+        {
+          "actor": "child",
+          "kind": "RETURN_AGENT",
+          "result": "sub-result-eight"
+        },
+        {
+          "actor": "parent",
+          "kind": "FINAL",
+          "text": "parent-result-eight"
+        }
+      ],
+      "expected_projection": {
+        "effect_count": 0,
+        "handoff_targets": [],
+        "model_calls": 3,
+        "sanitized_final_result": "parent-result-eight",
+        "selected_tools": [
+          "sub_agent"
+        ],
+        "state_updates": [
+          "MODEL",
+          "CALL_AGENT",
+          "MODEL",
+          "RETURN_AGENT",
+          "MODEL_RESUME_READY",
+          "MODEL",
+          "RETURN"
+        ],
+        "termination_class": "RETURN",
+        "tool_arguments": [
+          {
+            "task": "bounded task eight"
+          }
+        ],
+        "tool_call_ids": [
+          "maf-agent-tool-008"
+        ],
+        "tool_results": [
+          "sub-result-eight"
+        ]
+      },
+      "framework": "Microsoft Agent Framework",
+      "public_task": "Delegate bounded task eight.",
+      "source": {
+        "lines": "1686-1707",
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agent_hooks.py",
+        "sha256": "f5f9738a2f7448229c9ac1beb0763234c1a62bfbaf22b3b7f336b53464ede473"
+      },
+      "tool_containing": true
+    }
+  ],
+  "development_result_excluded_from_holdout": {
+    "classification": "DEVELOPMENT_REGRESSION_ONLY",
+    "id": "IR-v2 frozen dynamic 72",
+    "reason": "the cases informed Tool-loop repair",
+    "result": "72/72"
+  },
+  "freeze_rules": [
+    "execute exactly once after implementation freeze",
+    "do not remove or replace failed cases",
+    "do not change deterministic scripts or pass criteria after execution",
+    "do not tune compiler/runtime from holdout labels or failures",
+    "native and compiled structured projections must both equal expected_projection",
+    "next-model context, call/result pairing, effects, and one-physical-executor invariants are mandatory where applicable"
+  ],
+  "holdout_id": "SEMANTIC-HOLDOUT-V2-20260828",
+  "pass_criteria": {
+    "case": "all expected_projection fields equal for native and compiled executions",
+    "overall": "report passed/20; no text-similarity substitution",
+    "stratum": "report passed/total without dropping failures"
+  },
+  "repository_head_at_freeze": "2338d462a016fad3b6cc90bab2721421d1b12560",
+  "source_commits": {
+    "Microsoft Agent Framework": "af461de51da16f5cb800ff7febc0f8f96355607a",
+    "OpenAI Agents SDK": "a40ae9803e6b7a79faa246293f56adb100d5868b"
+  },
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "tool_containing_count": 14
+}

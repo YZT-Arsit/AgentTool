@@ -1,0 +1,11 @@
+{
+  "name": "LONG_HORIZON_STRUCTURAL_V1",
+  "frame_bytes": 1024,
+  "slots": 3,
+  "sessions": 128,
+  "request_delta_ns": 10000000,
+  "response_delta_ns": 10000000,
+  "mask_ns": 2000000,
+  "start_delay_ns": 200000000,
+  "inter_session_gap_ns": 5000000
+}

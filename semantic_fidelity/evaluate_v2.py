@@ -215,8 +215,8 @@ def _differences(native: ExecutionProjectionV2, compiled: ExecutionProjectionV2)
     return [key for key in left if left[key] != right[key]]
 
 
-async def run_frozen_72_v2(root: Path) -> dict[str, object]:
-    output = root / "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+async def run_frozen_72_v2(root: Path, output: Path | None = None) -> dict[str, object]:
+    output = output or root / "SEMANTIC_FIDELITY_V2_RESULTS.csv"
     if output.exists():
         raise FileExistsError(f"refusing to overwrite IR-v2 evidence: {output}")
     cases: list[tuple[str, int, Callable[..., Any]]] = []

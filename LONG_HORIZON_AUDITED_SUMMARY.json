@@ -1,0 +1,18 @@
+{
+  "freeze_id": "LONG-HORIZON-STRUCTURAL-V1-20260828",
+  "execution_completed": true,
+  "family_pairs": 8,
+  "exact_endpoint_count_order_size_session_equality": true,
+  "grouped_classifier_auc_all_windows": 0.5,
+  "aggregation_windows": [1, 2, 4, 8, 16, 32],
+  "functional_gate": "FAIL",
+  "expected_heavy_operations_per_case": 96,
+  "actual_heavy_operations_per_case": 32,
+  "delivered_results_per_case": 0,
+  "workflow_returned": false,
+  "dummy_heavy_operations": 0,
+  "valid_claim": "fixed transport shape remained identity-independent for the emitted first-operation prefixes",
+  "invalid_claim": "whole-workflow long-horizon structural/size privacy",
+  "timing_privacy": "NOT_TESTED_BY_DESIGN",
+  "rerun_or_retuning": "PROHIBITED_FOR_THIS_FROZEN_EXPERIMENT"
+}

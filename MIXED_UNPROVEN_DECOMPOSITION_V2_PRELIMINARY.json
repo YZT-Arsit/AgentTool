@@ -1,0 +1,48 @@
+{
+  "denominator": 1904,
+  "subclass_counts": {
+    "SOURCE_TRACEABLE_BOUNDED": 55,
+    "EXTRACTOR_AMBIGUOUS": 1512,
+    "GENUINELY_DYNAMIC": 260,
+    "FRAMEWORK_CONTRACT_BOUNDED": 77
+  },
+  "family_counts": {
+    "agents_as_tools": {
+      "SOURCE_TRACEABLE_BOUNDED": 55,
+      "FRAMEWORK_CONTRACT_BOUNDED": 6
+    },
+    "dynamic_instructions": {
+      "GENUINELY_DYNAMIC": 13
+    },
+    "fanout_fanin": {
+      "FRAMEWORK_CONTRACT_BOUNDED": 2
+    },
+    "hitl_resume": {
+      "EXTRACTOR_AMBIGUOUS": 11,
+      "FRAMEWORK_CONTRACT_BOUNDED": 69
+    },
+    "loop": {
+      "GENUINELY_DYNAMIC": 35,
+      "EXTRACTOR_AMBIGUOUS": 124
+    },
+    "state_memory": {
+      "EXTRACTOR_AMBIGUOUS": 1377,
+      "GENUINELY_DYNAMIC": 212
+    }
+  },
+  "framework_counts": {
+    "Microsoft Agent Framework": {
+      "EXTRACTOR_AMBIGUOUS": 1167,
+      "FRAMEWORK_CONTRACT_BOUNDED": 47,
+      "SOURCE_TRACEABLE_BOUNDED": 30,
+      "GENUINELY_DYNAMIC": 157
+    },
+    "OpenAI Agents SDK": {
+      "SOURCE_TRACEABLE_BOUNDED": 25,
+      "EXTRACTOR_AMBIGUOUS": 345,
+      "GENUINELY_DYNAMIC": 103,
+      "FRAMEWORK_CONTRACT_BOUNDED": 30
+    }
+  },
+  "interpretation": "semantic triage only; no instance changes IR-v1 or IR-v2 coverage"
+}

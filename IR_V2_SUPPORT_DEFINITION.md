@@ -24,17 +24,22 @@ The projection includes, where relevant: Tool identity, arguments, call ID, resu
 
 ## Current measured scopes
 
-- Frozen dynamic execution support: **72/72 executions**, including **18/18 Tool workflows**.
+- Development regression support: **72/72 executions**, including **18/18 Tool
+  workflows**. These cases guided the Tool-loop repair and are not an untouched
+  semantic holdout.
+- Untouched holdout attempt: **8 valid passes, 12 harness-invalid cases** out of
+  20. The invalid cases were preserved and not rerun; therefore no holdout
+  fidelity percentage is claimed.
 - Fully passing tested support units: **11/11** in `IR_V2_EXECUTABLE_SUPPORT.csv`. The added
   unit is the bounded `SESSION_PRIVATE`/`AGENT_PRIVATE`/`CALL_LOCAL`
   GET/SET/EXISTS store, checked against the source-traceable Microsoft
   `AgentSession.state` dictionary subset. It does not promote arbitrary session,
   checkpoint, memory, database, or callback instances in the static corpus.
-- One additional `Agent.as_tool()` private-call-stack unit is **PARTIAL**. The
-  compiler consumes an actual OpenAI `Agent.as_tool()` object and the runtime
-  executes private child call/return, but no native framework call/return
-  projection has yet passed the executable-support gate. It is not counted as
-  fully supported and does not alter static coverage.
+- `Agent.as_tool()` now has explicit private `CALL_AGENT`/`RETURN_AGENT`
+  development implementations for actual OpenAI and Microsoft native objects.
+  The focused development tests pass, but the untouched Agent-as-Tool holdout
+  cases were harness-invalid. It therefore remains outside confirmed holdout
+  support and does not alter static coverage.
 - Corpus-wide executable support: **not inferred** from the 72 executions. A behavior instance without a source-traceable dynamic equivalence test does not become executable-supported merely because it resembles a passing unit.
 - IR-v2 core static corpus coverage: **3,574/7,386 = 48.39%** on the
   exact frozen 314-file membership. `IR_V2_STATIC_CORPUS_COVERAGE.csv` records

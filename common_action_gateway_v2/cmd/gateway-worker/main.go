@@ -19,6 +19,7 @@ func main() {
 	profilePath := flag.String("profile", "", "public profile JSON")
 	providers := flag.String("providers", "", "private provider configuration")
 	privateLog := flag.String("private-log", "worker_private.jsonl", "private worker log")
+	journal := flag.String("operation-journal", "", "durable trusted operation journal")
 	cpu := flag.Int("cpu", -1, "worker CPU affinity")
 	flag.Parse()
 	profile, err := gatewayv2.LoadProfile(*profilePath)
@@ -30,7 +31,7 @@ func main() {
 		RequestRingPath: *requestRing, ResultRingPath: *resultRing, RingCapacity: *capacity,
 		FrameBytes: *frameBytes, ExpectedFrames: *expected, KeyHex: *key, KeyFile: *keyFile,
 		ProfileID: profile.ID(), Sessions: profile.Sessions, Slots: profile.Slots,
-		ProviderConfig: *providers, PrivateLogPath: *privateLog, CPU: *cpu,
+		ProviderConfig: *providers, PrivateLogPath: *privateLog, JournalPath: *journal, CPU: *cpu,
 		Ready: func() { fmt.Printf("READY pid=%d\n", os.Getpid()) },
 	})
 	if err != nil {

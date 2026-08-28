@@ -1,0 +1,8 @@
+{
+  "freeze_id": "LONG-HORIZON-STRUCTURAL-V1-20260828",
+  "families": 8,
+  "all_exact_structural_size_pairs_equal": true,
+  "dummy_heavy_operations": 0,
+  "max_grouped_classifier_auc": 0.5,
+  "timing_privacy": "NOT_TESTED_BY_DESIGN"
+}

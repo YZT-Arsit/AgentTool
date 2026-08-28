@@ -183,8 +183,8 @@ class AgentRuntimeV2:
                         ContextItem("tool", result_text, call_id, tool_name),
                     ))
                     resumed_contexts.append(self._context_json(parent_context))
-                    updates.extend(("AGENT_AS_TOOL_RETURN", "MODEL_RESUME_READY"))
-                    self._step(current, RuntimeState.AGENT_RETURN, model_calls,
+                    updates.extend(("RETURN_AGENT", "MODEL_RESUME_READY"))
+                    self._step(current, RuntimeState.RETURN_AGENT, model_calls,
                                tool_name=tool_name, call_id=call_id, result_handle=result_handle)
                     current = parent
                     context = parent_context
@@ -226,18 +226,26 @@ class AgentRuntimeV2:
                     self._step(current, RuntimeState.TOOL_ERROR, model_calls,
                                tool_name=call.name, call_id=call.call_id,
                                error_class="UNRESOLVED_AGENT_TOOL")
-                    updates.append("AGENT_AS_TOOL_ERROR")
+                    updates.append("CALL_AGENT_ERROR")
                     return self._projection(selected_tools, arguments, call_ids, results,
                                             resumed_contexts, handoffs, updates, effects, effect_count,
-                                            "AGENT_AS_TOOL_ERROR", "", model_calls)
+                                            "CALL_AGENT_ERROR", "", model_calls)
+                if len(call_stack) >= agent.max_call_depth:
+                    self._step(current, RuntimeState.TOOL_ERROR, model_calls,
+                               tool_name=call.name, call_id=call.call_id,
+                               error_class="CALL_STACK_BOUND_EXCEEDED")
+                    updates.append("CALL_STACK_BOUND_EXCEEDED")
+                    return self._projection(selected_tools, arguments, call_ids, results,
+                                            resumed_contexts, handoffs, updates, effects, effect_count,
+                                            "CALL_STACK_BOUND_EXCEEDED", "", model_calls)
                 canonical_args = call.canonical_arguments()
                 argument_handle = self.private_values.put("agent_tool_arguments",
                                                           canonical_args.encode("utf-8"))
                 selected_tools.append(call.name)
                 arguments.append(dict(call.arguments))
                 call_ids.append(call.call_id)
-                updates.append("AGENT_AS_TOOL_CALL")
-                self._step(current, RuntimeState.AGENT_CALL_READY, model_calls,
+                updates.append("CALL_AGENT")
+                self._step(current, RuntimeState.CALL_AGENT, model_calls,
                            tool_name=call.name, call_id=call.call_id,
                            argument_handle=argument_handle)
                 call_stack.append((current, context, call.name, call.call_id, canonical_args))

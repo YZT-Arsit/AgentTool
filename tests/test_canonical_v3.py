@@ -106,6 +106,16 @@ def test_kernel_maps_provider_failure_to_explicit_private_state() -> None:
     assert kernel.state.current_state == 1
 
 
+def test_kernel_fails_closed_on_ambiguous_non_idempotent_effect() -> None:
+    kernel = llm_read_tool().kernel()
+    pending = kernel.tick()
+    assert pending is not None
+    assert kernel.accept_result(DecodedResult(5, pending.operation_id, b"", 0, 1))
+    assert kernel.state.failure_class == "AMBIGUOUS_EFFECT_RECONCILIATION_REQUIRED"
+    assert kernel.state.current_event == ControlEvent.ERROR
+    assert kernel.state.returned is False
+
+
 def test_handoff_changes_only_trusted_logical_state() -> None:
     fixture = logical_handoff()
     kernel = fixture.kernel()

@@ -1,9 +1,26 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from .compiler import FrameworkWorkload, _agent_fields, _tool_name
 from .ir_v2 import AgentProgramV2, ProgramBundleV2, private_handle
+
+
+def _agent_tool_target(tool: Any, agents: list[Any]) -> Any | None:
+    """Return a native Agent captured by an Agent-as-Tool wrapper.
+
+    OpenAI exposes the target as documented runtime metadata. Microsoft Agent
+    Framework's native ``Agent.as_tool`` returns a FunctionTool whose wrapper
+    closes over the target Agent. Inspecting that existing closure identifies
+    the static target without invoking or rewriting the wrapper.
+    """
+    if bool(getattr(tool, "_is_agent_tool", False)):
+        return getattr(tool, "_agent_instance", None)
+    function = getattr(tool, "func", None)
+    closure = getattr(function, "__closure__", None) or ()
+    captured = [cell.cell_contents for cell in closure]
+    return next((candidate for candidate in captured if any(candidate is agent for agent in agents)), None)
 
 
 @dataclass(frozen=True)
@@ -51,8 +68,8 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
         agent_tool_targets: dict[str, int] = {}
         for tool in tools:
             tool_name = _tool_name(tool)
-            if bool(getattr(tool, "_is_agent_tool", False)):
-                target = getattr(tool, "_agent_instance", None)
+            target = _agent_tool_target(tool, workload.agents)
+            if target is not None:
                 target_name = str(getattr(target, "name", ""))
                 if target_name in name_to_id:
                     agent_tool_targets[tool_name] = name_to_id[target_name]
@@ -73,8 +90,14 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
                 unsupported.append(f"{name}: unresolved handoff target {target_name}")
         handoff_total += len(targets)
         programs.append(AgentProgramV2(
-            base_agent_id + index, name, private_handle("instructions", str(instructions)),
-            tool_handles, targets, max_model_rounds, agent_tool_targets,
+            logical_agent_id=base_agent_id + index,
+            name=name,
+            instruction_handle=private_handle("instructions", str(instructions)),
+            tool_handles=tool_handles,
+            handoff_targets=targets,
+            max_model_rounds=max_model_rounds,
+            agent_tool_targets=agent_tool_targets,
+            max_call_depth=max_model_rounds,
         ))
     if workload.conditional_edges:
         unsupported.append("arbitrary conditional edges are not part of the core semantic repair")

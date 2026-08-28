@@ -1,0 +1,13 @@
+observation_count,model,grouped_family_test_auc,feature_vectors_exactly_equal_by_label,permutation_baseline,interpretation
+1,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+1,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality
+2,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+2,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality
+4,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+4,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality
+8,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+8,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality
+16,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+16,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality
+32,LogisticRegression,0.5,True,0.5,falsification check after exact equality
+32,RandomForestClassifier,0.5,True,0.5,falsification check after exact equality

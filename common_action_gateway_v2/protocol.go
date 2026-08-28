@@ -23,6 +23,7 @@ const (
 	StatusError     byte = 2
 	StatusTimeout   byte = 3
 	StatusCancelled byte = 4
+	StatusAmbiguous byte = 5
 
 	ProviderNone       byte = 0
 	ProviderFast       byte = 1

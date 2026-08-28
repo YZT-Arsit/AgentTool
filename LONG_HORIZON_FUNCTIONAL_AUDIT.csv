@@ -1,0 +1,17 @@
+family,class,expected_completed_observations,expected_heavy_operations,actual_heavy_operations,delivered_results,workflow_returned,dummy_heavy_operations,functional_gate,reason
+AGENT_IDENTITY,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+AGENT_IDENTITY,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+HANDOFF_IDENTITY,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+HANDOFF_IDENTITY,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+TOOL_CLASS,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+TOOL_CLASS,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+FREQUENCY,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+FREQUENCY,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+RARE_TARGET,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+RARE_TARGET,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+TRANSITION_PATTERN,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+TRANSITION_PATTERN,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+REPEATED_TARGET,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+REPEATED_TARGET,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+CROSS_SESSION_LINKAGE,0,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery
+CROSS_SESSION_LINKAGE,1,32,96,32,0,False,0,FAIL,frozen 3-slot/10ms profile expired before journal-hardened result delivery

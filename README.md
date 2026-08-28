@@ -22,16 +22,21 @@ architecture. Their current status is recorded in
 - immutable IR-v1 static coverage: 3,574/7,386 = 48.39%; immutable IR-v1
   semantic fidelity: 54/72 = 75.0%;
 - IR-v2 core on the exact frozen corpus: 3,574/7,386 = 48.39% (no unsupported
-  family was promoted); frozen dynamic fidelity: 72/72, including 18/18 Tool
-  workflows;
+  family was promoted); the prior 72/72 dynamic result, including 18/18 Tool
+  workflows, is now classified as **development regression evidence** because
+  those cases informed the semantic repair;
+- untouched semantic holdout: incomplete (8 valid passes, 12 harness-invalid
+  cases preserved without rerun); this is not a new fidelity rate;
 - official SimplePIR path: PASS at N=1,000 in the canonical E2E and separately
   operational with full preprocessing at N=100,000;
 - Linux canonical model -> Tool -> model, effectful Tool, and logical HANDOFF
   workflows: PASS for their declared bounded strata; dummy heavy operations: 0;
 - real local GPU case study: PASS for one OpenAI-Agent-derived model -> Tool ->
   model workflow using Qwen2.5-0.5B-Instruct;
-- structural and size privacy: PASS on the evaluated seven-workflow exact-trace
-  subset and structural/size-only local falsification features;
+- structural and size privacy: PASS only on the evaluated seven-workflow
+  development subset. The frozen eight-family transport shapes were exactly
+  equal with grouped AUC 0.5, but the whole-workflow E2E gate **failed** (zero
+  delivered results; workflows never returned), so long-horizon privacy remains open;
 - timing privacy: NOT TESTED on a valid reference platform; resource and
   packet-level privacy: OPEN.
 

@@ -1,0 +1,12 @@
+{
+  "freeze_id": "LONG-HORIZON-STRUCTURAL-V1-20260828",
+  "status": "COMPLETED_FUNCTIONAL_GATE_FAILED",
+  "completed_family_pairs": 8,
+  "initial_blocked_attempt": "results_long_horizon_structural_v1_attempt0_environment_blocked",
+  "error": "frozen 3-slot/10ms profile expired before journal-hardened result delivery",
+  "privacy_result": "TRANSPORT_SHAPE_ONLY_EXACT_EQUALITY; NOT WHOLE_WORKFLOW E2E",
+  "classifier_result": "AUC 0.5 AT 1/2/4/8/16/32 OBSERVATIONS; NOT CITABLE AS E2E DUE FUNCTIONAL FAILURE",
+  "timing_result": "NOT_TESTED_BY_DESIGN",
+  "raw_partial_artifacts_preserved": "results_long_horizon_structural_v1_attempt0_environment_blocked",
+  "bypass_attempted": false
+}

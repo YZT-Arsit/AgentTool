@@ -24,6 +24,7 @@ type WorkerConfig struct {
 	Sessions        int
 	Slots           int
 	ProviderConfig  string
+	JournalPath     string
 	PrivateLogPath  string
 	CPU             int
 	Ready           func()
@@ -75,6 +76,14 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 	if err != nil {
 		return status, err
 	}
+	journalPath := config.JournalPath
+	if journalPath == "" {
+		journalPath = config.PrivateLogPath + ".operation-journal.json"
+	}
+	journal, err := OpenOperationJournal(journalPath)
+	if err != nil {
+		return status, err
+	}
 	if config.Ready != nil {
 		config.Ready()
 	}
@@ -88,7 +97,6 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 	var resultDrops atomic.Int64
 	seen := make(map[[OperationIDBytes]byte]bool)
 	var seenMu sync.Mutex
-	effectGate := NewEffectGate()
 	sequence := NewSequenceValidator(config.ProfileID, DirectionRequest, config.Sessions, config.Slots)
 
 	writerDone := make(chan struct{})
@@ -127,9 +135,6 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 			seen[op.OperationID] = true
 		}
 		seenMu.Unlock()
-		if adapter.IsEffectful(op.Provider) && !effectGate.Reserve(op.OperationID) {
-			duplicate = true
-		}
 		if duplicate {
 			continue
 		}
@@ -141,9 +146,26 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 				result = baseResult(operation)
 				result.Status = StatusOK
 			} else {
-				ctx, cancel := context.WithTimeout(context.Background(), time.Duration(providerConfig.TimeoutMS)*time.Millisecond)
-				result = adapter.Execute(ctx, operation)
-				cancel()
+				semantics := adapter.Semantics(operation.Provider)
+				decision, cached, journalErr := journal.Begin(OperationIDString(operation.OperationID), semantics)
+				if journalErr != nil {
+					result = baseResult(operation)
+					result.Status = StatusError
+				} else if decision == JournalReturnCommitted {
+					result = cached
+					result.Session, result.RequestSlot, result.OperationID = operation.Session, operation.Slot, operation.OperationID
+				} else if decision == JournalFailAmbiguous {
+					result = baseResult(operation)
+					result.Status = StatusAmbiguous
+				} else {
+					ctx, cancel := context.WithTimeout(context.Background(), time.Duration(providerConfig.TimeoutMS)*time.Millisecond)
+					result = adapter.Execute(ctx, operation)
+					cancel()
+					if journal.Complete(OperationIDString(operation.OperationID), result) != nil {
+						result = baseResult(operation)
+						result.Status = StatusError
+					}
+				}
 			}
 			completed := MonotonicNowNS()
 			completion <- result

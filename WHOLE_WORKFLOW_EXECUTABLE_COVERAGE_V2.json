@@ -1,0 +1,19 @@
+{
+  "frozen_corpus_files": 314,
+  "workflow_source_file_units": 151,
+  "not_workflow_files": 163,
+  "counts": {
+    "PARTIALLY_EXECUTABLE": 97,
+    "FULLY_EXECUTABLE": 33,
+    "UNSUPPORTED": 21
+  },
+  "fully_executable_fraction": 0.2185430463576159,
+  "framework_counts": {
+    "Microsoft Agent Framework::PARTIALLY_EXECUTABLE": 21,
+    "Microsoft Agent Framework::UNSUPPORTED": 21,
+    "OpenAI Agents SDK::FULLY_EXECUTABLE": 33,
+    "OpenAI Agents SDK::PARTIALLY_EXECUTABLE": 76
+  },
+  "definition": "source file is the conservative whole-workflow unit; FULL requires every non-artifact control behavior in the file to be executable-supported",
+  "non_claim": "does not modify or replace the 3574/7386 behavior-instance baseline"
+}
