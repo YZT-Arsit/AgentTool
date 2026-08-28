@@ -1,0 +1,46 @@
+{
+  "baseline_id": "IR-v1",
+  "status": "PERMANENTLY_FROZEN",
+  "coverage_display": "48.39%",
+  "coverage_exact": 0.4838884375846195,
+  "counts": {
+    "files": 314,
+    "behavior_instances": 7386,
+    "compiled": 1708,
+    "shared_primitive": 1866,
+    "unsupported": 3812,
+    "coverage": 0.4838884375846195
+  },
+  "corpus_membership_sha256": "0DE43BB61CA22638445FC1B52662A9A8F58CC6937DD0D79C6C5A86E949EC0E6D",
+  "source_checkouts": {
+    "OpenAI Agents SDK": {
+      "path": "external_stage10/openai-agents-python",
+      "commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "roots": [
+        "examples"
+      ]
+    },
+    "Microsoft Agent Framework": {
+      "path": "external_stage9/agent-framework",
+      "commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "roots": [
+        "python/tests/samples",
+        "python/packages/core/tests"
+      ]
+    }
+  },
+  "artifact_sha256": {
+    "CORPUS_MANIFEST.csv": "028B01769C7DC7CA6E687917C24A4F284B79367191EE73F6445DD6231F3F1010",
+    "CORPUS_BEHAVIOR_INSTANCES.csv": "1D71E0D508F158D2A01420062CFBB73016381F2BBD5417C2EA5F121A4CD117F7",
+    "CORPUS_IR_COVERAGE.csv": "59E136A549C5EA3C78904BC543656D111FFBFA83D282CC34041CBBABC04C6A6A",
+    "CORPUS_IR_AUDIT.md": "BFE65DE3D18648F63BD5FFB19A40A5CFEDAD1BD0BF2D9748199EE452E6F92E85",
+    "SEMANTIC_FIDELITY_RESULTS.csv": "2CA0418692DDD7D84B17615807B929FC4021CCBAA99103A1891971D2FC7A5E74",
+    "SEMANTIC_FAILURE_CASES.csv": "D95CB736D2826E2193A7928C03211A1C66EC908BD0BDEC6DFB05D62D102FA235"
+  },
+  "rules": [
+    "Unsupported IR-v1 instances must never be relabeled in place.",
+    "IR-v2 must be evaluated as a new version on exactly this corpus membership.",
+    "No projected coverage is implied by feasibility classifications.",
+    "Dynamic fidelity continuation is separate from static corpus coverage."
+  ]
+}

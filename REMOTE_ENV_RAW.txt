@@ -1,0 +1,407 @@
+=== uname ===
+Linux autodl-container-de474da77f-6d9d121d 5.15.0-94-generic #104-Ubuntu SMP Tue Jan 9 15:25:40 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+=== os-release ===
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+=== lscpu ===
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      52 bits physical, 57 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             208
+On-line CPU(s) list:                0-207
+Vendor ID:                          GenuineIntel
+Model name:                         Intel(R) Xeon(R) Platinum 8470Q
+CPU family:                         6
+Model:                              143
+Thread(s) per core:                 2
+Core(s) per socket:                 52
+Socket(s):                          2
+Stepping:                           8
+Frequency boost:                    enabled
+CPU max MHz:                        2101.0000
+CPU min MHz:                        800.0000
+BogoMIPS:                           4200.00
+Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 invpcid_single intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities
+Virtualization:                     VT-x
+L1d cache:                          4.9 MiB (104 instances)
+L1i cache:                          3.3 MiB (104 instances)
+L2 cache:                           208 MiB (104 instances)
+L3 cache:                           210 MiB (2 instances)
+NUMA node(s):                       2
+NUMA node0 CPU(s):                  0-51,104-155
+NUMA node1 CPU(s):                  52-103,156-207
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+=== lscpu-e ===
+CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ   MINMHZ      MHZ
+  0    0      0    0 0:0:0:0          yes 2101.0000 800.0000  799.999
+  1    0      0    1 1:1:1:0          yes 2101.0000 800.0000  800.000
+  2    0      0    2 2:2:2:0          yes 2101.0000 800.0000 1600.000
+  3    0      0    3 3:3:3:0          yes 2101.0000 800.0000 1799.998
+  4    0      0    4 4:4:4:0          yes 2101.0000 800.0000  800.000
+  5    0      0    5 5:5:5:0          yes 2101.0000 800.0000 1900.000
+  6    0      0    6 6:6:6:0          yes 2101.0000 800.0000 2100.000
+  7    0      0    7 7:7:7:0          yes 2101.0000 800.0000  800.000
+  8    0      0    8 8:8:8:0          yes 2101.0000 800.0000  800.000
+  9    0      0    9 9:9:9:0          yes 2101.0000 800.0000  800.000
+ 10    0      0   10 10:10:10:0       yes 2101.0000 800.0000  800.000
+ 11    0      0   11 11:11:11:0       yes 2101.0000 800.0000  800.000
+ 12    0      0   12 12:12:12:0       yes 2101.0000 800.0000  800.000
+ 13    0      0   13 13:13:13:0       yes 2101.0000 800.0000  800.000
+ 14    0      0   14 14:14:14:0       yes 2101.0000 800.0000  800.000
+ 15    0      0   15 15:15:15:0       yes 2101.0000 800.0000  800.000
+ 16    0      0   16 16:16:16:0       yes 2101.0000 800.0000  800.000
+ 17    0      0   17 17:17:17:0       yes 2101.0000 800.0000  800.000
+ 18    0      0   18 18:18:18:0       yes 2101.0000 800.0000  800.000
+ 19    0      0   19 19:19:19:0       yes 2101.0000 800.0000  800.000
+ 20    0      0   20 20:20:20:0       yes 2101.0000 800.0000  800.000
+ 21    0      0   21 21:21:21:0       yes 2101.0000 800.0000  800.000
+ 22    0      0   22 22:22:22:0       yes 2101.0000 800.0000  800.000
+ 23    0      0   23 23:23:23:0       yes 2101.0000 800.0000 1600.000
+ 24    0      0   24 24:24:24:0       yes 2101.0000 800.0000  800.000
+ 25    0      0   25 25:25:25:0       yes 2101.0000 800.0000  800.000
+ 26    0      0   26 26:26:26:0       yes 2101.0000 800.0000 2278.613
+ 27    0      0   27 27:27:27:0       yes 2101.0000 800.0000 1900.000
+ 28    0      0   28 28:28:28:0       yes 2101.0000 800.0000  800.000
+ 29    0      0   29 29:29:29:0       yes 2101.0000 800.0000  800.000
+ 30    0      0   30 30:30:30:0       yes 2101.0000 800.0000  800.000
+ 31    0      0   31 31:31:31:0       yes 2101.0000 800.0000  800.000
+ 32    0      0   32 32:32:32:0       yes 2101.0000 800.0000  800.000
+ 33    0      0   33 33:33:33:0       yes 2101.0000 800.0000  800.000
+ 34    0      0   34 34:34:34:0       yes 2101.0000 800.0000  800.000
+ 35    0      0   35 35:35:35:0       yes 2101.0000 800.0000 1399.986
+ 36    0      0   36 36:36:36:0       yes 2101.0000 800.0000  800.000
+ 37    0      0   37 37:37:37:0       yes 2101.0000 800.0000  800.000
+ 38    0      0   38 38:38:38:0       yes 2101.0000 800.0000 1600.000
+ 39    0      0   39 39:39:39:0       yes 2101.0000 800.0000  800.000
+ 40    0      0   40 40:40:40:0       yes 2101.0000 800.0000  800.000
+ 41    0      0   41 41:41:41:0       yes 2101.0000 800.0000  800.000
+ 42    0      0   42 42:42:42:0       yes 2101.0000 800.0000  800.000
+ 43    0      0   43 43:43:43:0       yes 2101.0000 800.0000  800.000
+ 44    0      0   44 44:44:44:0       yes 2101.0000 800.0000  800.000
+ 45    0      0   45 45:45:45:0       yes 2101.0000 800.0000  800.000
+ 46    0      0   46 46:46:46:0       yes 2101.0000 800.0000  800.000
+ 47    0      0   47 47:47:47:0       yes 2101.0000 800.0000  800.000
+ 48    0      0   48 48:48:48:0       yes 2101.0000 800.0000  800.000
+ 49    0      0   49 49:49:49:0       yes 2101.0000 800.0000  800.000
+ 50    0      0   50 50:50:50:0       yes 2101.0000 800.0000 2100.000
+ 51    0      0   51 51:51:51:0       yes 2101.0000 800.0000  800.000
+ 52    1      1   52 64:64:64:1       yes 2101.0000 800.0000  800.000
+ 53    1      1   53 65:65:65:1       yes 2101.0000 800.0000 2100.000
+ 54    1      1   54 66:66:66:1       yes 2101.0000 800.0000 3200.000
+ 55    1      1   55 67:67:67:1       yes 2101.0000 800.0000 2100.000
+ 56    1      1   56 68:68:68:1       yes 2101.0000 800.0000 2100.000
+ 57    1      1   57 69:69:69:1       yes 2101.0000 800.0000  800.000
+ 58    1      1   58 70:70:70:1       yes 2101.0000 800.0000 1800.000
+ 59    1      1   59 71:71:71:1       yes 2101.0000 800.0000  800.000
+ 60    1      1   60 72:72:72:1       yes 2101.0000 800.0000 2100.000
+ 61    1      1   61 73:73:73:1       yes 2101.0000 800.0000 2100.000
+ 62    1      1   62 74:74:74:1       yes 2101.0000 800.0000  900.000
+ 63    1      1   63 75:75:75:1       yes 2101.0000 800.0000 2100.000
+ 64    1      1   64 76:76:76:1       yes 2101.0000 800.0000 2000.000
+ 65    1      1   65 77:77:77:1       yes 2101.0000 800.0000 2100.000
+ 66    1      1   66 78:78:78:1       yes 2101.0000 800.0000 1900.000
+ 67    1      1   67 79:79:79:1       yes 2101.0000 800.0000 2101.000
+ 68    1      1   68 80:80:80:1       yes 2101.0000 800.0000 2100.000
+ 69    1      1   69 81:81:81:1       yes 2101.0000 800.0000 2100.000
+ 70    1      1   70 82:82:82:1       yes 2101.0000 800.0000 2100.000
+ 71    1      1   71 83:83:83:1       yes 2101.0000 800.0000 2100.000
+ 72    1      1   72 84:84:84:1       yes 2101.0000 800.0000 2100.000
+ 73    1      1   73 85:85:85:1       yes 2101.0000 800.0000 1800.000
+ 74    1      1   74 86:86:86:1       yes 2101.0000 800.0000 2100.000
+ 75    1      1   75 87:87:87:1       yes 2101.0000 800.0000 1900.000
+ 76    1      1   76 88:88:88:1       yes 2101.0000 800.0000 2101.000
+ 77    1      1   77 89:89:89:1       yes 2101.0000 800.0000 2100.000
+ 78    1      1   78 90:90:90:1       yes 2101.0000 800.0000 1100.000
+ 79    1      1   79 91:91:91:1       yes 2101.0000 800.0000  800.000
+ 80    1      1   80 92:92:92:1       yes 2101.0000 800.0000 2100.000
+ 81    1      1   81 93:93:93:1       yes 2101.0000 800.0000 1600.000
+ 82    1      1   82 94:94:94:1       yes 2101.0000 800.0000 2100.000
+ 83    1      1   83 95:95:95:1       yes 2101.0000 800.0000 2101.000
+ 84    1      1   84 96:96:96:1       yes 2101.0000 800.0000 2100.000
+ 85    1      1   85 97:97:97:1       yes 2101.0000 800.0000 2100.000
+ 86    1      1   86 98:98:98:1       yes 2101.0000 800.0000 2100.000
+ 87    1      1   87 99:99:99:1       yes 2101.0000 800.0000 2100.000
+ 88    1      1   88 100:100:100:1    yes 2101.0000 800.0000 1900.000
+ 89    1      1   89 101:101:101:1    yes 2101.0000 800.0000 2100.000
+ 90    1      1   90 102:102:102:1    yes 2101.0000 800.0000 2101.000
+ 91    1      1   91 103:103:103:1    yes 2101.0000 800.0000 2100.000
+ 92    1      1   92 104:104:104:1    yes 2101.0000 800.0000 2101.000
+ 93    1      1   93 105:105:105:1    yes 2101.0000 800.0000 1900.000
+ 94    1      1   94 106:106:106:1    yes 2101.0000 800.0000 2101.000
+ 95    1      1   95 107:107:107:1    yes 2101.0000 800.0000 2100.000
+ 96    1      1   96 108:108:108:1    yes 2101.0000 800.0000 2100.000
+ 97    1      1   97 109:109:109:1    yes 2101.0000 800.0000 2100.000
+ 98    1      1   98 110:110:110:1    yes 2101.0000 800.0000 2101.000
+ 99    1      1   99 111:111:111:1    yes 2101.0000 800.0000 2100.000
+100    1      1  100 112:112:112:1    yes 2101.0000 800.0000 2100.000
+101    1      1  101 113:113:113:1    yes 2101.0000 800.0000 2100.000
+102    1      1  102 114:114:114:1    yes 2101.0000 800.0000 3200.000
+103    1      1  103 115:115:115:1    yes 2101.0000 800.0000 2100.000
+104    0      0    0 0:0:0:0          yes 2101.0000 800.0000  800.000
+105    0      0    1 1:1:1:0          yes 2101.0000 800.0000  800.000
+106    0      0    2 2:2:2:0          yes 2101.0000 800.0000  800.000
+107    0      0    3 3:3:3:0          yes 2101.0000 800.0000  800.000
+108    0      0    4 4:4:4:0          yes 2101.0000 800.0000 1900.000
+109    0      0    5 5:5:5:0          yes 2101.0000 800.0000  800.000
+110    0      0    6 6:6:6:0          yes 2101.0000 800.0000  800.000
+111    0      0    7 7:7:7:0          yes 2101.0000 800.0000  800.000
+112    0      0    8 8:8:8:0          yes 2101.0000 800.0000  800.000
+113    0      0    9 9:9:9:0          yes 2101.0000 800.0000 1400.000
+114    0      0   10 10:10:10:0       yes 2101.0000 800.0000  800.000
+115    0      0   11 11:11:11:0       yes 2101.0000 800.0000  800.000
+116    0      0   12 12:12:12:0       yes 2101.0000 800.0000 1600.000
+117    0      0   13 13:13:13:0       yes 2101.0000 800.0000 3200.000
+118    0      0   14 14:14:14:0       yes 2101.0000 800.0000  800.000
+119    0      0   15 15:15:15:0       yes 2101.0000 800.0000  800.000
+120    0      0   16 16:16:16:0       yes 2101.0000 800.0000  800.000
+121    0      0   17 17:17:17:0       yes 2101.0000 800.0000  800.000
+122    0      0   18 18:18:18:0       yes 2101.0000 800.0000  800.000
+123    0      0   19 19:19:19:0       yes 2101.0000 800.0000 3200.000
+124    0      0   20 20:20:20:0       yes 2101.0000 800.0000  800.000
+125    0      0   21 21:21:21:0       yes 2101.0000 800.0000 1942.419
+126    0      0   22 22:22:22:0       yes 2101.0000 800.0000 2101.000
+127    0      0   23 23:23:23:0       yes 2101.0000 800.0000  800.000
+128    0      0   24 24:24:24:0       yes 2101.0000 800.0000  800.000
+129    0      0   25 25:25:25:0       yes 2101.0000 800.0000  800.000
+130    0      0   26 26:26:26:0       yes 2101.0000 800.0000  800.000
+131    0      0   27 27:27:27:0       yes 2101.0000 800.0000  800.000
+132    0      0   28 28:28:28:0       yes 2101.0000 800.0000  800.000
+133    0      0   29 29:29:29:0       yes 2101.0000 800.0000 2101.000
+134    0      0   30 30:30:30:0       yes 2101.0000 800.0000  800.000
+135    0      0   31 31:31:31:0       yes 2101.0000 800.0000  800.000
+136    0      0   32 32:32:32:0       yes 2101.0000 800.0000  800.000
+137    0      0   33 33:33:33:0       yes 2101.0000 800.0000  800.000
+138    0      0   34 34:34:34:0       yes 2101.0000 800.0000 1400.000
+139    0      0   35 35:35:35:0       yes 2101.0000 800.0000  800.000
+140    0      0   36 36:36:36:0       yes 2101.0000 800.0000  800.000
+141    0      0   37 37:37:37:0       yes 2101.0000 800.0000  800.000
+142    0      0   38 38:38:38:0       yes 2101.0000 800.0000  800.000
+143    0      0   39 39:39:39:0       yes 2101.0000 800.0000  800.000
+144    0      0   40 40:40:40:0       yes 2101.0000 800.0000  800.000
+145    0      0   41 41:41:41:0       yes 2101.0000 800.0000 2100.000
+146    0      0   42 42:42:42:0       yes 2101.0000 800.0000  800.000
+147    0      0   43 43:43:43:0       yes 2101.0000 800.0000  800.000
+148    0      0   44 44:44:44:0       yes 2101.0000 800.0000 2000.000
+149    0      0   45 45:45:45:0       yes 2101.0000 800.0000 1400.000
+150    0      0   46 46:46:46:0       yes 2101.0000 800.0000 1400.000
+151    0      0   47 47:47:47:0       yes 2101.0000 800.0000  800.000
+152    0      0   48 48:48:48:0       yes 2101.0000 800.0000  800.000
+153    0      0   49 49:49:49:0       yes 2101.0000 800.0000  800.000
+154    0      0   50 50:50:50:0       yes 2101.0000 800.0000  800.000
+155    0      0   51 51:51:51:0       yes 2101.0000 800.0000 1000.000
+156    1      1   52 64:64:64:1       yes 2101.0000 800.0000 1000.000
+157    1      1   53 65:65:65:1       yes 2101.0000 800.0000 1900.000
+158    1      1   54 66:66:66:1       yes 2101.0000 800.0000 1800.000
+159    1      1   55 67:67:67:1       yes 2101.0000 800.0000 2100.000
+160    1      1   56 68:68:68:1       yes 2101.0000 800.0000 2100.000
+161    1      1   57 69:69:69:1       yes 2101.0000 800.0000 1900.000
+162    1      1   58 70:70:70:1       yes 2101.0000 800.0000  800.000
+163    1      1   59 71:71:71:1       yes 2101.0000 800.0000 1300.000
+164    1      1   60 72:72:72:1       yes 2101.0000 800.0000 2100.000
+165    1      1   61 73:73:73:1       yes 2101.0000 800.0000 2100.000
+166    1      1   62 74:74:74:1       yes 2101.0000 800.0000 2100.000
+167    1      1   63 75:75:75:1       yes 2101.0000 800.0000 2100.000
+168    1      1   64 76:76:76:1       yes 2101.0000 800.0000 2000.000
+169    1      1   65 77:77:77:1       yes 2101.0000 800.0000 1300.000
+170    1      1   66 78:78:78:1       yes 2101.0000 800.0000 2100.000
+171    1      1   67 79:79:79:1       yes 2101.0000 800.0000 2101.000
+172    1      1   68 80:80:80:1       yes 2101.0000 800.0000 2101.000
+173    1      1   69 81:81:81:1       yes 2101.0000 800.0000 2100.000
+174    1      1   70 82:82:82:1       yes 2101.0000 800.0000 2100.000
+175    1      1   71 83:83:83:1       yes 2101.0000 800.0000 2100.000
+176    1      1   72 84:84:84:1       yes 2101.0000 800.0000 2100.000
+177    1      1   73 85:85:85:1       yes 2101.0000 800.0000  800.000
+178    1      1   74 86:86:86:1       yes 2101.0000 800.0000 2100.000
+179    1      1   75 87:87:87:1       yes 2101.0000 800.0000 2101.000
+180    1      1   76 88:88:88:1       yes 2101.0000 800.0000 2101.000
+181    1      1   77 89:89:89:1       yes 2101.0000 800.0000 2100.000
+182    1      1   78 90:90:90:1       yes 2101.0000 800.0000 1900.000
+183    1      1   79 91:91:91:1       yes 2101.0000 800.0000 1800.000
+184    1      1   80 92:92:92:1       yes 2101.0000 800.0000 2100.000
+185    1      1   81 93:93:93:1       yes 2101.0000 800.0000 2000.000
+186    1      1   82 94:94:94:1       yes 2101.0000 800.0000 2100.000
+187    1      1   83 95:95:95:1       yes 2101.0000 800.0000 2100.000
+188    1      1   84 96:96:96:1       yes 2101.0000 800.0000 2101.000
+189    1      1   85 97:97:97:1       yes 2101.0000 800.0000 1800.000
+190    1      1   86 98:98:98:1       yes 2101.0000 800.0000 2100.000
+191    1      1   87 99:99:99:1       yes 2101.0000 800.0000 2100.000
+192    1      1   88 100:100:100:1    yes 2101.0000 800.0000  800.000
+193    1      1   89 101:101:101:1    yes 2101.0000 800.0000 2101.000
+194    1      1   90 102:102:102:1    yes 2101.0000 800.0000 2100.000
+195    1      1   91 103:103:103:1    yes 2101.0000 800.0000 2100.000
+196    1      1   92 104:104:104:1    yes 2101.0000 800.0000 2101.000
+197    1      1   93 105:105:105:1    yes 2101.0000 800.0000 2100.000
+198    1      1   94 106:106:106:1    yes 2101.0000 800.0000 2100.000
+199    1      1   95 107:107:107:1    yes 2101.0000 800.0000 2101.000
+200    1      1   96 108:108:108:1    yes 2101.0000 800.0000 2100.000
+201    1      1   97 109:109:109:1    yes 2101.0000 800.0000 2100.000
+202    1      1   98 110:110:110:1    yes 2101.0000 800.0000 2101.000
+203    1      1   99 111:111:111:1    yes 2101.0000 800.0000 2101.000
+204    1      1  100 112:112:112:1    yes 2101.0000 800.0000 2100.000
+205    1      1  101 113:113:113:1    yes 2101.0000 800.0000 2100.000
+206    1      1  102 114:114:114:1    yes 2101.0000 800.0000 2101.000
+207    1      1  103 115:115:115:1    yes 2101.0000 800.0000 2100.000
+=== nproc ===
+25
+=== topology ===
+/sys/devices/system/cpu/cpu0/topology/core_cpus=0000,00000000,00000000,00000100,00000000,00000000,00000001
+/sys/devices/system/cpu/cpu0/topology/core_cpus_list=0,104
+/sys/devices/system/cpu/cpu0/topology/core_id=0
+/sys/devices/system/cpu/cpu0/topology/core_siblings=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu0/topology/core_siblings_list=0-51,104-155
+/sys/devices/system/cpu/cpu0/topology/die_cpus=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu0/topology/die_cpus_list=0-51,104-155
+/sys/devices/system/cpu/cpu0/topology/die_id=0
+/sys/devices/system/cpu/cpu0/topology/package_cpus=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu0/topology/package_cpus_list=0-51,104-155
+/sys/devices/system/cpu/cpu0/topology/physical_package_id=0
+/sys/devices/system/cpu/cpu0/topology/thread_siblings=0000,00000000,00000000,00000100,00000000,00000000,00000001
+/sys/devices/system/cpu/cpu0/topology/thread_siblings_list=0,104
+/sys/devices/system/cpu/cpu1/topology/core_cpus=0000,00000000,00000000,00000200,00000000,00000000,00000002
+/sys/devices/system/cpu/cpu1/topology/core_cpus_list=1,105
+/sys/devices/system/cpu/cpu1/topology/core_id=1
+/sys/devices/system/cpu/cpu1/topology/core_siblings=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu1/topology/core_siblings_list=0-51,104-155
+/sys/devices/system/cpu/cpu1/topology/die_cpus=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu1/topology/die_cpus_list=0-51,104-155
+/sys/devices/system/cpu/cpu1/topology/die_id=0
+/sys/devices/system/cpu/cpu1/topology/package_cpus=0000,00000000,0fffffff,ffffff00,00000000,000fffff,ffffffff
+/sys/devices/system/cpu/cpu1/topology/package_cpus_list=0-51,104-155
+/sys/devices/system/cpu/cpu1/topology/physical_package_id=0
+/sys/devices/system/cpu/cpu1/topology/thread_siblings=0000,00000000,00000000,00000200,00000000,00000000,00000002
+/sys/devices/system/cpu/cpu1/topology/thread_siblings_list=1,105
+=== nvidia-smi ===
+Fri Aug 28 12:05:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.76.05              Driver Version: 580.76.05      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:A8:00.0 Off |                  N/A |
+| 44%   32C    P8             13W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=== cuda ===
+-bash: nvcc: command not found
+=== python ===
+Python 3.12.3
+=== go ===
+-bash: go: command not found
+=== memory ===
+               total        used        free      shared  buff/cache   available
+Mem:           754Gi       104Gi        61Gi       4.2Gi       588Gi       639Gi
+Swap:             0B          0B          0B
+MemTotal:       791167756 kB
+MemFree:        64426192 kB
+MemAvailable:   670087124 kB
+Buffers:           90020 kB
+Cached:         600299332 kB
+SwapCached:            0 kB
+Active:         301423184 kB
+Inactive:       387495360 kB
+Active(anon):     101820 kB
+Inactive(anon): 92788744 kB
+Active(file):   301321364 kB
+Inactive(file): 294706616 kB
+Unevictable:       27840 kB
+Mlocked:           27840 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               204 kB
+Writeback:             0 kB
+AnonPages:      88559156 kB
+Mapped:          2243948 kB
+=== filesystem ===
+Filesystem     Type     Size  Used Avail Use% Mounted on
+overlay        overlay   30G   53M   30G   1% /
+/dev/md127     xfs       50G  139M   50G   1% /root/autodl-tmp
+overlay on / type overlay (rw,relatime,lowerdir=/data/docker/overlay2/l/OUPZHMJUITFX6OX5C5HBSAYB54:/data/docker/overlay2/l/4AHB5OOIGFBFO7EWUEUVT5DNRP:/data/docker/overlay2/l/5IRFWMTWLZMLIY3SGVKT53LQ3M:/data/docker/overlay2/l/23UYFLOUJW65W5SB45VUWXZGEG:/data/docker/overlay2/l/47JCLVXW7BOE7RLP3HWP33MY4G:/data/docker/overlay2/l/GPP4QX2XAB3R5RL2VRPM2WNDSJ:/data/docker/overlay2/l/EJCYA3IFGOKQ7JU5FWKQLW2ZCT:/data/docker/overlay2/l/N56QBFDJYG6B7P62GRPPDXON3C:/data/docker/overlay2/l/QVQR2QXEOQBP7PTW7WMMPFCGUG:/data/docker/overlay2/l/YQKWQOUIK2DNUJJJY6NCGQYEF2:/data/docker/overlay2/l/W7GRXWCSZIGF5DEX3YA6QDLOZN:/data/docker/overlay2/l/ZTGJG3MOST2QZHVMKPPB55EY5J:/data/docker/overlay2/l/2TUP7QYZOHR45EAPE7Y7NHWI4S:/data/docker/overlay2/l/QU66I4S7NYF26YMHB6YRYFMJDJ:/data/docker/overlay2/l/2WKFQRD643A4BEB4NUAXGG5FV2:/data/docker/overlay2/l/RWJONO2VMNGFI3HMOV2MR74QCW:/data/docker/overlay2/l/WUGZWJVGLUUTVKNKSZR2AFF7QG:/data/docker/overlay2/l/N6G7EYDPYYM7XW4IREM742526H:/data/docker/overlay2/l/QTNOR5LNYOIMEK62YGZ34GBW6K:/data/docker/overlay2/l/5BFQGC32O2TGDUWGIGJPU6HOWO:/data/docker/overlay2/l/VWKKMUGGNLHCFFAT6PNT2QSHI5:/data/docker/overlay2/l/HKMLYI2FB27I6UQ5NMT5VGAHKE:/data/docker/overlay2/l/7F4OIT7SVA2UTBPJEVOAJLWPY2:/data/docker/overlay2/l/YJDZ5BY2FGENJ5HRXE46O24SXU,upperdir=/data/docker/overlay2/600e33ccd18b56be47cd45d0edc1b2dc3e8aaf18df01f24de307cc4e5ebd0dbc/diff,workdir=/data/docker/overlay2/600e33ccd18b56be47cd45d0edc1b2dc3e8aaf18df01f24de307cc4e5ebd0dbc/work)
+/dev/md127 on /autodl-pub type xfs (ro,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+AutoFS:fswestb1 on /autodl-pub/data type fuse.autofs (ro,relatime,user_id=0,group_id=0,default_permissions,allow_other)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+/dev/md127 on /init type xfs (rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (ro,nosuid,nodev,noexec,relatime)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=47185920k,inode64)
+/dev/md127 on /etc/hostname type xfs (rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+/dev/md127 on /etc/hosts type xfs (rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+/dev/md127 on /etc/resolv.conf type xfs (rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+/dev/md127 on /root/autodl-tmp type xfs (rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=1024,swidth=2048,prjquota)
+/dev/sda2 on /usr/lib/x86_64-linux-gnu/libnvidia-egl-gbm.so.1.1.2 type ext4 (ro,nosuid,nodev,relatime)
+cgroup on /sys/fs/cgroup type cgroup2 (ro,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+/dev/sda2 on /etc/vulkan/icd.d/nvidia_icd.json type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /etc/vulkan/implicit_layer.d/nvidia_layers.json type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/share/glvnd/egl_vendor.d/10_nvidia.json type ext4 (ro,nosuid,nodev,relatime)
+tmpfs on /proc/driver/nvidia type tmpfs (rw,nosuid,nodev,noexec,relatime,mode=555,inode64)
+tmpfs on /etc/nvidia/nvidia-application-profiles-rc.d type tmpfs (rw,nosuid,nodev,noexec,relatime,mode=555,inode64)
+/dev/sda2 on /usr/bin/nvidia-smi type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/bin/nvidia-debugdump type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/bin/nvidia-persistenced type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/bin/nvidia-cuda-mps-control type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/bin/nvidia-cuda-mps-server type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.580.76.05 type ext4 (ro,nosuid,nodev,relatime)
+/dev/sda2 on /usr/lib/x86_64-linux-gnu/libnvidia-cfg.so.580.76.05 type ext4 (ro,nosuid,nodev,relatime)
+=== cgroup ===
+0::/
+0::/
+Cpus_allowed:	ffff,ffffffff,ffffffff,ffffffff,ffffffff,ffffffff,ffffffff
+Cpus_allowed_list:	0-207
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000003
+Mems_allowed_list:	0-1
+=== virt ===
+docker
+bash (1, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :    8112146036.580874
+se.vruntime                                  :           492.618775
+se.sum_exec_runtime                          :            50.432838
+=== scheduler ===
+/usr/bin/taskset
+/usr/bin/chrt
+SCHED_OTHER min/max priority	: 0/0
+SCHED_FIFO min/max priority	: 1/99
+SCHED_RR min/max priority	: 1/99
+SCHED_BATCH min/max priority	: 0/0
+SCHED_IDLE min/max priority	: 0/0
+SCHED_DEADLINE min/max priority	: 0/0
+0
+=== git provenance supplied from local ===
+HEAD b08c044a05b4ed020962d234db91e8912a5d1ed7
+WORKTREE_DIRTY YES

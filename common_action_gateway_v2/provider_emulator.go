@@ -23,6 +23,45 @@ type EmulatorConfig struct {
 	Effectful         bool
 }
 
+type modelTool struct {
+	Name   string `json:"name"`
+	Handle int    `json:"handle"`
+}
+
+type modelContextItem struct {
+	Role    string `json:"role"`
+	Content string `json:"content,omitempty"`
+}
+
+type modelRequest struct {
+	Context []modelContextItem `json:"context"`
+	Tools   []modelTool        `json:"tools"`
+}
+
+func localModelDecision(operationID string, payload []byte) []byte {
+	var request modelRequest
+	if json.Unmarshal(payload, &request) != nil {
+		encoded, _ := json.Marshal(map[string]any{"kind": "ERROR", "error": "INVALID_MODEL_REQUEST"})
+		return encoded
+	}
+	for _, item := range request.Context {
+		if item.Role == "tool" {
+			encoded, _ := json.Marshal(map[string]any{"kind": "FINAL", "text": "completed:" + item.Content})
+			return encoded
+		}
+	}
+	if len(request.Tools) > 0 {
+		encoded, _ := json.Marshal(map[string]any{
+			"kind": "TOOL_CALL", "name": request.Tools[0].Name,
+			"arguments": map[string]any{"topic": "synthetic-local"},
+			"call_id": "call-" + operationID,
+		})
+		return encoded
+	}
+	encoded, _ := json.Marshal(map[string]any{"kind": "FINAL", "text": "completed:no-tool"})
+	return encoded
+}
+
 func burnCPU(duration time.Duration) {
 	deadline := time.Now().Add(duration)
 	var value uint64 = 1
@@ -89,7 +128,11 @@ func RunProviderEmulator(config EmulatorConfig, ready func(string)) error {
 		if config.Effectful {
 			count = effects.Add(1)
 		}
-		response := providerResponse{Status: "OK", Payload: []byte(fmt.Sprintf("%s:%d", config.Name, count))}
+		payload := []byte(fmt.Sprintf("%s:%d", config.Name, count))
+		if config.Name == "LOCAL_MODEL" {
+			payload = localModelDecision(input.OperationID, input.Payload)
+		}
+		response := providerResponse{Status: "OK", Payload: payload}
 		seenMu.Lock()
 		seen[input.OperationID] = response
 		seenMu.Unlock()

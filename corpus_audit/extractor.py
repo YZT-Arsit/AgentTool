@@ -205,6 +205,12 @@ def _write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> 
 
 
 def run_corpus_audit(root: Path) -> dict[str, object]:
+    if (root / "IR_V1_BASELINE_MANIFEST.json").exists():
+        from corpus_audit.ir_v1_freeze import verify_frozen_baseline
+        verify_frozen_baseline(root)
+        raise RuntimeError(
+            "IR-v1 is permanently frozen; use a new versioned IR-v2 output path on the frozen corpus."
+        )
     specs = (
         SourceSpec("OpenAI Agents SDK", root / "external_stage10/openai-agents-python",
                    (Path("examples"),)),
@@ -267,4 +273,3 @@ def run_corpus_audit(root: Path) -> dict[str, object]:
         "coverage": float(overall["coverage"]),
     }
     return summary
-

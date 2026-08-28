@@ -23,6 +23,9 @@ class WorkflowFixture:
         return ControlKernel(self.capsules, self.initial_agent_id, {
             READ_HANDLE: (7, OperationClass.READ_ONLY_TOOL),
             EFFECT_HANDLE: (8, OperationClass.EFFECTFUL_TOOL),
+        }, {
+            READ_HANDLE: "READ_ONLY_TOOL",
+            EFFECT_HANDLE: "EFFECTFUL_TOOL",
         })
 
 
@@ -35,9 +38,10 @@ def llm_read_tool() -> WorkflowFixture:
         ControlRow(Opcode.LLM, ControlEvent.START, 0, 1, label="model"),
         ControlRow(Opcode.TOOL, ControlEvent.MODEL_ACTION, 1, 2,
                    target_handle=READ_HANDLE, label="read"),
-        ControlRow(Opcode.RETURN, ControlEvent.TOOL_RESULT, 2, 2, label="return"),
+        ControlRow(Opcode.LLM, ControlEvent.TOOL_RESULT, 2, 3, label="model-resume"),
+        ControlRow(Opcode.RETURN, ControlEvent.DONE, 3, 3, label="return"),
     ]
-    return WorkflowFixture("LLM_READ_TOOL", {10: _capsule(10, rows, "llm-read")}, 10, 2, 0)
+    return WorkflowFixture("LLM_READ_TOOL", {10: _capsule(10, rows, "llm-read")}, 10, 3, 0)
 
 
 def llm_effect_tool() -> WorkflowFixture:
@@ -45,9 +49,10 @@ def llm_effect_tool() -> WorkflowFixture:
         ControlRow(Opcode.LLM, ControlEvent.START, 0, 1, label="model"),
         ControlRow(Opcode.TOOL, ControlEvent.MODEL_ACTION, 1, 2,
                    target_handle=EFFECT_HANDLE, label="effect"),
-        ControlRow(Opcode.RETURN, ControlEvent.TOOL_RESULT, 2, 2, label="return"),
+        ControlRow(Opcode.LLM, ControlEvent.TOOL_RESULT, 2, 3, label="model-resume"),
+        ControlRow(Opcode.RETURN, ControlEvent.DONE, 3, 3, label="return"),
     ]
-    return WorkflowFixture("LLM_EFFECT_TOOL", {11: _capsule(11, rows, "llm-effect")}, 11, 2, 1)
+    return WorkflowFixture("LLM_EFFECT_TOOL", {11: _capsule(11, rows, "llm-effect")}, 11, 3, 1)
 
 
 def logical_handoff() -> WorkflowFixture:
@@ -55,7 +60,6 @@ def logical_handoff() -> WorkflowFixture:
                                     target_handle=21, label="handoff")], "handoff-a")
     second = _capsule(21, [
         ControlRow(Opcode.LLM, ControlEvent.START, 0, 1, label="model"),
-        ControlRow(Opcode.RETURN, ControlEvent.MODEL_ACTION, 1, 1, label="return"),
+        ControlRow(Opcode.RETURN, ControlEvent.DONE, 1, 1, label="return"),
     ], "handoff-b")
     return WorkflowFixture("LOGICAL_HANDOFF", {20: first, 21: second}, 20, 1, 0)
-

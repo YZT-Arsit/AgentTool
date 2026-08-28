@@ -192,27 +192,35 @@ def _differences(native: SemanticProjection, compiled: SemanticProjection) -> li
     return [name for name in left if left[name] != right[name]]
 
 
-async def run_dynamic_fidelity(root: Path) -> dict[str, object]:
+async def _run_dynamic_fidelity_batch(root: Path, seeds: range, output_name: str,
+                                      failure_name: str, id_prefix: str,
+                                      refuse_overwrite: bool) -> dict[str, object]:
+    output_path = root / output_name
+    failure_path = root / failure_name
+    if refuse_overwrite and (output_path.exists() or failure_path.exists()):
+        raise FileExistsError(
+            f"dynamic fidelity continuation is append-only/versioned; refusing to overwrite {output_path} or {failure_path}"
+        )
     cases: list[tuple[str, int, Any]] = []
-    cases.extend(("openai_simple", seed, _openai_simple) for seed in range(18))
-    cases.extend(("openai_tool", seed, _openai_tool) for seed in range(18))
-    cases.extend(("openai_handoff", seed, _openai_handoff) for seed in range(18))
-    cases.extend(("microsoft_simple", seed, _microsoft_simple) for seed in range(18))
+    cases.extend(("openai_simple", seed, _openai_simple) for seed in seeds)
+    cases.extend(("openai_tool", seed, _openai_tool) for seed in seeds)
+    cases.extend(("openai_handoff", seed, _openai_handoff) for seed in seeds)
+    cases.extend(("microsoft_simple", seed, _microsoft_simple) for seed in seeds)
     rows: list[FidelityRow] = []
     for ordinal, (stratum, seed, runner) in enumerate(cases):
         native, compiled, workload = await runner(seed)
         differences = _differences(native, compiled)
-        rows.append(FidelityRow(f"DYN-{ordinal:03d}", workload.framework, workload.source,
+        rows.append(FidelityRow(f"{id_prefix}-{ordinal:03d}", workload.framework, workload.source,
                                 stratum, True, not differences, ";".join(differences),
                                 json.dumps(asdict(native), sort_keys=True),
                                 json.dumps(asdict(compiled), sort_keys=True)))
     fields = list(asdict(rows[0]))
-    with (root / "SEMANTIC_FIDELITY_RESULTS.csv").open("w", newline="", encoding="utf-8") as handle:
+    with output_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(asdict(row) for row in rows)
     failures = [row for row in rows if not row.equivalent]
-    with (root / "SEMANTIC_FAILURE_CASES.csv").open("w", newline="", encoding="utf-8") as handle:
+    with failure_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(asdict(row) for row in failures)
@@ -223,3 +231,24 @@ async def run_dynamic_fidelity(root: Path) -> dict[str, object]:
                 "equivalent": sum(row.stratum == stratum and row.equivalent for row in rows),
             } for stratum in sorted({row.stratum for row in rows})}}
 
+
+async def run_dynamic_fidelity(root: Path) -> dict[str, object]:
+    """Historical IR-v1 run retained for reproducibility; its outputs are now frozen."""
+    if (root / "IR_V1_BASELINE_MANIFEST.json").exists():
+        from corpus_audit.ir_v1_freeze import verify_frozen_baseline
+        verify_frozen_baseline(root)
+        raise RuntimeError(
+            "IR-v1 semantic fidelity artifacts are permanently frozen; use a versioned continuation output."
+        )
+    return await _run_dynamic_fidelity_batch(
+        root, range(18), "SEMANTIC_FIDELITY_RESULTS.csv", "SEMANTIC_FAILURE_CASES.csv",
+        "DYN", refuse_overwrite=False,
+    )
+
+
+async def run_ir_v1_dynamic_continuation(root: Path) -> dict[str, object]:
+    """Fresh executions on IR-v1-supported strata, independent of static coverage."""
+    return await _run_dynamic_fidelity_batch(
+        root, range(100, 118), "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv",
+        "IR_V1_DYNAMIC_FAILURE_CASES.csv", "IRV1-CONT", refuse_overwrite=True,
+    )

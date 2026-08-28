@@ -1,0 +1,11 @@
+support_unit,framework_source_strata,compiler_lowers,runtime_executes,private_values_represented,native_compiled_tests,exact_matches,executable_support,evidence
+static_instructions,"OpenAI examples; Microsoft core tests",YES,YES,YES,72,72,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+model_final,"OpenAI examples; Microsoft core tests",YES,YES,YES,72,72,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+return,"OpenAI examples; Microsoft core tests",YES,YES,YES,72,72,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+tool_call_identity,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+tool_arguments,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+tool_call_id,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+tool_result,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+model_context_reinsertion,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+bounded_model_resume,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+logical_handoff,OpenAI examples/handoffs/message_filter.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv

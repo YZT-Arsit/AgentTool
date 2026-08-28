@@ -60,12 +60,19 @@ def _read_exact(connection: socket.socket, size: int) -> bytes:
     return bytes(chunks)
 
 
+def _socket_address(value: str) -> tuple[str, int]:
+    host, separator, port = value.rpartition(":")
+    if not separator or not host or not port.isdigit():
+        raise ValueError("invalid public Gateway address")
+    return host, int(port)
+
+
 def run_cloud_slot_proxy(config: ProxyConfig, opaque_requests: Queue,
                          opaque_responses: Queue, readiness: Queue) -> None:
     """Forward opaque frames. No key or private descriptor crosses this API."""
     assert_public_proxy_schema()
     profile = config.public_profile
-    connection = socket.create_connection(config.address, timeout=10)
+    connection = socket.create_connection(_socket_address(config.address), timeout=10)
     connection.settimeout(None)
     handshake = _read_exact(connection, 16)
     if handshake[:8] != b"CAGV2T0!":
@@ -123,4 +130,3 @@ def run_cloud_slot_proxy(config: ProxyConfig, opaque_requests: Queue,
     with config.host_log_path.open("w", encoding="utf-8") as handle:
         for event in sorted(events, key=lambda item: (int(item["session"]), int(item["slot"]), str(item["direction"]))):
             handle.write(json.dumps(event, separators=(",", ":")) + "\n")
-
