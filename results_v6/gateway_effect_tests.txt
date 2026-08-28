@@ -1,0 +1,50 @@
+=== RUN   TestEffectGateAllowsOneEffectPerPrivateOperationID
+--- PASS: TestEffectGateAllowsOneEffectPerPrivateOperationID (0.00s)
+=== RUN   TestOpaqueClientFramesRequireNoWorkloadOrKey
+--- PASS: TestOpaqueClientFramesRequireNoWorkloadOrKey (0.00s)
+=== RUN   TestJournalCrashBeforeCommitRespectsProviderSemantics
+--- PASS: TestJournalCrashBeforeCommitRespectsProviderSemantics (0.00s)
+=== RUN   TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash
+--- PASS: TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash (0.00s)
+=== RUN   TestJournalReadOnlyCanRetrySameOperationIDAfterCrash
+--- PASS: TestJournalReadOnlyCanRetrySameOperationIDAfterCrash (0.00s)
+=== RUN   TestJournalCommittedResultSurvivesCrashBeforeRingPublication
+--- PASS: TestJournalCommittedResultSurvivesCrashBeforeRingPublication (0.00s)
+=== RUN   TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay
+--- PASS: TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay (0.01s)
+=== RUN   TestJournalFailedNonIdempotentCallRequiresReconciliation
+--- PASS: TestJournalFailedNonIdempotentCallRequiresReconciliation (0.00s)
+=== RUN   TestJournalRejectsOperationIDSemanticReuse
+--- PASS: TestJournalRejectsOperationIDSemanticReuse (0.00s)
+=== RUN   TestLateResultContinuesInNextPublicSession
+--- PASS: TestLateResultContinuesInNextPublicSession (0.00s)
+=== RUN   TestRequestFixedSizeRoundTrip
+--- PASS: TestRequestFixedSizeRoundTrip (0.00s)
+=== RUN   TestResultAndWaitUseSamePreparedSize
+--- PASS: TestResultAndWaitUseSamePreparedSize (0.00s)
+=== RUN   TestResponsePreparationHasNoPerCallAllocation
+--- PASS: TestResponsePreparationHasNoPerCallAllocation (0.00s)
+=== RUN   TestPublicHeaderIsAuthenticated
+--- PASS: TestPublicHeaderIsAuthenticated (0.00s)
+=== RUN   TestSequenceValidatorRejectsReplayAndWrongSession
+--- PASS: TestSequenceValidatorRejectsReplayAndWrongSession (0.00s)
+=== RUN   TestFunctionalIsolationDoesNotSelfDeclareTimingReference
+--- PASS: TestFunctionalIsolationDoesNotSelfDeclareTimingReference (0.00s)
+=== RUN   TestProviderTimeoutBeforeEffectRecordsNoEffect
+--- PASS: TestProviderTimeoutBeforeEffectRecordsNoEffect (0.08s)
+=== RUN   TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous
+--- PASS: TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous (0.08s)
+=== RUN   TestProviderDuplicateOperationIDCanReturnCachedResultExactlyOnce
+--- PASS: TestProviderDuplicateOperationIDCanReturnCachedResultExactlyOnce (0.00s)
+=== RUN   TestProviderErrorAndConnectionInterruptionMapToPrivateError
+--- PASS: TestProviderErrorAndConnectionInterruptionMapToPrivateError (0.00s)
+=== RUN   TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative
+--- PASS: TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative (0.00s)
+=== RUN   TestSPSCRingFixedRecords
+--- PASS: TestSPSCRingFixedRecords (0.00s)
+PASS
+ok  	common-action-gateway-v2	0.651s
+?   	common-action-gateway-v2/cmd/gateway-cloud-client	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-pacer	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-worker	[no test files]
+?   	common-action-gateway-v2/cmd/local-provider-emulator	[no test files]

@@ -1,0 +1,21 @@
+{
+  "identical_frozen_files": 314,
+  "identical_frozen_behavior_instances": 7386,
+  "action_relevant_instances": 1370,
+  "counts": {
+    "NOT_ACTION_RELEVANT": 6016,
+    "MEDIATED": 894,
+    "UNSUPPORTED": 3,
+    "PARTIAL": 473
+  },
+  "fully_mediated_fraction": 0.6525547445255474,
+  "mediated_or_partial_fraction": 0.9978102189781022,
+  "framework_counts": {
+    "Microsoft Agent Framework|MEDIATED": 654,
+    "Microsoft Agent Framework|PARTIAL": 413,
+    "OpenAI Agents SDK|MEDIATED": 240,
+    "OpenAI Agents SDK|PARTIAL": 60,
+    "OpenAI Agents SDK|UNSUPPORTED": 3
+  },
+  "interpretation": "static source-traceable action-boundary audit, not runtime semantic proof"
+}

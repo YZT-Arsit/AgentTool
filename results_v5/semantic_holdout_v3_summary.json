@@ -1,0 +1,6 @@
+{
+  "cases": 12,
+  "passes": 12,
+  "errors": 0,
+  "run_policy": "ONCE_NO_TUNING"
+}

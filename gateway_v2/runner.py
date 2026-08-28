@@ -13,6 +13,9 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
 
+from privacy_kernel.protocol import (ACTION_NOOP, ACTION_TOOL, CanonicalProfile,
+                                     EnvelopeCodec)
+
 
 @dataclass(frozen=True)
 class V2Profile:
@@ -111,6 +114,8 @@ def run_gateway_v2(
     profile: V2Profile,
     sessions: list[dict[str, object]],
     emulator_definitions: Iterable[EmulatorDefinition],
+    *,
+    opaque_cloud_client: bool = False,
 ) -> dict[str, object]:
     """Run one new local V2 workload without touching any V1 artifact."""
 
@@ -123,7 +128,8 @@ def run_gateway_v2(
         raise ValueError("profile/session mismatch")
     binaries = build_binaries(root)
     pacer_cpu, worker_cpu, client_cpu = _affinity_plan()
-    key = secrets.token_hex(16)
+    key_bytes = secrets.token_bytes(16)
+    key = key_bytes.hex()
     profile_path = output / "public_profile.json"
     workload_path = output / "private_workload.json"
     providers_path = output / "private_provider_config.json"
@@ -195,10 +201,37 @@ def run_gateway_v2(
         )
         pacer_ready = _read_ready(pacer)
         address = pacer_ready.split()[1]
+        client_private_args = ["--workload", str(workload_path), "--key", key]
+        trusted_codec = None
+        opaque_responses = output / "opaque_response_frames.bin"
+        if opaque_cloud_client:
+            canonical_profile = CanonicalProfile(**asdict(profile))
+            codec = EnvelopeCodec(key_bytes, canonical_profile)
+            trusted_codec = codec
+            provider_codes = {"FAST": 1, "MEDIUM": 2, "SLOW": 3,
+                              "VERY_SLOW": 4, "JITTERED": 5}
+            frames: list[bytes] = []
+            for session_index, session in enumerate(sessions):
+                actions = list(session["actions"])
+                for slot in range(1, profile.slots + 1):
+                    if slot <= len(actions):
+                        action = actions[slot - 1]
+                        frames.append(codec.encode_request(
+                            session_index, slot, action=ACTION_TOOL,
+                            provider=provider_codes[str(action["provider"])],
+                            operation_id=str(action["operation_id"]),
+                            payload=str(action.get("payload", "")).encode(),
+                        ))
+                    else:
+                        frames.append(codec.encode_noop(session_index, slot))
+            opaque_path = output / "trusted_pre_encrypted_frames.bin"
+            opaque_path.write_bytes(b"".join(frames))
+            client_private_args = ["--opaque-frames", str(opaque_path),
+                                   "--opaque-responses", str(opaque_responses)]
         client = subprocess.Popen(
             [
                 str(binaries["client"]), "--address", address, "--profile", str(profile_path),
-                "--workload", str(workload_path), "--key", key,
+                *client_private_args,
                 "--host-log", str(output / "cloud_socket_boundary.jsonl"), "--cpu", str(client_cpu),
             ],
             cwd=root,
@@ -217,6 +250,21 @@ def run_gateway_v2(
         worker_stdout, worker_stderr = worker.communicate(timeout=10)
         if worker.returncode:
             raise RuntimeError(f"worker failed: {worker_stderr}")
+        trusted_results: list[dict[str, object]] = []
+        if opaque_cloud_client:
+            if trusted_codec is None:
+                raise AssertionError("opaque response consumer omitted trusted codec")
+            raw_responses = opaque_responses.read_bytes()
+            if len(raw_responses) != expected * profile.frame_bytes:
+                raise AssertionError("opaque response transcript size mismatch")
+            for offset in range(0, len(raw_responses), profile.frame_bytes):
+                decoded = trusted_codec.decode_response(raw_responses[offset:offset + profile.frame_bytes])
+                if decoded is not None:
+                    trusted_results.append({"operation_id": decoded.operation_id,
+                                            "status": decoded.status,
+                                            "payload": decoded.payload.decode("utf-8", errors="replace"),
+                                            "session": decoded.session, "slot": decoded.slot})
+            _write_json(output / "trusted_module_deliveries.json", trusted_results)
         (output / "process_output.json").write_text(json.dumps({
             "worker_ready": worker_ready,
             "pacer_ready": pacer_ready,
@@ -230,6 +278,8 @@ def run_gateway_v2(
             "worker_pid": worker.pid,
             "pacer_pid": pacer.pid,
             "client_pid": client.pid,
+            "cloud_client_received_key": not opaque_cloud_client,
+            "cloud_client_received_private_workload": not opaque_cloud_client,
         }, indent=2), encoding="utf-8")
 
         merged: dict[tuple[int, int], dict[str, object]] = {}
@@ -275,6 +325,10 @@ def run_gateway_v2(
         return {
             "rows": len(rows), "worker_pid": worker.pid, "pacer_pid": pacer.pid, "client_pid": client.pid,
             "provider_pids": [process.pid for process in providers], "profile": asdict(profile),
+            "opaque_cloud_client": opaque_cloud_client,
+            "cloud_client_received_key": not opaque_cloud_client,
+            "cloud_client_received_private_workload": not opaque_cloud_client,
+            "trusted_delivered_results": len(trusted_results),
         }
     finally:
         for process in providers:

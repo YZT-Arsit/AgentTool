@@ -1,0 +1,10 @@
+mechanism,secret,observer,claim,status,non_claim
+SimplePIR,selected Agent row,O_registry,index privacy under pinned SimplePIR assumptions,PASS_IMPLEMENTATION,does not hide later activation
+encrypted descriptor row,descriptor plaintext,O_registry,AEAD confidentiality and integrity,PASS_LOCAL,does not provide PIR index privacy
+LocalTrustedBackend,capability Agent ID route handle,O_cloud_host,functional trusted-boundary API only,PARTIAL,not hardware memory confidentiality
+ActionCellV6,action route arguments,O_cloud_network,fixed-width authenticated ciphertext,PASS_UNIT,does not hide resource activity
+opaque cloud client,private workload and Gateway key,O_cloud_network process,client receives pre-encrypted frames only,PASS_ONE_DEVELOPMENT_ARM,local root can inspect trusted fixture files
+CommonActionGateway V2,external destination,O_cloud_network,one common destination and fixed cells,PARTIAL_LIVE_GATE_BLOCKED,provider learns own invocation
+fixed transcript,count order public lifetime,O_cloud_network,claim requires successful paired live traces,OPEN,no claim from failed functional run
+pacer,fine timing,O_cloud_network,no V6 claim,OPEN_NOT_TESTED,no packet-level privacy
+resource isolation,action class,O_cloud_host,no V6 claim,OPEN,no resource padding or confidential execution tested

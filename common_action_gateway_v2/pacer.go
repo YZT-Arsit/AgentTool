@@ -40,6 +40,10 @@ type deliveryRecord struct {
 	QueueDepth  uint64
 }
 
+func resultEligibleForPublicSession(requestSession, publicSession uint32) bool {
+	return requestSession <= publicSession
+}
+
 func RunPacer(config PacerConfig, ready func(string)) error {
 	status := ApplyPacerIsolation(config.CPU, config.Realtime)
 	requestRing, err := OpenRing(config.RequestRingPath)
@@ -138,16 +142,17 @@ func RunPacer(config PacerConfig, ready func(string)) error {
 			WaitUntilNS(cutoff)
 			var selected *ResultRecord
 			if hasPending {
-				if pending.Session < uint32(session) {
-					hasPending = false
-				} else if pending.Session == uint32(session) {
+				// A private result that missed its request session remains eligible
+				// for the next already-scheduled public response slot. It must not
+				// be discarded and it must not extend the public schedule.
+				if resultEligibleForPublicSession(pending.Session, uint32(session)) {
 					selected = &pending
 					hasPending = false
 				}
 			}
 			if selected == nil && !hasPending && resultRing.TryPop(resultBuffer) {
 				candidate := UnmarshalResult(resultBuffer)
-				if candidate.Session == uint32(session) {
+				if resultEligibleForPublicSession(candidate.Session, uint32(session)) {
 					pending = candidate
 					selected = &pending
 				} else if candidate.Session > uint32(session) {

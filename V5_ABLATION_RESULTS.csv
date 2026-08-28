@@ -1,0 +1,8 @@
+ablation,components,workflow_fidelity,whole_workflow_coverage,latency,bytes,trusted_loc,trajectory_leakage
+A0,direct native Agent/runtime,native reference,not an IR coverage claim,NOT_MEASURED_V5,variable,full framework baseline,direct identities/control visible
+A1,private Agent selection,component only,unchanged,prior SimplePIR evidence,prior SimplePIR evidence,PIR client dependency,activation/control still visible
+A2,+ hierarchical enterprise/external resolution,symbolic/unit,unchanged,local membership microbenchmark only,profile model only,confidential_v5 resolver/membership,route hidden only in STRICT symbolic view
+A3,+ Control Virtualization,12/12 fresh semantic holdout,33/151 full unchanged,NOT_MEASURED_V5,1024-byte capsule ABI,small verifier/interpreter,logical Agent no longer physical endpoint in tested core
+A4,+ fixed transcript,single-workflow development pass STANDARD/LONG,unchanged,see LONG_HORIZON_DEVELOPMENT_RESULTS.csv,fixed 1024-byte frames,protocol/codec,V5 long-horizon confirmatory open
+A5,+ Common Gateway,single-workflow development pass,unchanged,see development results,fixed profile,Gateway 1604 approximate code LoC,common endpoint; timing remains open
+A6,+ profile-aware execution,symbolic/unit,unchanged,profile operation-count model only,profile operation-count model only,profile policy,explicit profile-specific leakage; no cross-profile claim

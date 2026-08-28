@@ -1,0 +1,5 @@
+{"episode":"v6-1000","round":0,"private_index":0,"private_class":"REAL","query_generation_ms":0.503,"recovery_ms":0.506,"correct":true}
+{"episode":"v6-1000","round":1,"private_index":500,"private_class":"REAL","query_generation_ms":0.522,"recovery_ms":0.506,"correct":true}
+{"episode":"v6-1000","round":2,"private_index":500,"private_class":"REAL","query_generation_ms":0,"recovery_ms":0,"correct":true}
+{"episode":"v6-1000","round":3,"private_index":998,"private_class":"REAL","query_generation_ms":0,"recovery_ms":0.503,"correct":true}
+{"episode":"v6-1000","round":4,"private_index":999,"private_class":"DUMMY","query_generation_ms":0.502,"recovery_ms":0.503,"correct":true}

@@ -1,0 +1,19 @@
+{
+  "architecture": "V5_CONFIDENTIAL_EXECUTION",
+  "hardware_tee_attestation": "NOT_TESTED",
+  "local_tee_backend": "FUNCTIONAL_ONLY",
+  "cryptographic_psi": "NOT_IMPLEMENTED",
+  "local_tee_membership": "PASS_UNIT",
+  "deterministic_capsule_verifier": "PASS_UNIT",
+  "sealed_state_integrity": "PASS_UNIT",
+  "sealed_state_rollback_without_external_anchor": "NOT_PROTECTED",
+  "strict_route_privacy": "OPEN_SYMBOLIC_UNIT_ONLY",
+  "fresh_semantic_fidelity": "12/12",
+  "functional_e2e": "PARTIAL",
+  "whole_workflow_fully_executable": "33/151",
+  "structural_privacy_v5": "OPEN",
+  "size_privacy_v5": "OPEN",
+  "timing_privacy": "OPEN_NOT_TESTED",
+  "resource_privacy": "OPEN_NOT_MEASURED",
+  "dummy_heavy_operations_v5_development": 0
+}

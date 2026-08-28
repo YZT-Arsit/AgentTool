@@ -1,0 +1,7 @@
+{
+  "error": "WinError 4551 Application Control policy blocked freshly rebuilt local provider binary",
+  "completed_before_block": "one development AGENT_IDENTITY arm; 50 effects executed, 43 results delivered",
+  "privacy_citability": "NONE_FUNCTIONAL_GATE_FAILED_AND_NO_PAIRED_ARM",
+  "wsl": "NOT_INSTALLED",
+  "bypass_attempted": false
+}

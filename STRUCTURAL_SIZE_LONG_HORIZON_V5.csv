@@ -1,0 +1,11 @@
+family,execution_status,exact_endpoint_count_order_size_session,functional_result,classifier_result,reason,timing_privacy
+AGENT_IDENTITY,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+STRICT_INTERNAL_EXTERNAL_ROUTE,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+HANDOFF_IDENTITY,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+TOOL_CLASS,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+TOOL_FREQUENCY,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+RARE_TARGET,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+REPEATED_TARGET,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+TRANSITION_PATTERN,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+AGENT_AS_TOOL,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED
+CROSS_SESSION_LINKAGE,NOT_RUN_FUNCTIONAL_GATE_INCOMPLETE,NOT_TESTED_V5,OPEN,NOT_RUN,only single-workflow STANDARD/LONG development profiles passed; full V5 TEE/route/Agent-as-Tool E2E gate is incomplete,OPEN_NOT_TESTED

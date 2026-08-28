@@ -1,0 +1,4 @@
+profile,slots_per_session,sessions,delta_ms,public_duration_ms,frame_bytes_each_direction,expected_heavy_operations,actual_heavy_operations,delivered_results,result_delivery_slots,workflow_returned,functional_gate,dummy_heavy_operations,mean_worker_operation_ms,kernel_accepted_results,cover_response_slots,interpretation
+V5_DEV_SHORT,3,8,10.0,530.0,24576,3,3,2,"[[3, 1], [6, 2]]",False,FAIL,0,80.40653333333333,2,22,DEVELOPMENT_ONLY; profile selected before private execution; no timing-privacy claim
+V5_DEV_STANDARD,3,8,40.0,1550.0,24576,3,3,3,"[[1, 1], [3, 1], [5, 1]]",True,PASS,0,88.29953333333333,3,21,DEVELOPMENT_ONLY; profile selected before private execution; no timing-privacy claim
+V5_DEV_LONG,3,8,80.0,2720.0,24576,3,3,3,"[[0, 3], [1, 3], [2, 2]]",True,PASS,0,72.78723333333333,3,21,DEVELOPMENT_ONLY; profile selected before private execution; no timing-privacy claim

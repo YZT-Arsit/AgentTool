@@ -1,0 +1,6 @@
+primitive,implementation,workflows_newly_executable,behavior_instances_newly_supported,trusted_loc_added,mean_control_transitions_added,capsule_size_impact,semantic_failures,security_assumptions
+CALL_AGENT/RETURN_AGENT,DEVELOPMENT_IMPLEMENTED,NOT_ESTABLISHED,0,included in current runtime_v2; historical attribution not reconstructed,2,bounded private call frame,0 in development regression; untouched V2 cases harness-invalid,public depth bound; static target; one physical executor
+PRIVATE_STATE_GET/SET/EXISTS,RESTRICTED_REFERENCE_ONLY,NOT_ESTABLISHED,0,included in runtime_v2 reference,NOT_MEASURED,NOT_MEASURED,NO_SOURCE_HOLDOUT,typed bounded namespace and explicit lifecycle
+HITL_WAIT/RESUME,NOT_IMPLEMENTED,0,0,0,N/A,N/A,NOT_TESTED,public approval epoch and bounded resume
+BOUNDED_FORK/JOIN,NOT_IMPLEMENTED,0,0,0,N/A,N/A,NOT_TESTED,public width and deterministic ordering
+ARBITRARY_PYTHON_CALLBACK,REJECTED,0,0,0,N/A,N/A,unsupported by design,none; stays outside TCB

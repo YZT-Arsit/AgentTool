@@ -1,0 +1,613 @@
+{
+  "holdout_id": "SEMANTIC-HOLDOUT-V3-20260828",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "repository_head_at_freeze": "ce10a75d0b943c0659bfb7bf7dacfedf01c13138",
+  "case_count": 12,
+  "framework_counts": {
+    "OpenAI Agents SDK": 6,
+    "Microsoft Agent Framework": 6
+  },
+  "tool_primary_stratum_count": 6,
+  "harness_pretest": "2 development-only cases passed before this manifest was created",
+  "excluded_prior_holdout_sources": "all seven SEMANTIC-HOLDOUT-V2 source files",
+  "run_rule": "execute once; no tuning, replacement, or rerun after observing labels",
+  "pass_rule": "native deterministic projection and compiled IR projection both exactly equal frozen expected projection",
+  "cases": [
+    {
+      "case_id": "SHV3-OAI-001",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/hello_world.py",
+        "lines": "6-13",
+        "sha256": "a5a0f5f47a0d79c18df3ed8790e5c5fba022f3628a7544cdd90e10270b0cf7c6"
+      },
+      "behavior_family": "MODEL_FINAL",
+      "public_task": "Return haiku alpha.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "haiku-alpha"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "haiku-alpha",
+        "model_calls": 1
+      }
+    },
+    {
+      "case_id": "SHV3-OAI-002",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/hello_world.py",
+        "lines": "6-13",
+        "sha256": "a5a0f5f47a0d79c18df3ed8790e5c5fba022f3628a7544cdd90e10270b0cf7c6"
+      },
+      "behavior_family": "MODEL_FINAL",
+      "public_task": "Return haiku beta.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "haiku-beta"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "haiku-beta",
+        "model_calls": 1
+      }
+    },
+    {
+      "case_id": "SHV3-OAI-003",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/stream_function_call_args.py",
+        "lines": "10-42",
+        "sha256": "0b85f0b27faef116c6886f90e95052575e260ab2d8315050b6f456e9dfb9de15"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Write bounded file A.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "write_file",
+          "arguments": {
+            "input": "a"
+          },
+          "call_id": "call-shv3-oai-003"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "write_file",
+          "result": "written-a",
+          "call_id": "call-shv3-oai-003"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-a"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "write_file"
+        ],
+        "tool_arguments": [
+          {
+            "input": "a"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-oai-003"
+        ],
+        "tool_results": [
+          "written-a"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-a",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-OAI-004",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/stream_function_call_args.py",
+        "lines": "10-42",
+        "sha256": "0b85f0b27faef116c6886f90e95052575e260ab2d8315050b6f456e9dfb9de15"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Write bounded file B.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "write_file",
+          "arguments": {
+            "input": "b"
+          },
+          "call_id": "call-shv3-oai-004"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "write_file",
+          "result": "written-b",
+          "call_id": "call-shv3-oai-004"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-b"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "write_file"
+        ],
+        "tool_arguments": [
+          {
+            "input": "b"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-oai-004"
+        ],
+        "tool_results": [
+          "written-b"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-b",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-OAI-005",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/sandbox/handoffs.py",
+        "lines": "47-94",
+        "sha256": "8d064d2d6c32e820805ed454d42f4d8d86f75c29a59958b6f5ebf457d81e7da5"
+      },
+      "behavior_family": "LOGICAL_HANDOFF",
+      "public_task": "Review packet A.",
+      "deterministic_script": [
+        {
+          "actor": "intake",
+          "kind": "HANDOFF",
+          "target": "specialist",
+          "call_id": "handoff-shv3-oai-005"
+        },
+        {
+          "actor": "specialist",
+          "kind": "FINAL",
+          "text": "reviewed-a"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [
+          "specialist"
+        ],
+        "state_updates": [
+          "MODEL",
+          "HANDOFF",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "reviewed-a",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-OAI-006",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/sandbox/handoffs.py",
+        "lines": "47-94",
+        "sha256": "8d064d2d6c32e820805ed454d42f4d8d86f75c29a59958b6f5ebf457d81e7da5"
+      },
+      "behavior_family": "LOGICAL_HANDOFF",
+      "public_task": "Review packet B.",
+      "deterministic_script": [
+        {
+          "actor": "intake",
+          "kind": "HANDOFF",
+          "target": "specialist",
+          "call_id": "handoff-shv3-oai-006"
+        },
+        {
+          "actor": "specialist",
+          "kind": "FINAL",
+          "text": "reviewed-b"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [
+          "specialist"
+        ],
+        "state_updates": [
+          "MODEL",
+          "HANDOFF",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "reviewed-b",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-001",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_FINAL",
+      "public_task": "Return alpha.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "maf-alpha"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "maf-alpha",
+        "model_calls": 1
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-002",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_FINAL",
+      "public_task": "Return beta.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "maf-beta"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [],
+        "tool_arguments": [],
+        "tool_call_ids": [],
+        "tool_results": [],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "maf-beta",
+        "model_calls": 1
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-003",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Inspect A.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "inspect",
+          "arguments": {
+            "input": "a"
+          },
+          "call_id": "call-shv3-maf-003"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "inspect",
+          "result": "inspected-a",
+          "call_id": "call-shv3-maf-003"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-a"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "inspect"
+        ],
+        "tool_arguments": [
+          {
+            "input": "a"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-maf-003"
+        ],
+        "tool_results": [
+          "inspected-a"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-a",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-004",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Inspect B.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "inspect",
+          "arguments": {
+            "input": "b"
+          },
+          "call_id": "call-shv3-maf-004"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "inspect",
+          "result": "inspected-b",
+          "call_id": "call-shv3-maf-004"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-b"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "inspect"
+        ],
+        "tool_arguments": [
+          {
+            "input": "b"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-maf-004"
+        ],
+        "tool_results": [
+          "inspected-b"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-b",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-005",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Lookup C.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "lookup",
+          "arguments": {
+            "input": "c"
+          },
+          "call_id": "call-shv3-maf-005"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "lookup",
+          "result": "found-c",
+          "call_id": "call-shv3-maf-005"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-c"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "lookup"
+        ],
+        "tool_arguments": [
+          {
+            "input": "c"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-maf-005"
+        ],
+        "tool_results": [
+          "found-c"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-c",
+        "model_calls": 2
+      }
+    },
+    {
+      "case_id": "SHV3-MAF-006",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "lines": "226-237;413-421",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "behavior_family": "MODEL_TOOL_MODEL",
+      "public_task": "Lookup D.",
+      "deterministic_script": [
+        {
+          "actor": "root",
+          "kind": "TOOL_CALL",
+          "tool": "lookup",
+          "arguments": {
+            "input": "d"
+          },
+          "call_id": "call-shv3-maf-006"
+        },
+        {
+          "actor": "tool",
+          "kind": "TOOL_RESULT",
+          "tool": "lookup",
+          "result": "found-d",
+          "call_id": "call-shv3-maf-006"
+        },
+        {
+          "actor": "root",
+          "kind": "FINAL",
+          "text": "done-d"
+        }
+      ],
+      "expected_projection": {
+        "selected_tools": [
+          "lookup"
+        ],
+        "tool_arguments": [
+          {
+            "input": "d"
+          }
+        ],
+        "tool_call_ids": [
+          "call-shv3-maf-006"
+        ],
+        "tool_results": [
+          "found-d"
+        ],
+        "handoff_targets": [],
+        "state_updates": [
+          "MODEL",
+          "TOOL_CALL",
+          "TOOL_RESULT",
+          "MODEL_RESUME_READY",
+          "MODEL_RESUME",
+          "RETURN"
+        ],
+        "effect_count": 0,
+        "termination_class": "RETURN",
+        "sanitized_final_result": "done-d",
+        "model_calls": 2
+      }
+    }
+  ]
+}

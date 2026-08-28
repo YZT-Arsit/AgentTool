@@ -69,47 +69,60 @@ func providerCode(value string) byte {
 }
 
 type ClientConfig struct {
-	Address     string
-	Profile     PublicProfile
-	Workload    PrivateWorkload
-	KeyHex      string
-	HostLogPath string
-	CPU         int
+	Address             string
+	Profile             PublicProfile
+	Workload            PrivateWorkload
+	Frames              [][]byte
+	KeyHex              string
+	HostLogPath         string
+	OpaqueResponsesPath string
+	CPU                 int
 }
 
 func RunCloudClient(config ClientConfig) error {
 	_ = ApplyWorkerAffinity(config.CPU)
-	if len(config.Workload.Sessions) != config.Profile.Sessions {
-		return fmt.Errorf("workload has %d sessions, profile requires %d", len(config.Workload.Sessions), config.Profile.Sessions)
-	}
-	aead, err := ParseKey(config.KeyHex)
-	if err != nil {
-		return err
-	}
 	total := config.Profile.Sessions * config.Profile.Slots
-	frames := make([][]byte, total)
-	index := 0
-	for session, workloadSession := range config.Workload.Sessions {
-		if len(workloadSession.Actions) > config.Profile.Slots {
-			return fmt.Errorf("session %d exceeds public horizon", session)
+	frames := config.Frames
+	if len(frames) == 0 {
+		if len(config.Workload.Sessions) != config.Profile.Sessions {
+			return fmt.Errorf("workload has %d sessions, profile requires %d", len(config.Workload.Sessions), config.Profile.Sessions)
 		}
-		for slot := 1; slot <= config.Profile.Slots; slot++ {
-			action := WorkloadAction{Action: "NOOP", Provider: "NONE", OperationID: fmt.Sprintf("pad-%d-%d", session, slot)}
-			if slot <= len(workloadSession.Actions) {
-				action = workloadSession.Actions[slot-1]
+		aead, err := ParseKey(config.KeyHex)
+		if err != nil {
+			return err
+		}
+		frames = make([][]byte, total)
+		index := 0
+		for session, workloadSession := range config.Workload.Sessions {
+			if len(workloadSession.Actions) > config.Profile.Slots {
+				return fmt.Errorf("session %d exceeds public horizon", session)
 			}
-			frame := make([]byte, config.Profile.FrameBytes)
-			nonce := make([]byte, nonceBytes)
-			if _, err := rand.Read(nonce); err != nil {
-				return err
+			for slot := 1; slot <= config.Profile.Slots; slot++ {
+				action := WorkloadAction{Action: "NOOP", Provider: "NONE", OperationID: fmt.Sprintf("pad-%d-%d", session, slot)}
+				if slot <= len(workloadSession.Actions) {
+					action = workloadSession.Actions[slot-1]
+				}
+				frame := make([]byte, config.Profile.FrameBytes)
+				nonce := make([]byte, nonceBytes)
+				if _, err := rand.Read(nonce); err != nil {
+					return err
+				}
+				op := PrivateOperation{Session: uint32(session), Slot: uint32(slot), Action: actionCode(action.Action),
+					Provider: providerCode(action.Provider), OperationID: OperationID(action.OperationID), Payload: []byte(action.Payload)}
+				if err := EncodeRequest(aead, frame, nonce, config.Profile.ID(), op); err != nil {
+					return err
+				}
+				frames[index] = frame
+				index++
 			}
-			op := PrivateOperation{Session: uint32(session), Slot: uint32(slot), Action: actionCode(action.Action),
-				Provider: providerCode(action.Provider), OperationID: OperationID(action.OperationID), Payload: []byte(action.Payload)}
-			if err := EncodeRequest(aead, frame, nonce, config.Profile.ID(), op); err != nil {
-				return err
-			}
-			frames[index] = frame
-			index++
+		}
+	}
+	if len(frames) != total {
+		return fmt.Errorf("opaque frame count %d, profile requires %d", len(frames), total)
+	}
+	for _, frame := range frames {
+		if len(frame) != config.Profile.FrameBytes {
+			return fmt.Errorf("opaque frame width %d, profile requires %d", len(frame), config.Profile.FrameBytes)
 		}
 	}
 	connection, err := net.Dial("tcp", config.Address)
@@ -129,6 +142,7 @@ func RunCloudClient(config ClientConfig) error {
 	requestDiagnostics := NewDiagnosticRing(total)
 	responseDiagnostics := NewDiagnosticRing(total)
 	var receiveErr error
+	var opaqueResponses []byte
 	var receiver sync.WaitGroup
 	receiver.Add(1)
 	go func() {
@@ -148,9 +162,12 @@ func RunCloudClient(config ClientConfig) error {
 			responseDiagnostics.Append(TimingEvent{Direction: "RESPONSE", Session: header.Session,
 				Slot: header.Slot, ActualReceiveNS: received,
 				FrameBytes: len(frame), Destination: "CommonActionGatewayV2"})
+			if config.OpaqueResponsesPath != "" {
+				opaqueResponses = append(opaqueResponses, frame...)
+			}
 		}
 	}()
-	index = 0
+	index := 0
 	for session := 0; session < config.Profile.Sessions; session++ {
 		base := config.Profile.SessionBaseNS(t0, session)
 		for slot := 1; slot <= config.Profile.Slots; slot++ {
@@ -169,6 +186,11 @@ func RunCloudClient(config ClientConfig) error {
 	receiver.Wait()
 	if receiveErr != nil {
 		return receiveErr
+	}
+	if config.OpaqueResponsesPath != "" {
+		if err := os.WriteFile(config.OpaqueResponsesPath, opaqueResponses, 0600); err != nil {
+			return err
+		}
 	}
 	return DumpJSONL(config.HostLogPath, requestDiagnostics.Events(), responseDiagnostics.Events())
 }

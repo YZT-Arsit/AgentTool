@@ -1,0 +1,6 @@
+effect_class,crash_point,effect_count,journal_state,retry_behavior,public_transport_shape,final_outcome_class,status,test_evidence
+READ_ONLY,after durable PREPARED before response,0,PREPARED,automatic same-ID retry,unchanged fixed schedule,retryable,PASS,TestJournalReadOnlyCanRetrySameOperationIDAfterCrash
+IDEMPOTENT_EFFECT,after durable PREPARED,provider-contract dependent,PREPARED,same operation ID only,unchanged fixed schedule,retryable,PASS_WITH_PROVIDER_IDEMPOTENCY_CONTRACT,TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash
+NON_IDEMPOTENT_EFFECT,after send / effect before response,0 or 1 unknown,PREPARED/AMBIGUOUS,fail closed; reconciliation required,unchanged fixed schedule,AMBIGUOUS_EFFECT_RECONCILIATION_REQUIRED,PARTIAL,TestJournalCrashBeforeCommitRespectsProviderSemantics;TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous
+IDEMPOTENT_EFFECT,after journal update before result publication,1,COMMITTED,return durable cached result,next scheduled slot,committed,PASS,TestJournalCommittedResultSurvivesCrashBeforeRingPublication
+NON_IDEMPOTENT_EFFECT,after committed journal / before delivery,1,COMMITTED,return cached result; no provider replay,next scheduled slot,committed,PASS,TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay

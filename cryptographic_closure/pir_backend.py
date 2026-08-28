@@ -9,11 +9,8 @@ import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
-from agent_control_virtualization.experiment import compile_frameworks
-from agent_control_virtualization.ir import AgentCapsule, CAPSULE_BYTES
-
-
 SIMPLEPIR_COMMIT = "e9020b03bf2872c75b8954e749e32408b5db87ed"
+RECORD_BYTES = 1024
 
 
 @dataclass(frozen=True)
@@ -34,6 +31,9 @@ class SimplePIRArtifacts:
 
 
 def prototype_capsules() -> tuple[bytes, ...]:
+    # Historical IR helper.  Imports are deliberately lazy so the generic
+    # SimplePIR byte-record path has no canonical Control-IR dependency.
+    from agent_control_virtualization.experiment import compile_frameworks
     return tuple(capsule.serialize() for result in compile_frameworks() for capsule in result.capsules)
 
 
@@ -50,7 +50,7 @@ def generate_registry(path: Path, record_count: int) -> str:
             struct.pack_into("!I", row, 8, index)
             handle.write(row)
             digest.update(row)
-    if path.stat().st_size != record_count * CAPSULE_BYTES:
+    if path.stat().st_size != record_count * RECORD_BYTES:
         raise AssertionError("registry was not fully instantiated")
     return digest.hexdigest()
 
@@ -126,8 +126,8 @@ def run_simplepir(
     recovered_rows = _jsonl(recovered_path)
     import base64
     recovered = [base64.b64decode(item["record_base64"]) for item in recovered_rows]
-    if not all(len(row) == CAPSULE_BYTES for row in recovered):
-        raise AssertionError("PIR returned malformed capsule")
+    if not all(len(row) == RECORD_BYTES for row in recovered):
+        raise AssertionError("PIR returned malformed fixed-width record")
     forbidden = ("private_index", "private_class", "agent_name", "logical_agent")
     encoded_server = server_path.read_text(encoding="utf-8").lower()
     if any(field in encoded_server for field in forbidden):
@@ -153,5 +153,7 @@ def read_raw_queries(path: Path) -> list[bytes]:
     return values
 
 
-def recovered_capsules(artifacts: SimplePIRArtifacts) -> list[AgentCapsule]:
+def recovered_capsules(artifacts: SimplePIRArtifacts):
+    """Historical IR adapter; not used by the canonical V6 byte-row path."""
+    from agent_control_virtualization.ir import AgentCapsule
     return [AgentCapsule.deserialize(payload) for payload in artifacts.recovered]

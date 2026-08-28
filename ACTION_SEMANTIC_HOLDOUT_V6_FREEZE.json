@@ -1,0 +1,347 @@
+{
+  "holdout_id": "ACTION-SEMANTIC-HOLDOUT-V6-20260828",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "case_count": 16,
+  "prior_semantic_holdout_sources_excluded": true,
+  "run_rule": "execute once; no tuning or replacement after observing outcomes",
+  "pass_rule": "native and V6-mediated exact projections both equal the frozen expected projection",
+  "scope": "outbound action boundary only; not native reasoning-trace equivalence",
+  "cases": [
+    {
+      "case_id": "ASH6-OAI-001",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/tools.py",
+        "sha256": "d254af5b829ee2bc0a595207ac3d07434043398aff9397011d23d870ca3cc1d5"
+      },
+      "action_family": "TOOL",
+      "action_name": "get_weather",
+      "argument": "synthetic-city-a",
+      "operation_id": "op-ash6-oai-001",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "get_weather",
+        "arguments": "synthetic-city-a",
+        "result": "local:get_weather:synthetic-city-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-001",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-002",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/tools.py",
+        "sha256": "d254af5b829ee2bc0a595207ac3d07434043398aff9397011d23d870ca3cc1d5"
+      },
+      "action_family": "TOOL",
+      "action_name": "get_weather",
+      "argument": "synthetic-city-b",
+      "operation_id": "op-ash6-oai-002",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "get_weather",
+        "arguments": "synthetic-city-b",
+        "result": "local:get_weather:synthetic-city-b",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-002",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-003",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/tools.py",
+        "sha256": "d254af5b829ee2bc0a595207ac3d07434043398aff9397011d23d870ca3cc1d5"
+      },
+      "action_family": "TOOL_EFFECT",
+      "action_name": "save_preference",
+      "argument": "synthetic-pref-a",
+      "operation_id": "op-ash6-oai-003",
+      "effectful": true,
+      "expected_projection": {
+        "selected_action": "save_preference",
+        "arguments": "synthetic-pref-a",
+        "result": "local:save_preference:synthetic-pref-a",
+        "effect_count": 1,
+        "operation_id": "op-ash6-oai-003",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-004",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/basic/tools.py",
+        "sha256": "d254af5b829ee2bc0a595207ac3d07434043398aff9397011d23d870ca3cc1d5"
+      },
+      "action_family": "TOOL_EFFECT",
+      "action_name": "save_preference",
+      "argument": "synthetic-pref-b",
+      "operation_id": "op-ash6-oai-004",
+      "effectful": true,
+      "expected_projection": {
+        "selected_action": "save_preference",
+        "arguments": "synthetic-pref-b",
+        "result": "local:save_preference:synthetic-pref-b",
+        "effect_count": 1,
+        "operation_id": "op-ash6-oai-004",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-005",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools.py",
+        "sha256": "9e86cc3a1570a329ebdf531f13c23748813e834397d5452f6cd2840aea877565"
+      },
+      "action_family": "AGENT_AS_SERVICE",
+      "action_name": "translation_agent",
+      "argument": "synthetic-text-a",
+      "operation_id": "op-ash6-oai-005",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "translation_agent",
+        "arguments": "synthetic-text-a",
+        "result": "local:translation_agent:synthetic-text-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-005",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-006",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools.py",
+        "sha256": "9e86cc3a1570a329ebdf531f13c23748813e834397d5452f6cd2840aea877565"
+      },
+      "action_family": "AGENT_AS_SERVICE",
+      "action_name": "research_agent",
+      "argument": "synthetic-query-a",
+      "operation_id": "op-ash6-oai-006",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "research_agent",
+        "arguments": "synthetic-query-a",
+        "result": "local:research_agent:synthetic-query-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-006",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-007",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/mcp/get_all_mcp_tools_example/main.py",
+        "sha256": "7145d73f54267ae6f1cfa0a6b2df36c6b1e522b65b373e0cb11ecb0aed69825b"
+      },
+      "action_family": "EXTERNAL_API",
+      "action_name": "catalog_lookup",
+      "argument": "synthetic-capability-a",
+      "operation_id": "op-ash6-oai-007",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "catalog_lookup",
+        "arguments": "synthetic-capability-a",
+        "result": "local:catalog_lookup:synthetic-capability-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-007",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-OAI-008",
+      "framework": "OpenAI Agents SDK",
+      "source": {
+        "path": "external_stage10/openai-agents-python/examples/mcp/get_all_mcp_tools_example/main.py",
+        "sha256": "7145d73f54267ae6f1cfa0a6b2df36c6b1e522b65b373e0cb11ecb0aed69825b"
+      },
+      "action_family": "EXTERNAL_API",
+      "action_name": "catalog_lookup",
+      "argument": "synthetic-capability-b",
+      "operation_id": "op-ash6-oai-008",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "catalog_lookup",
+        "arguments": "synthetic-capability-b",
+        "result": "local:catalog_lookup:synthetic-capability-b",
+        "effect_count": 0,
+        "operation_id": "op-ash6-oai-008",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-001",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "action_family": "TOOL",
+      "action_name": "lookup",
+      "argument": "synthetic-key-a",
+      "operation_id": "op-ash6-maf-001",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "lookup",
+        "arguments": "synthetic-key-a",
+        "result": "local:lookup:synthetic-key-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-001",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-002",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "action_family": "TOOL",
+      "action_name": "lookup",
+      "argument": "synthetic-key-b",
+      "operation_id": "op-ash6-maf-002",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "lookup",
+        "arguments": "synthetic-key-b",
+        "result": "local:lookup:synthetic-key-b",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-002",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-003",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "action_family": "TOOL_EFFECT",
+      "action_name": "record_event",
+      "argument": "synthetic-event-a",
+      "operation_id": "op-ash6-maf-003",
+      "effectful": true,
+      "expected_projection": {
+        "selected_action": "record_event",
+        "arguments": "synthetic-event-a",
+        "result": "local:record_event:synthetic-event-a",
+        "effect_count": 1,
+        "operation_id": "op-ash6-maf-003",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-004",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_function_invocation_logic.py",
+        "sha256": "4c261b1e0419b4790bf15d0a647697a2ad9d9756aa2ce2348f7a7ea8df7d767a"
+      },
+      "action_family": "TOOL_EFFECT",
+      "action_name": "record_event",
+      "argument": "synthetic-event-b",
+      "operation_id": "op-ash6-maf-004",
+      "effectful": true,
+      "expected_projection": {
+        "selected_action": "record_event",
+        "arguments": "synthetic-event-b",
+        "result": "local:record_event:synthetic-event-b",
+        "effect_count": 1,
+        "operation_id": "op-ash6-maf-004",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-005",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_as_tool_kwargs_propagation.py",
+        "sha256": "65085aa94b7f6bbb17bb967eb79d9e5a1bfa7c8b3ab1d96ee3b8a038ee9c1975"
+      },
+      "action_family": "AGENT_AS_SERVICE",
+      "action_name": "delegate",
+      "argument": "synthetic-task-a",
+      "operation_id": "op-ash6-maf-005",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "delegate",
+        "arguments": "synthetic-task-a",
+        "result": "local:delegate:synthetic-task-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-005",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-006",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_as_tool_kwargs_propagation.py",
+        "sha256": "65085aa94b7f6bbb17bb967eb79d9e5a1bfa7c8b3ab1d96ee3b8a038ee9c1975"
+      },
+      "action_family": "AGENT_AS_SERVICE",
+      "action_name": "delegate",
+      "argument": "synthetic-task-b",
+      "operation_id": "op-ash6-maf-006",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "delegate",
+        "arguments": "synthetic-task-b",
+        "result": "local:delegate:synthetic-task-b",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-006",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-007",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "action_family": "EXTERNAL_API",
+      "action_name": "remote_lookup",
+      "argument": "synthetic-resource-a",
+      "operation_id": "op-ash6-maf-007",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "remote_lookup",
+        "arguments": "synthetic-resource-a",
+        "result": "local:remote_lookup:synthetic-resource-a",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-007",
+        "outcome": "SUCCESS"
+      }
+    },
+    {
+      "case_id": "ASH6-MAF-008",
+      "framework": "Microsoft Agent Framework",
+      "source": {
+        "path": "external_stage9/agent-framework/python/packages/core/tests/core/test_agents.py",
+        "sha256": "d2f15e248da9a2ba0c4b4b6e3a0ca45a61e0c008d2c166a7bafd3d94bf8cd542"
+      },
+      "action_family": "EXTERNAL_API",
+      "action_name": "remote_lookup",
+      "argument": "synthetic-resource-b",
+      "operation_id": "op-ash6-maf-008",
+      "effectful": false,
+      "expected_projection": {
+        "selected_action": "remote_lookup",
+        "arguments": "synthetic-resource-b",
+        "result": "local:remote_lookup:synthetic-resource-b",
+        "effect_count": 0,
+        "operation_id": "op-ash6-maf-008",
+        "outcome": "SUCCESS"
+      }
+    }
+  ]
+}

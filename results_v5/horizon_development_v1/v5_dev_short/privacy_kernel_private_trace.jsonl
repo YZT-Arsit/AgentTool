@@ -1,0 +1,8 @@
+{"session":0,"private_opcode":"LLM","emitted_action":true,"accepted_result":false,"logical_agent_id":10,"returned":false}
+{"session":1,"private_opcode":"WAIT","emitted_action":false,"accepted_result":false,"logical_agent_id":10,"returned":false}
+{"session":2,"private_opcode":"WAIT","emitted_action":false,"accepted_result":false,"logical_agent_id":10,"returned":false}
+{"session":3,"private_opcode":"WAIT","emitted_action":false,"accepted_result":true,"logical_agent_id":10,"returned":false}
+{"session":4,"private_opcode":"TOOL","emitted_action":true,"accepted_result":false,"logical_agent_id":10,"returned":false}
+{"session":5,"private_opcode":"WAIT","emitted_action":false,"accepted_result":false,"logical_agent_id":10,"returned":false}
+{"session":6,"private_opcode":"WAIT","emitted_action":false,"accepted_result":true,"logical_agent_id":10,"returned":false}
+{"session":7,"private_opcode":"LLM","emitted_action":true,"accepted_result":false,"logical_agent_id":10,"returned":false}

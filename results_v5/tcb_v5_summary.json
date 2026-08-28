@@ -1,0 +1,32 @@
+{
+  "TEE_CONTROL_RUNTIME": {
+    "files": 10,
+    "physical_loc": 1088,
+    "approx_code_loc": 905
+  },
+  "TEE_REFERENCE_SEMANTIC_RUNTIME": {
+    "files": 2,
+    "physical_loc": 440,
+    "approx_code_loc": 374
+  },
+  "TRUSTED_GATEWAY_OUTSIDE_TEE_OR_SEPARATE_CVM": {
+    "files": 15,
+    "physical_loc": 1750,
+    "approx_code_loc": 1604
+  },
+  "COMPILER_CLASSIFIER_NOT_RUNTIME_TCB": {
+    "files": 5,
+    "physical_loc": 646,
+    "approx_code_loc": 567
+  },
+  "FULL_TRUSTED_RUNTIME_OPENAI": {
+    "files": 307,
+    "physical_loc": 126731,
+    "approx_code_loc": 108200
+  },
+  "FULL_TRUSTED_RUNTIME_MICROSOFT": {
+    "files": 81,
+    "physical_loc": 61513,
+    "approx_code_loc": 48652
+  }
+}

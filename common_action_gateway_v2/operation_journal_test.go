@@ -48,6 +48,35 @@ func TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash(t *testing.T) 
 	}
 }
 
+func TestJournalReadOnlyCanRetrySameOperationIDAfterCrash(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "operations.json")
+	journal, _ := OpenOperationJournal(path)
+	decision, _, _ := journal.Begin("read-only", ReadOnly)
+	if decision != JournalExecute {
+		t.Fatal(decision)
+	}
+	restarted, _ := OpenOperationJournal(path)
+	decision, _, err := restarted.Begin("read-only", ReadOnly)
+	if err != nil || decision != JournalExecute {
+		t.Fatalf("decision=%s err=%v", decision, err)
+	}
+}
+
+func TestJournalCommittedResultSurvivesCrashBeforeRingPublication(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "operations.json")
+	journal, _ := OpenOperationJournal(path)
+	_, _, _ = journal.Begin("before-publication", IdempotentEffect)
+	if err := journal.Complete("before-publication", committedResult("before-publication", "durable")); err != nil {
+		t.Fatal(err)
+	}
+	// No result-ring operation occurs before this simulated restart.
+	restarted, _ := OpenOperationJournal(path)
+	decision, result, err := restarted.Begin("before-publication", IdempotentEffect)
+	if err != nil || decision != JournalReturnCommitted || string(result.Payload[:result.PayloadLen]) != "durable" {
+		t.Fatalf("decision=%s payload=%q err=%v", decision, result.Payload[:result.PayloadLen], err)
+	}
+}
+
 func TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "operations.json")
 	journal, _ := OpenOperationJournal(path)

@@ -1,0 +1,10 @@
+profile,enterprise_internal_hit_rate,expected_pir_operations_per_resolution,expected_external_gateway_operations_per_resolution,symbolic_outer_bytes_per_resolution,gateway_operations_saved_vs_strict,route_class_leaked,tool_category_leaked,latency_reduction,model
+STRICT,0.5,1.0,1.0,2048.0,0.0,False,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+STRICT,0.8,1.0,1.0,2048.0,0.0,False,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+STRICT,0.95,1.0,1.0,2048.0,0.0,False,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+CONFIDENTIAL_ENTERPRISE,0.5,0.5,0.5,1536.0,0.5,True,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+CONFIDENTIAL_ENTERPRISE,0.8,0.8,0.19999999999999996,1228.8,0.8,True,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+CONFIDENTIAL_ENTERPRISE,0.95,0.95,0.050000000000000044,1075.2,0.95,True,False,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+ENTERPRISE_EFFICIENT,0.5,0.5,0.5,1024.0,0.5,True,True,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+ENTERPRISE_EFFICIENT,0.8,0.8,0.19999999999999996,1024.0,0.8,True,True,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"
+ENTERPRISE_EFFICIENT,0.95,0.95,0.050000000000000044,1024.0,0.95,True,True,NOT_MEASURED_NO_LIVE_TEE_ROUTE,"declared operation-count model, not a performance measurement"

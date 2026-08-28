@@ -1,0 +1,12 @@
+{
+  "indices": [
+    0,
+    500,
+    500,
+    998,
+    999
+  ],
+  "correct": true,
+  "fresh_repeated_queries": true,
+  "server_trace_private_field": false
+}

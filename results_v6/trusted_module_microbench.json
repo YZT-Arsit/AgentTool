@@ -1,0 +1,6 @@
+{
+  "capability_index_entries": 100000,
+  "capability_index_bytes_payload_estimate": 2388890,
+  "mean_lookup_ns": 191.88,
+  "p95_lookup_ns": 300
+}

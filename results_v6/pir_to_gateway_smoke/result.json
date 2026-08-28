@@ -1,0 +1,15 @@
+{
+  "real_simplepir": true,
+  "simplepir_correct": true,
+  "simplepir_commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "descriptor_encrypted": true,
+  "descriptor_fed_to_trusted_module": true,
+  "action_cell_bytes": 1024,
+  "gateway_frame_bytes": 1024,
+  "gateway_frame_secret_plaintext_visible": false,
+  "common_gateway_destination": "CommonActionGatewayV2",
+  "live_gateway_process_execution": "NOT_COMPLETED_ENVIRONMENT_WINERROR_4551",
+  "hardware_tee": "NOT_TESTED",
+  "canonical_ir_dependency": "NONE",
+  "public_frame_sha256": "8274fce3a4ef8782a80032b992227b8f59b088f882a741680bcc474db2e38869"
+}

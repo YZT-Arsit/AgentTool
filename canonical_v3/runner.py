@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from cloud_slot_proxy.proxy import ProxyConfig, run_cloud_slot_proxy
+from agent_control_virtualization.ir import ControlEvent
 from privacy_kernel.control import ControlKernel
 from privacy_kernel.protocol import CanonicalProfile, EnvelopeCodec, write_restricted_key
 
@@ -203,7 +204,18 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
                 decoded = codec.decode_response(responses.get(timeout=30))
                 if decoded is not None:
                     delivered_results += 1
-                    accepted = active_kernel.accept_result(decoded) or accepted
+                    just_accepted = active_kernel.accept_result(decoded)
+                    accepted = just_accepted or accepted
+                    # RETURN is a private, zero-heavy-operation transition.  If
+                    # the final model result arrives in the last public session,
+                    # consume RETURN immediately rather than requiring a new
+                    # secret-dependent session.  TOOL_RESULT is deliberately
+                    # not advanced here because its next LLM action must wait
+                    # for a pre-existing public request opportunity.
+                    if just_accepted and active_kernel.state.current_event == ControlEvent.DONE:
+                        terminal_action = active_kernel.tick()
+                        if terminal_action is not None or not active_kernel.state.returned:
+                            raise AssertionError("DONE did not reduce to a private RETURN transition")
             trusted_trace.append({
                 "session": session, "private_opcode": active_kernel.ticks[-1].private_opcode,
                 "emitted_action": descriptor is not None, "accepted_result": accepted,

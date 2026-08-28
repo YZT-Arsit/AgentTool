@@ -37,3 +37,28 @@ func TestSPSCRingFixedRecords(t *testing.T) {
 		t.Fatal("empty ring produced a record")
 	}
 }
+
+func TestResultRingSaturationFailsClosedWithoutOverwrite(t *testing.T) {
+	path := t.TempDir() + "/saturation.shared"
+	ring, err := CreateRing(path, 2, InternalResultBytes)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer ring.Close()
+	first := make([]byte, InternalResultBytes)
+	first[0] = 7
+	second := make([]byte, InternalResultBytes)
+	second[0] = 8
+	third := make([]byte, InternalResultBytes)
+	third[0] = 9
+	if !ring.TryPush(first) || !ring.TryPush(second) {
+		t.Fatal("ring did not accept capacity")
+	}
+	if ring.TryPush(third) {
+		t.Fatal("saturated ring silently overwrote a pending result")
+	}
+	out := make([]byte, InternalResultBytes)
+	if !ring.TryPop(out) || out[0] != 7 {
+		t.Fatal("saturation corrupted oldest result")
+	}
+}

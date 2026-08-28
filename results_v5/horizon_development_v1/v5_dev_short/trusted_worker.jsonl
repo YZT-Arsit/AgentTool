@@ -1,0 +1,4 @@
+{"operation_id":"op-00000001","session":0,"slot":1,"action":2,"provider":6,"started_ns":1787903407712432800,"completed_ns":1787903407809534200,"status":1,"effect":false}
+{"operation_id":"call-op-00000001","session":4,"slot":1,"action":1,"provider":7,"started_ns":1787903407852330900,"completed_ns":1787903407925754700,"status":1,"effect":false}
+{"operation_id":"op-00000003","session":7,"slot":1,"action":2,"provider":6,"started_ns":1787903407957536400,"completed_ns":1787903408028230800,"status":1,"effect":false}
+{"dummy_heavy_ops":0,"isolation":{"platform":"windows","reference_timing_platform":false,"requested_cpu":1,"affinity_applied":true,"affinity_detail":"SetProcessAffinityMask applied","realtime_requested":false,"realtime_applied":false,"realtime_detail":"SCHED_FIFO unavailable on Windows fallback","note":"functional fallback; Windows cannot establish timing closure"},"kind":"SUMMARY","pid":33276,"processed_frames":24,"real_operations":3,"result_ring_waits":0}

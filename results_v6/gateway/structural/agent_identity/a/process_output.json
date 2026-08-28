@@ -1,0 +1,21 @@
+{
+  "worker_ready": "READY pid=33508",
+  "pacer_ready": "READY 127.0.0.1:59850 pid=10384",
+  "worker_stdout": "",
+  "worker_stderr": "",
+  "pacer_stdout": "",
+  "pacer_stderr": "",
+  "client_stdout": "",
+  "client_stderr": "",
+  "provider_pids": [
+    9672,
+    32280,
+    23704,
+    27920
+  ],
+  "worker_pid": 33508,
+  "pacer_pid": 10384,
+  "client_pid": 28864,
+  "cloud_client_received_key": false,
+  "cloud_client_received_private_workload": false
+}

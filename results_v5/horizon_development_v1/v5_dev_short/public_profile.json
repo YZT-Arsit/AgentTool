@@ -1,0 +1,11 @@
+{
+  "name": "V5_DEV_SHORT",
+  "frame_bytes": 1024,
+  "slots": 3,
+  "sessions": 8,
+  "request_delta_ns": 10000000,
+  "response_delta_ns": 10000000,
+  "mask_ns": 2000000,
+  "start_delay_ns": 250000000,
+  "inter_session_gap_ns": 5000000
+}

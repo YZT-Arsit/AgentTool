@@ -1,0 +1,15 @@
+internal_hit_probability,design,mean_pir_latency_ms_component_model,mean_pir_bytes_component_model,pir_queries_per_resolution,route_class_leakage,evidence
+0.0,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.0,HIERARCHICAL_PRIVATE_RESOLUTION,52.24,73568,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+0.25,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.25,HIERARCHICAL_PRIVATE_RESOLUTION,41.2906,60978,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+0.5,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.5,HIERARCHICAL_PRIVATE_RESOLUTION,30.3412,48388,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+0.75,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.75,HIERARCHICAL_PRIVATE_RESOLUTION,19.391800000000003,35798,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+0.9,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.9,HIERARCHICAL_PRIVATE_RESOLUTION,12.82216,28244,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+0.99,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+0.99,HIERARCHICAL_PRIVATE_RESOLUTION,8.880376000000002,23712,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
+1.0,UNIFIED_PRIVATE_REGISTRY,52.24,73568,1,NONE,weighted model from measured 100K SimplePIR component
+1.0,HIERARCHICAL_PRIVATE_RESOLUTION,8.442400000000001,23208,1,INTERNAL_EXTERNAL_ROUTE_CLASS,weighted model from measured 10K internal and 100K external SimplePIR components
