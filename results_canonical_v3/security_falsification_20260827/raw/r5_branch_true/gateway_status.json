@@ -1,0 +1,39 @@
+{
+  "critical_path_logging": "PREALLOCATED_MEMORY_ONLY",
+  "isolation": {
+    "platform": "linux",
+    "reference_timing_platform": false,
+    "requested_cpu": 0,
+    "affinity_applied": true,
+    "affinity_detail": "sched_setaffinity applied",
+    "realtime_requested": false,
+    "realtime_applied": false,
+    "realtime_detail": "not requested",
+    "note": "Linux alone is insufficient; dedicated affinity and requested real-time scheduling were not both established"
+  },
+  "pid": 93185,
+  "profile": {
+    "name": "CANONICAL_V3_FALSIFICATION",
+    "frame_bytes": 1024,
+    "slots": 3,
+    "sessions": 6,
+    "request_delta_ns": 40000000,
+    "response_delta_ns": 40000000,
+    "mask_ns": 8000000,
+    "start_delay_ns": 350000000,
+    "inter_session_gap_ns": 60000000
+  },
+  "provider_execution_in_pacer": false,
+  "tcp": {
+    "backend": "TCP_SOCKET_BOUNDARY",
+    "implemented": true,
+    "packet_level": false,
+    "reason": "TCP write timing does not provide SO_TXTIME/ETF packet-release guarantees"
+  },
+  "timed_datagram": {
+    "backend": "SO_TXTIME_ETF_TIMED_DATAGRAM",
+    "implemented": false,
+    "packet_level": false,
+    "reason": "requires Linux qdisc/capability configuration and a datagram or QUIC framing design"
+  }
+}

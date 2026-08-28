@@ -1,0 +1,20 @@
+{
+  "profile_id": 6744862386726282952,
+  "public_frames_each_direction": 18,
+  "delivered_results": 3,
+  "returned": true,
+  "logical_agent_id_private": 11,
+  "real_heavy_operations": 3,
+  "dummy_heavy_operations": 0,
+  "effect_count": 1,
+  "worker_pid": 61269,
+  "pacer_pid": 61276,
+  "proxy_pid": 61283,
+  "provider_pids": [
+    61248,
+    61255,
+    61262
+  ],
+  "one_persistent_tunnel": true,
+  "key_on_command_line": false
+}

@@ -4,8 +4,13 @@ import json
 
 from agent_control_virtualization.compiler import FrameworkWorkload
 from agent_control_virtualization.compiler_v2 import compile_workload_v2
-from agent_control_virtualization.ir_v2 import DecisionKind, ModelDecision, ToolCall
-from agent_control_virtualization.runtime_v2 import AgentRuntimeV2, ScriptedModel, ToolBinding
+from agent_control_virtualization.ir import ControlEvent, Opcode
+from agent_control_virtualization.ir_v2 import (DecisionKind, ModelDecision,
+                                                StateScope, ToolCall)
+from agent_control_virtualization.runtime_v2 import (AgentRuntimeV2,
+                                                     PrivateStateStore,
+                                                     ScriptedModel, ToolBinding)
+from canonical_v3.compiler import lower_single_tool_agent
 
 
 class FakeAgent:
@@ -103,3 +108,108 @@ def test_bound_exceeded_is_explicit_and_fail_closed() -> None:
     result = runtime.execute(100, "task")
     assert result.termination_class == "BOUND_EXCEEDED"
     assert result.sanitized_final_result == ""
+
+
+def test_canonical_lowering_preserves_the_validated_single_tool_loop() -> None:
+    compiled = compile_workload_v2(
+        FrameworkWorkload("test", "OpenAI Agents SDK", "test.py",
+                          [FakeAgent("Agent", [FakeTool("lookup")])]),
+        900,
+    )
+    lowered = lower_single_tool_agent(compiled)
+    capsule = lowered.capsules[900]
+    assert [row.opcode for row in capsule.rows] == [
+        Opcode.LLM, Opcode.TOOL, Opcode.LLM, Opcode.RETURN,
+    ]
+    assert [row.event for row in capsule.rows] == [
+        ControlEvent.START, ControlEvent.MODEL_ACTION,
+        ControlEvent.TOOL_RESULT, ControlEvent.DONE,
+    ]
+    assert lowered.support_stratum == "NATIVE_SINGLE_TOOL_MODEL_TOOL_MODEL"
+
+
+def test_canonical_lowering_rejects_multiple_tools_without_inflating_support() -> None:
+    compiled = compile_workload_v2(
+        FrameworkWorkload("test", "OpenAI Agents SDK", "test.py",
+                          [FakeAgent("Agent", [FakeTool("one"), FakeTool("two")])]),
+        901,
+    )
+    try:
+        lower_single_tool_agent(compiled)
+    except ValueError as exc:
+        assert "exactly one Tool" in str(exc)
+    else:
+        raise AssertionError("unvalidated multi-Tool lowering was accepted")
+
+
+def test_scoped_private_state_matches_native_agent_session_subset() -> None:
+    from agent_framework import AgentSession
+
+    native = AgentSession(session_id="source-session")
+    native.state["history"] = {"messages": ["one", "two"]}
+    native_projection = {
+        "exists": "history" in native.state,
+        "value": native.state["history"],
+        "missing": "permission" in native.state,
+    }
+
+    compiled = PrivateStateStore(max_entries_per_namespace=4)
+    compiled.set(StateScope.SESSION_PRIVATE, "source-session", "history",
+                 {"messages": ["one", "two"]})
+    compiled_projection = {
+        "exists": compiled.exists(StateScope.SESSION_PRIVATE, "source-session", "history"),
+        "value": compiled.get(StateScope.SESSION_PRIVATE, "source-session", "history"),
+        "missing": compiled.exists(StateScope.SESSION_PRIVATE, "source-session", "permission"),
+    }
+    assert compiled_projection == native_projection
+    assert compiled.snapshot(StateScope.SESSION_PRIVATE, "source-session") == native.state
+
+
+def test_private_state_scope_and_bound_are_enforced() -> None:
+    store = PrivateStateStore(max_entries_per_namespace=1)
+    store.set(StateScope.SESSION_PRIVATE, "session-a", "key", "session")
+    store.set(StateScope.AGENT_PRIVATE, "agent-a", "key", "agent")
+    assert store.get(StateScope.SESSION_PRIVATE, "session-a", "key") == "session"
+    assert store.get(StateScope.AGENT_PRIVATE, "agent-a", "key") == "agent"
+    try:
+        store.set(StateScope.SESSION_PRIVATE, "session-a", "second", "overflow")
+    except OverflowError:
+        pass
+    else:
+        raise AssertionError("state namespace exceeded its public bound")
+
+
+def test_openai_agent_as_tool_lowers_to_private_call_stack_without_public_handoff() -> None:
+    from agents import Agent
+
+    child = Agent(name="Child specialist", instructions="Return the bounded child result.")
+    parent = Agent(name="Parent", instructions="Call the child.", tools=[
+        child.as_tool(tool_name="child_specialist", tool_description="Bounded child call"),
+    ])
+    compiled = compile_workload_v2(FrameworkWorkload(
+        "agent-as-tool", "OpenAI Agents SDK",
+        "external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools.py",
+        [parent, child],
+    ), 700)
+    assert compiled.audit.agent_tools == 1
+    assert compiled.bundle.agents[0].agent_tool_targets == {"child_specialist": 701}
+    parent_model = ScriptedModel([
+        ModelDecision(DecisionKind.TOOL_CALL,
+                      tool_call=ToolCall("child_specialist", {"input": "bounded task"}, "agent-call-1")),
+        ModelDecision(DecisionKind.FINAL, final_text="parent:child-result"),
+    ])
+    child_model = ScriptedModel([ModelDecision(DecisionKind.FINAL, final_text="child-result")])
+    runtime = AgentRuntimeV2(compiled.bundle, {700: parent_model, 701: child_model}, {})
+    result = runtime.execute(700, "task")
+    assert result.termination_class == "RETURN"
+    assert result.sanitized_final_result == "parent:child-result"
+    assert json.loads(result.selected_tools) == ["child_specialist"]
+    assert json.loads(result.tool_call_ids) == ["agent-call-1"]
+    assert json.loads(result.tool_results) == ["child-result"]
+    assert json.loads(result.handoff_targets) == []
+    assert [item.content for item in child_model.contexts[0]] == ["bounded task"]
+    resumed = json.loads(json.loads(result.next_model_context)[0])
+    assert resumed[-1] == {"role": "tool", "content": "child-result",
+                           "call_id": "agent-call-1", "tool_name": "child_specialist"}
+    assert any(step.state.name == "AGENT_CALL_READY" for step in runtime.private_steps)
+    assert any(step.state.name == "AGENT_RETURN" for step in runtime.private_steps)

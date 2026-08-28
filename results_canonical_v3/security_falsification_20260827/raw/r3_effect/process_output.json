@@ -1,0 +1,8 @@
+{
+  "worker_ready": "READY pid=69916",
+  "pacer_ready": "READY 127.0.0.1:46503 pid=69923",
+  "worker_stdout": "",
+  "worker_stderr": "",
+  "pacer_stdout": "",
+  "pacer_stderr": ""
+}

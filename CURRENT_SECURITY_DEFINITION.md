@@ -30,24 +30,30 @@ View_O^Gamma(tau_0) ~=c View_O^Gamma(tau_1)
    `O_registry` under its construction assumptions. Status: primitive integrated
    and locally exercised; PASS.
 2. **Control-placement lemma.** U receives no logical Agent ID, index, capsule,
-   opcode, provider, payload, result, or key. Status: schema/source/unit PASS.
+   opcode, provider, payload, result, or key. Status: schema/source/unit PASS and
+   live-trace PASS for the validated Linux single-Tool path.
 3. **Control-transcript lemma.** Fixed common executor/slot identity, count,
-   order, and width are independent of private progress. Status: unit PASS,
-   live E2E OPEN.
+   order, and width are independent of private progress. Status: live functional
+   exact structural/size equality PASS for seven completed workflows under one
+   identical public profile; a 42-episode structural/size-only classifier sanity
+   check is at chance. Long-horizon and corpus-scale privacy remain OPEN.
 4. **Handoff lemma.** `HANDOFF(j)` changes trusted logical state only. Status:
    exact dynamic semantic PASS on the evaluated handoff subset.
 5. **Gateway-destination lemma.** U observes only CommonActionGateway. Status:
-   implementation/unit PASS, live E2E OPEN.
+   implementation/unit/live validated-subset PASS.
 6. **Payload lemma.** REAL/NOOP and RESULT/WAIT use fixed-width AES-GCM envelopes
    with authenticated public headers. Status: Go/Python unit PASS.
 7. **Timing lemma.** Fixed-rate release is independent of private work only if
    isolated Pacer timing is verified at the observer boundary. Status: NOT
    TESTED for V3; V1 is a historical FAIL.
 8. **Effect lemma.** Cover slots cannot create effects and operation IDs gate
-   effectful requests. Status: unit PASS; failure-path/live provider OPEN.
+   effectful requests. Status: unit PASS, normal-completion PASS, private
+   timeout/error/interruption tests PASS, and duplicate-ID once-only PASS;
+   timeout-after-effect reconciliation and restart durability remain OPEN.
 
-The conjunction is **not currently established**. In addition to the live
-Gateway gap, the compiler fails exact ordinary Tool-loop semantics. The current
-definition is therefore a target with explicit component evidence, not a
-complete system theorem.
-
+The conjunction is **not currently established**. The former Tool-loop and
+Linux live-Gateway blockers are repaired for the validated single-Tool stratum,
+but corpus-wide executable support, runtime PIR fetch on handoff, long-horizon
+repeated/frequency privacy, durable effect reconciliation, timing, and resource
+privacy remain open. The current definition is therefore a target with explicit
+component evidence, not a complete system theorem.

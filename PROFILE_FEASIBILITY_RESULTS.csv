@@ -1,0 +1,27 @@
+record_type,population,metric,unit,count,p50,p90,p95,p99,max,fit_fraction,overflow_fraction,mean_cover_fraction,bandwidth_bytes,public_duration_ms,notes
+DISTRIBUTION,FROZEN_DYNAMIC_72,model_calls,count,72,1.0,2.0,2.0,2.0,2.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,tool_calls,count,72,0.0,1.0,1.0,1.0,1.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,handoff_depth,count,72,0.0,1.0,1.0,1.0,1.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,branch_count,count,72,0.0,0.0,0.0,0.0,0.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,control_updates,count,72,2.0,6.0,6.0,6.0,6.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,tool_argument_bytes,bytes,72,2.0,26.0,26.0,26.0,26.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,tool_result_bytes,bytes,72,2.0,20.0,20.0,20.0,20.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,next_model_context_bytes,bytes,72,0.0,290.0,290.0,290.0,290.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,final_result_bytes,bytes,72,13.0,16.0,16.0,16.0,16.0,,,,,,
+DISTRIBUTION,FROZEN_DYNAMIC_72,effect_count,count,72,0.0,1.0,1.0,1.0,1.0,,,,,,
+DISTRIBUTION,CANONICAL_LINUX_WORKFLOW_CAPSULES,capsule_row_count,rows_per_capsule,4,2.0,4.0,4.0,4.0,4.0,,,,,,
+DISTRIBUTION,CANONICAL_LINUX_WORKFLOW_CAPSULES,encoded_capsule_bytes,bytes,4,1024.0,1024.0,1024.0,1024.0,1024.0,,,,,,
+DISTRIBUTION,CANONICAL_LINUX_WORKFLOW_CAPSULES,tool_handles,count,4,0.0,1.0,1.0,1.0,1.0,,,,,,
+DISTRIBUTION,CANONICAL_LINUX_WORKFLOW_CAPSULES,handoff_targets,count,4,0.0,1.0,1.0,1.0,1.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_agent_constructors,instances_per_file,314,0.0,2.0,4.0,48.0,102.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_tool_instances,instances_per_file,314,0.0,3.0,6.0,50.0,255.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_handoff_edges,instances_per_file,314,0.0,0.0,0.0,2.0,4.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_conditional_edges,instances_per_file,314,1.0,6.0,11.0,19.0,36.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_loops,instances_per_file,314,0.0,2.0,3.0,5.0,11.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_fanout_fanin,instances_per_file,314,0.0,2.0,3.0,8.0,9.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_state_memory,instances_per_file,314,0.0,12.0,27.0,83.0,221.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_hitl_resume,instances_per_file,314,0.0,1.0,3.0,7.0,27.0,,,,,,
+DISTRIBUTION,FROZEN_CORPUS_314_FILES,static_file_middleware,instances_per_file,314,0.0,0.0,0.0,133.0,216.0,,,,,,
+PROFILE,FROZEN_DYNAMIC_72,GAMMA_H4_B1024_D40MS,profile,72,,,,,,0.75,0.25,0.25,8192,160,"control-update proxy; excludes PIR, startup, and heavy provider latency"
+PROFILE,FROZEN_DYNAMIC_72,GAMMA_H6_B1024_D40MS,profile,72,,,,,,1.0,0.0,0.41666666666666663,12288,240,"control-update proxy; excludes PIR, startup, and heavy provider latency"
+PROFILE,FROZEN_DYNAMIC_72,GAMMA_H8_B1024_D40MS,profile,72,,,,,,1.0,0.0,0.5625,16384,320,"control-update proxy; excludes PIR, startup, and heavy provider latency"

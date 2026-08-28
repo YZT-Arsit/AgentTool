@@ -405,3 +405,15 @@ SCHED_DEADLINE min/max priority	: 0/0
 === git provenance supplied from local ===
 HEAD b08c044a05b4ed020962d234db91e8912a5d1ed7
 WORKTREE_DIRTY YES
+=== timing capability recheck 2026-08-27 ===
+Cpus_allowed_list: 0-207
+cpuset.cpus.effective: 0-207
+cpu.max: 2500000 100000
+cpu.stat.nr_throttled: 6
+cpu.stat.throttled_usec: 3200976
+cpu0 thread_siblings_list: 0,104
+cpu1 thread_siblings_list: 1,105
+taskset -c 0 true: PASS
+chrt -f 10 true: FAIL Operation not permitted
+cgroup filesystem: cgroup2fs
+virtualization: docker

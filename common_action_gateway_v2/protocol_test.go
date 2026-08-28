@@ -107,3 +107,10 @@ func TestSequenceValidatorRejectsReplayAndWrongSession(t *testing.T) {
 		t.Fatal("non-monotonic session accepted")
 	}
 }
+
+func TestFunctionalIsolationDoesNotSelfDeclareTimingReference(t *testing.T) {
+	status := ApplyPacerIsolation(-1, false)
+	if status.ReferenceTimingPlatform {
+		t.Fatal("functional execution without affinity and real-time scheduling claimed reference timing status")
+	}
+}

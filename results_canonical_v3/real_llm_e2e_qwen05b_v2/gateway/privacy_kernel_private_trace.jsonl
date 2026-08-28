@@ -1,0 +1,4 @@
+{"session":0,"private_opcode":"LLM","emitted_action":true,"accepted_result":true,"logical_agent_id":501,"returned":false}
+{"session":1,"private_opcode":"NO_MATCH","emitted_action":false,"accepted_result":false,"logical_agent_id":501,"returned":false}
+{"session":2,"private_opcode":"NO_MATCH","emitted_action":false,"accepted_result":false,"logical_agent_id":501,"returned":false}
+{"session":3,"private_opcode":"NO_MATCH","emitted_action":false,"accepted_result":false,"logical_agent_id":501,"returned":false}

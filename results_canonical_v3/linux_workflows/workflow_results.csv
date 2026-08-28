@@ -1,0 +1,4 @@
+workflow,returned,expected_heavy_operations,real_heavy_operations,dummy_heavy_operations,expected_effects,effect_count,delivered_results,public_frames_each_direction,one_persistent_tunnel,logical_agent_id_private,failure_class,sanitized_final_result,semantic_equivalence
+LLM_READ_TOOL,True,3,3,0,0,0,3,18,True,10,,completed:READ_ONLY_TOOL:0,True
+LLM_EFFECT_TOOL,True,3,3,0,1,1,3,18,True,11,,completed:EFFECTFUL_TOOL:1,True
+LOGICAL_HANDOFF,True,1,1,0,0,0,1,18,True,21,,completed:no-tool,True

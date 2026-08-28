@@ -15,7 +15,7 @@ from canonical_v3.workflows import llm_read_tool, logical_handoff
 from cloud_slot_proxy.proxy import FORBIDDEN_PROXY_FIELDS, ProxyConfig, assert_public_proxy_schema
 from privacy_kernel.control import ControlKernel
 from privacy_kernel.protocol import (ACTION_TOOL, CanonicalProfile,
-                                     EnvelopeCodec, PUBLIC_HEADER,
+                                     DecodedResult, EnvelopeCodec, PUBLIC_HEADER,
                                      parse_public_header)
 
 
@@ -65,6 +65,45 @@ def test_pending_result_does_not_advance_control_state() -> None:
     assert kernel.state.current_state == 0
     assert kernel.tick() is None
     assert kernel.state.current_state == 0
+
+
+def test_kernel_preserves_structured_tool_call_and_reinserts_exact_result() -> None:
+    kernel = llm_read_tool().kernel()
+    model_request = kernel.tick()
+    assert model_request is not None
+    decision = json.dumps({
+        "kind": "TOOL_CALL", "name": "READ_ONLY_TOOL",
+        "arguments": {"topic": "source-traceable"}, "call_id": "native-call-7",
+    }).encode()
+    assert kernel.accept_result(DecodedResult(1, model_request.operation_id, decision, 0, 1))
+    tool_request = kernel.tick()
+    assert tool_request is not None
+    assert tool_request.operation_id == "native-call-7"
+    assert json.loads(tool_request.payload) == {"topic": "source-traceable"}
+    assert kernel.accept_result(DecodedResult(1, "native-call-7", b"exact-tool-result", 1, 1))
+    resumed = kernel.tick()
+    assert resumed is not None
+    resumed_payload = json.loads(resumed.payload)
+    assert resumed_payload["context"][-1] == {
+        "role": "tool", "name": "READ_ONLY_TOOL", "call_id": "native-call-7",
+        "content": "exact-tool-result",
+    }
+    final = json.dumps({"kind": "FINAL", "text": "exact-final"}).encode()
+    assert kernel.accept_result(DecodedResult(1, resumed.operation_id, final, 2, 1))
+    assert kernel.tick() is None
+    assert kernel.state.returned is True
+    assert kernel.state.sanitized_result == b"exact-final"
+
+
+def test_kernel_maps_provider_failure_to_explicit_private_state() -> None:
+    kernel = llm_read_tool().kernel()
+    pending = kernel.tick()
+    assert pending is not None
+    assert kernel.accept_result(DecodedResult(3, pending.operation_id, b"", 0, 1))
+    assert kernel.state.failure_class == "PROVIDER_TIMEOUT"
+    assert kernel.state.current_event == ControlEvent.ERROR
+    assert kernel.tick() is None
+    assert kernel.state.current_state == 1
 
 
 def test_handoff_changes_only_trusted_logical_state() -> None:

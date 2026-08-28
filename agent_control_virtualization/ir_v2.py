@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Mapping
 
@@ -25,6 +25,20 @@ class RuntimeState(StrEnum):
     TOOL_ERROR = "TOOL_ERROR"
     MODEL_ERROR = "MODEL_ERROR"
     BOUND_EXCEEDED = "BOUND_EXCEEDED"
+    AGENT_CALL_READY = "AGENT_CALL_READY"
+    AGENT_RETURN = "AGENT_RETURN"
+
+
+class StateScope(StrEnum):
+    SESSION_PRIVATE = "SESSION_PRIVATE"
+    AGENT_PRIVATE = "AGENT_PRIVATE"
+    CALL_LOCAL = "CALL_LOCAL"
+
+
+class StateOpcode(StrEnum):
+    STATE_GET = "STATE_GET"
+    STATE_SET = "STATE_SET"
+    STATE_EXISTS = "STATE_EXISTS"
 
 
 @dataclass(frozen=True)
@@ -74,6 +88,7 @@ class AgentProgramV2:
     tool_handles: Mapping[str, int]
     handoff_targets: Mapping[str, int]
     max_model_rounds: int = 8
+    agent_tool_targets: Mapping[str, int] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if self.max_model_rounds < 1:

@@ -1,0 +1,14 @@
+attack,classes,episodes,model,metric,value,accuracy_bootstrap_ci_low,accuracy_bootstrap_ci_high,analytical_chance,permutation_mean,permutation_p_value,two_sided_advantage,symbolic_feature_equality,status
+agent_identity_7class,7,42,LogisticRegression,accuracy,0.14285714285714285,0.0,0.35714285714285715,0.14285714285714285,0.1428571428571428,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+agent_identity_7class,7,42,RandomForestClassifier,accuracy,0.14285714285714285,0.0,0.35714285714285715,0.14285714285714285,0.1428571428571428,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+tool_identity_alpha_vs_beta,2,12,LogisticRegression,roc_auc,0.5,0.0,1.0,0.5,0.5,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+tool_identity_alpha_vs_beta,2,12,RandomForestClassifier,roc_auc,0.5,0.0,1.0,0.5,0.5,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+private_branch_state,2,12,LogisticRegression,roc_auc,0.5,0.0,1.0,0.5,0.5,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+private_branch_state,2,12,RandomForestClassifier,roc_auc,0.5,0.0,1.0,0.5,0.5,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+private_action_family_3class,3,18,LogisticRegression,accuracy,0.3333333333333333,0.0,0.6666666666666666,0.3333333333333333,0.33333333333333326,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+private_action_family_3class,3,18,RandomForestClassifier,accuracy,0.3333333333333333,0.0,0.6666666666666666,0.3333333333333333,0.33333333333333326,1.0,0.0,True,NO_STRUCTURAL_SIZE_SIGNAL
+repeated_agent,,0,NOT_RUN,,,,,,,,,,NOT_TESTED_NO_CANONICAL_LONG_HORIZON_WORKLOAD
+agent_frequency,,0,NOT_RUN,,,,,,,,,,NOT_TESTED_NO_CANONICAL_LONG_HORIZON_WORKLOAD
+rare_agent,,0,NOT_RUN,,,,,,,,,,NOT_TESTED_NO_CANONICAL_LONG_HORIZON_WORKLOAD
+transition_pattern,,0,NOT_RUN,,,,,,,,,,NOT_TESTED_NO_CANONICAL_LONG_HORIZON_WORKLOAD
+cross_session_linkability,,0,NOT_RUN,,,,,,,,,,NOT_TESTED_NO_CANONICAL_LONG_HORIZON_WORKLOAD

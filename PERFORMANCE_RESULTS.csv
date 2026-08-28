@@ -1,0 +1,9 @@
+component,platform,workload,scope,iterations,mean_latency_ms,p50_latency_ms,p95_latency_ms,preprocessing_ms,public_schedule_ms,actual_wall_ms,upload_bytes,download_bytes,total_public_bytes,client_or_trusted_bytes,peak_or_model_memory_bytes,real_heavy_ops,dummy_heavy_ops,cover_frames,notes
+native_framework,linux,source_traceable_openai_model_tool_model,deterministic_control,50,3.479095,3.452372,3.869066,,,,,,,,3,0,,OpenAI Agents SDK Runner with scripted two-model-call one-Tool workflow
+compiled_control,linux,source_traceable_openai_model_tool_model,deterministic_control,50,0.867037,0.863263,0.881165,,,,,,,,3,0,,IR-v2 compile plus trusted interpreter; compilation is included in each sample
+official_simplepir_1k,linux,1024_byte_capsule,full_preprocessing_and_online,7,0.799571,,,40.907,,,2020,6592,,8798208,39170048,,,2 reserved-row dummy queries are used only in the canonical schedule
+official_simplepir_10k,linux,1024_byte_capsule,full_preprocessing_and_online,7,3.742857,,,552.913,,,10024,13184,,23740416,171216896,,,,
+official_simplepir_100k,linux,1024_byte_capsule,full_preprocessing_and_online,10,23.639500,,,23506.850,,,36388,37180,,75309056,1444030464,,,,Physical database is 100001 rows and includes one 1024-byte padding record
+fixed_transcript,linux,canonical_deterministic_workflow,public_profile,,,,,,1370.000,,,36864,,,3,0,30,18 request and 18 response frames; schedule computed from the frozen public profile
+gateway_v2_real_llm,linux,qwen05b_model_tool_model,live_socket_boundary,,,,,,13600.000,14278.589,,,262144,,,,3,0,250,128 request and 128 response frames; actual wall includes real provider work under the fixed schedule
+real_local_llm_generation,linux,qwen2.5_0.5b_instruct,external_heavy_primitive,2,420.014,,,,,,,,,,1002438656,2,0,,Model time is workload cost and is not classified as privacy overhead

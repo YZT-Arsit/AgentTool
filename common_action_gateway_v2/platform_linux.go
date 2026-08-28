@@ -39,7 +39,7 @@ type schedParam struct{ Priority int32 }
 
 func ApplyPacerIsolation(cpu int, realtime bool) IsolationStatus {
 	status := IsolationStatus{Platform: "linux", RequestedCPU: cpu, RealtimeRequested: realtime,
-		ReferenceTimingPlatform: true}
+		ReferenceTimingPlatform: false}
 	if cpu >= 0 {
 		mask := make([]byte, 128)
 		mask[cpu/8] |= 1 << uint(cpu%8)
@@ -64,6 +64,10 @@ func ApplyPacerIsolation(cpu int, realtime bool) IsolationStatus {
 		}
 	} else {
 		status.RealtimeDetail = "not requested"
+	}
+	status.ReferenceTimingPlatform = status.AffinityApplied && status.RealtimeApplied
+	if !status.ReferenceTimingPlatform {
+		status.Note = "Linux alone is insufficient; dedicated affinity and requested real-time scheduling were not both established"
 	}
 	return status
 }

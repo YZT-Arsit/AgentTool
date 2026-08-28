@@ -1,0 +1,22 @@
+{
+  "observer_projection": [
+    "direction",
+    "session",
+    "slot",
+    "frame_bytes",
+    "destination"
+  ],
+  "timing_included": false,
+  "workflows": [
+    "LLM_READ_TOOL",
+    "LLM_EFFECT_TOOL",
+    "LOGICAL_HANDOFF",
+    "LLM_READ_VARIANT_41_READ_ALPHA",
+    "LLM_READ_VARIANT_42_READ_BETA",
+    "PRIVATE_BRANCH_NO_TOOL",
+    "PRIVATE_BRANCH_TOOL"
+  ],
+  "exact_equality": true,
+  "structural_privacy_status": "PASS_EVALUATED_LINUX_SUBSET",
+  "size_privacy_status": "PASS_EVALUATED_LINUX_SUBSET"
+}

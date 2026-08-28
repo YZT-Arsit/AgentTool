@@ -1,0 +1,3 @@
+{"episode":"canonical-pir","round":0,"private_index":137,"private_class":"REAL","query_generation_ms":0.741,"recovery_ms":0.545,"correct":true}
+{"episode":"canonical-pir","round":1,"private_index":998,"private_class":"DUMMY","query_generation_ms":0.78,"recovery_ms":0.498,"correct":true}
+{"episode":"canonical-pir","round":2,"private_index":998,"private_class":"DUMMY","query_generation_ms":0.775,"recovery_ms":0.297,"correct":true}

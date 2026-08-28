@@ -1,0 +1,11 @@
+{
+  "name": "CANONICAL_V3_REAL_LLM",
+  "frame_bytes": 1024,
+  "slots": 32,
+  "sessions": 4,
+  "request_delta_ns": 100000000,
+  "response_delta_ns": 100000000,
+  "mask_ns": 20000000,
+  "start_delay_ns": 500000000,
+  "inter_session_gap_ns": 100000000
+}

@@ -1,9 +1,5 @@
-workflow_family,source_framework,compile_status,real_pir_status,control_kernel_status,cloud_proxy_status,gateway_status,provider_status,result_consumer_status,reference_semantics_status,overall_status,reason
-MULTI_AGENT_HANDOFF,OpenAI Agents SDK,PASS,PASS,PASS,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,PASS,NOT_COMPLETED_ENVIRONMENT,"Windows Application Control blocked gateway-pacer.exe; logical HANDOFF and PIR-to-kernel path pass separately"
-LLM_TOOL_LLM,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"compiler stalls after TOOL_RESULT and omits post-Tool LLM/argument flow"
-TWO_TOOLS,OpenAI Agents SDK,FAIL,NOT_RUN,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"current event ABI cannot execute a general model-Tool loop"
-READ_ONLY_TOOL,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"provider class exists but compiler semantics fail before provider integration can be claimed"
-EFFECTFUL_TOOL,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"EffectGate unit semantics pass; full provider/effect path was not executed and compiler semantics fail"
-CONDITIONAL_WORKFLOW,Microsoft Agent Framework,UNSUPPORTED,NOT_RUN,UNSUPPORTED,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,UNSUPPORTED,UNSUPPORTED,"arbitrary Python predicate is not a declarative BRANCH"
-MULTI_TURN_STATE,Microsoft Agent Framework,UNSUPPORTED,NOT_RUN,UNSUPPORTED,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,UNSUPPORTED,UNSUPPORTED,"framework session/state semantics are not lowered to STATE_GET/STATE_SET"
-LONG_LATENCY_PROVIDER,Local canonical fixture,PASS,NOT_RUN,PASS,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,NOT_RUN,NOT_COMPLETED_ENVIRONMENT,"requires live Pacer/Worker/provider processes; no synthetic completion was substituted"
+workflow,platform,native_framework_definition,official_pir_in_path,model_calls,tool_calls,handoffs,returned,real_heavy_operations,dummy_heavy_operations,effect_count,public_frames_each_direction,frame_bytes,public_destination,private_fields_in_cloud_trace,semantic_equivalence,evidence
+NATIVE_OPENAI_READ,linux,YES,YES,2,1,0,True,3,0,0,18,1024,CommonActionGatewayV2,0,True,results_canonical_v3/linux_e2e_read_only/e2e_result.json
+LLM_READ_TOOL,linux,NO,NO,2,1,0,True,3,0,0,18,1024,CommonActionGatewayV2,0,True,results_canonical_v3/linux_workflows/workflow_results.csv
+LLM_EFFECT_TOOL,linux,NO,NO,2,1,0,True,3,0,1,18,1024,CommonActionGatewayV2,0,True,results_canonical_v3/linux_workflows/workflow_results.csv
+LOGICAL_HANDOFF,linux,NO,NO,1,0,1,True,1,0,0,18,1024,CommonActionGatewayV2,0,True,results_canonical_v3/linux_workflows/workflow_results.csv

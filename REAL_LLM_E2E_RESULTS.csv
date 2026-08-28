@@ -1,0 +1,4 @@
+attempt,status,model,revision,workflow,model_invocations,tool_calls,real_heavy_operations,dummy_heavy_operations,effects,returned,failure_class,gateway_elapsed_ms,mean_model_generation_ms,public_frames_each_direction,notes
+qwen05b_attempt_1,FAIL,Qwen2.5-0.5B-Instruct,7ae557604adf67be50417f59c2c2f167def9a775,warmup,0,0,0,0,0,False,MODEL_OUTPUT_SCHEMA_REJECTED,,,0,"Model emitted a JSON body without the required kind discriminator; parser rejected it"
+qwen05b_attempt_2,FAIL,Qwen2.5-0.5B-Instruct,7ae557604adf67be50417f59c2c2f167def9a775,model_tool_model,1,0,1,0,0,False,,14356.100,137.050,128,"Model returned FINAL before the mandatory Tool call; strict kernel reached NO_MATCH and did not return"
+qwen05b_attempt_3,PASS,Qwen2.5-0.5B-Instruct,7ae557604adf67be50417f59c2c2f167def9a775,model_tool_model,2,1,3,0,0,True,,14278.589,420.014,128,"Generic prompt made the allowed Tool call mandatory; exact Tool arguments/call ID/result/model resumption passed"

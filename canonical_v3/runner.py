@@ -94,7 +94,9 @@ def _jsonl(path: Path) -> list[dict[str, object]]:
 
 def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
                           kernel: ControlKernel,
-                          providers: tuple[LocalProviderDefinition, ...] = DEFAULT_PROVIDERS) -> dict[str, object]:
+                          providers: tuple[LocalProviderDefinition, ...] = DEFAULT_PROVIDERS,
+                          external_provider_endpoints: dict[str, str] | None = None,
+                          provider_timeout_ms: int = 2000) -> dict[str, object]:
     """Execute the canonical trusted-kernel -> opaque-proxy -> Gateway path."""
     root, output = root.resolve(), output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -116,7 +118,12 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
     try:
         endpoints: dict[str, str] = {}
         effectful: dict[str, bool] = {}
+        external_provider_endpoints = dict(external_provider_endpoints or {})
         for ordinal, definition in enumerate(providers):
+            if definition.name in external_provider_endpoints:
+                endpoints[definition.name] = external_provider_endpoints[definition.name]
+                effectful[definition.name] = definition.effectful
+                continue
             command = [
                 str(binaries["provider"]), "--listen", "127.0.0.1:0", "--name", definition.name,
                 "--min-delay-ms", str(definition.min_delay_ms), "--max-delay-ms", str(definition.max_delay_ms),
@@ -132,7 +139,8 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
             effectful[definition.name] = definition.effectful
         private_provider_config = output / "trusted_provider_config.json"
         _write_json(private_provider_config, {"endpoints": endpoints, "effectful": effectful,
-                                              "timeout_ms": 2000, "allow_generic_http": False})
+                                              "timeout_ms": provider_timeout_ms,
+                                              "allow_generic_http": False})
         total = profile.sessions * profile.slots
         request_ring = output / "request_ring.shared"
         result_ring = output / "result_ring.shared"
@@ -239,13 +247,14 @@ def run_canonical_gateway(root: Path, output: Path, profile: CanonicalProfile,
         for process in (proxy, pacer, worker, *provider_processes):
             if process is None:
                 continue
-            if isinstance(process, multiprocessing.Process):
-                if process.is_alive():
-                    process.terminate()
-                    process.join(timeout=5)
-            elif process.poll() is None:
+            if isinstance(process, subprocess.Popen):
+                if process.poll() is not None:
+                    continue
                 process.terminate()
                 try:
                     process.wait(timeout=5)
                 except subprocess.TimeoutExpired:
                     process.kill()
+            elif process.is_alive():
+                process.terminate()
+                process.join(timeout=5)

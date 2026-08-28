@@ -1,0 +1,50 @@
+[
+  {
+    "workflow": "LLM_READ_TOOL",
+    "returned": true,
+    "expected_heavy_operations": 3,
+    "real_heavy_operations": 3,
+    "dummy_heavy_operations": 0,
+    "expected_effects": 0,
+    "effect_count": 0,
+    "delivered_results": 3,
+    "public_frames_each_direction": 18,
+    "one_persistent_tunnel": true,
+    "logical_agent_id_private": 10,
+    "failure_class": "",
+    "sanitized_final_result": "completed:READ_ONLY_TOOL:0",
+    "semantic_equivalence": true
+  },
+  {
+    "workflow": "LLM_EFFECT_TOOL",
+    "returned": true,
+    "expected_heavy_operations": 3,
+    "real_heavy_operations": 3,
+    "dummy_heavy_operations": 0,
+    "expected_effects": 1,
+    "effect_count": 1,
+    "delivered_results": 3,
+    "public_frames_each_direction": 18,
+    "one_persistent_tunnel": true,
+    "logical_agent_id_private": 11,
+    "failure_class": "",
+    "sanitized_final_result": "completed:EFFECTFUL_TOOL:1",
+    "semantic_equivalence": true
+  },
+  {
+    "workflow": "LOGICAL_HANDOFF",
+    "returned": true,
+    "expected_heavy_operations": 1,
+    "real_heavy_operations": 1,
+    "dummy_heavy_operations": 0,
+    "expected_effects": 0,
+    "effect_count": 0,
+    "delivered_results": 1,
+    "public_frames_each_direction": 18,
+    "one_persistent_tunnel": true,
+    "logical_agent_id_private": 21,
+    "failure_class": "",
+    "sanitized_final_result": "completed:no-tool",
+    "semantic_equivalence": true
+  }
+]

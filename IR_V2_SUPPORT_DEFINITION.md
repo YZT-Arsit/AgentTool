@@ -25,9 +25,23 @@ The projection includes, where relevant: Tool identity, arguments, call ID, resu
 ## Current measured scopes
 
 - Frozen dynamic execution support: **72/72 executions**, including **18/18 Tool workflows**.
-- Tested support units: **10/10** in `IR_V2_EXECUTABLE_SUPPORT.csv`.
+- Fully passing tested support units: **11/11** in `IR_V2_EXECUTABLE_SUPPORT.csv`. The added
+  unit is the bounded `SESSION_PRIVATE`/`AGENT_PRIVATE`/`CALL_LOCAL`
+  GET/SET/EXISTS store, checked against the source-traceable Microsoft
+  `AgentSession.state` dictionary subset. It does not promote arbitrary session,
+  checkpoint, memory, database, or callback instances in the static corpus.
+- One additional `Agent.as_tool()` private-call-stack unit is **PARTIAL**. The
+  compiler consumes an actual OpenAI `Agent.as_tool()` object and the runtime
+  executes private child call/return, but no native framework call/return
+  projection has yet passed the executable-support gate. It is not counted as
+  fully supported and does not alter static coverage.
 - Corpus-wide executable support: **not inferred** from the 72 executions. A behavior instance without a source-traceable dynamic equivalence test does not become executable-supported merely because it resembles a passing unit.
-- IR-v2 static corpus coverage: must be generated separately after each versioned compiler extension. The core repair does not retrospectively alter IR-v1 static labels.
+- IR-v2 core static corpus coverage: **3,574/7,386 = 48.39%** on the
+  exact frozen 314-file membership. `IR_V2_STATIC_CORPUS_COVERAGE.csv` records
+  1,708 lowered control instances, 1,866 represented shared-heavy invocations,
+  and all 3,812 historical unsupported instances unchanged. This equality with
+  IR-v1 is expected: the core repair fixes executable Tool semantics but adds no
+  newly accepted corpus behavior family.
 
 ## Core bounded semantics
 
@@ -51,4 +65,7 @@ Tool and model failures, unknown Tools, unresolved handoffs, and bound exhaustio
 
 ## Non-claims
 
-This core result does not yet claim corpus-wide support for state/session systems, arbitrary Python predicates, Agent-as-Tool, HITL, fork/join, middleware, arbitrary callbacks, live Gateway timing, or resource privacy.
+This core result does not claim corpus-wide support for state/session systems,
+arbitrary Python predicates, Agent-as-Tool, HITL, fork/join, middleware,
+arbitrary callbacks, live Gateway timing, or resource privacy. Agent-as-Tool is
+an explicitly partial bounded implementation, not a corpus-wide claim.

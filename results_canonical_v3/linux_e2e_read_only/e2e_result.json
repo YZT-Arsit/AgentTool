@@ -1,0 +1,86 @@
+{
+  "native_framework": "OpenAI Agents SDK",
+  "native_source": "external_stage10/openai-agents-python/examples/basic/tools.py",
+  "native_object_types": [
+    "agents.agent.Agent",
+    "agents.tool.FunctionTool"
+  ],
+  "compiler_audit": {
+    "workload": "canonical-native-read",
+    "framework": "OpenAI Agents SDK",
+    "source": "external_stage10/openai-agents-python/examples/basic/tools.py",
+    "agents": 1,
+    "tools": 1,
+    "handoffs": 0,
+    "dynamic_instruction_callbacks": 0,
+    "executable": true,
+    "unsupported_reasons": []
+  },
+  "support_stratum": "NATIVE_SINGLE_TOOL_MODEL_TOOL_MODEL",
+  "registry_records": 1000,
+  "registry_sha256": "3007af78d820b76145ed355dc4efb2903d1e9ce3533cea00947993497da64bfd",
+  "real_pir": {
+    "backend": "OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING",
+    "commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+    "slots": 3,
+    "real_queries": 1,
+    "dummy_queries": 2,
+    "correct_queries": 3,
+    "fresh_queries": true,
+    "server_trace_has_private_index": false
+  },
+  "gateway": {
+    "profile_id": 2079218113309541560,
+    "public_frames_each_direction": 18,
+    "delivered_results": 3,
+    "returned": true,
+    "logical_agent_id_private": 137,
+    "real_heavy_operations": 3,
+    "dummy_heavy_operations": 0,
+    "effect_count": 0,
+    "worker_pid": 14812,
+    "pacer_pid": 14819,
+    "proxy_pid": 14827,
+    "provider_pids": [
+      14791,
+      14798,
+      14805
+    ],
+    "one_persistent_tunnel": true,
+    "key_on_command_line": false
+  },
+  "result_fed_back_to_control": true,
+  "model_context": [
+    {
+      "role": "user",
+      "content": "synthetic local task"
+    },
+    {
+      "role": "assistant_tool_call",
+      "name": "READ_ONLY_TOOL",
+      "arguments": {
+        "topic": "synthetic-local"
+      },
+      "call_id": "call-op-00000001"
+    },
+    {
+      "role": "tool",
+      "name": "READ_ONLY_TOOL",
+      "call_id": "call-op-00000001",
+      "content": "READ_ONLY_TOOL:0"
+    },
+    {
+      "role": "assistant",
+      "content": "completed:READ_ONLY_TOOL:0"
+    }
+  ],
+  "tool_results": [
+    {
+      "name": "READ_ONLY_TOOL",
+      "call_id": "call-op-00000001",
+      "result": "READ_ONLY_TOOL:0"
+    }
+  ],
+  "sanitized_final_result": "completed:READ_ONLY_TOOL:0",
+  "failure_class": ""
+}

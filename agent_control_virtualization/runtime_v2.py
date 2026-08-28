@@ -5,7 +5,42 @@ from dataclasses import asdict, dataclass, field
 from typing import Callable, Protocol, Sequence
 
 from .ir_v2 import (AgentProgramV2, ContextItem, DecisionKind, ModelDecision,
-                    ProgramBundleV2, RuntimeState, ToolCall, private_handle)
+                    ProgramBundleV2, RuntimeState, StateScope, ToolCall,
+                    private_handle)
+
+
+class PrivateStateStore:
+    """Bounded scoped state used only inside the trusted interpreter.
+
+    This implements the restricted GET/SET/EXISTS subset. It does not claim
+    automatic lowering of arbitrary framework session or persistence objects.
+    """
+
+    def __init__(self, *, max_entries_per_namespace: int = 64):
+        if max_entries_per_namespace < 1:
+            raise ValueError("state namespace bound must be positive")
+        self.max_entries_per_namespace = max_entries_per_namespace
+        self._namespaces: dict[tuple[StateScope, str], dict[str, object]] = {}
+
+    def _namespace(self, scope: StateScope, owner: str) -> dict[str, object]:
+        if not owner:
+            raise ValueError("state owner must be explicit")
+        return self._namespaces.setdefault((scope, owner), {})
+
+    def exists(self, scope: StateScope, owner: str, key: str) -> bool:
+        return key in self._namespace(scope, owner)
+
+    def get(self, scope: StateScope, owner: str, key: str) -> object:
+        return self._namespace(scope, owner)[key]
+
+    def set(self, scope: StateScope, owner: str, key: str, value: object) -> None:
+        namespace = self._namespace(scope, owner)
+        if key not in namespace and len(namespace) >= self.max_entries_per_namespace:
+            raise OverflowError("private state namespace bound exceeded")
+        namespace[key] = value
+
+    def snapshot(self, scope: StateScope, owner: str) -> dict[str, object]:
+        return dict(self._namespace(scope, owner))
 
 
 class ModelAdapter(Protocol):
@@ -120,6 +155,8 @@ class AgentRuntimeV2:
         effects: list[dict[str, object]] = []
         model_calls = 0
         effect_count = 0
+        # parent Agent, parent context, private Tool name, call ID, canonical args
+        call_stack: list[tuple[int, list[ContextItem], str, str, str]] = []
         total_bound = sum(agent.max_model_rounds for agent in self.agents.values())
         for _ in range(total_bound):
             agent = self.agents[current]
@@ -136,6 +173,22 @@ class AgentRuntimeV2:
                                         resumed_contexts, handoffs, updates, effects, effect_count,
                                         "MODEL_ERROR", "", model_calls)
             if decision.kind == DecisionKind.FINAL:
+                if call_stack:
+                    parent, parent_context, tool_name, call_id, canonical_args = call_stack.pop()
+                    result_text = decision.final_text
+                    result_handle = self.private_values.put("agent_tool_result", result_text.encode("utf-8"))
+                    results.append(result_text)
+                    parent_context.extend((
+                        ContextItem("assistant_tool_call", canonical_args, call_id, tool_name),
+                        ContextItem("tool", result_text, call_id, tool_name),
+                    ))
+                    resumed_contexts.append(self._context_json(parent_context))
+                    updates.extend(("AGENT_AS_TOOL_RETURN", "MODEL_RESUME_READY"))
+                    self._step(current, RuntimeState.AGENT_RETURN, model_calls,
+                               tool_name=tool_name, call_id=call_id, result_handle=result_handle)
+                    current = parent
+                    context = parent_context
+                    continue
                 context.append(ContextItem("assistant", decision.final_text))
                 updates.append("RETURN")
                 self._step(current, RuntimeState.RETURNED, model_calls)
@@ -167,6 +220,31 @@ class AgentRuntimeV2:
                 continue
             call = decision.tool_call
             assert call is not None
+            agent_tool_target = agent.agent_tool_targets.get(call.name)
+            if agent_tool_target is not None:
+                if agent_tool_target not in self.agents:
+                    self._step(current, RuntimeState.TOOL_ERROR, model_calls,
+                               tool_name=call.name, call_id=call.call_id,
+                               error_class="UNRESOLVED_AGENT_TOOL")
+                    updates.append("AGENT_AS_TOOL_ERROR")
+                    return self._projection(selected_tools, arguments, call_ids, results,
+                                            resumed_contexts, handoffs, updates, effects, effect_count,
+                                            "AGENT_AS_TOOL_ERROR", "", model_calls)
+                canonical_args = call.canonical_arguments()
+                argument_handle = self.private_values.put("agent_tool_arguments",
+                                                          canonical_args.encode("utf-8"))
+                selected_tools.append(call.name)
+                arguments.append(dict(call.arguments))
+                call_ids.append(call.call_id)
+                updates.append("AGENT_AS_TOOL_CALL")
+                self._step(current, RuntimeState.AGENT_CALL_READY, model_calls,
+                           tool_name=call.name, call_id=call.call_id,
+                           argument_handle=argument_handle)
+                call_stack.append((current, context, call.name, call.call_id, canonical_args))
+                child_input = str(call.arguments.get("input", canonical_args))
+                current = agent_tool_target
+                context = [ContextItem("user", child_input)]
+                continue
             expected_handle = agent.tool_handles.get(call.name)
             binding = self.tools.get(call.name)
             if expected_handle is None or binding is None:

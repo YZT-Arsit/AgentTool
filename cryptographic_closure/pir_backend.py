@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import shutil
 import struct
 import subprocess
 from dataclasses import dataclass
@@ -88,14 +89,24 @@ def run_simplepir(
     recovered_path = output_dir / "client_recovered_records.jsonl"
     raw_path = output_dir / "server_raw_queries.bin"
     bridge_dir = root / "pir_integration" / "simplepir_bridge"
-    go_executable = root / ".toolchains" / "go" / "Go" / "bin" / "go.exe"
-    if not go_executable.exists():
-        raise FileNotFoundError("project-local Go toolchain is missing")
     env = dict(os.environ)
-    gcc_bin = root / ".toolchains" / "winlibs" / "mingw64" / "bin"
-    env["PATH"] = str(go_executable.parent) + os.pathsep + str(gcc_bin) + os.pathsep + env.get("PATH", "")
+    if os.name == "nt":
+        go_executable = root / ".toolchains" / "go" / "Go" / "bin" / "go.exe"
+        if not go_executable.exists():
+            raise FileNotFoundError("project-local Windows Go toolchain is missing")
+        gcc_bin = root / ".toolchains" / "winlibs" / "mingw64" / "bin"
+        env["PATH"] = (str(go_executable.parent) + os.pathsep + str(gcc_bin)
+                       + os.pathsep + env.get("PATH", ""))
+        compiler = gcc_bin / "gcc.exe"
+    else:
+        discovered_go = shutil.which("go")
+        discovered_cc = shutil.which("gcc")
+        if discovered_go is None or discovered_cc is None:
+            raise FileNotFoundError("Linux SimplePIR integration requires Go and gcc on PATH")
+        go_executable = Path(discovered_go)
+        compiler = Path(discovered_cc)
     env["CGO_ENABLED"] = "1"
-    env["CC"] = "gcc"
+    env["CC"] = str(compiler)
     command = [
         str(go_executable), "run", ".", "--database", str(registry), "--records", str(record_count),
         "--queries", str(query_path), "--metrics", str(metrics_path),

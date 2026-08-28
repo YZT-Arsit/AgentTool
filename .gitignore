@@ -16,6 +16,8 @@ env/
 .venv-stage9/
 ,venv-stage10/
 .venv-stage12/
+.tmp_pytest/
+.tmp_pytest*/
 .toolchains/
 
 # OS

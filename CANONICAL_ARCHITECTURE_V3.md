@@ -4,6 +4,14 @@ Status: **CANONICAL ACTIVE TARGET**. This document is the only architecture
 composition guide for current implementation work. Historical Stage 1-13
 documents are evidence records, not components to be combined into this design.
 
+Current executable core: IR-v2 represents structured model decisions, Tool
+identity/arguments/call IDs/results, private context reinsertion, bounded model
+resume, final return, explicit failure states, and logical handoff. The live
+Linux canonical adapter is deliberately narrower: it lowers one source-traceable
+native Agent with exactly one Tool to `MODEL -> TOOL -> MODEL -> RETURN` and
+rejects other shapes. Broader IR-v2 constructs must earn separate executable
+support and must not be inferred from this adapter.
+
 ## System boundary
 
 ```text
@@ -106,4 +114,3 @@ Completed 2026-08-27 before new experiments. Source inventory confirmed:
    mock lookup and plaintext runtime are not canonical security components.
 5. Historical timing and ORAM experiments remain preserved but are unreachable
    from the V3 entrypoint to be added.
-

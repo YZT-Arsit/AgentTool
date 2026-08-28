@@ -1,0 +1,86 @@
+{
+  "status": "FAIL",
+  "model": "Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_weight_sha256": {
+    "model.safetensors": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+  },
+  "model_metadata": {
+    "model_path": "/root/autodl-tmp/models/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "device": "cuda:0",
+    "dtype": "torch.bfloat16",
+    "parameter_count": 494032768,
+    "cuda_allocated_bytes": 988097024,
+    "cuda_reserved_bytes": 1002438656
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "transformers": "4.57.6",
+    "accelerate": "1.12.0",
+    "nvidia_smi": "NVIDIA GeForce RTX 5090, 580.76.05, 32607 MiB, 1593 MiB"
+  },
+  "native_framework": "OpenAI Agents SDK",
+  "native_source": "external_stage10/openai-agents-python/examples/basic/tools.py",
+  "compiler_audit": {
+    "workload": "canonical-real-local-model",
+    "framework": "OpenAI Agents SDK",
+    "source": "external_stage10/openai-agents-python/examples/basic/tools.py",
+    "agents": 1,
+    "tools": 1,
+    "handoffs": 0,
+    "agent_tools": 0,
+    "dynamic_instruction_callbacks": 0,
+    "executable": true,
+    "unsupported_reasons": []
+  },
+  "support_stratum": "NATIVE_SINGLE_TOOL_MODEL_TOOL_MODEL",
+  "openai_compatible_endpoint": "http://127.0.0.1:41253/v1/chat/completions",
+  "gateway_provider_endpoint": "http://127.0.0.1:41253/execute",
+  "prewarm": {
+    "elapsed_ns": 868808449,
+    "status": "OK",
+    "payload_present": true
+  },
+  "gateway_elapsed_ns": 14356100309,
+  "gateway": {
+    "profile_id": 14431597289225797323,
+    "public_frames_each_direction": 128,
+    "delivered_results": 1,
+    "returned": false,
+    "logical_agent_id_private": 501,
+    "real_heavy_operations": 1,
+    "dummy_heavy_operations": 0,
+    "effect_count": 0,
+    "worker_pid": 30106,
+    "pacer_pid": 30113,
+    "proxy_pid": 30121,
+    "provider_pids": [
+      30092,
+      30099
+    ],
+    "one_persistent_tunnel": true,
+    "key_on_command_line": false
+  },
+  "model_invocations": 1,
+  "model_generation_ns": [
+    137050495
+  ],
+  "model_context": [
+    {
+      "role": "user",
+      "content": "Use the local synthetic lookup Tool and report its result."
+    },
+    {
+      "role": "assistant",
+      "content": "completed:READ_ONLY_TOOL"
+    }
+  ],
+  "tool_results": [],
+  "sanitized_final_result": "completed:READ_ONLY_TOOL",
+  "failure_class": "",
+  "dummy_external_effects": 0
+}

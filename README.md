@@ -19,17 +19,23 @@ architecture. Their current status is recorded in
 
 ## Current measured status
 
-- official SimplePIR-to-capsule-to-Control path: PASS (3/3 scheduled real/dummy
-  queries correct in the canonical smoke run);
-- private Cloud Slot Proxy schema and AEAD-bound public headers: unit PASS;
-- corpus IR coverage: 3,574/7,386 = 48.39%; broad generality is not established;
-- exact semantic fidelity: 54/72 = 75.0%; ordinary Tool loops fail;
-- live Gateway V3 E2E: `NOT_COMPLETED_ENVIRONMENT` because Windows Application
-  Control blocked the generated Pacer executable;
-- structural, size, resource, and V3 timing privacy: OPEN; packet-level TCP
-  timing: OPEN.
+- immutable IR-v1 static coverage: 3,574/7,386 = 48.39%; immutable IR-v1
+  semantic fidelity: 54/72 = 75.0%;
+- IR-v2 core on the exact frozen corpus: 3,574/7,386 = 48.39% (no unsupported
+  family was promoted); frozen dynamic fidelity: 72/72, including 18/18 Tool
+  workflows;
+- official SimplePIR path: PASS at N=1,000 in the canonical E2E and separately
+  operational with full preprocessing at N=100,000;
+- Linux canonical model -> Tool -> model, effectful Tool, and logical HANDOFF
+  workflows: PASS for their declared bounded strata; dummy heavy operations: 0;
+- real local GPU case study: PASS for one OpenAI-Agent-derived model -> Tool ->
+  model workflow using Qwen2.5-0.5B-Instruct;
+- structural and size privacy: PASS on the evaluated seven-workflow exact-trace
+  subset and structural/size-only local falsification features;
+- timing privacy: NOT TESTED on a valid reference platform; resource and
+  packet-level privacy: OPEN.
 
-Start with `SYSTEM_INTEGRATION_FINAL_REPORT.md` and
+Start with `SYSTEM_INTEGRATION_FINAL_REPORT_V2.md` and
 `CURRENT_SECURITY_MATRIX.md`. Do not cite prior `FINAL_SECURITY_*` files as the
 current model.
 
@@ -52,15 +58,15 @@ set PYTHONPATH to:
 
 ```powershell
 $env:PYTHONPATH = ".venv-stage12\Lib\site-packages;.venv-stage9\Lib\site-packages;external_stage9\agent-framework\python\packages\core;external_stage10\openai-agents-python\src;."
-.venv-stage10\Scripts\python.exe -m pytest tests -q
+.venv-stage10\Scripts\python.exe -m pytest tests -q --basetemp .tmp_pytest_readme
 .venv-stage10\Scripts\python.exe scripts\run_corpus_ir_audit.py
-.venv-stage10\Scripts\python.exe scripts\run_semantic_fidelity.py
+.venv-stage10\Scripts\python.exe scripts\run_semantic_fidelity_v2.py
 ```
 
-`scripts/run_canonical_v3_pir_smoke.py` refuses to overwrite its existing
-canonical output. Move/copy the output deliberately before a reproducibility
-rerun. The live Gateway integration test explicitly skips only when Windows
-reports Application Control WinError 4551.
+Canonical evidence-producing scripts refuse to overwrite non-empty output
+directories. Use a new versioned result directory for a reproduction. Linux is
+the functional reference for the canonical process path; historical Windows
+live-Pacer failures remain preserved and do not describe the Linux result.
 
 ## ORAM boundary
 

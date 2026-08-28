@@ -102,3 +102,24 @@ ready for Linux reference-platform engineering, not for a timing claim. Before a
 5. generate a wholly new confirmatory dataset.
 
 No confirmatory experiment was run in this implementation stage.
+
+## 2026-08-28 Linux allocation check
+
+The canonical continuation did **not** authorize a timing freeze or holdout on
+the available Linux allocation. It is a Docker/cgroup-v2 environment with a
+25-CPU quota, recorded cgroup throttling, no permitted `SCHED_FIFO`, and no proof
+of dedicated physical cores. Functional affinity calls succeed, but that is not
+the reference-platform isolation required by the frozen procedure.
+
+One development-only launch was attempted and preserved at
+`results_gateway_v2/development_stress_linux_20260827/`. It stopped before any
+statistical timing analysis with `incomplete V2 socket-boundary trace`. The
+legacy `gateway_v2` cloud receiver decoded the response header using a stale
+layout: its observed session value was `197120` and its slots were `0..14`, so
+receiver timestamps could not be joined to the 1,800 valid public slots. This
+is a legacy-client parse defect, not evidence for or against timing privacy.
+The failed artifact is preserved; it was not repaired and rerun merely to
+obtain a timing number on an unsuitable host.
+
+Consequently no `TIMING_V2_FREEZE_MANIFEST.json`, fresh holdout, or timing
+privacy result exists. The current status remains `NOT_TESTED / OPEN`.

@@ -1,0 +1,14 @@
+{
+  "endpoints": {
+    "LOCAL_MODEL": "http://127.0.0.1:39915/execute",
+    "READ_ONLY_TOOL": "http://127.0.0.1:34521/execute",
+    "EFFECTFUL_TOOL": "http://127.0.0.1:32853/execute"
+  },
+  "effectful": {
+    "LOCAL_MODEL": false,
+    "READ_ONLY_TOOL": false,
+    "EFFECTFUL_TOOL": true
+  },
+  "timeout_ms": 2000,
+  "allow_generic_http": false
+}

@@ -1,0 +1,4 @@
+{"operation_id":"private-warmup","raw_model_output":"{\"text\":\"completed:no-tool\"}","generation_ns":783544255,"parse_status":"PENDING","input_tokens":135,"output_tokens":9}
+{"normalized_decision":{"text":"completed:no-tool","kind":"FINAL"},"generation_ns":783544255,"operation_id":"private-warmup","parse_status":"ACCEPTED"}
+{"operation_id":"op-00000001","raw_model_output":"{\"text\":\"completed:READ_ONLY_TOOL\"}","generation_ns":137050495,"parse_status":"PENDING","input_tokens":162,"output_tokens":10}
+{"normalized_decision":{"text":"completed:READ_ONLY_TOOL","kind":"FINAL"},"generation_ns":137050495,"operation_id":"op-00000001","parse_status":"ACCEPTED"}

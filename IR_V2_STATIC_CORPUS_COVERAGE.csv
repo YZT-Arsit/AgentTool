@@ -1,0 +1,4 @@
+framework,ir_version,total_behavior_instances,control_lowered,shared_heavy_invocation_lowered,unsupported,static_lowering_coverage,corpus_files,interpretation
+ALL,IR-v2-core,7386,1708,1866,3812,0.4838884375846195,314,"Versioned reclassification on exact frozen membership; no unsupported IR-v1 behavior promoted"
+OpenAI Agents SDK,IR-v2-core,1904,310,406,1188,0.3760504201680672,216,"Derived from frozen CORPUS_IR_COVERAGE categories"
+Microsoft Agent Framework,IR-v2-core,5482,1398,1460,2624,0.5213425757022985,98,"Derived from frozen CORPUS_IR_COVERAGE categories"

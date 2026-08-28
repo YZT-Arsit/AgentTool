@@ -15,7 +15,7 @@ is reachable from the canonical V3 entrypoint.
 | `stage8_real_traces/`, `stage9_adaptive/`, `stage10_final_validation/`, `stage11_core_redesign/` | ARCHIVED STAGE EXPERIMENTS | Preserve; no canonical imports | Historical research questions and evidence, not V3 composition |
 | `scripts/run_stage*.py` | SUPERSEDED ENTRYPOINTS | Preserve for reproducibility; exclude from README current-run instructions and canonical smoke tests | Prevent accidental mixed-stage execution |
 | `scripts/run_control_virtualization.py` | VALID HISTORICAL FEASIBILITY ENTRYPOINT | Preserve; not canonical after V3 runner exists | Uses mock lookup in non-closure experiments |
-| `scripts/run_gateway_v2_development.py` | VALID HISTORICAL DEVELOPMENT ENTRYPOINT | Preserve; not canonical system runner | Loads private workload in the old client and is Windows development evidence only |
+| `scripts/run_gateway_v2_development.py` and `gateway_v2/` client | VALID HISTORICAL DEVELOPMENT ENTRYPOINT WITH KNOWN LINUX PARSE DEFECT | Preserve failed Linux development artifact; not canonical system runner | Loads private workload in the old client; stale response-header parsing prevents valid Linux receive-trace joins. Canonical V3 uses `cloud_slot_proxy/` instead |
 | `FINAL_SECURITY_DEFINITION.md`, `FINAL_SECURITY_DEFINITION_V2.md`, `FINAL_SECURITY_DEFINITION_AUDIT.md`, `FINAL_SECURITY_AUDIT.md` | SUPERSEDED SECURITY DEFINITIONS | Preserve verbatim and label through this manifest; canonical reports cite only `CURRENT_SECURITY_*` | Definitions reflect earlier dispatch/ORAM/timing boundaries |
 | Stage-generated result directories | ARCHIVED OR VALID HISTORICAL EVIDENCE | Never merge into V3 results; do not overwrite | Preserve positive and negative reproducibility evidence |
 
@@ -39,4 +39,3 @@ available. Canonical source tests include an import/reachability check.
 
 PASS. No code or result was deleted, no experiment was run, and all known legacy
 families now have an explicit canonical reachability decision.
-

@@ -1,0 +1,6 @@
+{"operation_id":"private-warmup","raw_model_output":"{\"kind\":\"FINAL\",\"text\":\"completed:no-tool\"}","generation_ns":802608494,"parse_status":"PENDING","input_tokens":56,"output_tokens":12}
+{"normalized_decision":{"kind":"FINAL","text":"completed:no-tool"},"generation_ns":802608494,"operation_id":"private-warmup","parse_status":"ACCEPTED"}
+{"operation_id":"op-00000001","raw_model_output":"{\n  \"kind\": \"TOOL_CALL\",\n  \"name\": \"READ_ONLY_TOOL\",\n  \"arguments\": {\n    \"topic\": \"synthetic-local\"\n  },\n  \"call_id\": \"local-model-call\"\n}","generation_ns":532156543,"parse_status":"PENDING","input_tokens":110,"output_tokens":47}
+{"normalized_decision":{"kind":"TOOL_CALL","name":"READ_ONLY_TOOL","arguments":{"topic":"synthetic-local"},"call_id":"local-model-call"},"generation_ns":532156543,"operation_id":"op-00000001","parse_status":"ACCEPTED"}
+{"operation_id":"op-00000003","raw_model_output":"```json\n{\n  \"kind\": \"FINAL\",\n  \"text\": \"completed: READ_ONLY_TOOL:0\"\n}\n```","generation_ns":307871952,"parse_status":"PENDING","input_tokens":122,"output_tokens":27}
+{"normalized_decision":{"kind":"FINAL","text":"completed: READ_ONLY_TOOL:0"},"generation_ns":307871952,"operation_id":"op-00000003","parse_status":"ACCEPTED"}

@@ -9,3 +9,5 @@ tool_result,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDEL
 model_context_reinsertion,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
 bounded_model_resume,OpenAI examples/basic/tools.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
 logical_handoff,OpenAI examples/handoffs/message_filter.py,YES,YES,YES,18,18,PASS,SEMANTIC_FIDELITY_V2_RESULTS.csv
+scoped_private_state,"Microsoft core tests/workflow/test_agent_executor.py AgentSession state subset",YES,YES,YES,1,1,PASS,tests/test_agent_ir_v2.py::test_scoped_private_state_matches_native_agent_session_subset
+agent_as_tool_private_call_stack,"OpenAI examples/agent_patterns/agents_as_tools.py and native Agent.as_tool object metadata",YES,YES,YES,0,0,PARTIAL,"compiler/runtime test exists; native framework call/return projection not yet executed"

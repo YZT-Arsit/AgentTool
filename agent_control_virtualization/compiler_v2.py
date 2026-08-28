@@ -14,6 +14,7 @@ class V2CompileAudit:
     agents: int
     tools: int
     handoffs: int
+    agent_tools: int
     dynamic_instruction_callbacks: int
     executable: bool
     unsupported_reasons: tuple[str, ...]
@@ -38,6 +39,7 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
     unsupported: list[str] = []
     tool_total = 0
     handoff_total = 0
+    agent_tool_total = 0
     for index, agent in enumerate(workload.agents):
         name, instructions, tools, handoffs, input_guards, output_guards = _agent_fields(agent, workload.framework)
         if callable(instructions):
@@ -46,9 +48,19 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
         if input_guards or output_guards:
             unsupported.append(f"{name}: arbitrary guardrail/middleware callbacks")
         tool_handles: dict[str, int] = {}
+        agent_tool_targets: dict[str, int] = {}
         for tool in tools:
             tool_name = _tool_name(tool)
-            tool_handles[tool_name] = private_handle("tool", tool_name)
+            if bool(getattr(tool, "_is_agent_tool", False)):
+                target = getattr(tool, "_agent_instance", None)
+                target_name = str(getattr(target, "name", ""))
+                if target_name in name_to_id:
+                    agent_tool_targets[tool_name] = name_to_id[target_name]
+                    agent_tool_total += 1
+                else:
+                    unsupported.append(f"{name}: unresolved Agent-as-Tool target {target_name or '<unknown>'}")
+            else:
+                tool_handles[tool_name] = private_handle("tool", tool_name)
             tool_total += 1
         targets: dict[str, int] = {}
         for target_index in static_edges.get(index, []):
@@ -62,7 +74,7 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
         handoff_total += len(targets)
         programs.append(AgentProgramV2(
             base_agent_id + index, name, private_handle("instructions", str(instructions)),
-            tool_handles, targets, max_model_rounds,
+            tool_handles, targets, max_model_rounds, agent_tool_targets,
         ))
     if workload.conditional_edges:
         unsupported.append("arbitrary conditional edges are not part of the core semantic repair")
@@ -70,5 +82,6 @@ def compile_workload_v2(workload: FrameworkWorkload, base_agent_id: int,
         unsupported.append("fan-out/fan-in is not part of the core semantic repair")
     bundle = ProgramBundleV2(workload.name, workload.framework, workload.source, tuple(programs))
     audit = V2CompileAudit(workload.name, workload.framework, workload.source, len(programs),
-                           tool_total, handoff_total, dynamic, not unsupported, tuple(unsupported))
+                           tool_total, handoff_total, agent_tool_total, dynamic,
+                           not unsupported, tuple(unsupported))
     return V2CompilationResult(bundle, audit)

@@ -1,17 +1,21 @@
 # Canonical Component Status
 
-Snapshot: 2026-08-27, after Phase 0 inventory and before V3 experiments.
+Initial snapshot: 2026-08-27, after Phase 0 inventory and before V3 experiments.
+
+Current Linux continuation: the previously blocked live path is now operational
+for the strict native single-Tool stratum. See the final section; earlier phase
+notes are preserved as chronological evidence rather than silently rewritten.
 
 | Component / artifact | Status | Canonical role or restriction |
 | --- | --- | --- |
 | `CANONICAL_ARCHITECTURE_V3.md` | CANONICAL ACTIVE | Sole architecture composition guide |
 | `CANONICAL_THREAT_MODEL_V3.md` | CANONICAL ACTIVE | Sole current observer boundary |
-| `common_action_gateway_v2/` Worker/Pacer/rings/providers | CANONICAL ACTIVE, REQUIRES HARDENING | Preserve process isolation and pacing; add authenticated public header and trusted/proxy split |
-| `gateway_v2/` orchestration | CANONICAL ACTIVE, REQUIRES REFACTOR | Reuse local process orchestration; remove private workload/key from U |
-| `agent_control_virtualization/ir.py` and compiler concepts | CANONICAL INPUT, REQUIRES EXTENSION | Fixed capsule/IR basis; corpus extractor and semantic tests decide actual coverage |
-| `agent_control_virtualization/runtime.py` | VALID SEMANTIC REFERENCE | Plaintext evaluator is not an untrusted-cloud security component |
-| `privacy_kernel/` | CANONICAL ACTIVE, TO IMPLEMENT | Trusted PIR client, control kernel, encoder, and result consumer |
-| `cloud_slot_proxy/` | CANONICAL ACTIVE, TO IMPLEMENT | Opaque public-slot forwarding only |
+| `common_action_gateway_v2/` Worker/Pacer/rings/providers | CANONICAL ACTIVE, FUNCTIONAL PASS | Linux process path, authenticated fixed frames, result continuation, and local providers work; timing and durable effect recovery remain open |
+| `gateway_v2/` orchestration | LEGACY DEVELOPMENT ONLY | Its private-aware client and Linux receiver parse defect are not the canonical opaque-proxy path |
+| `agent_control_virtualization/ir_v2.py` and `compiler_v2.py` | CANONICAL ACTIVE, BOUNDED | Exact core Tool loop plus tested private-state subset; corpus-scale support remains 48.39% |
+| `agent_control_virtualization/runtime_v2.py` | TRUSTED CANONICAL INTERPRETER | Small private control runtime; Agent-as-Tool call stack is PARTIAL pending native projection |
+| `privacy_kernel/` | CANONICAL ACTIVE, FUNCTIONAL PASS | Trusted capsule/control state, action encoder, and result consumer |
+| `cloud_slot_proxy/` | CANONICAL ACTIVE, FUNCTIONAL PASS | Opaque public-slot forwarding only; private-field trace audit passes |
 | `pir_integration/simplepir_bridge/` | CANONICAL ACTIVE PRIMITIVE | Pinned official SimplePIR bridge; must feed canonical path |
 | `cryptographic_closure/pir_backend.py` | VALID INTEGRATION REFERENCE | Reuse audited invocation/provenance; private CSV trace is trusted-only |
 | trusted/local encrypted state | CANONICAL BASE | Private persistent-state profile |
@@ -23,6 +27,27 @@ Snapshot: 2026-08-27, after Phase 0 inventory and before V3 experiments.
 | Stage 1-10 mediation/ORAM experiments | ARCHIVED RESEARCH EVIDENCE | No canonical execution imports |
 | Stage 12-13 application-level timing work | SUPERSEDED TIMING EVIDENCE | Does not establish V3 observer-boundary timing privacy |
 | old `FINAL_SECURITY_DEFINITION*.md` family | SUPERSEDED | Preserved verbatim; replaced by `CURRENT_SECURITY_*` |
+
+## 2026-08-28 Linux continuation status
+
+| Component | Current status | Evidence / limitation |
+| --- | --- | --- |
+| IR-v2 core | PASS on frozen dynamic set | 72/72 exact; Tool workflows 18/18 |
+| Strict native single-Tool canonical lowering | PASS | rejects multi-Tool/unsupported shapes instead of approximating |
+| Privacy Kernel structured Tool loop | PASS for validated stratum | Tool name, arguments, call ID, result, next-model context, final result preserved |
+| Official SimplePIR -> kernel -> Gateway | PASS at N=1,000 | full preprocessing, 3/3 correct, recovered capsule drives live execution |
+| Opaque Cloud Slot Proxy | LIVE PASS for schema/trace audit | one public destination, fixed 1,024-byte frames, no searched private fields |
+| Gateway V2 Linux process path | LIVE PASS functionally | separate Pacer, Worker, proxy, providers; timing not claimed |
+| Read-only Tool workflow | PASS | 3 real heavy operations, 0 effects, 0 dummy heavy operations |
+| Effectful Tool workflow | PASS for normal completion | exactly one effect; ambiguous failure-path reconciliation remains open |
+| Logical HANDOFF | PASS with preloaded-capsule limitation | private ID changes, common endpoint unchanged; runtime PIR miss handling open |
+| Agent-as-Tool | PARTIAL | native `Agent.as_tool()` metadata is compiled and the private call stack executes; a native framework call/return projection is not yet run |
+| Structural/size privacy | PASS on evaluated subset | exact public projection equal across seven Agent/Tool/handoff/branch variants; structural/size-only classifier checks are at chance |
+| Real local LLM | PASS on one bounded case | Qwen2.5-0.5B-Instruct executes model -> Tool -> model through the same Gateway; two failed attempts are retained |
+| Linux timing privacy | NOT TESTED | shared container lacks SCHED_FIFO and dedicated-core proof |
+
+The earlier Windows `NOT_COMPLETED_ENVIRONMENT` statements remain true for that
+host and run, but no longer describe the Linux functional path.
 
 ## Canonical reachability rule
 
@@ -130,3 +155,7 @@ Final regression result: 137 Python tests passed and exactly two live-Pacer test
 were skipped as `NOT_COMPLETED_ENVIRONMENT` for Windows Application Control
 WinError 4551. All Go tests passed, and the Linux cross-build passed. Final
 independent dimension statuses are in `SYSTEM_INTEGRATION_FINAL_REPORT.md`.
+
+The Phase-5 through Phase-7 sections above are preserved chronological Windows
+evidence, not the current Linux conclusion. Current final regression counts and
+independent statuses are reported in `SYSTEM_INTEGRATION_FINAL_REPORT_V2.md`.

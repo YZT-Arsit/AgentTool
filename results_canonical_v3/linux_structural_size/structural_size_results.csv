@@ -1,0 +1,4 @@
+workflow,private_agent_id,private_action_shape,public_profile_id,public_events,request_events,response_events,frame_bytes_min,frame_bytes_max,destinations,forbidden_private_fields,dummy_heavy_operations,semantic_equivalence,exact_cross_workflow_structural_size_equality
+LLM_READ_TOOL,10,MODEL_TOOL_MODEL,11741752240284879909,36,18,18,1024,1024,1,0,0,True,True
+LLM_EFFECT_TOOL,11,MODEL_TOOL_MODEL,11741752240284879909,36,18,18,1024,1024,1,0,0,True,True
+LOGICAL_HANDOFF,20,HANDOFF_MODEL,11741752240284879909,36,18,18,1024,1024,1,0,0,True,True
