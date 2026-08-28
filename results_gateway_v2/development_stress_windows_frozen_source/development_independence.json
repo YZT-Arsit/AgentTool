@@ -1,0 +1,49 @@
+{
+  "kind": "DEVELOPMENT_ONLY",
+  "sessions": 15,
+  "slots": 1800,
+  "grouped_label_conditioned_variance": 0.00017832701720987644,
+  "permutation_p_value": 0.21139430284857572,
+  "permutations": 2000,
+  "preparation_lag_p99_ms": 1.234889,
+  "preparation_lag_max_ms": 2.0889,
+  "reference_timing_platform": false,
+  "affinity_applied": true,
+  "realtime_applied": false,
+  "timing_decision_allowed": false,
+  "request_release_slip": {
+    "p50_ms": 0.4394,
+    "p95_ms": 0.972115,
+    "p99_ms": 1.274337,
+    "max_ms": 5.9568,
+    "mean_ms": 0.4826857222222222
+  },
+  "request_ingress": {
+    "p50_ms": 0.0,
+    "p95_ms": 0.0,
+    "p99_ms": 0.0,
+    "max_ms": 0.6358,
+    "mean_ms": 0.0003532222222222222
+  },
+  "response_release_slip": {
+    "p50_ms": 0.4375,
+    "p95_ms": 0.97046,
+    "p99_ms": 1.2540839999999998,
+    "max_ms": 1.4815,
+    "mean_ms": 0.4765021111111111
+  },
+  "receiver_observed_response_lag": {
+    "p50_ms": 0.4394,
+    "p95_ms": 0.972115,
+    "p99_ms": 1.274337,
+    "max_ms": 5.9568,
+    "mean_ms": 0.4826857222222222
+  },
+  "preparation_lag": {
+    "p50_ms": 0.40785,
+    "p95_ms": 0.966725,
+    "p99_ms": 1.234889,
+    "max_ms": 2.0889,
+    "mean_ms": 0.45257644444444445
+  }
+}

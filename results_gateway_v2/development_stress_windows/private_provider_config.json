@@ -1,0 +1,11 @@
+{
+  "endpoints": {
+    "FAST": "http://127.0.0.1:62150/execute",
+    "MEDIUM": "http://127.0.0.1:62152/execute",
+    "SLOW": "http://127.0.0.1:62153/execute",
+    "VERY_SLOW": "http://127.0.0.1:62155/execute",
+    "JITTERED": "http://127.0.0.1:62157/execute"
+  },
+  "timeout_ms": 4000,
+  "allow_generic_http": false
+}

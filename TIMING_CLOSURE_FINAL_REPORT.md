@@ -1,130 +1,113 @@
-FINAL TIMING DECISION: TIMING_CONDITIONAL_GO
+FINAL TIMING DECISION: TIMING_NO_GO
 
-PIR TIMING: OPEN  
-MULTI-ROUND TIMING: OPEN  
-ACTION-TYPE TIMING: OPEN  
-TOOL TIMING: OPEN  
-DUMMY HEAVY OPS: 0  
+PIR TIMING: OPEN
+MULTI-ROUND TIMING: FAIL
+ACTION-TYPE TIMING: OPEN
+TOOL TIMING: FAIL
+DUMMY HEAVY OPS: 0
 RESOURCE PRIVACY: OPEN
 
 # Timing Closure Final Report
 
 ## Executive result
 
-The queue-and-pacer mechanism is operational at the socket boundary and materially reduces every previously strong
-timing attack. It does **not** satisfy the full conservative acceptance gate. The correct result is
-`TIMING_CONDITIONAL_GO`.
+The interrupted evaluation was recovered without regenerating confirmatory workloads. The native
+queue/pacer preserves endpoint, count, order, and serialized size, but it does **not** close the
+declared observer-boundary timing channel on the evaluated host. The final decision is
+`TIMING_NO_GO`.
 
-The mechanism succeeds causally: real downstream completion no longer calls or delays the cloud-visible response.
-Both directions use fixed-size frames over one persistent `CommonActionGateway` connection, and the Gateway releases
-only at public deadlines. Real SimplePIR queries—including randomized dummy-row queries—execute at every scheduled
-PIR slot. Dummy heavy work remains zero.
+The decisive evidence is a frozen Tool-frequency attack over 10-observation blocks: logistic
+regression reaches AUC 0.6525 (95% grouped CI 0.5677--0.7463, permutation p=0.0140) and random
+forest reaches 0.6594 (0.5422--0.7712, p=0.0490). The classifier is detecting actual,
+private-workload-correlated deadline slip at the socket boundary. Frame sizes remain exactly
+equal and dummy heavy work remains zero.
 
-The remaining blockers are empirical: a small significant combined PIR pairwise signal, non-converged Tool
-frequency/transition estimates, action results below rather than cleanly at chance, rare large OS scheduling stalls,
-and lack of packet-level capture.
+## Recovery and holdout validity
 
-## Before/after attacks
+`INTERRUPTED_RUN_RECOVERY.md` records the interruption boundary. The valid final evidence is:
 
-| Target | Before | Fresh frozen holdout after |
-|---|---:|---:|
-| PIR Agent frequency | LR AUC 0.738 | 0.361 LR / 0.319 RF |
-| PIR repeated target | not closed | 0.527 LR (p=0.035) / 0.522 RF (p=0.095) |
-| Tool repeated target | RF AUC 0.831 | 0.495 LR / 0.522 RF |
-| Tool class | RF top-1 0.770 | 0.250 LR / 0.458 RF; chance 0.333 |
-| Action type | RF top-1 0.544 | 0.125 LR / 0.125 RF; chance 0.250 |
-| Cross-session PIR | prior structural control | 0.438 LR / 0.359 RF |
+- `confirmatory_final_single/`: 56 episodes and 1,344 visible slots;
+- `confirmatory_final_tool_sequences/`: 30 episodes and 6,000 visible slots;
+- `confirmatory_pir/`: 66 episodes and 6,600 real SimplePIR operations;
+- `confirmatory_cross_session/`: preserved independent-session traces.
 
-Below-chance values are reported as measured; they are not relabeled as perfect privacy. For action type they indicate
-that the development mapping did not transfer, but they also fail the requested clean convergence-to-0.25 criterion.
+The earlier `confirmatory_single/` and `confirmatory_tool_sequences/` data were generated before
+the NOOP bookkeeping fix and remain excluded. Public profiles and attack fields were not changed.
+The continuation used development-only model fitting and group-level holdout resampling.
 
-## PIR fixed schedule
+## PIR timing
 
-Each development and confirmatory split ran 66 episodes and 6,600 official SimplePIR operations:
+The exact original single-query pair residual is logistic AUC 0.5272
+(95% CI 0.5014--0.5535, p=0.0348) and random-forest AUC 0.5224
+(0.4957--0.5468, p=0.0945).
 
-- 100 scheduled queries per episode at 5 ms;
-- 5,706 real-index queries;
-- 894 randomized dummy queries against reserved rows 1000–1063;
-- 6,600/6,600 exact recoveries;
-- fresh query randomness for repeated indices;
-- full preprocessing, answer, and recovery code for both real and dummy queries.
+Repeated-observation grouping does not establish a stable accumulating fingerprint:
 
-Agent frequency, rare-Agent, and real-vs-dummy occupancy classifiers show no significant advantage. Handoff-pattern
-point estimates remain 0.556/0.639. Combined repeated-target timing produces LR AUC 0.527 with 95% bootstrap CI
-0.501–0.553 and permutation p=0.035. Separately, request slip (AUC 0.523, p=0.065) and answer duration
-(AUC 0.514, p=0.164) are not significant. `PIR_FIXED_SCHEDULE_TIMING` therefore remains OPEN.
+| Observations | Logistic AUC (p) | Random-forest AUC (p) |
+|---:|---:|---:|
+| 10 | 0.4509 (0.0695) | 0.4332 (0.0280) |
+| 50 | 0.3875 (0.0705) | 0.4139 (0.0860) |
+| 100 | 0.3758 (0.1254) | 0.5216 (0.7936) |
 
-## Common action channel and result queue
-
-The implemented channel uses separate native cloud and Gateway processes and one persistent full-duplex loopback TCP
-connection. Every slot sends one 1,024-byte frame each way to the same destination. Requests and responses have
-independent native public clocks. Provider completion writes only to a private result queue; it does not send.
-
-FAST, MEDIUM, SLOW, VERY_SLOW, and JITTERED providers performed real asynchronous work with measured means of about
-16.9, 163.1, 794.4, 2,032.3, and 559.4 ms. Despite this range, the same 64-slot very-slow public schedule remained
-visible. Mean completion-to-release delay was 22.4 ms (p95 64.3 ms) in that matrix.
+The direction is unstable and uncertainty grows at 50/100 observations. Nevertheless, the
+10-observation random-forest association and original logistic result prevent a PASS. PIR timing
+is `OPEN`, not a demonstrated long-horizon linkability failure.
 
 ## Tool timing
 
-The strongest original failure—repeated target linkability—collapses to 0.495/0.522. Tool class is materially lower
-but not closed: the random forest reaches top-1 0.458 with p=0.095. Tool frequency reaches AUC 0.639/0.667 and the
-transition LR reaches 0.708, with wide intervals and no significant permutation evidence. Only six confirmatory
-episodes per sequence class make these tests underpowered. They are preserved as OPEN rather than promoted to PASS.
+The single-episode repeated-target test remains at chance: AUC 0.4953/0.5216 with p=0.9154/0.5920.
+Rare-event attacks do not transfer above chance. Transition estimates are wide and non-significant.
 
-All 3,000 requested Tool operations in the final long-sequence holdout completed exactly once. The 3,000 padding
-slots invoked no concrete Tool and no heavy computation.
+Frequency leakage is different. TSEQ0 versus TSEQ2 at 10 observations passes neither the AUC nor
+confidence/permutation privacy gate in either model. At 50/100 observations point estimates remain
+above chance but intervals are wide because only 12 independent source episodes exist. The
+10-observation result alone is sufficient to reject the timing-privacy claim for the tested
+profile.
 
-## Action-type timing
+Complete statistics are in `TOOL_SEQUENCE_OBSERVATION_RESULTS.csv`,
+`PIR_REPEATED_OBSERVATION_RESULTS.csv`, and `TIMING_INTERRUPTED_COMPLETION_REPORT.md`.
 
-The frozen development-trained action classifiers obtain top-1 0.125/0.125 on 32 confirmatory action episodes,
-below the 0.25 chance target. No individual timing ablation provides a significant above-chance attacker. Because
-the result does not converge cleanly to chance and the holdout is small, status remains OPEN rather than PASS.
+## Root cause
 
-## Deadline behavior
+The private result queue does decouple logical completion from the decision to emit. It does not
+guarantee that the emitter runs at the deadline. Provider-completion goroutines and associated
+runtime/logging/encryption work share an ordinary Windows scheduler with the response pacer.
+TSEQ0 has 0.56 ms mean response slip; TSEQ2 has 17.11 ms and reaches 656.96 ms. TSEQ3 reaches
+28.34 ms mean and 568.46 ms maximum. These state-conditioned differences are visible in actual
+socket timestamps.
 
-Nominal request and response deadline gaps are exactly profile-fixed. Confirmatory p95 response slip is 0.99 ms for
-single-action episodes and 1.61 ms for long Tool episodes. One 1,485.9 ms single-action stall and one 657.0 ms long
-Tool stall occurred. These stalls are not significantly tied to the tested private classes, but demonstrate that a
-general-purpose Windows scheduler does not provide a hard real-time guarantee.
+Thus the earlier interpretation of the long stalls as state-independent OS noise was incorrect.
+They are OS/runtime effects, but their occurrence is correlated with private workload structure.
 
-## Fresh holdout discipline
+## Properties that remain valid
 
-Development seeds fixed the code, profiles, and feature definitions. An initial Gateway confirmation exposed a
-functional bookkeeping bug: NOOPs were counted as queued results. Those artifacts are retained but invalidated.
-The bug was fixed without changing public timing parameters, development was rerun, and entirely new seeds
-`19001/19003` produced `confirmatory_final_*`. PIR confirmation was unaffected and remained untouched.
+- one persistent `CommonActionGateway` endpoint;
+- identical request/response count and order;
+- exactly 1,024 serialized bytes per request and response;
+- public scheduled-deadline metadata;
+- real result completion enters a private queue;
+- no dummy Tool or LLM work;
+- all 3,000 real Tool operations in the final sequence holdout completed exactly once;
+- full regression suite: 127 passed in the documented combined local environment.
 
-## Overhead
+These are structural/size properties. They do not imply timing privacy.
 
-| Experiment | Public traffic | Mean / p95 latency | CPU | Heavy/dummy |
-|---|---:|---:|---:|---:|
-| Confirmatory single | 2.75 MB, 1,344 frames/direction total | 1,204 / 1,176 ms | cloud 1.39 s, Gateway 1.88 s | 40 / 0 |
-| Confirmatory Tool sequences | 12.29 MB, 6,000 frames/direction total | 1,995 / 1,997 ms | cloud 5.95 s, Gateway 6.58 s | 3,000 / 0 |
-| Confirmatory PIR | 57.71 MB | 517 / 530 ms per 100-slot episode | not separated | 0 / 0 |
+## Limitations
 
-The single-action mean exceeds p95 because of one 1.49 s scheduler stall. At PIR scale, client state is 8.93 MB and
-peak Go allocation 44.35 MB. Fixed scheduling adds 894 dummy queries in the occupancy-control split. Complete
-measurements are in `TIMING_OVERHEAD_RESULTS.csv`.
-
-## Measurement and limitations
-
-- Primary evidence uses actual socket send/receive timestamps on both sides of the persistent loopback connection.
-- PIR evidence uses native server-call timestamps; it is not a packet trace.
-- Packet capture was not performed because available `PktMon` capture is system-wide and could collect unrelated
-  host traffic. No packet-level timing claim is made.
-- Windows scheduling, loopback networking, small sequence-class sample sizes, and one machine limit generality.
-- Resource privacy, provider collusion, global traffic analysis, arbitrary continuation epochs, and remote-provider
-  resource telemetry are not closed.
+- Twelve independent episodes per binary Tool-sequence comparison limit 50/100-observation power.
+- The original 2,000 PIR query pairs share underlying queries; the grouped 10/50/100 analysis is
+  the more conservative repeated-observation evidence.
+- Primary I/O evidence is socket-boundary timestamps on loopback, not packet capture.
+- Resource privacy, microarchitectural leakage, provider collusion, global traffic analysis, and
+  arbitrary continuation epochs are not closed.
+- All providers are controlled local synthetic emulators; no third-party system was contacted.
 
 ## Decision
 
-`TIMING_GO` is rejected because not every attack collapses cleanly to its control and packet-level PIR timing is not
-validated. `TIMING_NO_GO` is also rejected: downstream completion is demonstrably decoupled, the large prior timing
-signals are materially reduced, real/dummy PIR uses one real code path, the socket-boundary mechanism is independent
-of Agent execution, and dummy heavy work is zero.
+`TIMING_GO` and `TIMING_CONDITIONAL_GO` are rejected for the evaluated profile because a
+predefined, development-trained attack shows reproducible holdout advantage with group-aware
+uncertainty and permutation controls. The appropriate result is:
 
-The defensible conclusion is:
-
-> `TIMING_CONDITIONAL_GO`: preserve the native queued-release design, but do not claim full timing privacy until the
-> small PIR pair signal and underpowered Tool sequence results are resolved on a real-time-capable host with a fresh,
-> larger packet-level holdout.
+> `TIMING_NO_GO`: retain the structural/size mechanism as a separate result, but do not claim
+> observer-boundary timing privacy from this implementation. A future timing repair requires an
+> isolated/real-time-capable pacing boundary and a new untouched confirmatory holdout.

@@ -1,0 +1,20 @@
+{
+  "worker_ready": "READY pid=25000",
+  "pacer_ready": "READY 127.0.0.1:62158 pid=27412",
+  "worker_stdout": "",
+  "worker_stderr": "",
+  "pacer_stdout": "",
+  "pacer_stderr": "",
+  "client_stdout": "",
+  "client_stderr": "",
+  "provider_pids": [
+    27056,
+    4480,
+    23496,
+    32380,
+    31952
+  ],
+  "worker_pid": 25000,
+  "pacer_pid": 27412,
+  "client_pid": 16500
+}

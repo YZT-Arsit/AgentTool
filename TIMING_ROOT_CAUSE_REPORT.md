@@ -39,14 +39,20 @@ round-trip time, inter-request/inter-response gaps, session-relative time, and a
   ablation is significant at 0.05 on the fresh holdout.
 - PIR repeated-target ablation is weak separately: request-slip LR AUC 0.523 (p=0.065) and answer-duration LR AUC
   0.514 (p=0.164). Their combined attacker reaches AUC 0.527 with p=0.035.
-- Two large state-independent OS/process stalls occurred: maximum response slips of 1,485.9 ms in the single-action
-  run and 657.0 ms in the long Tool run, despite p95 slips of 0.99 and 1.61 ms. Labels were shuffled independently of
-  execution order; no tested single layer ties these stalls reproducibly to a secret class.
+- Large OS/process stalls occurred: maximum response slips of 1,485.9 ms in the single-action
+  run and 657.0 ms in the long Tool run, despite p95 slips of 0.99 and 1.61 ms. The completed
+  grouped analysis shows that the long Tool-run slips are not state-independent: TSEQ0 has
+  0.56 ms mean response slip, while TSEQ2 has 17.11 ms and TSEQ3 has 28.34 ms. A frozen
+  10-observation frequency attacker reaches AUC 0.6525/0.6594 with p=0.0140/0.0490.
 
 ## Earliest remaining divergence
 
 The earliest measured residual is at the native scheduler/server boundary: scheduled-to-actual PIR invocation slip.
 It is individually non-significant but contributes to the combined pairwise result. For the common action channel,
-the first substantial variation is actual socket release/transport jitter, not downstream completion.
+the first substantial variation is actual socket release slip. Provider-completion goroutines share the ordinary OS
+and Go scheduler with the response pacer; their workload-correlated wakeups and runtime activity can delay actual
+release even though completion does not directly call the sender.
 
-The evidence therefore supports the queue/pacer causal repair, but not a claim of complete timing closure.
+The evidence supports logical completion/release decoupling, but falsifies complete timing closure for this
+deployment. An isolated or real-time-capable pacer would require a new untouched holdout rather than tuning on these
+traces.

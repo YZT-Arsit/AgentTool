@@ -1,0 +1,11 @@
+{
+  "name": "GATEWAY_V2_DEVELOPMENT_STRESS",
+  "frame_bytes": 1024,
+  "slots": 120,
+  "sessions": 15,
+  "request_delta_ns": 10000000,
+  "response_delta_ns": 10000000,
+  "mask_ns": 5000000,
+  "start_delay_ns": 500000000,
+  "inter_session_gap_ns": 20000000
+}

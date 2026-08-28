@@ -33,6 +33,8 @@ Thumbs.db
 
 # Python testing/cache
 .pytest_cache/
+.pytest_v2_*/
+.pytest_full_*/
 .mypy_cache/
 .ruff_cache/
 
@@ -46,3 +48,5 @@ Thumbs.db
 tmp/
 temp/
 cache/
+*.shared
+common_action_gateway_v2/bin/

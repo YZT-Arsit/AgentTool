@@ -1,0 +1,49 @@
+{
+  "kind": "DEVELOPMENT_ONLY",
+  "sessions": 15,
+  "slots": 1800,
+  "grouped_label_conditioned_variance": 0.000513246504240742,
+  "permutation_p_value": 0.42028985507246375,
+  "permutations": 2000,
+  "preparation_lag_p99_ms": 1.3771309999999999,
+  "preparation_lag_max_ms": 1.4691,
+  "reference_timing_platform": false,
+  "affinity_applied": true,
+  "realtime_applied": false,
+  "timing_decision_allowed": false,
+  "request_release_slip": {
+    "p50_ms": 0.4586,
+    "p95_ms": 0.993865,
+    "p99_ms": 1.310619,
+    "max_ms": 2.1527,
+    "mean_ms": 0.49683622222222223
+  },
+  "request_ingress": {
+    "p50_ms": 0.0,
+    "p95_ms": 0.0,
+    "p99_ms": 0.0,
+    "max_ms": 5.3543,
+    "mean_ms": 0.004727611111111111
+  },
+  "response_release_slip": {
+    "p50_ms": 0.45840000000000003,
+    "p95_ms": 0.99191,
+    "p99_ms": 1.2971359999999998,
+    "max_ms": 3.1711,
+    "mean_ms": 0.4962943888888889
+  },
+  "receiver_observed_response_lag": {
+    "p50_ms": 0.4622,
+    "p95_ms": 0.9953249999999999,
+    "p99_ms": 1.3157400000000001,
+    "max_ms": 4.7785,
+    "mean_ms": 0.5020315555555556
+  },
+  "preparation_lag": {
+    "p50_ms": 0.45325000000000004,
+    "p95_ms": 0.9722549999999999,
+    "p99_ms": 1.3771309999999999,
+    "max_ms": 1.4691,
+    "mean_ms": 0.4841327222222222
+  }
+}

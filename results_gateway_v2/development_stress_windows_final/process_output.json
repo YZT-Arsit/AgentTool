@@ -1,0 +1,20 @@
+{
+  "worker_ready": "READY pid=12224",
+  "pacer_ready": "READY 127.0.0.1:61424 pid=14072",
+  "worker_stdout": "",
+  "worker_stderr": "",
+  "pacer_stdout": "",
+  "pacer_stderr": "",
+  "client_stdout": "",
+  "client_stderr": "",
+  "provider_pids": [
+    17364,
+    11784,
+    33284,
+    31948,
+    34148
+  ],
+  "worker_pid": 12224,
+  "pacer_pid": 14072,
+  "client_pid": 34160
+}

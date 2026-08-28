@@ -1,0 +1,14 @@
+{
+  "kind": "DEVELOPMENT_ONLY",
+  "sessions": 15,
+  "slots": 1800,
+  "grouped_label_conditioned_variance": 8.763663145061704e-05,
+  "permutation_p_value": 0.8445777111444278,
+  "permutations": 2000,
+  "preparation_lag_p99_ms": 1.410632,
+  "preparation_lag_max_ms": 1.894,
+  "reference_timing_platform": false,
+  "affinity_applied": true,
+  "realtime_applied": false,
+  "timing_decision_allowed": false
+}
