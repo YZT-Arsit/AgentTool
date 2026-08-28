@@ -1,0 +1,3 @@
+episode_token,family,label,real_actions,real_heavy_ops
+101,SMOKE,FAST,1,1
+102,SMOKE,NOOP,1,0

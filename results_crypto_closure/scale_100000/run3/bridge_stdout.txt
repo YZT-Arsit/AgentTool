@@ -1,0 +1,3 @@
+Working with: n=1024; db size=2^26 (l=9295, m=9091); logq=32; p=833; sigma=6.400000
+Total packed DB size is ~97.732757 MB
+ACV_SIMPLEPIR_RESULT records=100000 correct=0/10 setup_ms=28437.633

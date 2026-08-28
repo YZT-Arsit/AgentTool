@@ -1,0 +1,33 @@
+{
+  "STANDARD": {
+    "name": "STANDARD",
+    "slots": 24,
+    "delta_ms": 50.0,
+    "response_lag_ms": 25.0,
+    "frame_bytes": 1024,
+    "start_delay_ms": 25.0,
+    "inter_episode_ms": 5.0
+  },
+  "LONG_SEQUENCE": {
+    "name": "LONG_SEQUENCE",
+    "slots": 200,
+    "delta_ms": 10.0,
+    "response_lag_ms": 5.0,
+    "frame_bytes": 1024,
+    "start_delay_ms": 25.0,
+    "inter_episode_ms": 5.0
+  },
+  "VERY_SLOW_VALIDATION": {
+    "name": "VERY_SLOW_VALIDATION",
+    "slots": 64,
+    "delta_ms": 50.0,
+    "response_lag_ms": 25.0,
+    "frame_bytes": 1024,
+    "start_delay_ms": 25.0,
+    "inter_episode_ms": 5.0
+  },
+  "PIR": {
+    "R_pir": 100,
+    "Delta_pir_ms": 5.0
+  }
+}

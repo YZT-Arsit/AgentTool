@@ -1,0 +1,61 @@
+{
+  "commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+  "existing_rule": {
+    "effect": {
+      "document": "synthetic_document_8",
+      "recipient": "contact_17"
+    },
+    "effect_count": 1,
+    "final_text": "task complete",
+    "host_visible_trace": [
+      {
+        "client_calls": 2,
+        "request_class": "PUBLIC_TASK",
+        "response_content_types": [
+          "function_result",
+          "text"
+        ],
+        "round": 1,
+        "serialized_bytes": 562
+      }
+    ],
+    "standing_rule_count_after": 1
+  },
+  "missing_rule": {
+    "effect": {
+      "document": "synthetic_document_8",
+      "recipient": "contact_17"
+    },
+    "effect_count": 1,
+    "final_text": "task complete",
+    "host_visible_trace": [
+      {
+        "client_calls": 1,
+        "request_class": "PUBLIC_TASK",
+        "response_content_types": [
+          "function_call",
+          "function_approval_request"
+        ],
+        "round": 1,
+        "serialized_bytes": 700
+      },
+      {
+        "client_calls": 1,
+        "request_class": "LOCAL_APPROVAL_RESPONSE",
+        "response_content_types": [
+          "function_result",
+          "text"
+        ],
+        "round": 2,
+        "serialized_bytes": 562
+      }
+    ],
+    "standing_rule_count_after": 1
+  },
+  "private_state": "session-backed standing approval rule exists vs absent",
+  "runtime": "Microsoft Agent Framework",
+  "same_final_effect": true,
+  "same_initial_task": true,
+  "semantic_patches": "none",
+  "trajectory_distinguishable": true
+}

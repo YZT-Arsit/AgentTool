@@ -1,0 +1,5 @@
+architecture,key_bytes,position_map_bytes,stash_bytes,cache_bytes,epoch_version_bytes,journal_checkpoint_bytes,other_trusted_persistent_bytes,total_trusted_persistent_bytes
+FIXED-CANONICAL-MODULAR,96,640,6,0,1292,4414,192,6640
+UNIFIED-ORAM,32,640,2,0,2052,6212,64,9002
+HYBRID-P,64,512,4,128,1032,3399,128,5267
+HYBRID-PH,32,256,2,2688,516,1699,64,5257

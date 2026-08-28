@@ -1,0 +1,33 @@
+{
+  "forbidden_fields": [],
+  "runtimes": {
+    "Microsoft Agent Framework": {
+      "episodes": 384,
+      "all_success": false,
+      "authorization_preserved": false,
+      "effect_equivalent": false,
+      "effect_count_one": false,
+      "dummy_external_effects": 0,
+      "m3_fixed_count": true,
+      "m3_fixed_size": true,
+      "m3_fixed_sequence": true,
+      "m3_oram_accesses": [
+        15
+      ]
+    },
+    "OpenAI Agents SDK": {
+      "episodes": 384,
+      "all_success": true,
+      "authorization_preserved": true,
+      "effect_equivalent": true,
+      "effect_count_one": true,
+      "dummy_external_effects": 0,
+      "m3_fixed_count": true,
+      "m3_fixed_size": true,
+      "m3_fixed_sequence": true,
+      "m3_oram_accesses": [
+        15
+      ]
+    }
+  }
+}

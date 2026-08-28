@@ -1,0 +1,7 @@
+architecture,process_boundary,plaintext_confinement,authorization,revocation,deny_to_allow,functional
+DIRECT-MODULAR,pass,pass,pass,pass,pass,pass
+INDEPENDENT-MODULAR-ORAM,pass,pass,pass,pass,pass,pass
+FIXED-CANONICAL-MODULAR,pass,pass,pass,pass,pass,pass
+UNIFIED-ORAM,pass,pass,pass,pass,pass,pass
+HYBRID-P,pass,pass,pass,pass,pass,pass
+HYBRID-PH,pass,pass,pass,pass,pass,pass

@@ -1,0 +1,45 @@
+architecture,fault,detected,safe_failure,error_secret_independent,result
+FIXED-CANONICAL-MODULAR,ciphertext corruption,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,tag corruption,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,version corruption,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,missing block/bucket,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,duplicated block/bucket,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,old block replay,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,old bucket replay,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,old tree snapshot,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,old permission record,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,old disclosure snapshot,True,True,True,DETECTED
+FIXED-CANONICAL-MODULAR,key rotation replay,True,True,True,DETECTED
+UNIFIED-ORAM,ciphertext corruption,True,True,True,DETECTED
+UNIFIED-ORAM,tag corruption,True,True,True,DETECTED
+UNIFIED-ORAM,version corruption,True,True,True,DETECTED
+UNIFIED-ORAM,missing block/bucket,True,True,True,DETECTED
+UNIFIED-ORAM,duplicated block/bucket,True,True,True,DETECTED
+UNIFIED-ORAM,old block replay,True,True,True,DETECTED
+UNIFIED-ORAM,old bucket replay,True,True,True,DETECTED
+UNIFIED-ORAM,old tree snapshot,True,True,True,DETECTED
+UNIFIED-ORAM,old permission record,True,True,True,DETECTED
+UNIFIED-ORAM,old disclosure snapshot,True,True,True,DETECTED
+UNIFIED-ORAM,key rotation replay,True,True,True,DETECTED
+HYBRID-P,ciphertext corruption,True,True,True,DETECTED
+HYBRID-P,tag corruption,True,True,True,DETECTED
+HYBRID-P,version corruption,True,True,True,DETECTED
+HYBRID-P,missing block/bucket,True,True,True,DETECTED
+HYBRID-P,duplicated block/bucket,True,True,True,DETECTED
+HYBRID-P,old block replay,True,True,True,DETECTED
+HYBRID-P,old bucket replay,True,True,True,DETECTED
+HYBRID-P,old tree snapshot,True,True,True,DETECTED
+HYBRID-P,old permission record,True,True,True,DETECTED
+HYBRID-P,old disclosure snapshot,True,True,True,DETECTED
+HYBRID-P,key rotation replay,True,True,True,DETECTED
+HYBRID-PH,ciphertext corruption,True,True,True,DETECTED
+HYBRID-PH,tag corruption,True,True,True,DETECTED
+HYBRID-PH,version corruption,True,True,True,DETECTED
+HYBRID-PH,missing block/bucket,True,True,True,DETECTED
+HYBRID-PH,duplicated block/bucket,True,True,True,DETECTED
+HYBRID-PH,old block replay,True,True,True,DETECTED
+HYBRID-PH,old bucket replay,True,True,True,DETECTED
+HYBRID-PH,old tree snapshot,True,True,True,DETECTED
+HYBRID-PH,old permission record,True,True,True,DETECTED
+HYBRID-PH,old disclosure snapshot,True,True,True,DETECTED
+HYBRID-PH,key rotation replay,True,True,True,DETECTED

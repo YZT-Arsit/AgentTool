@@ -1,0 +1,5 @@
+case,initial_outcome,reconciliation,tool_effect_count,audit_status,duplicate_effects,silent_effect_without_audit,false_committed_audit,safe,recovery_latency_ms
+effect_succeeds_log_fails,EffectFailure,committed,1,COMMITTED,0,False,False,True,12.2437
+log_prepare_effect_fails,EffectFailure,aborted,0,ABORTED,0,False,False,True,8.2216
+effect_succeeds_crash_before_ack,CrashInjected,committed,1,COMMITTED,0,False,False,True,13.4323
+ambiguous_timeout,TimeoutError,committed,1,COMMITTED,0,False,False,True,10.515

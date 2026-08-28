@@ -1,0 +1,4 @@
+N,real_heavy_ops,dummy_heavy_ops,private_lookup_ops,control_ops,fixed_frames,fixed_frame_wire_bytes,lookup_wire_bytes,client_memory_bytes,server_memory_bytes
+1000,1,0,1,4,4,8192,1032,1024,1024000
+10000,1,0,1,4,4,8192,1032,1024,10240000
+100000,1,0,1,4,4,8192,1032,1024,102400000

@@ -1,0 +1,28 @@
+FINAL DECISION: CONDITIONAL_GO
+
+REAL PIR: PASS
+REAL PIR 100K: PASS (100,000 logical rows; 102.4 MB; 10/10 correct)
+FULL PREPROCESSING: PASS (23,506.850 ms)
+MULTI-ROUND STRUCTURAL/SIZE PRIVACY: PASS
+MULTI-ROUND FULL OBSERVER PRIVACY: OPEN
+CROSS-SESSION LINKABILITY: PASS (AUC 0.476 / 0.458)
+ACTION-TYPE STRUCTURAL PRIVACY: PASS (top-1 0.250; chance 0.250)
+ACTION-TYPE SIZE PRIVACY: PASS (top-1 0.250; chance 0.250)
+ACTION-TYPE TIMING PRIVACY: OPEN (top-1 up to 0.544)
+ACTION-TYPE RESOURCE PRIVACY: OPEN (top-1 up to 0.473)
+TOOL STRUCTURAL/SIZE PRIVACY: PASS WITH COMMON-EGRESS ASSUMPTION
+TOOL TIMING PRIVACY: OPEN (class top-1 up to 0.770; linkability AUC 0.831)
+COMMON EXECUTOR: PASS
+LOGICAL HANDOFF: PASS
+STABLE TARGET PSEUDONYM: NONE FOUND
+DUMMY HEAVY OPERATIONS: 0
+REGRESSION SUITE: 118 PASSED
+
+Strongest positive evidence:
+Official SimplePIR feeds the real common-executor path at 100K and long-horizon structural/size target attacks do not beat controls.
+
+Strongest falsification:
+Timing and coarse resource observations recover action/Tool behavior, including Tool frequency and rare occurrences.
+
+FINAL RECOMMENDATION:
+Continue only as a structural/size Agent-identity design. Require a separately validated timing/resource profile and an explicit trusted egress before any high-assurance claim.

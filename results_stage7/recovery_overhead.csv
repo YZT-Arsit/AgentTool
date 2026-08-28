@@ -1,0 +1,5 @@
+architecture,recovery_domains,checkpoint_bytes,recovery_latency_ms,recovery_read_bytes,recovery_write_bytes,blast_radius,automatic_recovery
+FIXED-CANONICAL-MODULAR,3,4414,6.54,68790,0,one semantic service,yes
+UNIFIED-ORAM,1,6212,5.6554,100911,0,all unified state,yes
+HYBRID-P,2,3399,4.2753,50934,0,outsourced subset,yes
+HYBRID-PH,1,1699,2.0419,25405,0,outsourced subset,yes

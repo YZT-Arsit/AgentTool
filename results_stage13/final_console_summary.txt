@@ -1,0 +1,113 @@
+STAGE-13 DECISION:
+C - STRUCTURAL/SIZE PROFILE VALID, TIMING PROFILE FAILS
+
+Earliest timing divergence layer:
+T4 actual release/deadline-slip; additional T4-T7 and T9 family-specific signal
+
+Root cause:
+Stage-12 shaping above the socket boundary plus Python-GIL receiver starvation were repaired; residual state-correlated deadline/transport scheduling and fixed-guard overflow remain
+
+Observer-boundary shaper implemented:
+YES
+
+Secret-dependent deadline slip:
+YES
+
+Runtime 1 timing AUC:
+0.795 (authorization commit-time, within-task LR; development evidence)
+
+Runtime 2 timing AUC:
+0.710 (authorization send-to-receive, grouped-task LR; development evidence)
+
+Combined timing AUC:
+0.571 (OpenAI pooled send-to-receive LR); cross-runtime pooled receiver-arrival LR = 0.515
+
+95% CI:
+Runtime 1 0.610-0.910; Runtime 2 0.611-0.789
+
+Permutation baseline:
+0.538 / 0.504 for the two strongest reported attacks
+
+Permutation p-value:
+0.039 / 0.020
+
+Structural AUC:
+0.518 cross-runtime pooled LR (95% CI 0.479-0.570; p=0.176)
+
+Size AUC:
+0.500
+
+Combined-feature AUC:
+0.519 Microsoft pooled LR; 0.489 OpenAI pooled LR
+
+Grouped-task timing AUC:
+0.710 OpenAI authorization send-to-receive LR
+
+Cross-runtime timing result:
+No strong portable receiver-arrival classifier; family-specific within-runtime leakage remains
+
+Actual receiver-visible size equality:
+PASS
+
+Actual release-slot equality:
+PASS for count/index/nominal schedule; timing equality FAILS
+
+Cadence selected:
+P99+1ms: Microsoft 4.2921 ms; OpenAI 6.2975 ms
+
+Deadline miss rate:
+Microsoft 1.25%; OpenAI 1.46%
+
+Overflow rate:
+Microsoft 0.52% (1/192, fail closed); OpenAI 0%
+
+Latency overhead:
+Microsoft 2.11x M2; OpenAI 2.35x M2
+
+Dummy fraction:
+Microsoft 50.10%; OpenAI 50.00%
+
+Authorization equivalence:
+FAIL (one fail-closed Microsoft overflow; no unauthorized ALLOW)
+
+Effect equivalence:
+FAIL (one intended Microsoft effect suppressed)
+
+Dummy external effects:
+0
+
+Security definition:
+STRUCTURAL PROFILE ONLY
+
+tau2 live evaluation:
+NOT RUN
+
+AgentDojo live non-regression:
+NOT RUN
+
+ToolPrivacyBench executable repository:
+NOT FOUND
+
+Final method profile:
+STRUCTURAL
+
+Method maturity:
+CONTROLLED PROTOTYPE
+
+Any new ORAM needed?:
+NO
+
+Any PIR needed?:
+NO
+
+Any new synthetic privacy workload needed?:
+NO
+
+Research question frozen?:
+NO - transport code is frozen for a fresh holdout, but timing and full-system claims are not
+
+Ready to begin paper writing?:
+NO
+
+FINAL RECOMMENDATION:
+Treat the 40-task results as development evidence for a one-direction five-slot paced-cover primitive; implement the planned bidirectional persistent channels, predeclare failure semantics, and run one fresh untouched holdout without further tuning.

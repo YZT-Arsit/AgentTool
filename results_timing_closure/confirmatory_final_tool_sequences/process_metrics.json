@@ -1,0 +1,10 @@
+{
+  "cloud_pacer": {
+    "cpu_seconds": 5.953125,
+    "peak_working_set_bytes": 44072960
+  },
+  "gateway": {
+    "cpu_seconds": 6.578125,
+    "peak_working_set_bytes": 16400384
+  }
+}

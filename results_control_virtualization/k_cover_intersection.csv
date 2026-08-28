@@ -1,0 +1,5 @@
+N,k,calls,mean_intersection_candidates,attacker_posterior_top1,full_domain_chance
+1000,8,1,8,0.125,0.001
+1000,8,2,1.06,0.97,0.001
+1000,8,4,1,1.0,0.001
+1000,8,8,1,1.0,0.001

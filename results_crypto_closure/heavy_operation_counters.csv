@@ -1,0 +1,6 @@
+experiment,real_agent_heavy_ops,real_llm_ops,real_tool_ops,dummy_heavy_ops,PIR_ops,control_ops,fixed_frames,note
+100K_lookup_correctness,0,0,0,0,10,10,40,lookup and control-path integration only
+multiround_M0_M7,0,0,0,0,16000,16000,64000,selection and control-transcript privacy experiment
+action_type_matched_slots,0,200,200,0,0,800,800,200 samples per AGENT LLM TOOL NOOP class
+tool_multiround_TSEQ0_TSEQ4,0,0,5000,0,0,5000,5000,every listed Tool operation is real and requested
+one_heavy_candidate_invariant,0,0,1,0,1,4,4,representative single-heavy candidate path

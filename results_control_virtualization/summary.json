@@ -1,0 +1,28 @@
+{
+  "frameworks": [
+    "Microsoft Agent Framework",
+    "OpenAI Agents SDK"
+  ],
+  "workloads": 9,
+  "native_agents": 22,
+  "total_behaviors": 85,
+  "compiled_or_shared_behaviors": 81,
+  "unsupported_behaviors": 4,
+  "aggregate_ir_coverage": 0.9529411764705882,
+  "capsule_bytes": 1024,
+  "max_scale_instantiated": 100000,
+  "lookup_backend": "MOCK_PRIVATE_LOOKUP_NON_CRYPTOGRAPHIC",
+  "real_pir_integrated": false,
+  "b2_common_executor_exact_structural_equality": true,
+  "b2_end_to_end_target_privacy_validated": false,
+  "logical_handoff_uses_same_executor": true,
+  "real_heavy_ops": 1,
+  "dummy_heavy_ops": 0,
+  "timing_privacy_claimed": false,
+  "decision": "CONDITIONAL_GO",
+  "conditions": [
+    "integrate and validate a real single-server PIR backend at 100K rows",
+    "validate live timing at the observer boundary in a fresh stage",
+    "limit support to declarative framework-native control; dynamic callbacks and fan-out remain unsupported"
+  ]
+}

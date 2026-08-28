@@ -1,0 +1,24 @@
+path,action,reason
+stage11_core_redesign/routing.py,DELETED,Rejected named Agent dispatch with ORAM/full-cover variants
+stage11_core_redesign/experiment.py,DELETED,Driver depended on rejected dispatch path
+scripts/run_stage11.py,DELETED,Stale rejected-dispatch CLI
+tests/test_stage11.py,DELETED,Obsolete ORAM/full-cover invocation assertions
+results_stage11/routing_privacy.csv,DELETED,Generated rejected-dispatch result
+results_stage11/routing_scaling.csv,DELETED,Generated rejected-dispatch result
+results_stage11/stage11_summary.json,DELETED,Mixed rejected routing results
+results_stage11/final_console_summary.txt,DELETED,Superseded routing decision
+results_stage12/private_dispatch.csv,DELETED,Generated full-cover result
+results_stage12/routing_summary.csv,DELETED,Generated full-cover summary
+PRIVATE_AGENT_DISPATCH_DESIGN.md,DELETED,Rejected dispatch design
+PRIVATE_DISPATCH_SUPPORTING_RESULTS.md,DELETED,Rejected full-cover results
+FINAL_ROUTING_PRIOR_ART_AUDIT.md,DELETED,Superseded routing proposal audit
+ROUTING_PRIOR_ART_MATRIX.csv,DELETED,Superseded routing proposal matrix
+FINAL_SCOPE_GATE.md,DELETED,Selected rejected dispatch component
+FINAL_EXPERIMENT_MATRIX.md,DELETED,Scheduled obsolete routing experiments
+STAGE11_CORE_METHOD_REPORT.md,DELETED,Mixed rejected dispatch into method decision
+stage12_final_p0/supporting.py,MODIFIED,Removed full-cover dispatch; retained ORAM scaling as optional private-state backend
+stage12_final_p0/summarize.py,MODIFIED,Removed private-dispatch aggregation
+tests/test_stage12.py,MODIFIED,Removed obsolete full-cover test
+stage11_core_redesign/__init__.py,MODIFIED,Removed routing exports
+src/path_oram.py,RETAINED_AND_RELABELED,OPTIONAL_PRIVATE_STATE_BACKEND only
+agent_control_virtualization/,ADDED,New active common-executor control virtualization prototype

@@ -1,0 +1,9 @@
+candidate,novelty,evidence,strongest_prior_art,defensible
+C1 new access-pattern principle,NOT NOVEL,"Known non-composition and fixed-trace behavior",Opal; ObliDB; ORAM literature,no
+C2 agent-tool mediation leakage characterization,MODERATE,"Natural L1 RPC traces; grouped/cross-policy/cross-task transfer",GAAP; secure-agent IFC systems,yes narrowly
+C3 first realistic measurement of mediation traces,WEAK,"Source-faithful L1 only; not L2/L3",GAAP evaluation; Opal synthetic pipeline,no first claim
+C4 formal mediation-trace leakage model,MODERATE,"Explicit View_H and leakage function by granularity",Generic simulation-based obliviousness,partial
+C5 design-space comparison for tool mediation,MODERATE,"Original/per-service/unified/fixed/trusted comparison",Opal; ObliDB,yes as application data
+C6 dynamic/adaptive mediation challenge,MODERATE,"Consent and retry remain AUC 1.0 under per-action fixed shaping",Opal fixed-budget principle; oblivious state machines,yes as open problem
+C7 enterprise shared security-state challenge,MODERATE,"Freshness revocation history and effect constraints",Authorization and distributed-systems literature,yes as systems characterization
+

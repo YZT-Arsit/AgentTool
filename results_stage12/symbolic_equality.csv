@@ -1,0 +1,17 @@
+runtime,family,variant,structural_equal,size_equal,pairs
+Microsoft Agent Framework,AUTHORIZATION,M0,False,False,40
+Microsoft Agent Framework,AUTHORIZATION,M1,False,False,40
+Microsoft Agent Framework,AUTHORIZATION,M2,True,False,40
+Microsoft Agent Framework,AUTHORIZATION,M3,True,True,40
+Microsoft Agent Framework,PROVENANCE_HISTORY,M0,False,False,40
+Microsoft Agent Framework,PROVENANCE_HISTORY,M1,False,False,40
+Microsoft Agent Framework,PROVENANCE_HISTORY,M2,True,False,40
+Microsoft Agent Framework,PROVENANCE_HISTORY,M3,True,True,40
+OpenAI Agents SDK,AUTHORIZATION,M0,False,False,40
+OpenAI Agents SDK,AUTHORIZATION,M1,False,False,40
+OpenAI Agents SDK,AUTHORIZATION,M2,True,False,40
+OpenAI Agents SDK,AUTHORIZATION,M3,True,True,40
+OpenAI Agents SDK,PROVENANCE_HISTORY,M0,False,False,40
+OpenAI Agents SDK,PROVENANCE_HISTORY,M1,False,False,40
+OpenAI Agents SDK,PROVENANCE_HISTORY,M2,True,False,40
+OpenAI Agents SDK,PROVENANCE_HISTORY,M3,True,True,40

@@ -1,0 +1,4 @@
+N,backend,cryptographic_target_privacy,registry_bytes,capsule_bytes,preprocessing_ms,lookup_mean_us,lookup_p95_us,lookup_request_bytes,lookup_response_bytes,lookup_server_cpu_mean_us,lookup_client_memory_bytes,common_control_step_mean_us,fixed_transcript_bytes,total_excluding_heavy_us,representative_heavy_cpu_proxy_us,total_including_one_heavy_proxy_us
+1000,MOCK_PRIVATE_LOOKUP_NON_CRYPTOGRAPHIC,NO,1024000,1024,0.404,0.492,1.3,8,1024,0.492,1024,0.5944,8192,1.0864,36237.8,36238.8864
+10000,MOCK_PRIVATE_LOOKUP_NON_CRYPTOGRAPHIC,NO,10240000,1024,4.0994,0.365,0.6,8,1024,0.365,1024,0.5944,8192,0.9594,36125.2,36126.1594
+100000,MOCK_PRIVATE_LOOKUP_NON_CRYPTOGRAPHIC,NO,102400000,1024,45.6438,0.494,0.9,8,1024,0.494,1024,0.5898,8192,1.0838,35233.7,35234.7838

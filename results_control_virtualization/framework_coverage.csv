@@ -1,0 +1,10 @@
+workload,framework,source,total_behaviors,compiled,shared_primitive,unsupported,coverage,capsule_bytes_mean,capsule_count,states,transitions,tool_handles,handoff_targets
+openai-language-routing,OpenAI Agents SDK,external_stage10/openai-agents-python/examples/agent_patterns/routing.py,15,11,4,0,1.0,1024,4,11,11,0,3
+openai-customer-service,OpenAI Agents SDK,external_stage10/openai-agents-python/examples/customer_service/main.py,15,10,5,0,1.0,1024,3,12,12,2,4
+openai-agent-lifecycle,OpenAI Agents SDK,external_stage10/openai-agents-python/examples/basic/agent_lifecycle_example.py,9,5,3,1,0.888889,1024,2,6,6,1,1
+openai-agents-as-tools,OpenAI Agents SDK,external_stage10/openai-agents-python/examples/agent_patterns/agents_as_tools.py,11,6,5,0,1.0,1024,3,8,8,2,0
+openai-dynamic-instructions,OpenAI Agents SDK,external_stage10/openai-agents-python/examples/basic/dynamic_system_prompt.py,3,1,1,1,0.666667,1024,1,2,2,0,0
+microsoft-simple-tool,Microsoft Agent Framework,external_stage9/agent-framework/python/packages/core/tests/agents/test_agent.py,4,2,2,0,1.0,1024,1,3,3,1,0
+microsoft-sequential-workflow,Microsoft Agent Framework,external_stage9/agent-framework/python/packages/core/tests/workflow/test_workflow_builder.py,11,8,3,0,1.0,1024,3,8,8,0,2
+microsoft-conditional-workflow,Microsoft Agent Framework,external_stage9/agent-framework/python/packages/core/tests/workflow/test_workflow_builder.py,7,4,2,1,0.857143,1024,2,4,4,0,0
+microsoft-fanout-workflow,Microsoft Agent Framework,external_stage9/agent-framework/python/packages/core/tests/workflow/test_workflow_builder.py,10,6,3,1,0.9,1024,3,6,6,0,0

@@ -1,0 +1,10 @@
+{"episode":"scale","round":0,"private_index":0,"private_class":"RANDOM","query_generation_ms":11.301,"recovery_ms":4.853,"correct":false}
+{"episode":"scale","round":1,"private_index":1,"private_class":"RANDOM","query_generation_ms":11.833,"recovery_ms":4.381,"correct":false}
+{"episode":"scale","round":2,"private_index":17,"private_class":"RANDOM","query_generation_ms":11.604,"recovery_ms":3.707,"correct":false}
+{"episode":"scale","round":3,"private_index":999,"private_class":"RANDOM","query_generation_ms":11.657,"recovery_ms":5.014,"correct":false}
+{"episode":"scale","round":4,"private_index":9999,"private_class":"RANDOM","query_generation_ms":13.422,"recovery_ms":4.145,"correct":false}
+{"episode":"scale","round":5,"private_index":50000,"private_class":"RANDOM","query_generation_ms":11.569,"recovery_ms":3.568,"correct":false}
+{"episode":"scale","round":6,"private_index":77777,"private_class":"RANDOM","query_generation_ms":9.748,"recovery_ms":4.719,"correct":false}
+{"episode":"scale","round":7,"private_index":99999,"private_class":"RANDOM","query_generation_ms":10.963,"recovery_ms":3.721,"correct":false}
+{"episode":"scale","round":8,"private_index":17,"private_class":"RANDOM","query_generation_ms":10.649,"recovery_ms":3.874,"correct":false}
+{"episode":"scale","round":9,"private_index":99999,"private_class":"RANDOM","query_generation_ms":10.11,"recovery_ms":5.36,"correct":false}

@@ -1,0 +1,4 @@
+architecture,logical_accesses,physical_blocks,bytes_action
+CANONICAL-MODULAR,4,368,1507328
+UNIFIED-UNPADDED,3,312,1277952
+UNIFIED-PADDED,4,416,1703936

@@ -1,0 +1,17 @@
+train_runtime,test_runtime,feature_set,model,auc,episodes
+Microsoft Agent Framework,OpenAI Agents SDK,RELEASE_SLIP,LogisticRegression,0.5029839409722222,192
+Microsoft Agent Framework,OpenAI Agents SDK,RELEASE_SLIP,RandomForest,0.46647135416666663,192
+Microsoft Agent Framework,OpenAI Agents SDK,RECEIVER_ARRIVAL,LogisticRegression,0.5189887152777778,192
+Microsoft Agent Framework,OpenAI Agents SDK,RECEIVER_ARRIVAL,RandomForest,0.5582139756944444,192
+Microsoft Agent Framework,OpenAI Agents SDK,COMMIT_TIME,LogisticRegression,0.6040581597222223,192
+Microsoft Agent Framework,OpenAI Agents SDK,COMMIT_TIME,RandomForest,0.5,192
+Microsoft Agent Framework,OpenAI Agents SDK,ALL_OBSERVER,LogisticRegression,0.5296223958333334,192
+Microsoft Agent Framework,OpenAI Agents SDK,ALL_OBSERVER,RandomForest,0.539333767361111,192
+OpenAI Agents SDK,Microsoft Agent Framework,RELEASE_SLIP,LogisticRegression,0.49658203125,192
+OpenAI Agents SDK,Microsoft Agent Framework,RELEASE_SLIP,RandomForest,0.47721354166666663,192
+OpenAI Agents SDK,Microsoft Agent Framework,RECEIVER_ARRIVAL,LogisticRegression,0.4907769097222222,192
+OpenAI Agents SDK,Microsoft Agent Framework,RECEIVER_ARRIVAL,RandomForest,0.5084092881944444,192
+OpenAI Agents SDK,Microsoft Agent Framework,COMMIT_TIME,LogisticRegression,0.4909396701388889,192
+OpenAI Agents SDK,Microsoft Agent Framework,COMMIT_TIME,RandomForest,0.5,192
+OpenAI Agents SDK,Microsoft Agent Framework,ALL_OBSERVER,LogisticRegression,0.5404730902777778,192
+OpenAI Agents SDK,Microsoft Agent Framework,ALL_OBSERVER,RandomForest,0.4964735243055555,192

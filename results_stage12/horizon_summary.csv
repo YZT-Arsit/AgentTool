@@ -1,0 +1,4 @@
+horizon,coverage,overflow_rate,privacy_auc,latency_ms,dummy_fraction,conditional_overflow_json
+3,0.5,0.5,1.0,29.0,0.0,"{""AUTHORIZATION:0"": 0.0, ""AUTHORIZATION:1"": 1.0, ""PROVENANCE_HISTORY:0"": 0.0, ""PROVENANCE_HISTORY:1"": 1.0}"
+5,1.0,0.0,0.5,35.0,0.25,"{""AUTHORIZATION:0"": 0.0, ""AUTHORIZATION:1"": 0.0, ""PROVENANCE_HISTORY:0"": 0.0, ""PROVENANCE_HISTORY:1"": 0.0}"
+8,1.0,0.0,0.5,44.0,0.53125,"{""AUTHORIZATION:0"": 0.0, ""AUTHORIZATION:1"": 0.0, ""PROVENANCE_HISTORY:0"": 0.0, ""PROVENANCE_HISTORY:1"": 0.0}"

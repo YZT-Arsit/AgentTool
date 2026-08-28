@@ -1,0 +1,2 @@
+architecture,actions,allowed,authoritative_log_version,lost_updates,duplicate_unauthorized_effects,correct
+FIXED-CANONICAL-MODULAR,32,32,32,0,0,pass

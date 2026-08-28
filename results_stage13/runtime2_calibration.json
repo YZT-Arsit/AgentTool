@@ -1,0 +1,56 @@
+{
+  "runtime": "OpenAI Agents SDK",
+  "samples": 72,
+  "work_ms_mean": 2.5127888888888887,
+  "deltas_ms": {
+    "P90": 3.6307,
+    "P95": 3.7004,
+    "P99": 5.2975,
+    "P99+1MS": 6.2975
+  },
+  "cadence_candidates": [
+    {
+      "cadence": "P90",
+      "delta_ms": 3.6307,
+      "overflow_rate": 0.21875,
+      "deadline_miss_rate": 0.027083333333333334,
+      "mean_latency_ms": 18.298783333333333
+    },
+    {
+      "cadence": "P95",
+      "delta_ms": 3.7004,
+      "overflow_rate": 0.15625,
+      "deadline_miss_rate": 0.016666666666666666,
+      "mean_latency_ms": 18.593303125
+    },
+    {
+      "cadence": "P99",
+      "delta_ms": 5.2975,
+      "overflow_rate": 0.0,
+      "deadline_miss_rate": 0.00625,
+      "mean_latency_ms": 26.581236458333333
+    },
+    {
+      "cadence": "P99+1MS",
+      "delta_ms": 6.2975,
+      "overflow_rate": 0.0,
+      "deadline_miss_rate": 0.0375,
+      "mean_latency_ms": 31.643827083333335
+    }
+  ],
+  "selected": {
+    "cadence": "P99+1MS",
+    "delta_ms": 6.2975,
+    "overflow_rate": 0.0,
+    "deadline_miss_rate": 0.0375,
+    "mean_latency_ms": 31.643827083333335
+  },
+  "frame_bytes": 16384,
+  "horizon": 5,
+  "split_counts": {
+    "calibration": 12,
+    "development": 12,
+    "final_test": 16
+  },
+  "test_labels_used_for_selection": false
+}

@@ -1,0 +1,12 @@
+{
+  "split": "CONFIRMATORY",
+  "R_pir": 100,
+  "Delta_pir_ms": 5.0,
+  "real_queries": 5706,
+  "dummy_queries": 894,
+  "dummy_rows": [
+    1000,
+    1063
+  ],
+  "backend": "OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING"
+}

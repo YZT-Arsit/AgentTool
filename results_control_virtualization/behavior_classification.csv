@@ -1,0 +1,86 @@
+workload,framework,behavior,kind,classification,reason
+openai-language-routing,OpenAI Agents SDK,Triage agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-language-routing,OpenAI Agents SDK,Triage agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-language-routing,OpenAI Agents SDK,Triage agent:handoff:1,handoff,COMPILED,logical id transition in the common executor
+openai-language-routing,OpenAI Agents SDK,Triage agent:handoff:2,handoff,COMPILED,logical id transition in the common executor
+openai-language-routing,OpenAI Agents SDK,Triage agent:handoff:3,handoff,COMPILED,logical id transition in the common executor
+openai-language-routing,OpenAI Agents SDK,Triage agent:return,termination,COMPILED,fixed RETURN transition
+openai-language-routing,OpenAI Agents SDK,French agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-language-routing,OpenAI Agents SDK,French agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-language-routing,OpenAI Agents SDK,French agent:return,termination,COMPILED,fixed RETURN transition
+openai-language-routing,OpenAI Agents SDK,Spanish agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-language-routing,OpenAI Agents SDK,Spanish agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-language-routing,OpenAI Agents SDK,Spanish agent:return,termination,COMPILED,fixed RETURN transition
+openai-language-routing,OpenAI Agents SDK,English agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-language-routing,OpenAI Agents SDK,English agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-language-routing,OpenAI Agents SDK,English agent:return,termination,COMPILED,fixed RETURN transition
+openai-customer-service,OpenAI Agents SDK,Customer-service triage:instructions,instructions,COMPILED,stored as private instruction handle
+openai-customer-service,OpenAI Agents SDK,Customer-service triage:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-customer-service,OpenAI Agents SDK,Customer-service triage:handoff:1,handoff,COMPILED,logical id transition in the common executor
+openai-customer-service,OpenAI Agents SDK,Customer-service triage:handoff:2,handoff,COMPILED,logical id transition in the common executor
+openai-customer-service,OpenAI Agents SDK,Customer-service triage:return,termination,COMPILED,fixed RETURN transition
+openai-customer-service,OpenAI Agents SDK,FAQ agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-customer-service,OpenAI Agents SDK,FAQ agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-customer-service,OpenAI Agents SDK,FAQ agent:tool:lookup_faq,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+openai-customer-service,OpenAI Agents SDK,FAQ agent:handoff:0,handoff,COMPILED,logical id transition in the common executor
+openai-customer-service,OpenAI Agents SDK,FAQ agent:return,termination,COMPILED,fixed RETURN transition
+openai-customer-service,OpenAI Agents SDK,Seat agent:instructions,instructions,COMPILED,stored as private instruction handle
+openai-customer-service,OpenAI Agents SDK,Seat agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-customer-service,OpenAI Agents SDK,Seat agent:tool:update_seat,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+openai-customer-service,OpenAI Agents SDK,Seat agent:handoff:0,handoff,COMPILED,logical id transition in the common executor
+openai-customer-service,OpenAI Agents SDK,Seat agent:return,termination,COMPILED,fixed RETURN transition
+openai-agent-lifecycle,OpenAI Agents SDK,lifecycle:prompt_encoded_conditional,prompt_control,UNSUPPORTED,natural-language conditional is not a declarative control edge
+openai-agent-lifecycle,OpenAI Agents SDK,Lifecycle router:instructions,instructions,COMPILED,stored as private instruction handle
+openai-agent-lifecycle,OpenAI Agents SDK,Lifecycle router:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-agent-lifecycle,OpenAI Agents SDK,Lifecycle router:handoff:1,handoff,COMPILED,logical id transition in the common executor
+openai-agent-lifecycle,OpenAI Agents SDK,Lifecycle router:return,termination,COMPILED,fixed RETURN transition
+openai-agent-lifecycle,OpenAI Agents SDK,Calculator:instructions,instructions,COMPILED,stored as private instruction handle
+openai-agent-lifecycle,OpenAI Agents SDK,Calculator:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-agent-lifecycle,OpenAI Agents SDK,Calculator:tool:multiply,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+openai-agent-lifecycle,OpenAI Agents SDK,Calculator:return,termination,COMPILED,fixed RETURN transition
+openai-agents-as-tools,OpenAI Agents SDK,Translation manager:instructions,instructions,COMPILED,stored as private instruction handle
+openai-agents-as-tools,OpenAI Agents SDK,Translation manager:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-agents-as-tools,OpenAI Agents SDK,Translation manager:tool:translate_spanish,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+openai-agents-as-tools,OpenAI Agents SDK,Translation manager:tool:translate_french,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+openai-agents-as-tools,OpenAI Agents SDK,Translation manager:return,termination,COMPILED,fixed RETURN transition
+openai-agents-as-tools,OpenAI Agents SDK,Spanish translator:instructions,instructions,COMPILED,stored as private instruction handle
+openai-agents-as-tools,OpenAI Agents SDK,Spanish translator:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-agents-as-tools,OpenAI Agents SDK,Spanish translator:return,termination,COMPILED,fixed RETURN transition
+openai-agents-as-tools,OpenAI Agents SDK,French translator:instructions,instructions,COMPILED,stored as private instruction handle
+openai-agents-as-tools,OpenAI Agents SDK,French translator:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-agents-as-tools,OpenAI Agents SDK,French translator:return,termination,COMPILED,fixed RETURN transition
+openai-dynamic-instructions,OpenAI Agents SDK,Dynamic prompt agent:instructions,instructions,UNSUPPORTED,arbitrary dynamic callback
+openai-dynamic-instructions,OpenAI Agents SDK,Dynamic prompt agent:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+openai-dynamic-instructions,OpenAI Agents SDK,Dynamic prompt agent:return,termination,COMPILED,fixed RETURN transition
+microsoft-simple-tool,Microsoft Agent Framework,Helper:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-simple-tool,Microsoft Agent Framework,Helper:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-simple-tool,Microsoft Agent Framework,Helper:tool:lookup_document,tool,SHARED_PRIMITIVE,tool work remains behind ToolExecutionAdapter
+microsoft-simple-tool,Microsoft Agent Framework,Helper:return,termination,COMPILED,fixed RETURN transition
+microsoft-sequential-workflow,Microsoft Agent Framework,Writer:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-sequential-workflow,Microsoft Agent Framework,Writer:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-sequential-workflow,Microsoft Agent Framework,Writer:handoff:1,handoff,COMPILED,logical id transition in the common executor
+microsoft-sequential-workflow,Microsoft Agent Framework,Writer:return,termination,COMPILED,fixed RETURN transition
+microsoft-sequential-workflow,Microsoft Agent Framework,Reviewer:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-sequential-workflow,Microsoft Agent Framework,Reviewer:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-sequential-workflow,Microsoft Agent Framework,Reviewer:handoff:2,handoff,COMPILED,logical id transition in the common executor
+microsoft-sequential-workflow,Microsoft Agent Framework,Reviewer:return,termination,COMPILED,fixed RETURN transition
+microsoft-sequential-workflow,Microsoft Agent Framework,Publisher:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-sequential-workflow,Microsoft Agent Framework,Publisher:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-sequential-workflow,Microsoft Agent Framework,Publisher:return,termination,COMPILED,fixed RETURN transition
+microsoft-conditional-workflow,Microsoft Agent Framework,Classifier:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-conditional-workflow,Microsoft Agent Framework,Classifier:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-conditional-workflow,Microsoft Agent Framework,Classifier:return,termination,COMPILED,fixed RETURN transition
+microsoft-conditional-workflow,Microsoft Agent Framework,Responder:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-conditional-workflow,Microsoft Agent Framework,Responder:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-conditional-workflow,Microsoft Agent Framework,Responder:return,termination,COMPILED,fixed RETURN transition
+microsoft-conditional-workflow,Microsoft Agent Framework,conditional:0->1,conditional_edge,UNSUPPORTED,arbitrary Python predicate; no declarative ABI
+microsoft-fanout-workflow,Microsoft Agent Framework,Planner:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-fanout-workflow,Microsoft Agent Framework,Planner:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-fanout-workflow,Microsoft Agent Framework,Planner:return,termination,COMPILED,fixed RETURN transition
+microsoft-fanout-workflow,Microsoft Agent Framework,Analyst:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-fanout-workflow,Microsoft Agent Framework,Analyst:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-fanout-workflow,Microsoft Agent Framework,Analyst:return,termination,COMPILED,fixed RETURN transition
+microsoft-fanout-workflow,Microsoft Agent Framework,Summarizer:instructions,instructions,COMPILED,stored as private instruction handle
+microsoft-fanout-workflow,Microsoft Agent Framework,Summarizer:model,llm,SHARED_PRIMITIVE,one shared model invocation through the common ABI
+microsoft-fanout-workflow,Microsoft Agent Framework,Summarizer:return,termination,COMPILED,fixed RETURN transition
+microsoft-fanout-workflow,Microsoft Agent Framework,"fanout:0->(1, 2)",fanout,UNSUPPORTED,parallel multi-agent native execution violates the one-heavy-op profile

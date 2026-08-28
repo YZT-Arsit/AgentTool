@@ -1,0 +1,4 @@
+architecture,independent_source,multiple_persistent_states,modular_trace_varies_naturally,leakage_above_chance,canonical_near_chance,unified_near_chance,modular_cost_advantage,evidence_category
+Stage-3 Reference Mediator,no,yes,yes,yes,yes,yes,yes in evaluated Stage-3 configs,reference
+GAAP-derived,arXiv:2604.19657v1,"yes, documented",yes under separate-store deployment,yes,yes,yes,no versus unpadded unified; yes versus unified-pad,POSITIVE with deployment assumption
+PAuth-derived,arXiv:2603.17170v2,not documented,no,no,yes,yes,not applicable,NEGATIVE

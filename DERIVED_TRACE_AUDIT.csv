@@ -1,0 +1,11 @@
+system,hidden_state,order,host_store,operation,source_semantic_step,source_architecture_component
+GAAP-derived,0,0,PRIVATE_DATA_DB,read,resolve_private_value,private_data_db
+GAAP-derived,0,1,PERMISSION_DB,read,check_external_disclosure,permission_database
+GAAP-derived,0,2,DISCLOSURE_LOG,write,record_disclosure,disclosure_log
+GAAP-derived,1,0,DISCLOSURE_LOG,read,recover_transitive_taint,disclosure_log
+GAAP-derived,1,1,PERMISSION_DB,read,check_external_disclosure,permission_database
+GAAP-derived,1,2,DISCLOSURE_LOG,write,record_disclosure,disclosure_log
+GAAP-derived,AUDIT,,,,count_changes=False; histogram_changes=True; order_changes=True,pre-classification audit
+PAuth-derived,0,0,SLICE_STATE,read,load_expected_operation,nl_slice
+PAuth-derived,1,0,SLICE_STATE,read,load_expected_operation,nl_slice
+PAuth-derived,AUDIT,,,,count_changes=False; histogram_changes=False; order_changes=False,pre-classification audit

@@ -1,0 +1,7 @@
+configuration,architecture,total_records,tree_nodes,max_path,physical_blocks,mean_latency_us,p95_latency_us,max_stash
+small,MODULAR-V3,4224,8444,12,960,891.7252,1444.7,4
+small,V2-UNIFIED,4224,16383,14,1232,1616.002,2103.1,4
+small,V2-UNIFIED-PAD,4224,16383,14,1232,1637.2836,2280.7,4
+medium,MODULAR-V3,16896,33788,14,1136,1181.864,1571.9,2
+medium,V2-UNIFIED,16896,65535,16,1408,2179.8452,3022.1,2
+medium,V2-UNIFIED-PAD,16896,65535,16,1408,2204.1,2882.6,2

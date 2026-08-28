@@ -1,0 +1,7 @@
+panic: open results_timing_closure\smoke\encrypted_public_workload.json: The system cannot find the path specified.
+
+goroutine 1 [running]:
+main.runClient({0x55bbcaf0160, 0xf}, {0x55bbcaf8280?, 0x400?}, {0x55bbcaf8300, 0x38})
+	D:/projects/mediation_trace_validation/timing_closure_native/main.go:287 +0x97a
+main.main()
+	D:/projects/mediation_trace_validation/timing_closure_native/main.go:369 +0x293

@@ -1,0 +1,5 @@
+baseline,observer_boundary,N,k,repeated_calls,exact_structural_equality,top1_agent_accuracy,top10_agent_accuracy,pairwise_auc,permutation_top1,claim_status
+B0_DIRECT_NAMED_EXECUTION,cloud_execution,1000,1,1,NO,1.0,1.0,1.0,0.001,FAIL
+B1_VISIBLE_K_COVER,cloud_named_activations,1000,8,1,NO,0.125,1.0,NA,0.001,FAIL_VISIBLE_SUBSET
+B2_COMMON_EXECUTOR,common_executor_fixed_transcript,1000,0,1,YES,0.001,0.01,0.5,0.001,PASS_STRUCTURAL_SIZE_ONLY
+B2_MOCK_LOOKUP_END_TO_END,lookup_server_plus_common_executor,1000,0,1,NO,1.0,1.0,1.0,0.001,UNVALIDATED_REAL_PIR_REQUIRED

@@ -1,0 +1,112 @@
+{
+  "commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+  "host_visible_executions": {
+    "execution_0": {
+      "effect_count": 1,
+      "effects": [
+        {
+          "body": "synthetic_stage10_status",
+          "recipient": "synthetic_contact@example.invalid",
+          "tool": "send_message"
+        }
+      ],
+      "elapsed_us": 3190.3,
+      "final_output": "completed",
+      "host_visible_trace": [
+        {
+          "event": "MEDIATION_INVOCATION",
+          "operation": "RESUME_PENDING_TOOL",
+          "sequence": 1
+        },
+        {
+          "event": "PUBLIC_EFFECT_COMMIT",
+          "sequence": 2,
+          "tool": "send_message"
+        },
+        {
+          "event": "SANITIZED_RESULT",
+          "result": "completed",
+          "sequence": 3
+        }
+      ],
+      "interruption_count": 0,
+      "runtime_invocations": 1,
+      "same_initial_public_task": true
+    },
+    "execution_1": {
+      "effect_count": 1,
+      "effects": [
+        {
+          "body": "synthetic_stage10_status",
+          "recipient": "synthetic_contact@example.invalid",
+          "tool": "send_message"
+        }
+      ],
+      "elapsed_us": 3549.2,
+      "final_output": "completed",
+      "host_visible_trace": [
+        {
+          "event": "MEDIATION_INVOCATION",
+          "operation": "RESUME_PENDING_TOOL",
+          "sequence": 1
+        },
+        {
+          "count": 1,
+          "event": "APPROVAL_INTERRUPTION",
+          "sequence": 2
+        },
+        {
+          "event": "LOCAL_APPROVAL_DECISION",
+          "outcome": "APPROVE",
+          "sequence": 3
+        },
+        {
+          "event": "MEDIATION_INVOCATION",
+          "operation": "RESUME_AFTER_APPROVAL",
+          "sequence": 4
+        },
+        {
+          "event": "PUBLIC_EFFECT_COMMIT",
+          "sequence": 5,
+          "tool": "send_message"
+        },
+        {
+          "event": "SANITIZED_RESULT",
+          "result": "completed",
+          "sequence": 6
+        }
+      ],
+      "interruption_count": 1,
+      "runtime_invocations": 2,
+      "same_initial_public_task": true
+    }
+  },
+  "initial_public_task": "Send the approved synthetic status message.",
+  "instrumentation": [
+    "Runner.run boundary hook",
+    "interruption count hook",
+    "synthetic local approval event hook",
+    "synthetic effect callback hook"
+  ],
+  "private_ground_truth": {
+    "execution_0": "APPROVAL_PRESENT",
+    "execution_1": "APPROVAL_ABSENT"
+  },
+  "repository": "https://github.com/openai/openai-agents-python",
+  "runtime": "OpenAI Agents SDK (Python)",
+  "runtime_version": "0.22.0",
+  "same_effect_count": true,
+  "same_final_effect": true,
+  "same_initial_task": true,
+  "same_sanitized_result": true,
+  "semantic_patches": "none",
+  "trajectory_distinguishable": true,
+  "trusted_functional_semantics": {
+    "execution_0": {
+      "final_approval_persisted": true
+    },
+    "execution_1": {
+      "final_approval_persisted": true
+    }
+  }
+}

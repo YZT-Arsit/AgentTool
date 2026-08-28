@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+.toolchain/
+.toolchain_downloads/
+.venv-stage9/
+,venv-stage10/
+.venv-stage12/
+.toolchains/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Python testing/cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Local artifacts
+tmp/
+temp/
+cache/

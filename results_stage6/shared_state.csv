@@ -1,0 +1,5 @@
+architecture,cross_device_history_visible,sync_bytes,sync_rtt,authoritative_version,correct
+FIXED-CANONICAL-MODULAR,pass,0,0,2,pass
+UNIFIED-ORAM,pass,0,0,2,pass
+HYBRID-P,pass,0,0,2,pass
+HYBRID-PH,pass,1060,1,2,pass

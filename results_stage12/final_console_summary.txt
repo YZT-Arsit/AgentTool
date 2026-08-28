@@ -1,0 +1,143 @@
+STAGE-12 DECISION:
+C — TIMING/SIZE LIVE DEFENSE FAILS
+
+PIR final status:
+REMOVE
+
+Reason:
+No independent untrusted registry remains; PIR duplicates ORAM-backed lookup protection and changes no primary result.
+
+Final core method:
+ORAM-backed private access + H=5 bounded normalization + fixed 16,384-byte messages + P99 live cadence + public approval epoch + effect-safe public commit.
+
+Private dispatch status:
+SUPPORTING
+
+L2 Runtime 1 live M3:
+FAIL
+
+L2 Runtime 2 live M3:
+FAIL
+
+Live structural AUC:
+0.518
+
+Live size AUC:
+0.500
+
+Live timing AUC:
+0.588
+
+Live combined AUC:
+0.598
+
+Actual serialized-size equality:
+PASS
+
+Actual cadence enforcement:
+PASS
+
+Human approval epoch:
+PASS
+
+Public-derived semantic tasks:
+40
+
+Distinct natural private-state families:
+2 (native approval; mediator provenance/history, with an external-validity qualification)
+
+Common IR:
+PASS
+
+Common normalizer:
+PASS
+
+tau-bench utility:
+100% reference-action replay success for baseline and M3; no live model/pass^k claim.
+
+ToolPrivacyBench privacy non-regression:
+NOT RUN
+
+AgentDojo security non-regression:
+NOT RUN
+
+Full-cover N=4:
+privacy: 0.250 selected-agent accuracy
+latency: 1.52x
+compute cost: 1.74x proxy
+
+Full-cover N=8:
+privacy: 0.125 selected-agent accuracy
+latency: 2.73x
+compute cost: 6.12x proxy
+
+Full-cover N=16:
+privacy: 0.0625 selected-agent accuracy
+latency: 5.05x
+compute cost: 12.00x proxy
+
+Dummy external effects:
+0
+
+Authorization equivalence:
+PASS
+
+Effect equivalence:
+PASS
+
+H=3 coverage:
+0.50
+
+H=5 coverage:
+1.00
+
+H=8 coverage:
+1.00
+
+Secret-dependent overflow leakage:
+NO at selected H=5; YES at rejected H=3.
+
+ORAM scaling:
+25.3 us / 36,864 bytes at 2^8 records to 82.0 us / 61,440 bytes at 2^14 records.
+
+Security definition:
+NOT SUPPORTED
+
+Final method maturity:
+CONTROLLED PROTOTYPE
+
+Remaining direct prior-art collision:
+No direct agent-specific collision newly identified; generic oblivious execution remains the conceptual closest prior-art boundary.
+
+Strongest remaining rejection:
+The live Python implementation still leaks private state through timing, while public benchmark evidence is limited to reference-action replay.
+
+Is rejection defeated?:
+NO
+
+Main-paper experiments:
+1. Cross-runtime adaptive leakage and structural normalization.
+2. Actual size defense and unresolved live timing attack.
+3. Public-derived functional preservation with explicit replay limits.
+4. Horizon/cadence/overhead and secret-dependent overflow.
+
+Supplementary experiments:
+Seven attack ablations, P90/P95/P99, approval epochs, ORAM scaling, full-cover, failure tests, and source provenance.
+
+Any further synthetic privacy discovery needed?:
+NO
+
+Any new ORAM mechanism needed?:
+NO
+
+Any new PIR mechanism needed?:
+NO
+
+Research question frozen?:
+NO
+
+Ready to begin paper writing?:
+NO
+
+FINAL RECOMMENDATION:
+Repair or replace the live cadence/transport boundary, rerun the same frozen workload and attacks, and only then reconsider method freeze; do not add primitives or another synthetic discovery stage.

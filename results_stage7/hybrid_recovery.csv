@@ -1,0 +1,3 @@
+architecture,restored_cache_bytes,authoritative_permission_version,recovery_status,recovery_bytes,recovery_rtts,recovery_latency_ms,post_restore_decision,revocation_safe,history_version,cross_device_history_recovered
+HYBRID-P,117,2,ready,74,1,0.005,DENY,True,0,True
+HYBRID-PH,116,2,ready,212,2,0.0077,DENY,True,1,True

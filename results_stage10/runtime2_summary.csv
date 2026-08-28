@@ -1,0 +1,4 @@
+variant,auc_mean,auc_sd,chance,permutation_auc_mean,permutation_auc_sd_across_seeds,symbolic_class_equality_all_seeds
+B0-NATURAL,1.0,0.0,0.5,0.5015833333333334,0.002044640691064231,False
+B1-PER-ACTION-OBLIVIOUS,1.0,0.0,0.5,0.5015833333333334,0.002044640691064231,False
+B2-BOUNDED-ADAPTIVE-OBLIVIOUS,0.5,0.0,0.5,0.5,0.0,True

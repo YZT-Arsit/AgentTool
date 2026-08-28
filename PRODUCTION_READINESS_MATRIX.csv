@@ -1,0 +1,5 @@
+architecture,privacy,authorization_correctness,freshness,rollback_protection,crash_consistency,multi_device_semantics,concurrency,effect_idempotency,audit_consistency,trusted_state_burden,recovery_complexity,deployment_coupling
+FIXED-CANONICAL-MODULAR,PASS,PASS,PASS,PARTIAL,PASS,PASS,PASS,PASS,PARTIAL,PARTIAL,PARTIAL,PASS
+UNIFIED-ORAM,PASS,PASS,PASS,PARTIAL,PASS,PASS,PASS,PASS,PARTIAL,PASS,PASS,PARTIAL
+HYBRID-P,PASS,PASS,PASS,PARTIAL,PASS,PASS,PASS,PASS,PARTIAL,PARTIAL,PARTIAL,PARTIAL
+HYBRID-PH,PASS,PASS,PASS,PARTIAL,PASS,PASS,PASS,PASS,PARTIAL,PARTIAL,PARTIAL,PARTIAL

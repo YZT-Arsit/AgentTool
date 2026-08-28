@@ -1,0 +1,85 @@
+﻿{"commit": "af461de51da16f5cb800ff7febc0f8f96355607a", "existing_rule": {"effect": {"document": "synthetic_document_8", "recipient": "contact_17"}, "effect_count": 1, "final_text": "task complete", "host_visible_trace": [{"client_calls": 2, "request_class": "PUBLIC_TASK", "response_content_types": ["function_result", "text"], "round": 1, "serialized_bytes": 562}], "standing_rule_count_after": 1}, "missing_rule": {"effect": {"document": "synthetic_document_8", "recipient": "contact_17"}, "effect_count": 1, "final_text": "task complete", "host_visible_trace": [{"client_calls": 1, "request_class": "PUBLIC_TASK", "response_content_types": ["function_call", "function_approval_request"], "round": 1, "serialized_bytes": 700}, {"client_calls": 1, "request_class": "LOCAL_APPROVAL_RESPONSE", "response_content_types": ["function_result", "text"], "round": 2, "serialized_bytes": 562}], "standing_rule_count_after": 1}, "private_state": "session-backed standing approval rule exists vs absent", "runtime": "Microsoft Agent Framework", "same_final_effect": true, "same_initial_task": true, "semantic_patches": "none", "trajectory_distinguishable": true}
+
+STAGE-9 DECISION:
+ADAPTIVE MEDIATION MAINLINE VALIDATED
+
+L2 public runtime:
+ACHIEVED
+
+Public runtime used:
+Microsoft Agent Framework ToolApprovalMiddleware @ af461de51da16f5cb800ff7febc0f8f96355607a
+
+Natural adaptive private-state leakage:
+YES
+
+Same initial task:
+YES
+
+Same final public effect:
+YES
+
+Private state differs:
+YES
+
+NATURAL trajectory result:
+structural grouped AUC=1.000
+
+PER-ACTION-OBLIVIOUS result:
+structural grouped AUC=1.000
+
+ADAPTIVE-OBLIVIOUS result:
+structural grouped AUC=0.500; symbolic_equal=True
+
+Per-action privacy implies trajectory privacy?:
+NO
+
+Dummy external effects used?:
+NO
+
+Authorization equivalence:
+PASS
+
+Effect equivalence:
+PASS
+
+Cross-task transformation:
+PASS
+
+Horizon overflow behavior:
+FAIL CLOSED for the entire public program class before any effect
+
+Overhead at H=5:
+15 ORAM accesses; mean dummy fraction=0.733; fixed 5 rounds
+
+Timing privacy:
+OUT OF SCOPE
+
+Proof sketch:
+PASS
+
+Opal collision:
+PARTIALLY DEFEATED
+
+ObliDB collision:
+PARTIALLY DEFEATED
+
+Strongest agent-specific distinction:
+effect-safe normalization of private approval/consent/provenance trajectories with no dummy external effects
+
+Strongest contribution:
+bounded adaptive mediation definition plus an L2 natural counterexample and a shared effect-safe IR normalizer
+
+Contribution strength:
+MODERATE
+
+Strongest rejection argument:
+This is domain-specialized bounded oblivious control-flow compilation, not a new general oblivious-computation primitive.
+
+Is rejection defeated?:
+PARTIALLY
+
+ICASSP mainline viable:
+CONDITIONAL
+
+Recommended next step:
+Freeze the privacy mechanism; strengthen the L2 measurement across another independent runtime and obtain expert prior-art review.

@@ -1,0 +1,56 @@
+{
+  "runtime": "Microsoft Agent Framework",
+  "samples": 72,
+  "work_ms_mean": 1.0657527777777778,
+  "deltas_ms": {
+    "P90": 1.914,
+    "P95": 2.0118,
+    "P99": 3.2921,
+    "P99+1MS": 4.2921
+  },
+  "cadence_candidates": [
+    {
+      "cadence": "P90",
+      "delta_ms": 1.914,
+      "overflow_rate": 0.5416666666666666,
+      "deadline_miss_rate": 0.0125,
+      "mean_latency_ms": 9.689335416666667
+    },
+    {
+      "cadence": "P95",
+      "delta_ms": 2.0118,
+      "overflow_rate": 0.4895833333333333,
+      "deadline_miss_rate": 0.008333333333333333,
+      "mean_latency_ms": 10.139234375
+    },
+    {
+      "cadence": "P99",
+      "delta_ms": 3.2921,
+      "overflow_rate": 0.13541666666666666,
+      "deadline_miss_rate": 0.02291666666666667,
+      "mean_latency_ms": 16.669192708333334
+    },
+    {
+      "cadence": "P99+1MS",
+      "delta_ms": 4.2921,
+      "overflow_rate": 0.0,
+      "deadline_miss_rate": 0.016666666666666666,
+      "mean_latency_ms": 21.5629125
+    }
+  ],
+  "selected": {
+    "cadence": "P99+1MS",
+    "delta_ms": 4.2921,
+    "overflow_rate": 0.0,
+    "deadline_miss_rate": 0.016666666666666666,
+    "mean_latency_ms": 21.5629125
+  },
+  "frame_bytes": 16384,
+  "horizon": 5,
+  "split_counts": {
+    "calibration": 12,
+    "development": 12,
+    "final_test": 16
+  },
+  "test_labels_used_for_selection": false
+}

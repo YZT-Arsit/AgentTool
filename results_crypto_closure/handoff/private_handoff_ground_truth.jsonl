@@ -1,0 +1,14 @@
+{"profile":"H0","round":0,"logical_target":100}
+{"profile":"H0","round":1,"logical_target":101}
+{"profile":"H0","round":2,"logical_target":102}
+{"profile":"H1","round":0,"logical_target":100}
+{"profile":"H1","round":1,"logical_target":103}
+{"profile":"H1","round":2,"logical_target":104}
+{"profile":"H2","round":0,"logical_target":100}
+{"profile":"H2","round":1,"logical_target":101}
+{"profile":"H2","round":2,"logical_target":100}
+{"profile":"H2","round":3,"logical_target":101}
+{"profile":"H3","round":0,"logical_target":100}
+{"profile":"H3","round":1,"logical_target":102}
+{"profile":"H3","round":2,"logical_target":100}
+{"profile":"H3","round":3,"logical_target":102}

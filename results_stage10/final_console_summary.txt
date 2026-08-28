@@ -1,0 +1,117 @@
+STAGE-10 FINAL DECISION:
+A — MAINLINE FROZEN, READY FOR PAPER
+
+Second L2 runtime:
+ACHIEVED
+
+Runtime 1:
+Microsoft Agent Framework
+commit:
+af461de51da16f5cb800ff7febc0f8f96355607a
+
+Runtime 2:
+OpenAI Agents SDK for Python 0.22.0
+
+Runtime 2 provenance:
+openai/openai-agents-python @ a40ae9803e6b7a79faa246293f56adb100d5868b, MIT, clean unmodified checkout
+
+Natural adaptive leakage in Runtime 2:
+YES
+
+Same initial public task:
+YES
+
+Same final public effect:
+YES
+
+B0 Runtime 2:
+AUC = 1.000 ± 0.000; 1 vs 2 native runner invocations
+
+B1 Runtime 2:
+AUC = 1.000 ± 0.000; per-invocation ORAM shape remains 1 vs 2 rounds
+
+B2 Runtime 2:
+AUC = 0.500 ± 0.000; structural classes exactly equal at H=5, 15 ORAM accesses
+
+Cross-runtime common abstraction:
+private approval state -> optional approval/persistence -> resume/reinvoke -> same real effect once
+
+Same mediation IR core reused:
+YES
+
+Same normalizer reused:
+YES
+
+Dummy external effects:
+NO
+
+Functional equivalence:
+PASS
+
+Effect equivalence:
+PASS
+
+Focused prior-art direct collision:
+NOT FOUND
+
+Closest prior work:
+AgentPrint for encrypted trajectory fingerprints; Ghost Tool Calls/OCELOT for agent trajectory privacy; Opal and general oblivious computation for fixed-view mechanisms
+
+Opal collision:
+PARTIALLY DEFEATED
+
+ObliDB/general oblivious-computation collision:
+PARTIALLY DEFEATED
+
+Security definition:
+NEEDS REVISION
+
+Adaptive leakage novelty:
+MODERATE
+
+Two-runtime evidence:
+STRONG
+
+Bounded definition:
+MODERATE
+
+Mediation IR:
+MODERATE
+
+Normalizer:
+INCREMENTAL
+
+Effect-safe adaptation:
+MODERATE
+
+Strongest rejection argument:
+Generic oblivious computation already handles bounded secret-dependent state machines, making this an approval-middleware application with an incremental normalizer.
+
+Is rejection defeated?:
+PARTIALLY
+
+Strongest acceptance argument:
+Two unmodified public runtimes expose private approval state through same-task/same-effect mediation structure, and one shared effect-safe bounded transformation removes that structure without dummy effects.
+
+ICASSP/CCF-B short-paper readiness:
+READY WITH MINOR GAPS
+
+Should the research question now be frozen?:
+YES
+
+Should any additional synthetic validation be performed?:
+NO
+
+Should any new ORAM mechanism be developed?:
+NO
+
+Recommended final contribution list:
+1. Agent-specific identification and two-runtime measurement of adaptive approval/provenance mediation leakage.
+2. A bounded same-task/same-effect structural privacy definition and reusable mediation IR.
+3. An effect-safe instantiation of known oblivious normalization that equalizes internal trajectories without dummy external effects.
+
+Remaining blocker:
+Revise the proof statement to quantify the observer and include every public effect attribute; no further experiment is blocked.
+
+Recommended next step:
+Freeze implementation/security boundaries, revise the formal definition, then begin the short paper.

@@ -1,0 +1,14 @@
+CONTROL-VIRTUALIZATION DECISION:
+CONDITIONAL_GO
+Aggregate real-framework IR coverage: 95.3%
+Logical HANDOFF through same executor: PASS
+100K logical registry instantiation: PASS
+Real cryptographic private lookup: NOT INTEGRATED
+B2 common-executor structural/size equality: PASS
+B2 end-to-end full-domain target privacy: NOT VALIDATED
+Real heavy operations: 1
+Dummy heavy operations: 0
+Live timing privacy: NOT CLAIMED
+Reason 1: real-framework declarative coverage is 95.3% and logical HANDOFF keeps one executor
+Reason 2: a 100K fixed-capsule registry runs with one real and zero dummy heavy operations
+Reason 3: real PIR and secure control evaluation are missing, so end-to-end privacy is unvalidated

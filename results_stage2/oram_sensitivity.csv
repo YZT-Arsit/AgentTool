@@ -1,0 +1,4 @@
+n_blocks,bucket_size,height,logical_accesses,mean_stash,max_stash
+64,4,6,9,0.007500000000000001,2
+128,4,7,9,0.017083333333333332,4
+128,5,7,9,0.0059375,3

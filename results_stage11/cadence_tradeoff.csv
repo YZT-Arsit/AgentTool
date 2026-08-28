@@ -1,0 +1,4 @@
+cadence_class,delta_ms,horizon,scheduled_mediation_ms,approval_window_ms,total_success_release_ms,measurement_source
+P90,3.3557,5,16.7785,1000.0,1016.7785,Stage-10 OpenAI Agents SDK continuation latency
+P95,3.4347,5,17.1735,1000.0,1017.1735,Stage-10 OpenAI Agents SDK continuation latency
+P99,4.7097,5,23.5485,1000.0,1023.5485,Stage-10 OpenAI Agents SDK continuation latency

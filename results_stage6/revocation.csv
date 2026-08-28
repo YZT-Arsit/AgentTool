@@ -1,0 +1,5 @@
+architecture,extra_freshness_rtt,extra_freshness_bytes,revocation_visibility_ms,revocation_delay_actions,correct
+FIXED-CANONICAL-MODULAR,0,0,24.266,0,pass
+UNIFIED-ORAM,0,0,53.4312,0,pass
+HYBRID-P,1,560,48.3555,0,pass
+HYBRID-PH,1,560,46.9192,0,pass

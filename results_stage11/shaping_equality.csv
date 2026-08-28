@@ -1,0 +1,4 @@
+seed,variant,class_trace_sets_equal,dummy_external_effects,effect_count_per_success
+0,M3-BOUNDED-SIZE-CADENCE,True,0,1
+1,M3-BOUNDED-SIZE-CADENCE,True,0,1
+2,M3-BOUNDED-SIZE-CADENCE,True,0,1

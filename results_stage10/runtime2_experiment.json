@@ -1,0 +1,54 @@
+{
+  "b2_dummy_fraction_mean": 0.7,
+  "b2_oram_accesses": [
+    15
+  ],
+  "dummy_external_effects": 0,
+  "effect_equivalence": true,
+  "functional_equivalence": true,
+  "horizon": 5,
+  "native_timing_us_mean": {
+    "APPROVAL_ABSENT": 3293.366666666667,
+    "APPROVAL_PRESENT": 2149.98
+  },
+  "pairs_per_seed": 20,
+  "runtime": "OpenAI Agents SDK (Python)",
+  "runtime_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+  "same_ir_core": "stage9_adaptive.ir.build_program('AUTHORIZATION')",
+  "same_normalizer": "stage9_adaptive.runtime.AdaptiveNormalizer",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "summary": [
+    {
+      "auc_mean": 1.0,
+      "auc_sd": 0.0,
+      "chance": 0.5,
+      "permutation_auc_mean": 0.5015833333333334,
+      "permutation_auc_sd_across_seeds": 0.002044640691064231,
+      "symbolic_class_equality_all_seeds": false,
+      "variant": "B0-NATURAL"
+    },
+    {
+      "auc_mean": 1.0,
+      "auc_sd": 0.0,
+      "chance": 0.5,
+      "permutation_auc_mean": 0.5015833333333334,
+      "permutation_auc_sd_across_seeds": 0.002044640691064231,
+      "symbolic_class_equality_all_seeds": false,
+      "variant": "B1-PER-ACTION-OBLIVIOUS"
+    },
+    {
+      "auc_mean": 0.5,
+      "auc_sd": 0.0,
+      "chance": 0.5,
+      "permutation_auc_mean": 0.5,
+      "permutation_auc_sd_across_seeds": 0.0,
+      "symbolic_class_equality_all_seeds": true,
+      "variant": "B2-BOUNDED-ADAPTIVE-OBLIVIOUS"
+    }
+  ],
+  "timing_scope": "overhead only; fine-grained timing privacy out of scope"
+}

@@ -1,0 +1,2 @@
+backend,cryptographically_secure,secret_control_input_bytes,public_profile_input_bytes,max_control_rows,estimated_boolean_gates,mean_runtime_us,p95_runtime_us,communication_bytes
+FIXED_SCAN_SEMANTIC_SIMULATOR,NO,1027,12,30,4744,0.590067,0.6,0

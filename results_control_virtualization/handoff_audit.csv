@@ -1,0 +1,2 @@
+framework,workload,source_logical_agent,destination_logical_agent,transition_opcode,physical_executor_before,physical_executor_after,named_destination_in_host_trace,new_process_or_rpc
+OpenAI Agents SDK,openai-language-routing,100,101,HANDOFF,AgentControlExecutor,AgentControlExecutor,NO,NO

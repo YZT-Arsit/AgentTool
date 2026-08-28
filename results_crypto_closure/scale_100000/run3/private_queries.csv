@@ -1,0 +1,11 @@
+episode,round,index,class
+scale,0,0,RANDOM
+scale,1,1,RANDOM
+scale,2,17,RANDOM
+scale,3,999,RANDOM
+scale,4,9999,RANDOM
+scale,5,50000,RANDOM
+scale,6,77777,RANDOM
+scale,7,99999,RANDOM
+scale,8,17,RANDOM
+scale,9,99999,RANDOM
