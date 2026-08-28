@@ -145,7 +145,7 @@ def run_gateway_v2(
                     str(binaries["provider"]), "--listen", "127.0.0.1:0", "--name", definition.name,
                     "--min-delay-ms", str(definition.min_delay_ms), "--max-delay-ms", str(definition.max_delay_ms),
                     "--cpu-work-ms", str(definition.cpu_work_ms), "--background-workers", str(definition.background_workers),
-                    "--seed", str(7000 + index), "--cpu", str(worker_cpu),
+                    "--seed", str(7000 + index), "--cpu", str(worker_cpu), "--effectful",
                 ],
                 cwd=root,
                 stdout=subprocess.PIPE,
@@ -156,7 +156,9 @@ def run_gateway_v2(
             providers.append(process)
             ready = _read_ready(process)
             endpoints[definition.name] = ready.split()[1]
-        _write_json(providers_path, {"endpoints": endpoints, "timeout_ms": 4000, "allow_generic_http": False})
+        _write_json(providers_path, {"endpoints": endpoints,
+                                     "effectful": {name: True for name in endpoints},
+                                     "timeout_ms": 4000, "allow_generic_http": False})
 
         request_ring = output / "request_ring.shared"
         result_ring = output / "result_ring.shared"
@@ -166,6 +168,7 @@ def run_gateway_v2(
                 str(binaries["worker"]), "--request-ring", str(request_ring), "--result-ring", str(result_ring),
                 "--capacity", str(max(4096, expected * 2)), "--frame-bytes", str(profile.frame_bytes),
                 "--expected-frames", str(expected), "--key", key, "--providers", str(providers_path),
+                "--profile", str(profile_path),
                 "--private-log", str(output / "worker_private.jsonl"), "--cpu", str(worker_cpu),
             ],
             cwd=root,

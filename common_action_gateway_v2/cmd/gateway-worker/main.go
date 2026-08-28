@@ -15,13 +15,21 @@ func main() {
 	frameBytes := flag.Int("frame-bytes", 1024, "fixed frame bytes")
 	expected := flag.Int("expected-frames", 0, "public request frame count")
 	key := flag.String("key", "", "ephemeral experiment key")
+	keyFile := flag.String("key-file", "", "restricted local key file (canonical path)")
+	profilePath := flag.String("profile", "", "public profile JSON")
 	providers := flag.String("providers", "", "private provider configuration")
 	privateLog := flag.String("private-log", "worker_private.jsonl", "private worker log")
 	cpu := flag.Int("cpu", -1, "worker CPU affinity")
 	flag.Parse()
-	_, err := gatewayv2.RunWorker(gatewayv2.WorkerConfig{
+	profile, err := gatewayv2.LoadProfile(*profilePath)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	_, err = gatewayv2.RunWorker(gatewayv2.WorkerConfig{
 		RequestRingPath: *requestRing, ResultRingPath: *resultRing, RingCapacity: *capacity,
-		FrameBytes: *frameBytes, ExpectedFrames: *expected, KeyHex: *key,
+		FrameBytes: *frameBytes, ExpectedFrames: *expected, KeyHex: *key, KeyFile: *keyFile,
+		ProfileID: profile.ID(), Sessions: profile.Sessions, Slots: profile.Slots,
 		ProviderConfig: *providers, PrivateLogPath: *privateLog, CPU: *cpu,
 		Ready: func() { fmt.Printf("READY pid=%d\n", os.Getpid()) },
 	})

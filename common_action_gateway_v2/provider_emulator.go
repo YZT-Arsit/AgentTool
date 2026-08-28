@@ -20,6 +20,7 @@ type EmulatorConfig struct {
 	BackgroundWorkers int
 	Seed              int64
 	CPU               int
+	Effectful         bool
 }
 
 func burnCPU(duration time.Duration) {
@@ -84,7 +85,10 @@ func RunProviderEmulator(config EmulatorConfig, ready func(string)) error {
 			burnCPU(time.Duration(config.CPUWorkMS) * time.Millisecond)
 		}
 		time.Sleep(time.Duration(delay) * time.Millisecond)
-		count := effects.Add(1)
+		count := effects.Load()
+		if config.Effectful {
+			count = effects.Add(1)
+		}
 		response := providerResponse{Status: "OK", Payload: []byte(fmt.Sprintf("%s:%d", config.Name, count))}
 		seenMu.Lock()
 		seen[input.OperationID] = response

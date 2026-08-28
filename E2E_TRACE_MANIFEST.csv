@@ -1,0 +1,7 @@
+trace_id,workflow_family,observer,path,status,contains_private_ground_truth,citable_for
+P2-PIR-SERVER,MULTI_AGENT_HANDOFF,O_registry,results_canonical_v3/phase2_pir_smoke/pir/server_visible_trace.jsonl,COMPLETE,NO,"real SimplePIR server transcript and fixed query dimensions"
+P2-PIR-CLIENT,MULTI_AGENT_HANDOFF,TRUSTED_KERNEL,results_canonical_v3/phase2_pir_smoke/pir/client_private_trace.jsonl,COMPLETE,YES,"PIR correctness only; never an observer trace"
+P2-PIR-RECOVERY,MULTI_AGENT_HANDOFF,TRUSTED_KERNEL,results_canonical_v3/phase2_pir_smoke/pir/client_recovered_records.jsonl,COMPLETE,YES,"capsule recovery correctness only"
+V3-AGENTCLOUD,MULTI_AGENT_HANDOFF,O_agentcloud,,NOT_COMPLETED_ENVIRONMENT,NO,"nothing; no trace exists"
+V3-GATEWAY,MULTI_AGENT_HANDOFF,TRUSTED_GATEWAY,,NOT_COMPLETED_ENVIRONMENT,YES,"nothing; no trace exists"
+V3-TOOL,LLM_TOOL_LLM,TRUSTED_GATEWAY,,NOT_RUN,YES,"nothing; compiler failed semantic precondition"

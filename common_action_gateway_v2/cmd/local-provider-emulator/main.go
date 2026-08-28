@@ -17,10 +17,11 @@ func main() {
 	background := flag.Int("background-workers", 0, "background CPU-load workers")
 	seed := flag.Int64("seed", 1, "local emulator seed")
 	cpu := flag.Int("cpu", -1, "emulator CPU affinity")
+	effectful := flag.Bool("effectful", false, "perform one idempotent synthetic effect per operation ID")
 	flag.Parse()
 	err := gatewayv2.RunProviderEmulator(gatewayv2.EmulatorConfig{Listen: *listen, Name: *name,
 		MinDelayMS: *minDelay, MaxDelayMS: *maxDelay, CPUWorkMS: *cpuWork,
-		BackgroundWorkers: *background, Seed: *seed, CPU: *cpu},
+		BackgroundWorkers: *background, Seed: *seed, CPU: *cpu, Effectful: *effectful},
 		func(address string) { fmt.Printf("READY http://%s/execute pid=%d\n", address, os.Getpid()) })
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

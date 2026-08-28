@@ -1,0 +1,15 @@
+{
+  "audit": {
+    "backend": "OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING",
+    "commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+    "slots": 3,
+    "real_queries": 1,
+    "dummy_queries": 2,
+    "correct_queries": 3,
+    "fresh_queries": true,
+    "server_trace_has_private_index": false
+  },
+  "recovered_logical_agent": 10,
+  "control_transition_after_pir": true,
+  "canonical_gateway_execution": "NOT_COMPLETED_ENVIRONMENT_WINERROR_4551"
+}

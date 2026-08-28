@@ -1,44 +1,73 @@
-# Agent Control Virtualization Feasibility Audit
+# AgentTool Canonical V3 Research Prototype
 
-The active experiment asks whether framework-native Agent control can be
-represented as private data consumed by one common physical executor. It does
-**not** use ORAM to hide Agent selection, dispatch, Tool invocation, named
-endpoint activation, or execution identity.
-
-The active path is:
+The sole active composition is defined by
+`CANONICAL_ARCHITECTURE_V3.md` and `CANONICAL_THREAT_MODEL_V3.md`:
 
 ```text
-PrivateAgentLookup(index)
-    -> fixed-width private Agent capsule
-    -> AgentControlExecutor
-    -> fixed interaction frames
-    -> one real shared heavy primitive
+official SimplePIR selection
+    -> trusted Privacy/Control Kernel
+    -> fixed encrypted control/action envelopes
+    -> untrusted opaque Cloud Slot Proxy U
+    -> CommonActionGateway V2
+    -> trusted local model/Tool providers
+    -> encrypted fixed result channel
 ```
 
-The active closure path uses official `ahenzinger/simplepir` at commit
-`e9020b03bf2872c75b8954e749e32408b5db87ed`. The deliberately named
-`MOCK_PRIVATE_LOOKUP_NON_CRYPTOGRAPHIC` remains only as a historical/direct
-leakage baseline and is not used by the B2 closure experiment.
+Historical Stage 1-13 packages and reports are not parts to combine into this
+architecture. Their current status is recorded in
+`LEGACY_DEPRECATION_MANIFEST.md`. V1 `TIMING_NO_GO` evidence remains preserved.
 
-Run locally, without model or network calls:
+## Current measured status
+
+- official SimplePIR-to-capsule-to-Control path: PASS (3/3 scheduled real/dummy
+  queries correct in the canonical smoke run);
+- private Cloud Slot Proxy schema and AEAD-bound public headers: unit PASS;
+- corpus IR coverage: 3,574/7,386 = 48.39%; broad generality is not established;
+- exact semantic fidelity: 54/72 = 75.0%; ordinary Tool loops fail;
+- live Gateway V3 E2E: `NOT_COMPLETED_ENVIRONMENT` because Windows Application
+  Control blocked the generated Pacer executable;
+- structural, size, resource, and V3 timing privacy: OPEN; packet-level TCP
+  timing: OPEN.
+
+Start with `SYSTEM_INTEGRATION_FINAL_REPORT.md` and
+`CURRENT_SECURITY_MATRIX.md`. Do not cite prior `FINAL_SECURITY_*` files as the
+current model.
+
+The active design does **not** use ORAM to hide Agent selection, dispatch, Tool
+invocation, named endpoint activation, or execution identity. Retained Path
+ORAM is an `OPTIONAL_PRIVATE_STATE_BACKEND` only.
+
+## Local reproducibility
+
+No external model or provider is contacted by these commands:
+
+```text
+set PYTHONPATH to:
+  .venv-stage12/Lib/site-packages
+  .venv-stage9/Lib/site-packages
+  external_stage9/agent-framework/python/packages/core
+  external_stage10/openai-agents-python/src
+  repository root
+```
 
 ```powershell
-$env:PYTHONPATH = ".venv-stage9\Lib\site-packages;external_stage9\agent-framework\python\packages\core;external_stage10\openai-agents-python\src;."
-.venv-stage10\Scripts\python.exe -m pytest tests\test_control_virtualization.py tests\test_crypto_closure.py -q
-.venv-stage10\Scripts\python.exe scripts\run_control_virtualization.py
+$env:PYTHONPATH = ".venv-stage12\Lib\site-packages;.venv-stage9\Lib\site-packages;external_stage9\agent-framework\python\packages\core;external_stage10\openai-agents-python\src;."
+.venv-stage10\Scripts\python.exe -m pytest tests -q
+.venv-stage10\Scripts\python.exe scripts\run_corpus_ir_audit.py
+.venv-stage10\Scripts\python.exe scripts\run_semantic_fidelity.py
 ```
 
-Control-virtualization outputs are isolated in `results_control_virtualization/`;
-cryptographic and repeated-observation outputs are in
-`results_crypto_closure/`. Start with
-`CRYPTOGRAPHIC_CLOSURE_FINAL_REPORT.md` and `FINAL_SECURITY_MATRIX.md`.
+`scripts/run_canonical_v3_pir_smoke.py` refuses to overwrite its existing
+canonical output. Move/copy the output deliberately before a reproducibility
+rerun. The live Gateway integration test explicitly skips only when Windows
+reports Application Control WinError 4551.
 
 ## ORAM boundary
 
 `src/path_oram.py` and authenticated/recovery descendants are retained only as
-historical or `OPTIONAL_PRIVATE_STATE_BACKEND` experiments for outsourced
-private records. They are not imported by the active control-virtualization
-package and must not be cited as hiding activation of a fixed Agent or Tool API.
+historical or optional outsourced-private-state experiments. The canonical
+runner contains no mock lookup, Stage runtime, private-dispatch, or Path ORAM
+import.
 
 ## Historical stages
 

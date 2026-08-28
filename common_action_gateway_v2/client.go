@@ -105,7 +105,7 @@ func RunCloudClient(config ClientConfig) error {
 			}
 			op := PrivateOperation{Session: uint32(session), Slot: uint32(slot), Action: actionCode(action.Action),
 				Provider: providerCode(action.Provider), OperationID: OperationID(action.OperationID), Payload: []byte(action.Payload)}
-			if err := EncodeRequest(aead, frame, nonce, op); err != nil {
+			if err := EncodeRequest(aead, frame, nonce, config.Profile.ID(), op); err != nil {
 				return err
 			}
 			frames[index] = frame

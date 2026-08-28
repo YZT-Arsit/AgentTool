@@ -1,0 +1,51 @@
+framework,behavior_kind,total,compiled,shared_primitive,unsupported,coverage
+ALL,ALL,7386,1708,1866,3812,0.4838884375846195
+ALL,agents_as_tools,61,0,0,61,0.0
+ALL,conditional_edge,738,0,0,738,0.0
+ALL,conditional_handoff_callback,3,0,0,3,0.0
+ALL,dynamic_instructions,18,0,0,18,0.0
+ALL,fanout_fanin,156,0,0,156,0.0
+ALL,guardrail,7,0,0,7,0.0
+ALL,handoff,16,16,0,0,1.0
+ALL,hitl_resume,143,0,0,143,0.0
+ALL,instructions,576,576,0,0,1.0
+ALL,llm,576,0,576,0,1.0
+ALL,loop,165,0,0,165,0.0
+ALL,mcp_tool_boundary,473,0,473,0,1.0
+ALL,middleware,932,0,0,932,0.0
+ALL,state_memory,1589,0,0,1589,0.0
+ALL,termination,576,576,0,0,1.0
+ALL,tool,817,0,817,0,1.0
+ALL,workflow,328,328,0,0,1.0
+ALL,workflow_edge,212,212,0,0,1.0
+Microsoft Agent Framework,ALL,5482,1398,1460,2624,0.5213425757022985
+Microsoft Agent Framework,agents_as_tools,36,0,0,36,0.0
+Microsoft Agent Framework,conditional_edge,208,0,0,208,0.0
+Microsoft Agent Framework,fanout_fanin,74,0,0,74,0.0
+Microsoft Agent Framework,hitl_resume,46,0,0,46,0.0
+Microsoft Agent Framework,instructions,429,429,0,0,1.0
+Microsoft Agent Framework,llm,429,0,429,0,1.0
+Microsoft Agent Framework,loop,64,0,0,64,0.0
+Microsoft Agent Framework,mcp_tool_boundary,413,0,413,0,1.0
+Microsoft Agent Framework,middleware,932,0,0,932,0.0
+Microsoft Agent Framework,state_memory,1264,0,0,1264,0.0
+Microsoft Agent Framework,termination,429,429,0,0,1.0
+Microsoft Agent Framework,tool,618,0,618,0,1.0
+Microsoft Agent Framework,workflow,328,328,0,0,1.0
+Microsoft Agent Framework,workflow_edge,212,212,0,0,1.0
+OpenAI Agents SDK,ALL,1904,310,406,1188,0.3760504201680672
+OpenAI Agents SDK,agents_as_tools,25,0,0,25,0.0
+OpenAI Agents SDK,conditional_edge,530,0,0,530,0.0
+OpenAI Agents SDK,conditional_handoff_callback,3,0,0,3,0.0
+OpenAI Agents SDK,dynamic_instructions,18,0,0,18,0.0
+OpenAI Agents SDK,fanout_fanin,82,0,0,82,0.0
+OpenAI Agents SDK,guardrail,7,0,0,7,0.0
+OpenAI Agents SDK,handoff,16,16,0,0,1.0
+OpenAI Agents SDK,hitl_resume,97,0,0,97,0.0
+OpenAI Agents SDK,instructions,147,147,0,0,1.0
+OpenAI Agents SDK,llm,147,0,147,0,1.0
+OpenAI Agents SDK,loop,101,0,0,101,0.0
+OpenAI Agents SDK,mcp_tool_boundary,60,0,60,0,1.0
+OpenAI Agents SDK,state_memory,325,0,0,325,0.0
+OpenAI Agents SDK,termination,147,147,0,0,1.0
+OpenAI Agents SDK,tool,199,0,199,0,1.0

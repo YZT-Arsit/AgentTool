@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from gateway_v2.runner import V2Profile, continuation_sessions, run_gateway_v2
 
 
@@ -37,7 +39,12 @@ def test_v2_nominal_schedule_equality_fast_slow_continuation(tmp_path: Path) -> 
         start_delay_ns=500_000_000,
         inter_session_gap_ns=20_000_000,
     )
-    result = run_gateway_v2(ROOT, tmp_path / "v2", profile, sessions, providers)
+    try:
+        result = run_gateway_v2(ROOT, tmp_path / "v2", profile, sessions, providers)
+    except OSError as exc:
+        if getattr(exc, "winerror", None) == 4551:
+            pytest.skip("NOT_COMPLETED_ENVIRONMENT: Windows Application Control blocked the local Pacer executable")
+        raise
     assert len({result["worker_pid"], result["pacer_pid"], result["client_pid"], *result["provider_pids"]}) == 5
 
     host = _jsonl(tmp_path / "v2/host_visible_trace.jsonl")

@@ -2,6 +2,7 @@ package gatewayv2
 
 import (
 	"context"
+	"crypto/cipher"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -18,6 +19,10 @@ type WorkerConfig struct {
 	FrameBytes      int
 	ExpectedFrames  int
 	KeyHex          string
+	KeyFile         string
+	ProfileID       uint64
+	Sessions        int
+	Slots           int
 	ProviderConfig  string
 	PrivateLogPath  string
 	CPU             int
@@ -48,7 +53,12 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 		return status, err
 	}
 	defer resultRing.Close()
-	aead, err := ParseKey(config.KeyHex)
+	var aead cipher.AEAD
+	if config.KeyFile != "" {
+		aead, err = ParseKeyFile(config.KeyFile)
+	} else {
+		aead, err = ParseKey(config.KeyHex)
+	}
 	if err != nil {
 		return status, err
 	}
@@ -78,6 +88,8 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 	var resultDrops atomic.Int64
 	seen := make(map[[OperationIDBytes]byte]bool)
 	var seenMu sync.Mutex
+	effectGate := NewEffectGate()
+	sequence := NewSequenceValidator(config.ProfileID, DirectionRequest, config.Sessions, config.Slots)
 
 	writerDone := make(chan struct{})
 	go func() {
@@ -98,7 +110,11 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 			continue
 		}
 		processed++
-		op, err := DecodeRequest(aead, frame)
+		header, headerErr := ParsePublicHeader(frame)
+		if headerErr != nil || sequence.Accept(header) != nil {
+			continue
+		}
+		op, err := DecodeRequest(aead, frame, config.ProfileID)
 		if err != nil {
 			continue
 		}
@@ -111,6 +127,9 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 			seen[op.OperationID] = true
 		}
 		seenMu.Unlock()
+		if adapter.IsEffectful(op.Provider) && !effectGate.Reserve(op.OperationID) {
+			duplicate = true
+		}
 		if duplicate {
 			continue
 		}
@@ -132,7 +151,7 @@ func RunWorker(config WorkerConfig) (IsolationStatus, error) {
 			events = append(events, WorkerEvent{OperationID: OperationIDString(operation.OperationID),
 				Session: operation.Session, Slot: operation.Slot, Action: operation.Action,
 				Provider: operation.Provider, StartedNS: started, CompletedNS: completed,
-				Status: result.Status, Effect: operation.Action == ActionTool && result.Status == StatusOK})
+				Status: result.Status, Effect: operation.Action == ActionTool && adapter.IsEffectful(operation.Provider) && result.Status == StatusOK})
 			eventMu.Unlock()
 			outstanding.Add(-1)
 		}(op)

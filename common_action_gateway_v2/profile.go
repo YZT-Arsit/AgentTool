@@ -1,6 +1,8 @@
 package gatewayv2
 
 import (
+	"crypto/sha256"
+	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -17,6 +19,14 @@ type PublicProfile struct {
 	MaskNS            int64  `json:"mask_ns"`
 	StartDelayNS      int64  `json:"start_delay_ns"`
 	InterSessionGapNS int64  `json:"inter_session_gap_ns"`
+}
+
+func (p PublicProfile) ID() uint64 {
+	material := fmt.Sprintf("%s|%d|%d|%d|%d|%d|%d|%d|%d", p.Name, p.FrameBytes,
+		p.Slots, p.Sessions, p.RequestDeltaNS, p.ResponseDeltaNS, p.MaskNS,
+		p.StartDelayNS, p.InterSessionGapNS)
+	digest := sha256.Sum256([]byte(material))
+	return binary.BigEndian.Uint64(digest[:8])
 }
 
 func LoadProfile(path string) (PublicProfile, error) {

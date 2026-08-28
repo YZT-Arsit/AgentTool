@@ -16,6 +16,7 @@ import (
 
 type ProviderConfig struct {
 	Endpoints        map[string]string `json:"endpoints"`
+	Effectful        map[string]bool   `json:"effectful,omitempty"`
 	TimeoutMS        int               `json:"timeout_ms"`
 	AllowGenericHTTP bool              `json:"allow_generic_http"`
 }
@@ -37,11 +38,13 @@ func LoadProviderConfig(path string) (ProviderConfig, error) {
 
 type ProviderAdapter interface {
 	Execute(context.Context, PrivateOperation) ResultRecord
+	IsEffectful(byte) bool
 }
 
 type HTTPProviderAdapter struct {
 	client       *http.Client
 	endpoints    map[byte]string
+	effectful    map[string]bool
 	allowGeneric bool
 }
 
@@ -60,6 +63,9 @@ func NewLocalProviderAdapter(config ProviderConfig) (*LocalProviderAdapter, erro
 func (a *LocalProviderAdapter) Execute(ctx context.Context, op PrivateOperation) ResultRecord {
 	return a.delegate.Execute(ctx, op)
 }
+func (a *LocalProviderAdapter) IsEffectful(provider byte) bool {
+	return a.delegate.IsEffectful(provider)
+}
 
 func NewGenericHTTPProviderAdapter(config ProviderConfig) (*GenericHTTPProviderAdapter, error) {
 	if !config.AllowGenericHTTP {
@@ -75,6 +81,9 @@ func NewGenericHTTPProviderAdapter(config ProviderConfig) (*GenericHTTPProviderA
 func (a *GenericHTTPProviderAdapter) Execute(ctx context.Context, op PrivateOperation) ResultRecord {
 	return a.delegate.Execute(ctx, op)
 }
+func (a *GenericHTTPProviderAdapter) IsEffectful(provider byte) bool {
+	return a.delegate.IsEffectful(provider)
+}
 
 func providerName(code byte) string {
 	switch code {
@@ -88,6 +97,12 @@ func providerName(code byte) string {
 		return "VERY_SLOW"
 	case ProviderJittered:
 		return "JITTERED"
+	case ProviderLocalModel:
+		return "LOCAL_MODEL"
+	case ProviderReadOnly:
+		return "READ_ONLY_TOOL"
+	case ProviderEffectful:
+		return "EFFECTFUL_TOOL"
 	default:
 		return "NONE"
 	}
@@ -95,7 +110,7 @@ func providerName(code byte) string {
 
 func NewHTTPProviderAdapter(config ProviderConfig) (*HTTPProviderAdapter, error) {
 	endpoints := make(map[byte]string)
-	for code := ProviderFast; code <= ProviderJittered; code++ {
+	for code := ProviderFast; code <= ProviderEffectful; code++ {
 		name := providerName(code)
 		endpoint, ok := config.Endpoints[name]
 		if !ok {
@@ -124,8 +139,12 @@ func NewHTTPProviderAdapter(config ProviderConfig) (*HTTPProviderAdapter, error)
 	}
 	return &HTTPProviderAdapter{
 		client:    &http.Client{Transport: transport, Timeout: time.Duration(config.TimeoutMS) * time.Millisecond},
-		endpoints: endpoints, allowGeneric: config.AllowGenericHTTP,
+		endpoints: endpoints, effectful: config.Effectful, allowGeneric: config.AllowGenericHTTP,
 	}, nil
+}
+
+func (a *HTTPProviderAdapter) IsEffectful(provider byte) bool {
+	return a.effectful[providerName(provider)]
 }
 
 type providerRequest struct {

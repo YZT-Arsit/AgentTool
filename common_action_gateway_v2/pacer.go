@@ -1,6 +1,7 @@
 package gatewayv2
 
 import (
+	"crypto/cipher"
 	"crypto/rand"
 	"encoding/binary"
 	"encoding/json"
@@ -15,6 +16,7 @@ type PacerConfig struct {
 	RequestRingPath string
 	ResultRingPath  string
 	KeyHex          string
+	KeyFile         string
 	HostLogPath     string
 	PrivateLogPath  string
 	StatusPath      string
@@ -50,7 +52,12 @@ func RunPacer(config PacerConfig, ready func(string)) error {
 		return err
 	}
 	defer resultRing.Close()
-	aead, err := ParseKey(config.KeyHex)
+	var aead cipher.AEAD
+	if config.KeyFile != "" {
+		aead, err = ParseKeyFile(config.KeyFile)
+	} else {
+		aead, err = ParseKey(config.KeyHex)
+	}
 	if err != nil {
 		return err
 	}
@@ -84,6 +91,7 @@ func RunPacer(config PacerConfig, ready func(string)) error {
 	responseDiagnostics := NewDiagnosticRing(total)
 	delivery := make([]deliveryRecord, 0, total)
 	readerError := make(chan error, 1)
+	requestSequence := NewSequenceValidator(config.Profile.ID(), DirectionRequest, config.Profile.Sessions, config.Profile.Slots)
 	go func() {
 		frame := make([]byte, config.Profile.FrameBytes)
 		for index := 0; index < total; index++ {
@@ -92,8 +100,13 @@ func RunPacer(config PacerConfig, ready func(string)) error {
 				return
 			}
 			received := MonotonicNowNS()
-			session := binary.BigEndian.Uint32(frame[0:4])
-			slot := binary.BigEndian.Uint32(frame[4:8])
+			header, headerErr := ParsePublicHeader(frame)
+			if headerErr != nil || requestSequence.Accept(header) != nil {
+				readerError <- fmt.Errorf("invalid public request sequence")
+				return
+			}
+			session := header.Session
+			slot := header.Slot
 			if !requestRing.TryPush(frame) {
 				readerError <- fmt.Errorf("request ring unexpectedly full")
 				return
@@ -142,7 +155,7 @@ func RunPacer(config PacerConfig, ready func(string)) error {
 					hasPending = true
 				}
 			}
-			if err := builder.Prepare(frames[index], nonces[index][:], uint32(session), uint32(slot), selected); err != nil {
+			if err := builder.Prepare(frames[index], nonces[index][:], config.Profile.ID(), uint32(session), uint32(slot), selected); err != nil {
 				return err
 			}
 			prepared := MonotonicNowNS()

@@ -35,6 +35,7 @@ Thumbs.db
 .pytest_cache/
 .pytest_v2_*/
 .pytest_full_*/
+.pytest_v3_tmp/
 .mypy_cache/
 .ruff_cache/
 

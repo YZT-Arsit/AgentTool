@@ -14,6 +14,7 @@ func main() {
 	requestRing := flag.String("request-ring", "", "request ring path")
 	resultRing := flag.String("result-ring", "", "result ring path")
 	key := flag.String("key", "", "ephemeral experiment key")
+	keyFile := flag.String("key-file", "", "restricted local key file (canonical path)")
 	hostLog := flag.String("host-log", "pacer_host.jsonl", "post-session host timing log")
 	privateLog := flag.String("private-log", "pacer_private.jsonl", "post-session private delivery log")
 	statusPath := flag.String("status", "pacer_status.json", "isolation/capability status")
@@ -26,7 +27,7 @@ func main() {
 		os.Exit(1)
 	}
 	err = gatewayv2.RunPacer(gatewayv2.PacerConfig{Listen: *listen, Profile: profile,
-		RequestRingPath: *requestRing, ResultRingPath: *resultRing, KeyHex: *key,
+		RequestRingPath: *requestRing, ResultRingPath: *resultRing, KeyHex: *key, KeyFile: *keyFile,
 		HostLogPath: *hostLog, PrivateLogPath: *privateLog, StatusPath: *statusPath,
 		CPU: *cpu, Realtime: *realtime}, func(address string) { fmt.Printf("READY %s pid=%d\n", address, os.Getpid()) })
 	if err != nil {

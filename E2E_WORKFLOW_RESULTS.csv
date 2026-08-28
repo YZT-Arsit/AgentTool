@@ -1,0 +1,9 @@
+workflow_family,source_framework,compile_status,real_pir_status,control_kernel_status,cloud_proxy_status,gateway_status,provider_status,result_consumer_status,reference_semantics_status,overall_status,reason
+MULTI_AGENT_HANDOFF,OpenAI Agents SDK,PASS,PASS,PASS,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,PASS,NOT_COMPLETED_ENVIRONMENT,"Windows Application Control blocked gateway-pacer.exe; logical HANDOFF and PIR-to-kernel path pass separately"
+LLM_TOOL_LLM,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"compiler stalls after TOOL_RESULT and omits post-Tool LLM/argument flow"
+TWO_TOOLS,OpenAI Agents SDK,FAIL,NOT_RUN,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"current event ABI cannot execute a general model-Tool loop"
+READ_ONLY_TOOL,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"provider class exists but compiler semantics fail before provider integration can be claimed"
+EFFECTFUL_TOOL,OpenAI Agents SDK,FAIL,PASS,FAIL,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,FAIL,FAIL,"EffectGate unit semantics pass; full provider/effect path was not executed and compiler semantics fail"
+CONDITIONAL_WORKFLOW,Microsoft Agent Framework,UNSUPPORTED,NOT_RUN,UNSUPPORTED,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,UNSUPPORTED,UNSUPPORTED,"arbitrary Python predicate is not a declarative BRANCH"
+MULTI_TURN_STATE,Microsoft Agent Framework,UNSUPPORTED,NOT_RUN,UNSUPPORTED,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,UNSUPPORTED,UNSUPPORTED,"framework session/state semantics are not lowered to STATE_GET/STATE_SET"
+LONG_LATENCY_PROVIDER,Local canonical fixture,PASS,NOT_RUN,PASS,IMPLEMENTED,NOT_COMPLETED_ENVIRONMENT,NOT_RUN,NOT_RUN,NOT_RUN,NOT_COMPLETED_ENVIRONMENT,"requires live Pacer/Worker/provider processes; no synthetic completion was substituted"
