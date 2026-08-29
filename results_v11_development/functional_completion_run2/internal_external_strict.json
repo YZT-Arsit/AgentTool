@@ -1,0 +1,8 @@
+{
+  "both_functional": true,
+  "structural_equal": true,
+  "size_equal": true,
+  "internal_provider_invocations": 0,
+  "external_provider_invocations": 1,
+  "dummy_heavy_ops": 0
+}

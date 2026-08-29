@@ -1,0 +1,1 @@
+{"ordinal":0,"query_bytes":2020,"query_rows":501,"query_cols":1,"query_sha256":"da36fa8b9dfc16eaabd23dc9b30c0f249b5221f29b5eae384baab5b37a4e6bd8","answer_bytes":6592,"answer_ms":0.507,"executor":"SimplePIRServer","request_kind":"PIR_QUERY","answer_ready_ns":1787996778638556300}

@@ -1,0 +1,8 @@
+gate,functional,admitted,delivered,dummy_provider_operations,profile_overflow_events,structural_equal,size_equal,private_readiness_a_ms,private_readiness_b_ms,error
+TOOL_1,False,1,0,0,0,,,,,
+TOOL_10,True,10,10,0,0,,,,,
+TOOL_50,True,50,50,0,0,,,,,
+EXTERNAL_HTTP,True,1,1,0,0,,,,,
+DIRECT_AGENT_SERVICE,True,1,1,0,0,,,,,
+TRUSTED_MODULE_LOCAL_AGENT,True,1,1,0,0,,,,,
+CONTROLLED_COMPLETION_BEHAVIOR,True,2,2,0,0,True,True,2,30,

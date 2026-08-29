@@ -1,0 +1,2 @@
+level,executable_cases,status,reason
+B_SOURCE_BODY,0,NOT_IMPLEMENTED,V11 implemented generic Level-A framework action-boundary adapters only

@@ -1,0 +1,24 @@
+{
+  "holdout_executed": false,
+  "holdout_selected": false,
+  "phase": "V11_FULL_SCOPE_DEVELOPMENT",
+  "ready_for_v11a": false,
+  "reason": "intermittent public-session budget/delivery failure in development evidence",
+  "schema": "AgentTool.V11ExecutionHarnessFreeze/1",
+  "source_hashes_snapshot_not_an_execution_freeze": {
+    "PUBLIC_PROFILE_V10.json": "ff8533688fe9025d4a1a23a1070d98c3fb026dc71e4a3ddc0751008c1263c960",
+    "common_action_gateway_v2/bin/canonical-v9-runner.exe": "679ed206f75ac2a0a99a076a5e024567f2328e1e4969678994466444cf13f2b3",
+    "scripts/finalize_v11_development_reports.py": "173feba49dcfeb79df0c1cffed029e49badab1a863b0f121ee11bca820770de6",
+    "scripts/run_v11_full_scope_development.py": "4d8599e9e857d9df13fcc4f55b3dfd9f231cc7224166581de71f105c26cc3b61",
+    "scripts/run_v11_functional_completion.py": "1161eeb8634f245bd440505c4b4c7026a67feecf4e2bc927db1f82427497cc4f",
+    "tests/test_v11_full_scope.py": "966919202846ba0924a4bb00f47eaaf0adbd964457a98df78b2d6ecd16d38f60",
+    "v11_full_scope/__init__.py": "65ae7a93b695a5e7ea681c5e5ad8eb27f556386e89514c8fc0b39e0d5de72539",
+    "v11_full_scope/action_model.py": "4a267c93b978ef048c2bf0b5a2270afeb28ff937bb577c27538fdec6b69f74cf",
+    "v11_full_scope/canonical.py": "040945e61cddab6f8302e93aa801787bd8008d26964a6abb69c0e4fa6c97f602",
+    "v11_full_scope/fixtures.py": "1cc8ffc71197ac92db891840d79e59db2d654622dc36ae1a39921a959505e64d",
+    "v11_full_scope/frameworks.py": "898032ed31db7607e600cd8f76f00c36679a3776424e216c99ce7261247ff7ae",
+    "v11_full_scope/models.py": "b6c66be730dd60ff0c2c5f7e93517591c0082b0ef878fda888171ee08df620c8",
+    "v11_full_scope/structural.py": "a3ac778a9c2bb28df08e7a29870dc4f9cc0c03877bf8de60317828ef5168f515"
+  },
+  "status": "NOT_FROZEN_DEVELOPMENT_GATE_INCOMPLETE"
+}

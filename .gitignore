@@ -39,6 +39,7 @@ results_v9/v9_canonical*.tgz
 
 # Python testing/cache
 .pytest_cache/
+.pytest-*/
 .pytest_v2_*/
 .pytest_full_*/
 .pytest_ir_v1_*/

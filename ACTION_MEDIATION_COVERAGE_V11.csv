@@ -1,0 +1,7 @@
+phase,frozen_denominator,disposition,count,fraction,openai,microsoft,rule
+V6_FROZEN_BASELINE,1370,MEDIATED,894,0.652555,240,654,exact frozen V6 source-site disposition; no untested source site relabeled
+V6_FROZEN_BASELINE,1370,PARTIAL,473,0.345255,60,413,exact frozen V6 source-site disposition; no untested source site relabeled
+V6_FROZEN_BASELINE,1370,UNSUPPORTED,3,0.002190,3,0,exact frozen V6 source-site disposition; no untested source site relabeled
+V11_DEVELOPMENT_RECOMPUTE,1370,MEDIATED,894,0.652555,240,654,exact frozen V6 source-site disposition; no untested source site relabeled
+V11_DEVELOPMENT_RECOMPUTE,1370,PARTIAL,473,0.345255,60,413,exact frozen V6 source-site disposition; no untested source site relabeled
+V11_DEVELOPMENT_RECOMPUTE,1370,UNSUPPORTED,3,0.002190,3,0,exact frozen V6 source-site disposition; no untested source site relabeled
