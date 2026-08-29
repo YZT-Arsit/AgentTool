@@ -1,0 +1,24 @@
+{
+  "provider": "TOOL_IDEM",
+  "total_calls": 15,
+  "unique_operations": 15,
+  "duplicate_calls": 0,
+  "effect_count": 15,
+  "calls_by_operation": {
+    "functional-100-0001": 1,
+    "functional-100-0008": 1,
+    "functional-100-0015": 1,
+    "functional-100-0022": 1,
+    "functional-100-0029": 1,
+    "functional-100-0036": 1,
+    "functional-100-0043": 1,
+    "functional-100-0050": 1,
+    "functional-100-0057": 1,
+    "functional-100-0064": 1,
+    "functional-100-0071": 1,
+    "functional-100-0078": 1,
+    "functional-100-0085": 1,
+    "functional-100-0092": 1,
+    "functional-100-0099": 1
+  }
+}

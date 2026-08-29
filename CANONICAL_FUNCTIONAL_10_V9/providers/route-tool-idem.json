@@ -1,0 +1,11 @@
+{
+  "provider": "TOOL_IDEM",
+  "total_calls": 2,
+  "unique_operations": 2,
+  "duplicate_calls": 0,
+  "effect_count": 2,
+  "calls_by_operation": {
+    "functional-10-0001": 1,
+    "functional-10-0008": 1
+  }
+}

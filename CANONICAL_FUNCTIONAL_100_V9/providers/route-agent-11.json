@@ -1,0 +1,23 @@
+{
+  "provider": "AGENT_READ",
+  "total_calls": 14,
+  "unique_operations": 14,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-100-0004": 1,
+    "functional-100-0011": 1,
+    "functional-100-0018": 1,
+    "functional-100-0025": 1,
+    "functional-100-0032": 1,
+    "functional-100-0039": 1,
+    "functional-100-0046": 1,
+    "functional-100-0053": 1,
+    "functional-100-0060": 1,
+    "functional-100-0067": 1,
+    "functional-100-0074": 1,
+    "functional-100-0081": 1,
+    "functional-100-0088": 1,
+    "functional-100-0095": 1
+  }
+}

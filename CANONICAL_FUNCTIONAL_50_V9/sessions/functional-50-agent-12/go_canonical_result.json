@@ -1,0 +1,756 @@
+{
+  "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+  "rounds": 25,
+  "admitted": 7,
+  "provider_invocations": 7,
+  "dummy_provider_operations": 0,
+  "profile_overflow_events": 0,
+  "results": [
+    {
+      "operation_id": "functional-50-0005",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwMDU6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDAwNQ==",
+      "round": 3
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwMTI6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDAxMg==",
+      "round": 4
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwMTk6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDAxOQ==",
+      "round": 5
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwMjY6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDAyNg==",
+      "round": 6
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwMzM6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDAzMw==",
+      "round": 7
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwNDA6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDA0MA==",
+      "round": 8
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "status": 2,
+      "payload": "QUdFTlRfSURFTTpmdW5jdGlvbmFsLTUwLTAwNDc6c3ludGhldGljOmZ1bmN0aW9uYWwtNTAtMDA0Nw==",
+      "round": 9
+    }
+  ],
+  "private_events": [
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 1
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 1
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 2
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 2
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 3
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 3
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 3
+    },
+    {
+      "operation_id": "functional-50-0005",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 3
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 4
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 4
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 4
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0012",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 4
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 5
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 5
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 5
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0019",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 5
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 6
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 6
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 6
+    },
+    {
+      "operation_id": "functional-50-0026",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 6
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 7
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "route_handle": "route-agent-12",
+      "round": 7
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 7
+    },
+    {
+      "operation_id": "functional-50-0033",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 7
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 8
+    },
+    {
+      "operation_id": "functional-50-0040",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 8
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 9
+    },
+    {
+      "operation_id": "functional-50-0047",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 9
+    }
+  ],
+  "public_relay_events": [
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 1,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473411952043,
+      "response_observed_ns": 1787976473414307497
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 2,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473416979142,
+      "response_observed_ns": 1787976473418391441
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 3,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473421906656,
+      "response_observed_ns": 1787976473425710373
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 4,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473426706618,
+      "response_observed_ns": 1787976473429379279
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 5,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473431788103,
+      "response_observed_ns": 1787976473433646258
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 6,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473437092024,
+      "response_observed_ns": 1787976473439008488
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 7,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473442301897,
+      "response_observed_ns": 1787976473444255837
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 8,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473446830405,
+      "response_observed_ns": 1787976473447558613
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 9,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473451641717,
+      "response_observed_ns": 1787976473453033230
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 10,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473456588842,
+      "response_observed_ns": 1787976473456975461
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 11,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473461755009,
+      "response_observed_ns": 1787976473462122113
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 12,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473466631814,
+      "response_observed_ns": 1787976473467096996
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 13,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473471599186,
+      "response_observed_ns": 1787976473472099351
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 14,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473476646607,
+      "response_observed_ns": 1787976473477110079
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 15,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473481602109,
+      "response_observed_ns": 1787976473482049597
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 16,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473486790261,
+      "response_observed_ns": 1787976473487124393
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 17,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473491648619,
+      "response_observed_ns": 1787976473492075035
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 18,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473496653890,
+      "response_observed_ns": 1787976473496996991
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 19,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473501495665,
+      "response_observed_ns": 1787976473501890362
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 20,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473506489191,
+      "response_observed_ns": 1787976473506916870
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 21,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473511511946,
+      "response_observed_ns": 1787976473512003261
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 22,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473516481241,
+      "response_observed_ns": 1787976473516927328
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 23,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473521453043,
+      "response_observed_ns": 1787976473521861982
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 24,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473526478724,
+      "response_observed_ns": 1787976473526863776
+    },
+    {
+      "profile_id": "V9-FUNCTIONAL-50-PUBLIC-ACTIONS-7",
+      "round": 25,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:39646",
+      "relay_gateway_connection_id": "127.0.0.1:60866-\u003e127.0.0.1:42997",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787976473531428262,
+      "response_observed_ns": 1787976473531816512
+    }
+  ],
+  "after_cutoff_operations": [
+    "wait",
+    "PreparedSlot.Send",
+    "one fixed-size writer.Write",
+    "byte-count validation",
+    "non-blocking in-memory acknowledgement"
+  ],
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800
+}

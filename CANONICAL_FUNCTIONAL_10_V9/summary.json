@@ -1,0 +1,12 @@
+{
+  "admitted": 10,
+  "delivered": 10,
+  "missing": 0,
+  "unexpected": 0,
+  "provider_invocations": 10,
+  "dummy_provider_operations": 0,
+  "profile_overflow_events": 0,
+  "unexpected_duplicate_framework_deliveries": 0,
+  "sessions": 4,
+  "passed": true
+}

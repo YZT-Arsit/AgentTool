@@ -1,0 +1,23 @@
+{
+  "provider": "AGENT_IDEM",
+  "total_calls": 14,
+  "unique_operations": 14,
+  "duplicate_calls": 0,
+  "effect_count": 14,
+  "calls_by_operation": {
+    "functional-100-0005": 1,
+    "functional-100-0012": 1,
+    "functional-100-0019": 1,
+    "functional-100-0026": 1,
+    "functional-100-0033": 1,
+    "functional-100-0040": 1,
+    "functional-100-0047": 1,
+    "functional-100-0054": 1,
+    "functional-100-0061": 1,
+    "functional-100-0068": 1,
+    "functional-100-0075": 1,
+    "functional-100-0082": 1,
+    "functional-100-0089": 1,
+    "functional-100-0096": 1
+  }
+}

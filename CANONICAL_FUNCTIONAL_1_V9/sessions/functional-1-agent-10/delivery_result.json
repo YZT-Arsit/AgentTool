@@ -1,0 +1,11 @@
+{
+  "expected": [
+    "functional-1-0000"
+  ],
+  "framework_sink": [
+    "functional-1-0000"
+  ],
+  "missing": [],
+  "unexpected": [],
+  "replay_suppressed": 1
+}

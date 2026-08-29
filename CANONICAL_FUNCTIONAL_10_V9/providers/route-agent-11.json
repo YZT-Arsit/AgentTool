@@ -1,0 +1,10 @@
+{
+  "provider": "AGENT_READ",
+  "total_calls": 1,
+  "unique_operations": 1,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-10-0004": 1
+  }
+}

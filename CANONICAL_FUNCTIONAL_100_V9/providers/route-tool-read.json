@@ -1,0 +1,24 @@
+{
+  "provider": "TOOL_READ",
+  "total_calls": 15,
+  "unique_operations": 15,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-100-0000": 1,
+    "functional-100-0007": 1,
+    "functional-100-0014": 1,
+    "functional-100-0021": 1,
+    "functional-100-0028": 1,
+    "functional-100-0035": 1,
+    "functional-100-0042": 1,
+    "functional-100-0049": 1,
+    "functional-100-0056": 1,
+    "functional-100-0063": 1,
+    "functional-100-0070": 1,
+    "functional-100-0077": 1,
+    "functional-100-0084": 1,
+    "functional-100-0091": 1,
+    "functional-100-0098": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "provider": "EXTERNAL_LOCAL",
+  "total_calls": 14,
+  "unique_operations": 14,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-100-0003": 1,
+    "functional-100-0010": 1,
+    "functional-100-0017": 1,
+    "functional-100-0024": 1,
+    "functional-100-0031": 1,
+    "functional-100-0038": 1,
+    "functional-100-0045": 1,
+    "functional-100-0052": 1,
+    "functional-100-0059": 1,
+    "functional-100-0066": 1,
+    "functional-100-0073": 1,
+    "functional-100-0080": 1,
+    "functional-100-0087": 1,
+    "functional-100-0094": 1
+  }
+}

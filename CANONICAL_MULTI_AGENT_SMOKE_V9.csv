@@ -1,0 +1,5 @@
+case_id,agent_id,authorized,provider_invocations,delivered,passed
+agent-a,1,True,1,1,True
+agent-b,2,True,1,1,True
+agent-c,3,True,1,1,True
+agent-a-forbidden-b,1,False,0,0,True

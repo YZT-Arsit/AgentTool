@@ -20,6 +20,9 @@ env/
 .tmp_pytest*/
 .toolchains/
 
+# Generated experiment/runtime outputs
+results_v9/
+
 # OS
 .DS_Store
 Thumbs.db
@@ -29,6 +32,7 @@ Thumbs.db
 *.temp
 *.log
 *.bin
+results_v9/v9_canonical*.tgz
 
 # Compiled binaries
 *.exe

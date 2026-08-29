@@ -1,0 +1,8 @@
+
+# Admission Runtime Validation V9
+
+Status: **PASS** on the authorized Linux host.
+
+The matched profile was accepted. Runtime mutations to sessions, slots/session, response interval, maximum admitted operations, continuation capacity, and public lifetime were all rejected. Profiles are mechanically computed as `admission + ceil(provider_bound/round_period) + drain + terminal`.
+
+Development profiles: `{'1': {'profile_id': 'V9-FUNCTIONAL-1', 'rounds': 13, 'admission_rounds': 1, 'maximum_real_operations': 1, 'round_period_ms': 5, 'provider_completion_bound_ms': 50, 'request_bhttp_bytes': 1024, 'response_bhttp_bytes': 768, 'request_final_bytes': 1079, 'response_final_bytes': 800}, '10': {'profile_id': 'V9-FUNCTIONAL-10', 'rounds': 31, 'admission_rounds': 10, 'maximum_real_operations': 10, 'round_period_ms': 5, 'provider_completion_bound_ms': 50, 'request_bhttp_bytes': 1024, 'response_bhttp_bytes': 768, 'request_final_bytes': 1079, 'response_final_bytes': 800}, '50': {'profile_id': 'V9-FUNCTIONAL-50', 'rounds': 111, 'admission_rounds': 50, 'maximum_real_operations': 50, 'round_period_ms': 5, 'provider_completion_bound_ms': 50, 'request_bhttp_bytes': 1024, 'response_bhttp_bytes': 768, 'request_final_bytes': 1079, 'response_final_bytes': 800}, '100': {'profile_id': 'V9-FUNCTIONAL-100', 'rounds': 211, 'admission_rounds': 100, 'maximum_real_operations': 100, 'round_period_ms': 5, 'provider_completion_bound_ms': 50, 'request_bhttp_bytes': 1024, 'response_bhttp_bytes': 768, 'request_final_bytes': 1079, 'response_final_bytes': 800}}`.

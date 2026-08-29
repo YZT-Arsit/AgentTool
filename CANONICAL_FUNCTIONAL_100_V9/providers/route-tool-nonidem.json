@@ -1,0 +1,23 @@
+{
+  "provider": "TOOL_NONIDEM",
+  "total_calls": 14,
+  "unique_operations": 14,
+  "duplicate_calls": 0,
+  "effect_count": 14,
+  "calls_by_operation": {
+    "functional-100-0002": 1,
+    "functional-100-0009": 1,
+    "functional-100-0016": 1,
+    "functional-100-0023": 1,
+    "functional-100-0030": 1,
+    "functional-100-0037": 1,
+    "functional-100-0044": 1,
+    "functional-100-0051": 1,
+    "functional-100-0058": 1,
+    "functional-100-0065": 1,
+    "functional-100-0072": 1,
+    "functional-100-0079": 1,
+    "functional-100-0086": 1,
+    "functional-100-0093": 1
+  }
+}

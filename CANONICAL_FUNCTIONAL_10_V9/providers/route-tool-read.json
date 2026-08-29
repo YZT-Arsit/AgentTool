@@ -1,0 +1,11 @@
+{
+  "provider": "TOOL_READ",
+  "total_calls": 2,
+  "unique_operations": 2,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-10-0000": 1,
+    "functional-10-0007": 1
+  }
+}

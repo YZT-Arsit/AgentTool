@@ -1,0 +1,5 @@
+admission_bound,admitted,delivered,missing,unexpected,provider_invocations,dummy_provider_operations,profile_overflow_events,unexpected_duplicate_framework_deliveries,sessions,passed,lifecycle_pass,real_pir_queries,real_pir_correct_queries,relay_rounds,relay_events,request_size_bytes,response_size_bytes,provider_duplicate_calls
+1,1,1,0,0,1,0,0,0,1,True,True,1,1,13,13,1079,800,0
+10,10,10,0,0,10,0,0,0,4,True,True,4,4,64,64,1079,800,0
+50,50,50,0,0,50,0,0,0,4,True,True,4,4,144,144,1079,800,0
+100,100,100,0,0,100,0,0,0,4,True,True,4,4,244,244,1079,800,0

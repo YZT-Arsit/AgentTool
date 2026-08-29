@@ -1,0 +1,17 @@
+{
+  "provider": "TOOL_READ",
+  "total_calls": 8,
+  "unique_operations": 8,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "functional-50-0000": 1,
+    "functional-50-0007": 1,
+    "functional-50-0014": 1,
+    "functional-50-0021": 1,
+    "functional-50-0028": 1,
+    "functional-50-0035": 1,
+    "functional-50-0042": 1,
+    "functional-50-0049": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "provider": "AGENT_NONIDEM",
+  "total_calls": 7,
+  "unique_operations": 7,
+  "duplicate_calls": 0,
+  "effect_count": 7,
+  "calls_by_operation": {
+    "functional-50-0006": 1,
+    "functional-50-0013": 1,
+    "functional-50-0020": 1,
+    "functional-50-0027": 1,
+    "functional-50-0034": 1,
+    "functional-50-0041": 1,
+    "functional-50-0048": 1
+  }
+}

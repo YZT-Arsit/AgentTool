@@ -1,14 +1,13 @@
-# Canonical Functional Gate — V9
 
-Status: **BLOCKED AT FULL COMPOSITION**
+# Canonical Functional Report V9
 
-Delivered/admitted: **0/0 (canonical run not started)**.
+| Bound | Delivered/admitted | Complete lifecycle | Relay events/rounds | Provider calls |
+|---:|---:|---:|---:|---:|
+| 1 | 1/1 | 1/1 | 13/13 | 1 |
+| 10 | 10/10 | 10/10 | 64/64 | 10 |
+| 50 | 50/50 | 50/50 | 144/144 | 50 |
+| 100 | 100/100 | 100/100 | 244/244 | 100 |
 
-RFC 9458, RFC 9292, Relay, PIR smoke, and admission binding now pass their
-individual gates. The required canonical command with durable provider/recovery
-and trusted DeliveryLedger wiring does not exist, so the fresh 1/10/50/100
-operation experiment was not started. No V7 pre-OHTTP result, legacy transport,
-or manually constructed descriptor is counted as canonical evidence.
+Overall functional gate: **PASS**. Across 161 admitted actions: 161 provider calls, 161 framework results, zero missing/unexpected results, zero provider duplicates, zero dummy provider operations, zero profile overflow, and zero unexpected duplicate framework deliveries. The mixed workload covers TOOL and AGENT_SERVICE with read-only, idempotent, safe local non-idempotent, and local EXTERNAL_HTTP actions. Result completion was observably out of submission order in trusted logs, while public Relay records stayed fixed-width.
 
-Dummy provider operations in the nonexistent canonical run: 0.
-
+This is development/correctness data only. No AUC, indistinguishability result, or privacy claim is derived from it.

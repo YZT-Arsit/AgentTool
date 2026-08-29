@@ -1,0 +1,4 @@
+{"episode":"functional-10-agent-10","round":0,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":0.698,"recovery_ms":0.817,"correct":true}
+{"episode":"functional-10-agent-11","round":1,"private_index":11,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":0.661,"recovery_ms":0.736,"correct":true}
+{"episode":"functional-10-agent-12","round":2,"private_index":12,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":0.621,"recovery_ms":0.47,"correct":true}
+{"episode":"functional-10-agent-13","round":3,"private_index":13,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":0.595,"recovery_ms":0.447,"correct":true}

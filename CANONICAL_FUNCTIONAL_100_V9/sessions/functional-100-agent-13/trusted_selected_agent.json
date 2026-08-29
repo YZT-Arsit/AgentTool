@@ -1,0 +1,22 @@
+{
+  "selected_agent_id": 13,
+  "descriptor_schema": "AgentDescriptorV7/7",
+  "catalog_epoch": 20260829,
+  "authenticated_from_real_pir": true,
+  "authorized_operation_ids": [
+    "functional-100-0006",
+    "functional-100-0013",
+    "functional-100-0020",
+    "functional-100-0027",
+    "functional-100-0034",
+    "functional-100-0041",
+    "functional-100-0048",
+    "functional-100-0055",
+    "functional-100-0062",
+    "functional-100-0069",
+    "functional-100-0076",
+    "functional-100-0083",
+    "functional-100-0090",
+    "functional-100-0097"
+  ]
+}
