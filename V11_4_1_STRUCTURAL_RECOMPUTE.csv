@@ -1,0 +1,13 @@
+pair,accepted_v11_4_pair,arm_a_runtime_complete,arm_b_runtime_complete,authenticated_public_order,public_session_ids_exact,client_http_versions_exact,gateway_http_versions_exact,request_lengths_exact,response_lengths_exact,timestamp_excluded,old_projection_fields_preserved,strict_size_projection_unchanged,stronger_structural_equal,stronger_size_equal,schedule_misses,profile_overflow,dummy_provider_operations,silent_committed_result_loss,passed
+AGENT_IDENTITY,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+TOOL_ROUTE,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+ACTION_KIND,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+ACTION_COUNT,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+REPETITION,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+FREQUENCY,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+RARE_TARGET,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+TRANSITION_PATTERN,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+ARGUMENT_LENGTH,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+PROVIDER_READINESS,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+INTERNAL_EXTERNAL,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
+CAUSAL_DEPTH,True,True,True,True,True,True,True,True,True,True,True,True,True,True,0,0,0,0,True
