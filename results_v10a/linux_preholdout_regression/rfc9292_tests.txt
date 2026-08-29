@@ -1,0 +1,3 @@
+COMMAND: GO111MODULE=off go test common-action-gateway-v2/v9ohttp common-action-gateway-v2/v8
+ok  	common-action-gateway-v2/v9ohttp	(cached)
+ok  	common-action-gateway-v2/v8	(cached)

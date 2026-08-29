@@ -1,0 +1,113 @@
+{
+  "schema": "AgentTool.V10VsV9_1SecurityProfileDiff/1",
+  "all_security_relevant_values_equal": true,
+  "allowed_metadata_differences": {
+    "profile_id": {
+      "v9_1": "V9_1-STRICT-H50-P1",
+      "v10": "V10-STRICT-H50-C1"
+    },
+    "phase": "development -> confirmatory freeze"
+  },
+  "security_relevant_fields": {
+    "maximum_real_operations": {
+      "v9_1": 50,
+      "v10": 50,
+      "equal": true
+    },
+    "admission_rounds": {
+      "v9_1": 50,
+      "v10": 50,
+      "equal": true
+    },
+    "total_rounds": {
+      "v9_1": 111,
+      "v10": 111,
+      "equal": true
+    },
+    "session_count": {
+      "v9_1": 1,
+      "v10": 1,
+      "equal": true
+    },
+    "round_period_ms": {
+      "v9_1": 5,
+      "v10": 5,
+      "equal": true
+    },
+    "provider_completion_bound_ms": {
+      "v9_1": 50,
+      "v10": 50,
+      "equal": true
+    },
+    "terminal_rounds": {
+      "v9_1": 1,
+      "v10": 1,
+      "equal": true
+    },
+    "request_bhttp_bytes": {
+      "v9_1": 1024,
+      "v10": 1024,
+      "equal": true
+    },
+    "response_bhttp_bytes": {
+      "v9_1": 768,
+      "v10": 768,
+      "equal": true
+    },
+    "final_request_bytes": {
+      "v9_1": 1079,
+      "v10": 1079,
+      "equal": true
+    },
+    "final_response_bytes": {
+      "v9_1": 800,
+      "v10": 800,
+      "equal": true
+    },
+    "ohttp_key_id": {
+      "v9_1": 7,
+      "v10": 7,
+      "equal": true
+    },
+    "kem_id": {
+      "v9_1": 32,
+      "v10": 32,
+      "equal": true
+    },
+    "kdf_id": {
+      "v9_1": 1,
+      "v10": 1,
+      "equal": true
+    },
+    "aead_id": {
+      "v9_1": 1,
+      "v10": 1,
+      "equal": true
+    },
+    "config_epoch": {
+      "v9_1": 3,
+      "v10": 3,
+      "equal": true
+    },
+    "relay_endpoint_class": {
+      "v9_1": "LOCAL_RELAY",
+      "v10": "LOCAL_RELAY",
+      "equal": true
+    },
+    "gateway_endpoint_class": {
+      "v9_1": "LOCAL_GATEWAY",
+      "v10": "LOCAL_GATEWAY",
+      "equal": true
+    },
+    "connection_policy": {
+      "v9_1": "ONE_PERSISTENT_KEEP_ALIVE_CONNECTION_PER_PUBLIC_SESSION",
+      "v10": "ONE_PERSISTENT_KEEP_ALIVE_CONNECTION_PER_PUBLIC_SESSION",
+      "equal": true
+    },
+    "scheduled_lifetime_ms": {
+      "v9_1": 555,
+      "v10": 555,
+      "equal": true
+    }
+  }
+}

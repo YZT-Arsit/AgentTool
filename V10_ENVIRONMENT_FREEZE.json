@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V10EnvironmentFreeze/1",
+  "created_utc": "2026-08-29T08:12:25.937038+00:00",
+  "authorized_host_role": "offline Linux build/regression host",
+  "selected_holdout_executed": false,
+  "os": "Ubuntu 22.04.5 LTS",
+  "kernel": "5.15.0-94-generic",
+  "architecture": "x86_64",
+  "cpu_model": "Intel(R) Xeon(R) Platinum 8470Q",
+  "python": "3.12.3",
+  "go": "go1.26.5 linux/amd64",
+  "gcc": "11.4.0",
+  "cryptography": "42.0.5",
+  "numpy": "2.4.6",
+  "scikit_learn": "NOT_INSTALLED (not required for freeze-only regressions)",
+  "simplepir_commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "ohttp_source_tree_sha256": "264221b5daef50305a9a17a55f37d2ad547ef624331c12a0d716fce9a2629045",
+  "canonical_source_tree_sha256": "9dfd0d0dd9eee72946b212480dc03d0c72c9332f06996857fd62bd1657669834",
+  "raw_environment_log_sha256": "185767d429077fa4742cc04da4afc6bca2d2405b16d26d01512fedc8d33d9a3d",
+  "regressions": {
+    "python": "27 passed",
+    "go_workspace": "PASS",
+    "rfc9458": "PASS with go test -vet=off",
+    "rfc9458_vet_note": "Go 1.26 vet rejects upstream test Fatalf with a non-constant format string; production source was unchanged.",
+    "rfc9292": "PASS",
+    "simplepir_descriptor_smoke": "PASS rows=2",
+    "v9_1_profile_projection": "PASS",
+    "windows_full_repository_regression": "223 passed in 40.70s using a fresh workspace-local pytest basetemp",
+    "windows_initial_full_run_diagnostic": "219 passed and 4 setup errors caused solely by access denied on a stale user-temp pytest directory; rerun used identical tests/code"
+  }
+}

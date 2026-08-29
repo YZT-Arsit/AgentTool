@@ -48,8 +48,11 @@ holdout; it must not reuse these development arms as confirmation.
 - The V9.1 unit suite is 16/16 PASS and all 15 final raw Relay traces recompute
   to their saved projections. All 323 V9 freeze entries still match their
   recorded hashes.
-- The broader Windows suite was not rerun because this host Python lacks its
-  `cryptography` and `numpy` dependencies. A fresh Go source rebuild was also
+- The Windows system Python was subsequently configured with the declared
+  cryptographic, numerical, statistical, and two local framework dependencies.
+  The complete suite reports `217 passed, 2 skipped`; both skips are explicit
+  `NOT_COMPLETED_ENVIRONMENT` Pacer cases blocked by Windows Application
+  Control. There are no test failures or errors. A fresh Go source rebuild was
   unavailable on the transferred Linux checkout because the vendored OHTTP
   source was absent. V9.1 changes no Go code and executed the already accepted,
   frozen canonical V9 binary; prior V9 regression evidence remains frozen.

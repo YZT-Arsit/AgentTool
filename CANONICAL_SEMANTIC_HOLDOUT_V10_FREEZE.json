@@ -1,0 +1,1280 @@
+{
+  "schema": "AgentTool.CanonicalSemanticHoldoutV10Freeze/1",
+  "phase": "V10A_FREEZE_ONLY",
+  "selected_holdout_executed": false,
+  "selection_seed": "595ff99772b84b824e13f3eb42d22037a171b00bd336d699b1a25bb69947620e",
+  "selection_rule": "lowest deterministic score within predeclared framework/family strata; preferred cap two sites per source file, relaxed to three only where the frozen pool could not reach the framework quota",
+  "target_cases": 32,
+  "eligible_stratum_counts": {
+    "Microsoft Agent Framework|tool": 255,
+    "OpenAI Agents SDK|agents_as_tools": 11,
+    "OpenAI Agents SDK|handoff": 10,
+    "OpenAI Agents SDK|tool": 185
+  },
+  "documented_shortages": [
+    "Microsoft Agent Framework agents_as_tools: 0 fresh eligible sites after prior-case exclusion"
+  ],
+  "source_file_cap_exception": {
+    "maximum_selected_sites": 3,
+    "reason": "Microsoft framework quota could not reach 16 under the preferred two-site cap after exclusions"
+  },
+  "cases": [
+    {
+      "case_id": "V10S-001",
+      "selection_rank": 1,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/basic/image_tool_output.py",
+        "sha256": "133bf225dfd0582e9d19912e1d3d1a31ad88edf45b103deadb8ea949268e1752",
+        "line": 17,
+        "detail": "fetch_random_image"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-001",
+        "protected_argument": "argument-001"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-001",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00010001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-002",
+      "selection_rank": 2,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/model_providers/custom_example_global.py",
+        "sha256": "c3ce3342f4b6e6971e488fdff20fe65a253536249359af476acad04cfea87cab",
+        "line": 45,
+        "detail": "get_weather"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-002",
+        "protected_argument": "argument-002"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-002",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00020001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-003",
+      "selection_rank": 3,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3",
+        "line": 848,
+        "detail": "tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-003",
+        "protected_argument": "argument-003"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-003",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00030001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-004",
+      "selection_rank": 4,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3",
+        "line": 536,
+        "detail": "tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_TIMEOUT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-004",
+        "protected_argument": "argument-004"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "TIMEOUT",
+        "response_token": "local-result-004",
+        "timeout_is_local_and_bounded": true
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00040001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-005",
+      "selection_rank": 5,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3",
+        "line": 831,
+        "detail": "Name(id='new_guarded_tool', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "MULTI_ACTION_READ_ONLY",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-005",
+        "protected_argument": "argument-005"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-005",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00050001",
+        "v10s00050002"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-006",
+      "selection_rank": 6,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f",
+        "line": 176,
+        "detail": "get_weather"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-006",
+        "protected_argument": "argument-006"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-006",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00060001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-007",
+      "selection_rank": 7,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/agent_patterns/agents_as_tools_conditional.py",
+        "sha256": "511e3da26270d1df3a8454e0c8df774d8bc41815db245fa2105ca6a5a137c6a7",
+        "line": 78,
+        "detail": "italian_agent.as_tool"
+      },
+      "action_family": "agents_as_tools",
+      "deterministic_scenario": "NON_IDEMPOTENT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-007",
+        "protected_argument": "argument-007"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-007",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00070001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-008",
+      "selection_rank": 8,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_middleware_with_agent.py",
+        "sha256": "1f5a991b22be7fcfbec8d52b581064beb32a5b496b4401b6c788a565fc7dc02f",
+        "line": 2479,
+        "detail": "Name(id='tracked_tool', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS_ALT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-008",
+        "protected_argument": "argument-008"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-008",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00080001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-009",
+      "selection_rank": 9,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f",
+        "line": 245,
+        "detail": "tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-009",
+        "protected_argument": "argument-009"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-009",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00090001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-010",
+      "selection_rank": 10,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/agent_patterns/human_in_the_loop.py",
+        "sha256": "6ac502e8895fd581a529a8a588bbab8bef84cac79477b920968360a817323ae6",
+        "line": 64,
+        "detail": "Name(id='get_temperature', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-010",
+        "protected_argument": "argument-010"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-010",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00100001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-011",
+      "selection_rank": 11,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/sandbox/healthcare_support/workflow.py",
+        "sha256": "d5fed2d6f5c078295aa322c7ef2d20e140b6df742d2497b3480bd66694460f1e",
+        "line": 443,
+        "detail": "policy_agent.as_tool"
+      },
+      "action_family": "agents_as_tools",
+      "deterministic_scenario": "READ_ONLY_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-011",
+        "protected_argument": "argument-011"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-011",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00110001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-012",
+      "selection_rank": 12,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/mcp/streamablehttp_custom_client_example/server.py",
+        "sha256": "99ffc8e36edb28f00bbaf853e6c7bd5365a222b12cfa748715312af74fca212c",
+        "line": 13,
+        "detail": "mcp.tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_TIMEOUT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-012",
+        "protected_argument": "argument-012"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "TIMEOUT",
+        "response_token": "local-result-012",
+        "timeout_is_local_and_bounded": true
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00120001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-013",
+      "selection_rank": 13,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_middleware_with_chat.py",
+        "sha256": "60dd746a31a9b0f6a6cbf22c71955b49118e5cfcee9058690798851a95b39c14",
+        "line": 506,
+        "detail": "inject_message"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "MULTI_ACTION_READ_ONLY",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-013",
+        "protected_argument": "argument-013"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-013",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00130001",
+        "v10s00130002"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-014",
+      "selection_rank": 14,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_middleware_with_agent.py",
+        "sha256": "1f5a991b22be7fcfbec8d52b581064beb32a5b496b4401b6c788a565fc7dc02f",
+        "line": 2499,
+        "detail": "Name(id='sample_tool_function', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-014",
+        "protected_argument": "argument-014"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-014",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00140001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-015",
+      "selection_rank": 15,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/memory/hitl_session_scenario.py",
+        "sha256": "61c93cc9550272ec346ce31db225718f50755d969f22c83808f3d7c461eae380",
+        "line": 58,
+        "detail": "tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "NON_IDEMPOTENT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-015",
+        "protected_argument": "argument-015"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-015",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00150001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-016",
+      "selection_rank": 16,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/handoffs/message_filter_streaming.py",
+        "sha256": "087ef2be8f5877a9fb663b973ec9966ca7882c6b47abd021903918b6c7301d79",
+        "line": 69,
+        "detail": "handoff"
+      },
+      "action_family": "handoff",
+      "deterministic_scenario": "READ_ONLY_SUCCESS_ALT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-016",
+        "protected_argument": "argument-016"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-016",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00160001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-017",
+      "selection_rank": 17,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_tools_future_annotations.py",
+        "sha256": "9d5da915e76a79b66fd1b95382db94487a78195c7c684248f0585a5721216306",
+        "line": 52,
+        "detail": "search"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-017",
+        "protected_argument": "argument-017"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-017",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00170001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-018",
+      "selection_rank": 18,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/mcp/streamablehttp_example/server.py",
+        "sha256": "6b890151e410ca4e30d639927210696173885518c38e22ed0e2d66c12b45148a",
+        "line": 27,
+        "detail": "mcp.tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-018",
+        "protected_argument": "argument-018"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-018",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00180001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-019",
+      "selection_rank": 19,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f",
+        "line": 297,
+        "detail": "get_weather"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-019",
+        "protected_argument": "argument-019"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-019",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00190001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-020",
+      "selection_rank": 20,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/tools/programmatic_tool_calling.py",
+        "sha256": "f1beed8d0c4b6cc065e5d7da18185dcfd8dd9652edcd0655ccdc023e0d2ad980",
+        "line": 61,
+        "detail": "get_weekly_demand"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_TIMEOUT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-020",
+        "protected_argument": "argument-020"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "TIMEOUT",
+        "response_token": "local-result-020",
+        "timeout_is_local_and_bounded": true
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00200001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-021",
+      "selection_rank": 21,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/memory/advanced_sqlite_session_example.py",
+        "sha256": "5457acc4775c552d08ca04c3a9059b1795ba7703f084abae888aac959ffb27e5",
+        "line": 31,
+        "detail": "Name(id='get_weather', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "MULTI_ACTION_READ_ONLY",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-021",
+        "protected_argument": "argument-021"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-021",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00210001",
+        "v10s00210002"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-022",
+      "selection_rank": 22,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/workflow/test_agent_executor_tool_calls.py",
+        "sha256": "9ec695c3005323ea6b7afb9a5f9b6dffeb2b6d44a52f1873cf087df62a402238",
+        "line": 158,
+        "detail": "tool"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-022",
+        "protected_argument": "argument-022"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-022",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00220001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-023",
+      "selection_rank": 23,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_tools_future_annotations.py",
+        "sha256": "9d5da915e76a79b66fd1b95382db94487a78195c7c684248f0585a5721216306",
+        "line": 39,
+        "detail": "get_weather"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "NON_IDEMPOTENT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-023",
+        "protected_argument": "argument-023"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-023",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00230001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-024",
+      "selection_rank": 24,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/basic/tool_guardrails.py",
+        "sha256": "4d70ca04e73201a94615eadefb5af89083214bf444ce559bdac8202b8cc5b7b9",
+        "line": 26,
+        "detail": "get_user_data"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS_ALT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-024",
+        "protected_argument": "argument-024"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-024",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00240001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-025",
+      "selection_rank": 25,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/customer_service/main.py",
+        "sha256": "f9f1ff5b37efbb41c17f769934615c3c3c4e107a5d44eb6d09282b2b924ffb7f",
+        "line": 130,
+        "detail": "handoff"
+      },
+      "action_family": "handoff",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-025",
+        "protected_argument": "argument-025"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-025",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00250001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-026",
+      "selection_rank": 26,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/agent_patterns/human_in_the_loop_custom_rejection.py",
+        "sha256": "5f656cc6c7ecc319fba20e0d6f5cfdb617b97ed680429166112795599a6123ca",
+        "line": 61,
+        "detail": "Name(id='publish_announcement', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-026",
+        "protected_argument": "argument-026"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-026",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00260001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-027",
+      "selection_rank": 27,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/agent_patterns/human_in_the_loop.py",
+        "sha256": "6ac502e8895fd581a529a8a588bbab8bef84cac79477b920968360a817323ae6",
+        "line": 45,
+        "detail": "get_temperature"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-027",
+        "protected_argument": "argument-027"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-027",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00270001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-028",
+      "selection_rank": 28,
+      "framework": "OpenAI Agents SDK",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "source": {
+        "path": "examples/tools/tool_search.py",
+        "sha256": "c06389cc75b499c40ec7c433ce556d91321934079a6d45edb9f9ad2dff8f20bc",
+        "line": 78,
+        "detail": "get_shipping_credit_balance"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_TIMEOUT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-028",
+        "protected_argument": "argument-028"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "TIMEOUT",
+        "response_token": "local-result-028",
+        "timeout_is_local_and_bounded": true
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00280001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-029",
+      "selection_rank": 29,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_agent.py",
+        "sha256": "adfc564bc5cfde252f5145424085bf6f0e3518b36923536792cd15b547038ff7",
+        "line": 1478,
+        "detail": "lookup"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "MULTI_ACTION_READ_ONLY",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-029",
+        "protected_argument": "argument-029"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-029",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00290001",
+        "v10s00290002"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-030",
+      "selection_rank": 30,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_loop.py",
+        "sha256": "42b9b467122678dcde45914b4b92701cdfe493e5af1656936b25bb3b730c81e2",
+        "line": 1610,
+        "detail": "Name(id='run_nested', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "IDEMPOTENT_EFFECT_ERROR",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-030",
+        "protected_argument": "argument-030"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "ERROR",
+        "response_token": "local-result-030",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00300001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-031",
+      "selection_rank": 31,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_harness_loop.py",
+        "sha256": "42b9b467122678dcde45914b4b92701cdfe493e5af1656936b25bb3b730c81e2",
+        "line": 1577,
+        "detail": "Name(id='run_inner', ctx=Load())"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "NON_IDEMPOTENT_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-031",
+        "protected_argument": "argument-031"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-031",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00310001"
+      ],
+      "expected_runtime_answer_frozen": false
+    },
+    {
+      "case_id": "V10S-032",
+      "selection_rank": 32,
+      "framework": "Microsoft Agent Framework",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "source": {
+        "path": "python/packages/core/tests/core/test_clients.py",
+        "sha256": "db32a3cb92f12e6043ee5e58cbecdf9f8aae0dc6df94464044b4534e9b8c8044",
+        "line": 374,
+        "detail": "lookup_weather"
+      },
+      "action_family": "tool",
+      "deterministic_scenario": "READ_ONLY_SUCCESS_ALT",
+      "deterministic_test_input": {
+        "prompt": "local-v10-input-032",
+        "protected_argument": "argument-032"
+      },
+      "local_provider_configuration": {
+        "provider": "V10_DETERMINISTIC_LOCAL_PROVIDER",
+        "outcome": "SUCCESS",
+        "response_token": "local-result-032",
+        "timeout_is_local_and_bounded": false
+      },
+      "declared_effect_semantics": "READ_ONLY",
+      "comparison_projection_schema": [
+        "selected_logical_action",
+        "arguments",
+        "provider_visible_logical_request",
+        "effect_count",
+        "operation_outcome_semantics",
+        "result",
+        "final_framework_visible_result_state"
+      ],
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "operation_ids": [
+        "v10s00320001"
+      ],
+      "expected_runtime_answer_frozen": false
+    }
+  ],
+  "operation_id_abi_check": {
+    "status": "PASS",
+    "evidence": "results_v10a/linux_preholdout_regression/operation_id_abi_check.txt",
+    "sha256": "c7b6747303b8a002f6a47d3c0637e94c0d57227435107292e00066838e0553b5"
+  }
+}

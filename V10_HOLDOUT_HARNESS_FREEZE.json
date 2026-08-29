@@ -1,0 +1,54 @@
+{
+  "schema": "AgentTool.V10HoldoutHarnessFreeze/1",
+  "selected_holdout_executed": false,
+  "tests": "20 passed (harness plus V9.1 profile/projection fixtures)",
+  "sources": [
+    {
+      "path": "v10_holdout/harness.py",
+      "sha256": "324dee5dc938853c825e83324cc75fb9b72e34c74dd68967f5482852624e4119"
+    },
+    {
+      "path": "v10_holdout/operation_id_abi_check.go",
+      "sha256": "c9907999f7b1b368c9bfeb0d3865938c5636b777a9f886f2f7105d99702e8804"
+    },
+    {
+      "path": "tests/test_v10_holdout_harness.py",
+      "sha256": "a0fa34f7f9fc522e844f8e8a9695122fa1fa81ccd2f61101f6a8687f094fb99a"
+    },
+    {
+      "path": "canonical_v9_1/profile.py",
+      "sha256": "44dae7e6d1a431eb09b4631999a2aec704cb7587dbd95d7b277902be613165ed"
+    },
+    {
+      "path": "canonical_v9_1/projection.py",
+      "sha256": "4b1181261eb012e9554b69538e371a1f12bd8e4364024c10022160d5bd0e0655"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "PUBLIC_PROFILE_V10.json",
+      "sha256": "ff8533688fe9025d4a1a23a1070d98c3fb026dc71e4a3ddc0751008c1263c960"
+    },
+    {
+      "path": "CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json",
+      "sha256": "6699fe315ab35ab059c7e2e44e09f24a36ed07b047c1646d491f2daacaf10f9d"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V10_FREEZE.json",
+      "sha256": "2022c655161d339a2751637f997fa62a68c0bc600427d5d4adf9a17281a72827"
+    },
+    {
+      "path": "V10_EXECUTION_ORDER.json",
+      "sha256": "34b9e1e53cb1ba0a2fe288ef0c00c740b5db2c768fb405d6f3204ccdf4b84aa7"
+    },
+    {
+      "path": "V10_DECISION_RULES.md",
+      "sha256": "6a81f59646e4ceaaf06c71ab536abacc8ab2d8abca71210d9a41272a60fae356"
+    },
+    {
+      "path": "V10_LONG_HORIZON_RULES.md",
+      "sha256": "7761b972ea13db08de1ab439de09328d683be9f4ec05f18f46db783b90146e3c"
+    }
+  ],
+  "execution_guard": "V10B authorization file required"
+}

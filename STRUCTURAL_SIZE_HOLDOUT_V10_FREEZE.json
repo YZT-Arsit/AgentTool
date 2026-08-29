@@ -1,0 +1,3500 @@
+{
+  "schema": "AgentTool.StructuralSizeHoldoutV10Freeze/1",
+  "phase": "V10A_FREEZE_ONLY",
+  "selected_holdout_executed": false,
+  "public_profile_id": "V10-STRICT-H50-C1",
+  "internal_external_stratum": "NOT_APPLICABLE",
+  "pairs": [
+    {
+      "pair_id": "S1",
+      "stratum": "AGENT_IDENTITY",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S1-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 1,
+          "private_agent_capability": "agent.a",
+          "actual_real_action_count": 9,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000001",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a0"
+            },
+            {
+              "operation_id": "v10p00000002",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a1"
+            },
+            {
+              "operation_id": "v10p00000003",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a2"
+            },
+            {
+              "operation_id": "v10p00000004",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a3"
+            },
+            {
+              "operation_id": "v10p00000005",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a4"
+            },
+            {
+              "operation_id": "v10p00000006",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a5"
+            },
+            {
+              "operation_id": "v10p00000007",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a6"
+            },
+            {
+              "operation_id": "v10p00000008",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a7"
+            },
+            {
+              "operation_id": "v10p00000009",
+              "action_kind": "TOOL",
+              "capability": "tool.a",
+              "private_route_identity": "route-tool-a",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "a8"
+            }
+          ]
+        },
+        {
+          "arm_id": "S1-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 2,
+          "private_agent_capability": "agent.b",
+          "actual_real_action_count": 9,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000010",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b0"
+            },
+            {
+              "operation_id": "v10p00000011",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b1"
+            },
+            {
+              "operation_id": "v10p00000012",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b2"
+            },
+            {
+              "operation_id": "v10p00000013",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b3"
+            },
+            {
+              "operation_id": "v10p00000014",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b4"
+            },
+            {
+              "operation_id": "v10p00000015",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b5"
+            },
+            {
+              "operation_id": "v10p00000016",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b6"
+            },
+            {
+              "operation_id": "v10p00000017",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b7"
+            },
+            {
+              "operation_id": "v10p00000018",
+              "action_kind": "TOOL",
+              "capability": "tool.b",
+              "private_route_identity": "route-tool-b",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S2",
+      "stratum": "ACTION_TARGET_DESTINATION",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S2-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 11,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000019",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000020",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000021",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000022",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000023",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000024",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000025",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000026",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000027",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000028",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000029",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S2-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 11,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000030",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000031",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000032",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000033",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000034",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000035",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000036",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000037",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000038",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000039",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000040",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S3",
+      "stratum": "ACTION_KIND",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S3-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 13,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000041",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000042",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000043",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000044",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000045",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000046",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000047",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000048",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000049",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000050",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000051",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000052",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000053",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S3-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 11,
+          "private_agent_capability": "agent.service.11",
+          "actual_real_action_count": 13,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000054",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000055",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000056",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000057",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000058",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000059",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000060",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000061",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000062",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000063",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000064",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000065",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000066",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.11",
+              "private_route_identity": "route-agent-11",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S4",
+      "stratum": "PRIVATE_ACTION_COUNT",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S4-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 7,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000067",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000068",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000069",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000070",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000071",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000072",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000073",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S4-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 43,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000074",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000075",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000076",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000077",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000078",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000079",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000080",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000081",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000082",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000083",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000084",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000085",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000086",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000087",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000088",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000089",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000090",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000091",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000092",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000093",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000094",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000095",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000096",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000097",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000098",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000099",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000100",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000101",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000102",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000103",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000104",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000105",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000106",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000107",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000108",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000109",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000110",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000111",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000112",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000113",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000114",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000115",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000116",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S5",
+      "stratum": "REPETITION_PATTERN",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S5-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 24,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000117",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000118",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000119",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000120",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000121",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000122",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000123",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000124",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000125",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000126",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000127",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000128",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000129",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000130",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000131",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000132",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000133",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000134",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000135",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000136",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000137",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000138",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000139",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000140",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S5-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 24,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000141",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000142",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000143",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000144",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000145",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000146",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000147",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000148",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000149",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000150",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000151",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000152",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000153",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000154",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000155",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000156",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000157",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000158",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000159",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000160",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000161",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000162",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000163",
+              "action_kind": "EXTERNAL_HTTP",
+              "capability": "external.local",
+              "private_route_identity": "route-external-local",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000164",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S6",
+      "stratum": "FREQUENCY_SKEW",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S6-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 30,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000165",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000166",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000167",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000168",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000169",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000170",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000171",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000172",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000173",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000174",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000175",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000176",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000177",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000178",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000179",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000180",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000181",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000182",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000183",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000184",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000185",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000186",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000187",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000188",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000189",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000190",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000191",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000192",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000193",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000194",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S6-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 30,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000195",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000196",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000197",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000198",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000199",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000200",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000201",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000202",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000203",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000204",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000205",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000206",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000207",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000208",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000209",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000210",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000211",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000212",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000213",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000214",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000215",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000216",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000217",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000218",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000219",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000220",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000221",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000222",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000223",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000224",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S7",
+      "stratum": "RARE_TARGET",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "seeded rare zero-based position=26",
+      "arms": [
+        {
+          "arm_id": "S7-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 31,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000225",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000226",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000227",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000228",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000229",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000230",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000231",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000232",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000233",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000234",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000235",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000236",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000237",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000238",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000239",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000240",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000241",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000242",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000243",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000244",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000245",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000246",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000247",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000248",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000249",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000250",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000251",
+              "action_kind": "TOOL",
+              "capability": "tool.nonidem",
+              "private_route_identity": "route-tool-nonidem",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000252",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000253",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000254",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000255",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S7-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 31,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000256",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000257",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000258",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000259",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000260",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000261",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000262",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000263",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000264",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000265",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000266",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000267",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000268",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000269",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000270",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000271",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000272",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000273",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000274",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000275",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000276",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000277",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000278",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000279",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000280",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000281",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000282",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000283",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000284",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000285",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000286",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S8",
+      "stratum": "TRANSITION_PATTERN",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S8-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 32,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000287",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000288",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000289",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000290",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000291",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000292",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000293",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000294",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000295",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000296",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000297",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000298",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000299",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000300",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000301",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000302",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000303",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000304",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000305",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000306",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000307",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000308",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000309",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000310",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000311",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000312",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000313",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000314",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000315",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000316",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000317",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000318",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S8-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 32,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000319",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000320",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000321",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000322",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000323",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000324",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000325",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000326",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000327",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000328",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000329",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000330",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000331",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000332",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000333",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000334",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000335",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000336",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000337",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000338",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000339",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000340",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000341",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000342",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000343",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000344",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000345",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000346",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000347",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000348",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000349",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000350",
+              "action_kind": "TOOL",
+              "capability": "tool.idem",
+              "private_route_identity": "route-tool-idem",
+              "effect_semantics": "IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S9",
+      "stratum": "PRIVATE_ARGUMENT_LENGTH",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "",
+      "arms": [
+        {
+          "arm_id": "S9-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 12,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000351",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000352",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000353",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000354",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000355",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000356",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000357",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000358",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000359",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000360",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000361",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            },
+            {
+              "operation_id": "v10p00000362",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "ssssssss"
+            }
+          ]
+        },
+        {
+          "arm_id": "S9-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 12,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000363",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000364",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000365",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000366",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000367",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000368",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000369",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000370",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000371",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000372",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000373",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            },
+            {
+              "operation_id": "v10p00000374",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair_id": "S10",
+      "stratum": "COMPLETION_BEHAVIOR",
+      "selection_method": "deterministic from structural_seed",
+      "structural_seed": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+      "notes": "validated local providers have 0-2ms vs 3-12ms service distributions, both below public 50ms completion bound; timing is not a privacy verdict",
+      "arms": [
+        {
+          "arm_id": "S10-A",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 10,
+          "private_agent_capability": "agent.tools",
+          "actual_real_action_count": 14,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000375",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000376",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000377",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000378",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000379",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000380",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000381",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000382",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000383",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000384",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000385",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000386",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000387",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000388",
+              "action_kind": "TOOL",
+              "capability": "tool.read",
+              "private_route_identity": "route-tool-read",
+              "effect_semantics": "READ_ONLY",
+              "protected_argument": "v10"
+            }
+          ]
+        },
+        {
+          "arm_id": "S10-B",
+          "public_profile_id": "V10-STRICT-H50-C1",
+          "private_agent_id": 13,
+          "private_agent_capability": "agent.service.13",
+          "actual_real_action_count": 14,
+          "private_actions": [
+            {
+              "operation_id": "v10p00000389",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000390",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000391",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000392",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000393",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000394",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000395",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000396",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000397",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000398",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000399",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000400",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000401",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            },
+            {
+              "operation_id": "v10p00000402",
+              "action_kind": "AGENT_SERVICE",
+              "capability": "agent.service.13",
+              "private_route_identity": "route-agent-13",
+              "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+              "protected_argument": "v10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "operation_id_abi_check": {
+    "status": "PASS",
+    "evidence": "results_v10a/linux_preholdout_regression/operation_id_abi_check.txt",
+    "sha256": "c7b6747303b8a002f6a47d3c0637e94c0d57227435107292e00066838e0553b5"
+  }
+}

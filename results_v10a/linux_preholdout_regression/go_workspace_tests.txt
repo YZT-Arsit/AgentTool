@@ -1,0 +1,14 @@
+COMMAND: GO111MODULE=off go test common-action-gateway-v2/...
+ok  	common-action-gateway-v2	0.202s
+ok  	common-action-gateway-v2/canonicalv9	0.080s
+?   	common-action-gateway-v2/cmd/canonical-v9-runner	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-cloud-client	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-pacer	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-pacer-v7	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-worker	[no test files]
+?   	common-action-gateway-v2/cmd/gateway-worker-v7	[no test files]
+?   	common-action-gateway-v2/cmd/local-provider-emulator	[no test files]
+ok  	common-action-gateway-v2/v7	1.115s
+ok  	common-action-gateway-v2/v7ohttp	0.025s
+ok  	common-action-gateway-v2/v8	0.022s
+ok  	common-action-gateway-v2/v9ohttp	0.043s

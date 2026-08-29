@@ -1,0 +1,9 @@
+{
+  "schema": "AgentTool.V10SelectionSeeds/1",
+  "base_v9_functional_freeze_aggregate": "c53925ed1036798f773e6d10588258bb365a69368c04e5cb5403b2f5128b9a46",
+  "semantic_label": "AgentTool-V10-semantic-v1",
+  "semantic_seed_sha256": "595ff99772b84b824e13f3eb42d22037a171b00bd336d699b1a25bb69947620e",
+  "structural_label": "AgentTool-V10-structural-v1",
+  "structural_seed_sha256": "c03e50411b3da354db3ff14ecc3790f4c695e79bf225d6ca81c9ea8517cdea08",
+  "seed_search_performed": false
+}

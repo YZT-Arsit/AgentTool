@@ -1,0 +1,1025 @@
+{
+  "schema": "AgentTool.V10SemanticExclusionSet/1",
+  "created_before_selection": true,
+  "prior_artifacts": [
+    "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+    "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+    "CANONICAL_ACTION_SEMANTIC_HOLDOUT_V8.csv",
+    "CANONICAL_SEMANTIC_HOLDOUT_V9.csv",
+    "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+    "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+    "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+    "DEVELOPMENT_PAIR_PRECHECK_V9_1.csv"
+  ],
+  "record_count": 144,
+  "records": [
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agent_hooks.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agent_hooks.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_agents.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_as_tool_kwargs_propagation.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_as_tool_kwargs_propagation.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_function_invocation_logic.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_observability.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/packages/core/tests/core/test_observability.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_agent_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_chat_client_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_chat_client_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/getting_started/test_chat_client_samples.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/hosting/test_toolbox_endpoint.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/hosting/test_toolbox_endpoint.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "source_path": "python/tests/samples/hosting/test_toolbox_endpoint.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/agents_as_tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/agents_as_tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/agents_as_tools_structured.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/agents_as_tools_structured.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/forcing_tool_use.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/routing.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/routing.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/routing.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/routing.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/agent_patterns/routing.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/hello_world.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/stream_function_call_args.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/stream_function_call_args.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/tools.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/usage_tracking.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/usage_tracking.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/usage_tracking.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/usage_tracking.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/basic/usage_tracking.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V2_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/handoffs/message_filter.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/mcp/get_all_mcp_tools_example/main.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/mcp/get_all_mcp_tools_example/main.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V6.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/mcp/streamablehttp_custom_client_example/main.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/mcp/streamablehttp_custom_client_example/main.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/mcp/streamablehttp_custom_client_example/main.py",
+      "source_location": "*",
+      "prior_artifact": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/sandbox/handoffs.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    },
+    {
+      "framework": "OpenAI Agents SDK",
+      "source_path": "examples/sandbox/handoffs.py",
+      "source_location": "*",
+      "prior_artifact": "SEMANTIC_HOLDOUT_V3_RESULTS.csv",
+      "exclusion_scope": "exact site when line known; source file when line unavailable"
+    }
+  ]
+}

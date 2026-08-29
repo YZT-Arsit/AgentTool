@@ -1,0 +1,9 @@
+# Windows local regression environment validated on CPython 3.13.14.
+cryptography==50.0.1
+numpy==2.5.2
+scikit-learn==1.9.0
+pytest==9.1.1
+
+# Pinned local framework source already present in this repository.
+-e ./external_stage10/openai-agents-python
+-e ./external_stage9/agent-framework/python/packages/core

@@ -1,0 +1,2 @@
+COMMAND: descriptor-only real SimplePIR smoke, two selected rows
+PASS rows=2 ids=1,13 source=official-simplepir

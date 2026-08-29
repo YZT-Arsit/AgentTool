@@ -1,0 +1,1 @@
+COMMAND: GO111MODULE=off go build -trimpath -o canonical-v9-runner common-action-gateway-v2/cmd/canonical-v9-runner

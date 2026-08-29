@@ -1,0 +1,3 @@
+COMMAND: GO111MODULE=off go test -vet=off github.com/chris-wood/ohttp-go
+NOTE: Go 1.26 vet rejects an upstream non-constant Fatalf in test code; tests run with vet disabled, production source unchanged.
+ok  	github.com/chris-wood/ohttp-go	0.025s

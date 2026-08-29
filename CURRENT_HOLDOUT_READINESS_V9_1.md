@@ -12,3 +12,7 @@ timing, packet timing, and hardware TEE validation remain open.
 
 No semantic or privacy holdout manifest was created, no holdout source files or
 secret sequences were selected, and no confirmation was executed.
+
+Windows dependency closure is complete: the full suite reports 217 passed and
+two explicit environment-policy skips, with no failures or errors. See
+`WINDOWS_TEST_ENVIRONMENT_V9_1.md`.

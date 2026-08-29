@@ -1,0 +1,1 @@
+/root/autodl-tmp/v10a_freeze_508ffb4f/bin/canonical-v9-runner: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=VM56rorD8rGmgr5JGgt3/85uaN-rqizU--lzw7tZx/1d6ekYxl2cxbsUSwfVzT/W-vqB0pqYe48pF89kYEr, BuildID[sha1]=58f8f37d0f131b026f51a35ec65d1b35179af1b4, with debug_info, not stripped

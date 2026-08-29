@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V10CanonicalBinaryProvenance/1",
+  "created_utc": "2026-08-29T08:12:25.937521+00:00",
+  "source_freeze": "V10_PRE_HOLDOUT_SYSTEM_FREEZE.json",
+  "source_freeze_sha256": "2f2fb558bbea484c8637409e1355221c989cbebae3f40cbabe3c7d45c6ed92b3",
+  "input_archive_sha256": "508ffb4f36b324919b9d1b54af2f013a8b37bd8194faf8279c1e426a4773f20e",
+  "executable_sha256": "183d4521cc3326ae261e1b221d544afdb33f8db7d1f986ea026a79372894e598",
+  "target": "linux/amd64",
+  "build_command": "GO111MODULE=off go build -trimpath -o canonical-v9-runner common-action-gateway-v2/cmd/canonical-v9-runner",
+  "build_environment": {
+    "GOPATH": "isolated copied source tree",
+    "GO111MODULE": "off",
+    "GOPROXY": "off",
+    "GOSUMDB": "off"
+  },
+  "dependency_resolution": "GOPATH copy plus ohttp-go vendored dependencies; no network resolution",
+  "old_transferred_binary_used": false,
+  "selected_holdout_executed": false,
+  "evidence_archive_sha256": "aaa84affe569224a3e85619d0a101d1778f58cb0ab2516c2be9fcefec539b9e9"
+}
