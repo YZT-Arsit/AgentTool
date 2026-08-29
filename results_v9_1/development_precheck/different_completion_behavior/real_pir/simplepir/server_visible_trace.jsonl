@@ -1,0 +1,2 @@
+{"ordinal":0,"query_bytes":2020,"query_rows":501,"query_cols":1,"query_sha256":"ba226e065cd9748f67e5a4937c5d5a8ac27962c61c4b52f6fcea122faa4e9c54","answer_bytes":6592,"answer_ms":0.355,"executor":"SimplePIRServer","request_kind":"PIR_QUERY","answer_ready_ns":1787988867321284986}
+{"ordinal":1,"query_bytes":2020,"query_rows":501,"query_cols":1,"query_sha256":"0673b5d0e8741e1508e9027f4605a51608b20efd652a71ffbd667667e3ed157b","answer_bytes":6592,"answer_ms":0.357,"executor":"SimplePIRServer","request_kind":"PIR_QUERY","answer_ready_ns":1787988867325811596}

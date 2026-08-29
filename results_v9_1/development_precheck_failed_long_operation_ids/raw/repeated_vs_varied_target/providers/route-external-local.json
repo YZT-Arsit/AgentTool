@@ -1,0 +1,14 @@
+{
+  "provider": "EXTERNAL_LOCAL",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "dev-repeated_vs_varied_target-varied-003": 1,
+    "dev-repeated_vs_varied_target-varied-007": 1,
+    "dev-repeated_vs_varied_target-varied-011": 1,
+    "dev-repeated_vs_varied_target-varied-015": 1,
+    "dev-repeated_vs_varied_target-varied-019": 1
+  }
+}

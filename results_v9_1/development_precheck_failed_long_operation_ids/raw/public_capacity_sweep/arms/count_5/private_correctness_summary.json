@@ -1,0 +1,35 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 5,
+  "expected_operation_ids": [
+    "dev-public_capacity_sweep-count_5-000",
+    "dev-public_capacity_sweep-count_5-001",
+    "dev-public_capacity_sweep-count_5-002",
+    "dev-public_capacity_sweep-count_5-003",
+    "dev-public_capacity_sweep-count_5-004"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-public_capacity_sweep-count_5-000",
+      "dev-public_capacity_sweep-count_5-001",
+      "dev-public_capacity_sweep-count_5-002",
+      "dev-public_capacity_sweep-count_5-003",
+      "dev-public_capacity_sweep-count_5-004"
+    ],
+    "framework_sink": [
+      "dev-public_capacity_sweep-count_"
+    ],
+    "missing": [
+      "dev-public_capacity_sweep-count_5-000",
+      "dev-public_capacity_sweep-count_5-001",
+      "dev-public_capacity_sweep-count_5-002",
+      "dev-public_capacity_sweep-count_5-003",
+      "dev-public_capacity_sweep-count_5-004"
+    ],
+    "unexpected": [
+      "dev-public_capacity_sweep-count_"
+    ],
+    "replay_suppressed": 1
+  }
+}

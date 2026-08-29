@@ -1,0 +1,80 @@
+{
+  "PUBLIC_CAPACITY_SWEEP": {
+    "category": "PUBLIC_CAPACITY_SWEEP",
+    "development_only": true,
+    "arm_count": 5,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": false,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": false
+  },
+  "DIFFERENT_AGENT": {
+    "category": "DIFFERENT_AGENT",
+    "development_only": true,
+    "arm_count": 2,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": true,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": true
+  },
+  "DIFFERENT_TOOL": {
+    "category": "DIFFERENT_TOOL",
+    "development_only": true,
+    "arm_count": 2,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": false,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": false
+  },
+  "DIFFERENT_ACTUAL_COUNT": {
+    "category": "DIFFERENT_ACTUAL_COUNT",
+    "development_only": true,
+    "arm_count": 2,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": false,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": false
+  },
+  "REPEATED_VS_VARIED_TARGET": {
+    "category": "REPEATED_VS_VARIED_TARGET",
+    "development_only": true,
+    "arm_count": 2,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": false,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": false
+  },
+  "DIFFERENT_COMPLETION_BEHAVIOR": {
+    "category": "DIFFERENT_COMPLETION_BEHAVIOR",
+    "development_only": true,
+    "arm_count": 2,
+    "profile_id": "V9_1-STRICT-H50-P1",
+    "functional": false,
+    "strict_structural_equal": true,
+    "strict_size_equal": true,
+    "duplicate_provider_calls": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "passed": false
+  }
+}

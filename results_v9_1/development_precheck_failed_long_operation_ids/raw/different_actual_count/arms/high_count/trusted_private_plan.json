@@ -1,0 +1,487 @@
+{
+  "profile_id": "V9_1-STRICT-H50-P1",
+  "rounds": 111,
+  "admission_rounds": 50,
+  "maximum_real_operations": 50,
+  "round_period_ms": 5,
+  "provider_completion_bound_ms": 50,
+  "request_bhttp_bytes": 1024,
+  "response_bhttp_bytes": 768,
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800,
+  "state_directory": "/root/autodl-tmp/mediation_trace_validation/results_v9_1/development_precheck/different_actual_count/arms/high_count/gateway_state",
+  "routes": [
+    {
+      "route_handle": "route-tool-a",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:38533/execute",
+      "policy_id": "policy-tool-a"
+    },
+    {
+      "route_handle": "route-tool-b",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:43735/execute",
+      "policy_id": "policy-tool-b"
+    },
+    {
+      "route_handle": "route-tool-read",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:41009/execute",
+      "policy_id": "policy-tool-read"
+    },
+    {
+      "route_handle": "route-tool-idem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:38207/execute",
+      "policy_id": "policy-tool-idem"
+    },
+    {
+      "route_handle": "route-tool-nonidem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:38829/execute",
+      "policy_id": "policy-tool-nonidem"
+    },
+    {
+      "route_handle": "route-external-local",
+      "action_kind": "REAL_EXTERNAL_HTTP",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:38577/execute",
+      "policy_id": "policy-external-local"
+    },
+    {
+      "route_handle": "route-agent-c",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:37061/execute",
+      "policy_id": "policy-agent-c"
+    },
+    {
+      "route_handle": "route-agent-11",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:43805/execute",
+      "policy_id": "policy-agent-11"
+    },
+    {
+      "route_handle": "route-agent-12",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:34703/execute",
+      "policy_id": "policy-agent-12"
+    },
+    {
+      "route_handle": "route-agent-13",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:34859/execute",
+      "policy_id": "policy-agent-13"
+    }
+  ],
+  "actions": [
+    {
+      "operation_id": "dev-different_actual_count-high_count-000",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDAw"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-001",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDAx"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-002",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDAy"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-003",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDAz"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-004",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA0"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-005",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA1"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-006",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA2"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-007",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA3"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-008",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA4"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-009",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDA5"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-010",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDEw"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-011",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDEx"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-012",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDEy"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-013",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDEz"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-014",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE0"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-015",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE1"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-016",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE2"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-017",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE3"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-018",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE4"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-019",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDE5"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-020",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDIw"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-021",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDIx"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-022",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDIy"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-023",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDIz"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-024",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI0"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-025",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI1"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-026",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI2"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-027",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI3"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-028",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI4"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-029",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDI5"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-030",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDMw"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-031",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDMx"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-032",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDMy"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-033",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDMz"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-034",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM0"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-035",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM1"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-036",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM2"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-037",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM3"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-038",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM4"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-039",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDM5"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-040",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQw"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-041",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQx"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-042",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQy"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-043",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQz"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-044",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ0"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-045",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ1"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-046",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ2"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-047",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ3"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-048",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ4"
+    },
+    {
+      "operation_id": "dev-different_actual_count-high_count-049",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-read",
+      "protected_arguments": "c3ludGhldGljOmRldi1kaWZmZXJlbnRfYWN0dWFsX2NvdW50LWhpZ2hfY291bnQtMDQ5"
+    }
+  ]
+}

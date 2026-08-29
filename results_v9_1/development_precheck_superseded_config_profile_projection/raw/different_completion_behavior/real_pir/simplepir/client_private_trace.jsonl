@@ -1,0 +1,2 @@
+{"episode":"dev-different_completion_behavior-fast","round":0,"private_index":1,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.471,"recovery_ms":1.648,"correct":true}
+{"episode":"dev-different_completion_behavior-slow_jittered","round":1,"private_index":13,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.267,"recovery_ms":1.785,"correct":true}

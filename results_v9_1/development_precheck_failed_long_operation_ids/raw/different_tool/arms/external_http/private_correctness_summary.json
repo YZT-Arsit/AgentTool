@@ -1,0 +1,44 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 8,
+  "expected_operation_ids": [
+    "dev-different_tool-external_http-000",
+    "dev-different_tool-external_http-001",
+    "dev-different_tool-external_http-002",
+    "dev-different_tool-external_http-003",
+    "dev-different_tool-external_http-004",
+    "dev-different_tool-external_http-005",
+    "dev-different_tool-external_http-006",
+    "dev-different_tool-external_http-007"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-different_tool-external_http-000",
+      "dev-different_tool-external_http-001",
+      "dev-different_tool-external_http-002",
+      "dev-different_tool-external_http-003",
+      "dev-different_tool-external_http-004",
+      "dev-different_tool-external_http-005",
+      "dev-different_tool-external_http-006",
+      "dev-different_tool-external_http-007"
+    ],
+    "framework_sink": [
+      "dev-different_tool-external_http"
+    ],
+    "missing": [
+      "dev-different_tool-external_http-000",
+      "dev-different_tool-external_http-001",
+      "dev-different_tool-external_http-002",
+      "dev-different_tool-external_http-003",
+      "dev-different_tool-external_http-004",
+      "dev-different_tool-external_http-005",
+      "dev-different_tool-external_http-006",
+      "dev-different_tool-external_http-007"
+    ],
+    "unexpected": [
+      "dev-different_tool-external_http"
+    ],
+    "replay_suppressed": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "provider": "AGENT_NONIDEM",
+  "total_calls": 10,
+  "unique_operations": 10,
+  "duplicate_calls": 0,
+  "effect_count": 10,
+  "calls_by_operation": {
+    "dev-different_completion_behavior-slow_jittered-000": 1,
+    "dev-different_completion_behavior-slow_jittered-001": 1,
+    "dev-different_completion_behavior-slow_jittered-002": 1,
+    "dev-different_completion_behavior-slow_jittered-003": 1,
+    "dev-different_completion_behavior-slow_jittered-004": 1,
+    "dev-different_completion_behavior-slow_jittered-005": 1,
+    "dev-different_completion_behavior-slow_jittered-006": 1,
+    "dev-different_completion_behavior-slow_jittered-007": 1,
+    "dev-different_completion_behavior-slow_jittered-008": 1,
+    "dev-different_completion_behavior-slow_jittered-009": 1
+  }
+}

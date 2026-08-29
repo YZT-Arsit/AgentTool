@@ -1,0 +1,14 @@
+{
+  "provider": "TOOL_NONIDEM",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 5,
+  "calls_by_operation": {
+    "dev-repeated_vs_varied_target-varied-002": 1,
+    "dev-repeated_vs_varied_target-varied-006": 1,
+    "dev-repeated_vs_varied_target-varied-010": 1,
+    "dev-repeated_vs_varied_target-varied-014": 1,
+    "dev-repeated_vs_varied_target-varied-018": 1
+  }
+}

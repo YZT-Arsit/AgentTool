@@ -1,0 +1,14 @@
+{
+  "provider": "TOOL_IDEM",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 5,
+  "calls_by_operation": {
+    "dev-repeated_vs_varied_target-varied-001": 1,
+    "dev-repeated_vs_varied_target-varied-005": 1,
+    "dev-repeated_vs_varied_target-varied-009": 1,
+    "dev-repeated_vs_varied_target-varied-013": 1,
+    "dev-repeated_vs_varied_target-varied-017": 1
+  }
+}

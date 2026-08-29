@@ -1,0 +1,31 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 5,
+  "expected_operation_ids": [
+    "v91-5a14eaf582-000",
+    "v91-5a14eaf582-001",
+    "v91-5a14eaf582-002",
+    "v91-5a14eaf582-003",
+    "v91-5a14eaf582-004"
+  ],
+  "delivery": {
+    "expected": [
+      "v91-5a14eaf582-000",
+      "v91-5a14eaf582-001",
+      "v91-5a14eaf582-002",
+      "v91-5a14eaf582-003",
+      "v91-5a14eaf582-004"
+    ],
+    "framework_sink": [
+      "v91-5a14eaf582-000",
+      "v91-5a14eaf582-001",
+      "v91-5a14eaf582-002",
+      "v91-5a14eaf582-003",
+      "v91-5a14eaf582-004"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "replay_suppressed": 1
+  }
+}

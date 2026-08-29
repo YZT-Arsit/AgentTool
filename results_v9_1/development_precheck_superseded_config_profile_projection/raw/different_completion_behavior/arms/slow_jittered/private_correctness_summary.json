@@ -1,0 +1,46 @@
+{
+  "agent_id": 13,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 10,
+  "expected_operation_ids": [
+    "v91-775ccce6dd-000",
+    "v91-775ccce6dd-001",
+    "v91-775ccce6dd-002",
+    "v91-775ccce6dd-003",
+    "v91-775ccce6dd-004",
+    "v91-775ccce6dd-005",
+    "v91-775ccce6dd-006",
+    "v91-775ccce6dd-007",
+    "v91-775ccce6dd-008",
+    "v91-775ccce6dd-009"
+  ],
+  "delivery": {
+    "expected": [
+      "v91-775ccce6dd-000",
+      "v91-775ccce6dd-001",
+      "v91-775ccce6dd-002",
+      "v91-775ccce6dd-003",
+      "v91-775ccce6dd-004",
+      "v91-775ccce6dd-005",
+      "v91-775ccce6dd-006",
+      "v91-775ccce6dd-007",
+      "v91-775ccce6dd-008",
+      "v91-775ccce6dd-009"
+    ],
+    "framework_sink": [
+      "v91-775ccce6dd-001",
+      "v91-775ccce6dd-000",
+      "v91-775ccce6dd-002",
+      "v91-775ccce6dd-003",
+      "v91-775ccce6dd-005",
+      "v91-775ccce6dd-004",
+      "v91-775ccce6dd-006",
+      "v91-775ccce6dd-007",
+      "v91-775ccce6dd-008",
+      "v91-775ccce6dd-009"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "replay_suppressed": 1
+  }
+}

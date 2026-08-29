@@ -1,0 +1,17 @@
+{
+  "provider": "EXTERNAL_LOCAL",
+  "total_calls": 8,
+  "unique_operations": 8,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "dev-different_tool-external_http-000": 1,
+    "dev-different_tool-external_http-001": 1,
+    "dev-different_tool-external_http-002": 1,
+    "dev-different_tool-external_http-003": 1,
+    "dev-different_tool-external_http-004": 1,
+    "dev-different_tool-external_http-005": 1,
+    "dev-different_tool-external_http-006": 1,
+    "dev-different_tool-external_http-007": 1
+  }
+}

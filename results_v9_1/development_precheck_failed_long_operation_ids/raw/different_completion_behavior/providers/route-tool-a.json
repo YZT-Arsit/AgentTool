@@ -1,0 +1,19 @@
+{
+  "provider": "TOOL_A",
+  "total_calls": 10,
+  "unique_operations": 10,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "dev-different_completion_behavior-fast-000": 1,
+    "dev-different_completion_behavior-fast-001": 1,
+    "dev-different_completion_behavior-fast-002": 1,
+    "dev-different_completion_behavior-fast-003": 1,
+    "dev-different_completion_behavior-fast-004": 1,
+    "dev-different_completion_behavior-fast-005": 1,
+    "dev-different_completion_behavior-fast-006": 1,
+    "dev-different_completion_behavior-fast-007": 1,
+    "dev-different_completion_behavior-fast-008": 1,
+    "dev-different_completion_behavior-fast-009": 1
+  }
+}

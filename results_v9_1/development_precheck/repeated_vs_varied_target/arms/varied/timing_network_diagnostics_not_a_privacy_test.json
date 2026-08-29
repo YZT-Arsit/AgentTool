@@ -1,0 +1,11 @@
+{
+  "first_request_observed_ns": 1787988864176849768,
+  "last_response_observed_ns": 1787988864726933461,
+  "observed_relay_span_ns": 550083693,
+  "scheduled_public_lifetime_ns": 555000000,
+  "last_observation_minus_scheduled_end_ns": -4916307,
+  "literal_ephemeral_connection_ids_retained_only_in_raw_trace": true,
+  "connection_close_timestamp": null,
+  "connection_close_slip_status": "NOT_CAPTURED_BY_FROZEN_V9_RUNNER",
+  "timing_privacy": "OPEN / NOT_TESTED"
+}

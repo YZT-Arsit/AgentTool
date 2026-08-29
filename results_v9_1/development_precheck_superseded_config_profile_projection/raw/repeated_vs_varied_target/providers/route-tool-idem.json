@@ -1,0 +1,14 @@
+{
+  "provider": "TOOL_IDEM",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 5,
+  "calls_by_operation": {
+    "v91-3454a9e988-001": 1,
+    "v91-3454a9e988-005": 1,
+    "v91-3454a9e988-009": 1,
+    "v91-3454a9e988-013": 1,
+    "v91-3454a9e988-017": 1
+  }
+}

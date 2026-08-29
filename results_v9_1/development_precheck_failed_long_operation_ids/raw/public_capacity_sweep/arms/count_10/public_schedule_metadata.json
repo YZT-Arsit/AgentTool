@@ -1,0 +1,13 @@
+{
+  "profile_selected_before_private_execution": true,
+  "public_profile_id": "V9_1-STRICT-H50-P1",
+  "public_maximum_real_operations": 50,
+  "private_actual_real_actions": 10,
+  "public_scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+  "public_scheduled_lifetime_ns": 555000000,
+  "wrapper_invocation_start_monotonic_ns": 17189263894454792,
+  "wrapper_invocation_end_monotonic_ns": 17189264471354787,
+  "wrapper_elapsed_ns": 576899995,
+  "connection_close_slip_status": "NOT_CAPTURED_BY_FROZEN_V9_RUNNER",
+  "timing_privacy": "OPEN / NOT_TESTED"
+}

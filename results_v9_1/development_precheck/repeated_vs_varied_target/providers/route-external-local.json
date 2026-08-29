@@ -1,0 +1,14 @@
+{
+  "provider": "EXTERNAL_LOCAL",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "v91-3454a9e988-003": 1,
+    "v91-3454a9e988-007": 1,
+    "v91-3454a9e988-011": 1,
+    "v91-3454a9e988-015": 1,
+    "v91-3454a9e988-019": 1
+  }
+}

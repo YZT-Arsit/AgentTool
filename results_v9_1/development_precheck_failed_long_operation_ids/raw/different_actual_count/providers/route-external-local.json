@@ -1,0 +1,8 @@
+{
+  "provider": "EXTERNAL_LOCAL",
+  "total_calls": 0,
+  "unique_operations": 0,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {}
+}

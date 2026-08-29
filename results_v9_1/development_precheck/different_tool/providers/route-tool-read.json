@@ -1,0 +1,17 @@
+{
+  "provider": "TOOL_READ",
+  "total_calls": 8,
+  "unique_operations": 8,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "v91-abaacf433f-000": 1,
+    "v91-abaacf433f-001": 1,
+    "v91-abaacf433f-002": 1,
+    "v91-abaacf433f-003": 1,
+    "v91-abaacf433f-004": 1,
+    "v91-abaacf433f-005": 1,
+    "v91-abaacf433f-006": 1,
+    "v91-abaacf433f-007": 1
+  }
+}

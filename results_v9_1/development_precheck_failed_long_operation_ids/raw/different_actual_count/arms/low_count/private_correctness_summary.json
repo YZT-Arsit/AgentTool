@@ -1,0 +1,23 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 1,
+  "expected_operation_ids": [
+    "dev-different_actual_count-low_count-000"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-different_actual_count-low_count-000"
+    ],
+    "framework_sink": [
+      "dev-different_actual_count-low_c"
+    ],
+    "missing": [
+      "dev-different_actual_count-low_count-000"
+    ],
+    "unexpected": [
+      "dev-different_actual_count-low_c"
+    ],
+    "replay_suppressed": 1
+  }
+}

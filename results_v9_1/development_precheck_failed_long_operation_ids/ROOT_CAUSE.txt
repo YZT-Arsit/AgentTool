@@ -1,0 +1,1 @@
+ROOT_CAUSE=operation_id descriptions exceeded fixed 32-byte ABI, truncated to collisions, DeliveryLedger correctly deduplicated; structural and size projections were equal in every group.

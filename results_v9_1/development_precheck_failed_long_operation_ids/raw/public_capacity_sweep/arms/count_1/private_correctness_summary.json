@@ -1,0 +1,23 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 1,
+  "expected_operation_ids": [
+    "dev-public_capacity_sweep-count_1-000"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-public_capacity_sweep-count_1-000"
+    ],
+    "framework_sink": [
+      "dev-public_capacity_sweep-count_"
+    ],
+    "missing": [
+      "dev-public_capacity_sweep-count_1-000"
+    ],
+    "unexpected": [
+      "dev-public_capacity_sweep-count_"
+    ],
+    "replay_suppressed": 1
+  }
+}

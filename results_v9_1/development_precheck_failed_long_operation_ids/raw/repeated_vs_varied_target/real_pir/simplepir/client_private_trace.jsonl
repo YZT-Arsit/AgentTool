@@ -1,0 +1,2 @@
+{"episode":"dev-repeated_vs_varied_target-repeated","round":0,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.566,"recovery_ms":1.663,"correct":true}
+{"episode":"dev-repeated_vs_varied_target-varied","round":1,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.373,"recovery_ms":1.497,"correct":true}

@@ -1,0 +1,62 @@
+[
+  {
+    "forbidden_category": "agent_id",
+    "attempt": "V9_1-STRICT-H50-P1-AGENT-17",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "agent_name",
+    "attempt": "V9_1-STRICT-H50-P1-LEGAL-AGENT",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "tool_name",
+    "attempt": "V9_1-STRICT-H50-P1-TOOL-EMAIL",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "provider",
+    "attempt": "V9_1-STRICT-H50-P1-PROVIDER-SLOW",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "route",
+    "attempt": "V9_1-STRICT-H50-P1-ROUTE-EXTERNAL",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "actual_real_action_count",
+    "attempt": "V9_1-STRICT-H50-P1-ACTUAL-ACTIONS-14",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "repeated_label",
+    "attempt": "V9_1-STRICT-H50-P1-REPEATED",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "rare_label",
+    "attempt": "V9_1-STRICT-H50-P1-RARE",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "frequency_label",
+    "attempt": "V9_1-STRICT-H50-P1-FREQUENCY-99-1",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "workload_family",
+    "attempt": "V9_1-STRICT-H50-P1-WORKLOAD-TOOL",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "secret_arm",
+    "attempt": "V9_1-STRICT-H50-P1-ARM-A",
+    "rejected": true
+  },
+  {
+    "forbidden_category": "actual_count_as_horizon",
+    "attempt": "V9_1-STRICT-H14-P1",
+    "rejected": true
+  }
+]

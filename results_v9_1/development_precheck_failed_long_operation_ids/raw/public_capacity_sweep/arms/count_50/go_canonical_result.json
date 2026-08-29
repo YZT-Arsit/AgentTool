@@ -1,0 +1,3277 @@
+{
+  "profile_id": "V9_1-STRICT-H50-P1",
+  "rounds": 111,
+  "admitted": 50,
+  "provider_invocations": 50,
+  "dummy_provider_operations": 0,
+  "profile_overflow_events": 0,
+  "results": [
+    {
+      "operation_id": "dev-public_capacity_sweep-count_",
+      "status": 2,
+      "payload": "VE9PTF9SRUFEOmRldi1wdWJsaWNfY2FwYWNpdHlfc3dlZXAtY291bnRfNTAtMDAwOnN5bnRoZXRpYzpkZXYtcHVibGljX2NhcGFjaXR5X3N3ZWVwLWNvdW50XzUwLTAwMA==",
+      "round": 2
+    }
+  ],
+  "private_events": [
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-000",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 1
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-000",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-000",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 1
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-000",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-000",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-001",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 2
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-001",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-001",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 2
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_",
+      "stage": "CLIENT_BHTTP_DECODED",
+      "status": "2",
+      "round": 2
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-001",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-001",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_",
+      "stage": "GATEWAY_DELIVERY_ACK_DURABLE",
+      "round": 2
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-002",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 3
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-002",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-002",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 3
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-002",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-002",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-003",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 4
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-003",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-003",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 4
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-003",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-003",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-004",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 5
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-004",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-004",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 5
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-004",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-004",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-005",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 6
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-005",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-005",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 6
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-005",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-005",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-006",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 7
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-006",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-006",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 7
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-006",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-006",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-007",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 8
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-007",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-007",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 8
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-007",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-007",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-008",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 9
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-008",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-008",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 9
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-008",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-008",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-009",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 10
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-009",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-009",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 10
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-009",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-009",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-010",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 11
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-010",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-010",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 11
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-010",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-010",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-011",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 12
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-011",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-011",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 12
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-011",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-011",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-012",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 13
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-012",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-012",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 13
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-012",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-012",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-013",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 14
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-013",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-013",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 14
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-013",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-013",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-014",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 15
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-014",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-014",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 15
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-014",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-014",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-015",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 16
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-015",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-015",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 16
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-015",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-015",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-016",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 17
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-016",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-016",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 17
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-016",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-016",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-017",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 18
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-017",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-017",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 18
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-017",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-017",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-018",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 19
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-018",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-018",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 19
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-018",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-018",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-019",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 20
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-019",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-019",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 20
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-019",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-019",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-020",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 21
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-020",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-020",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 21
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-020",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-020",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-021",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 22
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-021",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-021",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 22
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-021",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-021",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-022",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 23
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-022",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-022",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 23
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-022",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-022",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-023",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 24
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-023",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-023",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 24
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-023",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-023",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-024",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 25
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-024",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-024",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 25
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-024",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-024",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-025",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 26
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-025",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-025",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 26
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-025",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-025",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-026",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 27
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-026",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-026",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 27
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-026",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-026",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-027",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 28
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-027",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-027",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 28
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-027",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-027",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-028",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 29
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-028",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-028",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 29
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-028",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-028",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-029",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 30
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-029",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-029",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 30
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-029",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-029",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-030",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 31
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-030",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-030",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 31
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-030",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-030",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-031",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 32
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-031",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-031",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 32
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-031",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-031",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-032",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 33
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-032",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-032",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 33
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-032",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-032",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-033",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 34
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-033",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-033",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 34
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-033",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-033",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-034",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 35
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-034",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-034",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 35
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-034",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-034",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-035",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 36
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-035",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-035",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 36
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-035",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-035",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-036",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 37
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-036",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-036",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 37
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-036",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-036",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-037",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 38
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-037",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-037",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 38
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-037",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-037",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-038",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 39
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-038",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-038",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 39
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-038",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-038",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-039",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 40
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-039",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-039",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 40
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-039",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-039",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-040",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 41
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-040",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-040",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 41
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-040",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-040",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-041",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 42
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-041",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-041",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 42
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-041",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-041",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-042",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 43
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-042",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-042",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 43
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-043",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 44
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-043",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-043",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 44
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-042",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-042",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-043",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-043",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-044",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 45
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-044",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-044",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 45
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-044",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-044",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-045",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 46
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-045",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-045",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 46
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-045",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-045",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-046",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 47
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-046",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-046",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 47
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-046",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-046",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-047",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 48
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-047",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-047",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 48
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-047",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-047",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-048",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 49
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-048",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-048",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 49
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-049",
+      "stage": "ACCEPTED",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 50
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-049",
+      "stage": "PROVIDER_STARTED_DURABLE"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-049",
+      "stage": "PROVIDER_CALL_BEGIN",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-read",
+      "round": 50
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-048",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-048",
+      "stage": "READY_PUBLISHED"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-049",
+      "stage": "RESULT_COMMITTED",
+      "status": "1"
+    },
+    {
+      "operation_id": "dev-public_capacity_sweep-count_50-049",
+      "stage": "READY_PUBLISHED"
+    }
+  ],
+  "public_relay_events": [
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 1,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303788800781,
+      "response_observed_ns": 1787988303790491446
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 2,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303793659119,
+      "response_observed_ns": 1787988303795107873
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 3,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303798745665,
+      "response_observed_ns": 1787988303799981116
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 4,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303803826219,
+      "response_observed_ns": 1787988303805223321
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 5,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303808980316,
+      "response_observed_ns": 1787988303809921993
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 6,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303813665660,
+      "response_observed_ns": 1787988303814551893
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 7,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303818256815,
+      "response_observed_ns": 1787988303819172590
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 8,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303824215077,
+      "response_observed_ns": 1787988303825466127
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 9,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303828280944,
+      "response_observed_ns": 1787988303829777490
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 10,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303833595976,
+      "response_observed_ns": 1787988303834632935
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 11,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303838421495,
+      "response_observed_ns": 1787988303839437617
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 12,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303843278541,
+      "response_observed_ns": 1787988303844818840
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 13,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303848769558,
+      "response_observed_ns": 1787988303849785539
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 14,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303853690601,
+      "response_observed_ns": 1787988303854812086
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 15,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303858661769,
+      "response_observed_ns": 1787988303862085675
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 16,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303863634127,
+      "response_observed_ns": 1787988303865149951
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 17,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303869038036,
+      "response_observed_ns": 1787988303870817442
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 18,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303873575294,
+      "response_observed_ns": 1787988303875363049
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 19,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303878805521,
+      "response_observed_ns": 1787988303880192924
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 20,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303884501657,
+      "response_observed_ns": 1787988303886009713
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 21,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303888612040,
+      "response_observed_ns": 1787988303890129368
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 22,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303894177898,
+      "response_observed_ns": 1787988303895741614
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 23,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303899422217,
+      "response_observed_ns": 1787988303900517628
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 24,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303903416220,
+      "response_observed_ns": 1787988303904401895
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 25,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303908765509,
+      "response_observed_ns": 1787988303910374401
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 26,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303913471977,
+      "response_observed_ns": 1787988303914702690
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 27,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303918705591,
+      "response_observed_ns": 1787988303920427839
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 28,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303923692953,
+      "response_observed_ns": 1787988303925100808
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 29,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303929181845,
+      "response_observed_ns": 1787988303930788697
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 30,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303933352806,
+      "response_observed_ns": 1787988303935530385
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 31,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303938559561,
+      "response_observed_ns": 1787988303939769310
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 32,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303944224708,
+      "response_observed_ns": 1787988303945405806
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 33,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303948530175,
+      "response_observed_ns": 1787988303949751050
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 34,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303953449263,
+      "response_observed_ns": 1787988303955250951
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 35,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303958557116,
+      "response_observed_ns": 1787988303960464264
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 36,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303963869180,
+      "response_observed_ns": 1787988303966199848
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 37,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303968792333,
+      "response_observed_ns": 1787988303970168712
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 38,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303974333805,
+      "response_observed_ns": 1787988303976279827
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 39,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303980439139,
+      "response_observed_ns": 1787988303982639137
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 40,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303984100811,
+      "response_observed_ns": 1787988303986036067
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 41,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303989351067,
+      "response_observed_ns": 1787988303991213540
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 42,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303994140243,
+      "response_observed_ns": 1787988303995241556
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 43,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988303999200217,
+      "response_observed_ns": 1787988304001635809
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 44,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304004179729,
+      "response_observed_ns": 1787988304005890000
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 45,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304008756086,
+      "response_observed_ns": 1787988304011161540
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 46,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304014432131,
+      "response_observed_ns": 1787988304016273585
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 47,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304019031283,
+      "response_observed_ns": 1787988304020710155
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 48,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304023857027,
+      "response_observed_ns": 1787988304025436051
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 49,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304030418674,
+      "response_observed_ns": 1787988304032777369
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 50,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304033498741,
+      "response_observed_ns": 1787988304035440329
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 51,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304039002554,
+      "response_observed_ns": 1787988304039640454
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 52,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304044495534,
+      "response_observed_ns": 1787988304045083786
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 53,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304048783655,
+      "response_observed_ns": 1787988304049292744
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 54,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304053960621,
+      "response_observed_ns": 1787988304054384253
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 55,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304059028644,
+      "response_observed_ns": 1787988304059451989
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 56,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304064097819,
+      "response_observed_ns": 1787988304064510713
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 57,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304069198469,
+      "response_observed_ns": 1787988304069601866
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 58,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304074290692,
+      "response_observed_ns": 1787988304074714311
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 59,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304079377751,
+      "response_observed_ns": 1787988304079769290
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 60,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304084444586,
+      "response_observed_ns": 1787988304084861803
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 61,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304088432959,
+      "response_observed_ns": 1787988304088826650
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 62,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304094479219,
+      "response_observed_ns": 1787988304094846687
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 63,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304098412800,
+      "response_observed_ns": 1787988304098806724
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 64,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304104435188,
+      "response_observed_ns": 1787988304104823997
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 65,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304108381419,
+      "response_observed_ns": 1787988304108766460
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 66,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304114401765,
+      "response_observed_ns": 1787988304114762337
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 67,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304119393187,
+      "response_observed_ns": 1787988304119763581
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 68,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304124379278,
+      "response_observed_ns": 1787988304124760809
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 69,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304129399775,
+      "response_observed_ns": 1787988304129836550
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 70,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304133426090,
+      "response_observed_ns": 1787988304133813514
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 71,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304139433770,
+      "response_observed_ns": 1787988304139816633
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 72,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304144445524,
+      "response_observed_ns": 1787988304144802092
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 73,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304149453524,
+      "response_observed_ns": 1787988304149822217
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 74,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304154441327,
+      "response_observed_ns": 1787988304154812414
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 75,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304159440941,
+      "response_observed_ns": 1787988304159856545
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 76,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304163413857,
+      "response_observed_ns": 1787988304163805805
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 77,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304169419946,
+      "response_observed_ns": 1787988304169793728
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 78,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304174415483,
+      "response_observed_ns": 1787988304174830286
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 79,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304178374034,
+      "response_observed_ns": 1787988304178755965
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 80,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304184389050,
+      "response_observed_ns": 1787988304184761163
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 81,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304189421681,
+      "response_observed_ns": 1787988304189828117
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 82,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304193384709,
+      "response_observed_ns": 1787988304193839881
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 83,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304198421075,
+      "response_observed_ns": 1787988304198864670
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 84,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304203867308,
+      "response_observed_ns": 1787988304204802246
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 85,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304208654237,
+      "response_observed_ns": 1787988304209222513
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 86,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304214109041,
+      "response_observed_ns": 1787988304214586557
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 87,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304219291573,
+      "response_observed_ns": 1787988304219676322
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 88,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304224369310,
+      "response_observed_ns": 1787988304224789206
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 89,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304228399018,
+      "response_observed_ns": 1787988304228741975
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 90,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304233515591,
+      "response_observed_ns": 1787988304233937972
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 91,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304238646543,
+      "response_observed_ns": 1787988304239005234
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 92,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304243662975,
+      "response_observed_ns": 1787988304244091752
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 93,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304248797688,
+      "response_observed_ns": 1787988304249227793
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 94,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304253968578,
+      "response_observed_ns": 1787988304254334095
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 95,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304258988598,
+      "response_observed_ns": 1787988304259550995
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 96,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304264225198,
+      "response_observed_ns": 1787988304264591115
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 97,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304269270913,
+      "response_observed_ns": 1787988304269742577
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 98,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304274429271,
+      "response_observed_ns": 1787988304274875890
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 99,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304278434447,
+      "response_observed_ns": 1787988304278808581
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 100,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304283418130,
+      "response_observed_ns": 1787988304283849016
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 101,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304288521900,
+      "response_observed_ns": 1787988304288906235
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 102,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304293508473,
+      "response_observed_ns": 1787988304293939182
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 103,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304298634313,
+      "response_observed_ns": 1787988304299032186
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 104,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304303794520,
+      "response_observed_ns": 1787988304304162376
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 105,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304308831631,
+      "response_observed_ns": 1787988304309266144
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 106,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304313931544,
+      "response_observed_ns": 1787988304314395668
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 107,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304319110976,
+      "response_observed_ns": 1787988304319508572
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 108,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304324214393,
+      "response_observed_ns": 1787988304324623120
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 109,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304329310114,
+      "response_observed_ns": 1787988304329808845
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 110,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304334544667,
+      "response_observed_ns": 1787988304334947210
+    },
+    {
+      "profile_id": "V9_1-STRICT-H50-P1",
+      "round": 111,
+      "request_length": 1079,
+      "response_length": 800,
+      "relay_client_connection_id": "127.0.0.1:57616",
+      "relay_gateway_connection_id": "127.0.0.1:53314-\u003e127.0.0.1:38741",
+      "relay_endpoint": "LOCAL_RELAY",
+      "gateway_endpoint": "LOCAL_GATEWAY",
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "request_observed_ns": 1787988304338604267,
+      "response_observed_ns": 1787988304338955510
+    }
+  ],
+  "after_cutoff_operations": [
+    "wait",
+    "PreparedSlot.Send",
+    "one fixed-size writer.Write",
+    "byte-count validation",
+    "non-blocking in-memory acknowledgement"
+  ],
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800
+}

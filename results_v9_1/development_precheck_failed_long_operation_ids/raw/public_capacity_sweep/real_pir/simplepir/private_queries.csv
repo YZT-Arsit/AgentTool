@@ -1,0 +1,6 @@
+episode,round,index,class
+dev-public_capacity_sweep-count_1,0,10,PRIVATE_AGENT_SELECTION
+dev-public_capacity_sweep-count_5,1,10,PRIVATE_AGENT_SELECTION
+dev-public_capacity_sweep-count_10,2,10,PRIVATE_AGENT_SELECTION
+dev-public_capacity_sweep-count_25,3,10,PRIVATE_AGENT_SELECTION
+dev-public_capacity_sweep-count_50,4,10,PRIVATE_AGENT_SELECTION

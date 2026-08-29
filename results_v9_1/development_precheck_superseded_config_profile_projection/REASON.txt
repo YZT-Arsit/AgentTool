@@ -1,0 +1,1 @@
+SUPERSEDED=structural projection used validated profile object for profile_id rather than actual Relay event sequence; observed events were equal, but the projection was incomplete.

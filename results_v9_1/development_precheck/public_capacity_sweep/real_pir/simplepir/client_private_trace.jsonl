@@ -1,0 +1,5 @@
+{"episode":"dev-public_capacity_sweep-count_1","round":0,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.357,"recovery_ms":1.691,"correct":true}
+{"episode":"dev-public_capacity_sweep-count_5","round":1,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.358,"recovery_ms":1.893,"correct":true}
+{"episode":"dev-public_capacity_sweep-count_10","round":2,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.503,"recovery_ms":1.495,"correct":true}
+{"episode":"dev-public_capacity_sweep-count_25","round":3,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.49,"recovery_ms":1.541,"correct":true}
+{"episode":"dev-public_capacity_sweep-count_50","round":4,"private_index":10,"private_class":"PRIVATE_AGENT_SELECTION","query_generation_ms":2.36,"recovery_ms":1.441,"correct":true}

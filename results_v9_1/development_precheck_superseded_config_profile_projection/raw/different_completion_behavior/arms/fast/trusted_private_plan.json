@@ -1,0 +1,167 @@
+{
+  "profile_id": "V9_1-STRICT-H50-P1",
+  "rounds": 111,
+  "admission_rounds": 50,
+  "maximum_real_operations": 50,
+  "round_period_ms": 5,
+  "provider_completion_bound_ms": 50,
+  "request_bhttp_bytes": 1024,
+  "response_bhttp_bytes": 768,
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800,
+  "state_directory": "/root/autodl-tmp/mediation_trace_validation/results_v9_1/development_precheck/different_completion_behavior/arms/fast/gateway_state",
+  "routes": [
+    {
+      "route_handle": "route-tool-a",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:43307/execute",
+      "policy_id": "policy-tool-a"
+    },
+    {
+      "route_handle": "route-tool-b",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:45665/execute",
+      "policy_id": "policy-tool-b"
+    },
+    {
+      "route_handle": "route-tool-read",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:40603/execute",
+      "policy_id": "policy-tool-read"
+    },
+    {
+      "route_handle": "route-tool-idem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:46379/execute",
+      "policy_id": "policy-tool-idem"
+    },
+    {
+      "route_handle": "route-tool-nonidem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:44843/execute",
+      "policy_id": "policy-tool-nonidem"
+    },
+    {
+      "route_handle": "route-external-local",
+      "action_kind": "REAL_EXTERNAL_HTTP",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:33037/execute",
+      "policy_id": "policy-external-local"
+    },
+    {
+      "route_handle": "route-agent-c",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:44155/execute",
+      "policy_id": "policy-agent-c"
+    },
+    {
+      "route_handle": "route-agent-11",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:39869/execute",
+      "policy_id": "policy-agent-11"
+    },
+    {
+      "route_handle": "route-agent-12",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:37357/execute",
+      "policy_id": "policy-agent-12"
+    },
+    {
+      "route_handle": "route-agent-13",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:43079/execute",
+      "policy_id": "policy-agent-13"
+    }
+  ],
+  "actions": [
+    {
+      "operation_id": "v91-4d152bac71-000",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwMA=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-001",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwMQ=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-002",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwMg=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-003",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwMw=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-004",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwNA=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-005",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwNQ=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-006",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwNg=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-007",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwNw=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-008",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwOA=="
+    },
+    {
+      "operation_id": "v91-4d152bac71-009",
+      "action_kind": "REAL_TOOL",
+      "route_handle": "route-tool-a",
+      "effect_semantics": "READ_ONLY",
+      "policy_id": "policy-tool-a",
+      "protected_arguments": "c3ludGhldGljOnY5MS00ZDE1MmJhYzcxLTAwOQ=="
+    }
+  ]
+}

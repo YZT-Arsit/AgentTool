@@ -1,0 +1,17 @@
+{
+  "provider": "TOOL_READ",
+  "total_calls": 8,
+  "unique_operations": 8,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "dev-different_tool-tool_read-000": 1,
+    "dev-different_tool-tool_read-001": 1,
+    "dev-different_tool-tool_read-002": 1,
+    "dev-different_tool-tool_read-003": 1,
+    "dev-different_tool-tool_read-004": 1,
+    "dev-different_tool-tool_read-005": 1,
+    "dev-different_tool-tool_read-006": 1,
+    "dev-different_tool-tool_read-007": 1
+  }
+}

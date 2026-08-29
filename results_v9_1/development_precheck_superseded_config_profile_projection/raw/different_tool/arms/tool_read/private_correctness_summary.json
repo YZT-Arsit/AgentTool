@@ -1,0 +1,40 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 8,
+  "expected_operation_ids": [
+    "v91-abaacf433f-000",
+    "v91-abaacf433f-001",
+    "v91-abaacf433f-002",
+    "v91-abaacf433f-003",
+    "v91-abaacf433f-004",
+    "v91-abaacf433f-005",
+    "v91-abaacf433f-006",
+    "v91-abaacf433f-007"
+  ],
+  "delivery": {
+    "expected": [
+      "v91-abaacf433f-000",
+      "v91-abaacf433f-001",
+      "v91-abaacf433f-002",
+      "v91-abaacf433f-003",
+      "v91-abaacf433f-004",
+      "v91-abaacf433f-005",
+      "v91-abaacf433f-006",
+      "v91-abaacf433f-007"
+    ],
+    "framework_sink": [
+      "v91-abaacf433f-000",
+      "v91-abaacf433f-001",
+      "v91-abaacf433f-002",
+      "v91-abaacf433f-003",
+      "v91-abaacf433f-004",
+      "v91-abaacf433f-005",
+      "v91-abaacf433f-006",
+      "v91-abaacf433f-007"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "replay_suppressed": 1
+  }
+}

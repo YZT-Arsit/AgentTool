@@ -1,0 +1,50 @@
+{
+  "agent_id": 1,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 10,
+  "expected_operation_ids": [
+    "dev-different_completion_behavior-fast-000",
+    "dev-different_completion_behavior-fast-001",
+    "dev-different_completion_behavior-fast-002",
+    "dev-different_completion_behavior-fast-003",
+    "dev-different_completion_behavior-fast-004",
+    "dev-different_completion_behavior-fast-005",
+    "dev-different_completion_behavior-fast-006",
+    "dev-different_completion_behavior-fast-007",
+    "dev-different_completion_behavior-fast-008",
+    "dev-different_completion_behavior-fast-009"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-different_completion_behavior-fast-000",
+      "dev-different_completion_behavior-fast-001",
+      "dev-different_completion_behavior-fast-002",
+      "dev-different_completion_behavior-fast-003",
+      "dev-different_completion_behavior-fast-004",
+      "dev-different_completion_behavior-fast-005",
+      "dev-different_completion_behavior-fast-006",
+      "dev-different_completion_behavior-fast-007",
+      "dev-different_completion_behavior-fast-008",
+      "dev-different_completion_behavior-fast-009"
+    ],
+    "framework_sink": [
+      "dev-different_completion_behavio"
+    ],
+    "missing": [
+      "dev-different_completion_behavior-fast-000",
+      "dev-different_completion_behavior-fast-001",
+      "dev-different_completion_behavior-fast-002",
+      "dev-different_completion_behavior-fast-003",
+      "dev-different_completion_behavior-fast-004",
+      "dev-different_completion_behavior-fast-005",
+      "dev-different_completion_behavior-fast-006",
+      "dev-different_completion_behavior-fast-007",
+      "dev-different_completion_behavior-fast-008",
+      "dev-different_completion_behavior-fast-009"
+    ],
+    "unexpected": [
+      "dev-different_completion_behavio"
+    ],
+    "replay_suppressed": 1
+  }
+}

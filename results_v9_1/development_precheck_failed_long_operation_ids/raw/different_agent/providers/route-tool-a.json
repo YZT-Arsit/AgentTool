@@ -1,0 +1,10 @@
+{
+  "provider": "TOOL_A",
+  "total_calls": 1,
+  "unique_operations": 1,
+  "duplicate_calls": 0,
+  "effect_count": 0,
+  "calls_by_operation": {
+    "dev-different_agent-agent_a-000": 1
+  }
+}

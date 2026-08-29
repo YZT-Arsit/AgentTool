@@ -1,0 +1,13 @@
+{
+  "category": "PUBLIC_CAPACITY_SWEEP",
+  "development_only": true,
+  "arm_count": 5,
+  "profile_id": "V9_1-STRICT-H50-P1",
+  "functional": true,
+  "strict_structural_equal": true,
+  "strict_size_equal": true,
+  "duplicate_provider_calls": 0,
+  "dummy_provider_operations": 0,
+  "profile_overflow_events": 0,
+  "passed": true
+}

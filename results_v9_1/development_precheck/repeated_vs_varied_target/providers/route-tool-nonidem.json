@@ -1,0 +1,14 @@
+{
+  "provider": "TOOL_NONIDEM",
+  "total_calls": 5,
+  "unique_operations": 5,
+  "duplicate_calls": 0,
+  "effect_count": 5,
+  "calls_by_operation": {
+    "v91-3454a9e988-002": 1,
+    "v91-3454a9e988-006": 1,
+    "v91-3454a9e988-010": 1,
+    "v91-3454a9e988-014": 1,
+    "v91-3454a9e988-018": 1
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "agent_id": 13,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 10,
+  "expected_operation_ids": [
+    "dev-different_completion_behavior-slow_jittered-000",
+    "dev-different_completion_behavior-slow_jittered-001",
+    "dev-different_completion_behavior-slow_jittered-002",
+    "dev-different_completion_behavior-slow_jittered-003",
+    "dev-different_completion_behavior-slow_jittered-004",
+    "dev-different_completion_behavior-slow_jittered-005",
+    "dev-different_completion_behavior-slow_jittered-006",
+    "dev-different_completion_behavior-slow_jittered-007",
+    "dev-different_completion_behavior-slow_jittered-008",
+    "dev-different_completion_behavior-slow_jittered-009"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-different_completion_behavior-slow_jittered-000",
+      "dev-different_completion_behavior-slow_jittered-001",
+      "dev-different_completion_behavior-slow_jittered-002",
+      "dev-different_completion_behavior-slow_jittered-003",
+      "dev-different_completion_behavior-slow_jittered-004",
+      "dev-different_completion_behavior-slow_jittered-005",
+      "dev-different_completion_behavior-slow_jittered-006",
+      "dev-different_completion_behavior-slow_jittered-007",
+      "dev-different_completion_behavior-slow_jittered-008",
+      "dev-different_completion_behavior-slow_jittered-009"
+    ],
+    "framework_sink": [
+      "dev-different_completion_behavio"
+    ],
+    "missing": [
+      "dev-different_completion_behavior-slow_jittered-000",
+      "dev-different_completion_behavior-slow_jittered-001",
+      "dev-different_completion_behavior-slow_jittered-002",
+      "dev-different_completion_behavior-slow_jittered-003",
+      "dev-different_completion_behavior-slow_jittered-004",
+      "dev-different_completion_behavior-slow_jittered-005",
+      "dev-different_completion_behavior-slow_jittered-006",
+      "dev-different_completion_behavior-slow_jittered-007",
+      "dev-different_completion_behavior-slow_jittered-008",
+      "dev-different_completion_behavior-slow_jittered-009"
+    ],
+    "unexpected": [
+      "dev-different_completion_behavio"
+    ],
+    "replay_suppressed": 1
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 8,
+  "expected_operation_ids": [
+    "dev-different_tool-tool_read-000",
+    "dev-different_tool-tool_read-001",
+    "dev-different_tool-tool_read-002",
+    "dev-different_tool-tool_read-003",
+    "dev-different_tool-tool_read-004",
+    "dev-different_tool-tool_read-005",
+    "dev-different_tool-tool_read-006",
+    "dev-different_tool-tool_read-007"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-different_tool-tool_read-000",
+      "dev-different_tool-tool_read-001",
+      "dev-different_tool-tool_read-002",
+      "dev-different_tool-tool_read-003",
+      "dev-different_tool-tool_read-004",
+      "dev-different_tool-tool_read-005",
+      "dev-different_tool-tool_read-006",
+      "dev-different_tool-tool_read-007"
+    ],
+    "framework_sink": [
+      "dev-different_tool-tool_read-000",
+      "dev-different_tool-tool_read-001",
+      "dev-different_tool-tool_read-002",
+      "dev-different_tool-tool_read-003",
+      "dev-different_tool-tool_read-004",
+      "dev-different_tool-tool_read-005",
+      "dev-different_tool-tool_read-006",
+      "dev-different_tool-tool_read-007"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "replay_suppressed": 1
+  }
+}

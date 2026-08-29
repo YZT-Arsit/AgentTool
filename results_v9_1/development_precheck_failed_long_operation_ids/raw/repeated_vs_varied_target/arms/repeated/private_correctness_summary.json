@@ -1,0 +1,80 @@
+{
+  "agent_id": 10,
+  "authenticated_from_real_pir": true,
+  "actual_real_actions": 20,
+  "expected_operation_ids": [
+    "dev-repeated_vs_varied_target-repeated-000",
+    "dev-repeated_vs_varied_target-repeated-001",
+    "dev-repeated_vs_varied_target-repeated-002",
+    "dev-repeated_vs_varied_target-repeated-003",
+    "dev-repeated_vs_varied_target-repeated-004",
+    "dev-repeated_vs_varied_target-repeated-005",
+    "dev-repeated_vs_varied_target-repeated-006",
+    "dev-repeated_vs_varied_target-repeated-007",
+    "dev-repeated_vs_varied_target-repeated-008",
+    "dev-repeated_vs_varied_target-repeated-009",
+    "dev-repeated_vs_varied_target-repeated-010",
+    "dev-repeated_vs_varied_target-repeated-011",
+    "dev-repeated_vs_varied_target-repeated-012",
+    "dev-repeated_vs_varied_target-repeated-013",
+    "dev-repeated_vs_varied_target-repeated-014",
+    "dev-repeated_vs_varied_target-repeated-015",
+    "dev-repeated_vs_varied_target-repeated-016",
+    "dev-repeated_vs_varied_target-repeated-017",
+    "dev-repeated_vs_varied_target-repeated-018",
+    "dev-repeated_vs_varied_target-repeated-019"
+  ],
+  "delivery": {
+    "expected": [
+      "dev-repeated_vs_varied_target-repeated-000",
+      "dev-repeated_vs_varied_target-repeated-001",
+      "dev-repeated_vs_varied_target-repeated-002",
+      "dev-repeated_vs_varied_target-repeated-003",
+      "dev-repeated_vs_varied_target-repeated-004",
+      "dev-repeated_vs_varied_target-repeated-005",
+      "dev-repeated_vs_varied_target-repeated-006",
+      "dev-repeated_vs_varied_target-repeated-007",
+      "dev-repeated_vs_varied_target-repeated-008",
+      "dev-repeated_vs_varied_target-repeated-009",
+      "dev-repeated_vs_varied_target-repeated-010",
+      "dev-repeated_vs_varied_target-repeated-011",
+      "dev-repeated_vs_varied_target-repeated-012",
+      "dev-repeated_vs_varied_target-repeated-013",
+      "dev-repeated_vs_varied_target-repeated-014",
+      "dev-repeated_vs_varied_target-repeated-015",
+      "dev-repeated_vs_varied_target-repeated-016",
+      "dev-repeated_vs_varied_target-repeated-017",
+      "dev-repeated_vs_varied_target-repeated-018",
+      "dev-repeated_vs_varied_target-repeated-019"
+    ],
+    "framework_sink": [
+      "dev-repeated_vs_varied_target-re"
+    ],
+    "missing": [
+      "dev-repeated_vs_varied_target-repeated-000",
+      "dev-repeated_vs_varied_target-repeated-001",
+      "dev-repeated_vs_varied_target-repeated-002",
+      "dev-repeated_vs_varied_target-repeated-003",
+      "dev-repeated_vs_varied_target-repeated-004",
+      "dev-repeated_vs_varied_target-repeated-005",
+      "dev-repeated_vs_varied_target-repeated-006",
+      "dev-repeated_vs_varied_target-repeated-007",
+      "dev-repeated_vs_varied_target-repeated-008",
+      "dev-repeated_vs_varied_target-repeated-009",
+      "dev-repeated_vs_varied_target-repeated-010",
+      "dev-repeated_vs_varied_target-repeated-011",
+      "dev-repeated_vs_varied_target-repeated-012",
+      "dev-repeated_vs_varied_target-repeated-013",
+      "dev-repeated_vs_varied_target-repeated-014",
+      "dev-repeated_vs_varied_target-repeated-015",
+      "dev-repeated_vs_varied_target-repeated-016",
+      "dev-repeated_vs_varied_target-repeated-017",
+      "dev-repeated_vs_varied_target-repeated-018",
+      "dev-repeated_vs_varied_target-repeated-019"
+    ],
+    "unexpected": [
+      "dev-repeated_vs_varied_target-re"
+    ],
+    "replay_suppressed": 1
+  }
+}
