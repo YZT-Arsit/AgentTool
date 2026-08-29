@@ -1,0 +1,12 @@
+{
+  "derivation": "SHA256(v9 aggregate || harness aggregate || fixed label)",
+  "execution_harness_freeze_aggregate": "7f5fbccdab982839371055d648ef71389ac4390e967dfc324a8442c0efa42f02",
+  "order_seed": "d0329ecdbb0ccb861c50b178570beb0a51cf1407a6167cfb1d4fa60649eddec5",
+  "schema": "AgentTool.V10_1.SelectionSeeds/1",
+  "seed_search": false,
+  "semantic_label": "AgentTool-V10.1-semantic-v1",
+  "semantic_seed": "208b05e63cc856499686e9426c437db6ffd3c2451bc88fd732cb2841912a4bcd",
+  "structural_label": "AgentTool-V10.1-structural-v1",
+  "structural_seed": "6f05a332b9be6ca02cb148c1b0361d8dbc4c0ce4a600e59d5f8caa88af04db29",
+  "v9_functional_freeze_aggregate": "c53925ed1036798f773e6d10588258bb365a69368c04e5cb5403b2f5128b9a46"
+}

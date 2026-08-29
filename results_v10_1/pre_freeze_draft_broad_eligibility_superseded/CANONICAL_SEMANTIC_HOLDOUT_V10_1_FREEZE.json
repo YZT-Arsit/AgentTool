@@ -1,0 +1,979 @@
+{
+  "cases": [
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-001",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-001",
+        "protected_argument": "argument-v10-1-001"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0001"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 1,
+      "source": {
+        "detail": "get_weather",
+        "line": 52,
+        "path": "examples/model_providers/custom_example_provider.py",
+        "sha256": "bbee8e39e45b257b397f6c0aa67543fc422ab450f55834ce0249de807742f300"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-002",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-002",
+        "protected_argument": "argument-v10-1-002"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0002"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 2,
+      "source": {
+        "detail": "get_weather",
+        "line": 192,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-003",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-003",
+        "protected_argument": "argument-v10-1-003"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0003"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 3,
+      "source": {
+        "detail": "route_to_human_queue",
+        "line": 90,
+        "path": "examples/sandbox/healthcare_support/tools.py",
+        "sha256": "ee699e45f308f542614616c5d40e70c6b58da77f4d9c0dc5e0a26bed69cfe07a"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-004",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-004",
+        "protected_argument": "argument-v10-1-004"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0004"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 4,
+      "source": {
+        "detail": "Name(id='sample_tool_function', ctx=Load())",
+        "line": 2063,
+        "path": "python/packages/core/tests/core/test_middleware_with_agent.py",
+        "sha256": "1f5a991b22be7fcfbec8d52b581064beb32a5b496b4401b6c788a565fc7dc02f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-005",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-005",
+        "protected_argument": "argument-v10-1-005"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0005"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 5,
+      "source": {
+        "detail": "random_number",
+        "line": 66,
+        "path": "examples/basic/agent_lifecycle_example.py",
+        "sha256": "02fbe5380aecb3ad1295f8fda54f3d76731e82fa11a529cee491c67cd435d57a"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-006",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-006",
+        "protected_argument": "argument-v10-1-006"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0006"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 6,
+      "source": {
+        "detail": "tool",
+        "line": 662,
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-007",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-007",
+        "protected_argument": "argument-v10-1-007"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0007"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 7,
+      "source": {
+        "detail": "tool",
+        "line": 238,
+        "path": "examples/sandbox/healthcare_support/workflow.py",
+        "sha256": "d5fed2d6f5c078295aa322c7ef2d20e140b6df742d2497b3480bd66694460f1e"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-008",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-008",
+        "protected_argument": "argument-v10-1-008"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0008"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 8,
+      "source": {
+        "detail": "tool",
+        "line": 148,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-009",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-009",
+        "protected_argument": "argument-v10-1-009"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0009"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 9,
+      "source": {
+        "detail": "Name(id='get_inventory', ctx=Load())",
+        "line": 98,
+        "path": "examples/tools/programmatic_tool_calling.py",
+        "sha256": "f1beed8d0c4b6cc065e5d7da18185dcfd8dd9652edcd0655ccdc023e0d2ad980"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-010",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-010",
+        "protected_argument": "argument-v10-1-010"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0010"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 10,
+      "source": {
+        "detail": "Name(id='mock_tool_requiring_approval', ctx=Load())",
+        "line": 341,
+        "path": "python/packages/core/tests/workflow/test_agent_executor_tool_calls.py",
+        "sha256": "9ec695c3005323ea6b7afb9a5f9b6dffeb2b6d44a52f1873cf087df62a402238"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-011",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-011",
+        "protected_argument": "argument-v10-1-011"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0011"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 11,
+      "source": {
+        "detail": "get_weather",
+        "line": 39,
+        "path": "examples/realtime/cli/demo.py",
+        "sha256": "0e0b3482d268ee54e6947390e55ce31e1ef77ed8c8cf8c7bea1ea92b5a96b888"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-012",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-012",
+        "protected_argument": "argument-v10-1-012"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0012"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 12,
+      "source": {
+        "detail": "Name(id='mock_tool_requiring_approval', ctx=Load())",
+        "line": 375,
+        "path": "python/packages/core/tests/workflow/test_agent_executor_tool_calls.py",
+        "sha256": "9ec695c3005323ea6b7afb9a5f9b6dffeb2b6d44a52f1873cf087df62a402238"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-013",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-013",
+        "protected_argument": "argument-v10-1-013"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0013"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 13,
+      "source": {
+        "detail": "get_current_weather",
+        "line": 28,
+        "path": "examples/mcp/streamablehttp_example/server.py",
+        "sha256": "6b890151e410ca4e30d639927210696173885518c38e22ed0e2d66c12b45148a"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-014",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-014",
+        "protected_argument": "argument-v10-1-014"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0014"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 14,
+      "source": {
+        "detail": "tool",
+        "line": 1290,
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-015",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-015",
+        "protected_argument": "argument-v10-1-015"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0015"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 15,
+      "source": {
+        "detail": "get_weather",
+        "line": 43,
+        "path": "examples/agent_patterns/human_in_the_loop_stream.py",
+        "sha256": "c7471edb486085de7679e9799685b28f8093f74566cd46d017c38964f2f6da17"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-016",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-016",
+        "protected_argument": "argument-v10-1-016"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0016"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 16,
+      "source": {
+        "detail": "tool",
+        "line": 468,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-017",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-017",
+        "protected_argument": "argument-v10-1-017"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0017"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 17,
+      "source": {
+        "detail": "mcp.tool",
+        "line": 11,
+        "path": "examples/mcp/manager_example/mcp_server.py",
+        "sha256": "0466ecd71f2324cb346b90432efda1eaad841a0eec39bb8580d8a34ea1dd7548"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-018",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-018",
+        "protected_argument": "argument-v10-1-018"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0018"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 18,
+      "source": {
+        "detail": "Name(id='custom_tool_wrapped', ctx=Load())",
+        "line": 1413,
+        "path": "python/packages/core/tests/core/test_middleware_with_agent.py",
+        "sha256": "1f5a991b22be7fcfbec8d52b581064beb32a5b496b4401b6c788a565fc7dc02f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-019",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-019",
+        "protected_argument": "argument-v10-1-019"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0019"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 19,
+      "source": {
+        "detail": "get_invoice_status",
+        "line": 62,
+        "path": "examples/tools/tool_search.py",
+        "sha256": "c06389cc75b499c40ec7c433ce556d91321934079a6d45edb9f9ad2dff8f20bc"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-020",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-020",
+        "protected_argument": "argument-v10-1-020"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0020"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 20,
+      "source": {
+        "detail": "Name(id='budgeted_tool', ctx=Load())",
+        "line": 1005,
+        "path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+        "sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-021",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-021",
+        "protected_argument": "argument-v10-1-021"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0021"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 21,
+      "source": {
+        "detail": "get_weather",
+        "line": 27,
+        "path": "examples/model_providers/litellm_auto.py",
+        "sha256": "7bd3f93e892f7829b7027abf7088120e949971f4b2c4e71f87054acc218dcb2e"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-022",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-022",
+        "protected_argument": "argument-v10-1-022"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0022"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 22,
+      "source": {
+        "detail": "telemetry_test_tool",
+        "line": 618,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-023",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-023",
+        "protected_argument": "argument-v10-1-023"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0023"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 23,
+      "source": {
+        "detail": "get_weather",
+        "line": 26,
+        "path": "examples/memory/openai_session_hitl_example.py",
+        "sha256": "d009f248b0d7a21a9f5f20ed78f96dcca4f5e8bef89d061f86a289f9d59841af"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-024",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-024",
+        "protected_argument": "argument-v10-1-024"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0024"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 24,
+      "source": {
+        "detail": "simple_function",
+        "line": 70,
+        "path": "python/packages/core/tests/core/test_types.py",
+        "sha256": "6468ef1614c7dd4ae2e3a74a8982558f430f7de10c241709f6bfd03a31811a96"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-025",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-025",
+        "protected_argument": "argument-v10-1-025"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0025"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 25,
+      "source": {
+        "detail": "get_customer_profile",
+        "line": 46,
+        "path": "examples/tools/tool_search.py",
+        "sha256": "c06389cc75b499c40ec7c433ce556d91321934079a6d45edb9f9ad2dff8f20bc"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-026",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-026",
+        "protected_argument": "argument-v10-1-026"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0026"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 26,
+      "source": {
+        "detail": "_impl",
+        "line": 1231,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-027",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-027",
+        "protected_argument": "argument-v10-1-027"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0027"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 27,
+      "source": {
+        "detail": "mcp.tool",
+        "line": 21,
+        "path": "examples/mcp/streamablehttp_example/server.py",
+        "sha256": "6b890151e410ca4e30d639927210696173885518c38e22ed0e2d66c12b45148a"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-028",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-028",
+        "protected_argument": "argument-v10-1-028"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0028"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 28,
+      "source": {
+        "detail": "simple_tool",
+        "line": 688,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-029",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-029",
+        "protected_argument": "argument-v10-1-029"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0029"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 29,
+      "source": {
+        "detail": "Name(id='random_number_tool', ctx=Load())",
+        "line": 55,
+        "path": "examples/handoffs/message_filter_streaming.py",
+        "sha256": "087ef2be8f5877a9fb663b973ec9966ca7882c6b47abd021903918b6c7301d79"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-030",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-030",
+        "protected_argument": "argument-v10-1-030"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0030"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 30,
+      "source": {
+        "detail": "make_dict",
+        "line": 1489,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-031",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-031",
+        "protected_argument": "argument-v10-1-031"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0031"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 31,
+      "source": {
+        "detail": "add",
+        "line": 14,
+        "path": "examples/mcp/sse_example/server.py",
+        "sha256": "e4a29d82db515a1d780b5720b27f2dda951f79687256473d24046a8fe36f1c89"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "case_id": "V10_1S-032",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-032",
+        "protected_argument": "argument-v10-1-032"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "operation_ids": [
+        "v101s0032"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 32,
+      "source": {
+        "detail": "tool",
+        "line": 128,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    }
+  ],
+  "documented_shortages": {
+    "Microsoft Agent Framework": 0,
+    "OpenAI Agents SDK": 0
+  },
+  "framework_counts": {
+    "Microsoft Agent Framework": 16,
+    "OpenAI Agents SDK": 16
+  },
+  "phase": "V10A.1_FREEZE_ONLY",
+  "schema": "AgentTool.V10_1.CanonicalSemanticHoldoutFreeze/1",
+  "selected_cases": 32,
+  "selected_holdout_executed": false,
+  "selection_rule": "balanced deterministic score order over executor-verified, local, nonexcluded generic Tool sites; maximum 16 per framework",
+  "selection_seed": "e06fe8aac9b8e513ef78d0662a0878ba21cbaec3b7bedcb597e28e38e1dcaefe",
+  "target_cases": 32
+}

@@ -1,0 +1,1 @@
+SUPERSEDED BEFORE FINAL FREEZE: source-compatibility audit found that generic Tool eligibility was too broad. No selected case or arm was executed. Preserved as negative harness-development evidence only.

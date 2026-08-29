@@ -1,0 +1,2118 @@
+{
+  "entries": [
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/agents_as_tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/agents_as_tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/mcp/get_all_mcp_tools_example/main.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/mcp/get_all_mcp_tools_example/main.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_as_tool_kwargs_propagation.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_as_tool_kwargs_propagation.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V6.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/routing.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/routing.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/routing.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/mcp/streamablehttp_custom_client_example/main.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/mcp/streamablehttp_custom_client_example/main.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/mcp/streamablehttp_custom_client_example/main.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_agent_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/hosting/test_toolbox_endpoint.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/hosting/test_toolbox_endpoint.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/hosting/test_toolbox_endpoint.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_chat_client_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_chat_client_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/tests/samples/getting_started/test_chat_client_samples.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "ACTION_SEMANTIC_HOLDOUT_V7.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "IR_V1_DYNAMIC_FIDELITY_CONTINUATION.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_DEVELOPMENT_REGRESSION_20260828.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/tools.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_FIDELITY_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/usage_tracking.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/usage_tracking.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/usage_tracking.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/usage_tracking.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/routing.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/routing.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/agents_as_tools_structured.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/agents_as_tools_structured.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/usage_tracking.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/agent_patterns/forcing_tool_use.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_observability.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_observability.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_function_invocation_logic.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agent_hooks.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agent_hooks.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V2_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/hello_world.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/stream_function_call_args.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/basic/stream_function_call_args.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/sandbox/handoffs.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "OpenAI Agents SDK|examples/sandbox/handoffs.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_agents.py|*",
+      "kind": "SEMANTIC_SOURCE_FILE",
+      "reason": "SEMANTIC_HOLDOUT_V3_RESULTS.csv"
+    },
+    {
+      "case_id": "V10S-001",
+      "key": "OpenAI Agents SDK|examples/basic/image_tool_output.py|17",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-002",
+      "key": "OpenAI Agents SDK|examples/model_providers/custom_example_global.py|45",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-003",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_tool_approval.py|848",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-004",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_tool_approval.py|536",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-005",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_tool_approval.py|831",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-006",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_tools.py|176",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-007",
+      "key": "OpenAI Agents SDK|examples/agent_patterns/agents_as_tools_conditional.py|78",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-008",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_middleware_with_agent.py|2479",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-009",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_tools.py|245",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-010",
+      "key": "OpenAI Agents SDK|examples/agent_patterns/human_in_the_loop.py|64",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-011",
+      "key": "OpenAI Agents SDK|examples/sandbox/healthcare_support/workflow.py|443",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-012",
+      "key": "OpenAI Agents SDK|examples/mcp/streamablehttp_custom_client_example/server.py|13",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-013",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_middleware_with_chat.py|506",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-014",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_middleware_with_agent.py|2499",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-015",
+      "key": "OpenAI Agents SDK|examples/memory/hitl_session_scenario.py|58",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-016",
+      "key": "OpenAI Agents SDK|examples/handoffs/message_filter_streaming.py|69",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-017",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_tools_future_annotations.py|52",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-018",
+      "key": "OpenAI Agents SDK|examples/mcp/streamablehttp_example/server.py|27",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-019",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_tools.py|297",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-020",
+      "key": "OpenAI Agents SDK|examples/tools/programmatic_tool_calling.py|61",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-021",
+      "key": "OpenAI Agents SDK|examples/memory/advanced_sqlite_session_example.py|31",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-022",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/workflow/test_agent_executor_tool_calls.py|158",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-023",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_tools_future_annotations.py|39",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-024",
+      "key": "OpenAI Agents SDK|examples/basic/tool_guardrails.py|26",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-025",
+      "key": "OpenAI Agents SDK|examples/customer_service/main.py|130",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-026",
+      "key": "OpenAI Agents SDK|examples/agent_patterns/human_in_the_loop_custom_rejection.py|61",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-027",
+      "key": "OpenAI Agents SDK|examples/agent_patterns/human_in_the_loop.py|45",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-028",
+      "key": "OpenAI Agents SDK|examples/tools/tool_search.py|78",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-029",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_agent.py|1478",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-030",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_loop.py|1610",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-031",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_harness_loop.py|1577",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "case_id": "V10S-032",
+      "key": "Microsoft Agent Framework|python/packages/core/tests/core/test_clients.py|374",
+      "kind": "V10A_SEMANTIC_SOURCE_SITE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S1-A",
+      "key": "6deebed26813039b01cf31c2e8dbdc643b55b562a7cd9889491d7a91fa54cff8",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S1-B",
+      "key": "4cf096f461d3f3c4d8e732d96327a3886b029a38facc45edb911b9af41640ba2",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S2-A",
+      "key": "620b89e147e3ffe7d600c527ef0aa8c97c5b89b0989bdf181dae623255c0a735",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S2-B",
+      "key": "e2a4604aab029fe52c1468ecfb1a48a4ad580194b37bd44e793e17ba5695cfd8",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S3-A",
+      "key": "3c53eaa791de6f9cd612d34762c9ddde9e47ba1d0a0490c6d777e6758fee4a12",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S3-B",
+      "key": "cb133ac68c3e0b59dfb1e739a4260b682d50d8b09d74d7eda996ce15e74e1942",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S4-A",
+      "key": "e61c856d1cad4786546d94a1b1892cf0e473e5fc5833800410a0c427cb3773c2",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S4-B",
+      "key": "3bc17ceb76335d1932a537483207e18c7be24a98b04e7515d3b9fe8d87b1809c",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S5-A",
+      "key": "4c81a31e6d8f00be3e80a4969666f042fe09ea31205f67460e56b2f7f55e1e6b",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S5-B",
+      "key": "308e4d8f59dd4ab11e95d61c1e09dbc03e19e68e59b57fffb63937409d97b027",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S6-A",
+      "key": "0f7aabc9287b9b71003e139b53c722adef133a1bd4b7226a939f34d829a64389",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S6-B",
+      "key": "30569a24fbe664ce207183ce8cdc79d2b11619ff3235f0c84a36a174ab907d07",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S7-A",
+      "key": "baf6309d4c8d754a95cc91c6eb53fe52c37e001905898ca248a2ced64c58d350",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S7-B",
+      "key": "d943f8b86dec7db41fc221beec6089b8056bd0309d4439e1f3a149d38ded9870",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S8-A",
+      "key": "71fd7970015c71b8a3c0b8dc6bb7f87f973b1788c2b70787d4d6a4ce0a3fe168",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S8-B",
+      "key": "4fb2fbb42940705974e8e330c1595346257e05c4478837b9dfea654ed8496e46",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S9-A",
+      "key": "f4c5d174ede0d0ccb515d5b412c1f5f453d1ec4358734a669a1b456a3493f4d1",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S9-B",
+      "key": "0d017108a6fe126dab0baba8e8500d760b5bafd9739c1da93b9e6a9bb68195b1",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S10-A",
+      "key": "7d2c04b19e6bc419a9188003b5b87857719b466a7cefb909f1bdda42dcd39f95",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    },
+    {
+      "arm_id": "S10-B",
+      "key": "a341145764cb61152ee79b6d61dd204ca4dea7aaf83694afe6150941ba360fa7",
+      "kind": "V10A_STRUCTURAL_PRIVATE_SEQUENCE",
+      "reason": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A"
+    }
+  ],
+  "old_v10a_status": "FROZEN_BUT_NOT_EXECUTED_SUPERSEDED_V10A",
+  "schema": "AgentTool.V10_1.ExclusionSet/1"
+}

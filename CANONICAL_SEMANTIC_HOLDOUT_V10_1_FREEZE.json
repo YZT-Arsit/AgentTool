@@ -1,0 +1,1011 @@
+{
+  "cases": [
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-001",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-001",
+        "protected_argument": "argument-v10-1-001"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0001"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 1,
+      "source": {
+        "detail": "get_weather",
+        "line": 24,
+        "path": "examples/realtime/twilio/twilio_handler.py",
+        "sha256": "3a0be06f022766b7ebe80f61d436df6f08e0356e7c3c4db21a8a838e358c6f2c"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-002",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-002",
+        "protected_argument": "argument-v10-1-002"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0002"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 2,
+      "source": {
+        "detail": "get_weather",
+        "line": 1385,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-003",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-003",
+        "protected_argument": "argument-v10-1-003"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0003"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 3,
+      "source": {
+        "detail": "get_weather",
+        "line": 39,
+        "path": "examples/realtime/cli/demo.py",
+        "sha256": "0e0b3482d268ee54e6947390e55ce31e1ef77ed8c8cf8c7bea1ea92b5a96b888"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "query",
+      "case_id": "V10_1S-004",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-004",
+        "protected_argument": "argument-v10-1-004"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "search",
+      "operation_ids": [
+        "v101s0004"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 4,
+      "source": {
+        "detail": "search",
+        "line": 105,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-005",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-005",
+        "protected_argument": "argument-v10-1-005"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0005"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 5,
+      "source": {
+        "detail": "get_weather",
+        "line": 42,
+        "path": "examples/model_providers/custom_example_agent.py",
+        "sha256": "d2279b417e313c29005773c86d7a9ab28e7387efe277f958747236d744b8d8cf"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "priority",
+      "case_id": "V10_1S-006",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-006",
+        "protected_argument": "argument-v10-1-006"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "process",
+      "operation_ids": [
+        "v101s0006"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 6,
+      "source": {
+        "detail": "process",
+        "line": 246,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "name",
+      "case_id": "V10_1S-007",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-007",
+        "protected_argument": "argument-v10-1-007"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "query_runloop_secret",
+      "operation_ids": [
+        "v101s0007"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 7,
+      "source": {
+        "detail": "query_runloop_secret",
+        "line": 516,
+        "path": "examples/sandbox/extensions/runloop/capabilities.py",
+        "sha256": "ebc73fad9b1edbbf7d1491a99ae3f05d4199178d56ab4d29809cee7aea8fba77"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "location",
+      "case_id": "V10_1S-008",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-008",
+        "protected_argument": "argument-v10-1-008"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "lookup_weather",
+      "operation_ids": [
+        "v101s0008"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 8,
+      "source": {
+        "detail": "lookup_weather",
+        "line": 308,
+        "path": "python/packages/core/tests/core/test_clients.py",
+        "sha256": "db32a3cb92f12e6043ee5e58cbecdf9f8aae0dc6df94464044b4534e9b8c8044"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-009",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-009",
+        "protected_argument": "argument-v10-1-009"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0009"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 9,
+      "source": {
+        "detail": "get_weather",
+        "line": 24,
+        "path": "examples/model_providers/any_llm_auto.py",
+        "sha256": "a07c3b1c0b15d7cb484a5a9ad891e67dfd361982cf2736ccad99d9fe4667d9c5"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-010",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-010",
+        "protected_argument": "argument-v10-1-010"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0010"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 10,
+      "source": {
+        "detail": "get_weather",
+        "line": 80,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-011",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-011",
+        "protected_argument": "argument-v10-1-011"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0011"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 11,
+      "source": {
+        "detail": "get_weather",
+        "line": 20,
+        "path": "examples/memory/advanced_sqlite_session_example.py",
+        "sha256": "5457acc4775c552d08ca04c3a9059b1795ba7703f084abae888aac959ffb27e5"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "message",
+      "case_id": "V10_1S-012",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-012",
+        "protected_argument": "argument-v10-1-012"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "echo",
+      "operation_ids": [
+        "v101s0012"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 12,
+      "source": {
+        "detail": "echo",
+        "line": 1511,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-013",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-013",
+        "protected_argument": "argument-v10-1-013"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0013"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 13,
+      "source": {
+        "detail": "get_weather",
+        "line": 50,
+        "path": "examples/realtime/app/agent.py",
+        "sha256": "0a1eee26db8565a103537c1573b1237508856eea861b8293334208fa2a02f9b4"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "query",
+      "case_id": "V10_1S-014",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-014",
+        "protected_argument": "argument-v10-1-014"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "search",
+      "operation_ids": [
+        "v101s0014"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 14,
+      "source": {
+        "detail": "search",
+        "line": 222,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-015",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-015",
+        "protected_argument": "argument-v10-1-015"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0015"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 15,
+      "source": {
+        "detail": "get_weather",
+        "line": 15,
+        "path": "examples/voice/streamed/my_workflow.py",
+        "sha256": "8147d48384364ea8d555384545ef89d0fe4ce88cc7c7bd3ea69ca78052d35fe3"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "name",
+      "case_id": "V10_1S-016",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-016",
+        "protected_argument": "argument-v10-1-016"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "generic_tool",
+      "operation_ids": [
+        "v101s0016"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 16,
+      "source": {
+        "detail": "generic_tool",
+        "line": 58,
+        "path": "python/packages/core/tests/core/test_types.py",
+        "sha256": "6468ef1614c7dd4ae2e3a74a8982558f430f7de10c241709f6bfd03a31811a96"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "question",
+      "case_id": "V10_1S-017",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-017",
+        "protected_argument": "argument-v10-1-017"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "faq_lookup_tool",
+      "operation_ids": [
+        "v101s0017"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 17,
+      "source": {
+        "detail": "faq_lookup_tool",
+        "line": 40,
+        "path": "examples/customer_service/main.py",
+        "sha256": "f9f1ff5b37efbb41c17f769934615c3c3c4e107a5d44eb6d09282b2b924ffb7f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "query",
+      "case_id": "V10_1S-018",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-018",
+        "protected_argument": "argument-v10-1-018"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "search",
+      "operation_ids": [
+        "v101s0018"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 18,
+      "source": {
+        "detail": "search",
+        "line": 129,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "user_id",
+      "case_id": "V10_1S-019",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-019",
+        "protected_argument": "argument-v10-1-019"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_contact_info",
+      "operation_ids": [
+        "v101s0019"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 19,
+      "source": {
+        "detail": "get_contact_info",
+        "line": 39,
+        "path": "examples/basic/tool_guardrails.py",
+        "sha256": "4d70ca04e73201a94615eadefb5af89083214bf444ce559bdac8202b8cc5b7b9"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "location",
+      "case_id": "V10_1S-020",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-020",
+        "protected_argument": "argument-v10-1-020"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "lookup_weather",
+      "operation_ids": [
+        "v101s0020"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 20,
+      "source": {
+        "detail": "lookup_weather",
+        "line": 425,
+        "path": "python/packages/core/tests/core/test_clients.py",
+        "sha256": "db32a3cb92f12e6043ee5e58cbecdf9f8aae0dc6df94464044b4534e9b8c8044"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-021",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-021",
+        "protected_argument": "argument-v10-1-021"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0021"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 21,
+      "source": {
+        "detail": "get_weather",
+        "line": 27,
+        "path": "examples/model_providers/litellm_provider.py",
+        "sha256": "dc52c753db2ee19b72bcc985d04681c58bd11f90124510a7661ff21cd04a7ebf"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "query",
+      "case_id": "V10_1S-022",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-022",
+        "protected_argument": "argument-v10-1-022"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "search",
+      "operation_ids": [
+        "v101s0022"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 22,
+      "source": {
+        "detail": "search",
+        "line": 149,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "question",
+      "case_id": "V10_1S-023",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-023",
+        "protected_argument": "argument-v10-1-023"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "faq_lookup_tool",
+      "operation_ids": [
+        "v101s0023"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 23,
+      "source": {
+        "detail": "faq_lookup_tool",
+        "line": 18,
+        "path": "examples/realtime/twilio_sip/agents.py",
+        "sha256": "3d2a0dc34f92b5ae3fd194943c8eb8cceffe3b129ce045c53e1e6ed66060a875"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "message",
+      "case_id": "V10_1S-024",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-024",
+        "protected_argument": "argument-v10-1-024"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "simple_tool",
+      "operation_ids": [
+        "v101s0024"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 24,
+      "source": {
+        "detail": "simple_tool",
+        "line": 688,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "question",
+      "case_id": "V10_1S-025",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-025",
+        "protected_argument": "argument-v10-1-025"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "faq_lookup_tool",
+      "operation_ids": [
+        "v101s0025"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 25,
+      "source": {
+        "detail": "faq_lookup_tool",
+        "line": 15,
+        "path": "examples/realtime/app/agent.py",
+        "sha256": "0a1eee26db8565a103537c1573b1237508856eea861b8293334208fa2a02f9b4"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-026",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-026",
+        "protected_argument": "argument-v10-1-026"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0026"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 26,
+      "source": {
+        "detail": "get_weather",
+        "line": 164,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-027",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-027",
+        "protected_argument": "argument-v10-1-027"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0027"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 27,
+      "source": {
+        "detail": "get_weather",
+        "line": 26,
+        "path": "examples/model_providers/any_llm_provider.py",
+        "sha256": "9468df9a898f0a62db3b5aa05b58e5f4bf8861718b1ca6244f1ff1459cb05360"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "name",
+      "case_id": "V10_1S-028",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-028",
+        "protected_argument": "argument-v10-1-028"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "generic_tool",
+      "operation_ids": [
+        "v101s0028"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 28,
+      "source": {
+        "detail": "generic_tool",
+        "line": 88,
+        "path": "python/packages/core/tests/core/conftest.py",
+        "sha256": "865362301177431f666d8dde0754e751033bcc8529a1c66a60660cbee4320312"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "order_id",
+      "case_id": "V10_1S-029",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-029",
+        "protected_argument": "argument-v10-1-029"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "lookup_order",
+      "operation_ids": [
+        "v101s0029"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 29,
+      "source": {
+        "detail": "lookup_order",
+        "line": 39,
+        "path": "examples/basic/stream_ws.py",
+        "sha256": "f9071975a51934789c76aa2f5cdfb765404e61f5fbc709423eb5e987f4e16cce"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "MICROSOFT_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-030",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-030",
+        "protected_argument": "argument-v10-1-030"
+      },
+      "framework": "Microsoft Agent Framework",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0030"
+      ],
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 30,
+      "source": {
+        "detail": "get_weather",
+        "line": 192,
+        "path": "python/packages/core/tests/core/test_tools.py",
+        "sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+      }
+    },
+    {
+      "action_family": "tool",
+      "adapter_id": "OPENAI_GENERIC_FUNCTION_TOOL_V10_1",
+      "argument_name": "city",
+      "case_id": "V10_1S-031",
+      "declared_effect_semantics": "READ_ONLY",
+      "deterministic_scenario": "READ_ONLY_SUCCESS",
+      "deterministic_test_input": {
+        "prompt": "local-v10-1-input-031",
+        "protected_argument": "argument-v10-1-031"
+      },
+      "framework": "OpenAI Agents SDK",
+      "local_provider_configuration": {
+        "external_network_required": false,
+        "outcome": "SUCCESS",
+        "provider": "LOCAL_DETERMINISTIC_PROVIDER_V10_1"
+      },
+      "logical_action_name": "get_weather",
+      "operation_ids": [
+        "v101s0031"
+      ],
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V10-STRICT-H50-C1",
+      "selected_case_executed": false,
+      "selection_rank": 31,
+      "source": {
+        "detail": "get_weather",
+        "line": 27,
+        "path": "examples/model_providers/litellm_auto.py",
+        "sha256": "7bd3f93e892f7829b7027abf7088120e949971f4b2c4e71f87054acc218dcb2e"
+      }
+    }
+  ],
+  "documented_shortages": {
+    "Microsoft Agent Framework": 1,
+    "OpenAI Agents SDK": 0
+  },
+  "framework_counts": {
+    "Microsoft Agent Framework": 15,
+    "OpenAI Agents SDK": 16
+  },
+  "phase": "V10A.1_FREEZE_ONLY",
+  "schema": "AgentTool.V10_1.CanonicalSemanticHoldoutFreeze/1",
+  "selected_cases": 31,
+  "selected_holdout_executed": false,
+  "selection_rule": "balanced deterministic score order over executor-verified, local, nonexcluded generic Tool sites; maximum 16 per framework",
+  "selection_seed": "b5e909e0ca8502ffab809cc2b639b2f7fdebcccae862d8d0e332a860612fe892",
+  "target_cases": 32
+}

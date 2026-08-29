@@ -1,0 +1,11 @@
+{
+  "name": "V2_CONTINUATION_TEST",
+  "frame_bytes": 1024,
+  "slots": 12,
+  "sessions": 2,
+  "request_delta_ns": 50000000,
+  "response_delta_ns": 50000000,
+  "mask_ns": 10000000,
+  "start_delay_ns": 500000000,
+  "inter_session_gap_ns": 20000000
+}

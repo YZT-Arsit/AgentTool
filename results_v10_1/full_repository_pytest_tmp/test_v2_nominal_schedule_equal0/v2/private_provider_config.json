@@ -1,0 +1,12 @@
+{
+  "endpoints": {
+    "FAST": "http://127.0.0.1:59275/execute",
+    "SLOW": "http://127.0.0.1:59276/execute"
+  },
+  "effectful": {
+    "FAST": true,
+    "SLOW": true
+  },
+  "timeout_ms": 4000,
+  "allow_generic_http": false
+}

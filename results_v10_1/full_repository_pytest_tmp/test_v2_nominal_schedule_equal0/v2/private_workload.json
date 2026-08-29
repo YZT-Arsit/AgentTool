@@ -1,0 +1,24 @@
+{
+  "sessions": [
+    {
+      "label": "FAST",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "fast-op"
+        }
+      ]
+    },
+    {
+      "label": "SLOW",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "SLOW",
+          "operation_id": "slow-op"
+        }
+      ]
+    }
+  ]
+}
