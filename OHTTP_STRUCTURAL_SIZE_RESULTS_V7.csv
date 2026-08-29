@@ -1,0 +1,5 @@
+experiment,backend,rfc9458_wire,pairs,endpoint_equal,connection_count_equal,exchange_count_equal,request_content_length_equal,response_content_length_equal,order_equal,lifetime_equal,status,source_or_blocker
+strict_equal_profile,RFC9458_OHTTP,False,0,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,OPEN_NO_OFFLINE_BACKEND,OHTTP_LIBRARY_SELECTION_V7.md
+long_horizon,RFC9458_OHTTP,False,0,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,OPEN_NO_OFFLINE_BACKEND,OHTTP_LIBRARY_SELECTION_V7.md
+strict_equal_profile,LEGACY_DEV_TRANSPORT,False,6,True,True,True,True,True,True,True,PRE_OHTTP_ENGINEERING_EVIDENCE,STRUCTURAL_SIZE_HOLDOUT_V7.csv
+long_horizon,LEGACY_DEV_TRANSPORT,False,30,True,True,True,True,True,True,True,PRE_OHTTP_ENGINEERING_EVIDENCE,LONG_HORIZON_V7.csv

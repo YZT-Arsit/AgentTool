@@ -1,0 +1,259 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-24"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-25"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-26"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-27"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-28"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-29"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-30"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-31"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-32"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-33"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-34"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-35"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-36"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-37"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-38"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-39"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-40"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-41"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-42"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-43"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-44"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-45"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-46"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-47"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-48"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "holdout-cross_session_link-b-49"
+        }
+      ]
+    }
+  ]
+}

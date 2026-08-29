@@ -1,0 +1,34 @@
+{
+  "schema": "AgentTool.V7.OHTTPDependencyManifest/1",
+  "audit_date": "2026-08-28",
+  "offline_cache_result": "NO_COMPATIBLE_IMPLEMENTATION_FOUND",
+  "canonical_backend_status": "NOT_IMPLEMENTED_OFFLINE",
+  "required_direct_dependency": {
+    "module": "github.com/chris-wood/ohttp-go",
+    "version": null,
+    "commit": null,
+    "checksum": null,
+    "license": null,
+    "reason_unpinned": "source not present in authorized offline caches; values must be verified from acquired source"
+  },
+  "required_capabilities": [
+    "RFC9458 client request encapsulation",
+    "RFC9458 Gateway request decapsulation",
+    "RFC9458 Gateway response encapsulation",
+    "RFC9458 client response decapsulation",
+    "RFC9292 known-length request encoding",
+    "RFC9292 known-length response encoding",
+    "Gateway key configuration support",
+    "RFC9458 Appendix A vector support or independently runnable vector harness"
+  ],
+  "integration_gates": [
+    "pin module version commit checksum and license",
+    "vendor or populate the offline Go module cache",
+    "record every transitive dependency and checksum",
+    "pass Appendix A conformance where library API supports it",
+    "assert deterministic final encapsulated request and response lengths",
+    "rerun fresh OHTTP functional and structural-size gates"
+  ],
+  "legacy_backend": "LEGACY_DEV_TRANSPORT",
+  "legacy_backend_is_rfc9458": false
+}

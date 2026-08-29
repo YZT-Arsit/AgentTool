@@ -1,0 +1,134 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "dev_tool_class-a-24"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-24"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-25"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-26"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-27"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-28"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-29"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-30"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-31"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-32"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-33"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-34"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-35"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-36"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-37"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-38"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-39"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-40"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-41"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-42"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-43"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-44"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-45"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-46"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-47"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-transition_pattern-a-48"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-transition_pattern-a-49"
+        }
+      ]
+    }
+  ]
+}

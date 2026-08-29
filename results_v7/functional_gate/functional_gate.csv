@@ -1,0 +1,5 @@
+platform,operation_count,admitted_operations,unique_framework_results,missing_results,unexpected_results,duplicate_results_suppressed,real_effects,dummy_heavy_ops,fixed_frames,terminal_status,functional_pass
+Linux-5.15.0-94-generic-x86_64-with-glibc2.35,1,1,1,0,0,0,1,0,83,OK,True
+Linux-5.15.0-94-generic-x86_64-with-glibc2.35,10,10,10,0,0,0,10,0,101,OK,True
+Linux-5.15.0-94-generic-x86_64-with-glibc2.35,50,50,50,0,0,0,50,0,181,OK,True
+Linux-5.15.0-94-generic-x86_64-with-glibc2.35,100,100,100,0,0,0,100,0,281,OK,True

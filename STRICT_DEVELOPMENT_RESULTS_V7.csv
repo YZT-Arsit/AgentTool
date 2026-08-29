@@ -1,0 +1,3 @@
+pair_id,operations_per_arm,arm_a_functional,arm_b_functional,endpoint_count_order_size_equal,arm_a_results,arm_b_results,arm_a_dummy_heavy_ops,arm_b_dummy_heavy_ops,valid_pair
+DEV_TOOL_CLASS,25,True,True,True,25,25,0,0,True
+DEV_RARE_TARGET,25,True,True,True,25,25,0,0,True

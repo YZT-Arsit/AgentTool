@@ -1,0 +1,39 @@
+{
+  "admission": {
+    "sessions": 1,
+    "slots_per_session": 181,
+    "admission_slots": 50,
+    "max_real_operations": 50,
+    "slot_interval_ns": 10000000,
+    "provider_completion_bound_ns": 800000000,
+    "terminal_slots": 1
+  },
+  "critical_path_logging": "PREALLOCATED_MEMORY_ONLY_EXCEPT_V7_DURABILITY_FSYNC",
+  "durable_ready_queue": true,
+  "isolation": {
+    "platform": "linux",
+    "reference_timing_platform": false,
+    "requested_cpu": -1,
+    "affinity_applied": false,
+    "affinity_detail": "not requested",
+    "realtime_requested": false,
+    "realtime_applied": false,
+    "realtime_detail": "not requested",
+    "note": "Linux alone is insufficient; dedicated affinity and requested real-time scheduling were not both established"
+  },
+  "pending_results": 0,
+  "pid": 121421,
+  "profile": {
+    "name": "V7-STRICT-HOLDOUT-STANDARD",
+    "frame_bytes": 1024,
+    "slots": 181,
+    "sessions": 1,
+    "request_delta_ns": 2000000,
+    "response_delta_ns": 10000000,
+    "mask_ns": 2000000,
+    "start_delay_ns": 100000000,
+    "inter_session_gap_ns": 0
+  },
+  "provider_execution_in_pacer": false,
+  "terminal_status": "OK"
+}

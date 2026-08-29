@@ -1,0 +1,59 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "v7-functional-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "v7-functional-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "SLOW",
+          "operation_id": "v7-functional-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "v7-functional-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "v7-functional-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "v7-functional-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "SLOW",
+          "operation_id": "v7-functional-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "v7-functional-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "v7-functional-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "v7-functional-9"
+        }
+      ]
+    }
+  ]
+}

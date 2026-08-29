@@ -1,0 +1,14 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "v7-functional-0"
+        }
+      ]
+    }
+  ]
+}

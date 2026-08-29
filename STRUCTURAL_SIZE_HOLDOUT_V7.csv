@@ -1,0 +1,7 @@
+pair_id,secret,public_profile,operations_per_arm,arm_a_functional,arm_b_functional,arm_a_results,arm_b_results,dummy_heavy_ops,endpoint_count_order_size_exact,valid_privacy_pair,timing_evaluated
+TOOL_TARGET,provider target,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False
+REPEATED_TARGET,same target versus varied targets,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False
+FREQUENCY,target frequency,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False
+RARE_TARGET,single rare target occurrence,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False
+TRANSITION_PATTERN,alternating target transition,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False
+CROSS_SESSION_LINK,same versus different target across independent public sessions,V7-STRICT-HOLDOUT-STANDARD,50,True,True,50,50,0,True,True,False

@@ -1,0 +1,26 @@
+{"operation_id":"dev_tool_class-b-0","session":0,"slot":1,"action":1,"provider":3,"started_ns":8131174326785255,"completed_ns":8131174418505433,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-7","session":0,"slot":8,"action":1,"provider":3,"started_ns":8131174339983254,"completed_ns":8131174421599182,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-1","session":0,"slot":2,"action":1,"provider":3,"started_ns":8131174327992621,"completed_ns":8131174424771833,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-4","session":0,"slot":5,"action":1,"provider":3,"started_ns":8131174334626623,"completed_ns":8131174431892052,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-8","session":0,"slot":9,"action":1,"provider":3,"started_ns":8131174341764532,"completed_ns":8131174432450174,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-11","session":0,"slot":12,"action":1,"provider":3,"started_ns":8131174348540556,"completed_ns":8131174432858085,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-10","session":0,"slot":11,"action":1,"provider":3,"started_ns":8131174346455512,"completed_ns":8131174439258911,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-3","session":0,"slot":4,"action":1,"provider":3,"started_ns":8131174331865690,"completed_ns":8131174461229372,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-14","session":0,"slot":15,"action":1,"provider":3,"started_ns":8131174354142744,"completed_ns":8131174461618033,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-12","session":0,"slot":13,"action":1,"provider":3,"started_ns":8131174350313028,"completed_ns":8131174464549498,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-21","session":0,"slot":22,"action":1,"provider":3,"started_ns":8131174368224310,"completed_ns":8131174466702751,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-22","session":0,"slot":23,"action":1,"provider":3,"started_ns":8131174370117165,"completed_ns":8131174469980045,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-5","session":0,"slot":6,"action":1,"provider":3,"started_ns":8131174336495328,"completed_ns":8131174470580420,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-2","session":0,"slot":3,"action":1,"provider":3,"started_ns":8131174329984822,"completed_ns":8131174471197063,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-18","session":0,"slot":19,"action":1,"provider":3,"started_ns":8131174362482834,"completed_ns":8131174471785058,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-9","session":0,"slot":10,"action":1,"provider":3,"started_ns":8131174344703018,"completed_ns":8131174472658468,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-13","session":0,"slot":14,"action":1,"provider":3,"started_ns":8131174352235984,"completed_ns":8131174474465204,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-15","session":0,"slot":16,"action":1,"provider":3,"started_ns":8131174355944254,"completed_ns":8131174477768071,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-6","session":0,"slot":7,"action":1,"provider":3,"started_ns":8131174338287901,"completed_ns":8131174480746067,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-19","session":0,"slot":20,"action":1,"provider":3,"started_ns":8131174364391113,"completed_ns":8131174482851711,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-23","session":0,"slot":24,"action":1,"provider":3,"started_ns":8131174371975325,"completed_ns":8131174493829311,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-20","session":0,"slot":21,"action":1,"provider":3,"started_ns":8131174366354143,"completed_ns":8131174495135937,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-16","session":0,"slot":17,"action":1,"provider":3,"started_ns":8131174357889731,"completed_ns":8131174498112731,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-17","session":0,"slot":18,"action":1,"provider":3,"started_ns":8131174360812597,"completed_ns":8131174499338596,"status":1,"effect":true}
+{"operation_id":"dev_tool_class-b-24","session":0,"slot":25,"action":1,"provider":3,"started_ns":8131174374851534,"completed_ns":8131174513525459,"status":1,"effect":true}
+{"dummy_heavy_ops":0,"isolation":{"platform":"linux","reference_timing_platform":false,"requested_cpu":-1,"affinity_applied":false,"affinity_detail":"not requested","realtime_requested":false,"realtime_applied":false,"realtime_detail":"not requested","note":"Linux alone is insufficient; dedicated affinity and requested real-time scheduling were not both established"},"kind":"SUMMARY","pid":111962,"processed_frames":131,"real_operations":25,"result_ring_waits":0}

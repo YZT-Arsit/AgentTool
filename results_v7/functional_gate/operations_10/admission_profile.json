@@ -1,0 +1,9 @@
+{
+  "sessions": 1,
+  "slots_per_session": 101,
+  "admission_slots": 10,
+  "max_real_operations": 10,
+  "slot_interval_ns": 10000000,
+  "provider_completion_bound_ns": 800000000,
+  "terminal_slots": 1
+}

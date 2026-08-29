@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "name": "V7-FUNCTIONAL-10",
+    "real_operations": 10,
+    "frame_bytes": 1024,
+    "request_delta_ns": 2000000,
+    "response_delta_ns": 10000000,
+    "mask_ns": 2000000,
+    "start_delay_ns": 100000000,
+    "provider_completion_bound_ns": 800000000,
+    "terminal_slots": 1
+  },
+  "admitted_operations": 10,
+  "unique_framework_results": 10,
+  "missing_operation_ids": [],
+  "unexpected_operation_ids": [],
+  "duplicate_framework_results_suppressed": 0,
+  "worker_real_operations": 10,
+  "real_effects": 10,
+  "dummy_heavy_ops": 0,
+  "terminal_status": "OK",
+  "fixed_frames": 101,
+  "functional_pass": true
+}

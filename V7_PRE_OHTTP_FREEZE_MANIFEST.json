@@ -1,0 +1,1978 @@
+{
+  "schema": "agenttool-v7-pre-ohttp-freeze-v1",
+  "created_utc": "2026-08-28T09:21:19.227223+00:00",
+  "status": "IMMUTABLE_PRE_OHTTP_ENGINEERING_EVIDENCE",
+  "interpretation": "Reliability, semantics, and legacy custom-wire structural evidence only. It is not RFC 9458 OHTTP evidence and cannot be cited as such.",
+  "entries": [
+    {
+      "path": "ACTION_MEDIATION_COVERAGE_V7.csv",
+      "bytes": 225,
+      "sha256": "ab529882c3d08011d733631ce9f39aeca1879e6840907d85f7e469544a5c0bc1"
+    },
+    {
+      "path": "ACTION_MEDIATION_COVERAGE_V7.md",
+      "bytes": 518,
+      "sha256": "d346e6268cf57575986cfdb0ebd69e027db069495234b069eab96c720f21792d"
+    },
+    {
+      "path": "ACTION_MEDIATION_PARTIAL_PARETO_V7.csv",
+      "bytes": 2140,
+      "sha256": "3ed7d51352b58de6282da6b8350ef22906341765a8a712472bae17f83f459e38"
+    },
+    {
+      "path": "ACTION_MEDIATION_PARTIAL_PARETO_V7.md",
+      "bytes": 1069,
+      "sha256": "ddb7271a55ebf8e352c32461419c92ceaf112aa21c1d730702289d4186ffe749"
+    },
+    {
+      "path": "ACTION_SEMANTIC_HOLDOUT_V7.csv",
+      "bytes": 21375,
+      "sha256": "b3730db0ed8fb322e0475ac5ba5d54227cace151a9cad3473cda522a5820f47a"
+    },
+    {
+      "path": "ACTION_SEMANTIC_HOLDOUT_V7_FREEZE.json",
+      "bytes": 19590,
+      "sha256": "813b9a03358b8715c1dab7233c9f6403121f45cd7e055513082cb888cc463948"
+    },
+    {
+      "path": "ACTION_SEMANTIC_HOLDOUT_V7_FREEZE_SHA256.txt",
+      "bytes": 66,
+      "sha256": "60cd1defaeb6c2ac6530ab0d2ef44bd343e27cb4b0961dafed00a0db14b661ca"
+    },
+    {
+      "path": "BASELINE_MATRIX_V7.md",
+      "bytes": 1734,
+      "sha256": "31d1a81ace6b67a71ce17f2a373e4cf826a7091ab5b60107aa3413d36039234b"
+    },
+    {
+      "path": "common_action_gateway_v2/cmd/gateway-pacer-v7/main.go",
+      "bytes": 2094,
+      "sha256": "799db38a823bb9cfa835634ecf105b9b739f5c68ce8cce0151f8a1a3ab0ba4cf"
+    },
+    {
+      "path": "common_action_gateway_v2/cmd/gateway-worker-v7/main.go",
+      "bytes": 2054,
+      "sha256": "4663aa11ab9147e45504b08bed595700a2566fc69606ea6c65264c000e6dc741"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/effect_recovery.go",
+      "bytes": 5200,
+      "sha256": "c2d40ada9aa1fa2748f57086f0b566e5a8a1af08a69ece5fc272807c3686316d"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/effect_recovery_test.go",
+      "bytes": 2981,
+      "sha256": "e3deeb105fe0b402f30e51ee7a65adb87e758fca3d7135e804c2fa38bf3ff2bd"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/lifecycle.go",
+      "bytes": 2311,
+      "sha256": "418e7cd4994e4c26b5e91da8af772c004ab053ec88a0972468ebb74035746553"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/pacer.go",
+      "bytes": 8204,
+      "sha256": "63d614b0b6e5d0bd80b33ccfdf68bf56749844b34d7e6f07a05c35eecf7dd36c"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/profile.go",
+      "bytes": 3527,
+      "sha256": "ad450bfda17763248eb3632cf44fa2c1369bb826409d4c4c670bab19257b1f74"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/profile_test.go",
+      "bytes": 1365,
+      "sha256": "1919cb854db8a06540db670d46d1a67438dbe989a69fe4383da5f70ef686e3e9"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/ready_queue.go",
+      "bytes": 6606,
+      "sha256": "571960ba8376dca29bf7e4da6a5f2bddbf142d5b4afc9ca1e9ca7e053f268ee4"
+    },
+    {
+      "path": "common_action_gateway_v2/v7/ready_queue_test.go",
+      "bytes": 4580,
+      "sha256": "f9c3240809c90787e451225d7225b51ea4d308a2a8a923f5197817a06ea2c468"
+    },
+    {
+      "path": "EXPERIMENT_MATRIX_V7.csv",
+      "bytes": 4389,
+      "sha256": "e94932e03f25f6533d181b1fcf29491f65baa6789256f6716067a862a5883130"
+    },
+    {
+      "path": "EXPERIMENT_MATRIX_V7.md",
+      "bytes": 1070,
+      "sha256": "7663ee813d167d4e6ccce1d160c03c8532b604caeb46141527668ec0db1fe4a5"
+    },
+    {
+      "path": "GATEWAY_OPERATION_LIFECYCLE_V7.csv",
+      "bytes": 13625,
+      "sha256": "a7560f5699c47ff031b3330aca8be67612a8686d78d17d16ed938c6e902733bb"
+    },
+    {
+      "path": "GATEWAY_RESULT_DELIVERY_ROOT_CAUSE_V7.md",
+      "bytes": 2835,
+      "sha256": "5913125843b76a66022d85e4f4e6cad9cebe7cf5a446a59fb76be9c52be9352d"
+    },
+    {
+      "path": "gateway_v7/__init__.py",
+      "bytes": 69,
+      "sha256": "7a2eb1c72d7314c114efc0773756eb46ce5712dd681f4d45465ccab0096d636d"
+    },
+    {
+      "path": "gateway_v7/runner.py",
+      "bytes": 13216,
+      "sha256": "f702db4e41f332698ad75b184fdef8ab62765187d593e1cd5b057ac31517a312"
+    },
+    {
+      "path": "LONG_HORIZON_V7.csv",
+      "bytes": 2736,
+      "sha256": "0a250c7a142e9d9275b3d5fc5bc20b45646f2a7e8f93795062dcc8643500d71a"
+    },
+    {
+      "path": "results_v7/action_semantic_holdout_summary.json",
+      "bytes": 180,
+      "sha256": "20fd50f862242cb684c7240ff94da518bb8a1ba88ab00e338ce523778020c7b4"
+    },
+    {
+      "path": "results_v7/functional_gate/functional_gate.csv",
+      "bytes": 524,
+      "sha256": "4cf64123c8d43b379d6000c848ee594805781765a3eadd96cffec4185fe3a3b8"
+    },
+    {
+      "path": "results_v7/functional_gate/functional_gate_summary.json",
+      "bytes": 1726,
+      "sha256": "9a1d37df8bd38711dbec3bb9ec943c14a18fdc4ff34c125ea8faf653c1b0e6b4"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/admission_profile.json",
+      "bytes": 198,
+      "sha256": "e771b4559d06147ba9d6cc2e785830e658636f8011b19f1c16a3541d452592d7"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/cloud_socket_boundary.jsonl",
+      "bytes": 29115,
+      "sha256": "9932b94dfc2a2288756819a6396017213328af4d7a0b2222ac679434929c369f"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/durable_ready_queue.json",
+      "bytes": 1812,
+      "sha256": "a4c38648b2465695faaa3fa22d459a1138c59caae7ff8f740b79b4f87d1ba91a"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/functional_summary.json",
+      "bytes": 625,
+      "sha256": "af1b102e0682169d41d2bf1d7d2368a49f3d41a315af49b26fe1e04e8277f307"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/opaque_response_frames.bin",
+      "bytes": 84992,
+      "sha256": "5fbc74cb86f90751e85c97bcca4eac814815d1eb94b68085353c83b8aace4ad6"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/operation_journal.json",
+      "bytes": 145,
+      "sha256": "a3b90fa44d82e98d04a5ca2f03630245acdc365bd637939ae381825ed6bca48a"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/pacer_lifecycle.csv",
+      "bytes": 160,
+      "sha256": "c83e43069744cb67720283e404e9f0ea16285bfc5f69513e863868daf5db68ed"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/pacer_private_delivery.jsonl",
+      "bytes": 4257,
+      "sha256": "d6c743aafd26362177c53aac52225966a9980a1fc37ed1ffeb13deb3743cbedb"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/pacer_socket_boundary.jsonl",
+      "bytes": 35091,
+      "sha256": "fea217616117593da469ea08dfd13ac8057afeb95e5afb0b23c368118137d2bb"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/pacer_status.json",
+      "bytes": 1131,
+      "sha256": "dd8312efdcc8a3e6342d8aa9ed1176b802218058b799ccfde842c1d37650d675"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "83435e2041fe0d4ee8f30befccac931839e80fe5ffb937ef39f3eef7c161409a"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/private_workload.json",
+      "bytes": 208,
+      "sha256": "b3a9f4752d2e1266de6d01614d2f39e03c67f4f9974b602358581c87e4ef2fa2"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/public_profile.json",
+      "bytes": 232,
+      "sha256": "20f0c551d27cea07da71ab56fb8f39d9d24aeb9be5811abef83320e60bfedf9a"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "329220a9bd838eb59023f95cf8e921711b1d3e7ef0e0e668c2d9ae5ca27343e4"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "689d23e1d6383ff28254d529dc0041cd76385cea2fd8d85a091de32076c9776b"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/trusted_pre_encrypted_frames.bin",
+      "bytes": 84992,
+      "sha256": "e9599fbe9d3e2b11c10f7d8d1c5e00b7e6d922eab68fbaf75698d3aca490116e"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/worker_done.json",
+      "bytes": 106,
+      "sha256": "d46c67daf62b9884ae2255c3662288a929643662f2f7bba444066540248231f0"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_1/worker_private.jsonl",
+      "bytes": 632,
+      "sha256": "38a03df7d7a42dc4c056e8ff1cb69d559b1c7a43074938af38eee54fc4193aec"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0cf013b63365bb2a3d2fc6f927e80c58556b72b49a0606d634c42842a735a4e4"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/cloud_socket_boundary.jsonl",
+      "bytes": 35437,
+      "sha256": "e333dad5bec97817f571c97ba4fd3c942d818cbd678bb1c4a8eafb9eabac011b"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/durable_ready_queue.json",
+      "bytes": 17413,
+      "sha256": "17d7a1d9b224b9aaf7240abca9cacc927cb4489f05bf30b6daf451ce54bb99b8"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/functional_summary.json",
+      "bytes": 632,
+      "sha256": "fb03f5ff6119faa79f52bf5ed75b1fe61fb80186c91c42a6b8121a54c24dd592"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/opaque_response_frames.bin",
+      "bytes": 103424,
+      "sha256": "5ca917b4161eb12fc637d67fef119c952ef24a49b2a37c959ec4e63988031734"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/operation_journal.json",
+      "bytes": 1469,
+      "sha256": "cfd0ed7f4d67072221f4f059c0d27975c9f55665afe842f74b8d5c52275b038e"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/pacer_lifecycle.csv",
+      "bytes": 1138,
+      "sha256": "5b8bba1e179e79704907a44b1b4c5d26ce77fab6bda81033156f4979b057fbaf"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/pacer_private_delivery.jsonl",
+      "bytes": 5474,
+      "sha256": "165d14230a716a14ea47b2b82405ffdea482b0ee16391f362db911a1b27f37cf"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/pacer_socket_boundary.jsonl",
+      "bytes": 42709,
+      "sha256": "df198f31ec8efd9bbcadbb1a725e2ef11621ea038e33aa5d11c18d88a7f96960"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/pacer_status.json",
+      "bytes": 1136,
+      "sha256": "cfe3dff4346c2023a4a19d7723382dd09a03708fd175a99e7fde02bb0de41efc"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "83326a7cdf61a6c24beb48f093dea17e9e9f6808cf58cb6f04ee9566a8a37b72"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/private_workload.json",
+      "bytes": 1329,
+      "sha256": "41e76b1bb2549502b5ee6ecc852e908a2cda82cdf0f2612ac05f5e4009769a72"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/public_profile.json",
+      "bytes": 234,
+      "sha256": "42698381e42be50a67c213d4fa5275dd039467fdee231e9079aba25c0804d7d6"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "03dba106166ff127242a568fb1675c21113e0364978e5c9e41f8c8ae8a644512"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "d0f748233dc2dbda80a08dd417b51090dfa3d1820f8b4f8fab8135af79518f55"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/trusted_pre_encrypted_frames.bin",
+      "bytes": 103424,
+      "sha256": "9d1205c23f50da7185a6c7e44fd9acb1de38be98362359dd0ff7aafb5cc9a093"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/worker_done.json",
+      "bytes": 106,
+      "sha256": "ec8b1dd1ef9e7018f7fd30875d903cb367c19c9333f29f90420c4c0dc3e84d86"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_10/worker_private.jsonl",
+      "bytes": 2138,
+      "sha256": "22ebf323ddb4c6caafad0790c7f74cd46893a4421f48deff11dc3147e18f84bd"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/admission_profile.json",
+      "bytes": 203,
+      "sha256": "31213482485885d99a0ce183614dde234298cbdb32e3c865594fbac1d471d586"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/cloud_socket_boundary.jsonl",
+      "bytes": 98977,
+      "sha256": "c51410ab58c4f6ff51ba91cfd6f982835130a307d57c3cba3645adec8e24531c"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/durable_ready_queue.json",
+      "bytes": 173790,
+      "sha256": "23084f6fd280f8aabfc7fc3e77b0a415feff65519546cd08676bd98ee48b3b4b"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/functional_summary.json",
+      "bytes": 638,
+      "sha256": "868e3877be1f371bf723922e9fae63a58780df6dd5ade46c4e1bf99f5cf76ac9"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/opaque_response_frames.bin",
+      "bytes": 287744,
+      "sha256": "acee0dd7f3ee97f76e7e79a96331a376f87f0f9df06136d3c25ddb0c23ab3500"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/operation_journal.json",
+      "bytes": 15009,
+      "sha256": "fbaf744b043642f0300b96068d84e1ee5c1fd92fae7bee31656388e21ae6f60e"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/pacer_lifecycle.csv",
+      "bytes": 11202,
+      "sha256": "e9d301756a242f55a82334dbadd5e4b59ef28a313b8558955cd72a3dc0a4598c"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/pacer_private_delivery.jsonl",
+      "bytes": 17980,
+      "sha256": "b20ca2ce71a0159d9cfe8a07fb29675bbb40acd635ca018cb1c7421d209347c0"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/pacer_socket_boundary.jsonl",
+      "bytes": 119209,
+      "sha256": "5a8c43a77845ba6c4a21234bedc449e0d0d9031d032f260df9242c4951802085"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/pacer_status.json",
+      "bytes": 1139,
+      "sha256": "cfd1ae5e360835527745bc16beadde0f8b4d308ca60d73d3fbccc4c123ceab0e"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "aa39ab42fce13a28d55fe9bba3f2f4af587a1ef520983e8ffdd533aa3fcf1d22"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/private_workload.json",
+      "bytes": 12625,
+      "sha256": "7d28f3fe3c4191d50e1e1bc3f7d563eaaf4cfaad7fe5ccda3e6c156d8ccc898c"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/public_profile.json",
+      "bytes": 235,
+      "sha256": "b7d2ff55307faed7db59cb20251fb700898c9216f42e8d363cc0ea8812f54a69"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "0af90e84c3c470c5bb510eb3cc6131ada448f15a53e80e7fa9587ea6138547cd"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "e8cdeda7de0d0d41f59e3c3c0d99d51efbde173f841db97613e510c9c526e67b"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/trusted_pre_encrypted_frames.bin",
+      "bytes": 287744,
+      "sha256": "0f12d3e63e580a6998d9048af31a69e6faecb4b5ddb7012838ded8379de173b2"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/worker_done.json",
+      "bytes": 106,
+      "sha256": "44f8a9135392a89778ca880ddab411b04a2fc0a1d6e07f84eaa426960cb02cad"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_100/worker_private.jsonl",
+      "bytes": 17350,
+      "sha256": "a460c2d1f7ab82c1f5b9d0a0494cd730895e2e5d89d313cea3b3567dd7531703"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "879dcfdcf5217409f17deac651caf9645e2657cb6c158cd056ef1f60f67431dd"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/durable_ready_queue.json",
+      "bytes": 86896,
+      "sha256": "3985ce320b9dfca571c1951ff280cf3d0a4bd8d84ab3498f7b2a96c4cd65690b"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/functional_summary.json",
+      "bytes": 632,
+      "sha256": "a425d5e403109a121e615ac1856b64050fd14fb930c3667bd56d6c82ff8cee53"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "40aff53eb5534b4a9a56fed71d0634cd76197fb572827e4150193ebf5d1b86d1"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/operation_journal.json",
+      "bytes": 7457,
+      "sha256": "25e1abfe29cc9344cc754fc2aaaaf6b05fe8d0b814afb0fc4622b0dc6737381f"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/pacer_lifecycle.csv",
+      "bytes": 5600,
+      "sha256": "37061abe379e686456442eddf6946e2ca7575f9f6c2f1e49b362b9a76a2f93bb"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/pacer_private_delivery.jsonl",
+      "bytes": 11029,
+      "sha256": "9dc9fbdc75e0d0bfdfc786930feb37f813793c8aafa5c199d8bfe638153045e7"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "1ada544e339aff93b06b45e5668b7013a229501df9815a3ee212d900e6f6d2c8"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/pacer_status.json",
+      "bytes": 1136,
+      "sha256": "16ccaf7a5d5281b554e7bf9eb5d63f64cca950f54a169500f4583055decaac34"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "41da4c140568026c636d5838a4e2b04729c71a66c1f1575968c563b26b211aea"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/private_workload.json",
+      "bytes": 6349,
+      "sha256": "fa9e50b1c07343a1617b0815f78c28281034657cb9b0be77119bcfb77293795d"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/public_profile.json",
+      "bytes": 234,
+      "sha256": "5f5189e17343a2f99d0604813272fe8cb0c45379628afb7585feba289ecdd92c"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "5ffb86895f185c2c2f58de4f2ca1689d7de85f73bfb1eea75e852aad7bd63c34"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "05c5693901276e191c778009d3e8debc01eb987e71a091628afb2661108b3c27"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "554e7a35fe1b830734bdcd42604ee47914b3fa335323a3f3771ef906a9883847"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/worker_done.json",
+      "bytes": 106,
+      "sha256": "b2c636104e5d7418cd19d9ae69027fa3f3909ec2412383fdaa05851ea671421c"
+    },
+    {
+      "path": "results_v7/functional_gate/operations_50/worker_private.jsonl",
+      "bytes": 8898,
+      "sha256": "da3c3e7a356ab57d4f4c13573767dbe87cf585b1fd11c6c05a211803824d7e30"
+    },
+    {
+      "path": "results_v7/go_test_v7.jsonl",
+      "bytes": 13538,
+      "sha256": "e9146f715ad52fa74c85dab7fc569014e019a90776745185c27671d01193fcf2"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "43d3420a2c3f89e4d0b43046e11afc767e24d8055b20bbfa407b1a14039f27ab"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/cloud_socket_boundary.jsonl",
+      "bytes": 46027,
+      "sha256": "276098c18af0b465972bf6c9bdfd492b96eda372587ff9d9a172eee88dbe5650"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/durable_ready_queue.json",
+      "bytes": 43639,
+      "sha256": "48aea200c6febf87f5c3e44296bfae90f3cea47de2d8a132a441c135009f71d7"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/functional_summary.json",
+      "bytes": 645,
+      "sha256": "3720e69fe148bccc2c187abca2be47743656a843ab4240d31035253953e5db0c"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/opaque_response_frames.bin",
+      "bytes": 134144,
+      "sha256": "a43a55df968d041eb19db2e865dcb3e89994cbbadbd434edb952990a97581e23"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/operation_journal.json",
+      "bytes": 3931,
+      "sha256": "7f5d4cca0c6b25ce8273edfe19580d568ce1757c761407b3aa7b31f81a386dee"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/pacer_lifecycle.csv",
+      "bytes": 3002,
+      "sha256": "d73ded45b45f6184dbebc9e5c1a1f42695b43fe9360405e02fe448bbd82b32d1"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/pacer_private_delivery.jsonl",
+      "bytes": 7658,
+      "sha256": "803e4f7f0cafadbead4696f8b3f84229fbd9d41d46034570bcbf8011cd73afb5"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/pacer_socket_boundary.jsonl",
+      "bytes": 55459,
+      "sha256": "e6c342e13c22667c1e156153f04d7f188116d9eede40265a7c12c83c948a462d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/pacer_status.json",
+      "bytes": 1149,
+      "sha256": "8e086c286bc4979a83ba0b81c9b5c8c8789a00f7c2efa0328d454c22b4882d09"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "3e06726f6df75fb2bbd2c06ba34e62cbb67ef478b8c563b440eea3fb389fd41f"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/private_workload.json",
+      "bytes": 3325,
+      "sha256": "f4f912c266d322613115d9c5f2f8ef85ff3f9261c1b4bcfece59cd8114e367ec"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/public_profile.json",
+      "bytes": 247,
+      "sha256": "5f6174f224fe90b1e81cc466d9f67ca5897d0c5617df27a9ebca31c0108f548d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "0e0561de0ac32000afd22484fbac6fa5940e22f5b91dbc4b08066bac1acae878"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "9d3b6dc73a70eaa3a83e8cc7e3ad86b7170d390a21739dcb5aa226827caef846"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 134144,
+      "sha256": "df2bcf5833b42fc7c3dc822d45fdd70525ecccc72200c5579d4963595dac95b0"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "31353b4f52ee91e3227e8d7fc13da0767845723bcec12dd02d4b9872aaf4fdfd"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/a/worker_private.jsonl",
+      "bytes": 4773,
+      "sha256": "ec3d4196055b88adfc5acc8c43198366e9349077c1779aa1944a64b147fa48e6"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "43d3420a2c3f89e4d0b43046e11afc767e24d8055b20bbfa407b1a14039f27ab"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/cloud_socket_boundary.jsonl",
+      "bytes": 46027,
+      "sha256": "1ec90202cb54a46c1c725eb35122e7a683d760505b26bd18a8f6b176ec8422f0"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/durable_ready_queue.json",
+      "bytes": 43641,
+      "sha256": "2d770b66b929e2ed09f166daff55091c00b6c10e8281daead29898407826292b"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/functional_summary.json",
+      "bytes": 645,
+      "sha256": "3720e69fe148bccc2c187abca2be47743656a843ab4240d31035253953e5db0c"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/opaque_response_frames.bin",
+      "bytes": 134144,
+      "sha256": "4f38da7598899ee26526b8c2c02e943035e443f8a580e953303a986fb9197cf8"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/operation_journal.json",
+      "bytes": 3935,
+      "sha256": "b85271441b80338f1b7833f8e0ce253a131ef76df42885cdc9fe4821191eee1b"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/pacer_lifecycle.csv",
+      "bytes": 3002,
+      "sha256": "173af4257cea8383c271d9f75564a223cf2cbffef7c0964941ca0fc82c8f6609"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/pacer_private_delivery.jsonl",
+      "bytes": 7659,
+      "sha256": "883da03f252d4f7c48cefab63282144305f303a6138f53cf7e381b70fc829278"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/pacer_socket_boundary.jsonl",
+      "bytes": 55459,
+      "sha256": "f628d7f2a23097d1e749093114bde43a564477b5329ab26bfe63a448ccd977e8"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/pacer_status.json",
+      "bytes": 1149,
+      "sha256": "1009f7fa522dd13f3e96764950f916050120b862a38d2e03fc65cd45805868bd"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "ab4bf573cb200045b48ad2357a4d470d9504c3b9960dedab25428c374bdc366c"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/private_workload.json",
+      "bytes": 3327,
+      "sha256": "93f70d7961ef70957f1fc694c6a483a4054d1f4504864c002392974037c566a6"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/public_profile.json",
+      "bytes": 247,
+      "sha256": "5f6174f224fe90b1e81cc466d9f67ca5897d0c5617df27a9ebca31c0108f548d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "fdb54e3b471294b7e03221dca1dc0dccd16e3d23d1913d6888b9c5e7094d6b9e"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "5a39b422ade43d7034c417fdd37527442050c56ddc1af036bec9d15ab9fd8765"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 134144,
+      "sha256": "784f6b6f817291034edf7e526d0d6ed79fed044ac57c4152a7fd883859a3043c"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/worker_done.json",
+      "bytes": 105,
+      "sha256": "d02f1628ae1501ab17abac6e4863d03e1568c378df4df128eaddf70adbcbbd61"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_RARE_TARGET/b/worker_private.jsonl",
+      "bytes": 4773,
+      "sha256": "bda8d5e73a46727b95912feefeb2c73b4b27ad1db858bcff2051a12b083374cd"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "43d3420a2c3f89e4d0b43046e11afc767e24d8055b20bbfa407b1a14039f27ab"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/cloud_socket_boundary.jsonl",
+      "bytes": 46027,
+      "sha256": "65c1ff713e1b1e2cd73ccc9decf672a4d589d6fb979910a4bdb294a45314b7bf"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/durable_ready_queue.json",
+      "bytes": 43537,
+      "sha256": "15696581604899de9d24ee50fc48eb57ceb813695a023700af87b896dd2711fb"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/functional_summary.json",
+      "bytes": 644,
+      "sha256": "685ca2999a85eae4e7b52ed70fb4fc193440f2bf3d00a6477c6c02b8842a810b"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/opaque_response_frames.bin",
+      "bytes": 134144,
+      "sha256": "8e252dfad8638f52f42eef06a8cb36e38c277dc897ef8cd19677e0e266244c32"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/operation_journal.json",
+      "bytes": 3845,
+      "sha256": "6f678080bd0f95e3dc97c053caef7d0bf2bcf96444b69669fb80e9f1fe13c527"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/pacer_lifecycle.csv",
+      "bytes": 2949,
+      "sha256": "fce6e88823aff250212506fb04d4aa2f72a977a3ed6b479bb7e52e65420f6b36"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/pacer_private_delivery.jsonl",
+      "bytes": 7634,
+      "sha256": "b6de11bf71029053999b59073b48558701a6d71531c34ea272ebf7049b0089a7"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/pacer_socket_boundary.jsonl",
+      "bytes": 55459,
+      "sha256": "c05caf8ee952f24028ac747f0ac0f640ee49266c2c15491208f9b9c4b5013c84"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/pacer_status.json",
+      "bytes": 1148,
+      "sha256": "872be54430c9b97ebbb3375772e28e09c355b675d9dc8f71ab70040b7a47580a"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "c0070fb7557f15a4ba663a8094fa3a33e4e24682b380bf3818df112812116484"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/private_workload.json",
+      "bytes": 3250,
+      "sha256": "3183ccf30efdcc0a7554044e509b9676007678c4379b31829d04ea2fe1b5f2e0"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/public_profile.json",
+      "bytes": 246,
+      "sha256": "8efaf77cbe31546015bd567dfa83246cd61ad6cc66fbbee1b78c730c44201982"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "0e0bebf5007bf9dea263e9f458b7ed544cb19900c081d5f9bea4d1912646e20d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "2dc4a64b44a3dfda5ace860ba3019aa05622850c2420e3c66f8371250296e932"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 134144,
+      "sha256": "9dee95cd145229789665c0403f1fc91d67ec3261d8445bce93f7443038d342d0"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "51b5cb73fdd8d74dfe89c057511d938564968342c0c2424c397a58e84776addc"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/a/worker_private.jsonl",
+      "bytes": 4748,
+      "sha256": "80f6455d18c1bf919c367bae3b719eb58e626dfc7fbfacc9ccb5fe06b3ee935b"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "43d3420a2c3f89e4d0b43046e11afc767e24d8055b20bbfa407b1a14039f27ab"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/cloud_socket_boundary.jsonl",
+      "bytes": 46027,
+      "sha256": "000ba9f0d0ec92a3c59b408666ea33870017d4811d25e7c1d360b5678b4037f3"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/durable_ready_queue.json",
+      "bytes": 43545,
+      "sha256": "4dcec94cadc37943b23d32e3d16930c8277fea87023d87758651d29f2c2c66d1"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/functional_summary.json",
+      "bytes": 644,
+      "sha256": "685ca2999a85eae4e7b52ed70fb4fc193440f2bf3d00a6477c6c02b8842a810b"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/opaque_response_frames.bin",
+      "bytes": 134144,
+      "sha256": "897fbda5f4514130bd4636af3c436c14d5a7818aa8264bbe2f19d3d7ea99b84e"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/operation_journal.json",
+      "bytes": 3845,
+      "sha256": "036a4a79d51ec3e1f11d562a70a6c08b5d72f79ac46a8c6b550ef805b1cb52a6"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/pacer_lifecycle.csv",
+      "bytes": 2982,
+      "sha256": "db86115cf820047d85552d59ddff29502b1f2a3a0d838ecfb0e5cad86e4c46dd"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/pacer_private_delivery.jsonl",
+      "bytes": 7630,
+      "sha256": "bea78fd74d3c97213e1d5ce3ae31255faa9afc51ed7a33df27d9dbf44f4030cc"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/pacer_socket_boundary.jsonl",
+      "bytes": 55459,
+      "sha256": "6b8de97e87e864990ec832a79c92bb72db598efae2c6d19449f1a91e4205e9e3"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/pacer_status.json",
+      "bytes": 1148,
+      "sha256": "e2eed87075d64109462bcafb80731edc185bb0c6589eceb9fcf34197e4fdc42d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "f0658dd7b932d651ecc655a4f612718134e1bf02cef95599cc828a8a188e76d4"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/private_workload.json",
+      "bytes": 3250,
+      "sha256": "d0efd5a0c1680374510e10060aeeeeebd206183927c1574b8e3c8cbc53ac9b53"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/public_profile.json",
+      "bytes": 246,
+      "sha256": "8efaf77cbe31546015bd567dfa83246cd61ad6cc66fbbee1b78c730c44201982"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "53817c616224137748383a7ee8430179b86e17a367858c5403e2ddeed9a31157"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "7b77d1bfe9f0437d45a7dd713b25aa24017f88a4d9331622836693fa2bd6a854"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 134144,
+      "sha256": "59c5892571fec85d11c54a9d105d0116eeff591e5c591170b09fd5e5deaf4c3d"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "63f1f4d500c0250d0b911e0fc13dcb7e7c461f4c69cb69f1f0d0e7d2d8eb90ce"
+    },
+    {
+      "path": "results_v7/strict_development/DEV_TOOL_CLASS/b/worker_private.jsonl",
+      "bytes": 4748,
+      "sha256": "138f7f2df19cb9a370e4130f54ba977b3f5935485946f931de3a2650258c334c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "70b6ee1e715471b63987ab387d76186e14818aa046bf0d99c56c4dbc42c9dd5b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/durable_ready_queue.json",
+      "bytes": 88245,
+      "sha256": "a840e5cded5ed98094fc1d0a14cdfe9d9898df7866dbac2c50971c30783cdc66"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "3c28491670f67872225492b8081ea3df57a9371bf765aceba2799b98c945e761"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/operation_journal.json",
+      "bytes": 8945,
+      "sha256": "1038da9d5cb62576b5185e73dd21a070b1c94f1a7e17d2708e221748f09863d1"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/pacer_lifecycle.csv",
+      "bytes": 7132,
+      "sha256": "149db5ee6a5d6c7d8d6809badea9386130cc06545a7c3b3bb7a3e3770887c8be"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/pacer_private_delivery.jsonl",
+      "bytes": 11780,
+      "sha256": "68b9885cea61684ea79e59d09c287de0b351245d12adc02fe22ef3c26ea6a9df"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "77be9227fb252b6875099082bef6c4f7afb4c3c5c9112b7ff3b1cc44c9577a3a"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "b01027baec24a72bb225e2305dc56da59a9f424a6843209e2f41f6c08c8c74ea"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "5c686daad0b2bba2dfcb9987e5257048c82ed1fae9d765a63a0daf9018e00655"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/private_workload.json",
+      "bytes": 7025,
+      "sha256": "623ab3b0845760b2f63633802fce4a072845ab0c42a9fb115057b6e857b398d3"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "bdb5fd5ed71bbf8acad8de41f03bed3bc71ca9b9572786d6a209cdce34f2b815"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "3b3cd0e33994858be568a6327fdb66b62f334b0e947f7cf9d124c2a5f9ef917e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "eb9576dd3a25bf8dbdfbc4e0f14479abeb610042ca4a60d8fd7cc61209ca0606"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "477a9f96e31bf20cc8a2b2b57bc0332ff889f61ff3d8a2db4766fb0199e8b41c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/a/worker_private.jsonl",
+      "bytes": 9648,
+      "sha256": "59f8f757acf51a05679b5beb3bb34439132e5979bddf9279d9b346a496ca9f58"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "1e572b33741a0ee2cf54b98764b39c2acc637fc79aacb19d426bd0304dc6fa4d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/durable_ready_queue.json",
+      "bytes": 88488,
+      "sha256": "5965d80a18c4794fd004cbc3f474dc590b2b8896502aa8dcf0aff76c3cd2d90f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "d28aec0863ddd3fac2d7fa978b821b59f74d6364c1e126164e823db82535d7a9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/operation_journal.json",
+      "bytes": 9181,
+      "sha256": "21fcd9ea05d62d7f6d424895367c43289f8057512a0b0b1398ae5544d5ba76fd"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/pacer_lifecycle.csv",
+      "bytes": 7117,
+      "sha256": "9fde7fcedc997ff3f021dfd94e5f35c17eb40736073bdd84ac87abee77054802"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/pacer_private_delivery.jsonl",
+      "bytes": 11745,
+      "sha256": "d692870945806a8bc6d0a9e404884403bf80f8dda1c56e2c4afcbb53928a37a0"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "3be6fe723700e17e20352d87321f51071e7b521f74d064f4599dfc64e74ec458"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "48ccdfb65d73ff8578465f887954553bd4a1ec81ea78d9767a78f0c5710428fd"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "1a48bde7947b1ef01c54462a4e36936b456b9aad65abf39478fe7557d4100321"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/private_workload.json",
+      "bytes": 7225,
+      "sha256": "f5dac7bf330ac327c23b2cfe35113e149ab425350ef88c643a23847779f1743d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "618c65b56b51126dbc330ac60481120915c86096e6303ac3f7828ae7330f5212"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "5b134ba6f16a20f9b9986160d2443e73e6ea934a3c3d2ac9ec8ea61d6726918a"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "dfdd8a865dd9028fc4033d62e9882a6ed7b4c9047eb6cc84e1e2e240398ed257"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/worker_done.json",
+      "bytes": 104,
+      "sha256": "8db68025af15cd68201ebee6dc38deb282743e4b93832021ef0157834f5553ec"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/CROSS_SESSION_LINK/b/worker_private.jsonl",
+      "bytes": 9648,
+      "sha256": "020d851ca5bda7e47eb67ba1b0319968c45ad0fe87096f3de62bed9c323fdafb"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "c34de65246debe5e29fe8a9287712e451585dd6500c0e80aae4e4ed1d4546034"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/durable_ready_queue.json",
+      "bytes": 87442,
+      "sha256": "0aa0ace3631435acb0002d9ef971fd41d759d2146d0cf064aed9b62d5606a73e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "e086566565c5e41dcf37e6af3a88517672a94858a671dd0c4e3071b00be7dd79"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/operation_journal.json",
+      "bytes": 8045,
+      "sha256": "87ab35fa3d81cba5989c4ad065b54c09d4b391ddc13d663c840e2326cda9fab6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/pacer_lifecycle.csv",
+      "bytes": 6174,
+      "sha256": "581b76438a5131c43d9ff8aecae390b79d1dbbec49e363979fa25ce218920013"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/pacer_private_delivery.jsonl",
+      "bytes": 11334,
+      "sha256": "9e750791d206d080dc6a5ebe14061fee664493cf8b6a093fa4ff5e1c5fecf597"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "83337ce38a7426c4d65ed6a48daae39b504d90b844dfd575df82ada79ce242bd"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "0f1f1deca72cff3ad8cca8ad2bf3e5082517367e0d5e4f550aa46e4abb9abe91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "db2969777be5c7ed83a5edfd2d601a9ef5e7b96285777e0a740bff8a6a119a36"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/private_workload.json",
+      "bytes": 6585,
+      "sha256": "fbd935d97a7943f3afd44cf942dbc60487c2707277cbb13529676bdc40573ee2"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "19a3fc91e5aadea10c6222c3c9823aff0a392194d02d4a0d4d0b97a04990b617"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "452e553c7ddbbf2735b578bc028063c19c34fd6eff2036524b574727695c7927"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "e7fc4b5632d792fe1853d2a9c869165b0e54391a680fba2c4e67e05bf4dc588a"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "5e8ff6f1b74bfd1d8bb127f0f93a47086c8adb7678bbdc7cac0e3d90e72c5459"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/a/worker_private.jsonl",
+      "bytes": 9198,
+      "sha256": "3f5ce7b7def988614303522d89ce6d2c275f0d61b56ad687158279a55623ba35"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "9e13ab7abd7789a3ce867bfa4e8e0be563da7461f4f69ddcda6c8cd1a0700ae6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/durable_ready_queue.json",
+      "bytes": 87524,
+      "sha256": "c11f5600c6a981be9eda1b0beb48dedaf31264b958c6c49f26c4e0a3dc3e5100"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "6a975b07959467ac41f422708628a079061c3db26bf8716b3508d074f4221be2"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/operation_journal.json",
+      "bytes": 8061,
+      "sha256": "458e790e1960da0d637b57f3f2c7b54dcf135ab0db1bf2dceef3d25092545d8b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/pacer_lifecycle.csv",
+      "bytes": 6176,
+      "sha256": "8478653aa24f2bdd2fb271bd164091410aedb3336a60219145c51ec2f9820b12"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/pacer_private_delivery.jsonl",
+      "bytes": 11333,
+      "sha256": "0664082ff0ee7f8ee8f0b320e0751ef0fc780d3c9a7f9d831d036e0e0cd9b25c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "e4f8af4739575e9214a40eb292e641dff751dac4d32fab3728ccb1718b5b3ec8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "7f6ac686f754d55260ef528dbd5322fe42c72b0a68149d67b097c875fcdd8181"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "f1449054f7d95ceac503feaef04c291993e4ca99f0049e242aad86749170b7e7"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/private_workload.json",
+      "bytes": 6665,
+      "sha256": "cd8c74fcce4b6b87d5d3834b2895c0d9160408098107465637ff3206fcb2bbb7"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "b0da9487e71d50ebdee468d5bca7303741ff3a6bec52a03446470170f474e381"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "5c3420ce1310171b865dbb0c4b5f3d74b4d457656e44cff6e99aa8dfdb330048"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "c542a6f6aa5b91fd6d002ec873b1c8a80e4c460d78652a0c7734fabb94e2a73d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "60455af0b60858b82d41de6324265d3876f03fda92588c5a3484b0763b4b4c69"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/FREQUENCY/b/worker_private.jsonl",
+      "bytes": 9198,
+      "sha256": "806a6647ec38ef1a3379f627f76e9dc1553971f84484676985f923badb758fd2"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "991a46ae7c5c01299f789e5f92191a5f9af3a478553f0760c13d9bc590daf885"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/durable_ready_queue.json",
+      "bytes": 87537,
+      "sha256": "47a362cbe35cde6fd49c7139b6bc70087bf50215fdf1fc13bb88defcf6a9e282"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "3fdd939a227ab8e0ba56d18279ae6494d46a8c23c123fb06779f563425d02cc0"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/operation_journal.json",
+      "bytes": 8245,
+      "sha256": "181ac80b8f5d7b2f9524af40058a3eee53909f9bb89f6718e33ba16d0cf8670d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/pacer_lifecycle.csv",
+      "bytes": 6379,
+      "sha256": "94952acf3b4c9ec4edd72ba3a21c2d8d079c30b95b660a4faf43cd8a88b7e204"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/pacer_private_delivery.jsonl",
+      "bytes": 11434,
+      "sha256": "e2a9bd14134890119863497add65058f4a35da09ee447f625d07fecf747778f6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "3463d3b6d0a908bc7afb21b0c2797e3f4bf37d0d4680896c671cd27da4cdfaa6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "74538bff79eb3c718e424906345f7705faff938c6e3b1dc94645508664952682"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "e37bec2776b5f1262c71dbea0af72b5c9323900ecd04babeb2a4450e9974c0df"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/private_workload.json",
+      "bytes": 6675,
+      "sha256": "d2d28fdd3f915018f84cf53def4b588f8c32f0cbdf33332f4800e1f8e1039c45"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "643cdaab16f7bb6ce062baa8104aad86bafa054bf58c0f26e25b02a0f3fc35f7"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "b748661614b119d76a9ff6a04c5ee8636af20713b9c843f75d18c79317d93e1d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "ac040722de9a98550417069155b054981e3fbcdd651381c44a03876ecaf5eb66"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "c1cfb3490e791a3cdf5907e366a8c3e5b513af2c4e399167bfbb256fa1da0187"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/a/worker_private.jsonl",
+      "bytes": 9298,
+      "sha256": "69c1a6b1f9e9bce2b1fc701b24abf27bf4f98b18206c2ad5befa18e89a6ee0a1"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "cdb40edcc16842b135c73af81dae3cc5dc71bd188a6d3965aee59c7f3135f0bc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/durable_ready_queue.json",
+      "bytes": 87541,
+      "sha256": "727561faa98fd8c59e3ae4487f17cfb6501ed08c662bb75e7acbfa81cab787fd"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "170a0b9f9d6a6a3b61622d6f917a67b57c2a14558571f77d65e89ab23966a25f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/operation_journal.json",
+      "bytes": 8249,
+      "sha256": "970cd15e9539bcad1d840ea3171f57ed1ddd6bb398a7da43cdbc928811e5ddf2"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/pacer_lifecycle.csv",
+      "bytes": 6374,
+      "sha256": "b4e0ad5e2ca6966837f3f50115328446426cf709233fd160d8b0be3f1c13ad13"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/pacer_private_delivery.jsonl",
+      "bytes": 11434,
+      "sha256": "893a65ce107e4d60f2ffe432a1c839025671607d8a607076ebe885b8c4b5a104"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "c1e527fa36d0229d61a8168c775bfc4b1519fcfa5601898cff38e2cd169fa7aa"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "39e2d8e9ecd3d9aae4fd60dbb1052a3b2b1544f88c9a7e429e73f351bb51964a"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "06cc33a54c474aae909d9d44b63d0088e4a9082e507f9a3fbafd82b20c70f02b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/private_workload.json",
+      "bytes": 6679,
+      "sha256": "44b3218c3a6eae498c588a8ed01eb6546271d63bf28668f8fe177743f832bb2b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "5fd573bc3e0af2ce2ff8e992b0a2108802f36f30aa8e2cde9d3aec624cff36bb"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "ef67875d9a81792828a28a264dc41b81ffbcb75908d35c0747627f95c14d529e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "12791ff676737ba7f4ed116196ca3111a0ba94913df33b5c97b0c4e3b88e99b4"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "6ec028ef7c0dbd03a66d1c8d2b0f5d72479497e6290f3ec0df729cf4e547d184"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/RARE_TARGET/b/worker_private.jsonl",
+      "bytes": 9298,
+      "sha256": "6cd64e6454a0792cb3b58889101282d67f8ebf6e2479044915fdef5b2ee1273f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "039bd14e4120d534cb0c90b09539f5c3ab33f1b5f84f2cccb22697a1ca2d95bd"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/durable_ready_queue.json",
+      "bytes": 87937,
+      "sha256": "5fe6974bc7b5c152ff9fc3eb193a7fe976f08f2b5dfb9e4997840470ee62e6d9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "247990a923eff283e4d1624c36f8acc07c3662a4be8ecd12988590e3317e5d6c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/operation_journal.json",
+      "bytes": 8645,
+      "sha256": "7c59f165e2617cd0668652c293ecda08f8832a6bac1dd2b0bfd16527ab8a2fed"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/pacer_lifecycle.csv",
+      "bytes": 6783,
+      "sha256": "dda8f5da6f21eeab9cdfc2aa6a8aa670454c1fb2c7bda55e5a77760ee0b980cf"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/pacer_private_delivery.jsonl",
+      "bytes": 11634,
+      "sha256": "cdc6c31ca28493a853f575570bf754d0e23ce7ceba8609a6accfb113d6ea8744"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "484f9146e80a58928cceb96fc8d70f90cbae81e2a6f10d6d7c52e8951be2eb34"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "27542afb269f805b159ccccde7160f88fc9105994ed70b3c48393a03a11dbce8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "f58c0035912ec577d658c58d82afb415aecb0bdd612ecb214572766a9ca3d63c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/private_workload.json",
+      "bytes": 6875,
+      "sha256": "4fb7ef6e4a0762c05102943d3fa0971da5404b193fdd21f0fb1cea996a4043a9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "a93be290f5c9f4c9fed6cb6ce72bcf1a509b253b61f757f86849875c426d0aaf"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "9d34979d899cb1b8fce7a23c2e6e9e0b7bbb3a29b05a36f40523a9eb2346a120"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "b0b27f2f75461e1b43ec8513d5510ced81dac6a585ff59df73e550ce36ce0f1b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "c9628a0692ec31330e6f3049a842cf185143a16f5cab11d13178b57868cbb1a3"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/a/worker_private.jsonl",
+      "bytes": 9498,
+      "sha256": "2fc6fb9e7fb032f2f1c9b56ad9ed1d1050277fe8ff2676ff34903f413e88ee08"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "c6586551299b2176457f8e53fd6b0a34cb9f10053b5ab38fe51d865179fafb1e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/durable_ready_queue.json",
+      "bytes": 87996,
+      "sha256": "7435fde39d700562046819dd835c0f2bf6a3e0fb1729a3889754522e2220a41e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "2779854caac524568b3ec44db3040edec4bfc6167c4052849bbff79e89ab30d6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/operation_journal.json",
+      "bytes": 8657,
+      "sha256": "a621deeb38444b07dc44aaa6482510ab0095145b1c73ce2d2ba87cc50f3d9f4f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/pacer_lifecycle.csv",
+      "bytes": 6805,
+      "sha256": "059d06411975fa2a605d281b8d59d95d29ebbadec5bc59eec37bd6bdd8574a5e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/pacer_private_delivery.jsonl",
+      "bytes": 11630,
+      "sha256": "4b12d1a5df7644ca825278cfb1420f8b20726eda5ce53a4db99c075c07d66fe0"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "95c6710308acc0fcc589546a1122093df47fc59acbc051ae3ef1742605763f1f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "97af549140fbc2211d79c3403a5732d562b573ae6773f53f5f1083a9befc5111"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "f1f5002de418b6fddde164749c41c1d6bad2fa1249ce556de8b89a54c5015801"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/private_workload.json",
+      "bytes": 6949,
+      "sha256": "fa6af6c4152c064a81e382989e848b14973f93a4ba1ec1f5c0e7b66071667c85"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "22eae86c40c6aee7b540d6bee027a876f5ede7b1e4293ac8a32196bbf8d2b9be"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "aa567d3bdea4d20c391c200ff260aa1e7a02ea56b7194858e5704ad0f2409476"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "1470d729533199942f8bda95b6ead7b905a64a9315f0ed6f80f992557d8c134f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "cc9a33e0f4d0e78d66f1ac3a0b784e6fc26107c28e68ed8ad2f9045a83ac9514"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/REPEATED_TARGET/b/worker_private.jsonl",
+      "bytes": 9498,
+      "sha256": "69c282844d98f5218b2df65debdb16f90fb00675a968e9eb6e25c86f0f1fee74"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/summary.json",
+      "bytes": 126,
+      "sha256": "a1cd0465e9927def359b6961aeb96d9e8431d667663ee149f9e140f8c1cdba0b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "9be24a3fdcc33d79d9b0b5d81818e4ce21fd7b8e910f8169fa021509bee45d58"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/durable_ready_queue.json",
+      "bytes": 87587,
+      "sha256": "4bdcc2d0e325dcf7785c9b0d012808100b0826c254d163aea3ce544fc4bc7679"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "d5acd925f58b845caaceb58ba42b18f29c4de817ab530ebf34308af2171ccc58"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/operation_journal.json",
+      "bytes": 8245,
+      "sha256": "a95da66a6a5de76eb4223a424d477c5518fdf255488d520f20e5cb9cce647b43"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/pacer_lifecycle.csv",
+      "bytes": 6379,
+      "sha256": "d00df6ab95fc9802ef88cd2bc287db07a90762e02a72dccb7604fdb30cdd52d8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/pacer_private_delivery.jsonl",
+      "bytes": 11434,
+      "sha256": "b5a9f03e27852c7a673f9472da3317f3467b944b3a6b4cded29d5db906213343"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "bb501952183fa806ca29adc61782a576fb553e546ce8e562a932c5baa6da305f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "0fad39eeeac02c7eff49cc238097a13dfb1dd2c4ebadfc8a7bbb282957ad837d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "58a77b570787aa7104b599fa291da3f51f1336fa7bd11706da5a501a056ac020"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/private_workload.json",
+      "bytes": 6675,
+      "sha256": "3da73e38be7e070dd635e7803bd298d74c2cde43e1b2ab62506f13cdf39becb6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "cf1a71bfef69e0316e524cc8d3d42d912fae54839fc3e18875fb71b3d5934fb6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "899eb28a1d61eb1f04df9ce71345329d68aa57a4111df5c62b43de313fdffafa"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "68fb6c5eeb41349f3e3b881ccb64a84726e0815f5337a26dca972e7a7c852287"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "eb8477ace8fdac914b8a7e57e08a8e986336f83ce39d94cab1fa758a04db9b11"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/a/worker_private.jsonl",
+      "bytes": 9298,
+      "sha256": "77ae7736c13bbb7c5396d3f9a1ef0622122b094a7fa8d087426f508343da8597"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "0a962da4751b3fcc009f0056352e8259e9f40f5201425be6287c67467c84402d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/durable_ready_queue.json",
+      "bytes": 87689,
+      "sha256": "ac35467e5868d28f432dc1812fe923a680e5e335cf193790c28adaedf22d1097"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "bb1346540ee93c71b0c0002799caf7e955b1f6cac9f9f605abe9f513fbf0b5f9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/operation_journal.json",
+      "bytes": 8281,
+      "sha256": "bd8e379e8ae7a37aca43446c2b9d533abc8c54286323d2ceec715ad5315352cc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/pacer_lifecycle.csv",
+      "bytes": 6376,
+      "sha256": "21c26d0c3f68377ae9caa1fefb941fd3eafd751e17c502f0e365b0e0ef3604e1"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/pacer_private_delivery.jsonl",
+      "bytes": 11433,
+      "sha256": "afd0ac376cd340be768d844e134bd105b27c2e544030d28f04d06749a999704a"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "0ce60c851468e295a7c26b560fb13cd3090e652f29a5026c21489e8c1bba85b9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "3c90bb38c9600517380d5ec77b89a155f891adbba1c8116b543ed7ed60c3b5d4"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "97470feb4007d2057901d067005a96dae5f15b665099e87cf6c352feabdca569"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/private_workload.json",
+      "bytes": 6775,
+      "sha256": "b185d4b8495437055150ac8236efff31cb41c175cc6e3bcbcde7b2714a051e1d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "df77bcb2d7f175cb81b68232b77e2029c930c87c54678656f7bd64f98bd2d21c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "f613458831fb6ce23a1357be02147a1c618af68e749a2bc201de202fbcac9bbf"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "ddb28b1f15977e807d1d18f0058dfe5a08d13cac358bd7e0a4f16a866667f82e"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "59d72307f8305165da7529430758f33753e7cdc350db31389061fecb9717c401"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TOOL_TARGET/b/worker_private.jsonl",
+      "bytes": 9298,
+      "sha256": "644c4f731f188a095763304d3e7d44899543acdedc7c71659460e360e362fe64"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "83f45fd8f3ce9d3a50845b1e8e588a6ac171b23c423a493407f49f218dc57ab7"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/durable_ready_queue.json",
+      "bytes": 88278,
+      "sha256": "711a421890cd0cd3979459f1ac1202254e6a4a43b62f8fcfe611a2c9545020db"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "461812b09a07a5dc41a90979555a33c34e9be7394032dfa7b3ca855e93e2b9d0"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/operation_journal.json",
+      "bytes": 8945,
+      "sha256": "16750107078a5471d0f8b0aea3d13703fe68662eb4eb5a5cb5f91adf4e27e3d1"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/pacer_lifecycle.csv",
+      "bytes": 7074,
+      "sha256": "d2b295c356bdbf9199f4b2f75d6816e3cd0ffac6faf0f20a5809aecaf234c485"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/pacer_private_delivery.jsonl",
+      "bytes": 11783,
+      "sha256": "370247ad85fe2c1eba3fcc4589f13a10d800b96ec52036ac602bbc5b9b627ca8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "b92d3eec10001ed1b412595c71ebb9f8fb74f47c1929f268a4e260e3f694a073"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "3c342ae0d60a003868f94b6d28365921059508bba696f582ffebfa7eeb27461f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "64c4077fcd7299b305ba9701273cf3053b6284fdecfe597f61f05d913ddf697b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/private_workload.json",
+      "bytes": 7075,
+      "sha256": "81fe89426d6ad7099184a49d8d45508709ed0d2e2f43136042625e1ac06ccbe9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "3ff787e587cf1f7c9e69fad9953893866c09dd4eebec6784f79bebdec239a9c8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "8ea495dc35dd3c7ad8fc7fa3058dcc3d893b143fd90c93750eac6090268a91c6"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "0585efc5dd83d4d777bad7c06da1c7479c8aa088ee903ec12a0874765323c1c5"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/worker_done.json",
+      "bytes": 106,
+      "sha256": "6111b81047bb8cd497fe65e95bf8c47db871d60831c3f863f80fc2bec3f5c1a3"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/a/worker_private.jsonl",
+      "bytes": 9648,
+      "sha256": "43efe88ef8241b1a56835246c866a017ed82e8ae0364f74a7e9d5d10cb1238e8"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/admission_profile.json",
+      "bytes": 201,
+      "sha256": "0c57d447d3e7ce1a4a1c4bd11a5b575b89585424609ba4f5b693de3ec9ab4edc"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/cloud_socket_boundary.jsonl",
+      "bytes": 63677,
+      "sha256": "a9df6402fd78316b4de35e8dbe1d3d186ad25859f015949338146e24a77f93f9"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/durable_ready_queue.json",
+      "bytes": 88228,
+      "sha256": "3d10c2736ad460e3b23c0a10e7e0f5723e6d65827aba42feceaa0650263d19be"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/functional_summary.json",
+      "bytes": 642,
+      "sha256": "e4fe08fd3eabb6fdaa971e07d60e3d008224520aa8cf34e3a64d3a3a4c6a2d23"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/opaque_response_frames.bin",
+      "bytes": 185344,
+      "sha256": "39306b807f294a2df9af499bcf4595e4d8108f8c694458f30beb7dc34a30573f"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/operation_journal.json",
+      "bytes": 8909,
+      "sha256": "14669b09254d748af6e09036224426ca81c9ff0cff6dfdeadc91d84d79758c15"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/pacer_lifecycle.csv",
+      "bytes": 7104,
+      "sha256": "c6f529c47516d7dcae1a4a155ea3a4fe81a45afd507d55695654d131cb865576"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/pacer_private_delivery.jsonl",
+      "bytes": 11781,
+      "sha256": "2bda9b4b48150d0c73b4ecb1d2d76fc6d0fa69b6a6cf8254c92dc1a3e8a74e4c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/pacer_socket_boundary.jsonl",
+      "bytes": 76709,
+      "sha256": "46156bbfa1835f6a545b27149abcf6e976d3a5c021065ee05fb2ae38c099b090"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/pacer_status.json",
+      "bytes": 1146,
+      "sha256": "a11c4f604d76a101567112ef82f12fa7600963860f630c6e517e5b8f5abb6560"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/private_provider_config.json",
+      "bytes": 431,
+      "sha256": "072ff58eaf44339a51acec31982e529dd978378a13cfd4beb8d4fb640493802d"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/private_workload.json",
+      "bytes": 7025,
+      "sha256": "7aea289351110dc352ebc02e014d36c93a2daf6c444c5fbcf6700def2c46ae44"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/public_profile.json",
+      "bytes": 244,
+      "sha256": "2b466c6f856a514615fd328316a40f04fb37a157d23fbb9d96634ad837fe7e91"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/request_ring.shared",
+      "bytes": 4194368,
+      "sha256": "48e26addea4247502aeb6f75deee70fd1addf6c1aac4014a278341d19fe71984"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/result_ring.shared",
+      "bytes": 3145792,
+      "sha256": "138e3fe284a527464ab9c5102089793a7e49fb097243e8972d85f70320ccf8d1"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/trusted_pre_encrypted_frames.bin",
+      "bytes": 185344,
+      "sha256": "0b7bb9a8a526b3f0ae4448c8f695b12ec189c72d3b5d91b0c3d01d77ba63ae2b"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/worker_done.json",
+      "bytes": 106,
+      "sha256": "1616ea323e22162eacc56117f4e2cb53aeb05746710d5d9c9eb0546908b04f8c"
+    },
+    {
+      "path": "results_v7/structural_size_holdout/TRANSITION_PATTERN/b/worker_private.jsonl",
+      "bytes": 9648,
+      "sha256": "a9286cf2f5e752859b5cc2dbc3f856f67a2e23eba1c5ae4d46dd93f4866f1263"
+    },
+    {
+      "path": "STRICT_DEVELOPMENT_RESULTS_V7.csv",
+      "bytes": 276,
+      "sha256": "e01452b7acdc5acea33f6d7105996792111e56c3e386c54b4091b55b68ee3bd8"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V7.csv",
+      "bytes": 865,
+      "sha256": "7305d48cb720c02b78170eced1ab6690773c1f96947ef81f66d6354884db68a8"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V7_FREEZE.json",
+      "bytes": 12318,
+      "sha256": "69ec8d7acfc9c4fc2f533724c117ed754fde0c12b8923b0e59a175b0ed5bbee2"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V7_FREEZE_SHA256.txt",
+      "bytes": 66,
+      "sha256": "8fafd6717b878f507ecb6921ecc349042ea43418ca7f6a638649f7262abd4815"
+    }
+  ]
+}

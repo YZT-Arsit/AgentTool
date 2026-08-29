@@ -1,0 +1,16 @@
+{
+  "endpoints": {
+    "FAST": "http://127.0.0.1:39047/execute",
+    "MEDIUM": "http://127.0.0.1:37373/execute",
+    "SLOW": "http://127.0.0.1:41101/execute",
+    "JITTERED": "http://127.0.0.1:39809/execute"
+  },
+  "effect_semantics": {
+    "FAST": "IDEMPOTENT_EFFECT",
+    "MEDIUM": "IDEMPOTENT_EFFECT",
+    "SLOW": "IDEMPOTENT_EFFECT",
+    "JITTERED": "IDEMPOTENT_EFFECT"
+  },
+  "timeout_ms": 700,
+  "allow_generic_http": false
+}

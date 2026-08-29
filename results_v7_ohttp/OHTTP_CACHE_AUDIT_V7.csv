@@ -1,0 +1,10 @@
+location,audited,result,notes
+repository,True,NO_COMPATIBLE_IMPLEMENTATION,No RFC9458 plus RFC9292 dependency found
+C:/Users/hasee/go/pkg/mod,True,NO_COMPATIBLE_IMPLEMENTATION,Go module cache searched
+C:/Users/hasee/go/pkg/mod/cache/download,True,NO_COMPATIBLE_IMPLEMENTATION,Go module download cache searched
+repository_toolchains_and_downloads,True,NO_COMPATIBLE_IMPLEMENTATION,Only standard-library crypto/hpke source found; HPKE alone is insufficient
+local_pip_cache,True,NO_COMPATIBLE_IMPLEMENTATION,No OHTTP or BHTTP package found
+active_python_environment,True,NO_COMPATIBLE_IMPLEMENTATION,No OHTTP or BHTTP package found
+local_cargo_registry,False,CACHE_ABSENT,No local Cargo registry
+local_nuget_cache,False,CACHE_ABSENT,No local NuGet package cache
+authorized_remote_linux_cache,False,NOT_AUDITED_AUTHENTICATION_UNAVAILABLE,Not treated as evidence of absence

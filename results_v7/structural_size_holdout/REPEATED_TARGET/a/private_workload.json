@@ -1,0 +1,259 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-24"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-25"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-26"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-27"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-28"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-29"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-30"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-31"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-32"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-33"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-34"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-35"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-36"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-37"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-38"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-39"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-40"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-41"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-42"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-43"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-44"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-45"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-46"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-47"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-48"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-repeated_target-a-49"
+        }
+      ]
+    }
+  ]
+}

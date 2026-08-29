@@ -1,0 +1,134 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "dev_rare_target-b-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "JITTERED",
+          "operation_id": "dev_rare_target-b-24"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+component,scale,backend,status,latency_ms,bytes,client_state_bytes,notes,source
+SimplePIR,1000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,0.800,8612,8798208,online query answer recovery,REAL_PIR_100K_RESULTS.csv
+SimplePIR,10000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,3.743,23208,23740416,online query answer recovery,REAL_PIR_100K_RESULTS.csv
+SimplePIR,100000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,23.639,73568,75309056,online query answer recovery,REAL_PIR_100K_RESULTS.csv
+OHTTP request,1,RFC9458_OHTTP,NOT_IMPLEMENTED_OFFLINE,NA,NA,NA,no compatible offline backend,OHTTP_LIBRARY_SELECTION_V7.md
+OHTTP response,1,RFC9458_OHTTP,NOT_IMPLEMENTED_OFFLINE,NA,NA,NA,no compatible offline backend,OHTTP_LIBRARY_SELECTION_V7.md
+Gateway reliability,161,LEGACY_DEV_TRANSPORT,PRE_OHTTP_ENGINEERING_EVIDENCE,NA,NA,NA,161 of 161 delivered zero dummy heavy ops,results_v7/functional_gate/functional_gate.csv

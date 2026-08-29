@@ -1,0 +1,61 @@
+{
+  "all_pass": true,
+  "runs": [
+    {
+      "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+      "operation_count": 1,
+      "admitted_operations": 1,
+      "unique_framework_results": 1,
+      "missing_results": 0,
+      "unexpected_results": 0,
+      "duplicate_results_suppressed": 0,
+      "real_effects": 1,
+      "dummy_heavy_ops": 0,
+      "fixed_frames": 83,
+      "terminal_status": "OK",
+      "functional_pass": true
+    },
+    {
+      "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+      "operation_count": 10,
+      "admitted_operations": 10,
+      "unique_framework_results": 10,
+      "missing_results": 0,
+      "unexpected_results": 0,
+      "duplicate_results_suppressed": 0,
+      "real_effects": 10,
+      "dummy_heavy_ops": 0,
+      "fixed_frames": 101,
+      "terminal_status": "OK",
+      "functional_pass": true
+    },
+    {
+      "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+      "operation_count": 50,
+      "admitted_operations": 50,
+      "unique_framework_results": 50,
+      "missing_results": 0,
+      "unexpected_results": 0,
+      "duplicate_results_suppressed": 0,
+      "real_effects": 50,
+      "dummy_heavy_ops": 0,
+      "fixed_frames": 181,
+      "terminal_status": "OK",
+      "functional_pass": true
+    },
+    {
+      "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+      "operation_count": 100,
+      "admitted_operations": 100,
+      "unique_framework_results": 100,
+      "missing_results": 0,
+      "unexpected_results": 0,
+      "duplicate_results_suppressed": 0,
+      "real_effects": 100,
+      "dummy_heavy_ops": 0,
+      "fixed_frames": 281,
+      "terminal_status": "OK",
+      "functional_pass": true
+    }
+  ]
+}

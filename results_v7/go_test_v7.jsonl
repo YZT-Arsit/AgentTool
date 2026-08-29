@@ -1,0 +1,68 @@
+{"Time":"2026-08-28T17:03:13.620775677+08:00","Action":"start","Package":"common-action-gateway-v2/v7"}
+{"Time":"2026-08-28T17:03:13.627074805+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics"}
+{"Time":"2026-08-28T17:03:13.627198041+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics","Output":"=== RUN   TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics\n"}
+{"Time":"2026-08-28T17:03:13.632354064+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics","Output":"--- PASS: TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics (0.01s)\n"}
+{"Time":"2026-08-28T17:03:13.632377879+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics","Elapsed":0.01}
+{"Time":"2026-08-28T17:03:13.63239605+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterProviderStartUsesDeclaredEffectSemantics"}
+{"Time":"2026-08-28T17:03:13.632404626+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterProviderStartUsesDeclaredEffectSemantics","Output":"=== RUN   TestCrashAfterProviderStartUsesDeclaredEffectSemantics\n"}
+{"Time":"2026-08-28T17:03:13.635343281+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterProviderStartUsesDeclaredEffectSemantics","Output":"--- PASS: TestCrashAfterProviderStartUsesDeclaredEffectSemantics (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.635353053+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterProviderStartUsesDeclaredEffectSemantics","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.635365339+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestCommittedResultRecoveryDoesNotReplayEffect"}
+{"Time":"2026-08-28T17:03:13.635372903+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCommittedResultRecoveryDoesNotReplayEffect","Output":"=== RUN   TestCommittedResultRecoveryDoesNotReplayEffect\n"}
+{"Time":"2026-08-28T17:03:13.636589785+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCommittedResultRecoveryDoesNotReplayEffect","Output":"--- PASS: TestCommittedResultRecoveryDoesNotReplayEffect (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.636602838+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestCommittedResultRecoveryDoesNotReplayEffect","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.636611471+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterFrameworkDeliveryRemainsDeduplicated"}
+{"Time":"2026-08-28T17:03:13.636618839+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterFrameworkDeliveryRemainsDeduplicated","Output":"=== RUN   TestCrashAfterFrameworkDeliveryRemainsDeduplicated\n"}
+{"Time":"2026-08-28T17:03:13.638159162+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterFrameworkDeliveryRemainsDeduplicated","Output":"--- PASS: TestCrashAfterFrameworkDeliveryRemainsDeduplicated (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.638168482+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestCrashAfterFrameworkDeliveryRemainsDeduplicated","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.638178667+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestPublicAdmissionRequiresCompletionAndDrainTail"}
+{"Time":"2026-08-28T17:03:13.638186636+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestPublicAdmissionRequiresCompletionAndDrainTail","Output":"=== RUN   TestPublicAdmissionRequiresCompletionAndDrainTail\n"}
+{"Time":"2026-08-28T17:03:13.63819652+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestPublicAdmissionRequiresCompletionAndDrainTail","Output":"--- PASS: TestPublicAdmissionRequiresCompletionAndDrainTail (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.638224829+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestPublicAdmissionRequiresCompletionAndDrainTail","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.638233614+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestV6LikeProfileFailsCapacityProof"}
+{"Time":"2026-08-28T17:03:13.63824083+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestV6LikeProfileFailsCapacityProof","Output":"=== RUN   TestV6LikeProfileFailsCapacityProof\n"}
+{"Time":"2026-08-28T17:03:13.638258647+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestV6LikeProfileFailsCapacityProof","Output":"--- PASS: TestV6LikeProfileFailsCapacityProof (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.638268122+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestV6LikeProfileFailsCapacityProof","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.638277364+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestPublicTerminalStatuses"}
+{"Time":"2026-08-28T17:03:13.638284581+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestPublicTerminalStatuses","Output":"=== RUN   TestPublicTerminalStatuses\n"}
+{"Time":"2026-08-28T17:03:13.638293937+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestPublicTerminalStatuses","Output":"--- PASS: TestPublicTerminalStatuses (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.638304313+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestPublicTerminalStatuses","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.638312482+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueSurvivesCrashBeforePublicSend"}
+{"Time":"2026-08-28T17:03:13.638319574+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueSurvivesCrashBeforePublicSend","Output":"=== RUN   TestDurableQueueSurvivesCrashBeforePublicSend\n"}
+{"Time":"2026-08-28T17:03:13.640469494+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueSurvivesCrashBeforePublicSend","Output":"--- PASS: TestDurableQueueSurvivesCrashBeforePublicSend (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.640485357+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueSurvivesCrashBeforePublicSend","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.640494351+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup"}
+{"Time":"2026-08-28T17:03:13.640501636+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup","Output":"=== RUN   TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup\n"}
+{"Time":"2026-08-28T17:03:13.642597197+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup","Output":"--- PASS: TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.642606698+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.642615819+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueOutOfOrderAndLateEligibility"}
+{"Time":"2026-08-28T17:03:13.642624651+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueOutOfOrderAndLateEligibility","Output":"=== RUN   TestDurableQueueOutOfOrderAndLateEligibility\n"}
+{"Time":"2026-08-28T17:03:13.644394425+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueOutOfOrderAndLateEligibility","Output":"--- PASS: TestDurableQueueOutOfOrderAndLateEligibility (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.644406966+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueOutOfOrderAndLateEligibility","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.644415239+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueDeduplicatesAndFailsClosedAtCapacity"}
+{"Time":"2026-08-28T17:03:13.644431+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueDeduplicatesAndFailsClosedAtCapacity","Output":"=== RUN   TestDurableQueueDeduplicatesAndFailsClosedAtCapacity\n"}
+{"Time":"2026-08-28T17:03:13.64518345+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueDeduplicatesAndFailsClosedAtCapacity","Output":"--- PASS: TestDurableQueueDeduplicatesAndFailsClosedAtCapacity (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.645192679+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDurableQueueDeduplicatesAndFailsClosedAtCapacity","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.645202843+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations"}
+{"Time":"2026-08-28T17:03:13.645209916+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations","Output":"=== RUN   TestDeliveryOfOneTenFiftyAndOneHundredOperations\n"}
+{"Time":"2026-08-28T17:03:13.645220598+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/1"}
+{"Time":"2026-08-28T17:03:13.645227537+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/1","Output":"=== RUN   TestDeliveryOfOneTenFiftyAndOneHundredOperations/1\n"}
+{"Time":"2026-08-28T17:03:13.646264698+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/1","Output":"--- PASS: TestDeliveryOfOneTenFiftyAndOneHundredOperations/1 (0.00s)\n"}
+{"Time":"2026-08-28T17:03:13.646274118+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/1","Elapsed":0}
+{"Time":"2026-08-28T17:03:13.646281973+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/10"}
+{"Time":"2026-08-28T17:03:13.646288883+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/10","Output":"=== RUN   TestDeliveryOfOneTenFiftyAndOneHundredOperations/10\n"}
+{"Time":"2026-08-28T17:03:13.660161572+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/10","Output":"--- PASS: TestDeliveryOfOneTenFiftyAndOneHundredOperations/10 (0.01s)\n"}
+{"Time":"2026-08-28T17:03:13.660176481+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/10","Elapsed":0.01}
+{"Time":"2026-08-28T17:03:13.660188684+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/50"}
+{"Time":"2026-08-28T17:03:13.660195825+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/50","Output":"=== RUN   TestDeliveryOfOneTenFiftyAndOneHundredOperations/50\n"}
+{"Time":"2026-08-28T17:03:13.898913356+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/50","Output":"--- PASS: TestDeliveryOfOneTenFiftyAndOneHundredOperations/50 (0.24s)\n"}
+{"Time":"2026-08-28T17:03:13.898946895+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/50","Elapsed":0.24}
+{"Time":"2026-08-28T17:03:13.898958044+08:00","Action":"run","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/100"}
+{"Time":"2026-08-28T17:03:13.898962837+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/100","Output":"=== RUN   TestDeliveryOfOneTenFiftyAndOneHundredOperations/100\n"}
+{"Time":"2026-08-28T17:03:14.727758891+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/100","Output":"--- PASS: TestDeliveryOfOneTenFiftyAndOneHundredOperations/100 (0.83s)\n"}
+{"Time":"2026-08-28T17:03:14.727837974+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations/100","Elapsed":0.83}
+{"Time":"2026-08-28T17:03:14.727856658+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations","Output":"--- PASS: TestDeliveryOfOneTenFiftyAndOneHundredOperations (1.08s)\n"}
+{"Time":"2026-08-28T17:03:14.727865343+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Test":"TestDeliveryOfOneTenFiftyAndOneHundredOperations","Elapsed":1.08}
+{"Time":"2026-08-28T17:03:14.727874623+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Output":"PASS\n"}
+{"Time":"2026-08-28T17:03:14.730729686+08:00","Action":"output","Package":"common-action-gateway-v2/v7","Output":"ok  \tcommon-action-gateway-v2/v7\t1.109s\n"}
+{"Time":"2026-08-28T17:03:14.767506237+08:00","Action":"pass","Package":"common-action-gateway-v2/v7","Elapsed":1.147}

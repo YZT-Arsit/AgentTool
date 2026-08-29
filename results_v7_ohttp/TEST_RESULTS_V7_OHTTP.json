@@ -1,0 +1,35 @@
+{
+  "date": "2026-08-28",
+  "python_full_suite": {
+    "status": "PASS",
+    "passed": 189,
+    "environment": ".venv-stage10"
+  },
+  "go_gateway_v2": {
+    "status": "PASS",
+    "passed": 23,
+    "execution": "stable-path compiled test binary"
+  },
+  "go_v7_reliability": {
+    "status": "PASS",
+    "passed": 12,
+    "execution": "stable-path compiled test binary"
+  },
+  "go_v7_ohttp_contract": {
+    "status": "PASS",
+    "passed": 6,
+    "execution": "stable-path compiled test binary"
+  },
+  "go_vet_scoped": {
+    "status": "PASS",
+    "scope": ["./v7", "./v7ohttp"]
+  },
+  "go_vet_full": {
+    "status": "WARN_PREEXISTING",
+    "finding": "mapping_windows.go:37 possible misuse of unsafe.Pointer"
+  },
+  "rfc9458_wire_tests": {
+    "status": "NOT_RUN_NO_OFFLINE_BACKEND",
+    "passed": 0
+  }
+}

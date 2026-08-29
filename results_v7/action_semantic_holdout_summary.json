@@ -1,0 +1,6 @@
+{
+  "cases": 24,
+  "passed": 24,
+  "status": "EXECUTED_ONCE_NO_TUNING",
+  "scope": "deterministic outbound-action adapter semantics; not full native runtime trajectory fidelity"
+}

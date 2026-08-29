@@ -1,0 +1,259 @@
+{
+  "sessions": [
+    {
+      "label": "MIXED",
+      "actions": [
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-0"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-1"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-2"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-3"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-4"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-5"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-6"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-7"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-8"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-9"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-10"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-11"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-12"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-13"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-14"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-15"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-16"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-17"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-18"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-19"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-20"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-21"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-22"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-23"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-24"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-25"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-26"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-27"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-28"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-29"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-30"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-31"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-32"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-33"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-34"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-35"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-36"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-37"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-38"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-39"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-40"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-41"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-42"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-43"
+        },
+        {
+          "action": "TOOL",
+          "provider": "MEDIUM",
+          "operation_id": "holdout-frequency-b-44"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-frequency-b-45"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-frequency-b-46"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-frequency-b-47"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-frequency-b-48"
+        },
+        {
+          "action": "TOOL",
+          "provider": "FAST",
+          "operation_id": "holdout-frequency-b-49"
+        }
+      ]
+    }
+  ]
+}

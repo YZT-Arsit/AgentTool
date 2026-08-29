@@ -1,0 +1,11 @@
+{
+  "name": "V7-STRICT-HOLDOUT-STANDARD",
+  "frame_bytes": 1024,
+  "slots": 181,
+  "sessions": 1,
+  "request_delta_ns": 2000000,
+  "response_delta_ns": 10000000,
+  "mask_ns": 2000000,
+  "start_delay_ns": 100000000,
+  "inter_session_gap_ns": 0
+}
