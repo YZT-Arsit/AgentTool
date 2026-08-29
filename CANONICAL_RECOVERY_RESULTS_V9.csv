@@ -1,0 +1,4 @@
+status,test_case,effect_semantics,result,reason
+BLOCKED,canonical_process_restart,READ_ONLY,NOT_RUN,"Full canonical command and journal wiring absent"
+BLOCKED,canonical_process_restart,IDEMPOTENT_EFFECT,NOT_RUN,"Full canonical command and journal wiring absent"
+BLOCKED,canonical_process_restart,NON_IDEMPOTENT_EFFECT,NOT_RUN,"Full canonical command and journal wiring absent"

@@ -1,0 +1,6 @@
+{
+  "schema": "AgentTool.CanonicalSemanticHoldoutV9Freeze/1",
+  "status": "NOT_FROZEN_PREREQUISITE_BLOCKED",
+  "cases": [],
+  "reason": "Canonical functional gate did not pass because one durable provider/recovery/ledger command is not yet composed"
+}

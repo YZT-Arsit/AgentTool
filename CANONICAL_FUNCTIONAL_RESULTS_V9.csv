@@ -1,0 +1,2 @@
+status,admitted,delivered,missing,unexpected,duplicate_framework_deliveries,dummy_provider_operations,reason
+BLOCKED,0,0,0,0,0,0,"Individual PIR/RFC/Relay gates pass; one canonical durable provider/recovery/ledger runner is not implemented"

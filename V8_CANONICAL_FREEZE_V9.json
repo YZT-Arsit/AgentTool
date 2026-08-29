@@ -1,0 +1,382 @@
+{
+  "schema": "AgentTool.V8CanonicalFreezeV9/1",
+  "created_utc": "2026-08-29T02:13:41.096292+00:00",
+  "repository_head": "335ccbcb415de9a79fa2b53be2b50d51bfdad2ee",
+  "repository_tree": "9401f4d898d65361abcedb1446bb9766bbd7657a",
+  "worktree_clean_at_freeze": true,
+  "scope": "Tracked V8 implementation/evidence plus predecessor freeze manifests. The repository commit/tree freezes all V1-V8 tracked state.",
+  "entry_count": 74,
+  "total_bytes": 229995,
+  "entries": [
+    {
+      "path": "ADMISSION_SCHEDULE_BINDING_V8.md",
+      "bytes": 880,
+      "sha256": "d6714017e8870f9873d73049c637aca96e8bd206d5bdaa2bc97720d784e52079"
+    },
+    {
+      "path": "AGENT_DESCRIPTOR_V7_SPEC_V8.md",
+      "bytes": 1332,
+      "sha256": "849bace95794b8844211de28720a31411a0b9edd0b5f7211946c4cd41bdcf3c4"
+    },
+    {
+      "path": "AGENT_SERVICE_EFFECT_SEMANTICS_V8.md",
+      "bytes": 840,
+      "sha256": "3d186e8eeab3c63a33155602e894c25dd417a4a68670af0fa5e48359ecf5f6b0"
+    },
+    {
+      "path": "BASELINE_MATRIX_V8.md",
+      "bytes": 1076,
+      "sha256": "9ec901591d2ccfea3290603ede1acc4aef223f2a15acdb139e302ede2d809aa0"
+    },
+    {
+      "path": "BHTTP_RFC9292_CONFORMANCE_V8.md",
+      "bytes": 538,
+      "sha256": "bc35f1200ae11de7752445146293568bedd4a7cf80528c457d20e26d3956e303"
+    },
+    {
+      "path": "CANONICAL_ACTION_SEMANTIC_HOLDOUT_V8.csv",
+      "bytes": 111,
+      "sha256": "458f01cd661a304f132fad71163f1f56ece873909a32cd7d7008f52535c912d5"
+    },
+    {
+      "path": "CANONICAL_ACTION_SEMANTIC_HOLDOUT_V8.md",
+      "bytes": 298,
+      "sha256": "7823831c7cfdae8b12be8982ff9d227074c575d23caeeeac172b4d9cf2a54c27"
+    },
+    {
+      "path": "CANONICAL_ACTION_SEMANTIC_HOLDOUT_V8_FREEZE.json",
+      "bytes": 222,
+      "sha256": "a1fb3513a52afe3a5a7a6471df74fe051a1e5b23dc2a454130503a3718829c15"
+    },
+    {
+      "path": "CANONICAL_OHTTP_FUNCTIONAL_V8.csv",
+      "bytes": 209,
+      "sha256": "2522d9e6c853f3c5c79861cc2dfe86118bd73e8daf23eb5013fe4b66a4c7f345"
+    },
+    {
+      "path": "CANONICAL_OHTTP_FUNCTIONAL_V8.md",
+      "bytes": 457,
+      "sha256": "4eac7bc2121bf96cf3de5f3148ac6b86608181205e70348b19052c094a4848f4"
+    },
+    {
+      "path": "CURRENT_SECURITY_MATRIX_V8.md",
+      "bytes": 2728,
+      "sha256": "823bdaebb5979b754991cff97d70a35734cfc7e3e43de9ec68ee83dbcdf6f1fc"
+    },
+    {
+      "path": "FINAL_SYSTEM_AUDIT_V8.md",
+      "bytes": 4451,
+      "sha256": "bc856d5c57fd4f0352f48854a7046f330bfe1cfde608606c1cd21c051d34e8a8"
+    },
+    {
+      "path": "HTTP_RELAY_METADATA_MINIMIZATION_V8.md",
+      "bytes": 1217,
+      "sha256": "46d48be0b48e9caf0218e0e2a6d1537b38e08daf603ba1938c2486f6dd00642f"
+    },
+    {
+      "path": "OHTTP_PUBLIC_SUITE_PROFILE_V8.md",
+      "bytes": 785,
+      "sha256": "b301654c2d1e16d1916816dc80b2e4ac6dac5cf400d13b2e83f37a8a5a81ea2d"
+    },
+    {
+      "path": "OHTTP_RFC9458_CONFORMANCE_V8.md",
+      "bytes": 837,
+      "sha256": "8de3b3483405ce189150925c140f3cafa2b69345e2f7a1809a144c94df172bf4"
+    },
+    {
+      "path": "OHTTP_SIZE_EXPANSION_V8.csv",
+      "bytes": 260,
+      "sha256": "b63830d6056f0917fafeaa9511154e9b8dddb2a40000785c3169b1ffd9b681b2"
+    },
+    {
+      "path": "PACER_CRITICAL_PATH_AUDIT_V8.md",
+      "bytes": 1526,
+      "sha256": "27291ad81c3796c8285352b07d2c830b0de695af12a030a9271e919f44e8cfa1"
+    },
+    {
+      "path": "PERFORMANCE_PROVENANCE_V8.csv",
+      "bytes": 1089,
+      "sha256": "56baf450cd86fa34b9961a8d02667f5a6ca7c0c07ba7d59a2dc8b530458da97f"
+    },
+    {
+      "path": "PERFORMANCE_RESULTS_V8.csv",
+      "bytes": 773,
+      "sha256": "17b054ceb1942a9645ca7b47aec55f2c5fa74630133322d4f28655ddf5db8eb4"
+    },
+    {
+      "path": "PIR_TRUSTED_BOUNDARY_V8.md",
+      "bytes": 1215,
+      "sha256": "d9e41b36860beb023b3d68f05c0101df38de884fc9ff312d8adac1255c64ca02"
+    },
+    {
+      "path": "PIR_V7_DESCRIPTOR_REPORT_V8.md",
+      "bytes": 1676,
+      "sha256": "66159bb4afc31cff38748f9738d9288413b94530c2976b9c63b59f617c65b396"
+    },
+    {
+      "path": "PIR_V7_DESCRIPTOR_RESULTS_V8.csv",
+      "bytes": 1824,
+      "sha256": "79850ffd4758197e801dae70faa341177692740064e9a893d045ae5ea14ef99b"
+    },
+    {
+      "path": "PLACEMENT_ENFORCEMENT_V8.md",
+      "bytes": 916,
+      "sha256": "cf58929f1d40664fd41700d37be2ad093ca79324265ff6d270ca748a2fa93edb"
+    },
+    {
+      "path": "PUBLIC_PROFILE_RESULTS_V8.csv",
+      "bytes": 243,
+      "sha256": "2913389c686e9ad3883ddbb895c0a253c019fd8f1e922b637b1bdfaebbfea3e3"
+    },
+    {
+      "path": "PUBLIC_PROFILE_V8.json",
+      "bytes": 950,
+      "sha256": "3b4014b89cc7923a9bd6ade71886d4aa8028c7eb3a26df8a7801feac1a047edb"
+    },
+    {
+      "path": "RECOVERY_WIRING_AUDIT_V8.md",
+      "bytes": 1488,
+      "sha256": "f5555de9e39ef582a440e5190b9d979bfc907407b2e0ffe1e5cdd19d6918a8ac"
+    },
+    {
+      "path": "SECURITY_DEFINITION_COMPOSED_V8.md",
+      "bytes": 752,
+      "sha256": "082790f1f15c8b7d1c4154601fe5edefa742ccfce78605c5b6ba184015958863"
+    },
+    {
+      "path": "SECURITY_DEFINITION_REGISTRY_V8.md",
+      "bytes": 1098,
+      "sha256": "c612cd07111e0c68fbd5946b0e410d6e39bf42fcb57964b4d5089afe1cbf2163"
+    },
+    {
+      "path": "SECURITY_DEFINITION_RELAY_V8.md",
+      "bytes": 928,
+      "sha256": "7d1c252bab9203b50e708d467de8aa989921fcb925b63fb80471f242a80bf7f9"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V8.csv",
+      "bytes": 271,
+      "sha256": "25ad30ba8ca26efc36cc76e94c0390a08b474019d492e47afded68e905ed7ff8"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V8.md",
+      "bytes": 333,
+      "sha256": "bf56d79a080efd0d09807e6d067b78b8c868b5f4b79f156855c290ada9177001"
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V8_FREEZE.json",
+      "bytes": 190,
+      "sha256": "d88feac49a4aed23f272f56fc47311d242b4d5b24e4cb8baf212897fb4b9d4cb"
+    },
+    {
+      "path": "THIRD_PARTY_OHTTP_AUDIT_V8.md",
+      "bytes": 1111,
+      "sha256": "fdb9e263d06f29ac0d93209373ce120fe173ccd244ee69ff7aa4928905377632"
+    },
+    {
+      "path": "THIRD_PARTY_OHTTP_DEPENDENCIES_V8.json",
+      "bytes": 828,
+      "sha256": "ea889ce5a078d10bb04d3c7e3f3101125bca76069dc5c8fa5406b80a4ff6fe77"
+    },
+    {
+      "path": "TRUSTED_DELIVERY_LEDGER_V8.md",
+      "bytes": 1037,
+      "sha256": "fcc26fedd71824179490af8147a8a74ec14169f2c19a5cfd2176262eb633d628"
+    },
+    {
+      "path": "V6_FREEZE_MANIFEST.json",
+      "bytes": 28956,
+      "sha256": "9dfa6553c4a5223848311ba3a029947a934287143056b062c35c3c63d3a9d65d"
+    },
+    {
+      "path": "V7_PRE_OHTTP_FREEZE_MANIFEST.json",
+      "bytes": 82634,
+      "sha256": "d4a7a94b3bb1de41f08195607cf801312d60c3714f4a316a544664cf6cc2d13e"
+    },
+    {
+      "path": "action_privacy_v8/__init__.py",
+      "bytes": 1119,
+      "sha256": "c27b887a58791826b5809bf7ad398c5c43c9c88310592736c6e1bbfa8ae8bd3b"
+    },
+    {
+      "path": "action_privacy_v8/delivery.py",
+      "bytes": 3664,
+      "sha256": "08eb3c4b79aae81f6f58a9aee0ed9d735f12b5014ed21d3c5910e40d36d63e42"
+    },
+    {
+      "path": "action_privacy_v8/descriptor.py",
+      "bytes": 5815,
+      "sha256": "5ba4b6af5a48e44529c87e9656663d9da2f9e8d8eea2d85e456e24c8dd50012b"
+    },
+    {
+      "path": "action_privacy_v8/models.py",
+      "bytes": 3933,
+      "sha256": "61fe81437bc063f051087547121d025e9cb07ef99bd66d292828cf3b58420dbc"
+    },
+    {
+      "path": "action_privacy_v8/pir_boundary.py",
+      "bytes": 1161,
+      "sha256": "f3aab434c79864506c60775309805bad324438e8a443f056e04ba07297a0ea58"
+    },
+    {
+      "path": "action_privacy_v8/routing.py",
+      "bytes": 4079,
+      "sha256": "6d13d39bc7be2bdb3923e7df244e7306817212ccfb1c25df66b07a8cc2009422"
+    },
+    {
+      "path": "common_action_gateway_v2/v8/http_relay.go",
+      "bytes": 5358,
+      "sha256": "3d5c2e5c9c96f551174ff7fa57e0909339bfde160a2471032b561847314e161c"
+    },
+    {
+      "path": "common_action_gateway_v2/v8/memory_delivery.go",
+      "bytes": 2181,
+      "sha256": "9d714ac448246fa470677d9a468b1b6e4c78f53d736ecf1a21faf3c98fc56f5d"
+    },
+    {
+      "path": "common_action_gateway_v2/v8/profile.go",
+      "bytes": 3459,
+      "sha256": "47c3b641dd57d267e6570adcf76a642d74bd81b0b27a426b34c4aab893dd421c"
+    },
+    {
+      "path": "common_action_gateway_v2/v8/v8_test.go",
+      "bytes": 4635,
+      "sha256": "6f22d9ef4c7ddde1bd9453901470e0544cff20fc1cc5adbc512bf6405a482ba0"
+    },
+    {
+      "path": "results_v8/TEST_RESULTS_V8.json",
+      "bytes": 574,
+      "sha256": "34bc4de95e36de717f55fa2aafa79ae9438ddc87997fe874c23687dfa9faa6d0"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/bridge_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/bridge_stdout.txt",
+      "bytes": 185,
+      "sha256": "6a721331a4ccc57e801f9a2533fda1712f213f2fa23ced24417c14d68b3223aa"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/client_private_trace.jsonl",
+      "bytes": 811,
+      "sha256": "4274526963b6dfe7713cd0366eb6edc1dd2859c5b3e285ddf8573b615746adb2"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/client_recovered_records.jsonl",
+      "bytes": 7165,
+      "sha256": "d9fcd1b3b2cc9e5bca94e85b0bd1a91f71befd07c7ba50eb567abffeab3efa50"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/metrics.json",
+      "bytes": 874,
+      "sha256": "d1620e951c01fa8d6c5f8b2b2b11270bc03e86d1c58318cfcaac8d885c7d10a1"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/private_queries.csv",
+      "bytes": 260,
+      "sha256": "174185c1ecf539f27ba7778792fb93fcfe89cfb65fae84cddc7895ed22a26b69"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/simplepir/server_visible_trace.jsonl",
+      "bytes": 1379,
+      "sha256": "a366f546e4f582fd1325227f29ec9d72568b811b348b1119de09b9543d32c18f"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_1000/trusted_private_verification.json",
+      "bytes": 221,
+      "sha256": "73c8a3529b9977e999308b03530ba606adc9ced2e36b0811e30c20320f7e58ce"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/bridge_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/bridge_stdout.txt",
+      "bytes": 189,
+      "sha256": "cbb603e305b95f7e231c72babb86ac2dd296688669d6e57c2dcb5da09ac4c050"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/client_private_trace.jsonl",
+      "bytes": 831,
+      "sha256": "dfdb3b3cdc6ce37cfc7a32760be3e1cab203fd4e1872edc5ce3e7ea3fbaa730e"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/client_recovered_records.jsonl",
+      "bytes": 7170,
+      "sha256": "f01bb75c61f993c060db0c7e7b74f5eb3934981f70a2073b61f4bc66f056e132"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/metrics.json",
+      "bytes": 888,
+      "sha256": "6ede0b79bffd2db3effd6e7d07aff3c94317762a5b232a407637502f752372b8"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/private_queries.csv",
+      "bytes": 269,
+      "sha256": "db5faa3de7daf09e00c48a5d3830b2acc4bb26ba6cc2b72e75697e9d38113ec6"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/simplepir/server_visible_trace.jsonl",
+      "bytes": 1406,
+      "sha256": "96329b40115684ce918edc2234b303dcbc3a8bf0b94bec134d0eb01060bec1e2"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_10000/trusted_private_verification.json",
+      "bytes": 225,
+      "sha256": "290115d170965d36044423cb0011b8c073e58c0d3a24d7f1cfe645f8fe0729ac"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/bridge_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/bridge_stdout.txt",
+      "bytes": 192,
+      "sha256": "52139102442608fb4ccea7703f069e92f2d10ffe3a83c3fc0c9d7af32617d646"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/client_private_trace.jsonl",
+      "bytes": 845,
+      "sha256": "e065616242cb3e33a9b1d61a40499ffe9985d54826809c8633b82f3356bc8ca9"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/client_recovered_records.jsonl",
+      "bytes": 7175,
+      "sha256": "9d4646f548ee3dd3fab36cbb0bf4daee2abbd137d15ccc6bf3ff1ee17271c884"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/metrics.json",
+      "bytes": 898,
+      "sha256": "7dec4aa081bf7dea8f9b3177df93143e2141d4a1da18e4b170022d531f807ec0"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/private_queries.csv",
+      "bytes": 278,
+      "sha256": "5199ebb3a91934349b0e888b21877580b32fc256c3978cf024a3f2be20c5b8b0"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/simplepir/server_visible_trace.jsonl",
+      "bytes": 1414,
+      "sha256": "cb1c4d2d801df587163b3b5b5f3d51b15fc8bd9fcd1692aeccb9b2b214c6cf98"
+    },
+    {
+      "path": "results_v8/pir_v7_descriptor/n_100000/trusted_private_verification.json",
+      "bytes": 229,
+      "sha256": "a6c9e5d178ae36d1bb05dcb9e2a536b5932176a63d5be5655b3eb1f7ed53481c"
+    },
+    {
+      "path": "scripts/run_pir_v7_descriptor_v8.py",
+      "bytes": 6970,
+      "sha256": "724354f54749741a5c81b7602a9c956b9db8225261b6fffc2fae306708a66af4"
+    },
+    {
+      "path": "tests/test_v8_standards_closure.py",
+      "bytes": 8064,
+      "sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d"
+    }
+  ]
+}

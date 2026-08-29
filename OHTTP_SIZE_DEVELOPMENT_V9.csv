@@ -1,0 +1,10 @@
+direction,case,canonical_bhttp_bytes,padded_bhttp_bytes,public_suite_header_bytes,hpke_encapsulated_key_bytes,aead_or_response_expansion_bytes,final_encapsulated_bytes,status
+request,NOOP,170,1024,7,32,16,1079,PASS
+request,REAL_TOOL,313,1024,7,32,16,1079,PASS
+request,REAL_AGENT_SERVICE,322,1024,7,32,16,1079,PASS
+request,REAL_EXTERNAL_HTTP,322,1024,7,32,16,1079,PASS
+response,WAIT,146,768,0,0,32,800,PASS
+response,RESULT,146,768,0,0,32,800,PASS
+response,ERROR,146,768,0,0,32,800,PASS
+response,TIMEOUT,146,768,0,0,32,800,PASS
+response,EFFECT_OUTCOME_UNKNOWN,146,768,0,0,32,800,PASS

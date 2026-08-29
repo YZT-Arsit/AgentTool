@@ -1,0 +1,100 @@
+go version go1.26.5 linux/amd64
+Linux 5.15.0-94-generic x86_64 GNU/Linux
+=== RUN   TestSimpleRequest
+--- PASS: TestSimpleRequest (0.00s)
+=== RUN   TestSimpleResponse
+--- PASS: TestSimpleResponse (0.00s)
+=== RUN   TestRequestControlData
+--- PASS: TestRequestControlData (0.00s)
+=== RUN   TestFieldMarshal
+--- PASS: TestFieldMarshal (0.00s)
+=== RUN   TestFieldListMarshal
+--- PASS: TestFieldListMarshal (0.00s)
+=== RUN   TestRequestMarshal
+--- PASS: TestRequestMarshal (0.00s)
+=== RUN   TestResponseMarshal
+--- PASS: TestResponseMarshal (0.00s)
+=== RUN   TestTooLargeVarUint
+--- PASS: TestTooLargeVarUint (0.00s)
+=== RUN   TestTruncation
+--- PASS: TestTruncation (0.00s)
+=== RUN   TestConfigSerialize
+--- PASS: TestConfigSerialize (0.00s)
+=== RUN   TestConfigListSerialize
+--- PASS: TestConfigListSerialize (0.00s)
+=== RUN   TestRoundTrip
+--- PASS: TestRoundTrip (0.00s)
+=== RUN   TestCustomRoundTrip
+--- PASS: TestCustomRoundTrip (0.00s)
+=== RUN   TestGatewayMultipleConfigsDuplicateKeyId
+--- PASS: TestGatewayMultipleConfigsDuplicateKeyId (0.00s)
+=== RUN   TestGatewayMultipleConfigs
+--- PASS: TestGatewayMultipleConfigs (0.00s)
+=== RUN   TestEncodingMismatchFailure
+--- PASS: TestEncodingMismatchFailure (0.00s)
+=== RUN   TestInvalidCiphersuiteInRequest
+--- PASS: TestInvalidCiphersuiteInRequest (0.00s)
+=== RUN   TestVectorGenerate
+--- PASS: TestVectorGenerate (0.00s)
+=== RUN   TestVectorVerify
+    ohttp_test.go:478: Test vectors were not provided
+--- SKIP: TestVectorVerify (0.00s)
+PASS
+ok  	github.com/chris-wood/ohttp-go	0.021s
+=== RUN   TestAdmissionIsMechanicallyBoundToActualSchedule
+--- PASS: TestAdmissionIsMechanicallyBoundToActualSchedule (0.00s)
+=== RUN   TestMemoryDeliveryCutoffAndDeadlinePathPerformNoDurabilityIO
+--- PASS: TestMemoryDeliveryCutoffAndDeadlinePathPerformNoDurabilityIO (0.00s)
+=== RUN   TestFreshRequestRelayDropsAllNonAllowlistedInboundMetadata
+--- PASS: TestFreshRequestRelayDropsAllNonAllowlistedInboundMetadata (0.00s)
+=== RUN   TestFreshRequestRelayRefusesNonLoopbackGateway
+--- PASS: TestFreshRequestRelayRefusesNonLoopbackGateway (0.00s)
+PASS
+ok  	common-action-gateway-v2/v8	0.021s
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/slots_per_session
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/slot_interval
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/max_operations
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/terminal_slots
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/completion_bound
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/public_lifetime
+=== RUN   TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/sessions
+--- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/slots_per_session (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/slot_interval (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/max_operations (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/terminal_slots (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/completion_bound (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/public_lifetime (0.00s)
+    --- PASS: TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput/sessions (0.00s)
+=== RUN   TestRealOHTTPBytesTraverseV8RelayExactly
+--- PASS: TestRealOHTTPBytesTraverseV8RelayExactly (0.00s)
+=== RUN   TestRFC9292AllActionCasesRoundTripWithCanonicalPadding
+--- PASS: TestRFC9292AllActionCasesRoundTripWithCanonicalPadding (0.00s)
+=== RUN   TestRFC9292AllResponseCasesRoundTrip
+--- PASS: TestRFC9292AllResponseCasesRoundTrip (0.00s)
+=== RUN   TestRFC9292RejectsMalformedAndNonzeroPadding
+--- PASS: TestRFC9292RejectsMalformedAndNonzeroPadding (0.00s)
+=== RUN   TestRFC9458PerSlotRoundTripAndContextBinding
+--- PASS: TestRFC9458PerSlotRoundTripAndContextBinding (0.00s)
+=== RUN   TestRFC9458WrongSlotAndModifiedResponseFail
+--- PASS: TestRFC9458WrongSlotAndModifiedResponseFail (0.00s)
+=== RUN   TestRFC9458RejectsTruncatedAndUnconfiguredSuite
+--- PASS: TestRFC9458RejectsTruncatedAndUnconfiguredSuite (0.00s)
+=== RUN   TestActualOHTTPLengthsEqualWithinPublicBHTTPBuckets
+--- PASS: TestActualOHTTPLengthsEqualWithinPublicBHTTPBuckets (0.00s)
+=== RUN   TestPublicConfigMultipleSuitesRoundTrip
+--- PASS: TestPublicConfigMultipleSuitesRoundTrip (0.00s)
+=== RUN   TestReportActualRFCExpansion
+    v9ohttp_test.go:253: request kind=NOOP canonical_bhttp=170 padded_bhttp=1024 final_ohttp=1079
+    v9ohttp_test.go:253: request kind=REAL_TOOL canonical_bhttp=313 padded_bhttp=1024 final_ohttp=1079
+    v9ohttp_test.go:253: request kind=REAL_AGENT_SERVICE canonical_bhttp=322 padded_bhttp=1024 final_ohttp=1079
+    v9ohttp_test.go:253: request kind=REAL_EXTERNAL_HTTP canonical_bhttp=322 padded_bhttp=1024 final_ohttp=1079
+    v9ohttp_test.go:274: response status=1 canonical_bhttp=146 padded_bhttp=768 final_ohttp=800
+    v9ohttp_test.go:274: response status=2 canonical_bhttp=146 padded_bhttp=768 final_ohttp=800
+    v9ohttp_test.go:274: response status=3 canonical_bhttp=146 padded_bhttp=768 final_ohttp=800
+    v9ohttp_test.go:274: response status=4 canonical_bhttp=146 padded_bhttp=768 final_ohttp=800
+    v9ohttp_test.go:274: response status=5 canonical_bhttp=146 padded_bhttp=768 final_ohttp=800
+--- PASS: TestReportActualRFCExpansion (0.02s)
+PASS
+ok  	common-action-gateway-v2/v9ohttp	0.043s

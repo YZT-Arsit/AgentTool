@@ -1,0 +1,6 @@
+{
+  "schema": "AgentTool.StructuralSizeHoldoutV9Freeze/1",
+  "status": "NOT_FROZEN_PREREQUISITE_BLOCKED",
+  "cases": [],
+  "reason": "Canonical functional, semantic, and public-profile prerequisites did not pass"
+}

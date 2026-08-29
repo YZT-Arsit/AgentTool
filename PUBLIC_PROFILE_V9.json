@@ -1,0 +1,24 @@
+{
+  "schema": "AgentTool.PublicProfileV9/1",
+  "status": "NOT_FROZEN_CANONICAL_FUNCTIONAL_GATE_BLOCKED",
+  "development_request_encapsulated_bytes": 1079,
+  "development_response_encapsulated_bytes": 800,
+  "profile_id": null,
+  "rounds": null,
+  "maximum_admitted_operations": null,
+  "final_request_encapsulated_bytes": null,
+  "final_response_encapsulated_bytes": null,
+  "round_period_ms": null,
+  "response_lag_ms": null,
+  "public_lifetime_ms": null,
+  "relay_endpoint": null,
+  "gateway_endpoint": null,
+  "connection_policy": null,
+  "ohttp_key_id": null,
+  "kem": null,
+  "kdf": null,
+  "aead": null,
+  "configuration_epoch": null,
+  "reason": "Real size development passed, but the public profile may freeze only after the canonical functional gate passes."
+}
+

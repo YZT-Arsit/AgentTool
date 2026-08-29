@@ -1,0 +1,38 @@
+{
+  "schema": "AgentTool.V9AuthorizedTransferValidation/1",
+  "source_transfer": {
+    "status": "PASS",
+    "provenance": "SOURCE_TREE_HASH_ONLY",
+    "source_archive_sha256": "7b5dcd5af34e5c0ec478841ea3351ff4bcbab5766872d55cbe44fc10fabba827",
+    "source_tree_sha256": "264221b5daef50305a9a17a55f37d2ad547ef624331c12a0d716fce9a2629045",
+    "files": 228,
+    "bytes": 1687323
+  },
+  "linux_toolchain": {
+    "go_version": "go1.26.5 linux/amd64",
+    "archive_sha256": "5c2c3b16caefa1d968a94c1daca04a7ca301a496d9b086e17ad77bb81393f053",
+    "network_resolution_during_tests": false
+  },
+  "tests": {
+    "upstream_passed": 18,
+    "upstream_skipped": 1,
+    "upstream_skip_reason": "TestVectorVerify: vectors not supplied",
+    "v8_go_passed": 4,
+    "v9_top_level_passed": 11,
+    "v9_admission_mismatch_subtests_passed": 7,
+    "v8_python_passed": 11
+  },
+  "pir_post_integration_smoke": {
+    "logical_records": 1000,
+    "authenticated_descriptors_passed": 4,
+    "authenticated_descriptors_total": 4,
+    "same_index_raw_query_bytes_fresh": true
+  },
+  "development_sizes": {
+    "request_bhttp_bucket_bytes": 1024,
+    "response_bhttp_bucket_bytes": 768,
+    "final_ohttp_request_bytes": 1079,
+    "final_ohttp_response_bytes": 800
+  },
+  "canonical_full_composition": "BLOCKED_NOT_IMPLEMENTED"
+}

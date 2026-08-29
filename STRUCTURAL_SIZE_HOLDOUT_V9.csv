@@ -1,0 +1,2 @@
+status,pairs,relay_endpoint_equal,gateway_endpoint_equal,suite_equal,connection_policy_equal,round_count_equal,request_length_equal,response_length_equal,lifetime_equal,ordering_equal,reason
+NOT_RUN,0,,,,,,,,,,"Canonical functional and semantic prerequisites remain blocked; development size equality is not holdout evidence"

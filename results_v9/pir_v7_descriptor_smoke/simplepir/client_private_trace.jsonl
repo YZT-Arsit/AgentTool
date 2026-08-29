@@ -1,0 +1,4 @@
+{"episode":"v9-post-ohttp-smoke","round":0,"private_index":0,"private_class":"PRIVATE_SELECTION","query_generation_ms":2.357,"recovery_ms":1.489,"correct":true}
+{"episode":"v9-post-ohttp-smoke","round":1,"private_index":499,"private_class":"PRIVATE_SELECTION","query_generation_ms":2.303,"recovery_ms":1.503,"correct":true}
+{"episode":"v9-post-ohttp-smoke","round":2,"private_index":499,"private_class":"PRIVATE_SELECTION","query_generation_ms":2.376,"recovery_ms":1.487,"correct":true}
+{"episode":"v9-post-ohttp-smoke","round":3,"private_index":999,"private_class":"PRIVATE_SELECTION","query_generation_ms":2.397,"recovery_ms":1.48,"correct":true}
