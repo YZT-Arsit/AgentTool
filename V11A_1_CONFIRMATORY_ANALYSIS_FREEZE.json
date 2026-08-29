@@ -1,0 +1,47 @@
+{
+  "aggregate_sha256": "db407af18b321a07c8156984257b035a4a8dbd1266c97483f76c159822b20069",
+  "bound_analysis_files": {
+    "V11A_1_PREFIX_PROJECTION_ALIGNMENT.json": "241d77b14605e7193f23067009f9c4b012be42f5643ba69f64904f4c8bc1e1aa",
+    "V11A_1_PREFIX_PROJECTION_DIFF.md": "d69ae015c8c253fd8af3dc59bef652eaab1654cbcd818aad9e3d9ab7fb18795a",
+    "V11A_1_PREFIX_PROJECTION_TESTS.md": "69ec4e79429ec886d2688c83ac35a9c3e7b071713e4785dc71f91b587bfcab1b",
+    "scripts/freeze_v11a_1_prefix_alignment.py": "f2a34a08c40a91c6033ca0d9cc3cd665e1c5fdf8d7af30101cbe05f4582a1d14",
+    "tests/test_v11a_1_prefix_projection.py": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+    "v11a_confirmatory/projection.py": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1"
+  },
+  "corrected_prefix_test_result": "3/3 PASS",
+  "corrected_v11a_projection_sha256": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+  "development_prefix_recompute": "12/12 PAIRS; 84/84 PREFIX COMPARISONS PASS",
+  "execution_order_changed": false,
+  "full_structural_projection_changed": false,
+  "hardware_tee": "NOT_TESTED",
+  "old_frozen_v11a_projection_sha256": "2b58a71bea4b6b76559c512189e91458d302fd324547d903bc048d237e63bf61",
+  "packet_level_timing": "OPEN",
+  "ready_for_v11b_independent_audit": "YES",
+  "schema": "AgentTool.V11A_1ConfirmatoryAnalysisFreeze/1",
+  "seeds_changed": false,
+  "selected_cases_changed": false,
+  "selected_holdout_cases_executed": 0,
+  "size_projection_changed": false,
+  "status": "FROZEN_ANALYSIS_ONLY_NO_SELECTED_EXECUTION",
+  "timing_privacy": "OPEN / NOT TESTED",
+  "unchanged_candidate_universe_hashes": {
+    "V11A_CANDIDATE_UNIVERSES_FREEZE.json": "b9b05012dba0225644d15d6e9a481e30902d0df61049a5fb21cbca1a4a893b43",
+    "V11A_CAUSAL_TRAJECTORY_UNIVERSE.json": "f45e14c0971be5fb9ddc0528aa46e2f1d9619bd08692e608baaecaa330d228fc",
+    "V11A_COMPOSITION_UNIVERSE.json": "d96522841d755dae463d3a80c9d718f3a43af7d2a58322dd5a988894a1ebe7b4",
+    "V11A_EFFECT_CONTRACT_UNIVERSE.json": "81345c641e116e25dfb66b50285421ab58ca63ef052738b989d7555083cd4ca6",
+    "V11A_SOURCE_TOOL_UNIVERSE.json": "934520e3c0a32ed55305a729bad2bfd44ff78aef4562c1113f844887d5acc4fd",
+    "V11A_STRUCTURAL_PAIR_UNIVERSE.json": "3f46b035e4f8035856e392d92a84b0309abb9d0773c4f1cf241a0b05c85cdbf4"
+  },
+  "unchanged_canonical_full_projection_sha256": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+  "unchanged_execution_order_sha256": "c484590870fd32f285d16d38744e52b26fd0d94c532aa22fcfda7b543e2eb9b6",
+  "unchanged_selected_manifest_hashes": {
+    "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json": "06bf507ae6b31efb4f6098b989bdcd69a79228905268b1af3c1db81730c3f563",
+    "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json": "b4299bb842f46dcc9bee40b258aa54ca09b907d47fdc2ddf3b2749364a3b8d15",
+    "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json": "3b73f30f4ab7810ef4d9d37ceca2ced746fdbdcda437cf4485a88494928d90b9",
+    "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json": "f94f86baeb2406b4b6cabb235a3ea8f271027ab101c5380d4a44758de7067e4a",
+    "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json": "d073ad9c166bd81f0aebc637584810127c9e5ed16c6b22e907f00a1190a4f3d7"
+  },
+  "unchanged_selection_seed_sha256": "4e6c84b492489d3a39ba48684ea8d2cac59985d73a12e128e30a8a26384f28d4",
+  "v11a_final_confirmatory_freeze_sha256": "a9960a4e1dc78b68a732e3037aa81b6aa386f279e4a726b4949914333a0a3514",
+  "v11a_selection_commit": "1c54e9fff88d8751d3a2fe4ed042fce736b71034"
+}

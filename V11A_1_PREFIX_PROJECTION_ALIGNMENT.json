@@ -1,0 +1,398 @@
+{
+  "candidate_universe_hashes": {
+    "V11A_CANDIDATE_UNIVERSES_FREEZE.json": {
+      "accepted_commit_blob_sha256": "c9a156c599dc046a022294a74269ab54e6917db30c8b6bb88ad976a72cbce9c3",
+      "current_checkout_exact_sha256": "b9b05012dba0225644d15d6e9a481e30902d0df61049a5fb21cbca1a4a893b43",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_CAUSAL_TRAJECTORY_UNIVERSE.json": {
+      "accepted_commit_blob_sha256": "e98348a2f86a041fcf5c35befa50a851ced2c71a4722a232da1bc646d526271e",
+      "current_checkout_exact_sha256": "f45e14c0971be5fb9ddc0528aa46e2f1d9619bd08692e608baaecaa330d228fc",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_COMPOSITION_UNIVERSE.json": {
+      "accepted_commit_blob_sha256": "d19eff2b92df20f07af1785832dfb948cf935adc684b217bfc9b3003a0da6df6",
+      "current_checkout_exact_sha256": "d96522841d755dae463d3a80c9d718f3a43af7d2a58322dd5a988894a1ebe7b4",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_EFFECT_CONTRACT_UNIVERSE.json": {
+      "accepted_commit_blob_sha256": "ad0b52cadf1792badf5e4944754e224beb9197b2d144842ce5b7bb096c700e97",
+      "current_checkout_exact_sha256": "81345c641e116e25dfb66b50285421ab58ca63ef052738b989d7555083cd4ca6",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_SOURCE_TOOL_UNIVERSE.json": {
+      "accepted_commit_blob_sha256": "a2413b6b0ba1eb225f37800604152ace7f5b6c967955528d8314c1540f4ed7b0",
+      "current_checkout_exact_sha256": "934520e3c0a32ed55305a729bad2bfd44ff78aef4562c1113f844887d5acc4fd",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_STRUCTURAL_PAIR_UNIVERSE.json": {
+      "accepted_commit_blob_sha256": "abcdf4f3165e17a12530e18b2dedc42428b30f8c02b088455a78634aae7dfa65",
+      "current_checkout_exact_sha256": "3f46b035e4f8035856e392d92a84b0309abb9d0773c4f1cf241a0b05c85cdbf4",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    }
+  },
+  "canonical_full_projection": {
+    "accepted_commit_blob_sha256": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+    "current_checkout_exact_sha256": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+    "git_projection_unchanged": true,
+    "unchanged": true
+  },
+  "connection_hops": [
+    "relay_client",
+    "relay_gateway"
+  ],
+  "corrected_v11a_projection_sha256": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+  "execution_order": {
+    "accepted_commit_blob_sha256": "a47cbbc6b95ec9d6fb86600ba8808b27cb42c60f8240481e00eb47c2e6353636",
+    "current_checkout_exact_sha256": "c484590870fd32f285d16d38744e52b26fd0d94c532aa22fcfda7b543e2eb9b6",
+    "git_projection_unchanged": true,
+    "unchanged": true
+  },
+  "existing_development_recompute": {
+    "all_pairs_all_prefixes_equal": true,
+    "full_projection_pairs_equal": true,
+    "pair_count": 12,
+    "pairs": [
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "AGENT_IDENTITY",
+        "raw_trace_sha256": {
+          "A": "1f6617f482ee535778341bdfab43ac62a7e653f51c762f906fe2310ddb572fc9",
+          "B": "086908f7443400debb3bcacf20fd0c7b67455dcec7f651c52a08d1e55bc480b9"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "TOOL_ROUTE",
+        "raw_trace_sha256": {
+          "A": "a2a4dd6288779f8106fc1651daf2686c9d80976862e853c51de90c3528d4bb8f",
+          "B": "5675e8a982f52fc03435cefb5f5d90e095c6f929b0b080324d6f1c21930498b1"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "ACTION_KIND",
+        "raw_trace_sha256": {
+          "A": "71c4f53a5aa62593d8e30011bfa03d3fcf297e300ac76e2699987f789d09a883",
+          "B": "165ed0cfa27c113bff656c20d54fa0f457ae437484cb4cd15498f5c81111dde4"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "ACTION_COUNT",
+        "raw_trace_sha256": {
+          "A": "f689a489659d8233dd0bee5cfce3d5739bbebe5a2b6182c6b6ace01072d16c0a",
+          "B": "d8f0e5caac662930350d678df5159c3c579a1c158b46902aec8548bd16cd6742"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "REPETITION",
+        "raw_trace_sha256": {
+          "A": "5aefc92c408237d76507e14571e99586f84f06702319ace6cce0456d11894095",
+          "B": "e44bf90f49092591f327bfc4792056284bba3392d4cc47e7769d139ac5f9076b"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "FREQUENCY",
+        "raw_trace_sha256": {
+          "A": "fe3889d5908f8099e9a306e57cbfa2130c36eb3860b7b14127a254514e99ce59",
+          "B": "7bea8b6230806fa08042a6cee2a1ae8a5066b95f97bb92a73e87a6aca48928f7"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "RARE_TARGET",
+        "raw_trace_sha256": {
+          "A": "90d2aa55b78eb7b6f1ea5c09c911f24027f7b5871ccbff82942c7230dfed3c4f",
+          "B": "aaafea69c40fb321926c4a73e4696dc4b3455d5982f3935caf0bb0b872ea0747"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "TRANSITION_PATTERN",
+        "raw_trace_sha256": {
+          "A": "4941f3d80a97a2fe70776dedbf2a58c00ca8ff2e13c2a1775ea3da981129b535",
+          "B": "a828d313bf83e540c33bba0089ca3ecc42035ead9bddedfd597b3ad54526e3c1"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "ARGUMENT_LENGTH",
+        "raw_trace_sha256": {
+          "A": "c3e6a0536b88466042715e543eca2368d2ce5cdd49ac997cf59aaa20bbef98bb",
+          "B": "a95bc266d8c0db3f6d92a6db49d0a9acc0632f02aa761a4027d424ba47fc58e8"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "PROVIDER_READINESS",
+        "raw_trace_sha256": {
+          "A": "ae8d860fc5ef12de3efbbc1137e87a8763c798571f4dfe161bd8a69e1f0f31f0",
+          "B": "3b1a13d9bf0b289c4284cd78a3d850239ed823a5c2dc532f8ea8a60aa1b4ceb3"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "INTERNAL_EXTERNAL",
+        "raw_trace_sha256": {
+          "A": "20d199ccec625796800dbd2540f241ce50b627f7c738130ea9dfc7331cec89c7",
+          "B": "9e4a1596ac09ed63f8f6ca88a3ee87b99823b46b4fc989a17086275ef58d97ce"
+        }
+      },
+      {
+        "all_seven_prefixes_equal": true,
+        "equal_prefix_horizons": [
+          1,
+          10,
+          50,
+          100,
+          200,
+          300,
+          356
+        ],
+        "full_projection_equal": true,
+        "pair": "CAUSAL_DEPTH",
+        "raw_trace_sha256": {
+          "A": "00698188f4a72b8cf46ecf84edbcbabcd8004573b28c8deeaa480bd54bf01db2",
+          "B": "9bb946bf2b9f3b7f54a8ea112062cc03b5eb3df93410abd655387cc13660b669"
+        }
+      }
+    ],
+    "prefix_356_equals_full": true,
+    "prefix_connection_count_recomputed": true,
+    "prefix_length_invariant": true,
+    "public_scalars_unchanged": true,
+    "source": "existing immutable V11.4 development raw traces; no workload rerun"
+  },
+  "full_structural_and_size_wrappers": {
+    "authenticated_slot_order": {
+      "current_ast_sha256": "4373bc8de6f075010223906447246ccc49cd3c07940d8f35adfb155ed61b0384",
+      "old_ast_sha256": "4373bc8de6f075010223906447246ccc49cd3c07940d8f35adfb155ed61b0384"
+    },
+    "size_projection": {
+      "current_ast_sha256": "2cb629897123ced90ea2e77258a6117e1cca661ea37298a99c7331d0cd9916ae",
+      "old_ast_sha256": "2cb629897123ced90ea2e77258a6117e1cca661ea37298a99c7331d0cd9916ae"
+    },
+    "structural_projection": {
+      "current_ast_sha256": "4736c776ee0424a4313df6b135f3f8dd7dead68632df19924df90d63b7f0a8f6",
+      "old_ast_sha256": "4736c776ee0424a4313df6b135f3f8dd7dead68632df19924df90d63b7f0a8f6"
+    }
+  },
+  "full_structural_projection_changed": false,
+  "no_candidate_universe_change": true,
+  "no_reselection": true,
+  "no_seed_derivation": true,
+  "old_frozen_v11a_projection_sha256": "2b58a71bea4b6b76559c512189e91458d302fd324547d903bc048d237e63bf61",
+  "per_round_sequence_fields": [
+    "profile_id_sequence",
+    "selected_public_ohttp_key_id",
+    "kem",
+    "kdf",
+    "aead",
+    "config_epoch",
+    "relay_endpoint_class",
+    "gateway_endpoint_class",
+    "session_association",
+    "public_session_ids",
+    "round_order",
+    "client_http_versions",
+    "gateway_http_versions",
+    "request_length_sequence",
+    "response_length_sequence"
+  ],
+  "phase": "ANALYSIS_ONLY_NO_SELECTED_EXECUTION",
+  "prefix_connection_count_recomputed": "PASS",
+  "prefix_horizons": [
+    1,
+    10,
+    50,
+    100,
+    200,
+    300,
+    356
+  ],
+  "prefix_length_invariant": "PASS",
+  "prior_v11a_bound_file_hashes_match_current_checkout": true,
+  "schema": "AgentTool.V11A_1PrefixProjectionAlignment/1",
+  "selected_holdout_cases_executed": 0,
+  "selected_manifest_hashes": {
+    "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json": {
+      "accepted_commit_blob_sha256": "8da11c7d34f36b61de97647acd5950d3f61a97a5c04ece823f049d15f144c47a",
+      "current_checkout_exact_sha256": "06bf507ae6b31efb4f6098b989bdcd69a79228905268b1af3c1db81730c3f563",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json": {
+      "accepted_commit_blob_sha256": "a8b97bd03cfcb4e970a874e84860f163d8ee2fbc3df0f9a0d79117a026af8dd9",
+      "current_checkout_exact_sha256": "b4299bb842f46dcc9bee40b258aa54ca09b907d47fdc2ddf3b2749364a3b8d15",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json": {
+      "accepted_commit_blob_sha256": "041c6dd866e6d7c709a873797524e919775f0700d965a1cc0ac07e7f761d0fd6",
+      "current_checkout_exact_sha256": "3b73f30f4ab7810ef4d9d37ceca2ced746fdbdcda437cf4485a88494928d90b9",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json": {
+      "accepted_commit_blob_sha256": "592fbfdda2f881a79f2ad3494881b7cce3bbaf06c8c77004c6065805ba11f21f",
+      "current_checkout_exact_sha256": "f94f86baeb2406b4b6cabb235a3ea8f271027ab101c5380d4a44758de7067e4a",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    },
+    "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json": {
+      "accepted_commit_blob_sha256": "946f77e6a0a87077aa353eb397ee7bbd6bb6d4856df75a084a67637e73a33f6d",
+      "current_checkout_exact_sha256": "d073ad9c166bd81f0aebc637584810127c9e5ed16c6b22e907f00a1190a4f3d7",
+      "git_projection_unchanged": true,
+      "unchanged": true
+    }
+  },
+  "selection_seed": {
+    "accepted_commit_blob_sha256": "ab6c6d009597049653aadc0ad0473134db5ffe25e15f0fd9cacaa05892b28f96",
+    "current_checkout_exact_sha256": "4e6c84b492489d3a39ba48684ea8d2cac59985d73a12e128e30a8a26384f28d4",
+    "git_projection_unchanged": true,
+    "unchanged": true
+  },
+  "size_projection_changed": false,
+  "synthetic_test": {
+    "command": [
+      "C:\\Python313\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_v11a_1_prefix_projection.py",
+      "-v"
+    ],
+    "output_sha256": "941cc596699c6eb452740406a037c1ffd90644ce1594e8b1321095cf8cd0da52",
+    "result": "3/3 PASS"
+  },
+  "true_prefix_projection": "PASS",
+  "v11a_final_confirmatory_freeze": {
+    "accepted_commit_blob_sha256": "708c92ade64b2a6fa35853e78c26670d3c4af4425bcc9c7eff4ec05080dd27f1",
+    "current_checkout_exact_sha256": "a9960a4e1dc78b68a732e3037aa81b6aa386f279e4a726b4949914333a0a3514",
+    "git_projection_unchanged": true,
+    "unchanged": true
+  },
+  "v11a_selection_commit": "1c54e9fff88d8751d3a2fe4ed042fce736b71034"
+}
