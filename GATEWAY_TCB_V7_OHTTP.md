@@ -2,9 +2,10 @@
 
 ## Current code inventory
 
-- `common_action_gateway_v2/v7ohttp`: 268 physical non-test lines across six
-  Go files for contracts, public-profile validation, exact-byte Relay model,
-  application association, and legacy classification.
+- `common_action_gateway_v2/v7ohttp`: 441 physical non-test lines across eight
+  Go files for contracts, public-profile validation, exact-byte in-memory and
+  loopback HTTP Relay models, separated logging schemas, application
+  association, and legacy classification.
 - `common_action_gateway_v2/v7`: 742 physical non-test lines across five Go
   files for admission, lifecycle, ready queue, effect recovery, and the legacy
   frontend integration.

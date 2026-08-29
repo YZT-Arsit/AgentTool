@@ -1,0 +1,8 @@
+component,scale,backend,status,preprocessing_ms,online_latency_ms,upload_bytes,download_bytes,client_state_bytes,notes,source
+Agent_descriptor_lookup,1000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,42.427,0.709,2020,6592,8798208,encrypted_descriptor experiment,PIR_DESCRIPTOR_RESULTS_V6.csv
+Agent_descriptor_lookup,10000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,1276.277,8.442,10024,13184,23740416,encrypted_descriptor experiment,PIR_DESCRIPTOR_RESULTS_V6.csv
+Agent_descriptor_lookup,100000,OFFICIAL_SIMPLEPIR_FULL_PREPROCESSING,PASS,34409.406,52.240,36388,37180,75309056,encrypted descriptor 100000 logical rows plus one padding row,PIR_DESCRIPTOR_RESULTS_V6.csv
+Local_relay_exact_forwarding,2,OPAQUE_LOOPBACK_FIXTURE,PASS,NA,NOT_REPORTED,2048,2048,NA,functional forwarding test not a benchmark,common_action_gateway_v2/v7ohttp/http_relay_test.go
+RFC9458_request_response,1,RFC9458_OHTTP,NOT_AVAILABLE_OFFLINE,NA,NA,NA,NA,NA,no compatible standards backend,OHTTP_DEPENDENCY_STATUS_V7.md
+RFC9292_encode_decode,1,RFC9292_BHTTP,PARTIAL,NA,NA,NA,NA,NA,interface and schema only,OHTTP_RFC9292_CODEC_V7.md
+Result_delivery,161,LEGACY_DEV_TRANSPORT_PRE_OHTTP,PASS,NA,NOT_REPORTED,NA,NA,NA,161 of 161 reliability substrate results,RELIABLE_RESULT_DELIVERY_V7.csv

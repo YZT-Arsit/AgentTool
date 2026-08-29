@@ -1,0 +1,3 @@
+profile_id,backend,rounds_configured,rounds_observed,request_body_bytes_configured,response_body_bytes_configured,all_request_lengths_equal,all_response_lengths_equal,connection_reuse,endpoint_match,status,scope
+LOCAL_RELAY_UNIT_PROFILE,OPAQUE_LOOPBACK_FIXTURE,2,2,1024,1024,True,True,True,True,PASS,relay_format_and_forwarding_only
+V7-OHTTP-LOCAL-STRICT-1,RFC9458_OHTTP,128,0,2048,2048,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_TESTED,NOT_AVAILABLE_OFFLINE,canonical_ohttp_profile

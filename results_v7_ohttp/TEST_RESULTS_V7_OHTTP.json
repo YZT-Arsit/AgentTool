@@ -17,7 +17,7 @@
   },
   "go_v7_ohttp_contract": {
     "status": "PASS",
-    "passed": 6,
+    "passed": 9,
     "execution": "stable-path compiled test binary"
   },
   "go_vet_scoped": {

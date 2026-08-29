@@ -1,0 +1,16 @@
+{
+  "schema": "AgentTool.V7.PublicExperimentProfile/1",
+  "profile_id": "V7-OHTTP-LOCAL-STRICT-1",
+  "number_of_rounds": 128,
+  "request_body_bytes": 2048,
+  "response_body_bytes": 2048,
+  "round_period_ms": 50,
+  "response_lag_ms": 25,
+  "maximum_admitted_operations": 100,
+  "public_lifetime_ms": 6400,
+  "relay_endpoint": "LOCAL_RELAY",
+  "gateway_endpoint": "LOCAL_GATEWAY",
+  "connection_policy": "PERSISTENT_KEEP_ALIVE",
+  "status": "FROZEN_FOR_FUTURE_RFC9458_EXECUTION",
+  "note": "No RFC9458 execution has used this profile because the standards backend is unavailable offline."
+}

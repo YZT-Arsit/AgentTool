@@ -28,7 +28,7 @@ The prototype route map is trusted-memory state; no additional PIR is added.
 
 Five Python tests pass, including different Agent/Tool routes, unauthorized
 Tool denial, action-kind mismatch denial, NOOP route absence, and fail-closed
-transport status. The Go BHTTP/OHTTP contract and Relay test binary also passes
-six tests.
+transport status. The Go BHTTP/OHTTP contract and Relay test binary now passes
+nine tests, including real loopback exact forwarding.
 
 Status: `AGENT_TOOL_ROUTE_SEPARATION = PASS`.

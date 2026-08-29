@@ -71,7 +71,7 @@ holdouts were not run. No missing measurements were fabricated.
 - Python V7-OHTTP architecture subset: 5 passed within that suite.
 - Go Gateway V2 stable-path test binary: 23 passed.
 - Go V7 queue/recovery/profile stable-path test binary: 12 passed.
-- Go `v7ohttp` stable-path test binary: 6 passed.
+- Go `v7ohttp` stable-path test binary: 9 passed.
 - `go vet ./v7 ./v7ohttp`: passed.
 - `go vet ./...` still reports the pre-existing Windows
   `mapping_windows.go` unsafe-pointer warning; no new V7/OHTTP package warning

@@ -2,6 +2,8 @@ package v7ohttp
 
 import "errors"
 
+var ErrRFC9292Unavailable = errors.New("RFC 9292 Binary HTTP codec is not implemented in the offline dependency set")
+
 const InnerSemanticTarget = "https://action-gateway.invalid/v1/agent-slot"
 
 type ActionKind string
@@ -48,4 +50,21 @@ type KnownLengthBHTTPCodec interface {
 	DecodeKnownLengthRequest(encoded []byte) (string, PrivateActionMessage, error)
 	EncodeKnownLengthResponse(result PrivateResponse, paddedBytes int) ([]byte, error)
 	DecodeKnownLengthResponse(encoded []byte) (PrivateResponse, error)
+}
+
+// UnavailableBHTTPCodec prevents a private ad-hoc format from being labeled
+// RFC 9292 when no audited standards implementation is installed.
+type UnavailableBHTTPCodec struct{}
+
+func (UnavailableBHTTPCodec) EncodeKnownLengthRequest(string, PrivateActionMessage, int) ([]byte, error) {
+	return nil, ErrRFC9292Unavailable
+}
+func (UnavailableBHTTPCodec) DecodeKnownLengthRequest([]byte) (string, PrivateActionMessage, error) {
+	return "", PrivateActionMessage{}, ErrRFC9292Unavailable
+}
+func (UnavailableBHTTPCodec) EncodeKnownLengthResponse(PrivateResponse, int) ([]byte, error) {
+	return nil, ErrRFC9292Unavailable
+}
+func (UnavailableBHTTPCodec) DecodeKnownLengthResponse([]byte) (PrivateResponse, error) {
+	return PrivateResponse{}, ErrRFC9292Unavailable
 }
