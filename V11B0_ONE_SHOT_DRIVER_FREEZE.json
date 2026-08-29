@@ -1,0 +1,41 @@
+{
+  "accepted_commits": {
+    "v11_4_1_analysis": "fcf82d3703fa37bda4f903439363158462666356",
+    "v11_4_runtime": "f6860baaab8927f9b0b66153959b55d8ca072c23",
+    "v11a_1_prefix_analysis": "19945d97864a26f281377d24b98b8ff841652464",
+    "v11a_selection": "1c54e9fff88d8751d3a2fe4ed042fce736b71034"
+  },
+  "aggregate_sha256": "b6c6bae90b5af06ecab61f64e982e85fb86c9aadcc461f717714e18c05d09d4f",
+  "append_only_output": "PASS",
+  "approved_v11b_execution_permits_instantiated": 0,
+  "bound_files": {
+    "V11A_APPEND_ONLY_EVIDENCE_CONTRACT.md": "60d5dc062d930341cfccceb6831b2b20a5938f743ef60c831bd3a1082e9bb9c4",
+    "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json": "06bf507ae6b31efb4f6098b989bdcd69a79228905268b1af3c1db81730c3f563",
+    "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json": "b4299bb842f46dcc9bee40b258aa54ca09b907d47fdc2ddf3b2749364a3b8d15",
+    "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json": "3b73f30f4ab7810ef4d9d37ceca2ced746fdbdcda437cf4485a88494928d90b9",
+    "V11A_EXECUTION_ENVIRONMENT_FREEZE.json": "7ed67732df80557d8168b9e4f4bc0f59b74d7f617eec582206777fa9968ec2d3",
+    "V11A_EXECUTION_ORDER.json": "c484590870fd32f285d16d38744e52b26fd0d94c532aa22fcfda7b543e2eb9b6",
+    "V11A_ONE_SHOT_EXECUTION_POLICY.md": "c054a18ac3dd22c1c63775f4c3e3a74d47e25dbc4c2208328dc7efc09ef66cc5",
+    "V11A_SEMANTIC_DECISION_RULES.md": "f739df37981d422bf4a35d4d7df2e2a44418287dc62d871b51ae79c5e55816d0",
+    "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json": "f94f86baeb2406b4b6cabb235a3ea8f271027ab101c5380d4a44758de7067e4a",
+    "V11A_STRUCTURAL_DECISION_RULES.md": "f8cd3dbf4603251c4871ddc998f55b2866c5a78959983dbc68bbb935e626fc59",
+    "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json": "d073ad9c166bd81f0aebc637584810127c9e5ed16c6b22e907f00a1190a4f3d7",
+    "V11B0_COMPOSED_BASELINE.json": "c00d3198d57e9ba29595aacd2f8ad83f14b780c8a731c3824bdd85db11017eac",
+    "V11B0_DRIVER_TESTS.md": "ba4acb4d9b0cad86b302a444671f9d9325b0d4c13b471850d7b752eaf20b587f",
+    "V11B0_EXECUTION_PLAN.json": "363afadf8d5c9826cedb780f0b9770db0e61bcd33eb599f901464681a3adb539",
+    "scripts/run_v11b_confirmatory.py": "b8a9cba703d00d2c324b7d59c8ff2cc37dccee045e82713810faf729ee1b9e28",
+    "tests/test_v11b0_driver.py": "110b7e6096c6d1db30084d43081533b2f7adc4ccb3c42bd9a7d8fd526d356e12",
+    "v11a_confirmatory/orchestrator.py": "1162758f921de661438c294016ab3a371704e425cbd230bcd9d228c1093eb2d3",
+    "v11a_confirmatory/projection.py": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1"
+  },
+  "composed_baseline_verified": "PASS",
+  "driver_test_result": "4/4 PASS",
+  "no_retry_enforced": "PASS",
+  "plan_only_result": "158/65/93; selected execution 0",
+  "ready_for_final_v11b_execution_audit": "YES",
+  "results_v11b_confirmatory_exists": false,
+  "schema": "AgentTool.V11B0OneShotDriverFreeze/1",
+  "selected_execution_guard": "PASS",
+  "selected_holdout_cases_executed": 0,
+  "status": "FROZEN_PREEXECUTION_ONLY"
+}

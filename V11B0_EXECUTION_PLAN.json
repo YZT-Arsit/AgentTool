@@ -1,0 +1,1448 @@
+{
+  "automatic_retry": false,
+  "canonical_units": 93,
+  "native_units": 65,
+  "phase_order": [
+    "semantic_case_order",
+    "causal_trajectory_order",
+    "structural_arm_order"
+  ],
+  "schema": "AgentTool.V11B0ExecutionPlan/1",
+  "selected_outcomes_observed_while_constructing_plan": false,
+  "semantic_role_order": [
+    "NATIVE",
+    "CANONICAL"
+  ],
+  "structural_role_order": [
+    "STRUCTURAL_ARM"
+  ],
+  "trajectory_role_order": [
+    "NATIVE",
+    "CANONICAL"
+  ],
+  "unit_count": 158,
+  "units": [
+    {
+      "family": "S4",
+      "global_execution_index": 1,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-001",
+      "unit_id": "V11B-U001"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 2,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-001",
+      "unit_id": "V11B-U002"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 3,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-004",
+      "unit_id": "V11B-U003"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 4,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-004",
+      "unit_id": "V11B-U004"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 5,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-002",
+      "unit_id": "V11B-U005"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 6,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-002",
+      "unit_id": "V11B-U006"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 7,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-001",
+      "unit_id": "V11B-U007"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 8,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-001",
+      "unit_id": "V11B-U008"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 9,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-003",
+      "unit_id": "V11B-U009"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 10,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-003",
+      "unit_id": "V11B-U010"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 11,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-023",
+      "unit_id": "V11B-U011"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 12,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-023",
+      "unit_id": "V11B-U012"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 13,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-011",
+      "unit_id": "V11B-U013"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 14,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-011",
+      "unit_id": "V11B-U014"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 15,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-015",
+      "unit_id": "V11B-U015"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 16,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-015",
+      "unit_id": "V11B-U016"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 17,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-020",
+      "unit_id": "V11B-U017"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 18,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-020",
+      "unit_id": "V11B-U018"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 19,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-018",
+      "unit_id": "V11B-U019"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 20,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-018",
+      "unit_id": "V11B-U020"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 21,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-002",
+      "unit_id": "V11B-U021"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 22,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-002",
+      "unit_id": "V11B-U022"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 23,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-028",
+      "unit_id": "V11B-U023"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 24,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-028",
+      "unit_id": "V11B-U024"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 25,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-009",
+      "unit_id": "V11B-U025"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 26,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-009",
+      "unit_id": "V11B-U026"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 27,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-007",
+      "unit_id": "V11B-U027"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 28,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-007",
+      "unit_id": "V11B-U028"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 29,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-009",
+      "unit_id": "V11B-U029"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 30,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-009",
+      "unit_id": "V11B-U030"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 31,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-021",
+      "unit_id": "V11B-U031"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 32,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-021",
+      "unit_id": "V11B-U032"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 33,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-016",
+      "unit_id": "V11B-U033"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 34,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-016",
+      "unit_id": "V11B-U034"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 35,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-013",
+      "unit_id": "V11B-U035"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 36,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-013",
+      "unit_id": "V11B-U036"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 37,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-007",
+      "unit_id": "V11B-U037"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 38,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-007",
+      "unit_id": "V11B-U038"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 39,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-006",
+      "unit_id": "V11B-U039"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 40,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-006",
+      "unit_id": "V11B-U040"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 41,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-026",
+      "unit_id": "V11B-U041"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 42,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-026",
+      "unit_id": "V11B-U042"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 43,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-008",
+      "unit_id": "V11B-U043"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 44,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-008",
+      "unit_id": "V11B-U044"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 45,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-008",
+      "unit_id": "V11B-U045"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 46,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-008",
+      "unit_id": "V11B-U046"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 47,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-031",
+      "unit_id": "V11B-U047"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 48,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-031",
+      "unit_id": "V11B-U048"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 49,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-008",
+      "unit_id": "V11B-U049"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 50,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-008",
+      "unit_id": "V11B-U050"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 51,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-005",
+      "unit_id": "V11B-U051"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 52,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-005",
+      "unit_id": "V11B-U052"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 53,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-022",
+      "unit_id": "V11B-U053"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 54,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-022",
+      "unit_id": "V11B-U054"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 55,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-012",
+      "unit_id": "V11B-U055"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 56,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-012",
+      "unit_id": "V11B-U056"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 57,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-024",
+      "unit_id": "V11B-U057"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 58,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-024",
+      "unit_id": "V11B-U058"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 59,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-005",
+      "unit_id": "V11B-U059"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 60,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-005",
+      "unit_id": "V11B-U060"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 61,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-032",
+      "unit_id": "V11B-U061"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 62,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-032",
+      "unit_id": "V11B-U062"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 63,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-007",
+      "unit_id": "V11B-U063"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 64,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-007",
+      "unit_id": "V11B-U064"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 65,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-010",
+      "unit_id": "V11B-U065"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 66,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-010",
+      "unit_id": "V11B-U066"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 67,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-006",
+      "unit_id": "V11B-U067"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 68,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-006",
+      "unit_id": "V11B-U068"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 69,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-009",
+      "unit_id": "V11B-U069"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 70,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-009",
+      "unit_id": "V11B-U070"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 71,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-004",
+      "unit_id": "V11B-U071"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 72,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-004",
+      "unit_id": "V11B-U072"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 73,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-019",
+      "unit_id": "V11B-U073"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 74,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-019",
+      "unit_id": "V11B-U074"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 75,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-006",
+      "unit_id": "V11B-U075"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 76,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-006",
+      "unit_id": "V11B-U076"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 77,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-010",
+      "unit_id": "V11B-U077"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 78,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-010",
+      "unit_id": "V11B-U078"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 79,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-017",
+      "unit_id": "V11B-U079"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 80,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-017",
+      "unit_id": "V11B-U080"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 81,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-005",
+      "unit_id": "V11B-U081"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 82,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-005",
+      "unit_id": "V11B-U082"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 83,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-004",
+      "unit_id": "V11B-U083"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 84,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-004",
+      "unit_id": "V11B-U084"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 85,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-025",
+      "unit_id": "V11B-U085"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 86,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-025",
+      "unit_id": "V11B-U086"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 87,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-001",
+      "unit_id": "V11B-U087"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 88,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-001",
+      "unit_id": "V11B-U088"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 89,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-012",
+      "unit_id": "V11B-U089"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 90,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-012",
+      "unit_id": "V11B-U090"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 91,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-027",
+      "unit_id": "V11B-U091"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 92,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-027",
+      "unit_id": "V11B-U092"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 93,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-030",
+      "unit_id": "V11B-U093"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 94,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-030",
+      "unit_id": "V11B-U094"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 95,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-002",
+      "unit_id": "V11B-U095"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 96,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-002",
+      "unit_id": "V11B-U096"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 97,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-014",
+      "unit_id": "V11B-U097"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 98,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-014",
+      "unit_id": "V11B-U098"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 99,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S1-029",
+      "unit_id": "V11B-U099"
+    },
+    {
+      "family": "S1",
+      "global_execution_index": 100,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S1-029",
+      "unit_id": "V11B-U100"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 101,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-003",
+      "unit_id": "V11B-U101"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 102,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-003",
+      "unit_id": "V11B-U102"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 103,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S4-003",
+      "unit_id": "V11B-U103"
+    },
+    {
+      "family": "S4",
+      "global_execution_index": 104,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S4-003",
+      "unit_id": "V11B-U104"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 105,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S2-011",
+      "unit_id": "V11B-U105"
+    },
+    {
+      "family": "S2",
+      "global_execution_index": 106,
+      "phase": "1_SEMANTIC",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S2-011",
+      "unit_id": "V11B-U106"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 107,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-001",
+      "unit_id": "V11B-U107"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 108,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-001",
+      "unit_id": "V11B-U108"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 109,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-012",
+      "unit_id": "V11B-U109"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 110,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-012",
+      "unit_id": "V11B-U110"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 111,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-003",
+      "unit_id": "V11B-U111"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 112,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-003",
+      "unit_id": "V11B-U112"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 113,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-007",
+      "unit_id": "V11B-U113"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 114,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-007",
+      "unit_id": "V11B-U114"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 115,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-011",
+      "unit_id": "V11B-U115"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 116,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-011",
+      "unit_id": "V11B-U116"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 117,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-005",
+      "unit_id": "V11B-U117"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 118,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-005",
+      "unit_id": "V11B-U118"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 119,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-004",
+      "unit_id": "V11B-U119"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 120,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-004",
+      "unit_id": "V11B-U120"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 121,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-006",
+      "unit_id": "V11B-U121"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 122,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-006",
+      "unit_id": "V11B-U122"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 123,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-008",
+      "unit_id": "V11B-U123"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 124,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-008",
+      "unit_id": "V11B-U124"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 125,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-010",
+      "unit_id": "V11B-U125"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 126,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-010",
+      "unit_id": "V11B-U126"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 127,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-002",
+      "unit_id": "V11B-U127"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 128,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-002",
+      "unit_id": "V11B-U128"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 129,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "NATIVE",
+      "target_id": "V11A-S3-009",
+      "unit_id": "V11B-U129"
+    },
+    {
+      "family": "S3",
+      "global_execution_index": 130,
+      "phase": "2_CAUSAL_TRAJECTORY",
+      "retry_allowed": false,
+      "role": "CANONICAL",
+      "target_id": "V11A-S3-009",
+      "unit_id": "V11B-U130"
+    },
+    {
+      "family": "V11A-P03",
+      "global_execution_index": 131,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P03-B",
+      "unit_id": "V11B-U131"
+    },
+    {
+      "family": "V11A-P06",
+      "global_execution_index": 132,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P06-B",
+      "unit_id": "V11B-U132"
+    },
+    {
+      "family": "V11A-P08",
+      "global_execution_index": 133,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P08-B",
+      "unit_id": "V11B-U133"
+    },
+    {
+      "family": "V11A-P02",
+      "global_execution_index": 134,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P02-A",
+      "unit_id": "V11B-U134"
+    },
+    {
+      "family": "V11A-P07",
+      "global_execution_index": 135,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P07-B",
+      "unit_id": "V11B-U135"
+    },
+    {
+      "family": "V11A-P10",
+      "global_execution_index": 136,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P10-B",
+      "unit_id": "V11B-U136"
+    },
+    {
+      "family": "V11A-P01",
+      "global_execution_index": 137,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P01-B",
+      "unit_id": "V11B-U137"
+    },
+    {
+      "family": "V11A-P14",
+      "global_execution_index": 138,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P14-B",
+      "unit_id": "V11B-U138"
+    },
+    {
+      "family": "V11A-P09",
+      "global_execution_index": 139,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P09-A",
+      "unit_id": "V11B-U139"
+    },
+    {
+      "family": "V11A-P08",
+      "global_execution_index": 140,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P08-A",
+      "unit_id": "V11B-U140"
+    },
+    {
+      "family": "V11A-P07",
+      "global_execution_index": 141,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P07-A",
+      "unit_id": "V11B-U141"
+    },
+    {
+      "family": "V11A-P13",
+      "global_execution_index": 142,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P13-A",
+      "unit_id": "V11B-U142"
+    },
+    {
+      "family": "V11A-P04",
+      "global_execution_index": 143,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P04-A",
+      "unit_id": "V11B-U143"
+    },
+    {
+      "family": "V11A-P12",
+      "global_execution_index": 144,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P12-B",
+      "unit_id": "V11B-U144"
+    },
+    {
+      "family": "V11A-P02",
+      "global_execution_index": 145,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P02-B",
+      "unit_id": "V11B-U145"
+    },
+    {
+      "family": "V11A-P09",
+      "global_execution_index": 146,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P09-B",
+      "unit_id": "V11B-U146"
+    },
+    {
+      "family": "V11A-P03",
+      "global_execution_index": 147,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P03-A",
+      "unit_id": "V11B-U147"
+    },
+    {
+      "family": "V11A-P13",
+      "global_execution_index": 148,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P13-B",
+      "unit_id": "V11B-U148"
+    },
+    {
+      "family": "V11A-P14",
+      "global_execution_index": 149,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P14-A",
+      "unit_id": "V11B-U149"
+    },
+    {
+      "family": "V11A-P01",
+      "global_execution_index": 150,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P01-A",
+      "unit_id": "V11B-U150"
+    },
+    {
+      "family": "V11A-P05",
+      "global_execution_index": 151,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P05-B",
+      "unit_id": "V11B-U151"
+    },
+    {
+      "family": "V11A-P06",
+      "global_execution_index": 152,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P06-A",
+      "unit_id": "V11B-U152"
+    },
+    {
+      "family": "V11A-P05",
+      "global_execution_index": 153,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P05-A",
+      "unit_id": "V11B-U153"
+    },
+    {
+      "family": "V11A-P11",
+      "global_execution_index": 154,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P11-B",
+      "unit_id": "V11B-U154"
+    },
+    {
+      "family": "V11A-P04",
+      "global_execution_index": 155,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P04-B",
+      "unit_id": "V11B-U155"
+    },
+    {
+      "family": "V11A-P11",
+      "global_execution_index": 156,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P11-A",
+      "unit_id": "V11B-U156"
+    },
+    {
+      "family": "V11A-P10",
+      "global_execution_index": 157,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P10-A",
+      "unit_id": "V11B-U157"
+    },
+    {
+      "family": "V11A-P12",
+      "global_execution_index": 158,
+      "phase": "3_STRUCTURAL",
+      "retry_allowed": false,
+      "role": "STRUCTURAL_ARM",
+      "target_id": "V11A-P12-A",
+      "unit_id": "V11B-U158"
+    }
+  ]
+}
