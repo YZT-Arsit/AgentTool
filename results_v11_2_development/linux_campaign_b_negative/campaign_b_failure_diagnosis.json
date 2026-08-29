@@ -1,0 +1,18 @@
+{
+  "campaign": "B",
+  "csv_sha256": "1801067c25555c2b9ec20d1fa01c0c4d03c87d8139be3b8fe622fb722d7f63c0",
+  "failed_gates": {
+    "DYNAMIC_10_ACTION": 17
+  },
+  "failed_rows": 17,
+  "failure_reasons": {
+    "AssertionError: OpenAI online workflow produced 8 outcomes for 10 actions": 2,
+    "AssertionError: OpenAI online workflow produced 9 outcomes for 10 actions": 15
+  },
+  "holdout": false,
+  "public_schedule_changed_by_failure": false,
+  "remediation": "fixed secret-independent pre-start lead increased to 20 periods; full Campaign C required",
+  "root_cause": "fixed 10-period pre-start lead caused tenth causal action to reach the private ingress after public admission slot 50",
+  "rows_completed_before_stop": 354,
+  "status": "PRESERVED_DEVELOPMENT_FAILURE"
+}

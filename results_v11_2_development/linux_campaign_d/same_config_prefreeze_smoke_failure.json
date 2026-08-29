@@ -1,0 +1,30 @@
+{
+  "configuration": {
+    "admission_rounds": 50,
+    "online_public_start_lead_periods": 50,
+    "preparation_lead_ms": 1,
+    "round_period_ms": 5,
+    "total_rounds": 111
+  },
+  "failed": 3,
+  "failure_class": "PROFILE_ADMISSION_CLOSED_BEFORE_TENTH_CAUSAL_ACTION",
+  "failures": [
+    {
+      "error": "framework trajectory did not complete all 10 actions",
+      "iteration": 3
+    },
+    {
+      "error": "framework trajectory did not complete all 10 actions",
+      "iteration": 10
+    },
+    {
+      "error": "framework trajectory did not complete all 10 actions",
+      "iteration": 13
+    }
+  ],
+  "freeze_blocking": true,
+  "holdout": false,
+  "passed": 17,
+  "sessions": 20,
+  "status": "PRESERVED_SAME_FINAL_CONFIG_RELIABILITY_FAILURE"
+}

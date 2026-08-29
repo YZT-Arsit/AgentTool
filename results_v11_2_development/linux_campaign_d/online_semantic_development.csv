@@ -1,0 +1,9 @@
+case,framework,passed,projection_equal,causal,public_sessions,error
+TOOL_TO_TOOL,OpenAI Agents SDK,True,True,True,1,
+TOOL_TO_AGENT_AS_TOOL,OpenAI Agents SDK,True,True,True,1,
+TOOL_TO_HANDOFF,OpenAI Agents SDK,True,True,True,1,
+MICROSOFT_TOOL_TO_AGENT_AS_TOOL,Microsoft Agent Framework,True,True,True,1,
+OPENAI_AGENT_AS_TOOL_TO_TOOL,OpenAI Agents SDK,True,True,True,1,
+MICROSOFT_AGENT_AS_TOOL_TO_TOOL,Microsoft Agent Framework,True,True,True,1,
+OPENAI_TOOL_3,OpenAI Agents SDK,True,True,True,1,
+MICROSOFT_TOOL_3,Microsoft Agent Framework,True,True,True,1,

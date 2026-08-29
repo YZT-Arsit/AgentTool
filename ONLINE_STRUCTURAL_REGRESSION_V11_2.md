@@ -1,0 +1,11 @@
+# Online structural regression V11.2
+
+| pair | passed | arm_a_functional | arm_b_functional | structural_equal | size_equal | arm_a_sessions | arm_b_sessions |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ACTION_COUNT_1_VS_5 | True | True | True | True | True | 1 | 1 |
+| TOOL_VS_AGENT_AS_TOOL | True | True | True | True | True | 1 | 1 |
+| REPEATED_VS_VARIED | True | True | True | True | True | 1 | 1 |
+| INTERNAL_EXTERNAL_ORDER | True | True | True | True | True | 1 | 1 |
+| EARLY_VS_LATE_READY | True | True | True | True | True | 1 | 1 |
+
+Exact Relay structural/size equality: **5/5**. Timestamps were excluded from the verdict.

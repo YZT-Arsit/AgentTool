@@ -1,0 +1,23 @@
+{
+  "binary": {
+    "path": "common_action_gateway_v2/bin/canonical-v11_2-runner",
+    "sha256": "8d2b68c76a4ca75e2c55c1bcc5a23bfc2981549c5703c995d867f3cc3eef6aba"
+  },
+  "go_test_count_cache_disabled": true,
+  "holdout_cases_executed": 0,
+  "holdout_cases_selected": 0,
+  "online_capacity_failure_test": true,
+  "online_schedule_failure_test": true,
+  "online_startup_action_rejection": true,
+  "packages": {
+    "canonicalv9": "PASS",
+    "v8": "PASS",
+    "v9ohttp": "PASS"
+  },
+  "passed": true,
+  "platform": "Ubuntu 22.04 Linux amd64",
+  "simplepir_online_binary": {
+    "path": "pir_integration/simplepir_bridge/acv-simplepir-online",
+    "sha256": "4daca3f34ae5be1ac94e3b596393c1c089131c33b50c6517c557d7292bd6ef3f"
+  }
+}

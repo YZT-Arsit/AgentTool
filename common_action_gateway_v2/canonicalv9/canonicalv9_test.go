@@ -1,8 +1,10 @@
 package canonicalv9
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -12,6 +14,50 @@ import (
 	gatewayv2 "common-action-gateway-v2"
 	"common-action-gateway-v2/v7ohttp"
 )
+
+func runOnlineControl(t *testing.T, plan Plan, actions []ActionSpec) (RunResult, []OnlineControlEvent) {
+	t.Helper()
+	controlReader, controlWriter := io.Pipe()
+	eventReader, eventWriter := io.Pipe()
+	resultChannel := make(chan RunResult, 1)
+	errorChannel := make(chan error, 1)
+	go func() {
+		result, err := RunOnline(plan, controlReader, eventWriter)
+		_ = eventWriter.Close()
+		resultChannel <- result
+		errorChannel <- err
+	}()
+	decoder := json.NewDecoder(bufio.NewReader(eventReader))
+	encoder := json.NewEncoder(controlWriter)
+	events := make([]OnlineControlEvent, 0)
+	seenResults := 0
+	for {
+		var event OnlineControlEvent
+		if err := decoder.Decode(&event); err != nil {
+			break
+		}
+		events = append(events, event)
+		if event.Type == "SESSION_READY" && len(actions) > 0 {
+			if err := encoder.Encode(OnlineControlMessage{Type: "SUBMIT_RESOLVED_ACTION", Action: &actions[0]}); err != nil {
+				t.Fatal(err)
+			}
+		}
+		if event.Type == "RESULT_AVAILABLE" {
+			seenResults++
+			if seenResults < len(actions) {
+				if err := encoder.Encode(OnlineControlMessage{Type: "SUBMIT_RESOLVED_ACTION", Action: &actions[seenResults]}); err != nil {
+					t.Fatal(err)
+				}
+			}
+		}
+	}
+	_ = controlWriter.Close()
+	result := <-resultChannel
+	if err := <-errorChannel; err != nil {
+		t.Fatal(err)
+	}
+	return result, events
+}
 
 func liveSchedulerPlan(t *testing.T, rounds int, providerDelay time.Duration) (Plan, *int) {
 	t.Helper()
@@ -245,5 +291,104 @@ func TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots(t *testing.T) {
 	}
 	if _, err := engine.claimPublicSlot(request); err == nil {
 		t.Fatal("duplicate public slot accepted")
+	}
+}
+
+func TestV11_2OnlineCausalActionsUseOnePreconnectedSession(t *testing.T) {
+	plan, providerCalls := liveSchedulerPlan(t, 25, time.Millisecond)
+	plan.Actions = nil
+	plan.AdmissionRounds = 12
+	plan.MaximumRealOperations = 2
+	plan.PreparationLeadMS = 2
+	actions := []ActionSpec{
+		{OperationID: "online-op-1", ActionKind: "REAL_TOOL", RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy", ProtectedArguments: []byte("first")},
+		{OperationID: "online-op-2", ActionKind: "REAL_TOOL", RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy", ProtectedArguments: []byte("second")},
+	}
+	result, events := runOnlineControl(t, plan, actions)
+	if result.SessionStatus != "COMPLETE" || !result.OnlineMode || result.StartupActionCount != 0 {
+		t.Fatalf("online session failed: %+v", result)
+	}
+	if result.Admitted != 2 || len(result.Results) != 2 || *providerCalls != 2 {
+		t.Fatalf("online functional mismatch: admitted=%d results=%d calls=%d", result.Admitted, len(result.Results), *providerCalls)
+	}
+	if len(result.PublicRelayEvents) != plan.Rounds || result.ClientRelayHTTPVersion != "HTTP/2.0" || result.RelayGatewayHTTPVersion != "HTTP/2.0" {
+		t.Fatal("online trajectory did not preserve one fixed HTTP/2 public session")
+	}
+	resultOne, acceptTwo := -1, -1
+	for index, event := range events {
+		if event.Type == "RESULT_AVAILABLE" && event.OperationID == "online-op-1" {
+			resultOne = index
+		}
+		if event.Type == "ACTION_ACCEPTED" && event.OperationID == "online-op-2" {
+			acceptTwo = index
+		}
+	}
+	if resultOne < 0 || acceptTwo <= resultOne {
+		t.Fatalf("second action was not causally submitted after first result: %+v", events)
+	}
+}
+
+func TestV11_2OnlineModeRejectsStartupActionList(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.PreparationLeadMS = 2
+	if _, err := RunOnline(plan, bytes.NewReader(nil), io.Discard); err == nil {
+		t.Fatal("online mode accepted a future action list at T0")
+	}
+}
+
+func TestV11_2OnlineSchedulerFailureIsExplicitAndDoesNotRestart(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.Actions = nil
+	plan.PreparationLeadMS = 2
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 25
+	result, events := runOnlineControl(t, plan, nil)
+	if result.SessionStatus != "SESSION_SCHEDULE_FAILURE" || result.ScheduleMisses == 0 {
+		t.Fatalf("online schedule failure was not explicit: %+v", result)
+	}
+	failures, ready := 0, 0
+	for _, event := range events {
+		if event.Type == "SESSION_FAILURE" {
+			failures++
+		}
+		if event.Type == "SESSION_READY" {
+			ready++
+		}
+	}
+	if failures != 1 || ready != 1 {
+		t.Fatalf("online failure started or reported multiple sessions: ready=%d failures=%d", ready, failures)
+	}
+	for _, launch := range result.SlotLaunches {
+		if launch.ScheduleMiss && launch.SubmitNS != 0 {
+			t.Fatalf("failed online slot was transmitted as catch-up: %+v", launch)
+		}
+	}
+}
+
+func TestV11_2OnlineCapacityRejectsWithoutSecondSession(t *testing.T) {
+	plan, providerCalls := liveSchedulerPlan(t, 13, time.Millisecond)
+	plan.Actions = nil
+	plan.PreparationLeadMS = 2
+	actions := []ActionSpec{
+		{OperationID: "capacity-op-1", ActionKind: "REAL_TOOL", RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy"},
+		{OperationID: "capacity-op-2", ActionKind: "REAL_TOOL", RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy"},
+	}
+	result, events := runOnlineControl(t, plan, actions)
+	if result.SessionStatus != "COMPLETE" || result.Admitted != 1 || len(result.Results) != 1 || *providerCalls != 1 {
+		t.Fatalf("capacity rejection damaged admitted work: %+v calls=%d", result, *providerCalls)
+	}
+	rejected := 0
+	ready := 0
+	for _, event := range events {
+		if event.Type == "ACTION_REJECTED" && event.OperationID == "capacity-op-2" && event.Reason == "PROFILE_CAPACITY_EXCEEDED" {
+			rejected++
+		}
+		if event.Type == "SESSION_READY" {
+			ready++
+		}
+	}
+	if rejected != 1 || ready != 1 {
+		t.Fatalf("capacity outcome/session count mismatch: rejected=%d ready=%d", rejected, ready)
 	}
 }

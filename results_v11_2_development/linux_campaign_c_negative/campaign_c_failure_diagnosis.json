@@ -1,0 +1,16 @@
+{
+  "campaign": "C",
+  "csv_sha256": "3a13100f59b5268ba6ca35e86366540f0ea534aa71135421c548e4c602f9cb22",
+  "failed_gates": {
+    "DYNAMIC_10_ACTION": 5
+  },
+  "failed_rows": 5,
+  "failure_reasons": {
+    "AssertionError: OpenAI online workflow produced 9 outcomes for 10 actions": 5
+  },
+  "holdout": false,
+  "remediation_under_test": "reduce public preparation lead to 1 ms without changing H50/111/5ms/wire profile",
+  "root_cause": "with 2 ms public preparation lead, later causal actions often advanced 5-6 slots; action 10 could miss H50 even when action 1 entered slot 1",
+  "rows_completed_before_stop": 344,
+  "status": "PRESERVED_DEVELOPMENT_FAILURE"
+}

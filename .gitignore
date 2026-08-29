@@ -33,6 +33,8 @@ Thumbs.db
 *.log
 *.bin
 results_v9/v9_canonical*.tgz
+results_v11_2_*.tgz
+v11_2_*.tgz
 
 # Compiled binaries
 *.exe

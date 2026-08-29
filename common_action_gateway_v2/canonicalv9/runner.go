@@ -57,6 +57,7 @@ type Plan struct {
 	RequestFinalBytes         int          `json:"request_final_bytes"`
 	ResponseFinalBytes        int          `json:"response_final_bytes"`
 	SchedulerToleranceMS      int          `json:"scheduler_tolerance_ms,omitempty"`
+	PreparationLeadMS         int          `json:"preparation_lead_ms,omitempty"`
 	FaultDelayResponseSlot    int          `json:"fault_delay_response_slot,omitempty"`
 	FaultDelayResponseMS      int          `json:"fault_delay_response_ms,omitempty"`
 	FaultSchedulerStallSlot   int          `json:"fault_scheduler_stall_slot,omitempty"`
@@ -117,6 +118,12 @@ type RunResult struct {
 	SilentCommittedLosses   int                   `json:"silent_committed_result_losses"`
 	ClientRelayHTTPVersion  string                `json:"client_relay_http_version"`
 	RelayGatewayHTTPVersion string                `json:"relay_gateway_http_version"`
+	OnlineMode              bool                  `json:"online_mode,omitempty"`
+	StartupActionCount      int                   `json:"startup_action_count"`
+	AcceptedOperationIDs    []string              `json:"accepted_operation_ids,omitempty"`
+	ResolvedNotAdmittedIDs  []string              `json:"resolved_not_admitted_ids,omitempty"`
+	UnresolvedOperationIDs  []string              `json:"unresolved_operation_ids,omitempty"`
+	FrameworkWaiterIDs      []string              `json:"framework_waiter_ids,omitempty"`
 }
 
 type providerRequest struct {
@@ -198,7 +205,7 @@ func validatePlan(plan Plan) error {
 	if len(plan.Actions) > plan.MaximumRealOperations || plan.AdmissionRounds < len(plan.Actions) {
 		return errors.New("actions exceed public admission bound")
 	}
-	if plan.SchedulerToleranceMS < 0 || plan.FaultDelayResponseMS < 0 || plan.FaultSchedulerStallMS < 0 {
+	if plan.SchedulerToleranceMS < 0 || plan.PreparationLeadMS < 0 || plan.FaultDelayResponseMS < 0 || plan.FaultSchedulerStallMS < 0 {
 		return errors.New("negative canonical scheduler configuration")
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {

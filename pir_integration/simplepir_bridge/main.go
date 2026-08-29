@@ -64,6 +64,22 @@ type recoveredTrace struct {
 	Record  string `json:"record_base64"`
 }
 
+type interactiveRequest struct {
+	OperationID string `json:"operation_id"`
+	Index       uint64 `json:"index"`
+}
+
+type interactiveResponse struct {
+	Type        string `json:"type"`
+	OperationID string `json:"operation_id,omitempty"`
+	Record      string `json:"record_base64,omitempty"`
+	QuerySHA256 string `json:"query_sha256,omitempty"`
+	QueryBytes  uint64 `json:"query_bytes,omitempty"`
+	AnswerBytes uint64 `json:"answer_bytes,omitempty"`
+	Correct     bool   `json:"correct,omitempty"`
+	Error       string `json:"error,omitempty"`
+}
+
 type metrics struct {
 	Backend                    string  `json:"backend"`
 	Commit                     string  `json:"commit"`
@@ -263,6 +279,63 @@ func waitUntil(deadline int64) int64 {
 	}
 }
 
+func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.State, hint sp.Msg,
+	params sp.Params, recordCount uint64, clientPath, serverPath string) {
+	clientFile, clientWriter := createJSONL(clientPath)
+	defer clientFile.Close()
+	defer clientWriter.Flush()
+	serverFile, serverWriter := createJSONL(serverPath)
+	defer serverFile.Close()
+	defer serverWriter.Flush()
+
+	encoder := json.NewEncoder(os.Stdout)
+	_ = encoder.Encode(map[string]any{
+		"type": "PIR_READY", "records": recordCount,
+		"future_indices_received": 0,
+	})
+	reader := bufio.NewScanner(os.Stdin)
+	// Requests are tiny fixed-schema control messages, but leave enough room for
+	// future protocol metadata without permitting unbounded input.
+	reader.Buffer(make([]byte, 4096), 64*1024)
+	ordinal := 0
+	for reader.Scan() {
+		var req interactiveRequest
+		if err := json.Unmarshal(reader.Bytes(), &req); err != nil || req.OperationID == "" || req.Index >= recordCount {
+			_ = encoder.Encode(interactiveResponse{Type: "PIR_ERROR", Error: "invalid interactive PIR request"})
+			continue
+		}
+		started := time.Now()
+		clientState, query := pi.Query(req.Index, shared, params, db.Info)
+		queryMs := float64(time.Since(started).Microseconds()) / 1000.0
+		serializedQuery := msgBytes(query)
+		hash := sha256.Sum256(serializedQuery)
+		started = time.Now()
+		answer := answerUnpacked(db, query, params)
+		answerMs := float64(time.Since(started).Microseconds()) / 1000.0
+		started = time.Now()
+		record := recoverRecord(req.Index, hint, query, answer, shared, clientState, params, db.Info)
+		recoveryMs := float64(time.Since(started).Microseconds()) / 1000.0
+		expected := raw[req.Index*recordBytes : (req.Index+1)*recordBytes]
+		correct := string(record) == string(expected)
+		queryHash := hex.EncodeToString(hash[:])
+		writeJSON(clientWriter, clientTrace{req.OperationID, ordinal, req.Index, "PRIVATE_AGENT_SELECTION", queryMs, recoveryMs, correct})
+		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
+			query.Data[0].Cols, queryHash, answer.Size() * 4, answerMs,
+			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, time.Now().UnixNano(), time.Now().UnixNano()})
+		clientWriter.Flush()
+		serverWriter.Flush()
+		_ = encoder.Encode(interactiveResponse{
+			Type: "PIR_RESULT", OperationID: req.OperationID,
+			Record: base64.StdEncoding.EncodeToString(record), QuerySHA256: queryHash,
+			QueryBytes: uint64(len(serializedQuery)), AnswerBytes: answer.Size() * 4, Correct: correct,
+		})
+		ordinal++
+	}
+	if err := reader.Err(); err != nil {
+		_ = encoder.Encode(interactiveResponse{Type: "PIR_ERROR", Error: "interactive control channel failed"})
+	}
+}
+
 func main() {
 	database := flag.String("database", "", "fixed 1024-byte row file")
 	queryCSV := flag.String("queries", "", "private client query CSV")
@@ -273,17 +346,21 @@ func main() {
 	recoveredPath := flag.String("recovered", "recovered.jsonl", "private recovered records")
 	rawQueryPath := flag.String("raw-queries", "raw_queries.bin", "length-prefixed raw server queries")
 	commit := flag.String("commit", "unknown", "pinned upstream commit")
+	interactive := flag.Bool("interactive", false, "serve online private indices after query-independent preprocessing")
 	pacedDeltaMs := flag.Float64("paced-delta-ms", 0, "public native scheduler cadence; zero disables pacing")
 	pacedStartDelayMs := flag.Float64("paced-start-delay-ms", 20, "public episode start lead time")
 	flag.Parse()
-	if *database == "" || *queryCSV == "" || *records == 0 {
+	if *database == "" || (!*interactive && *queryCSV == "") || *records == 0 {
 		panic("missing required arguments")
 	}
 
 	pi := sp.SimplePIR{}
 	params := pi.PickParams(*records, recordBits, secParam, logQ)
 	db, raw, readMs, constructMs := buildDatabase(*database, *records, &params)
-	requests := readRequests(*queryCSV, *records)
+	var requests []request
+	if !*interactive {
+		requests = readRequests(*queryCSV, *records)
+	}
 
 	started := time.Now()
 	shared := pi.Init(db.Info, params)
@@ -295,6 +372,10 @@ func main() {
 	// Keep values mapped to [0,p] as expected by Recover's p/2 offset, but
 	// expand the packed storage so the portable matrix-vector kernel can run.
 	db.Data.Unsquish(db.Info.Basis, db.Info.Squishing, db.Info.Cols)
+	if *interactive {
+		runInteractive(pi, db, raw, shared, hint, params, *records, *clientPath, *serverPath)
+		return
+	}
 
 	clientFile, clientWriter := createJSONL(*clientPath)
 	defer clientFile.Close()

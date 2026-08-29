@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V11_1StaticSchedulerFreezeForV11_2/1",
+  "immutable_commit": "d8a8788a30ac8a9cc2c630d4a3e347660e8f2dfa",
+  "v11_1_execution_harness_freeze_sha256": "2f6a5e23df676f351209e722c7750b6f37de1530296dcad1c9f7975413e835ff",
+  "public_profile": {
+    "profile_id": "V11_1-DEV-H50-C1-P5",
+    "maximum_real_operations": 50,
+    "admission_rounds": 50,
+    "total_rounds": 111,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "period_ms": 5,
+    "scheduled_lifetime_ms": 555
+  },
+  "accepted_development_gates": {
+    "stress": "350/350",
+    "semantic": "38/38",
+    "structural": "11/11",
+    "static_multi_action": "5/5"
+  },
+  "preserved_properties": [
+    "HTTP2_SINGLE_CONNECTION_MULTIPLEXING",
+    "INDEPENDENT_PUBLIC_SLOTS",
+    "NO_CATCH_UP_BURST",
+    "EXPLICIT_SCHEDULE_FAILURE",
+    "PUBLIC_PRECONNECT",
+    "OUTER_INNER_SLOT_BINDING",
+    "PER_SLOT_OHTTP_CONTEXTS"
+  ],
+  "holdout_cases_selected": 0,
+  "holdout_cases_executed": 0,
+  "status": "IMMUTABLE_V11_1_DEVELOPMENT_EVIDENCE"
+}
