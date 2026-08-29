@@ -1,0 +1,5 @@
+component,scale,status,preprocessing_ms,online_latency_ms,upload_bytes,download_bytes,client_state_bytes,peak_memory_bytes,result_file,notes
+PIR_V7_DESCRIPTOR,1000,PASS,43.149,0.8186,2020,6592,8798208,34770944,PIR_V7_DESCRIPTOR_RESULTS_V8.csv,"online=query generation+server answer+recovery"
+PIR_V7_DESCRIPTOR,10000,PASS,1260.934,10.0164,10024,13184,23740416,171814912,PIR_V7_DESCRIPTOR_RESULTS_V8.csv,"online=query generation+server answer+recovery"
+PIR_V7_DESCRIPTOR,100000,PASS,29344.301,50.6798,36388,37180,75309056,1338664960,PIR_V7_DESCRIPTOR_RESULTS_V8.csv,"100000 logical rows; 100001 physical capacity; online=sum of measured stages"
+CANONICAL_OHTTP,NA,BLOCKED,,,,,,,CANONICAL_OHTTP_FUNCTIONAL_V8.csv,"No RFC backend; no baseline or encapsulation performance run"

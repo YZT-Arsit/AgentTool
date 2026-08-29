@@ -1,0 +1,5 @@
+{"episode":"v8-v7-descriptor-10000","round":0,"private_index":0,"private_class":"PRIVATE_SELECTION","query_generation_ms":3.256,"recovery_ms":1.001,"correct":true}
+{"episode":"v8-v7-descriptor-10000","round":1,"private_index":5000,"private_class":"PRIVATE_SELECTION","query_generation_ms":2.458,"recovery_ms":2.991,"correct":true}
+{"episode":"v8-v7-descriptor-10000","round":2,"private_index":5000,"private_class":"PRIVATE_SELECTION","query_generation_ms":7.51,"recovery_ms":1.001,"correct":true}
+{"episode":"v8-v7-descriptor-10000","round":3,"private_index":9998,"private_class":"PRIVATE_SELECTION","query_generation_ms":3.582,"recovery_ms":1.005,"correct":true}
+{"episode":"v8-v7-descriptor-10000","round":4,"private_index":9999,"private_class":"PRIVATE_SELECTION","query_generation_ms":4.476,"recovery_ms":1.001,"correct":true}

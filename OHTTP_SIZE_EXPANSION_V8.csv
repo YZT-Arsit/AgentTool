@@ -1,0 +1,2 @@
+status,profile_id,bhttp_plaintext_bytes,padding_bytes,ohttp_request_overhead_bytes,ohttp_response_overhead_bytes,final_request_bytes,final_response_bytes,reason
+BLOCKED,,,,,,,,"No audited local RFC 9458/RFC 9292 implementation; no expansion values fabricated"

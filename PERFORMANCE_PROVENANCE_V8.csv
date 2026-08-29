@@ -1,0 +1,5 @@
+series,status,result_file,code_path,platform,descriptor_schema,timestamp_or_freeze_id,canonical_for_future_use,notes
+HISTORICAL_SIMPLEPIR,HISTORICAL,"results_crypto_closure and historical reports","pir_integration/simplepir_bridge","historical recorded platform","raw or earlier registry schema","pre-V6 artifacts",NO,"Kept separate; not merged into V8"
+V6_ENCRYPTED_DESCRIPTOR,PASS,PIR_DESCRIPTOR_RESULTS_V6.csv,"scripts/run_pir_descriptor_v6.py + pinned SimplePIR bridge","Windows-local-Go-CGO","Encrypted AgentDescriptor V6","V6_FREEZE_MANIFEST.json",NO,"Valid frozen V6 component evidence"
+V8_V7_DESCRIPTOR_CANONICAL,PASS,PIR_V7_DESCRIPTOR_RESULTS_V8.csv,"scripts/run_pir_v7_descriptor_v8.py + action_privacy_v8 descriptor codec + pinned SimplePIR bridge","Windows-local-Go-CGO","AgentDescriptorV7/7 fixed 1024 bytes","V8_V7_DESCRIPTOR_CANONICAL_20260828",YES,"Preferred canonical PIR component result"
+V8_CANONICAL_OHTTP,BLOCKED,CANONICAL_OHTTP_FUNCTIONAL_V8.csv,"not instantiated","not run","RFC9292+RFC9458",V8_OHTTP_CANONICAL_BLOCKED_20260828,NO,"No performance values fabricated"

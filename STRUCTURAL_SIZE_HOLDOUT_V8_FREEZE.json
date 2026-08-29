@@ -1,0 +1,6 @@
+{
+  "artifact": "STRUCTURAL_SIZE_HOLDOUT_V8_FREEZE",
+  "status": "NOT_FROZEN_PREREQUISITE_BLOCKED",
+  "cases": [],
+  "reason": "Canonical OHTTP functional and semantic gates did not pass"
+}

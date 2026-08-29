@@ -1,0 +1,6 @@
+{
+  "artifact": "CANONICAL_ACTION_SEMANTIC_HOLDOUT_V8_FREEZE",
+  "status": "NOT_FROZEN_PREREQUISITE_BLOCKED",
+  "cases": [],
+  "reason": "RFC 9458/RFC 9292 canonical functional gate was blocked before holdout selection"
+}

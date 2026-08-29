@@ -1,0 +1,2 @@
+status,cases_passed,cases_total,fidelity,reason
+NOT_RUN,0,0,,"Canonical OHTTP functional prerequisite blocked"

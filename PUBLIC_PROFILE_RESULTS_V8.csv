@@ -1,0 +1,2 @@
+profile_id,status,observed_rounds,request_final_bytes_equal,response_final_bytes_equal,connection_count_equal,public_lifetime_equal,reason
+V8_OHTTP_CANONICAL_BLOCKED_20260828,BLOCKED,0,,,,,"Canonical OHTTP functional prerequisite unavailable"

@@ -1,0 +1,23 @@
+{
+  "schema": "AgentTool.V8.ThirdPartyOHTTPDependencies/1",
+  "audit_date": "2026-08-28",
+  "source_gate": "BLOCKED_NO_LOCAL_SOURCE",
+  "searched_locations": [
+    {"path": "third_party/", "exists": false, "candidates": 0},
+    {"path": "vendor/", "exists": false, "candidates": 0},
+    {"path": "C:/Users/hasee/go/pkg/mod", "exists": true, "candidates": 0},
+    {"path": "C:/Users/hasee/go/pkg/mod/cache/download", "exists": false, "candidates": 0}
+  ],
+  "supplied_archive_or_source": null,
+  "selected_module": null,
+  "source_commit": null,
+  "source_tree_sha256": null,
+  "license": null,
+  "go_mod": null,
+  "go_sum": null,
+  "direct_dependencies": [],
+  "transitive_dependencies": [],
+  "preferred_future_candidate": "github.com/chris-wood/ohttp-go",
+  "download_performed": false,
+  "legacy_transport_is_ohttp": false
+}

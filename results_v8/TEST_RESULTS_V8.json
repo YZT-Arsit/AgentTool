@@ -1,0 +1,17 @@
+{
+  "python": {
+    "command": ".venv-stage10/Scripts/python.exe -m pytest -q --basetemp .tmp_pytest_v8_full",
+    "status": "PASS",
+    "passed": 198,
+    "skipped": 2,
+    "duration_seconds": 37.39,
+    "skip_reason": "NOT_COMPLETED_ENVIRONMENT: Windows Application Control blocked local Pacer executables"
+  },
+  "go_v8": {
+    "format": "PASS",
+    "compile_test_binary": "PASS",
+    "vet": "PASS",
+    "runtime_tests": "NOT_COMPLETED_ENVIRONMENT",
+    "runtime_blocker": "Windows Application Control blocked the generated V8 test executable; no bypass attempted"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "profile_id": "V8_OHTTP_CANONICAL_BLOCKED_20260828",
+  "status": "BLOCKED_NO_LOCAL_SOURCE",
+  "selection_time": "before any private execution",
+  "schedule": {
+    "sessions": 1,
+    "slots_per_session": 256,
+    "round_period_ms": 50,
+    "response_lag_ms": 25,
+    "maximum_admitted_operations": 100,
+    "terminal_slots": 2,
+    "public_lifetime_ms": 12800
+  },
+  "transport": {
+    "relay_endpoint": "loopback-relay-v8",
+    "gateway_endpoint": "loopback-gateway-v8",
+    "connection_policy": "one preconfigured loopback connection per role"
+  },
+  "final_encapsulated_bytes": {
+    "request": null,
+    "response": null,
+    "reason": "Must be measured using the selected RFC 9458/RFC 9292 implementation"
+  },
+  "ohttp_public_suite": {
+    "key_id": null,
+    "kem": null,
+    "kdf": null,
+    "aead": null,
+    "public_key_config_epoch": null,
+    "reason": "No canonical OHTTP key configuration exists while source gate is blocked"
+  }
+}

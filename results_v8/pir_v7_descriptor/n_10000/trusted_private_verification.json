@@ -1,0 +1,13 @@
+{
+  "indices": [
+    0,
+    5000,
+    5000,
+    9998,
+    9999
+  ],
+  "descriptor_authentication": true,
+  "expected_agent_id_match": true,
+  "fresh_repeated_queries": true,
+  "server_trace_private_field": false
+}

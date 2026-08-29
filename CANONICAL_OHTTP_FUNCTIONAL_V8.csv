@@ -1,0 +1,2 @@
+status,admitted,delivered,unexpected_results,duplicate_framework_results,dummy_provider_operations,reason
+BLOCKED,0,0,0,0,0,"RFC 9458 and RFC 9292 prerequisites unavailable locally; canonical run not started"
