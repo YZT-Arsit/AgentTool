@@ -1,0 +1,21 @@
+{
+  "schema": "AgentTool.V11_1LinuxHostQualification/1",
+  "authorized_host_role": "offline controlled development scheduler host",
+  "os": "Ubuntu 22.04",
+  "kernel": "5.15.0-94-generic",
+  "architecture": "x86_64",
+  "cpu_model": "Intel(R) Xeon(R) Platinum 8470Q",
+  "container_visible_processor_count": 25,
+  "reported_affinity_mask": "0-207",
+  "explicit_process_affinity_configured": false,
+  "go_version": "go1.23.12 linux/amd64",
+  "python_version": "3.12.3",
+  "campaign_observed_load_average": [8.82, 8.0, 7.35],
+  "linux_binary_sha256": "17e1a497788ac6261348a2dff728b83188661ad9b4117bd5272b1d9575a22c56",
+  "linux_binary_path": "/root/autodl-tmp/mediation_trace_validation/results_v11_1_development/linux_source_extract/common_action_gateway_v2/bin/canonical-v11_1-runner",
+  "network_scope": "loopback TLS HTTP/2 only",
+  "external_network_experiments": false,
+  "timing_privacy": "OPEN / NOT TESTED",
+  "packet_level_timing": "OPEN",
+  "hardware_tee": "NOT_TESTED"
+}

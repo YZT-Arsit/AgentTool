@@ -1,0 +1,39 @@
+{
+  "files": {
+    "PUBLIC_PROFILE_DEVELOPMENT_V11_1.json": "3b190d2141d865fc4a031bb5202bba3932f1efa89e6fc37a9aae2090e95948fd",
+    "action_privacy_v8/descriptor.py": "5ba4b6af5a48e44529c87e9656663d9da2f9e8d8eea2d85e456e24c8dd50012b",
+    "action_privacy_v8/routing.py": "6d13d39bc7be2bdb3923e7df244e7306817212ccfb1c25df66b07a8cc2009422",
+    "canonical_v9/runner.py": "13546027c570ac1bb4c36b5d0aabdec574547a57a7e0e01c073b62fc59a0afcc",
+    "canonical_v9_1/projection.py": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+    "canonical_v9_1/runner.py": "545c5631242c25395351285b247fd6f9d206fddb70d5ae14cacad7d02be49bc9",
+    "common_action_gateway_v2/canonicalv9/canonicalv9_test.go": "5e230243c8cc638439a89d0cb7265043470c4216ca22464f6c13c7d7fcc01309",
+    "common_action_gateway_v2/canonicalv9/runner.go": "bf431a1418bb374dfe98bd3b55f076966e199602732f600907ac65208ed4bf7f",
+    "common_action_gateway_v2/v8/http_relay.go": "c04134351c5fcddc6f744a069a51045ce0172b57402224a3dea0a043655925e5",
+    "common_action_gateway_v2/v9ohttp/bhttp_codec.go": "c73380c092a534eae2fc0ec66d2637177dc356c8e7de8f5616eb3e54f3bb964b",
+    "common_action_gateway_v2/v9ohttp/ohttp_backend.go": "2c9a03fa27dd8c13bc6e3e6022ed48af1283c117055fdfb844779f2ebdafb87c",
+    "common_action_gateway_v2/v9ohttp/v9ohttp_test.go": "170dcec176d9f8a9cffbf8cd18768d3dd277df4c50f1b7b6b5bbe63f2bba08c9",
+    "cryptographic_closure/pir_backend.py": "96ef5599a8882c24d73d7558e8158972ba3ebca0bbdf4ac8e0dacc0d29d5a524",
+    "scripts/run_v11_1_scheduler_closure.py": "51ce1b84dd2df5022f606598ba290bcdc4301fb999b02b6f1a32e4d00d88ec98",
+    "v11_full_scope/canonical.py": "2bfd1ffee0ec9199766be6b5cc81033ad6973573b7c9714117d358e73bc903fd",
+    "v11_full_scope/frameworks.py": "ef08ea84987a6bc7688f477fa40fe9973a3b00e8bebd209d6d25f3d4b10eae63",
+    "v11_full_scope/structural.py": "442a0d727cb62fe64856664902d84208ea785dd4eee1531019c7071820a5e331"
+  },
+  "gates": {
+    "fault": "2/2",
+    "multi_action": "5/5",
+    "profile": "20/20",
+    "semantic": "38/38",
+    "stress": "350/350",
+    "structural": "11/11"
+  },
+  "hardware_tee": "NOT_TESTED",
+  "holdout_cases_executed": 0,
+  "holdout_cases_selected": 0,
+  "linux_binary": {
+    "path": "/root/autodl-tmp/mediation_trace_validation/results_v11_1_development/linux_source_extract/common_action_gateway_v2/bin/canonical-v11_1-runner",
+    "sha256": "17e1a497788ac6261348a2dff728b83188661ad9b4117bd5272b1d9575a22c56"
+  },
+  "schema": "AgentTool.V11_1ExecutionHarnessFreeze/1",
+  "status": "FROZEN_AFTER_FULL_SCOPE_RELIABILITY_PASS",
+  "timing_privacy": "OPEN / NOT TESTED"
+}

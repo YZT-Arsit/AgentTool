@@ -9,6 +9,7 @@ import time
 from dataclasses import asdict, dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from collections.abc import Mapping
 from typing import Any, Protocol
 
 from action_privacy_v8 import (
@@ -58,6 +59,40 @@ def _effect(value: str) -> EffectSemantics:
 def _canonical_ids(case: V11ActionCase) -> tuple[int, str, str, ActionKind]:
     if case.placement == "TRUSTED_MODULE_LOCAL":
         return 20, "agent.internal.20", "agent.internal.20", ActionKind.AGENT_SERVICE
+    if case.agent_id == 21 and case.agent_capability == "agent.workflow.21":
+        if case.action_family is CanonicalActionFamily.TOOL:
+            capability = {
+                "READ_ONLY": "tool.read",
+                "IDEMPOTENT_EFFECT": "tool.idem",
+                "NON_IDEMPOTENT_EFFECT": "tool.nonidem",
+            }[case.effect_semantics]
+            return 21, "agent.workflow.21", capability, ActionKind.TOOL
+        if case.action_family is CanonicalActionFamily.EXTERNAL_HTTP:
+            return 21, "agent.workflow.21", "external.local", ActionKind.EXTERNAL_HTTP
+        if case.effect_semantics != "READ_ONLY":
+            raise ValueError("development composite Agent-service route is READ_ONLY")
+        return 21, "agent.workflow.21", "agent.workflow.21", ActionKind.AGENT_SERVICE
+    selected = descriptor(case.agent_id)
+    if case.agent_capability in selected.capability_ids:
+        if case.action_family in {CanonicalActionFamily.TOOL, CanonicalActionFamily.EXTERNAL_HTTP}:
+            route = ROUTES.get(case.capability)
+            expected_kind = (
+                ActionKind.TOOL
+                if case.action_family is CanonicalActionFamily.TOOL
+                else ActionKind.EXTERNAL_HTTP
+            )
+            if (
+                route is not None
+                and case.capability in selected.allowed_tool_capabilities
+                and route.action_kind is expected_kind
+                and route.effect_semantics.value == case.effect_semantics
+            ):
+                return case.agent_id, case.agent_capability, case.capability, expected_kind
+        elif (
+            selected.agent_service is not None
+            and selected.agent_service.effect_semantics.value == case.effect_semantics
+        ):
+            return case.agent_id, case.agent_capability, case.agent_capability, ActionKind.AGENT_SERVICE
     if case.action_family is CanonicalActionFamily.TOOL:
         capability = {
             "READ_ONLY": "tool.read",
@@ -230,7 +265,13 @@ def native_local_outcome(case: V11ActionCase) -> V11ActionOutcome:
     )
 
 
-def canonical_external_outcome(case: V11ActionCase, output: Path) -> V11ActionOutcome:
+def canonical_external_outcome(
+    case: V11ActionCase,
+    output: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
+) -> V11ActionOutcome:
     """Execute one external V11 action through the accepted canonical transport."""
 
     case.validate()
@@ -253,7 +294,8 @@ def canonical_external_outcome(case: V11ActionCase, output: Path) -> V11ActionOu
         raise AssertionError("canonical route changed declared effect semantics")
     with V11EvidenceProviders({case.operation_id: case}) as providers:
         trace, schedule = invoke_go_with_public_profile(
-            output / "canonical_session", load_v10_profile(), resolved, providers
+            output / "canonical_session", load_v10_profile(), resolved, providers,
+            runner_binary=runner_binary, plan_overrides=plan_overrides,
         )
         delivery = deliver_results(output / "delivery", [case.operation_id], trace)
         observation = providers.observed(case.operation_id)
@@ -419,7 +461,13 @@ class PrivateResultMultiplexer:
         }
 
 
-def canonical_internal_outcome(case: V11ActionCase, output: Path) -> V11ActionOutcome:
+def canonical_internal_outcome(
+    case: V11ActionCase,
+    output: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
+) -> V11ActionOutcome:
     """Execute locally while sending a full fixed-profile NOOP/WAIT cover session."""
 
     case.validate()
@@ -445,7 +493,8 @@ def canonical_internal_outcome(case: V11ActionCase, output: Path) -> V11ActionOu
     # profile rounds is still emitted as encrypted NOOP/WAIT cover.
     with V11EvidenceProviders({}) as providers:
         cover_trace, schedule = invoke_go_with_public_profile(
-            output / "cover_session", load_v10_profile(), [], providers
+            output / "cover_session", load_v10_profile(), [], providers,
+            runner_binary=runner_binary, plan_overrides=plan_overrides,
         )
     if cover_trace["provider_invocations"] != 0 or cover_trace["dummy_provider_operations"] != 0:
         raise AssertionError("internal cover traffic caused provider work")
@@ -478,7 +527,13 @@ def public_projections(outcome: V11ActionOutcome) -> tuple[dict[str, Any], dict[
     return strict_structural_projection(trace, profile), strict_size_projection(trace, profile)
 
 
-def canonical_multi_action(cases: list[V11ActionCase], output: Path) -> dict[str, Any]:
+def canonical_multi_action(
+    cases: list[V11ActionCase],
+    output: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
+) -> dict[str, Any]:
     """Execute one development session containing multiple same-Agent actions."""
 
     if not cases or len(cases) > load_v10_profile().maximum_real_operations:
@@ -508,7 +563,8 @@ def canonical_multi_action(cases: list[V11ActionCase], output: Path) -> dict[str
     resolved = resolve_session(session, selected[session.case_id])
     with V11EvidenceProviders({case.operation_id: case for case in cases}) as providers:
         trace, schedule = invoke_go_with_public_profile(
-            output / "canonical_session", load_v10_profile(), resolved, providers
+            output / "canonical_session", load_v10_profile(), resolved, providers,
+            runner_binary=runner_binary, plan_overrides=plan_overrides,
         )
         delivery = deliver_results(output / "delivery", [case.operation_id for case in cases], trace)
         observations = [asdict(providers.observed(case.operation_id)) for case in cases]
@@ -530,6 +586,117 @@ def canonical_multi_action(cases: list[V11ActionCase], output: Path) -> dict[str
         "descriptor_authenticated": True,
         "public_profile": schedule["public_profile_id"],
         "provider_observations": observations,
+        "strict_structural_projection": strict_structural_projection(trace, load_v10_profile()),
+        "strict_size_projection": strict_size_projection(trace, load_v10_profile()),
+        "raw_trace": trace,
+    }
+
+
+def canonical_mixed_workflow(
+    cases: list[V11ActionCase],
+    output: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
+) -> dict[str, Any]:
+    """Run a true mixed Tool/Agent-service development workflow in one session.
+
+    Agent 21 is a development-only composite descriptor whose authenticated
+    capsule authorizes the existing Tool routes and one existing-style Agent
+    service route.  Every step still traverses one PIR-selected descriptor,
+    TrustedActionRouter, OHTTP transport, Gateway, and DeliveryLedger.
+    """
+
+    if not cases or len(cases) > load_v10_profile().maximum_real_operations:
+        raise ValueError("mixed workflow is outside the public capacity")
+    if output.exists():
+        raise FileExistsError("refusing to overwrite V11.1 mixed-workflow evidence")
+    for case in cases:
+        case.validate()
+        if case.placement != "EXTERNAL":
+            raise ValueError("mixed workflow accepts external actions only")
+
+    intents: list[ProtectedActionIntent] = []
+    for case in cases:
+        if case.action_family is CanonicalActionFamily.TOOL:
+            capability = {
+                "READ_ONLY": "tool.read",
+                "IDEMPOTENT_EFFECT": "tool.idem",
+                "NON_IDEMPOTENT_EFFECT": "tool.nonidem",
+            }[case.effect_semantics]
+            kind = ActionKind.TOOL
+        elif case.action_family is CanonicalActionFamily.EXTERNAL_HTTP:
+            capability = "external.local"
+            kind = ActionKind.EXTERNAL_HTTP
+        else:
+            if case.effect_semantics != "READ_ONLY":
+                raise ValueError("development composite Agent-service route is READ_ONLY")
+            capability = "agent.workflow.21"
+            kind = ActionKind.AGENT_SERVICE
+        intents.append(
+            ProtectedActionIntent(
+                capability,
+                protected_payload(case),
+                "v11-1-mixed-workflow-development",
+                case.operation_id,
+                kind,
+            )
+        )
+
+    session = CanonicalSessionSpec(
+        "v11-1-mixed-workflow",
+        "agent.workflow.21",
+        21,
+        tuple(intents),
+    )
+    selected = real_pir_select(output / "pir", [session])
+    resolved = resolve_session(session, selected[session.case_id])
+    with V11EvidenceProviders({case.operation_id: case for case in cases}) as providers:
+        trace, schedule = invoke_go_with_public_profile(
+            output / "canonical_session",
+            load_v10_profile(),
+            resolved,
+            providers,
+            runner_binary=runner_binary,
+            plan_overrides=plan_overrides,
+        )
+        delivery = deliver_results(output / "delivery", [case.operation_id for case in cases], trace)
+        observations = [asdict(providers.observed(case.operation_id)) for case in cases]
+        effect_count = len(providers.effects)
+
+    delivered_ids = [str(item["operation_id"]) for item in trace["results"]]
+    expected_ids = [case.operation_id for case in cases]
+    functional = (
+        not delivery["missing"]
+        and not delivery["unexpected"]
+        and sorted(delivered_ids) == sorted(expected_ids)
+        and int(trace["provider_invocations"]) == len(cases)
+        and int(trace["dummy_provider_operations"]) == 0
+        and int(trace["profile_overflow_events"]) == 0
+        and trace.get("session_status") == "COMPLETE"
+    )
+    return {
+        "functional": functional,
+        "workflow": [
+            case.agent_service_subtype.value
+            if case.agent_service_subtype is not None
+            else case.action_family.value
+            for case in cases
+        ],
+        "admitted": len(cases),
+        "provider_invocations": trace["provider_invocations"],
+        "delivered": len(delivery["framework_sink"]),
+        "delivered_operation_ids": delivered_ids,
+        "expected_operation_ids": expected_ids,
+        "operation_id_association": sorted(delivered_ids) == sorted(expected_ids),
+        "provider_observations": observations,
+        "effect_count": effect_count,
+        "dummy_provider_operations": trace["dummy_provider_operations"],
+        "profile_overflow_events": trace["profile_overflow_events"],
+        "official_simplepir": True,
+        "descriptor_authenticated": True,
+        "public_profile": schedule["public_profile_id"],
+        "session_status": trace.get("session_status"),
         "strict_structural_projection": strict_structural_projection(trace, load_v10_profile()),
         "strict_size_projection": strict_size_projection(trace, load_v10_profile()),
         "raw_trace": trace,

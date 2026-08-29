@@ -1,0 +1,3 @@
+case,passed,session_status,admitted,delivered,rounds,client_connections,gateway_connections,http2,schedule_misses,pending,silent_committed_result_losses,dummy_heavy_ops,profile_overflow,max_launch_slip_ns,p95_launch_slip_ns,constant_deadlines,later_streams_launched,expected_failure,error
+DELAY_ONE_HTTP2_STREAM_75MS,True,COMPLETE,1,1,111,1,1,True,0,0,0,0,0,1065690,992260,True,True,False,
+SCHEDULER_STALL_30MS,True,SESSION_SCHEDULE_FAILURE,,,,,,,6,,,,,,,,,True,canonical session failed explicitly: SESSION_SCHEDULE_FAILURE; raw result preserved at /root/autodl-tmp/mediation_trace_validation/results_v11_1_development/linux_campaign_d/fault_raw/scheduler-stall/canonical_session/go_canonical_result.json

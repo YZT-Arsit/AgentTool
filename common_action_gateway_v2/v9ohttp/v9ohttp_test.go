@@ -90,6 +90,32 @@ func TestRFC9292AllResponseCasesRoundTrip(t *testing.T) {
 	}
 }
 
+func TestRFC9292AuthenticatedPublicSlotBinding(t *testing.T) {
+	codec := RFC9292Codec{}
+	slot := v7ohttp.SlotID{Session: 1, Slot: 17}
+	request, err := codec.EncodeKnownLengthRequestBound(
+		v7ohttp.InnerSemanticTarget, action(v7ohttp.ActionAgentService), 1024, slot)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, _, decodedRequestSlot, err := codec.DecodeKnownLengthRequestBound(request)
+	if err != nil || decodedRequestSlot != slot {
+		t.Fatalf("request slot binding changed: got=%+v err=%v", decodedRequestSlot, err)
+	}
+	response, err := codec.EncodeKnownLengthResponseBound(
+		v7ohttp.PrivateResponse{Status: StatusWait}, 768, slot)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, decodedResponseSlot, err := codec.DecodeKnownLengthResponseBound(response)
+	if err != nil || decodedResponseSlot != slot {
+		t.Fatalf("response slot binding changed: got=%+v err=%v", decodedResponseSlot, err)
+	}
+	if decodedRequestSlot == (v7ohttp.SlotID{Session: 1, Slot: 18}) {
+		t.Fatal("conflicting outer slot would be accepted")
+	}
+}
+
 func TestRFC9292RejectsMalformedAndNonzeroPadding(t *testing.T) {
 	codec := RFC9292Codec{}
 	encoded, err := codec.EncodeKnownLengthRequest(v7ohttp.InnerSemanticTarget, action(v7ohttp.ActionRealTool), 512)

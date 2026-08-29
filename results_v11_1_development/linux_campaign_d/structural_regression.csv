@@ -1,0 +1,12 @@
+pair,passed,arm_a_functional,arm_b_functional,structural_equal,size_equal,http2_both,schedule_misses,dummy_heavy_ops,profile_overflow,error
+AGENT_IDENTITY,True,True,True,True,True,True,0,0,0,
+TOOL_ROUTE,True,True,True,True,True,True,0,0,0,
+ACTION_KIND,True,True,True,True,True,True,0,0,0,
+ACTION_COUNT,True,True,True,True,True,True,0,0,0,
+REPETITION,True,True,True,True,True,True,0,0,0,
+FREQUENCY,True,True,True,True,True,True,0,0,0,
+RARE_TARGET,True,True,True,True,True,True,0,0,0,
+TRANSITION_PATTERN,True,True,True,True,True,True,0,0,0,
+ARGUMENT_LENGTH,True,True,True,True,True,True,0,0,0,
+COMPLETION_READINESS,True,True,True,True,True,True,0,0,0,
+INTERNAL_VS_EXTERNAL,True,True,True,True,True,True,0,0,0,

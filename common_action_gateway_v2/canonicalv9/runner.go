@@ -13,6 +13,8 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"sort"
+	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -54,6 +56,11 @@ type Plan struct {
 	ResponseBHTTPBytes        int          `json:"response_bhttp_bytes"`
 	RequestFinalBytes         int          `json:"request_final_bytes"`
 	ResponseFinalBytes        int          `json:"response_final_bytes"`
+	SchedulerToleranceMS      int          `json:"scheduler_tolerance_ms,omitempty"`
+	FaultDelayResponseSlot    int          `json:"fault_delay_response_slot,omitempty"`
+	FaultDelayResponseMS      int          `json:"fault_delay_response_ms,omitempty"`
+	FaultSchedulerStallSlot   int          `json:"fault_scheduler_stall_slot,omitempty"`
+	FaultSchedulerStallMS     int          `json:"fault_scheduler_stall_ms,omitempty"`
 	Routes                    []RouteSpec  `json:"routes"`
 	Actions                   []ActionSpec `json:"actions"`
 }
@@ -74,6 +81,21 @@ type ClientResult struct {
 	Round       int    `json:"round"`
 }
 
+type PublicSetupEvent struct {
+	Stage       string `json:"stage"`
+	MonotonicNS int64  `json:"monotonic_ns"`
+	HTTPVersion string `json:"http_version,omitempty"`
+}
+
+type SlotLaunch struct {
+	Session      uint32 `json:"session"`
+	Slot         uint32 `json:"slot"`
+	DeadlineNS   int64  `json:"deadline_ns"`
+	SubmitNS     int64  `json:"submit_ns,omitempty"`
+	LaunchSlipNS int64  `json:"launch_slip_ns,omitempty"`
+	ScheduleMiss bool   `json:"schedule_miss"`
+}
+
 type RunResult struct {
 	ProfileID               string                `json:"profile_id"`
 	Rounds                  int                   `json:"rounds"`
@@ -87,6 +109,14 @@ type RunResult struct {
 	AfterCutoffOperations   []string              `json:"after_cutoff_operations"`
 	RequestFinalBytes       int                   `json:"request_final_bytes"`
 	ResponseFinalBytes      int                   `json:"response_final_bytes"`
+	SessionStatus           string                `json:"session_status"`
+	PublicSetupEvents       []PublicSetupEvent    `json:"public_setup_events"`
+	SlotLaunches            []SlotLaunch          `json:"slot_launches"`
+	ScheduleMisses          int                   `json:"schedule_misses"`
+	PendingOperationIDs     []string              `json:"pending_operation_ids"`
+	SilentCommittedLosses   int                   `json:"silent_committed_result_losses"`
+	ClientRelayHTTPVersion  string                `json:"client_relay_http_version"`
+	RelayGatewayHTTPVersion string                `json:"relay_gateway_http_version"`
 }
 
 type providerRequest struct {
@@ -109,11 +139,13 @@ type engine struct {
 	ready         *v7.DurableReadyQueue
 	memory        *v8.MemoryDeliveryQueue
 	httpClient    *http.Client
-	round         atomic.Uint32
 	providerCalls atomic.Int64
 	eventsMu      sync.Mutex
 	events        []PrivateEvent
 	workers       sync.WaitGroup
+	slotsMu       sync.Mutex
+	seenSlots     map[uint32]bool
+	deliveryMu    sync.Mutex
 }
 
 func effect(value string) (gatewayv2.EffectSemantics, error) {
@@ -165,6 +197,14 @@ func validatePlan(plan Plan) error {
 	}
 	if len(plan.Actions) > plan.MaximumRealOperations || plan.AdmissionRounds < len(plan.Actions) {
 		return errors.New("actions exceed public admission bound")
+	}
+	if plan.SchedulerToleranceMS < 0 || plan.FaultDelayResponseMS < 0 || plan.FaultSchedulerStallMS < 0 {
+		return errors.New("negative canonical scheduler configuration")
+	}
+	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
+		if slot < 0 || slot > plan.Rounds {
+			return errors.New("canonical fault slot is outside public rounds")
+		}
 	}
 	seenRoutes := make(map[string]bool)
 	for _, route := range plan.Routes {
@@ -319,14 +359,37 @@ func privateResponse(record *gatewayv2.ResultRecord) v7ohttp.PrivateResponse {
 	return v7ohttp.PrivateResponse{Status: status, OperationID: gatewayv2.OperationIDString(record.OperationID), Payload: append([]byte(nil), record.Payload[:record.PayloadLen]...)}
 }
 
+func (e *engine) claimPublicSlot(request *http.Request) (v7ohttp.SlotID, error) {
+	sessionValue, err := strconv.ParseUint(request.Header.Get("X-AgentTool-Public-Session"), 10, 32)
+	if err != nil || sessionValue != 1 {
+		return v7ohttp.SlotID{}, errors.New("invalid public session")
+	}
+	slotValue, err := strconv.ParseUint(request.Header.Get("X-AgentTool-Public-Slot"), 10, 32)
+	if err != nil || slotValue == 0 || slotValue > uint64(e.plan.Rounds) {
+		return v7ohttp.SlotID{}, errors.New("invalid public slot")
+	}
+	slot := uint32(slotValue)
+	e.slotsMu.Lock()
+	defer e.slotsMu.Unlock()
+	if e.seenSlots[slot] {
+		return v7ohttp.SlotID{}, errors.New("duplicate public slot")
+	}
+	e.seenSlots[slot] = true
+	return v7ohttp.SlotID{Session: 1, Slot: slot}, nil
+}
+
 func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Request) {
-	currentRound := e.round.Add(1)
+	slot, err := e.claimPublicSlot(request)
+	if err != nil {
+		http.Error(writer, "public slot rejected", http.StatusBadRequest)
+		return
+	}
+	currentRound := slot.Slot
 	body, err := io.ReadAll(io.LimitReader(request.Body, int64(e.plan.RequestFinalBytes+1)))
 	if err != nil || len(body) != e.plan.RequestFinalBytes {
 		http.Error(writer, "invalid OHTTP request", http.StatusBadRequest)
 		return
 	}
-	slot := v7ohttp.SlotID{Session: 1, Slot: currentRound}
 	plaintext, responseContext, err := e.gateway.DecapsulateRequest(slot, body)
 	if err != nil {
 		http.Error(writer, "OHTTP decapsulation failed", http.StatusBadRequest)
@@ -336,13 +399,15 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 		http.Error(writer, "OHTTP server context slot mismatch", http.StatusInternalServerError)
 		return
 	}
-	_, action, err := e.codec.DecodeKnownLengthRequest(plaintext)
-	if err != nil || e.accept(action, currentRound) != nil {
+	_, action, innerSlot, err := e.codec.DecodeKnownLengthRequestBound(plaintext)
+	if err != nil || innerSlot != slot || e.accept(action, currentRound) != nil {
 		http.Error(writer, "private action rejected", http.StatusBadRequest)
 		return
 	}
+	e.deliveryMu.Lock()
 	selected, err := e.ready.ReserveEligible(1, currentRound)
 	if err != nil {
+		e.deliveryMu.Unlock()
 		http.Error(writer, "ready-result selection failed", http.StatusInternalServerError)
 		return
 	}
@@ -351,18 +416,21 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 	// memory queue, then encodes one immutable response.
 	if selected != nil {
 		if err := e.memory.PublishDurable(*selected); err != nil {
+			e.deliveryMu.Unlock()
 			http.Error(writer, "bounded ready-result publication failed", http.StatusInternalServerError)
 			return
 		}
 	}
 	preparedResult := e.memory.SnapshotEligible(1)
-	bhttpResponse, err := e.codec.EncodeKnownLengthResponse(privateResponse(preparedResult), e.plan.ResponseBHTTPBytes)
+	bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(privateResponse(preparedResult), e.plan.ResponseBHTTPBytes, slot)
 	if err != nil {
+		e.deliveryMu.Unlock()
 		http.Error(writer, "BHTTP response failed", http.StatusInternalServerError)
 		return
 	}
 	wire, err := e.gateway.EncapsulateResponse(responseContext, bhttpResponse)
 	if err != nil || len(wire) != e.plan.ResponseFinalBytes {
+		e.deliveryMu.Unlock()
 		http.Error(writer, "OHTTP response failed", http.StatusInternalServerError)
 		return
 	}
@@ -372,6 +440,10 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 		operationID = gatewayv2.OperationIDString(preparedResult.OperationID)
 	}
 	prepared := v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}
+	e.deliveryMu.Unlock()
+	if e.plan.FaultDelayResponseSlot == int(currentRound) && e.plan.FaultDelayResponseMS > 0 {
+		time.Sleep(time.Duration(e.plan.FaultDelayResponseMS) * time.Millisecond)
+	}
 	writer.Header().Set("Content-Type", v8.OHTTPResponseContentType)
 	writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(wire)))
 	writer.WriteHeader(http.StatusOK)
@@ -423,7 +495,8 @@ func newEngine(plan Plan) (*engine, error) {
 	}
 	return &engine{plan: plan, codec: v9ohttp.RFC9292Codec{}, client: client, gateway: gateway,
 		routes: routes, journal: journal, ready: ready, memory: memory,
-		httpClient: &http.Client{Timeout: time.Duration(plan.ProviderCompletionBoundMS) * time.Millisecond}}, nil
+		httpClient: &http.Client{Timeout: time.Duration(plan.ProviderCompletionBoundMS) * time.Millisecond},
+		seenSlots:  make(map[uint32]bool, plan.Rounds)}, nil
 }
 
 func bindAdmission(plan Plan) error {
@@ -442,8 +515,23 @@ func Run(plan Plan) (RunResult, error) {
 	if err != nil {
 		return RunResult{}, err
 	}
-	gatewayServer := httptest.NewServer(http.HandlerFunc(engine.gatewayHandler))
+	processClock := time.Now()
+	monotonicNS := func() int64 { return time.Since(processClock).Nanoseconds() }
+	setupEvents := []PublicSetupEvent{{Stage: "GATEWAY_INSTANTIATED", MonotonicNS: monotonicNS()}}
+	gatewayMux := http.NewServeMux()
+	gatewayMux.HandleFunc("/preconnect", func(writer http.ResponseWriter, request *http.Request) {
+		if request.Method != http.MethodGet || request.ProtoMajor != 2 {
+			http.Error(writer, "canonical Gateway HTTP/2 preconnect rejected", http.StatusHTTPVersionNotSupported)
+			return
+		}
+		writer.WriteHeader(http.StatusNoContent)
+	})
+	gatewayMux.HandleFunc("/", engine.gatewayHandler)
+	gatewayServer := httptest.NewUnstartedServer(gatewayMux)
+	gatewayServer.EnableHTTP2 = true
+	gatewayServer.StartTLS()
 	defer gatewayServer.Close()
+	setupEvents = append(setupEvents, PublicSetupEvent{Stage: "GATEWAY_READY", MonotonicNS: monotonicNS(), HTTPVersion: "HTTP/2.0"})
 	relayProfile := v8.ScheduleProfile{ProfileID: plan.ProfileID, Sessions: 1, SlotsPerSession: plan.Rounds,
 		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes,
 		RequestIntervalNS:         int64(time.Duration(plan.RoundPeriodMS) * time.Millisecond),
@@ -453,21 +541,42 @@ func Run(plan Plan) (RunResult, error) {
 		ProviderCompletionBoundNS: int64(time.Duration(plan.ProviderCompletionBoundMS) * time.Millisecond),
 		RelayEndpoint:             "LOCAL_RELAY", GatewayEndpoint: "LOCAL_GATEWAY", ConnectionPolicy: "KEEP_ALIVE",
 		OHTTPSuite: v8.OHTTPPublicSuite{KeyID: 7, KEMID: 0x0020, KDFID: 0x0001, AEADID: 0x0001, ConfigEpoch: 3}}
-	relay, err := v8.NewFreshRequestRelay(relayProfile, gatewayServer.URL)
+	relay, err := v8.NewFreshRequestRelayWithClient(relayProfile, gatewayServer.URL, gatewayServer.Client(), true)
 	if err != nil {
 		return RunResult{}, err
 	}
-	relayServer := httptest.NewServer(relay)
+	relayServer := httptest.NewUnstartedServer(relay)
+	relayServer.EnableHTTP2 = true
+	relayServer.StartTLS()
 	defer relayServer.Close()
-
+	setupEvents = append(setupEvents, PublicSetupEvent{Stage: "RELAY_READY", MonotonicNS: monotonicNS(), HTTPVersion: "HTTP/2.0"})
 	clientHTTP := relayServer.Client()
-	results := make([]ClientResult, 0, len(plan.Actions))
-	start := time.Now()
+	preconnectRequest, _ := http.NewRequest(http.MethodGet, relayServer.URL+"/preconnect", nil)
+	preconnectResponse, err := clientHTTP.Do(preconnectRequest)
+	if err != nil {
+		return RunResult{}, fmt.Errorf("PUBLIC_PRECONNECT failed: %w", err)
+	}
+	preconnectProto := preconnectResponse.Proto
+	preconnectResponse.Body.Close()
+	complete, clientH2, gatewayH2 := relay.PreconnectStatus()
+	if preconnectResponse.StatusCode != http.StatusNoContent || preconnectProto != "HTTP/2.0" || !complete || !clientH2 || !gatewayH2 {
+		return RunResult{}, errors.New("PUBLIC_PRECONNECT did not establish both HTTP/2 hops")
+	}
+	setupEvents = append(setupEvents,
+		PublicSetupEvent{Stage: "CLIENT_RELAY_HTTP2_ESTABLISHED", MonotonicNS: monotonicNS(), HTTPVersion: preconnectProto},
+		PublicSetupEvent{Stage: "RELAY_GATEWAY_HTTP2_ESTABLISHED", MonotonicNS: monotonicNS(), HTTPVersion: "HTTP/2.0"},
+		PublicSetupEvent{Stage: "PUBLIC_SETUP_COMPLETE", MonotonicNS: monotonicNS(), HTTPVersion: "HTTP/2.0"},
+	)
+
+	type preparedRequest struct {
+		slot    v7ohttp.SlotID
+		wire    []byte
+		context v7ohttp.ClientContext
+	}
+	prepared := make([]preparedRequest, 0, plan.Rounds)
+	// Private action material is first inspected only after public transport
+	// setup completed.  Every slot is fully encapsulated before T0.
 	for round := 1; round <= plan.Rounds; round++ {
-		deadline := start.Add(time.Duration(round-1) * time.Duration(plan.RoundPeriodMS) * time.Millisecond)
-		if remaining := time.Until(deadline); remaining > 0 {
-			time.Sleep(remaining)
-		}
 		message := v7ohttp.PrivateActionMessage{ProtocolVersion: 1, Kind: v7ohttp.ActionNoop, OperationID: []byte(fmt.Sprintf("noop-%06d", round))}
 		if round <= len(plan.Actions) {
 			action := plan.Actions[round-1]
@@ -477,11 +586,11 @@ func Run(plan Plan) (RunResult, error) {
 				RouteHandle: []byte(action.RouteHandle), OperationID: []byte(action.OperationID),
 				ProtectedArgs: action.ProtectedArguments, Authorization: authorization}
 		}
-		bhttpRequest, err := engine.codec.EncodeKnownLengthRequest(v7ohttp.InnerSemanticTarget, message, plan.RequestBHTTPBytes)
+		slot := v7ohttp.SlotID{Session: 1, Slot: uint32(round)}
+		bhttpRequest, err := engine.codec.EncodeKnownLengthRequestBound(v7ohttp.InnerSemanticTarget, message, plan.RequestBHTTPBytes, slot)
 		if err != nil {
 			return RunResult{}, err
 		}
-		slot := v7ohttp.SlotID{Session: 1, Slot: uint32(round)}
 		wire, responseContext, err := engine.client.EncapsulateRequest(slot, bhttpRequest)
 		if err != nil || len(wire) != plan.RequestFinalBytes {
 			return RunResult{}, errors.New("canonical request final size mismatch")
@@ -489,40 +598,138 @@ func Run(plan Plan) (RunResult, error) {
 		if responseContext.Slot() != slot {
 			return RunResult{}, errors.New("OHTTP client context slot mismatch")
 		}
-		request, _ := http.NewRequest(http.MethodPost, relayServer.URL, bytes.NewReader(wire))
-		request.Header.Set("Content-Type", v8.OHTTPRequestContentType)
-		request.Header.Set("X-Public-Round", fmt.Sprintf("%d", round))
-		request.ContentLength = int64(len(wire))
-		response, err := clientHTTP.Do(request)
-		if err != nil {
-			return RunResult{}, err
+		prepared = append(prepared, preparedRequest{slot: slot, wire: wire, context: responseContext})
+	}
+	setupEvents = append(setupEvents, PublicSetupEvent{Stage: "PREPARED_REQUEST_TABLE_COMPLETE", MonotonicNS: monotonicNS()})
+
+	type slotResponse struct {
+		slot        v7ohttp.SlotID
+		wire        []byte
+		httpVersion string
+		err         error
+	}
+	responses := make(chan slotResponse, plan.Rounds)
+	period := time.Duration(plan.RoundPeriodMS) * time.Millisecond
+	tolerance := time.Duration(plan.SchedulerToleranceMS) * time.Millisecond
+	if tolerance <= 0 {
+		// Backward-compatible development default. V11.1 profiles set this
+		// explicitly before stress testing.
+		tolerance = 2 * period
+	}
+	t0 := time.Now().Add(period)
+	setupEvents = append(setupEvents, PublicSetupEvent{Stage: "T0_ASSIGNED", MonotonicNS: monotonicNS()})
+	launches := make([]SlotLaunch, 0, plan.Rounds)
+	submitted := 0
+	for index, item := range prepared {
+		deadline := t0.Add(time.Duration(index) * period)
+		if remaining := time.Until(deadline); remaining > 0 {
+			time.Sleep(remaining)
 		}
-		responseWire, readErr := io.ReadAll(response.Body)
-		response.Body.Close()
-		if readErr != nil || len(responseWire) != plan.ResponseFinalBytes {
-			return RunResult{}, errors.New("canonical response final size mismatch")
+		if plan.FaultSchedulerStallSlot == index+1 && plan.FaultSchedulerStallMS > 0 {
+			time.Sleep(time.Duration(plan.FaultSchedulerStallMS) * time.Millisecond)
 		}
-		opened, err := engine.client.DecapsulateResponse(responseContext, responseWire)
-		if err != nil {
-			return RunResult{}, err
+		submitTime := time.Now()
+		slip := submitTime.Sub(deadline)
+		launch := SlotLaunch{Session: 1, Slot: uint32(index + 1), DeadlineNS: deadline.Sub(processClock).Nanoseconds(),
+			LaunchSlipNS: slip.Nanoseconds()}
+		// A slot that has crossed the next public deadline is expired even if a
+		// looser diagnostic tolerance was configured.  Submitting it would
+		// recreate the historical catch-up burst.
+		if slip >= period || slip > tolerance {
+			launch.ScheduleMiss = true
+			launches = append(launches, launch)
+			continue
 		}
-		decoded, err := engine.codec.DecodeKnownLengthResponse(opened)
+		launch.SubmitNS = submitTime.Sub(processClock).Nanoseconds()
+		launches = append(launches, launch)
+		submitted++
+		go func(value preparedRequest) {
+			request, requestErr := http.NewRequest(http.MethodPost, relayServer.URL, bytes.NewReader(value.wire))
+			if requestErr != nil {
+				responses <- slotResponse{slot: value.slot, err: requestErr}
+				return
+			}
+			request.Header.Set("Content-Type", v8.OHTTPRequestContentType)
+			request.Header.Set("X-AgentTool-Public-Session", "1")
+			request.Header.Set("X-AgentTool-Public-Slot", strconv.FormatUint(uint64(value.slot.Slot), 10))
+			request.ContentLength = int64(len(value.wire))
+			response, requestErr := clientHTTP.Do(request)
+			if requestErr != nil {
+				responses <- slotResponse{slot: value.slot, err: requestErr}
+				return
+			}
+			responseWire, readErr := io.ReadAll(io.LimitReader(response.Body, int64(plan.ResponseFinalBytes+1)))
+			response.Body.Close()
+			if readErr != nil {
+				responses <- slotResponse{slot: value.slot, err: readErr}
+				return
+			}
+			if response.StatusCode != http.StatusOK || len(responseWire) != plan.ResponseFinalBytes {
+				responses <- slotResponse{slot: value.slot, err: errors.New("canonical response final size mismatch")}
+				return
+			}
+			responses <- slotResponse{slot: value.slot, wire: responseWire, httpVersion: response.Proto}
+		}(item)
+	}
+
+	results := make([]ClientResult, 0, len(plan.Actions))
+	transportFailure := false
+	for count := 0; count < submitted; count++ {
+		response := <-responses
+		if response.err != nil || response.httpVersion != "HTTP/2.0" {
+			transportFailure = true
+			continue
+		}
+		context := prepared[int(response.slot.Slot)-1].context
+		opened, err := engine.client.DecapsulateResponse(context, response.wire)
 		if err != nil {
-			return RunResult{}, err
+			transportFailure = true
+			continue
+		}
+		decoded, innerSlot, err := engine.codec.DecodeKnownLengthResponseBound(opened)
+		if err != nil || innerSlot != response.slot {
+			transportFailure = true
+			continue
 		}
 		if decoded.Status != v9ohttp.StatusWait {
-			results = append(results, ClientResult{OperationID: decoded.OperationID, Status: decoded.Status, Payload: decoded.Payload, Round: round})
-			engine.record(PrivateEvent{OperationID: decoded.OperationID, Stage: "CLIENT_BHTTP_DECODED", Status: fmt.Sprintf("%d", decoded.Status), Round: round})
+			results = append(results, ClientResult{OperationID: decoded.OperationID, Status: decoded.Status,
+				Payload: decoded.Payload, Round: int(response.slot.Slot)})
+			engine.record(PrivateEvent{OperationID: decoded.OperationID, Stage: "CLIENT_BHTTP_DECODED",
+				Status: fmt.Sprintf("%d", decoded.Status), Round: int(response.slot.Slot)})
 		}
 	}
 	engine.workers.Wait()
-	deadline := time.Now().Add(2 * time.Second)
-	for engine.ready.Pending() > 0 && time.Now().Before(deadline) {
-		time.Sleep(time.Millisecond)
+	sort.Slice(results, func(i, j int) bool { return results[i].Round < results[j].Round })
+	delivered := make(map[string]bool, len(results))
+	for _, result := range results {
+		delivered[result.OperationID] = true
+	}
+	pending := make([]string, 0)
+	for _, action := range plan.Actions {
+		if !delivered[action.OperationID] {
+			pending = append(pending, action.OperationID)
+		}
+	}
+	scheduleMisses := 0
+	for _, launch := range launches {
+		if launch.ScheduleMiss {
+			scheduleMisses++
+		}
+	}
+	status := "COMPLETE"
+	if scheduleMisses > 0 {
+		status = "SESSION_SCHEDULE_FAILURE"
+	} else if transportFailure || submitted != plan.Rounds {
+		status = "SESSION_TRANSPORT_FAILURE"
+	} else if len(pending) > 0 {
+		status = "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
 	}
 	return RunResult{ProfileID: plan.ProfileID, Rounds: plan.Rounds, Admitted: len(plan.Actions),
 		ProviderInvocations: engine.providerCalls.Load(), DummyProviderOperations: 0,
 		Results: results, PrivateEvents: append([]PrivateEvent(nil), engine.events...),
 		PublicRelayEvents: relay.Events(), AfterCutoffOperations: []string{"wait", "PreparedSlot.Send", "one fixed-size writer.Write", "byte-count validation", "non-blocking in-memory acknowledgement"},
-		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes}, nil
+		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes,
+		SessionStatus: status, PublicSetupEvents: setupEvents, SlotLaunches: launches,
+		ScheduleMisses: scheduleMisses, PendingOperationIDs: pending, SilentCommittedLosses: 0,
+		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0"}, nil
 }

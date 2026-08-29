@@ -1,0 +1,14 @@
+{
+  "classification": "PRESERVED_NONDECISIVE_DEVELOPMENT_FAILURE",
+  "platform": "Windows workstation",
+  "candidate_stage": "before final expired-slot hardening and Linux rebuild",
+  "targeted_test_file": "tests/test_v11_full_scope.py",
+  "passed": 32,
+  "failed": 1,
+  "failed_test": "test_tool_multi_action_capacity[50]",
+  "error": "RuntimeError: canonical Go runner failed: canonical response final size mismatch",
+  "raw_pytest_directory": ".pytest-v111-20260829b/test_tool_multi_action_capacit2",
+  "decisive_scheduler_host": false,
+  "relabelled_as_pass": false,
+  "holdout_case": false
+}

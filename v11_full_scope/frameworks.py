@@ -461,7 +461,12 @@ def run_framework_case(case: V11ActionCase, implementation: V11Implementation) -
     return asyncio.run(coroutine)
 
 
-def canonical_implementation(root: Path) -> V11Implementation:
+def canonical_implementation(
+    root: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
+) -> V11Implementation:
     from .canonical import canonical_external_outcome
 
     counter = 0
@@ -472,7 +477,9 @@ def canonical_implementation(root: Path) -> V11Implementation:
             raise AssertionError("framework changed structured arguments before mediation")
         output = root / f"call-{counter:03d}"
         counter += 1
-        value = canonical_external_outcome(case, output)
+        value = canonical_external_outcome(
+            case, output, runner_binary=runner_binary, plan_overrides=plan_overrides
+        )
         return V11ActionOutcome(
             value.result,
             value.effect_count,

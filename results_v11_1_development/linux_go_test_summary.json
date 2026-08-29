@@ -1,0 +1,18 @@
+{
+  "platform": "qualified Linux development host",
+  "binary_sha256": "17e1a497788ac6261348a2dff728b83188661ad9b4117bd5272b1d9575a22c56",
+  "packages": {
+    "common-action-gateway-v2/canonicalv9": "PASS (0.337s)",
+    "common-action-gateway-v2/v8": "PASS (0.009s)",
+    "common-action-gateway-v2/v9ohttp": "PASS (0.031s)"
+  },
+  "includes": [
+    "HTTP2 delayed-stream independence",
+    "scheduler-stall explicit failure",
+    "expired-slot no-catch-up under loose tolerance",
+    "duplicate/invalid slot rejection",
+    "authenticated inner/outer slot binding",
+    "wrong-slot OHTTP context rejection"
+  ],
+  "holdout_cases_executed": 0
+}

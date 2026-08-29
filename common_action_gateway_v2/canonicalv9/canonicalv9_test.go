@@ -1,6 +1,7 @@
 package canonicalv9
 
 import (
+	"bytes"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -11,6 +12,35 @@ import (
 	gatewayv2 "common-action-gateway-v2"
 	"common-action-gateway-v2/v7ohttp"
 )
+
+func liveSchedulerPlan(t *testing.T, rounds int, providerDelay time.Duration) (Plan, *int) {
+	t.Helper()
+	providerCalls := new(int)
+	provider := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		(*providerCalls)++
+		if providerDelay > 0 {
+			time.Sleep(providerDelay)
+		}
+		body := []byte(`{"status":"OK","payload":"c2NoZWR1bGVk"}`)
+		writer.Header().Set("Content-Type", "application/json")
+		writer.WriteHeader(http.StatusOK)
+		_, _ = writer.Write(body)
+	}))
+	t.Cleanup(provider.Close)
+	plan := diagnosticPlan()
+	plan.ProfileID = "V11_1-SCHEDULER-DEVELOPMENT"
+	plan.StateDirectory = filepath.Join(t.TempDir(), "state")
+	plan.Rounds = rounds
+	plan.AdmissionRounds = 1
+	plan.RoundPeriodMS = 5
+	plan.SchedulerToleranceMS = 3
+	plan.Routes = []RouteSpec{{RouteHandle: "private-route", ActionKind: "REAL_TOOL",
+		EffectSemantics: "READ_ONLY", Endpoint: provider.URL, PolicyID: "private-policy"}}
+	plan.Actions = []ActionSpec{{OperationID: "scheduled-operation", ActionKind: "REAL_TOOL",
+		RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy",
+		ProtectedArguments: bytes.Repeat([]byte("a"), 16)}}
+	return plan, providerCalls
+}
 
 func diagnosticPlan() Plan {
 	return Plan{ProfileID: "V9-CANONICAL-TEST", StateDirectory: "unused", Rounds: 13,
@@ -115,5 +145,105 @@ func TestCanonicalAcceptUsesLiveRecoveryDecisionOnRestart(t *testing.T) {
 				t.Fatalf("recovered result mismatch: result=%+v err=%v", selected, err)
 			}
 		})
+	}
+}
+
+func TestV11_1HTTP2SlotsAreIndependentAndPreconnected(t *testing.T) {
+	plan, providerCalls := liveSchedulerPlan(t, 20, 2*time.Millisecond)
+	plan.FaultDelayResponseSlot = 1
+	plan.FaultDelayResponseMS = 50
+	result, err := Run(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.SessionStatus != "COMPLETE" || result.ScheduleMisses != 0 || len(result.PublicRelayEvents) != plan.Rounds {
+		t.Fatalf("independent scheduler failed: status=%s misses=%d events=%d", result.SessionStatus, result.ScheduleMisses, len(result.PublicRelayEvents))
+	}
+	if *providerCalls != 1 || len(result.Results) != 1 || result.Results[0].OperationID != "scheduled-operation" {
+		t.Fatalf("functional result mismatch: calls=%d results=%+v", *providerCalls, result.Results)
+	}
+	if result.ClientRelayHTTPVersion != "HTTP/2.0" || result.RelayGatewayHTTPVersion != "HTTP/2.0" {
+		t.Fatalf("canonical mode did not negotiate HTTP/2: %+v", result)
+	}
+	for _, event := range result.PublicRelayEvents {
+		if event.ClientHTTPVersion != "HTTP/2.0" || event.GatewayHTTPVersion != "HTTP/2.0" {
+			t.Fatalf("slot %d was not multiplexed over HTTP/2: %+v", event.Round, event)
+		}
+	}
+	if len(result.PublicSetupEvents) < 6 || result.PublicSetupEvents[len(result.PublicSetupEvents)-1].Stage != "T0_ASSIGNED" {
+		t.Fatalf("public setup/T0 evidence incomplete: %+v", result.PublicSetupEvents)
+	}
+	// The 50 ms response delay is ten public periods. Later requests must still
+	// be submitted near their independent deadlines.
+	if result.SlotLaunches[9].ScheduleMiss || result.SlotLaunches[9].LaunchSlipNS > int64(3*time.Millisecond) {
+		t.Fatalf("delayed stream blocked later slot: %+v", result.SlotLaunches[9])
+	}
+}
+
+func TestV11_1SchedulerStallFailsWithoutCatchUpBurst(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 25
+	result, err := Run(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.SessionStatus != "SESSION_SCHEDULE_FAILURE" || result.ScheduleMisses == 0 {
+		t.Fatalf("scheduler stall did not fail closed: status=%s misses=%d", result.SessionStatus, result.ScheduleMisses)
+	}
+	if len(result.PublicRelayEvents) >= plan.Rounds {
+		t.Fatal("missed slots were silently emitted as a catch-up burst")
+	}
+	for _, launch := range result.SlotLaunches {
+		if launch.ScheduleMiss && launch.SubmitNS == 0 {
+			continue
+		}
+		if launch.ScheduleMiss {
+			t.Fatalf("missed slot unexpectedly submitted: %+v", launch)
+		}
+	}
+}
+
+func TestV11_1ExpiredSlotCannotBeSubmittedUnderLooseTolerance(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.SchedulerToleranceMS = 100
+	plan.FaultSchedulerStallSlot = 2
+	plan.FaultSchedulerStallMS = plan.RoundPeriodMS + 2
+	result, err := Run(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.SessionStatus != "SESSION_SCHEDULE_FAILURE" || result.ScheduleMisses == 0 {
+		t.Fatalf("expired slot was not failed closed: status=%s misses=%d", result.SessionStatus, result.ScheduleMisses)
+	}
+	for _, launch := range result.SlotLaunches {
+		if launch.ScheduleMiss && launch.SubmitNS != 0 {
+			t.Fatalf("expired slot %d was transmitted as catch-up", launch.Slot)
+		}
+	}
+}
+
+func TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots(t *testing.T) {
+	plan := diagnosticPlan()
+	plan.StateDirectory = filepath.Join(t.TempDir(), "state")
+	engine, err := newEngine(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	request, _ := http.NewRequest(http.MethodPost, "https://local.invalid", nil)
+	request.Header.Set("X-AgentTool-Public-Session", "1")
+	for _, invalid := range []string{"0", "14"} {
+		request.Header.Set("X-AgentTool-Public-Slot", invalid)
+		if _, err := engine.claimPublicSlot(request); err == nil {
+			t.Fatalf("accepted invalid slot %s", invalid)
+		}
+	}
+	request.Header.Set("X-AgentTool-Public-Slot", "2")
+	if _, err := engine.claimPublicSlot(request); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := engine.claimPublicSlot(request); err == nil {
+		t.Fatal("duplicate public slot accepted")
 	}
 }

@@ -69,6 +69,24 @@ def descriptor(agent_id: int) -> AgentDescriptorV7:
         semantics = {11: EffectSemantics.READ_ONLY, 12: EffectSemantics.IDEMPOTENT_EFFECT, 13: EffectSemantics.NON_IDEMPOTENT_EFFECT}[agent_id]
         service = AgentServiceRouteDescriptor(f"route-agent-{agent_id}", semantics, f"policy-agent-{agent_id}", PlacementClass.EXTERNAL)
         return AgentDescriptorV7(agent_id, (f"agent.service.{agent_id}",), "publisher-local", 1, PlacementClass.EXTERNAL, service, (), "LOCAL_TEST", EPOCH)
+    if agent_id == 21:
+        service = AgentServiceRouteDescriptor(
+            "route-agent-21",
+            EffectSemantics.READ_ONLY,
+            "policy-agent-21",
+            PlacementClass.EXTERNAL,
+        )
+        return AgentDescriptorV7(
+            agent_id,
+            ("agent.workflow.21",),
+            "publisher-local",
+            1,
+            PlacementClass.EXTERNAL,
+            service,
+            ("tool.read", "tool.idem", "tool.nonidem", "external.local"),
+            "LOCAL_TEST",
+            EPOCH,
+        )
     return AgentDescriptorV7(agent_id, (f"agent.filler.{agent_id}",), "publisher-local", 1, PlacementClass.EXTERNAL,
                              None, (f"tool.filler.{agent_id}",), "LOCAL_TEST", EPOCH)
 
@@ -110,6 +128,7 @@ class Providers:
         "route-agent-11": ("AGENT_READ", 0, 3, False),
         "route-agent-12": ("AGENT_IDEM", 1, 7, True),
         "route-agent-13": ("AGENT_NONIDEM", 3, 12, True),
+        "route-agent-21": ("AGENT_WORKFLOW", 0, 3, False),
     }
 
     def __init__(self, output: Path):
@@ -155,7 +174,7 @@ def route_specs(providers: Providers) -> list[dict[str, object]]:
         values.append({"route_handle": value.route_handle, "action_kind": go_kind(value.action_kind),
                        "effect_semantics": value.effect_semantics.value, "endpoint": providers.endpoints[value.route_handle],
                        "policy_id": value.policy_id})
-    for agent_id in (3, 11, 12, 13):
+    for agent_id in (3, 11, 12, 13, 21):
         service = descriptor(agent_id).agent_service
         assert service is not None
         values.append({"route_handle": service.route_handle, "action_kind": "REAL_AGENT_SERVICE",

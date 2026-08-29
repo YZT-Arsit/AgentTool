@@ -1,0 +1,15 @@
+{
+  "profile_selected_before_private_execution": true,
+  "public_profile_id": "V10-STRICT-H50-C1",
+  "public_maximum_real_operations": 50,
+  "private_actual_real_actions": 1,
+  "public_scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+  "public_scheduled_lifetime_ns": 555000000,
+  "wrapper_invocation_start_monotonic_ns": 361891790250800,
+  "wrapper_invocation_end_monotonic_ns": 361894169975600,
+  "wrapper_elapsed_ns": 2379724800,
+  "connection_close_slip_status": "NOT_CAPTURED_BY_FROZEN_V9_RUNNER",
+  "timing_privacy": "OPEN / NOT_TESTED",
+  "canonical_runner_binary": "D:\\projects\\mediation_trace_validation\\common_action_gateway_v2\\bin\\canonical-v11_1-runner.exe",
+  "session_status": "COMPLETE"
+}

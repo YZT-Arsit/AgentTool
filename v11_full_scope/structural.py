@@ -57,11 +57,24 @@ def run_development_pair(
     arm_a: V11ActionCase,
     arm_b: V11ActionCase,
     output: Path,
+    *,
+    runner_binary: Path | None = None,
+    plan_overrides: Mapping[str, object] | None = None,
 ) -> DevelopmentStructuralPairResult:
     if output.exists():
         raise FileExistsError("refusing to overwrite V11 structural development evidence")
-    a = canonical_external_outcome(arm_a, output / "A")
-    b = canonical_external_outcome(arm_b, output / "B")
+    a = canonical_external_outcome(
+        arm_a,
+        output / "A",
+        runner_binary=runner_binary,
+        plan_overrides=plan_overrides,
+    )
+    b = canonical_external_outcome(
+        arm_b,
+        output / "B",
+        runner_binary=runner_binary,
+        plan_overrides=plan_overrides,
+    )
     a_struct, a_size = public_projections(a)
     b_struct, b_size = public_projections(b)
     functional = bool(a.result) and bool(b.result)

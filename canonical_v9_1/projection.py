@@ -53,6 +53,7 @@ def strict_structural_projection(
         "gateway_endpoint_class": [str(event["gateway_endpoint"]) for event in events],
         "session_count": profile.session_count,
         "session_association": [1] * len(events),
+        "public_session_ids": [int(event.get("session", 1)) for event in events],
         "connection_count": {
             "relay_client": client_count,
             "relay_gateway": gateway_count,
@@ -64,6 +65,8 @@ def strict_structural_projection(
         "connection_policy": profile.connection_policy,
         "round_count": len(events),
         "round_order": [int(event["round"]) for event in events],
+        "client_http_versions": [str(event.get("client_http_version", "")) for event in events],
+        "gateway_http_versions": [str(event.get("gateway_http_version", "")) for event in events],
         "request_length_sequence": [int(event["request_length"]) for event in events],
         "response_length_sequence": [int(event["response_length"]) for event in events],
         "scheduled_public_lifetime_ns": profile.scheduled_lifetime_ns,

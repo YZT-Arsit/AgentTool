@@ -1,0 +1,11 @@
+{
+  "periods_ms": [
+    5,
+    10,
+    20
+  ],
+  "request_bytes": 1079,
+  "response_bytes": 800,
+  "rounds": 111,
+  "selection_rule": "smallest candidate with 20/20 COMPLETE sessions and zero schedule misses"
+}

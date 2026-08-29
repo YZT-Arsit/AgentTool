@@ -26,6 +26,8 @@ const (
 
 type privateActionWire struct {
 	ProtocolVersion uint16             `json:"protocol_version"`
+	PublicSession   uint32             `json:"public_session,omitempty"`
+	PublicSlot      uint32             `json:"public_slot,omitempty"`
 	Kind            v7ohttp.ActionKind `json:"action_kind"`
 	RouteHandle     []byte             `json:"route_handle,omitempty"`
 	OperationID     []byte             `json:"operation_id"`
@@ -36,6 +38,8 @@ type privateActionWire struct {
 
 type privateResponseWire struct {
 	ProtocolVersion uint16 `json:"protocol_version"`
+	PublicSession   uint32 `json:"public_session,omitempty"`
+	PublicSlot      uint32 `json:"public_slot,omitempty"`
 	Status          byte   `json:"result_kind"`
 	OperationID     string `json:"operation_id,omitempty"`
 	ProtectedResult []byte `json:"protected_result,omitempty"`
@@ -78,7 +82,14 @@ func validateCanonicalPadding(encoded, canonical []byte) error {
 	return nil
 }
 
-func (RFC9292Codec) EncodeKnownLengthRequest(target string, action v7ohttp.PrivateActionMessage, paddedBytes int) ([]byte, error) {
+func (codec RFC9292Codec) EncodeKnownLengthRequest(target string, action v7ohttp.PrivateActionMessage, paddedBytes int) ([]byte, error) {
+	return codec.EncodeKnownLengthRequestBound(target, action, paddedBytes, v7ohttp.SlotID{})
+}
+
+// EncodeKnownLengthRequestBound authenticates the public session/slot inside
+// the OHTTP-protected BHTTP application message.  The binding is public, not
+// secret; its purpose is to prevent outer-header substitution.
+func (RFC9292Codec) EncodeKnownLengthRequestBound(target string, action v7ohttp.PrivateActionMessage, paddedBytes int, slot v7ohttp.SlotID) ([]byte, error) {
 	if target != v7ohttp.InnerSemanticTarget {
 		return nil, errors.New("unexpected private semantic target")
 	}
@@ -86,7 +97,7 @@ func (RFC9292Codec) EncodeKnownLengthRequest(target string, action v7ohttp.Priva
 		return nil, err
 	}
 	body, err := json.Marshal(privateActionWire{
-		ProtocolVersion: action.ProtocolVersion, Kind: action.Kind,
+		ProtocolVersion: action.ProtocolVersion, PublicSession: slot.Session, PublicSlot: slot.Slot, Kind: action.Kind,
 		RouteHandle: action.RouteHandle, OperationID: action.OperationID,
 		ProtectedArgs: action.ProtectedArgs, Continuation: action.Continuation,
 		Authorization: action.Authorization,
@@ -106,33 +117,38 @@ func (RFC9292Codec) EncodeKnownLengthRequest(target string, action v7ohttp.Priva
 	return padKnownLength(canonical, paddedBytes)
 }
 
-func (RFC9292Codec) DecodeKnownLengthRequest(encoded []byte) (string, v7ohttp.PrivateActionMessage, error) {
+func (codec RFC9292Codec) DecodeKnownLengthRequest(encoded []byte) (string, v7ohttp.PrivateActionMessage, error) {
+	target, action, _, err := codec.DecodeKnownLengthRequestBound(encoded)
+	return target, action, err
+}
+
+func (RFC9292Codec) DecodeKnownLengthRequestBound(encoded []byte) (string, v7ohttp.PrivateActionMessage, v7ohttp.SlotID, error) {
 	if len(encoded) == 0 || encoded[0] != 0 {
-		return "", v7ohttp.PrivateActionMessage{}, errors.New("not an RFC9292 known-length request")
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, errors.New("not an RFC9292 known-length request")
 	}
 	request, err := ohttp.UnmarshalBinaryRequest(encoded)
 	if err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
 	if request.Method != http.MethodPost || request.URL.String() != v7ohttp.InnerSemanticTarget ||
 		request.Header.Get("Content-Type") != privateContentType {
-		return "", v7ohttp.PrivateActionMessage{}, errors.New("invalid private BHTTP request metadata")
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, errors.New("invalid private BHTTP request metadata")
 	}
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
 	request.Body = io.NopCloser(bytes.NewReader(body))
 	canonical, err := (*ohttp.BinaryRequest)(request).Marshal()
 	if err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
 	if err := validateCanonicalPadding(encoded, canonical); err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
 	var wire privateActionWire
 	if err := strictJSON(body, &wire); err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
 	action := v7ohttp.PrivateActionMessage{
 		ProtocolVersion: wire.ProtocolVersion, Kind: wire.Kind,
@@ -141,9 +157,9 @@ func (RFC9292Codec) DecodeKnownLengthRequest(encoded []byte) (string, v7ohttp.Pr
 		Authorization: wire.Authorization,
 	}
 	if err := action.Validate(); err != nil {
-		return "", v7ohttp.PrivateActionMessage{}, err
+		return "", v7ohttp.PrivateActionMessage{}, v7ohttp.SlotID{}, err
 	}
-	return request.URL.String(), action, nil
+	return request.URL.String(), action, v7ohttp.SlotID{Session: wire.PublicSession, Slot: wire.PublicSlot}, nil
 }
 
 func validResponseStatus(status byte) bool {
@@ -159,12 +175,16 @@ func headerValueCaseInsensitive(header http.Header, name string) string {
 	return ""
 }
 
-func (RFC9292Codec) EncodeKnownLengthResponse(result v7ohttp.PrivateResponse, paddedBytes int) ([]byte, error) {
+func (codec RFC9292Codec) EncodeKnownLengthResponse(result v7ohttp.PrivateResponse, paddedBytes int) ([]byte, error) {
+	return codec.EncodeKnownLengthResponseBound(result, paddedBytes, v7ohttp.SlotID{})
+}
+
+func (RFC9292Codec) EncodeKnownLengthResponseBound(result v7ohttp.PrivateResponse, paddedBytes int, slot v7ohttp.SlotID) ([]byte, error) {
 	if !validResponseStatus(result.Status) {
 		return nil, errors.New("invalid private response kind")
 	}
 	body, err := json.Marshal(privateResponseWire{
-		ProtocolVersion: 1, Status: result.Status,
+		ProtocolVersion: 1, PublicSession: slot.Session, PublicSlot: slot.Slot, Status: result.Status,
 		OperationID: result.OperationID, ProtectedResult: result.Payload,
 	})
 	if err != nil {
@@ -182,38 +202,43 @@ func (RFC9292Codec) EncodeKnownLengthResponse(result v7ohttp.PrivateResponse, pa
 	return padKnownLength(canonical, paddedBytes)
 }
 
-func (RFC9292Codec) DecodeKnownLengthResponse(encoded []byte) (v7ohttp.PrivateResponse, error) {
+func (codec RFC9292Codec) DecodeKnownLengthResponse(encoded []byte) (v7ohttp.PrivateResponse, error) {
+	result, _, err := codec.DecodeKnownLengthResponseBound(encoded)
+	return result, err
+}
+
+func (RFC9292Codec) DecodeKnownLengthResponseBound(encoded []byte) (v7ohttp.PrivateResponse, v7ohttp.SlotID, error) {
 	if len(encoded) == 0 || encoded[0] != 1 {
-		return v7ohttp.PrivateResponse{}, errors.New("not an RFC9292 known-length response")
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, errors.New("not an RFC9292 known-length response")
 	}
 	response, err := ohttp.UnmarshalBinaryResponse(encoded)
 	if err != nil {
-		return v7ohttp.PrivateResponse{}, err
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, err
 	}
 	// This pinned ohttp-go revision preserves RFC field names in lower case when
 	// decoding BHTTP. net/http.Header.Get canonicalizes its lookup key and is
 	// therefore not reliable for that map representation.
 	if response.StatusCode != http.StatusOK || !strings.EqualFold(headerValueCaseInsensitive(response.Header, "Content-Type"), privateContentType) {
-		return v7ohttp.PrivateResponse{}, errors.New("invalid private BHTTP response metadata")
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, errors.New("invalid private BHTTP response metadata")
 	}
 	body, err := io.ReadAll(response.Body)
 	if err != nil {
-		return v7ohttp.PrivateResponse{}, err
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, err
 	}
 	response.Body = io.NopCloser(bytes.NewReader(body))
 	canonical, err := (*ohttp.BinaryResponse)(response).Marshal()
 	if err != nil {
-		return v7ohttp.PrivateResponse{}, err
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, err
 	}
 	if err := validateCanonicalPadding(encoded, canonical); err != nil {
-		return v7ohttp.PrivateResponse{}, err
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, err
 	}
 	var wire privateResponseWire
 	if err := strictJSON(body, &wire); err != nil {
-		return v7ohttp.PrivateResponse{}, err
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, err
 	}
 	if wire.ProtocolVersion != 1 || !validResponseStatus(wire.Status) {
-		return v7ohttp.PrivateResponse{}, errors.New("invalid private response schema")
+		return v7ohttp.PrivateResponse{}, v7ohttp.SlotID{}, errors.New("invalid private response schema")
 	}
-	return v7ohttp.PrivateResponse{Status: wire.Status, OperationID: wire.OperationID, Payload: wire.ProtectedResult}, nil
+	return v7ohttp.PrivateResponse{Status: wire.Status, OperationID: wire.OperationID, Payload: wire.ProtectedResult}, v7ohttp.SlotID{Session: wire.PublicSession, Slot: wire.PublicSlot}, nil
 }
