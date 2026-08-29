@@ -1,0 +1,5 @@
+# V11.3 online public-profile model
+
+The public profile separates `M` (maximum admitted real operations), `A` (admission rounds), `Delta` (round period), `B_provider` (declared provider completion bound), `C=ceil(B_provider/Delta)`, result-drain capacity `D`, terminal rounds `T`, and total rounds `R`. The conservative one-result-per-response-slot rule is `R = A + C + M + T`. V11.3 fixes `M=50`, `Delta=5 ms`, `B_provider=50 ms`, `C=10`, `D=M=50`, and `T=1`; only `A` varies across the predeclared development candidates.
+
+`maximum_real_operations=50` means at most 50 real actions can be admitted while the fixed public admission horizon is open. It does not mean admission is limited to the first 50 rounds. Empty admission and drain-only request slots carry encrypted NOOP; every response slot carries one fixed-size result or WAIT frame. A fixed profile does not promise progress for an arbitrarily slow framework. An action ready after the public admission horizon is rejected privately without extending slots, lifetime, connections, or sessions.

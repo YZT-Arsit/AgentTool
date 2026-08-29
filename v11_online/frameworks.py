@@ -56,24 +56,33 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
     from agents.testing import ModelStep, ScriptedModel
 
     outcomes: list[V11ActionOutcome] = []
+    outcomes_by_operation: dict[str, V11ActionOutcome] = {}
     boundary: list[tuple[str, Any]] = []
 
     def ordinary_tool(case: V11ActionCase):
         def invoke(value_case: V11ActionCase, values: dict[str, Any]) -> V11ActionOutcome:
             outcome = implementation(value_case, values)
             outcomes.append(outcome)
+            outcomes_by_operation[value_case.operation_id] = outcome
             return outcome
 
         function = _make_structured_function(case, invoke, boundary)
         return function_tool(function, name_override=case.logical_action_name)
 
     final_text = f"framework-completed:{workflow}"
-    if workflow in {"TOOL_TO_TOOL", "DYNAMIC_SEQUENCE", "INTERNAL_TO_EXTERNAL", "EXTERNAL_TO_INTERNAL"}:
+    if workflow in {"TOOL_TO_TOOL", "DYNAMIC_SEQUENCE", "INTERNAL_TO_EXTERNAL", "EXTERNAL_TO_INTERNAL", "PARALLEL_ACTIONS", "MIXED_PARALLEL"}:
         tools = [ordinary_tool(case) for case in cases]
-        model = ScriptedModel(
-            [[_openai_call(case.logical_action_name, case.arguments, case.operation_id)] for case in cases]
-            + [[_openai_final(final_text)]]
-        )
+        if workflow == "PARALLEL_ACTIONS":
+            call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases]]
+        elif workflow == "MIXED_PARALLEL":
+            midpoint = max(1, len(cases) // 2)
+            call_steps = [
+                [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[:midpoint]],
+                [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[midpoint:]],
+            ]
+        else:
+            call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id)] for case in cases]
+        model = ScriptedModel(call_steps + [[_openai_final(final_text)]])
         agent = Agent(name="V11_2OnlineToolSequence", instructions="Execute actions causally.", model=model, tools=tools)
         result = await Runner.run(
             agent,
@@ -90,6 +99,7 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         async def child_response(_call):
             outcome = implementation(agent_case, agent_case.argument_schema.validate_values(agent_case.arguments))
             outcomes.append(outcome)
+            outcomes_by_operation[agent_case.operation_id] = outcome
             return [_openai_final(outcome.result)]
 
         child_model = ScriptedModel([ModelStep.respond(child_response)])
@@ -114,6 +124,7 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         async def target_response(_call):
             outcome = implementation(handoff_case, handoff_case.argument_schema.validate_values(handoff_case.arguments))
             outcomes.append(outcome)
+            outcomes_by_operation[handoff_case.operation_id] = outcome
             return [_openai_final(outcome.result)]
 
         target_model = ScriptedModel([ModelStep.respond(target_response)])
@@ -140,12 +151,13 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
     else:
         raise ValueError(f"unsupported OpenAI online workflow: {workflow}")
 
-    if len(outcomes) != len(cases):
+    if len(outcomes_by_operation) != len(cases):
         raise AssertionError(f"OpenAI online workflow produced {len(outcomes)} outcomes for {len(cases)} actions")
+    ordered_outcomes = [outcomes_by_operation[case.operation_id] for case in cases]
     return {
         "framework": "OpenAI Agents SDK",
         "workflow": workflow,
-        "projection": trajectory_projection(cases, outcomes, final_output),
+        "projection": trajectory_projection(cases, ordered_outcomes, final_output),
         "tool_output_count": len(tool_outputs),
         "native_framework_api": "agents.Runner.run",
     }

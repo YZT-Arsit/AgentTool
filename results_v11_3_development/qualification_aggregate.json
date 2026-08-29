@@ -1,0 +1,305 @@
+{
+  "candidate_results": [
+    {
+      "admission_horizon_ms": 375,
+      "admission_rounds": 75,
+      "passed_sessions": 100,
+      "scheduled_lifetime_ms": 680,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 282,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 477,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 323,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 136,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 500,
+      "admission_rounds": 100,
+      "passed_sessions": 102,
+      "scheduled_lifetime_ms": 805,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 2,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 81,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 346,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 319,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 161,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 750,
+      "admission_rounds": 150,
+      "passed_sessions": 149,
+      "scheduled_lifetime_ms": 1055,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 99,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 135,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 295,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 211,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 1000,
+      "admission_rounds": 200,
+      "passed_sessions": 180,
+      "scheduled_lifetime_ms": 1305,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 30,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 267,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 261,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 1500,
+      "admission_rounds": 300,
+      "passed_sessions": 180,
+      "scheduled_lifetime_ms": 1805,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 30,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 100,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 361,
+      "total_sessions": 200
+    }
+  ],
+  "dummy_heavy_ops": 0,
+  "failure_errors": {
+    "AssertionError: OpenAI online workflow produced 1 outcomes for 10 actions": 1,
+    "AssertionError: OpenAI online workflow produced 10 outcomes for 50 actions": 1,
+    "AssertionError: OpenAI online workflow produced 11 outcomes for 20 actions": 1,
+    "AssertionError: OpenAI online workflow produced 12 outcomes for 30 actions": 1,
+    "AssertionError: OpenAI online workflow produced 13 outcomes for 50 actions": 1,
+    "AssertionError: OpenAI online workflow produced 14 outcomes for 20 actions": 29,
+    "AssertionError: OpenAI online workflow produced 14 outcomes for 30 actions": 25,
+    "AssertionError: OpenAI online workflow produced 14 outcomes for 50 actions": 14,
+    "AssertionError: OpenAI online workflow produced 15 outcomes for 20 actions": 22,
+    "AssertionError: OpenAI online workflow produced 15 outcomes for 30 actions": 4,
+    "AssertionError: OpenAI online workflow produced 15 outcomes for 50 actions": 4,
+    "AssertionError: OpenAI online workflow produced 17 outcomes for 20 actions": 1,
+    "AssertionError: OpenAI online workflow produced 17 outcomes for 50 actions": 3,
+    "AssertionError: OpenAI online workflow produced 18 outcomes for 20 actions": 22,
+    "AssertionError: OpenAI online workflow produced 18 outcomes for 30 actions": 19,
+    "AssertionError: OpenAI online workflow produced 18 outcomes for 50 actions": 14,
+    "AssertionError: OpenAI online workflow produced 19 outcomes for 20 actions": 23,
+    "AssertionError: OpenAI online workflow produced 19 outcomes for 30 actions": 8,
+    "AssertionError: OpenAI online workflow produced 19 outcomes for 50 actions": 2,
+    "AssertionError: OpenAI online workflow produced 20 outcomes for 30 actions": 3,
+    "AssertionError: OpenAI online workflow produced 23 outcomes for 30 actions": 3,
+    "AssertionError: OpenAI online workflow produced 24 outcomes for 50 actions": 2,
+    "AssertionError: OpenAI online workflow produced 25 outcomes for 30 actions": 8,
+    "AssertionError: OpenAI online workflow produced 25 outcomes for 50 actions": 13,
+    "AssertionError: OpenAI online workflow produced 26 outcomes for 30 actions": 17,
+    "AssertionError: OpenAI online workflow produced 26 outcomes for 50 actions": 4,
+    "AssertionError: OpenAI online workflow produced 27 outcomes for 30 actions": 2,
+    "AssertionError: OpenAI online workflow produced 27 outcomes for 50 actions": 1,
+    "AssertionError: OpenAI online workflow produced 31 outcomes for 50 actions": 2,
+    "AssertionError: OpenAI online workflow produced 32 outcomes for 50 actions": 13,
+    "AssertionError: OpenAI online workflow produced 33 outcomes for 50 actions": 5,
+    "AssertionError: OpenAI online workflow produced 39 outcomes for 50 actions": 1,
+    "AssertionError: OpenAI online workflow produced 43 outcomes for 50 actions": 1,
+    "AssertionError: OpenAI online workflow produced 44 outcomes for 50 actions": 6,
+    "AssertionError: OpenAI online workflow produced 45 outcomes for 50 actions": 9,
+    "AssertionError: OpenAI online workflow produced 46 outcomes for 50 actions": 3,
+    "AssertionError: OpenAI online workflow produced 7 outcomes for 50 actions": 1
+  },
+  "profile_overflow": 0,
+  "public_sessions": 1000,
+  "resolved_not_admitted": 2625,
+  "schedule_misses": 3,
+  "sessions": 1000,
+  "silent_committed_result_loss": 0
+}

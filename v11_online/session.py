@@ -39,6 +39,7 @@ from v11_full_scope.canonical import (
     internal_descriptor,
 )
 from v11_full_scope.models import V11ActionCase, V11ActionOutcome
+from v11_3.profile import OnlinePublicProfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +63,7 @@ class OnlineSimplePIRResolver:
         self.query_count = 0
         self.query_hashes: list[str] = []
         self.prebuilt_bridge_used = False
+        self.query_lock = threading.Lock()
 
     def __enter__(self) -> "OnlineSimplePIRResolver":
         self.output.mkdir(parents=True, exist_ok=False)
@@ -138,14 +140,15 @@ class OnlineSimplePIRResolver:
         self.stderr_lines.extend(self.process.stderr)
 
     def query(self, operation_id: str, index: int) -> AgentDescriptorV7:
-        if self.process is None or self.codec is None or self.process.stdin is None or self.process.stdout is None:
-            raise RuntimeError("online SimplePIR is not active")
-        self.process.stdin.write(json.dumps({"operation_id": operation_id, "index": index}) + "\n")
-        self.process.stdin.flush()
-        line = self.process.stdout.readline()
-        if not line:
-            raise RuntimeError("online SimplePIR closed during query")
-        response = json.loads(line)
+        with self.query_lock:
+            if self.process is None or self.codec is None or self.process.stdin is None or self.process.stdout is None:
+                raise RuntimeError("online SimplePIR is not active")
+            self.process.stdin.write(json.dumps({"operation_id": operation_id, "index": index}) + "\n")
+            self.process.stdin.flush()
+            line = self.process.stdout.readline()
+            if not line:
+                raise RuntimeError("online SimplePIR closed during query")
+            response = json.loads(line)
         if response.get("type") != "PIR_RESULT" or response.get("operation_id") != operation_id or not response.get("correct"):
             raise RuntimeError(f"online SimplePIR query failed: {response}")
         row = base64.b64decode(response["record_base64"])
@@ -195,6 +198,9 @@ class CanonicalOnlineSession:
         *,
         runner_binary: Path | None = None,
         plan_overrides: Mapping[str, object] | None = None,
+        public_profile: OnlinePublicProfile | None = None,
+        pir_delay_ms: int = 0,
+        decision_delay_ms: int = 0,
     ):
         self.output = output
         self.cases = {case.operation_id: case for case in cases}
@@ -202,6 +208,11 @@ class CanonicalOnlineSession:
             raise ValueError("online trajectory operation IDs must be unique")
         self.runner_binary = runner_binary or DEFAULT_RUNNER
         self.plan_overrides = dict(plan_overrides or {})
+        self.public_profile = public_profile
+        self.pir_delay_ms = pir_delay_ms
+        self.decision_delay_ms = decision_delay_ms
+        if pir_delay_ms < 0 or decision_delay_ms < 0:
+            raise ValueError("private development delays cannot be negative")
         self.providers: V11EvidenceProviders | None = None
         self.pir: OnlineSimplePIRResolver | None = None
         self.process: subprocess.Popen[str] | None = None
@@ -214,6 +225,7 @@ class CanonicalOnlineSession:
         self.session_failure: str | None = None
         self.trace: dict[str, Any] | None = None
         self._ledger: DeliveryLedger | None = None
+        self._delivery_lock = threading.Lock()
         self._started_ns = 0
 
     def __enter__(self) -> "CanonicalOnlineSession":
@@ -224,11 +236,11 @@ class CanonicalOnlineSession:
             raise FileNotFoundError(f"V11.2 online runner is missing: {self.runner_binary}")
         self.providers = V11EvidenceProviders(self.cases).__enter__()
         self.pir = OnlineSimplePIRResolver(self.output / "pir").__enter__()
-        profile = load_v10_profile()
+        profile = self.public_profile or load_v10_profile()
         plan = profile.go_plan_fields()
         plan.update(
             {
-                "profile_id": "V11_2-DEV-H50-ONLINE-P5",
+                "profile_id": profile.profile_id if self.public_profile is not None else "V11_2-DEV-H50-ONLINE-P5",
                 "state_directory": str(self.output / "gateway_state"),
                 "routes": route_specs(self.providers),
                 "actions": [],
@@ -315,9 +327,15 @@ class CanonicalOnlineSession:
             raise AssertionError("framework changed online structured arguments")
         if case.operation_id not in self.cases:
             raise ValueError("case was not registered with the online development session")
+        if self.decision_delay_ms and any(
+            item["stage"] == "FRAMEWORK_RESULT_DELIVERED" for item in self.lifecycle
+        ):
+            time.sleep(self.decision_delay_ms / 1000)
         self._record("ACTION_INTENT_SUBMITTED", case.operation_id)
         assert self.pir is not None
         agent_id, agent_capability, capability, kind = _canonical_ids(case)
+        if self.pir_delay_ms:
+            time.sleep(self.pir_delay_ms / 1000)
         selected = self.pir.query(case.operation_id, agent_id)
         self._record("DYNAMIC_PIR_DESCRIPTOR_RECOVERED", case.operation_id, agent_id=agent_id)
         protected = ProtectedActionIntent(
@@ -334,10 +352,11 @@ class CanonicalOnlineSession:
             self._record("ACTION_ADMITTED", case.operation_id, placement="TRUSTED_MODULE_LOCAL")
             outcome = LocalTrustedBackendV11().execute_internal(case)
             assert self._ledger is not None
-            self._ledger.record_received(case.operation_id)
-            self._ledger.mark_decapsulated(case.operation_id)
-            sink: list[str] = []
-            self._ledger.deliver(case.operation_id, lambda: sink.append(outcome.result))
+            with self._delivery_lock:
+                self._ledger.record_received(case.operation_id)
+                self._ledger.mark_decapsulated(case.operation_id)
+                sink: list[str] = []
+                self._ledger.deliver(case.operation_id, lambda: sink.append(outcome.result))
             self._record("FRAMEWORK_RESULT_DELIVERED", case.operation_id, placement="TRUSTED_MODULE_LOCAL")
             return outcome
 
@@ -372,10 +391,11 @@ class CanonicalOnlineSession:
         else:
             semantics, result = f"{case.effect_semantics}:ERROR", ""
         assert self._ledger is not None and self.providers is not None
-        self._ledger.record_received(case.operation_id)
-        self._ledger.mark_decapsulated(case.operation_id)
-        sink: list[str] = []
-        self._ledger.deliver(case.operation_id, lambda: sink.append(result))
+        with self._delivery_lock:
+            self._ledger.record_received(case.operation_id)
+            self._ledger.mark_decapsulated(case.operation_id)
+            sink: list[str] = []
+            self._ledger.deliver(case.operation_id, lambda: sink.append(result))
         observation = self.providers.observed(case.operation_id)
         self._record("FRAMEWORK_RESULT_DELIVERED", case.operation_id, result_round=int(event.get("round", 0)))
         return V11ActionOutcome(
@@ -439,7 +459,7 @@ class CanonicalOnlineSession:
     def public_projections(self) -> tuple[dict[str, Any], dict[str, Any]]:
         if self.trace is None:
             raise RuntimeError("online session has not completed")
-        profile = load_v10_profile()
+        profile = self.public_profile or load_v10_profile()
         return strict_structural_projection(self.trace, profile), strict_size_projection(self.trace, profile)
 
     def causal_proof(self) -> dict[str, Any]:

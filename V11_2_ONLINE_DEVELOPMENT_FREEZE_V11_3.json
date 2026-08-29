@@ -1,0 +1,40 @@
+{
+  "accepted": {
+    "campaign_d": "380/380",
+    "causal_workflows": "6/6",
+    "dummy_heavy_operations": 0,
+    "dynamic_simplepir": "PASS",
+    "live_result_delivery": "PASS",
+    "online_agent_as_tool": "PASS",
+    "online_dynamic_action_ingress": "PASS",
+    "online_openai_handoff": "PASS",
+    "profile_overflow": 0,
+    "scheduler_miss": 0,
+    "semantic_regression": "8/8",
+    "session_count_audit": "404/404 exactly one session",
+    "silent_committed_result_loss": 0,
+    "single_public_session": "PASS",
+    "structural_size_regression": "5/5"
+  },
+  "immutable_evidence": {
+    "FINAL_ONLINE_TRAJECTORY_AUDIT_V11_2.md": "ae08aee2a391b2ab07fe3960b2e13e35bde541bf5b2e67428fbb28bd654f0d98",
+    "ONLINE_CAUSAL_WORKFLOWS_V11_2.csv": "1536d2233e38c43b371cfbebdf8be4b411b112b19720b3a4c43ca8b4c8d92ad7",
+    "ONLINE_DEVELOPMENT_FAILURES_V11_2.md": "6190da718540b71e88fac73ff826655a0e438404e685e245c09c29b34eab72ca",
+    "ONLINE_RELIABILITY_STRESS_V11_2.md": "8be0c632a6c7f58dea0101ab03f42910b911c40aab04b6e1eb0dc9a93f09c35f",
+    "ONLINE_SEMANTIC_DEVELOPMENT_V11_2.csv": "7977921dd6de2c796468493b950443dd0e23e59195e3695dbf2f820ff364f274",
+    "ONLINE_STRUCTURAL_REGRESSION_V11_2.csv": "e1d7e16aff87fe7838b52bfe08447cd0a4304460150f92f4bbef3da027203d64",
+    "results_v11_2_development/linux_campaign_d/online_reliability_stress.csv": "a89265894e6958624ff298de31f7f0f00fa1050b29c9b45f5ddbf405b79b3ef6",
+    "results_v11_2_development/linux_campaign_d/raw_evidence_sha256.txt": "cd75d72cfa19bf9cbe38eac1c9101caa42f13a29ec3f497427cdace047571331",
+    "results_v11_2_development/linux_campaign_d/same_config_prefreeze_smoke_failure.json": "79dddaaa5db1d045274453f1a4cdfdf1000cdbeb12207ce2d43a1a9077200286"
+  },
+  "old_v10_selected_outcomes_observed": false,
+  "preserved_negative": {
+    "failure_point": "tenth causal action after H50 admission closure",
+    "profile_admission_closed": 3,
+    "relabelled": false,
+    "same_configuration_prefreeze": "17/20"
+  },
+  "schema": "AgentTool.V11_2OnlineDevelopmentFreezeForV11_3/1",
+  "source_commit": "7748d81c10299b1f2101b41abf8cc31592f30ae2",
+  "v10_1_selected_outcomes_observed": false
+}

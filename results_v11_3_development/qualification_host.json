@@ -1,0 +1,20 @@
+{
+  "cpu": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      52 bits physical, 57 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             208\nOn-line CPU(s) list:                0-207\nVendor ID:                          GenuineIntel\nModel name:                         Intel(R) Xeon(R) Platinum 8470Q\nCPU family:                         6\nModel:                              143\nThread(s) per core:                 2\nCore(s) per socket:                 52\nSocket(s):                          2\nStepping:                           8\nFrequency boost:                    enabled\nCPU max MHz:                        2101.0000\nCPU min MHz:                        800.0000\nBogoMIPS:                           4200.00\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 invpcid_single intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nVirtualization:                     VT-x\nL1d cache:                          4.9 MiB (104 instances)\nL1i cache:                          3.3 MiB (104 instances)\nL2 cache:                           208 MiB (104 instances)\nL3 cache:                           210 MiB (2 instances)",
+  "go": "go version go1.26.5 linux/amd64",
+  "kernel": "Linux autodl-container-65f24387ad-872166f7 5.15.0-94-generic #104-Ubuntu SMP Tue Jan 9 15:25:40 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+  "load": "2.99 4.88 5.45 4/8173 477101",
+  "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+  "python": "Python 3.12.3",
+  "qualification_source_sha256": {
+    "common_action_gateway_v2/canonicalv9/online.go": "8ce64d03975149bc44d809b5ce6d4084e0ae9deed27532c751fdac7a71d22812",
+    "scripts/run_v11_3_profile_closure.py": "2c044c1ef8b5d8ad2f618bc50d2f213987124fba54c740a5c93934b88774c8f3",
+    "v11_3/experiment.py": "5ebdb73db86e26e452064bf3173028bdcd09f6c1f5e960dc5b6c8bc8e2d914b6",
+    "v11_3/profile.py": "1f5d180a23d8f2f7de9db39ba94d4dce84fcb5a748ee96aabe2b3445e37f3897",
+    "v11_online/frameworks.py": "5339f3821a8508edb1097f43ba901f269632ff63ae764e45fe77ab86da3d1465",
+    "v11_online/session.py": "d66265a65462d3e00449163166f102eceb5ebc9bc68f29ced31622e020796a67"
+  },
+  "runner": "common_action_gateway_v2/bin/canonical-v11_3-runner",
+  "runner_sha256": "14eb0488813425a99e49ac74741777fb5022a04ada6577a5b00bb5d2ef119877",
+  "source_commit": "7748d81c10299b1f2101b41abf8cc31592f30ae2",
+  "source_dirty": "TRANSFERRED_V11_3_SOURCE_OVERLAY"
+}

@@ -1,0 +1,40 @@
+{
+  "decisions": [
+    {
+      "admission_rounds": 75,
+      "passed": false,
+      "passed_sessions": 100,
+      "selected": false,
+      "sessions": 200
+    },
+    {
+      "admission_rounds": 100,
+      "passed": false,
+      "passed_sessions": 102,
+      "selected": false,
+      "sessions": 200
+    },
+    {
+      "admission_rounds": 150,
+      "passed": false,
+      "passed_sessions": 149,
+      "selected": false,
+      "sessions": 200
+    },
+    {
+      "admission_rounds": 200,
+      "passed": false,
+      "passed_sessions": 180,
+      "selected": false,
+      "sessions": 200
+    },
+    {
+      "admission_rounds": 300,
+      "passed": false,
+      "passed_sessions": 180,
+      "selected": false,
+      "sessions": 200
+    }
+  ],
+  "selected": null
+}

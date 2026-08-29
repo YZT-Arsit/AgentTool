@@ -1,0 +1,14 @@
+{
+  "schema": "AgentTool.V11_3QualificationEvidenceTransfer/1",
+  "full_raw_evidence_location": "authorized Linux qualification host: /root/autodl-tmp/mediation_trace_validation/results_v11_3_development",
+  "full_raw_file_count": 15758,
+  "full_raw_sha256_manifest": "raw_evidence_sha256.txt",
+  "local_filtered_archive": "tmp/v11_3_qualification_evidence_no_databases.tgz",
+  "local_filtered_archive_sha256": "2b59ff0ca04c3fb73786cdbb48883a14a718029d7108010cdada48acaf907ba9",
+  "excluded_from_filtered_archive": [
+    "encrypted_agent_descriptor_v7_rows.bin",
+    "gateway_state/**"
+  ],
+  "exclusion_reason": "bulky deterministic per-session registry and recoverable gateway state; hashes remain in the full manifest and originals remain on the authorized host",
+  "selected_holdout_evidence": false
+}

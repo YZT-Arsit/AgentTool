@@ -1,0 +1,270 @@
+{
+  "candidate_results": [
+    {
+      "admission_horizon_ms": 375,
+      "admission_rounds": 75,
+      "passed_sessions": 100,
+      "scheduled_lifetime_ms": 680,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 282,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 477,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 323,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 136,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 500,
+      "admission_rounds": 100,
+      "passed_sessions": 102,
+      "scheduled_lifetime_ms": 805,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 2,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 81,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 346,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 319,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 161,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 750,
+      "admission_rounds": 150,
+      "passed_sessions": 149,
+      "scheduled_lifetime_ms": 1055,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 99,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 135,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 295,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 211,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 1000,
+      "admission_rounds": 200,
+      "passed_sessions": 180,
+      "scheduled_lifetime_ms": 1305,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 30,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 267,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 261,
+      "total_sessions": 200
+    },
+    {
+      "admission_horizon_ms": 1500,
+      "admission_rounds": 300,
+      "passed_sessions": 180,
+      "scheduled_lifetime_ms": 1805,
+      "selected": false,
+      "strata": {
+        "10": {
+          "dummy_heavy_ops": 0,
+          "passed": 100,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 100
+        },
+        "20": {
+          "dummy_heavy_ops": 0,
+          "passed": 50,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 50
+        },
+        "30": {
+          "dummy_heavy_ops": 0,
+          "passed": 30,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 0,
+          "round_count_mismatches": 0,
+          "schedule_misses": 0,
+          "silent_committed_result_loss": 0,
+          "total": 30
+        },
+        "50": {
+          "dummy_heavy_ops": 0,
+          "passed": 0,
+          "profile_overflow": 0,
+          "resolved_not_admitted": 100,
+          "round_count_mismatches": 1,
+          "schedule_misses": 1,
+          "silent_committed_result_loss": 0,
+          "total": 20
+        }
+      },
+      "total_rounds": 361,
+      "total_sessions": 200
+    }
+  ],
+  "candidates_changed_after_results": false,
+  "holdout_selected_or_executed": false,
+  "larger_unplanned_candidate_added": false,
+  "online_admission_profile": "FAIL",
+  "post_selection_gates_run": false,
+  "schema": "AgentTool.V11_3OnlineProfileSelectionResult/1",
+  "seed_search": false,
+  "selected_profile": null,
+  "selection_rule": "smallest predeclared admission horizon passing every required session",
+  "selection_rule_applied": true,
+  "status": "NO_PREDECLARED_CANDIDATE_PASSED"
+}
