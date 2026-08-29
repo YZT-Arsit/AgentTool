@@ -1,0 +1,23 @@
+{
+  "canonical_linux_binary_sha256": "14eb0488813425a99e49ac74741777fb5022a04ada6577a5b00bb5d2ef119877",
+  "go_version": "go version go1.26.5 linux/amd64",
+  "hardware_tee": "NOT_TESTED",
+  "linux_cpu": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      52 bits physical, 57 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             208\nOn-line CPU(s) list:                0-207\nVendor ID:                          GenuineIntel\nModel name:                         Intel(R) Xeon(R) Platinum 8470Q\nCPU family:                         6\nModel:                              143\nThread(s) per core:                 2\nCore(s) per socket:                 52\nSocket(s):                          2\nStepping:                           8\nFrequency boost:                    enabled\nCPU max MHz:                        2101.0000\nCPU min MHz:                        800.0000\nBogoMIPS:                           4200.00\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 invpcid_single intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nVirtualization:                     VT-x\nL1d cache:                          4.9 MiB (104 instances)\nL1i cache:                          3.3 MiB (104 instances)\nL2 cache:                           208 MiB (104 instances)\nL3 cache:                           210 MiB (2 instances)",
+  "linux_kernel": "Linux autodl-container-65f24387ad-872166f7 5.15.0-94-generic #104-Ubuntu SMP Tue Jan 9 15:25:40 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+  "linux_os_platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+  "microsoft_agent_framework_revision": "af461de51da16f5cb800ff7febc0f8f96355607a",
+  "ohttp_go_expected_revision": "776f22a178b8332f4acacc2919176df8e61046cc",
+  "ohttp_go_provenance_class": "SOURCE_TREE_HASH_ONLY",
+  "ohttp_go_source_tree_sha256": "264221b5daef50305a9a17a55f37d2ad547ef624331c12a0d716fce9a2629045",
+  "openai_agents_sdk_revision": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+  "packet_level_timing": "OPEN",
+  "python_version": "Python 3.12.3",
+  "schema": "AgentTool.V11A.ExecutionEnvironmentFreeze/1",
+  "selected_holdout_cases_executed": 0,
+  "simplepir_bridge_binary_sha256": "NOT_PRESENT_ON_WINDOWS; canonical V11.4 Linux runner hash is frozen separately",
+  "simplepir_bridge_source_sha256": "978abd59e95cdd35826a909c1a781af9887de3700a3eda659072bdb1e884eaac",
+  "simplepir_revision": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "simplepir_revision_verified_from_local_git": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "timing_privacy": "OPEN / NOT TESTED",
+  "v11_4_base_commit": "f6860baaab8927f9b0b66153959b55d8ca072c23"
+}

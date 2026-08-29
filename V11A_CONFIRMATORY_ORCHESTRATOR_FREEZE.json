@@ -1,0 +1,29 @@
+{
+  "aggregate_sha256": "ac5c8ae8f9a94d4461dac3dd1959d11999bbe63142c292641b7ca5ee22fd31f7",
+  "automatic_retries": false,
+  "case_id_specific_branches": false,
+  "execution_guard": "V11A development fixtures require DEV- prefix; selected cases require explicit V11B permit",
+  "schema": "AgentTool.V11A.ConfirmatoryOrchestratorFreeze/1",
+  "selected_holdout_cases_executed": 0,
+  "source_hashes": {
+    "scripts/freeze_v11a_confirmatory.py": "83fb57952089688f4394ad09ba186b33fb06ad86c3941da7559c9257b9c2a2a8",
+    "tests/test_v11a_confirmatory.py": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+    "v11a_confirmatory/__init__.py": "03804c3c4c8f198b26fec0cf6d3dcc58e330dfbea8ecc7fdc8f751d1a01b3d87",
+    "v11a_confirmatory/orchestrator.py": "1162758f921de661438c294016ab3a371704e425cbd230bcd9d228c1093eb2d3",
+    "v11a_confirmatory/projection.py": "2b58a71bea4b6b76559c512189e91458d302fd324547d903bc048d237e63bf61"
+  },
+  "status": "FROZEN_BEFORE_CANDIDATE_UNIVERSE_CONSTRUCTION",
+  "test_command": [
+    "C:\\Python313\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_v11a_confirmatory.py",
+    "-v"
+  ],
+  "test_output_sha256": "e2077c444b915f8c4c94ca293467c722304dafcfb7ce53bf3fb3f5225c07efbe",
+  "test_result": "4/4 PASS"
+}

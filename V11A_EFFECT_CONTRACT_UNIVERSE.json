@@ -1,0 +1,547 @@
+{
+  "candidate_count": 18,
+  "candidates": [
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-success-openai"
+      },
+      "candidate_id": "S4U-OPENAI-READ_ONLY-SUCCESS",
+      "capability": "tool.read",
+      "case_id": "S4U-OPENAI-READ_ONLY-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_read_only_success",
+      "operation_id": "opS4UOPENAIREADONLYSUCCESS",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-error-openai"
+      },
+      "candidate_id": "S4U-OPENAI-READ_ONLY-ERROR",
+      "capability": "tool.read",
+      "case_id": "S4U-OPENAI-READ_ONLY-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_read_only_error",
+      "operation_id": "opS4UOPENAIREADONLYERROR",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-bounded_timeout-openai"
+      },
+      "candidate_id": "S4U-OPENAI-READ_ONLY-BOUNDED_TIMEOUT",
+      "capability": "tool.read",
+      "case_id": "S4U-OPENAI-READ_ONLY-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_read_only_bounded_timeout",
+      "operation_id": "opS4UOPENAIREADONLYBOUNDEDTIMEOU",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-success-openai"
+      },
+      "candidate_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-SUCCESS",
+      "capability": "tool.idem",
+      "case_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_idempotent_effect_success",
+      "operation_id": "opS4UOPENAIIDEMPOTENTEFFECTSUCCE",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-error-openai"
+      },
+      "candidate_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-ERROR",
+      "capability": "tool.idem",
+      "case_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_idempotent_effect_error",
+      "operation_id": "opS4UOPENAIIDEMPOTENTEFFECTERROR",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-bounded_timeout-openai"
+      },
+      "candidate_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "capability": "tool.idem",
+      "case_id": "S4U-OPENAI-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_idempotent_effect_bounded_timeout",
+      "operation_id": "opS4UOPENAIIDEMPOTENTEFFECTBOUND",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-success-openai"
+      },
+      "candidate_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-SUCCESS",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_non_idempotent_effect_success",
+      "operation_id": "opS4UOPENAINONIDEMPOTENTEFFECTSU",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-error-openai"
+      },
+      "candidate_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-ERROR",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_non_idempotent_effect_error",
+      "operation_id": "opS4UOPENAINONIDEMPOTENTEFFECTER",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-bounded_timeout-openai"
+      },
+      "candidate_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-OPENAI-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "logical_action_name": "v11a_s4u_openai_non_idempotent_effect_bounded_timeout",
+      "operation_id": "opS4UOPENAINONIDEMPOTENTEFFECTBO",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-success-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-READ_ONLY-SUCCESS",
+      "capability": "tool.read",
+      "case_id": "S4U-MICROSOFT-READ_ONLY-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_read_only_success",
+      "operation_id": "opS4UMICROSOFTREADONLYSUCCESS",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-error-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-READ_ONLY-ERROR",
+      "capability": "tool.read",
+      "case_id": "S4U-MICROSOFT-READ_ONLY-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_read_only_error",
+      "operation_id": "opS4UMICROSOFTREADONLYERROR",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-read_only-bounded_timeout-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-READ_ONLY-BOUNDED_TIMEOUT",
+      "capability": "tool.read",
+      "case_id": "S4U-MICROSOFT-READ_ONLY-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_read_only_bounded_timeout",
+      "operation_id": "opS4UMICROSOFTREADONLYBOUNDEDTIM",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-success-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-SUCCESS",
+      "capability": "tool.idem",
+      "case_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_idempotent_effect_success",
+      "operation_id": "opS4UMICROSOFTIDEMPOTENTEFFECTSU",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-error-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-ERROR",
+      "capability": "tool.idem",
+      "case_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_idempotent_effect_error",
+      "operation_id": "opS4UMICROSOFTIDEMPOTENTEFFECTER",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-idempotent_effect-bounded_timeout-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "capability": "tool.idem",
+      "case_id": "S4U-MICROSOFT-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_idempotent_effect_bounded_timeout",
+      "operation_id": "opS4UMICROSOFTIDEMPOTENTEFFECTBO",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-success-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-SUCCESS",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-SUCCESS",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_non_idempotent_effect_success",
+      "operation_id": "opS4UMICROSOFTNONIDEMPOTENTEFFEC",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-error-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-ERROR",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-ERROR",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_non_idempotent_effect_error",
+      "operation_id": "opS4UMICROSOFTNONIDEMPOTENTEFFEC",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR"
+    },
+    {
+      "action_family": "TOOL",
+      "agent_capability": "agent.tools",
+      "agent_id": 10,
+      "agent_service_subtype": null,
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "city": "fresh-effect-non_idempotent_effect-bounded_timeout-microsoft"
+      },
+      "candidate_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "capability": "tool.nonidem",
+      "case_id": "S4U-MICROSOFT-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "logical_action_name": "v11a_s4u_microsoft_non_idempotent_effect_bounded_timeout",
+      "operation_id": "opS4UMICROSOFTNONIDEMPOTENTEFFEC",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT"
+    }
+  ],
+  "schema": "AgentTool.V11A.S4CandidateUniverse/1",
+  "seed_independent_membership": true
+}

@@ -1,0 +1,1639 @@
+{
+  "candidate_count": 54,
+  "candidates": [
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "comment",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "comment": "v11a-0102fc4c-0"
+      },
+      "candidate_id": "S1U-091291370102fc4c",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add_comment",
+      "source_line": 432,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "x": 7
+      },
+      "candidate_id": "S1U-0c468e4d635b78ca",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "multiply_by_two",
+      "source_line": 83,
+      "source_path": "examples/basic/agent_lifecycle_example.py",
+      "source_sha256": "02fbe5380aecb3ad1295f8fda54f3d76731e82fa11a529cee491c67cd435d57a"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "a",
+            "primitive_type": "int"
+          },
+          {
+            "name": "b",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "a": 7,
+        "b": 8
+      },
+      "candidate_id": "S1U-132286bae2ea1f28",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add",
+      "source_line": 15,
+      "source_path": "examples/mcp/streamablehttp_example/server.py",
+      "source_sha256": "6b890151e410ca4e30d639927210696173885518c38e22ed0e2d66c12b45148a"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "x": 7
+      },
+      "candidate_id": "S1U-1e170bb8530de0ce",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "returns_dict",
+      "source_line": 1532,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-1f5efff80786854c",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "invalid_args_test",
+      "source_line": 816,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-22b675715cecbe0d",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "test_tool",
+      "source_line": 54,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "x": 7
+      },
+      "candidate_id": "S1U-25e8a3b34958c5f3",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "slow",
+      "source_line": 1415,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "value",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "value": "v11a-2e26e16e-0"
+      },
+      "candidate_id": "S1U-285589852e26e16e",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "argument_scoped_tool",
+      "source_line": 1291,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-304f0e88f5f63292",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "async_telemetry_test",
+      "source_line": 781,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "discount_percent",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "discount_percent": 7
+      },
+      "candidate_id": "S1U-3212f47e12602cb7",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_discount_approval_rule",
+      "source_line": 78,
+      "source_path": "examples/sandbox/sandbox_agents_as_tools.py",
+      "source_sha256": "7faa28a264219ab9694252e88c10f4bb0c2dc9842ebbae13e3e045ce59735c28"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-07fab27e-0"
+      },
+      "candidate_id": "S1U-369fbc0107fab27e",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 24,
+      "source_path": "examples/agent_patterns/human_in_the_loop.py",
+      "source_sha256": "6ac502e8895fd581a529a8a588bbab8bef84cac79477b920968360a817323ae6"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "discount_percent",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "discount_percent": 7
+      },
+      "candidate_id": "S1U-37ac992c2f9ce098",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_discount_approval_path",
+      "source_line": 37,
+      "source_path": "examples/sandbox/sandbox_agent_with_tools.py",
+      "source_sha256": "be5f06e91c52bb628be8e6f45cb438776535af8d464b65f7e07e3170cc8aa679"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "title",
+            "primitive_type": "str"
+          },
+          {
+            "name": "body",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR_STR"
+      },
+      "arguments": {
+        "body": "v11a-3805fb90-1",
+        "title": "v11a-3805fb90-0"
+      },
+      "candidate_id": "S1U-3803fd343805fb90",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "publish_announcement",
+      "source_line": 33,
+      "source_path": "examples/agent_patterns/human_in_the_loop_custom_rejection.py",
+      "source_sha256": "5f656cc6c7ecc319fba20e0d6f5cfdb617b97ed680429166112795599a6123ca"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-39ceea6b658dec1a",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add",
+      "source_line": 258,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-3ed7bacd4c95b5f0",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "telemetry_test_tool",
+      "source_line": 666,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-4436564d5d8727e7",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "simple_function",
+      "source_line": 70,
+      "source_path": "python/packages/core/tests/core/test_types.py",
+      "source_sha256": "6468ef1614c7dd4ae2e3a74a8982558f430f7de10c241709f6bfd03a31811a96"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "a",
+            "primitive_type": "int"
+          },
+          {
+            "name": "b",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "a": 7,
+        "b": 8
+      },
+      "candidate_id": "S1U-44f2d48bb8b59db8",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add",
+      "source_line": 14,
+      "source_path": "examples/mcp/streamablehttp_custom_client_example/server.py",
+      "source_sha256": "99ffc8e36edb28f00bbaf853e6c7bd5365a222b12cfa748715312af74fca212c"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-55437d3b-0"
+      },
+      "candidate_id": "S1U-4686a99755437d3b",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_current_weather",
+      "source_line": 28,
+      "source_path": "examples/mcp/streamablehttp_example/server.py",
+      "source_sha256": "6b890151e410ca4e30d639927210696173885518c38e22ed0e2d66c12b45148a"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-9e54440d-0"
+      },
+      "candidate_id": "S1U-4e28ddbd9e54440d",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_current_weather",
+      "source_line": 27,
+      "source_path": "examples/mcp/sse_example/server.py",
+      "source_sha256": "e4a29d82db515a1d780b5720b27f2dda951f79687256473d24046a8fe36f1c89"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "a",
+            "primitive_type": "int"
+          },
+          {
+            "name": "b",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "a": 7,
+        "b": 8
+      },
+      "candidate_id": "S1U-568837f72e2f53fa",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add",
+      "source_line": 14,
+      "source_path": "examples/mcp/sse_example/server.py",
+      "source_sha256": "e4a29d82db515a1d780b5720b27f2dda951f79687256473d24046a8fe36f1c89"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "message",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "message": "v11a-36224a34-0"
+      },
+      "candidate_id": "S1U-58565bdb36224a34",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "echo",
+      "source_line": 17,
+      "source_path": "examples/mcp/manager_example/mcp_server.py",
+      "source_sha256": "0466ecd71f2324cb346b90432efda1eaad841a0eec39bb8580d8a34ea1dd7548"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "x": 7
+      },
+      "candidate_id": "S1U-5b1b10293b8adc65",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "_impl",
+      "source_line": 1231,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-5cdf53cd-0"
+      },
+      "candidate_id": "S1U-6765d86d5cdf53cd",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 35,
+      "source_path": "examples/voice/static/main.py",
+      "source_sha256": "1eae3423a15bd576e372351b8b8cee39ffae30e8d348f60599749329570893f2"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "a",
+            "primitive_type": "int"
+          },
+          {
+            "name": "b",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "a": 7,
+        "b": 8
+      },
+      "candidate_id": "S1U-6cb216c5d7b98169",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "add",
+      "source_line": 12,
+      "source_path": "examples/mcp/manager_example/mcp_server.py",
+      "source_sha256": "0466ecd71f2324cb346b90432efda1eaad841a0eec39bb8580d8a34ea1dd7548"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "max",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "max": 7
+      },
+      "candidate_id": "S1U-7a4c678b9d5f306a",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "random_number_tool",
+      "source_line": 19,
+      "source_path": "examples/handoffs/message_filter_streaming.py",
+      "source_sha256": "087ef2be8f5877a9fb663b973ec9966ca7882c6b47abd021903918b6c7301d79"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "topic",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "topic": "v11a-b24c1394-0"
+      },
+      "candidate_id": "S1U-829a9e08b24c1394",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_policy_reference",
+      "source_line": 7,
+      "source_path": "examples/sandbox/misc/reference_policy_mcp_server.py",
+      "source_sha256": "97ce68ebf333e73a5bf2fdc8f1aedabd73d1195be3858bbf1149933513c9350c"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "query",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "query": "v11a-794abb4b-0"
+      },
+      "candidate_id": "S1U-83a5deee794abb4b",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "lookup_work_items",
+      "source_line": 426,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-deb2835f-0"
+      },
+      "candidate_id": "S1U-8c753270deb2835f",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_temperature",
+      "source_line": 30,
+      "source_path": "examples/agent_patterns/human_in_the_loop_stream.py",
+      "source_sha256": "c7471edb486085de7679e9799685b28f8093f74566cd46d017c38964f2f6da17"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "x": 7
+      },
+      "candidate_id": "S1U-9323a376c0338a04",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "multiply_by_two",
+      "source_line": 122,
+      "source_path": "examples/basic/lifecycle_example.py",
+      "source_sha256": "47faff578b13d697b1fc9b2706292cb156b24ced2bfe7f29302fd3d71b981b5b"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "value",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "value": "v11a-8c25c76a-0"
+      },
+      "candidate_id": "S1U-95a9ae988c25c76a",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "dangerous_tool",
+      "source_line": 1168,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "value",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "value": "v11a-1ef4f39e-0"
+      },
+      "candidate_id": "S1U-9c57cb8b1ef4f39e",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "budgeted_tool",
+      "source_line": 994,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "location",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "location": "v11a-47d2ee04-0"
+      },
+      "candidate_id": "S1U-a15ce2ac47d2ee04",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 26,
+      "source_path": "examples/memory/memory_session_hitl_example.py",
+      "source_sha256": "6e7df1dae6329917474e2fc05bae0db6a00c7967e4b25383d6f58fccd83dc7ae"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "max",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "max": 7
+      },
+      "candidate_id": "S1U-a4d35482e76c5d79",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "random_number",
+      "source_line": 116,
+      "source_path": "examples/basic/lifecycle_example.py",
+      "source_sha256": "47faff578b13d697b1fc9b2706292cb156b24ced2bfe7f29302fd3d71b981b5b"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "to",
+            "primitive_type": "str"
+          },
+          {
+            "name": "subject",
+            "primitive_type": "str"
+          },
+          {
+            "name": "body",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR_STR_STR"
+      },
+      "arguments": {
+        "body": "v11a-4c8383d5-2",
+        "subject": "v11a-4c8383d5-1",
+        "to": "v11a-4c8383d5-0"
+      },
+      "candidate_id": "S1U-b012d26f4c8383d5",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "send_email",
+      "source_line": 20,
+      "source_path": "examples/basic/tool_guardrails.py",
+      "source_sha256": "4d70ca04e73201a94615eadefb5af89083214bf444ce559bdac8202b8cc5b7b9"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "max",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT"
+      },
+      "arguments": {
+        "max": 7
+      },
+      "candidate_id": "S1U-b6c984692b4e0c96",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "random_number",
+      "source_line": 66,
+      "source_path": "examples/basic/agent_lifecycle_example.py",
+      "source_sha256": "02fbe5380aecb3ad1295f8fda54f3d76731e82fa11a529cee491c67cd435d57a"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-b6fdc85859ae4137",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "async_test_tool",
+      "source_line": 330,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "location",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "location": "v11a-d84fb932-0"
+      },
+      "candidate_id": "S1U-bbf2cd85d84fb932",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 26,
+      "source_path": "examples/memory/openai_session_hitl_example.py",
+      "source_sha256": "d009f248b0d7a21a9f5f20ed78f96dcca4f5e8bef89d061f86a289f9d59841af"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-c4a76e14895edf19",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "pydantic_test_tool",
+      "source_line": 709,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "a",
+            "primitive_type": "int"
+          },
+          {
+            "name": "b",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "a": 7,
+        "b": 8
+      },
+      "candidate_id": "S1U-c4d77c88c1fa80aa",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "calculate",
+      "source_line": 280,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "name",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "name": "v11a-0e4cc53b-0"
+      },
+      "candidate_id": "S1U-c7be5b270e4cc53b",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "query_runloop_network_policy",
+      "source_line": 524,
+      "source_path": "examples/sandbox/extensions/runloop/capabilities.py",
+      "source_sha256": "ebc73fad9b1edbbf7d1491a99ae3f05d4199178d56ab4d29809cee7aea8fba77"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "query",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "query": "v11a-f928c31a-0"
+      },
+      "candidate_id": "S1U-c87fc440f928c31a",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "approval_echo",
+      "source_line": 53,
+      "source_path": "examples/memory/hitl_session_scenario.py",
+      "source_sha256": "61c93cc9550272ec346ce31db225718f50755d969f22c83808f3d7c461eae380"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-c90c5c1a99fd3de1",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "adder",
+      "source_line": 1501,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "query",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "query": "v11a-bcfb7745-0"
+      },
+      "candidate_id": "S1U-cc67a73ebcfb7745",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "approval_note",
+      "source_line": 63,
+      "source_path": "examples/memory/hitl_session_scenario.py",
+      "source_sha256": "61c93cc9550272ec346ce31db225718f50755d969f22c83808f3d7c461eae380"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "confirmation_number",
+            "primitive_type": "str"
+          },
+          {
+            "name": "new_seat",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR_STR"
+      },
+      "arguments": {
+        "confirmation_number": "v11a-58be8c76-0",
+        "new_seat": "v11a-58be8c76-1"
+      },
+      "candidate_id": "S1U-d2d8769e58be8c76",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "update_seat",
+      "source_line": 38,
+      "source_path": "examples/realtime/app/agent.py",
+      "source_sha256": "0a1eee26db8565a103537c1573b1237508856eea861b8293334208fa2a02f9b4"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-d3f7ecd312a2f0ba",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "simple_function",
+      "source_line": 100,
+      "source_path": "python/packages/core/tests/core/conftest.py",
+      "source_sha256": "865362301177431f666d8dde0754e751033bcc8529a1c66a60660cbee4320312"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "query",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "query": "v11a-d03919dc-0"
+      },
+      "candidate_id": "S1U-d4b6b20fd03919dc",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "mock_tool_requiring_approval",
+      "source_line": 159,
+      "source_path": "python/packages/core/tests/workflow/test_agent_executor_tool_calls.py",
+      "source_sha256": "9ec695c3005323ea6b7afb9a5f9b6dffeb2b6d44a52f1873cf087df62a402238"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "value",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "value": "v11a-23f66db8-0"
+      },
+      "candidate_id": "S1U-d6ed69a023f66db8",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "optional_args_tool",
+      "source_line": 1375,
+      "source_path": "python/packages/core/tests/core/test_harness_tool_approval.py",
+      "source_sha256": "ed123abb4754f04bbb2e7ee7a9788bf10e678e60a1f9c277fd6768df8c05daa3"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-6d7e8ec0-0"
+      },
+      "candidate_id": "S1U-dcce827c6d7e8ec0",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 43,
+      "source_path": "examples/agent_patterns/human_in_the_loop_stream.py",
+      "source_sha256": "c7471edb486085de7679e9799685b28f8093f74566cd46d017c38964f2f6da17"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "customer_id",
+            "primitive_type": "str"
+          },
+          {
+            "name": "note",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR_STR"
+      },
+      "arguments": {
+        "customer_id": "v11a-90b0e5da-0",
+        "note": "v11a-90b0e5da-1"
+      },
+      "candidate_id": "S1U-dd7982ec90b0e5da",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "update_customer_record",
+      "source_line": 34,
+      "source_path": "examples/realtime/twilio_sip/agents.py",
+      "source_sha256": "3d2a0dc34f92b5ae3fd194943c8eb8cceffe3b129ce045c53e1e6ed66060a875"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-e005fcc36546be96",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "test_tool",
+      "source_line": 34,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-e43a370059732fa0",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "telemetry_test_tool",
+      "source_line": 573,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "city",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "SOURCE_STR"
+      },
+      "arguments": {
+        "city": "v11a-1ec448c0-0"
+      },
+      "candidate_id": "S1U-eba74e621ec448c0",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "OpenAI Agents SDK",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "get_weather",
+      "source_line": 52,
+      "source_path": "examples/model_providers/custom_example_provider.py",
+      "source_sha256": "bbee8e39e45b257b397f6c0aa67543fc422ab450f55834ce0249de807742f300"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-ecd57e9328220c80",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "exception_test_tool",
+      "source_line": 744,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    },
+    {
+      "adapter_id": "V11A_GENERIC_BOUNDED_TOOL_ADAPTER",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "x",
+            "primitive_type": "int"
+          },
+          {
+            "name": "y",
+            "primitive_type": "int"
+          }
+        ],
+        "schema_id": "SOURCE_INT_INT"
+      },
+      "arguments": {
+        "x": 7,
+        "y": 8
+      },
+      "candidate_id": "S1U-f91dfef787f8680b",
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "external_network_required": false,
+      "framework": "Microsoft Agent Framework",
+      "frozen_corpus_disposition": "MEDIATED",
+      "pinned_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "source_detail": "telemetry_test_tool",
+      "source_line": 618,
+      "source_path": "python/packages/core/tests/core/test_tools.py",
+      "source_sha256": "296f5cc283614a27894e7b327ed40c7eff83c061bf0f4e4a24a378df8df2f44f"
+    }
+  ],
+  "schema": "AgentTool.V11A.S1CandidateUniverse/1",
+  "seed_independent_membership": true
+}

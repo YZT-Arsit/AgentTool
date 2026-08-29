@@ -1,0 +1,3 @@
+# V11A semantic decision rules
+
+Each selected semantic case runs exactly one native reference and one canonical path in future V11B. Frozen classes are `PASS`, `SEMANTIC_MISMATCH`, `NATIVE_REFERENCE_FAIL`, `CANONICAL_FUNCTIONAL_FAIL`, `PROFILE_ADMISSION_CLOSED`, `INFRASTRUCTURE_SCHEDULE_FAILURE`, `TRANSPORT_FAILURE`, and `HARNESS_INTEGRITY_FAILURE`. No case may be omitted, replaced, or retried. S1 establishes only Level-A action-boundary fidelity; its synthetic effect contract is not attributed to the original Tool body. S4 separately tests generic canonical effect contracts. Chain-of-thought is never compared.

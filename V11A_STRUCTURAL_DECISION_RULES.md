@@ -1,0 +1,3 @@
+# V11A structural decision rules
+
+Both arms must first be functionally valid: expected operations admitted, provider semantics observed, framework results delivered, no missing/unexpected/duplicate result, zero dummy heavy operations, overflow, scheduler miss, and silent committed-result loss, and session status `COMPLETE`. Otherwise the result is `INVALID_FUNCTIONAL_PAIR`, never privacy PASS. Exact equality uses the one frozen V11.4 profile, authenticated session/slot order, stronger structural projection, and actual Relay-derived size projection. Timestamps and ephemeral ports are excluded. Timing privacy remains open.

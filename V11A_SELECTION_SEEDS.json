@@ -1,0 +1,28 @@
+{
+  "candidate_universes_aggregate_sha256": "6f4ea486cf41a9bf90fbfd1d31d9dae3150e73dfdbf76fd428022964042f75f7",
+  "derivation": "SHA256(base commit || exact V11.4 freeze bytes hash || V11.4.1 baseline || orchestrator || exclusions || seed-independent universes || fixed label)",
+  "labels": {
+    "order": "AgentTool-V11A-execution-order-v1",
+    "s1": "AgentTool-V11A-source-semantic-v1",
+    "s2": "AgentTool-V11A-composition-semantic-v1",
+    "s3": "AgentTool-V11A-trajectory-semantic-v1",
+    "s4": "AgentTool-V11A-effect-contract-v1",
+    "structural": "AgentTool-V11A-structural-v1"
+  },
+  "master_exclusion_set_aggregate_sha256": "bbbdd7447263aa59cfce864a51dd1ac67f197367bc6459107858e7455ae7328c",
+  "orchestrator_aggregate_sha256": "ac5c8ae8f9a94d4461dac3dd1959d11999bbe63142c292641b7ca5ee22fd31f7",
+  "schema": "AgentTool.V11A.SelectionSeeds/1",
+  "seed_search": false,
+  "seeds": {
+    "order": "d4f78628b49641a6765f0ade79c5346177265e2c10b5741fd2b293b3226a3254",
+    "s1": "b3df80265a5f5f68069a5f4e256330e2b06a5a02b22a7476a874fce7cfb84d93",
+    "s2": "1c49c1f58ba90cada62cf13588f497326aa5e7e6d512d34386fdfc6b5938f46e",
+    "s3": "9e3c69c89d867a6f3d8e733bbb016eb4d49446eb405cb0962fa821c3e0934bb5",
+    "s4": "60df00aaafa0924fc4e6ae5675b94947a2d2f3073cf62ea3a8a4ed45e5e477a7",
+    "structural": "8d414f2a5a85463c734e8dea1d04acdb21a318ee7ac8ccaad1bd113d345578b6"
+  },
+  "universe_membership_frozen_before_seed_derivation": true,
+  "v11_4_1_baseline_freeze_sha256": "f68c8bc23e2cecc9c01efd2030f46ae6f871674f9c75cfabd19539ec490685f6",
+  "v11_4_base_commit": "f6860baaab8927f9b0b66153959b55d8ca072c23",
+  "v11_4_freeze_manifest_sha256": "3d919523daac5b366b326755019f06d93caf6dd6a487ca6c75fa4c20638466c3"
+}

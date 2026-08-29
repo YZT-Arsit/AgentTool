@@ -1,0 +1,4204 @@
+{
+  "schema": "AgentTool.V11A.CausalTrajectoryHoldoutFreeze/1",
+  "selected_holdout_executed": false,
+  "trajectories": [
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-001-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-2"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-001-A02",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-3"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-001-A03",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a3",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A03",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-4"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-001-A04",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a4",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A04",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-5"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-001-A05",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a5",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A05",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-6"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-001-A06",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a6",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A06",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-7"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-001-A07",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a7",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A07",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-8"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-001-A08",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a8",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A08",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-9"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-001-A09",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a9",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A09",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d10-10"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-001-A10",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d10_a10",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3001A10",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-ALTERNATING_TOOL_SEQUENCE-D10",
+      "depth": 10,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "ALTERNATING_TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-001",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-external_to_internal-d2-tool-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-002-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_external_to_internal_d2_tool_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3002A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "AGENT_SERVICE",
+          "agent_capability": "agent.internal.20",
+          "agent_id": 20,
+          "agent_service_subtype": "DIRECT_AGENT_SERVICE",
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "task",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "task": "fresh-internal-s3u-microsoft-external_to_internal-d2-internal"
+          },
+          "capability": "agent.internal.20",
+          "case_id": "V11A-S3-002-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_external_to_internal_d2_internal",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3002A02",
+          "placement": "TRUSTED_MODULE_LOCAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-EXTERNAL_TO_INTERNAL-D2",
+      "depth": 2,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "EXTERNAL_TO_INTERNAL",
+      "trajectory_id": "V11A-S3-002",
+      "workflow": "EXTERNAL_TO_INTERNAL"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "AGENT_SERVICE",
+          "agent_capability": "agent.service.11",
+          "agent_id": 11,
+          "agent_service_subtype": "AGENT_AS_TOOL",
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "task",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "task": "fresh-agent-s3u-microsoft-agent_as_tool_to_tool-d2-aat"
+          },
+          "capability": "agent.service.11",
+          "case_id": "V11A-S3-003-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_agent_as_tool_to_tool_d2_aat",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3003A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-agent_as_tool_to_tool-d2-tool-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-003-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_agent_as_tool_to_tool_d2_tool_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3003A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-AGENT_AS_TOOL_TO_TOOL-D2",
+      "depth": 2,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "AGENT_AS_TOOL_TO_TOOL",
+      "trajectory_id": "V11A-S3-003",
+      "workflow": "AGENT_AS_TOOL_TO_TOOL"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-2"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-3"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A03",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a3",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A03",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-4"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A04",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a4",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A04",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-5"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A05",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a5",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A05",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-6"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A06",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a6",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A06",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-7"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A07",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a7",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A07",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-8"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A08",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a8",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A08",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-9"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A09",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a9",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A09",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-10"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A10",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a10",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A10",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-11"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A11",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a11",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A11",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-12"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A12",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a12",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A12",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-13"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A13",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a13",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A13",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-14"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A14",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a14",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A14",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-15"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A15",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a15",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A15",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-16"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A16",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a16",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A16",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-17"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A17",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a17",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A17",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-18"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A18",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a18",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A18",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-19"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A19",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a19",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A19",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d20-20"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-004-A20",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d20_a20",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3004A20",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-TOOL_SEQUENCE-D20",
+      "depth": 20,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-004",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-005-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-2"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-005-A02",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-3"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-005-A03",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a3",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A03",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-4"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-005-A04",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a4",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A04",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-5"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-005-A05",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a5",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A05",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-6"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-005-A06",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a6",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A06",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-7"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-005-A07",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a7",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A07",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-8"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-005-A08",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a8",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A08",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-9"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-005-A09",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a9",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A09",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d10-10"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-005-A10",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d10_a10",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3005A10",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-ALTERNATING_TOOL_SEQUENCE-D10",
+      "depth": 10,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "ALTERNATING_TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-005",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d2-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-006-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d2_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3006A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_sequence-d2-2"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-006-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_sequence_d2_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3006A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-TOOL_SEQUENCE-D2",
+      "depth": 2,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-006",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-tool_sequence-d2-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-007-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_tool_sequence_d2_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3007A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-tool_sequence-d2-2"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-007-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_tool_sequence_d2_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3007A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-TOOL_SEQUENCE-D2",
+      "depth": 2,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-007",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              },
+              {
+                "name": "count",
+                "primitive_type": "int"
+              },
+              {
+                "name": "enabled",
+                "primitive_type": "bool"
+              }
+            ],
+            "schema_id": "THREE_PRIMITIVES"
+          },
+          "arguments": {
+            "city": "fresh-structured",
+            "count": 17,
+            "enabled": true
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-008-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_structured_tool_to_agent_as_tool_d2_tool_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3008A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "AGENT_SERVICE",
+          "agent_capability": "agent.service.11",
+          "agent_id": 11,
+          "agent_service_subtype": "AGENT_AS_TOOL",
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "task",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "task": "fresh-agent-s3u-openai-structured_tool_to_agent_as_tool-d2-aat"
+          },
+          "capability": "agent.service.11",
+          "case_id": "V11A-S3-008-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_structured_tool_to_agent_as_tool_d2_aat",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3008A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-STRUCTURED_TOOL_TO_AGENT_AS_TOOL-D2",
+      "depth": 2,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "STRUCTURED_TOOL_TO_AGENT_AS_TOOL",
+      "trajectory_id": "V11A-S3-008",
+      "workflow": "TOOL_TO_AGENT_AS_TOOL"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-2"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A02",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-3"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A03",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a3",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A03",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-4"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A04",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a4",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A04",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-5"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A05",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a5",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A05",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-6"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A06",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a6",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A06",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-7"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A07",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a7",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A07",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-8"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A08",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a8",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A08",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-9"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A09",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a9",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A09",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-10"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A10",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a10",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A10",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-11"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A11",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a11",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A11",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-12"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A12",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a12",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A12",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-13"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A13",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a13",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A13",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-14"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A14",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a14",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A14",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-15"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A15",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a15",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A15",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-16"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A16",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a16",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A16",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-17"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A17",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a17",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A17",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-18"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A18",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a18",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A18",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-19"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A19",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a19",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A19",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-20"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A20",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a20",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A20",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-21"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A21",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a21",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A21",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-22"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A22",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a22",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A22",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-23"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A23",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a23",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A23",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-24"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A24",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a24",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A24",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-25"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A25",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a25",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A25",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-26"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A26",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a26",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A26",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-27"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A27",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a27",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A27",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-28"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A28",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a28",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A28",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-29"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A29",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a29",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A29",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-30"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A30",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a30",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A30",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-31"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A31",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a31",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A31",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-32"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A32",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a32",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A32",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-33"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A33",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a33",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A33",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-34"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A34",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a34",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A34",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-35"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A35",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a35",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A35",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-36"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A36",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a36",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A36",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-37"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A37",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a37",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A37",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-38"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A38",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a38",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A38",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-39"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A39",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a39",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A39",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-40"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A40",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a40",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A40",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-41"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A41",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a41",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A41",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-42"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A42",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a42",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A42",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-43"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A43",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a43",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A43",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-44"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A44",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a44",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A44",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-45"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A45",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a45",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A45",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-46"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A46",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a46",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A46",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-47"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A47",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a47",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A47",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-48"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A48",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a48",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A48",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-49"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-009-A49",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a49",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A49",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-alternating_tool_sequence-d50-50"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-009-A50",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_alternating_tool_sequence_d50_a50",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3009A50",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-ALTERNATING_TOOL_SEQUENCE-D50",
+      "depth": 50,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "ALTERNATING_TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-009",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-tool_to_agent_as_tool-d2-tool-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-010-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_tool_to_agent_as_tool_d2_tool_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3010A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "AGENT_SERVICE",
+          "agent_capability": "agent.service.11",
+          "agent_id": 11,
+          "agent_service_subtype": "AGENT_AS_TOOL",
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "task",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "task": "fresh-agent-s3u-microsoft-tool_to_agent_as_tool-d2-aat"
+          },
+          "capability": "agent.service.11",
+          "case_id": "V11A-S3-010-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_tool_to_agent_as_tool_d2_aat",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3010A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-TOOL_TO_AGENT_AS_TOOL-D2",
+      "depth": 2,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "TOOL_TO_AGENT_AS_TOOL",
+      "trajectory_id": "V11A-S3-010",
+      "workflow": "TOOL_TO_AGENT_AS_TOOL"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-2"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A02",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a2",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-3"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A03",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a3",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A03",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-4"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A04",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a4",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A04",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-5"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A05",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a5",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A05",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-6"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A06",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a6",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A06",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-7"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A07",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a7",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A07",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-8"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A08",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a8",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A08",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-9"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A09",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a9",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A09",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-10"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A10",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a10",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A10",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-11"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A11",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a11",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A11",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-12"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A12",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a12",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A12",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-13"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A13",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a13",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A13",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-14"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A14",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a14",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A14",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-15"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A15",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a15",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A15",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-16"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A16",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a16",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A16",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-17"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A17",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a17",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A17",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-18"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A18",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a18",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A18",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-19"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A19",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a19",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A19",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-20"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A20",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a20",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A20",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-21"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A21",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a21",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A21",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-22"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A22",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a22",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A22",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-23"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A23",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a23",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A23",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-24"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A24",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a24",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A24",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-25"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A25",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a25",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A25",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-26"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A26",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a26",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A26",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-27"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A27",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a27",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A27",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-28"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A28",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a28",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A28",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-29"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-011-A29",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a29",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A29",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-microsoft-alternating_tool_sequence-d30-30"
+          },
+          "capability": "tool.idem",
+          "case_id": "V11A-S3-011-A30",
+          "continuation": {},
+          "effect_semantics": "IDEMPOTENT_EFFECT",
+          "framework": "Microsoft Agent Framework",
+          "logical_action_name": "v11a_s3u_microsoft_alternating_tool_sequence_d30_a30",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3011A30",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-MICROSOFT-ALTERNATING_TOOL_SEQUENCE-D30",
+      "depth": 30,
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "ALTERNATING_TOOL_SEQUENCE",
+      "trajectory_id": "V11A-S3-011",
+      "workflow": "DYNAMIC_SEQUENCE"
+    },
+    {
+      "actions": [
+        {
+          "action_family": "TOOL",
+          "agent_capability": "agent.tools",
+          "agent_id": 10,
+          "agent_service_subtype": null,
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "city",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "city": "fresh-trajectory-s3u-openai-tool_to_agent_as_tool-d2-tool-1"
+          },
+          "capability": "tool.read",
+          "case_id": "V11A-S3-012-A01",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_to_agent_as_tool_d2_tool_a1",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3012A01",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        },
+        {
+          "action_family": "AGENT_SERVICE",
+          "agent_capability": "agent.service.11",
+          "agent_id": 11,
+          "agent_service_subtype": "AGENT_AS_TOOL",
+          "argument_schema": {
+            "fields": [
+              {
+                "name": "task",
+                "primitive_type": "str"
+              }
+            ],
+            "schema_id": "ONE_STR"
+          },
+          "arguments": {
+            "task": "fresh-agent-s3u-openai-tool_to_agent_as_tool-d2-aat"
+          },
+          "capability": "agent.service.11",
+          "case_id": "V11A-S3-012-A02",
+          "continuation": {},
+          "effect_semantics": "READ_ONLY",
+          "framework": "OpenAI Agents SDK",
+          "logical_action_name": "v11a_s3u_openai_tool_to_agent_as_tool_d2_aat",
+          "manifest_kind": "S3_CAUSAL_ACTION",
+          "operation_id": "opV11AS3012A02",
+          "placement": "EXTERNAL",
+          "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+          "scenario": "SUCCESS",
+          "selected_case_executed": false
+        }
+      ],
+      "candidate_id": "S3U-OPENAI-TOOL_TO_AGENT_AS_TOOL-D2",
+      "depth": 2,
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "manifest_kind": "S3_CAUSAL_TRAJECTORY",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "selected_case_executed": false,
+      "trajectory_family": "TOOL_TO_AGENT_AS_TOOL",
+      "trajectory_id": "V11A-S3-012",
+      "workflow": "TOOL_TO_AGENT_AS_TOOL"
+    }
+  ]
+}

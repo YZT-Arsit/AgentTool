@@ -1,0 +1,415 @@
+{
+  "cases": [
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "HANDOFF",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_handoff-non_idempotent_effect-success-1"
+      },
+      "candidate_id": "S2U-OPENAI_HANDOFF-NON_IDEMPOTENT_EFFECT-SUCCESS-V1",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-001",
+      "composition_family": "OPENAI_HANDOFF",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_handoff_non_idempotent_effect_success_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2001",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "HANDOFF",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_handoff-non_idempotent_effect-bounded_timeout-1"
+      },
+      "candidate_id": "S2U-OPENAI_HANDOFF-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT-V1",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-002",
+      "composition_family": "OPENAI_HANDOFF",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_handoff_non_idempotent_effect_bounded_timeout_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2002",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.12",
+      "agent_id": 12,
+      "agent_service_subtype": "HANDOFF",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_handoff-idempotent_effect-bounded_timeout-1"
+      },
+      "candidate_id": "S2U-OPENAI_HANDOFF-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT-V1",
+      "capability": "agent.service.12",
+      "case_id": "V11A-S2-003",
+      "composition_family": "OPENAI_HANDOFF",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_handoff_idempotent_effect_bounded_timeout_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2003",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.12",
+      "agent_id": 12,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-microsoft_agent_as_tool-idempotent_effect-success-2"
+      },
+      "candidate_id": "S2U-MICROSOFT_AGENT_AS_TOOL-IDEMPOTENT_EFFECT-SUCCESS-V2",
+      "capability": "agent.service.12",
+      "case_id": "V11A-S2-004",
+      "composition_family": "MICROSOFT_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_microsoft_agent_as_tool_idempotent_effect_success_v2",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2004",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.12",
+      "agent_id": 12,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-microsoft_agent_as_tool-idempotent_effect-success-1"
+      },
+      "candidate_id": "S2U-MICROSOFT_AGENT_AS_TOOL-IDEMPOTENT_EFFECT-SUCCESS-V1",
+      "capability": "agent.service.12",
+      "case_id": "V11A-S2-005",
+      "composition_family": "MICROSOFT_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_microsoft_agent_as_tool_idempotent_effect_success_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2005",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.11",
+      "agent_id": 11,
+      "agent_service_subtype": "HANDOFF",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_handoff-read_only-success-1"
+      },
+      "candidate_id": "S2U-OPENAI_HANDOFF-READ_ONLY-SUCCESS-V1",
+      "capability": "agent.service.11",
+      "case_id": "V11A-S2-006",
+      "composition_family": "OPENAI_HANDOFF",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "READ_ONLY",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_handoff_read_only_success_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2006",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_agent_as_tool-non_idempotent_effect-error-2"
+      },
+      "candidate_id": "S2U-OPENAI_AGENT_AS_TOOL-NON_IDEMPOTENT_EFFECT-ERROR-V2",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-007",
+      "composition_family": "OPENAI_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_agent_as_tool_non_idempotent_effect_error_v2",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2007",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "ERROR",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_agent_as_tool-non_idempotent_effect-success-1"
+      },
+      "candidate_id": "S2U-OPENAI_AGENT_AS_TOOL-NON_IDEMPOTENT_EFFECT-SUCCESS-V1",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-008",
+      "composition_family": "OPENAI_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_agent_as_tool_non_idempotent_effect_success_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2008",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.12",
+      "agent_id": 12,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_agent_as_tool-idempotent_effect-bounded_timeout-1"
+      },
+      "candidate_id": "S2U-OPENAI_AGENT_AS_TOOL-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT-V1",
+      "capability": "agent.service.12",
+      "case_id": "V11A-S2-009",
+      "composition_family": "OPENAI_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_agent_as_tool_idempotent_effect_bounded_timeout_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2009",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-microsoft_agent_as_tool-non_idempotent_effect-bounded_timeout-1"
+      },
+      "candidate_id": "S2U-MICROSOFT_AGENT_AS_TOOL-NON_IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT-V1",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-010",
+      "composition_family": "MICROSOFT_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_microsoft_agent_as_tool_non_idempotent_effect_bounded_timeout_v1",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2010",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.12",
+      "agent_id": 12,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-microsoft_agent_as_tool-idempotent_effect-bounded_timeout-2"
+      },
+      "candidate_id": "S2U-MICROSOFT_AGENT_AS_TOOL-IDEMPOTENT_EFFECT-BOUNDED_TIMEOUT-V2",
+      "capability": "agent.service.12",
+      "case_id": "V11A-S2-011",
+      "composition_family": "MICROSOFT_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "framework": "Microsoft Agent Framework",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_microsoft_agent_as_tool_idempotent_effect_bounded_timeout_v2",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2011",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "BOUNDED_TIMEOUT",
+      "selected_case_executed": false
+    },
+    {
+      "action_family": "AGENT_SERVICE",
+      "agent_capability": "agent.service.13",
+      "agent_id": 13,
+      "agent_service_subtype": "AGENT_AS_TOOL",
+      "argument_schema": {
+        "fields": [
+          {
+            "name": "task",
+            "primitive_type": "str"
+          }
+        ],
+        "schema_id": "ONE_STR"
+      },
+      "arguments": {
+        "task": "fresh-composition-openai_agent_as_tool-non_idempotent_effect-success-2"
+      },
+      "candidate_id": "S2U-OPENAI_AGENT_AS_TOOL-NON_IDEMPOTENT_EFFECT-SUCCESS-V2",
+      "capability": "agent.service.13",
+      "case_id": "V11A-S2-012",
+      "composition_family": "OPENAI_AGENT_AS_TOOL",
+      "continuation": {},
+      "effect_contract_origin": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "framework": "OpenAI Agents SDK",
+      "level": "LEVEL_A_ACTION_BOUNDARY",
+      "logical_action_name": "v11a_s2u_openai_agent_as_tool_non_idempotent_effect_success_v2",
+      "manifest_kind": "S2_COMPOSITION",
+      "operation_id": "opV11AS2012",
+      "placement": "EXTERNAL",
+      "public_profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+      "scenario": "SUCCESS",
+      "selected_case_executed": false
+    }
+  ],
+  "microsoft_handoff": "NATIVE_MECHANISM_ABSENT",
+  "schema": "AgentTool.V11A.CompositionSemanticHoldoutFreeze/1",
+  "selected_holdout_executed": false
+}
