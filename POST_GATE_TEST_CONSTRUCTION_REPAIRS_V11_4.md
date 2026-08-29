@@ -1,0 +1,7 @@
+# V11.4 post-gate test-construction repairs
+
+Two original post-selection tests failed for test-construction reasons and remain preserved. The first finite-horizon case used only `H+10 ms`; Python/runner start alignment left the action admissible, so the provider ran once. The original Agent-identity arm changed a generic Tool case to composite Agent 21, but the native OpenAI fixture produced zero outcomes. Neither failure is relabeled as a privacy or online-profile result.
+
+Fresh, non-holdout replacements are predeclared before execution. The first finite-horizon repair (`H+300 ms` after `SESSION_READY`) also remained admissible because the public runner assigns T0 after a fixed 50-period (500 ms) start lead. That failure is preserved. The final V3 case therefore waits `H + 50*Delta + 100 ms` after `SESSION_READY`, which is mechanically 100 ms after the public admission horizon and still 460 ms before the fixed session end. It must observe `PROFILE_ADMISSION_CLOSED`, zero provider calls, exactly 356 rounds, one session, and one connection per hop. The Agent-identity V2 pair compares Agent 10/`tool.read` with Agent 1/`tool.a`; both are READ_ONLY and execute five strictly causal native OpenAI Tool calls. Both arms must be functional before exact structural and size equality is evaluated.
+
+No old failed arm is retried. A failed fresh repair leaves the overall gate failed and prevents the V11.4 harness freeze.

@@ -1,0 +1,33 @@
+{
+  "agent_identity": {
+    "arm_a_error": "",
+    "arm_a_functional": true,
+    "arm_a_private_agent": "agent.tools/10",
+    "arm_b_error": "",
+    "arm_b_functional": true,
+    "arm_b_private_agent": "agent.a/1",
+    "effect_class": "READ_ONLY",
+    "holdout": false,
+    "pair": "AGENT_IDENTITY",
+    "passed": true,
+    "size_equal": true,
+    "structural_equal": true,
+    "version": "V2_FRESH_NON_HOLDOUT_REPAIR"
+  },
+  "finite_horizon": {
+    "dummy_provider_operations": 0,
+    "fixed_ready_after_public_horizon_ms": 100,
+    "fixed_wait_after_session_ready_ms": 3600,
+    "holdout": false,
+    "passed": true,
+    "private_outcome": "PROFILE_ADMISSION_CLOSED",
+    "provider_invocations": 0,
+    "public_rounds": 356,
+    "public_sessions": 1,
+    "public_start_lead_periods": 50,
+    "scheduled_lifetime_ms": 3560,
+    "version": "V3_FRESH_NON_HOLDOUT_REPAIR"
+  },
+  "fresh_non_holdout_cases": true,
+  "old_failed_arms_retried": false
+}

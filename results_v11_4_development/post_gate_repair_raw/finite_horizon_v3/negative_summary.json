@@ -1,0 +1,14 @@
+{
+  "dummy_provider_operations": 0,
+  "fixed_ready_after_public_horizon_ms": 100,
+  "fixed_wait_after_session_ready_ms": 3600,
+  "holdout": false,
+  "passed": true,
+  "private_outcome": "PROFILE_ADMISSION_CLOSED",
+  "provider_invocations": 0,
+  "public_rounds": 356,
+  "public_sessions": 1,
+  "public_start_lead_periods": 50,
+  "scheduled_lifetime_ms": 3560,
+  "version": "V3_FRESH_NON_HOLDOUT_REPAIR"
+}

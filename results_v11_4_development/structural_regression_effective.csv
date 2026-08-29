@@ -1,0 +1,13 @@
+arm_a_error,arm_a_functional,arm_a_private_agent,arm_b_error,arm_b_functional,arm_b_private_agent,effect_class,holdout,pair,passed,size_equal,structural_equal,version
+,True,agent.tools/10,,True,agent.a/1,READ_ONLY,False,AGENT_IDENTITY,True,True,True,V2_FRESH_NON_HOLDOUT_REPAIR
+,True,,,True,,,,TOOL_ROUTE,True,True,True,
+,True,,,True,,,,ACTION_KIND,True,True,True,
+,True,,,True,,,,ACTION_COUNT,True,True,True,
+,True,,,True,,,,REPETITION,True,True,True,
+,True,,,True,,,,FREQUENCY,True,True,True,
+,True,,,True,,,,RARE_TARGET,True,True,True,
+,True,,,True,,,,TRANSITION_PATTERN,True,True,True,
+,True,,,True,,,,ARGUMENT_LENGTH,True,True,True,
+,True,,,True,,,,PROVIDER_READINESS,True,True,True,
+,True,,,True,,,,INTERNAL_EXTERNAL,True,True,True,
+,True,,,True,,,,CAUSAL_DEPTH,True,True,True,

@@ -1,0 +1,111 @@
+{
+  "candidate_order_ms": [
+    2000,
+    3000,
+    4000,
+    5000,
+    7500,
+    10000
+  ],
+  "candidate_outcomes": [
+    {
+      "admission_rounds": 200,
+      "horizon_ms": 2000,
+      "passed": false,
+      "passed_sessions": 180,
+      "resolved_not_admitted": 84,
+      "scheduled_lifetime_ms": 2560,
+      "scheduler_misses": 0,
+      "selected": false,
+      "sessions": 210,
+      "strata": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 50,
+          "total": 50
+        },
+        "30": {
+          "passed": 30,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 30
+        }
+      },
+      "total_rounds": 256
+    },
+    {
+      "admission_rounds": 300,
+      "horizon_ms": 3000,
+      "passed": true,
+      "passed_sessions": 210,
+      "resolved_not_admitted": 0,
+      "scheduled_lifetime_ms": 3560,
+      "scheduler_misses": 0,
+      "selected": true,
+      "sessions": 210,
+      "strata": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 50,
+          "total": 50
+        },
+        "30": {
+          "passed": 30,
+          "total": 30
+        },
+        "50": {
+          "passed": 30,
+          "total": 30
+        }
+      },
+      "total_rounds": 356
+    }
+  ],
+  "holdout_selected_or_executed": false,
+  "schema": "AgentTool.V11_4HorizonSelection/1",
+  "selected_final_profile": {
+    "admission_horizon_ms": 3000,
+    "admission_rounds": 300,
+    "aead_id": 1,
+    "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+    "completion_rounds": 5,
+    "config_epoch": 3,
+    "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+    "drain_only_request": "encrypted NOOP",
+    "gateway_endpoint_class": "LOCAL_GATEWAY",
+    "hardware_tee": "NOT_TESTED",
+    "kdf_id": 1,
+    "kem_id": 32,
+    "maximum_real_operations": 50,
+    "ohttp_key_id": 7,
+    "packet_level_timing": "OPEN",
+    "profile_id": "V11_4-STRICT-ONLINE-H50-H3000-P10",
+    "provider_completion_bound_ms": 50,
+    "relay_endpoint_class": "LOCAL_RELAY",
+    "request_bhttp_bytes": 1024,
+    "request_final_bytes": 1079,
+    "response_bhttp_bytes": 768,
+    "response_final_bytes": 800,
+    "result_drain_rounds": 50,
+    "round_period_ms": 10,
+    "scheduled_lifetime_ms": 3560,
+    "scheduled_lifetime_ns": 3560000000,
+    "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+    "schema": "AgentTool.V11_4OnlinePublicProfile/1",
+    "session_count": 1,
+    "terminal_rounds": 1,
+    "timing_privacy": "OPEN / NOT TESTED",
+    "total_rounds": 356,
+    "unused_admission_round": "encrypted NOOP",
+    "unused_response_capacity": "encrypted WAIT"
+  },
+  "selected_period_ms": 10
+}

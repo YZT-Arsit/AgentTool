@@ -1,0 +1,120 @@
+{
+  "classification": "IMMUTABLE_NEGATIVE_DEVELOPMENT_EVIDENCE",
+  "old_v10_selected_outcomes_observed": false,
+  "schema": "AgentTool.V11_3NegativeProfileFreezeForV11_4/1",
+  "v10_1_selected_outcomes_observed": false,
+  "v11_2": {
+    "passed": 17,
+    "profile_admission_closed": 3,
+    "source": "V11_2_ONLINE_DEVELOPMENT_FREEZE_V11_3.json",
+    "source_sha256": "217bd144dff7c40c213c489d5527c51d2d2d3555f5292f9d1428d9700f8c833f",
+    "total": 20
+  },
+  "v11_3": {
+    "dummy_heavy_operations": 0,
+    "no_retries": true,
+    "profile_overflow": 0,
+    "root_causes": [
+      "ONLINE_ADMISSION_HORIZON_TOO_SHORT",
+      "FIVE_MS_SCHEDULER_NOT_FINAL_PROFILE_QUALIFIED"
+    ],
+    "scheduler_exact": 997,
+    "scheduler_misses": 3,
+    "sessions": 1000,
+    "silent_committed_result_loss": 0,
+    "source": "CAUSAL_DEPTH_QUALIFICATION_V11_3.csv",
+    "source_sha256": "511c2d1a5b4033b0ad1d90108cd01dbb0c1f0d26fff4c01f33e257e7dad98f82",
+    "strata": {
+      "100": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 2,
+          "total": 50
+        },
+        "30": {
+          "passed": 0,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 20
+        }
+      },
+      "150": {
+        "10": {
+          "passed": 99,
+          "total": 100
+        },
+        "20": {
+          "passed": 50,
+          "total": 50
+        },
+        "30": {
+          "passed": 0,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 20
+        }
+      },
+      "200": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 50,
+          "total": 50
+        },
+        "30": {
+          "passed": 30,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 20
+        }
+      },
+      "300": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 50,
+          "total": 50
+        },
+        "30": {
+          "passed": 30,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 20
+        }
+      },
+      "75": {
+        "10": {
+          "passed": 100,
+          "total": 100
+        },
+        "20": {
+          "passed": 0,
+          "total": 50
+        },
+        "30": {
+          "passed": 0,
+          "total": 30
+        },
+        "50": {
+          "passed": 0,
+          "total": 20
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "candidate_order_ms": [
+    10,
+    20,
+    25
+  ],
+  "candidate_outcomes": [
+    {
+      "dummy_heavy_ops": 0,
+      "passed": true,
+      "passed_sessions": 500,
+      "period_ms": 10,
+      "profile_overflow": 0,
+      "scheduler_misses": 0,
+      "selected": true,
+      "sessions": 500,
+      "silent_committed_result_loss": 0,
+      "transport_or_other_failures": 0
+    }
+  ],
+  "schema": "AgentTool.V11_4PeriodSelection/1",
+  "selected_profile": {
+    "admission_horizon_ms": 1000,
+    "admission_rounds": 100,
+    "aead_id": 1,
+    "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+    "completion_rounds": 5,
+    "config_epoch": 3,
+    "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+    "drain_only_request": "encrypted NOOP",
+    "gateway_endpoint_class": "LOCAL_GATEWAY",
+    "hardware_tee": "NOT_TESTED",
+    "kdf_id": 1,
+    "kem_id": 32,
+    "maximum_real_operations": 1,
+    "ohttp_key_id": 7,
+    "packet_level_timing": "OPEN",
+    "profile_id": "V11_4-PERIOD-QUAL-H1-H1000-P10",
+    "provider_completion_bound_ms": 50,
+    "relay_endpoint_class": "LOCAL_RELAY",
+    "request_bhttp_bytes": 1024,
+    "request_final_bytes": 1079,
+    "response_bhttp_bytes": 768,
+    "response_final_bytes": 800,
+    "result_drain_rounds": 1,
+    "round_period_ms": 10,
+    "scheduled_lifetime_ms": 1070,
+    "scheduled_lifetime_ns": 1070000000,
+    "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+    "schema": "AgentTool.V11_4OnlinePublicProfile/1",
+    "session_count": 1,
+    "terminal_rounds": 1,
+    "timing_privacy": "OPEN / NOT TESTED",
+    "total_rounds": 107,
+    "unused_admission_round": "encrypted NOOP",
+    "unused_response_capacity": "encrypted WAIT"
+  },
+  "selection_rule": "smallest candidate passing all 500 independent sessions; stop after first pass",
+  "timing_privacy": "OPEN / NOT TESTED"
+}

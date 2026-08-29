@@ -1,0 +1,4 @@
+causal,causal_depth,dummy_heavy_ops,dynamic_pir,error,framework,group,invariant_pass,iteration,logical_actions,passed,profile_id,profile_overflow,public_sessions,resolved_not_admitted,rounds,schedule_misses,semantic_equal,silent_committed_result_loss,size_equal,structural_equal,workflow
+True,DEPTH_10,0,True,,OpenAI Agents SDK,CAUSAL_DEPTH,True,0,10,True,V11_4-STRICT-ONLINE-H50-H3000-P10,0,1,0,356,0,True,0,True,True,DYNAMIC_SEQUENCE
+False,DEPTH_1,0,True,,OpenAI Agents SDK,CAUSAL_DEPTH,True,1,10,True,V11_4-STRICT-ONLINE-H50-H3000-P10,0,1,0,356,0,True,0,True,True,PARALLEL_ACTIONS
+False,DEPTH_2,0,True,,OpenAI Agents SDK,CAUSAL_DEPTH,True,2,10,True,V11_4-STRICT-ONLINE-H50-H3000-P10,0,1,0,356,0,True,0,True,True,MIXED_PARALLEL

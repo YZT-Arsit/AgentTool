@@ -1,0 +1,40 @@
+{
+  "files_sha256": {
+    "PUBLIC_PERIOD_CANDIDATES_V11_4.json": "c9caac6a5e3a19dcfa051c2e83c4a7720c97fca8705e4a2cd0863d633d1cea39",
+    "PUBLIC_PROFILE_MODEL_V11_4.md": "1e6626d0d5e34abf16558ae3f3554f6b75f4a2d14f17d0f8088d15e49413d97d",
+    "V11_3_NEGATIVE_PROFILE_FREEZE_V11_4.json": "2dd6e60727bc54bbc9d2216a40ab8b8445a84923da6a234a95a2a70e4d03300c",
+    "scripts/freeze_v11_4_profile_candidates.py": "ce8fb34aab35d4f43a3024632a6d286073a4daa96d932c01cbad32745910510e",
+    "v11_4/profile.py": "efd599f1ee2aa6cf500826f1293bad0e68c2b07a6c82ba3251d5f3be50e8db83",
+    "v11_online/session.py": "5dd14aafe6104bd9d927e8482886f60673e110d15fd34c5976f498ed1eb236a7"
+  },
+  "holdout_selected_or_executed": false,
+  "horizon_candidates_ms": [
+    2000,
+    3000,
+    4000,
+    5000,
+    7500,
+    10000
+  ],
+  "horizon_counts": {
+    "10": 100,
+    "20": 50,
+    "30": 30,
+    "50": 30
+  },
+  "period_candidates_ms": [
+    10,
+    20,
+    25
+  ],
+  "period_qualification_horizon_ms": 1000,
+  "period_sessions_each": 500,
+  "schema": "AgentTool.V11_4PreQualificationFreeze/1",
+  "seed_search": false,
+  "source_commit": "a8dec2bee51fa95a42e209ebd20bd0a78c0a752b",
+  "stage_order": [
+    "PERIOD",
+    "HORIZON",
+    "POST_SELECTION"
+  ]
+}

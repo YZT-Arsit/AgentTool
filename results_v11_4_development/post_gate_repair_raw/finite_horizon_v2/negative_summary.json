@@ -1,0 +1,12 @@
+{
+  "dummy_provider_operations": 0,
+  "fixed_ready_after_horizon_ms": 300,
+  "holdout": false,
+  "passed": false,
+  "private_outcome": "",
+  "provider_invocations": 1,
+  "public_rounds": 356,
+  "public_sessions": 1,
+  "scheduled_lifetime_ms": 3560,
+  "version": "V2_FRESH_NON_HOLDOUT_REPAIR"
+}

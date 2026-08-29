@@ -1,0 +1,10 @@
+{
+  "dummy_provider_operations": 0,
+  "holdout": false,
+  "passed": false,
+  "private_outcome": "",
+  "provider_invocations": 1,
+  "public_rounds": 356,
+  "public_sessions": 1,
+  "scheduled_lifetime_ms": 3560
+}

@@ -60,6 +60,7 @@ class OnlineSimplePIRResolver:
         self.process: subprocess.Popen[str] | None = None
         self.codec: AgentDescriptorV7Codec | None = None
         self.stderr_lines: list[str] = []
+        self.stderr_thread: threading.Thread | None = None
         self.query_count = 0
         self.query_hashes: list[str] = []
         self.prebuilt_bridge_used = False
@@ -127,7 +128,8 @@ class OnlineSimplePIRResolver:
             raise RuntimeError("online SimplePIR exited before PIR_READY: " + self.process.stderr.read())
         if ready != {"future_indices_received": 0, "records": 1000, "type": "PIR_READY"}:
             raise AssertionError(f"unexpected online SimplePIR readiness record: {ready}")
-        threading.Thread(target=self._drain_stderr, daemon=True).start()
+        self.stderr_thread = threading.Thread(target=self._drain_stderr, daemon=True)
+        self.stderr_thread.start()
         (self.output / "preprocessing_ready.json").write_text(
             json.dumps({**ready, "official_commit": SIMPLEPIR_COMMIT}, indent=2) + "\n",
             encoding="utf-8",
@@ -170,6 +172,8 @@ class OnlineSimplePIRResolver:
         except subprocess.TimeoutExpired:
             self.process.terminate()
             self.process.wait(timeout=5)
+        if self.stderr_thread is not None:
+            self.stderr_thread.join(timeout=2)
         (self.output / "bridge_stderr.txt").write_text("".join(self.stderr_lines), encoding="utf-8")
         (self.output / "online_query_summary.json").write_text(
             json.dumps(
@@ -186,6 +190,13 @@ class OnlineSimplePIRResolver:
             + "\n",
             encoding="utf-8",
         )
+        # Popen does not close PIPE file objects merely because the child has
+        # exited.  Qualification executes hundreds of independent sessions in
+        # one process, so explicitly release every descriptor.
+        for stream in (self.process.stdout, self.process.stderr):
+            if stream is not None and not stream.closed:
+                stream.close()
+        self.process = None
 
 
 class CanonicalOnlineSession:
@@ -244,7 +255,10 @@ class CanonicalOnlineSession:
                 "state_directory": str(self.output / "gateway_state"),
                 "routes": route_specs(self.providers),
                 "actions": [],
-                "round_period_ms": 5,
+                # Qualification profiles own the public slot period.  The old
+                # unconditional value of 5 ms made a non-5-ms profile only a
+                # label change and invalidated scheduler qualification.
+                "round_period_ms": profile.round_period_ms if self.public_profile is not None else 5,
                 "scheduler_tolerance_ms": 3,
                 "preparation_lead_ms": 1,
             }
@@ -429,6 +443,9 @@ class CanonicalOnlineSession:
         if self.reader_thread is not None:
             self.reader_thread.join(timeout=2)
         stderr = self.process.stderr.read() if self.process.stderr is not None else ""
+        for stream in (self.process.stdout, self.process.stderr):
+            if stream is not None and not stream.closed:
+                stream.close()
         (self.output / "go_stderr.txt").write_text(stderr, encoding="utf-8")
         (self.output / "trusted_control_events.jsonl").write_text(
             "".join(json.dumps(event, sort_keys=True) + "\n" for event in self.events),
