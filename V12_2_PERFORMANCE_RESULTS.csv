@@ -1,0 +1,3 @@
+baseline,real_operations,repetition,functional,status_class,error,latency_boundary,logical_action_latency_ms,framework_result_latency_ms,session_wall_ms,bytes_sent,bytes_received,pir_request_bytes,pir_response_bytes,total_bytes,cpu_ms,peak_rss_bytes
+B4_PIR_PLUS_FIXED_TRANSCRIPT_EXTERNAL,NOT_RUN,NOT_RUN,False,SERIAL_GATE_FAILED,,NOT_INCLUDED,,,,,,,,,,
+B5_FULL_STRICT,NOT_RUN,NOT_RUN,False,SERIAL_GATE_FAILED,,NOT_INCLUDED,,,,,,,,,,

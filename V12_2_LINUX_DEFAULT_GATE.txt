@@ -1,0 +1,1 @@
+NOT RUN: the frozen 117-node Linux Class-A serial gate failed 105/117. The predeclared V12.2 protocol permits default-mode execution only after serial PASS.

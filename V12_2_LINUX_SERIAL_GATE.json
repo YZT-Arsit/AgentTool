@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12_2.LinuxClassASerialGate/1",
+  "status": "FAIL",
+  "base_commit": "bdbb35b873ebf5c660b288b391abe320c3963d99",
+  "manifest_sha256": "919b95123e2244f6f7fe771158eeafe06daa6dbc1898d39d2546b6c01da598f4",
+  "raw_driver_json_sha256": "e43a3e8fb08b6f4cce570ffc4e6291bc4b7c5bafed543f4559dacc674fd1f15d",
+  "raw_pytest_text_sha256": "670711144b9241f1c745c1a0e666880fc94264febb7186c2dfb88742f9d93cbe",
+  "collected": 117,
+  "passed": 105,
+  "failed": 12,
+  "skipped": 0,
+  "failure_classes": {
+    "MISSING_FROZEN_V10_MANIFEST_PREREQUISITE": 11,
+    "PREEXISTING_V11B_OUTPUT_ROOT": 1
+  },
+  "failed_nodes": [
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_structural_executor_on_non_holdout_v9_1_development_pair",
+    "tests/test_v11b0_driver.py::V11B0DriverTests::test_selected_execution_is_impossible_without_independent_approval"
+  ],
+  "classification_changed_after_outcome": false,
+  "retry_performed": false,
+  "selected_v12_cases_executed": 0
+}

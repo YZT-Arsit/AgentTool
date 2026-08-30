@@ -1,0 +1,2 @@
+count,repetition,passed,failure_fields,error,session_status,rounds,schedule_misses,output_root
+NOT_RUN,NOT_RUN,False,,,SERIAL_GATE_FAILED,0,0,

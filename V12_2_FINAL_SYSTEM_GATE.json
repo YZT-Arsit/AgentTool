@@ -1,0 +1,48 @@
+{
+  "schema": "AgentTool.V12_2.FinalSystemGate/1",
+  "status": "FAIL",
+  "base_commit": "bdbb35b873ebf5c660b288b391abe320c3963d99",
+  "blocking_gate": "LINUX_SERIAL_CLASS_A_SUITE",
+  "blocking_result": "105 PASS / 12 FAIL / 0 SKIP",
+  "gates": {
+    "SIMPLEPIR_RUNTIME_DEPENDENCY_CLOSED": "PASS_HISTORICAL_UNCHANGED_DEPENDENCY",
+    "RESOURCE_LEAK_FIXED": "PASS_HISTORICAL",
+    "500_UNIT_RESOURCE_STRESS": "PASS_HISTORICAL",
+    "FULL_CAMPAIGN_REHEARSALS": "5/5 PASS_HISTORICAL",
+    "SECURITY_NEGATIVE_MATRIX": "22/22 HISTORICAL; POST_REPAIR_RECOVERY_REVALIDATION_NOT_RUN",
+    "LINUX_TWO_WINDOWS_FAILURE_EQUIVALENT_STRESS": "200/200 PASS",
+    "LINUX_SERIAL_CLASS_A_SUITE": "FAIL: 105/117",
+    "LINUX_DEFAULT_CLASS_A_SUITE": "NOT_RUN_SERIAL_GATE_FAILED",
+    "GO_TESTS": "NOT_RUN_SERIAL_GATE_FAILED",
+    "B5_V12_2_TARGETED": "NOT_RUN_SERIAL_GATE_FAILED",
+    "PROFILE_REQUALIFICATION": "NOT_RUN_SERIAL_GATE_FAILED",
+    "POST_REPAIR_B5_PERFORMANCE": "NOT_RUN_SERIAL_GATE_FAILED",
+    "DUMMY_HEAVY_OPS": "0 IN COMPLETED 200/200 EQUIVALENT STRESS"
+  },
+  "platform_evidence": {
+    "v12_1_negative_evidence_preserved": true,
+    "policy_frozen_before_test": true,
+    "windows_portability_failures_preserved": true,
+    "class_a_manifest_nodes": 117,
+    "class_a_classification_changed_after_outcome": false,
+    "class_a_retry_performed": false
+  },
+  "holdout_state": {
+    "execution_harness_freeze_created": false,
+    "master_exclusion_created": false,
+    "candidate_universe_built": false,
+    "selection_seed_derived": false,
+    "seed_search": false,
+    "fresh_s1_pool": "NOT_BUILT",
+    "selected_manifests": 0,
+    "execution_plan_units": 0,
+    "selected_cases_executed": 0,
+    "results_v12_confirmatory_exists": false,
+    "authorization_exists": false
+  },
+  "timing_privacy": "OPEN / NOT TESTED",
+  "packet_level_timing": "OPEN",
+  "hardware_tee": "NOT_TESTED",
+  "source_body_executable_subset": 0,
+  "ready_for_independent_v12_final_freeze_audit": false
+}

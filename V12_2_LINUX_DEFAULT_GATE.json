@@ -1,0 +1,10 @@
+{
+  "schema": "AgentTool.V12_2.LinuxClassADefaultGate/1",
+  "status": "NOT_RUN_SERIAL_GATE_FAILED",
+  "manifest_sha256": "919b95123e2244f6f7fe771158eeafe06daa6dbc1898d39d2546b6c01da598f4",
+  "collected": 0,
+  "passed": 0,
+  "failed": 0,
+  "skipped": 0,
+  "selected_v12_cases_executed": 0
+}

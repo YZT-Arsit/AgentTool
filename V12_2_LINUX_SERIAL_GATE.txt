@@ -1,0 +1,599 @@
+....FFFFFFFFFF.F........................................................ [ 61%]
+......F......................................                            [100%]
+=================================== FAILURES ===================================
+_ test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco0')
+framework = 'OpenAI Agents SDK', suffix = 'read', changes = {}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco1')
+framework = 'Microsoft Agent Framework', suffix = 'read', changes = {}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco2')
+framework = 'OpenAI Agents SDK', suffix = 'idem'
+changes = {'capability': 'tool.idem', 'effect_semantics': 'IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco3')
+framework = 'Microsoft Agent Framework', suffix = 'idem'
+changes = {'capability': 'tool.idem', 'effect_semantics': 'IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco4')
+framework = 'OpenAI Agents SDK', suffix = 'nonidem'
+changes = {'capability': 'tool.nonidem', 'effect_semantics': 'NON_IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco5')
+framework = 'Microsoft Agent Framework', suffix = 'nonidem'
+changes = {'capability': 'tool.nonidem', 'effect_semantics': 'NON_IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco6')
+framework = 'OpenAI Agents SDK', suffix = 'error'
+changes = {'scenario': 'ERROR'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco7')
+framework = 'Microsoft Agent Framework', suffix = 'error'
+changes = {'scenario': 'ERROR'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco8')
+framework = 'OpenAI Agents SDK', suffix = 'timeout'
+changes = {'scenario': 'BOUNDED_TIMEOUT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_native_and_canonical_reco9')
+framework = 'Microsoft Agent Framework', suffix = 'timeout'
+changes = {'scenario': 'BOUNDED_TIMEOUT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+________ test_structural_executor_on_non_holdout_v9_1_development_pair _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_structural_executor_on_no0')
+
+    def test_structural_executor_on_non_holdout_v9_1_development_pair(tmp_path: Path) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no projection-only substitute is permitted"
+>       before = _hashes()
+                 ^^^^^^^^^
+
+tests/test_v10_1_executor.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_v10_1_executor.py:23: in _hashes
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in OLD_MANIFESTS}
+                                      ^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/mediation_trace_validation/CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json'
+
+/root/miniconda3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ V11B0DriverTests.test_selected_execution_is_impossible_without_independent_approval _
+
+self = <test_v11b0_driver.V11B0DriverTests testMethod=test_selected_execution_is_impossible_without_independent_approval>
+
+    def test_selected_execution_is_impossible_without_independent_approval(self):
+>       self.assertFalse(driver.OUTPUT_ROOT.exists())
+E       AssertionError: True is not false
+
+tests/test_v11b0_driver.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_structural_executor_on_non_holdout_v9_1_development_pair
+FAILED tests/test_v11b0_driver.py::V11B0DriverTests::test_selected_execution_is_impossible_without_independent_approval
+12 failed, 105 passed in 107.17s (0:01:47)

@@ -1,0 +1,17 @@
+{
+  "schema": "AgentTool.V12_2.PlatformPolicy/1",
+  "base_commit": "bdbb35b873ebf5c660b288b391abe320c3963d99",
+  "frozen_before_decisive_v12_2_testing": true,
+  "primary_confirmatory_platform": "AUTHORIZED_OFFLINE_LINUX_HOST",
+  "windows_role": "DEVELOPMENT_PORTABILITY_OBSERVATION",
+  "test_classes": {
+    "CURRENT_SYSTEM_EXECUTION_REACHABLE": "All canonical runner, online Agent, SimplePIR, routing, BHTTP/OHTTP, Relay/Gateway, scheduler, effect recovery, DeliveryLedger, framework adapter, projection, and V12 confirmatory-harness tests; every node executes on Linux and must pass.",
+    "HISTORICAL_EVIDENCE_AUDIT": "Tests of immutable V1-V11 artifacts or old host result trees outside the V12 selected runtime; provenance is audited without converting absent Linux result trees into current-system outcomes.",
+    "PLATFORM_SPECIFIC_PORTABILITY": "Tests tied to Windows-only historical layouts or Windows execution characteristics; retained as portability evidence and never promoted to Linux PASS."
+  },
+  "class_a_skip_allowed": false,
+  "classification_may_change_after_outcome": false,
+  "timing_privacy": "OPEN / NOT TESTED",
+  "packet_level_timing": "OPEN",
+  "hardware_tee": "NOT_TESTED"
+}
