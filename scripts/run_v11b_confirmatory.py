@@ -39,6 +39,8 @@ DRIVER_FREEZE_PATH = ROOT / "V11B0_ONE_SHOT_DRIVER_FREEZE.json"
 HARDENED_FREEZE_PATH = ROOT / "V11B0_1_ONE_SHOT_DRIVER_FREEZE.json"
 SIMPLEPIR_BRIDGE_FREEZE_PATH = ROOT / "V11B0_1_SIMPLEPIR_BRIDGE_FREEZE.json"
 FINAL_DECISION_RULES_PATH = ROOT / "V11B0_1_FINAL_DECISION_RULES.json"
+ARTIFACT_MANIFEST_PATH = ROOT / "V11B_EXECUTION_ARTIFACT_MANIFEST.json"
+AUTHORIZED_V11B_COMMIT = "a7e331af996845e12468d4c36cfd25a3a676e6ff"
 SEMANTIC_MANIFESTS = (
     ("S1", ROOT / "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json"),
     ("S2", ROOT / "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json"),
@@ -209,6 +211,23 @@ def _tree_manifest(source: Path) -> tuple[str, int]:
                 path.stat().st_size,
                 path.relative_to(source).as_posix(),
             )
+        )
+    canonical = "".join(f"{digest} {size} {name}\n" for digest, size, name in entries)
+    return sha256_bytes(canonical.encode()), len(entries)
+
+
+def _source_tree_manifest(source: Path) -> tuple[str, int]:
+    entries = []
+    for path in sorted(
+        (
+            item
+            for item in source.rglob("*")
+            if item.is_file() and ".git" not in item.relative_to(source).parts
+        ),
+        key=lambda item: item.relative_to(source).as_posix(),
+    ):
+        entries.append(
+            (sha256(path), path.stat().st_size, path.relative_to(source).as_posix())
         )
     canonical = "".join(f"{digest} {size} {name}\n" for digest, size, name in entries)
     return sha256_bytes(canonical.encode()), len(entries)
@@ -425,6 +444,60 @@ def verify_linux_execution_dependencies() -> dict[str, Any]:
     }
 
 
+def verify_execution_artifact_manifest(
+    runner_path: Path, *, root: Path = ROOT
+) -> dict[str, Any]:
+    manifest_path = root / ARTIFACT_MANIFEST_PATH.name
+    manifest = load_json(manifest_path)
+    checks: dict[str, bool] = {
+        "manifest_status": manifest.get("status") == "FROZEN_FOR_V11B_EXECUTION",
+        "historical_commit": manifest.get("historical_source_commit")
+        == AUTHORIZED_V11B_COMMIT,
+    }
+    unsigned = dict(manifest)
+    expected_manifest_hash = unsigned.pop("manifest_payload_sha256", None)
+    checks["manifest_payload"] = expected_manifest_hash == canonical_sha(unsigned)
+    checks["frozen_files"] = all(
+        (root / item["path"]).is_file()
+        and sha256(root / item["path"]) == item["sha256"]
+        for item in manifest.get("files", [])
+    )
+    checks["canonical_runner"] = (
+        runner_path.is_file()
+        and sha256(runner_path) == manifest["binaries"]["canonical_runner"]["sha256"]
+    )
+    bridge = root / manifest["binaries"]["simplepir_bridge"]["path"]
+    checks["simplepir_bridge"] = (
+        bridge.is_file()
+        and sha256(bridge) == manifest["binaries"]["simplepir_bridge"]["sha256"]
+    )
+    for module_name, key in (("agents", "openai"), ("agent_framework", "microsoft")):
+        expected = manifest["framework_imports"][key]
+        try:
+            imported = Path(importlib.import_module(module_name).__file__).resolve()
+            source_root = (root / expected["source_root_relative"]).resolve()
+            checks[f"{key}_import_path"] = imported.is_relative_to(source_root)
+            checks[f"{key}_import_hash"] = sha256(imported) == expected["sha256"]
+        except (ImportError, AttributeError, OSError, TypeError):
+            checks[f"{key}_import_path"] = False
+            checks[f"{key}_import_hash"] = False
+    simplepir_hash, simplepir_files = _source_tree_manifest(
+        root / manifest["source_trees"]["simplepir"]["path"]
+    )
+    checks["simplepir_source_tree"] = (
+        simplepir_hash == manifest["source_trees"]["simplepir"]["sha256"]
+        and simplepir_files == manifest["source_trees"]["simplepir"]["file_count"]
+    )
+    ohttp_hash, ohttp_files = _source_tree_manifest(
+        root / manifest["source_trees"]["ohttp"]["path"]
+    )
+    checks["ohttp_source_tree"] = (
+        ohttp_hash == manifest["source_trees"]["ohttp"]["sha256"]
+        and ohttp_files == manifest["source_trees"]["ohttp"]["file_count"]
+    )
+    return {"passed": all(checks.values()), "checks": checks}
+
+
 def preflight(
     authorization_path: Path,
     runner_path: Path,
@@ -437,49 +510,24 @@ def preflight(
     if authorization.get("phase") != "V11B" or authorization.get("approved") is not True:
         raise HarnessIntegrityFailure("independent V11B authorization is absent")
     authorized_commit = str(authorization.get("authorized_v11b0_commit", ""))
-    if not authorized_commit or _git("rev-parse", "HEAD") != authorized_commit:
-        raise HarnessIntegrityFailure("HEAD is not the independently authorized V11B0 commit")
-    if _git("status", "--porcelain"):
-        raise HarnessIntegrityFailure("working tree is not clean")
+    if authorized_commit != AUTHORIZED_V11B_COMMIT:
+        raise HarnessIntegrityFailure("authorization does not name the frozen V11B source provenance")
     if output_root.exists():
         raise HarnessIntegrityFailure("results_v11b_confirmatory already exists")
-    driver_freeze = verify_hardened_driver_freeze()
-    if not driver_freeze["passed"]:
-        raise HarnessIntegrityFailure(f"V11B0.1 driver freeze failed: {driver_freeze['checks']}")
-    baseline = load_json(BASELINE_PATH)
-    result = verify_composed_baseline(baseline, runner_path=runner_path, require_runner=True)
-    if not result["passed"]:
-        raise HarnessIntegrityFailure(f"composed baseline failed: {result['checks']}")
-    if sha256(PLAN_PATH) != baseline["execution_plan_sha256"]:
-        raise HarnessIntegrityFailure("execution plan hash mismatch")
-    dependencies = verify_linux_execution_dependencies()
-    if not dependencies["passed"]:
-        raise HarnessIntegrityFailure(f"Linux dependency provenance failed: {dependencies}")
+    artifacts = verify_execution_artifact_manifest(runner_path)
+    if not artifacts["passed"]:
+        raise HarnessIntegrityFailure(f"execution artifact manifest failed: {artifacts['checks']}")
     return {
         "authorization": authorization,
         "authorized_commit": authorized_commit,
-        "driver_freeze_verification": driver_freeze,
-        "baseline_verification": result,
-        "linux_dependency_verification": dependencies,
+        "artifact_manifest_verification": artifacts,
     }
 
 
-def mid_campaign_integrity(
-    authorized_commit: str, runner_path: Path, baseline: dict[str, Any]
-) -> None:
-    if _git("rev-parse", "HEAD") != authorized_commit:
-        raise HarnessIntegrityFailure("HEAD changed during campaign")
-    if _git("status", "--porcelain", "--untracked-files=no"):
-        raise HarnessIntegrityFailure("tracked files changed during campaign")
-    result = verify_composed_baseline(baseline, runner_path=runner_path, require_runner=True)
+def mid_campaign_integrity(runner_path: Path) -> None:
+    result = verify_execution_artifact_manifest(runner_path)
     if not result["passed"]:
-        raise HarnessIntegrityFailure("frozen baseline drifted during campaign")
-    hardened = verify_hardened_driver_freeze()
-    if not hardened["passed"]:
-        raise HarnessIntegrityFailure("V11B0.1 driver freeze drifted during campaign")
-    dependencies = verify_linux_execution_dependencies()
-    if not dependencies["passed"]:
-        raise HarnessIntegrityFailure("Linux dependency provenance drifted during campaign")
+        raise HarnessIntegrityFailure("frozen execution artifacts drifted during campaign")
 
 
 def _jsonable(value: Any) -> Any:
@@ -584,7 +632,7 @@ def structural_functional_valid(value: dict[str, Any], spec: Any) -> bool:
 
 
 def _approved_permit_after_preflight(preflight_result: dict[str, Any]) -> ExecutionPermit:
-    if not preflight_result["baseline_verification"]["passed"]:
+    if not preflight_result["artifact_manifest_verification"]["passed"]:
         raise HarnessIntegrityFailure("approved permit requested before successful preflight")
     return ExecutionPermit("V11B", True)
 
@@ -709,6 +757,7 @@ def write_campaign_completion(
             "v11b_confirmatory_summary_sha256": sha256(summary_path),
             "frozen_execution_plan_sha256": sha256(plan_path),
             "v11b0_1_driver_freeze_sha256": sha256(driver_freeze_path),
+            "execution_artifact_manifest_sha256": sha256(ARTIFACT_MANIFEST_PATH),
         },
     )
 
@@ -722,13 +771,12 @@ def run_campaign(authorization_path: Path, runner_path: Path) -> int:
 
     OUTPUT_ROOT.mkdir(exist_ok=False)
     plan = load_json(PLAN_PATH)
-    baseline = load_json(BASELINE_PATH)
     content = load_frozen_content()
     campaign = {
         "schema": "AgentTool.V11BCampaignManifest/1",
         "authorized_commit": checked["authorized_commit"],
         "execution_plan_sha256": sha256(PLAN_PATH),
-        "composed_baseline_sha256": sha256(BASELINE_PATH),
+        "execution_artifact_manifest_sha256": sha256(ARTIFACT_MANIFEST_PATH),
         "v11b0_1_driver_freeze_sha256": sha256(HARDENED_FREEZE_PATH),
         "final_decision_rules_sha256": sha256(FINAL_DECISION_RULES_PATH),
         "unit_count": plan["unit_count"],
@@ -743,7 +791,7 @@ def run_campaign(authorization_path: Path, runner_path: Path) -> int:
         unit_dir = OUTPUT_ROOT / unit["unit_id"]
         unit_dir.mkdir(exist_ok=False)
         try:
-            mid_campaign_integrity(checked["authorized_commit"], runner_path, baseline)
+            mid_campaign_integrity(runner_path)
             status, value = execute_unit(unit, content, unit_dir, permit, runner_path)
             write_json_exclusive(unit_dir / "unit_result.json", value)
         except HarnessIntegrityFailure as error:

@@ -1,0 +1,290 @@
+{
+  "binaries": {
+    "canonical_runner": {
+      "path": "common_action_gateway_v2/bin/canonical-v11_4-runner",
+      "sha256": "14eb0488813425a99e49ac74741777fb5022a04ada6577a5b00bb5d2ef119877"
+    },
+    "simplepir_bridge": {
+      "path": "pir_integration/simplepir_bridge/acv-simplepir-online",
+      "sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b"
+    }
+  },
+  "files": [
+    {
+      "path": "OHTTP_VENDOR_PROVENANCE_V9.json",
+      "sha256": "9d8e95b6170122ff4b18ee41f5265e428a05246a4e092058697c451af8d1e0e2"
+    },
+    {
+      "path": "PUBLIC_PROFILE_ONLINE_V11_4.json",
+      "sha256": "1bc17974513a0217437ec3d4e8606af9db59fcf22229d20165dfe639a30e24ea"
+    },
+    {
+      "path": "V11A_CANDIDATE_UNIVERSES_FREEZE.json",
+      "sha256": "b9b05012dba0225644d15d6e9a481e30902d0df61049a5fb21cbca1a4a893b43"
+    },
+    {
+      "path": "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json",
+      "sha256": "06bf507ae6b31efb4f6098b989bdcd69a79228905268b1af3c1db81730c3f563"
+    },
+    {
+      "path": "V11A_CAUSAL_TRAJECTORY_UNIVERSE.json",
+      "sha256": "f45e14c0971be5fb9ddc0528aa46e2f1d9619bd08692e608baaecaa330d228fc"
+    },
+    {
+      "path": "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json",
+      "sha256": "b4299bb842f46dcc9bee40b258aa54ca09b907d47fdc2ddf3b2749364a3b8d15"
+    },
+    {
+      "path": "V11A_COMPOSITION_UNIVERSE.json",
+      "sha256": "d96522841d755dae463d3a80c9d718f3a43af7d2a58322dd5a988894a1ebe7b4"
+    },
+    {
+      "path": "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json",
+      "sha256": "3b73f30f4ab7810ef4d9d37ceca2ced746fdbdcda437cf4485a88494928d90b9"
+    },
+    {
+      "path": "V11A_EFFECT_CONTRACT_UNIVERSE.json",
+      "sha256": "81345c641e116e25dfb66b50285421ab58ca63ef052738b989d7555083cd4ca6"
+    },
+    {
+      "path": "V11A_EXECUTION_ENVIRONMENT_FREEZE.json",
+      "sha256": "7ed67732df80557d8168b9e4f4bc0f59b74d7f617eec582206777fa9968ec2d3"
+    },
+    {
+      "path": "V11A_EXECUTION_ORDER.json",
+      "sha256": "c484590870fd32f285d16d38744e52b26fd0d94c532aa22fcfda7b543e2eb9b6"
+    },
+    {
+      "path": "V11A_FINAL_CONFIRMATORY_FREEZE.json",
+      "sha256": "a9960a4e1dc78b68a732e3037aa81b6aa386f279e4a726b4949914333a0a3514"
+    },
+    {
+      "path": "V11A_MASTER_EXCLUSION_SET.json",
+      "sha256": "5703fbf131927cc69eda3cd3c04b706d59b30bc45035b17d3348aaead2297f90"
+    },
+    {
+      "path": "V11A_SELECTION_SEEDS.json",
+      "sha256": "4e6c84b492489d3a39ba48684ea8d2cac59985d73a12e128e30a8a26384f28d4"
+    },
+    {
+      "path": "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json",
+      "sha256": "f94f86baeb2406b4b6cabb235a3ea8f271027ab101c5380d4a44758de7067e4a"
+    },
+    {
+      "path": "V11A_SOURCE_TOOL_UNIVERSE.json",
+      "sha256": "934520e3c0a32ed55305a729bad2bfd44ff78aef4562c1113f844887d5acc4fd"
+    },
+    {
+      "path": "V11A_STRUCTURAL_PAIR_UNIVERSE.json",
+      "sha256": "3f46b035e4f8035856e392d92a84b0309abb9d0773c4f1cf241a0b05c85cdbf4"
+    },
+    {
+      "path": "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json",
+      "sha256": "d073ad9c166bd81f0aebc637584810127c9e5ed16c6b22e907f00a1190a4f3d7"
+    },
+    {
+      "path": "V11B0_1_FINAL_DECISION_RULES.json",
+      "sha256": "f0596f91ff59963bfd7ae8ec346f7ce333690b1900461e71788358138422afd8"
+    },
+    {
+      "path": "V11B0_1_ONE_SHOT_DRIVER_FREEZE.json",
+      "sha256": "d5bf2ba2ce8a17e4188979a0b586e60d1c80b54efecc893e11a17a3807687a91"
+    },
+    {
+      "path": "V11B0_1_SIMPLEPIR_BRIDGE_FREEZE.json",
+      "sha256": "408b1175f9dbe6b1d7c577c64d59425a6b2ef550268438d6dac145ee3a0321ff"
+    },
+    {
+      "path": "V11B0_EXECUTION_PLAN.json",
+      "sha256": "363afadf8d5c9826cedb780f0b9770db0e61bcd33eb599f901464681a3adb539"
+    },
+    {
+      "path": "action_privacy_v8/__init__.py",
+      "sha256": "c27b887a58791826b5809bf7ad398c5c43c9c88310592736c6e1bbfa8ae8bd3b"
+    },
+    {
+      "path": "action_privacy_v8/delivery.py",
+      "sha256": "08eb3c4b79aae81f6f58a9aee0ed9d735f12b5014ed21d3c5910e40d36d63e42"
+    },
+    {
+      "path": "action_privacy_v8/descriptor.py",
+      "sha256": "5ba4b6af5a48e44529c87e9656663d9da2f9e8d8eea2d85e456e24c8dd50012b"
+    },
+    {
+      "path": "action_privacy_v8/models.py",
+      "sha256": "61fe81437bc063f051087547121d025e9cb07ef99bd66d292828cf3b58420dbc"
+    },
+    {
+      "path": "action_privacy_v8/pir_boundary.py",
+      "sha256": "f3aab434c79864506c60775309805bad324438e8a443f056e04ba07297a0ea58"
+    },
+    {
+      "path": "action_privacy_v8/routing.py",
+      "sha256": "6d13d39bc7be2bdb3923e7df244e7306817212ccfb1c25df66b07a8cc2009422"
+    },
+    {
+      "path": "canonical_v9/__init__.py",
+      "sha256": "45fb1d78caa5d1641c33f22d46a084c4335d9c7f8a1d73f759cf813fbdf3481f"
+    },
+    {
+      "path": "canonical_v9/runner.py",
+      "sha256": "13546027c570ac1bb4c36b5d0aabdec574547a57a7e0e01c073b62fc59a0afcc"
+    },
+    {
+      "path": "canonical_v9_1/__init__.py",
+      "sha256": "dfce0d89068975d2e9970c6ffefb2f4790a1df1dc361f7bd2b6d13e6115b0dcd"
+    },
+    {
+      "path": "canonical_v9_1/profile.py",
+      "sha256": "44dae7e6d1a431eb09b4631999a2aec704cb7587dbd95d7b277902be613165ed"
+    },
+    {
+      "path": "canonical_v9_1/projection.py",
+      "sha256": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea"
+    },
+    {
+      "path": "canonical_v9_1/runner.py",
+      "sha256": "545c5631242c25395351285b247fd6f9d206fddb70d5ae14cacad7d02be49bc9"
+    },
+    {
+      "path": "cryptographic_closure/__init__.py",
+      "sha256": "e3c5e57aabec7627ba3e4714d3b92612ec3fefc070750361e745fc8b36044f04"
+    },
+    {
+      "path": "cryptographic_closure/pir_backend.py",
+      "sha256": "96ef5599a8882c24d73d7558e8158972ba3ebca0bbdf4ac8e0dacc0d29d5a524"
+    },
+    {
+      "path": "pir_integration/simplepir_bridge/go.mod",
+      "sha256": "942208012164a313184f5688570d9b5f8190376fd35d967c0c27f1762cc04a7d"
+    },
+    {
+      "path": "pir_integration/simplepir_bridge/main.go",
+      "sha256": "978abd59e95cdd35826a909c1a781af9887de3700a3eda659072bdb1e884eaac"
+    },
+    {
+      "path": "scripts/run_v11b_confirmatory.py",
+      "sha256": "981f91a5bfec211d29882d1ccdbd8dc269e7dc0547978edc2e24d8b52f6f90b3"
+    },
+    {
+      "path": "scripts/summarize_v11b_confirmatory.py",
+      "sha256": "ff985ce37eeb6aa464820f9f857d107a31c27c57634f90aa41daef0ad58cb914"
+    },
+    {
+      "path": "v10_holdout/__init__.py",
+      "sha256": "27efbfd620ce4d2f0e85988ac51c8250ad9bd39fc78418fb8916e81d994b6fd5"
+    },
+    {
+      "path": "v10_holdout/harness.py",
+      "sha256": "324dee5dc938853c825e83324cc75fb9b72e34c74dd68967f5482852624e4119"
+    },
+    {
+      "path": "v11_3/__init__.py",
+      "sha256": "0bde44ab282eed1b5dcdf7f102e04866508877e4c3037d4dbcaff3ef2b462912"
+    },
+    {
+      "path": "v11_3/profile.py",
+      "sha256": "1f5d180a23d8f2f7de9db39ba94d4dce84fcb5a748ee96aabe2b3445e37f3897"
+    },
+    {
+      "path": "v11_4/__init__.py",
+      "sha256": "6484e0b1abe78fa40cb607b6a9d0ea0178d3dd3c7a827df732005634dddd9911"
+    },
+    {
+      "path": "v11_4/profile.py",
+      "sha256": "efd599f1ee2aa6cf500826f1293bad0e68c2b07a6c82ba3251d5f3be50e8db83"
+    },
+    {
+      "path": "v11_full_scope/__init__.py",
+      "sha256": "65ae7a93b695a5e7ea681c5e5ad8eb27f556386e89514c8fc0b39e0d5de72539"
+    },
+    {
+      "path": "v11_full_scope/action_model.py",
+      "sha256": "4a267c93b978ef048c2bf0b5a2270afeb28ff937bb577c27538fdec6b69f74cf"
+    },
+    {
+      "path": "v11_full_scope/canonical.py",
+      "sha256": "2bfd1ffee0ec9199766be6b5cc81033ad6973573b7c9714117d358e73bc903fd"
+    },
+    {
+      "path": "v11_full_scope/frameworks.py",
+      "sha256": "ef08ea84987a6bc7688f477fa40fe9973a3b00e8bebd209d6d25f3d4b10eae63"
+    },
+    {
+      "path": "v11_full_scope/models.py",
+      "sha256": "b6c66be730dd60ff0c2c5f7e93517591c0082b0ef878fda888171ee08df620c8"
+    },
+    {
+      "path": "v11_full_scope/structural.py",
+      "sha256": "442a0d727cb62fe64856664902d84208ea785dd4eee1531019c7071820a5e331"
+    },
+    {
+      "path": "v11_online/__init__.py",
+      "sha256": "a77ce9dcea11713dab1151d285d9ca5eed79278ccf64377fe8ec0c9e22ce24da"
+    },
+    {
+      "path": "v11_online/frameworks.py",
+      "sha256": "5339f3821a8508edb1097f43ba901f269632ff63ae764e45fe77ab86da3d1465"
+    },
+    {
+      "path": "v11_online/session.py",
+      "sha256": "5dd14aafe6104bd9d927e8482886f60673e110d15fd34c5976f498ed1eb236a7"
+    },
+    {
+      "path": "v11a_confirmatory/__init__.py",
+      "sha256": "03804c3c4c8f198b26fec0cf6d3dcc58e330dfbea8ecc7fdc8f751d1a01b3d87"
+    },
+    {
+      "path": "v11a_confirmatory/orchestrator.py",
+      "sha256": "1162758f921de661438c294016ab3a371704e425cbd230bcd9d228c1093eb2d3"
+    },
+    {
+      "path": "v11a_confirmatory/projection.py",
+      "sha256": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1"
+    }
+  ],
+  "framework_imports": {
+    "microsoft": {
+      "path": "external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
+      "revision": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "sha256": "96d5d32906c31eb6688146354d2fa0451fc76556c6a83cc1752207887135acf6",
+      "source_root_relative": "external_stage9/agent-framework"
+    },
+    "openai": {
+      "path": "external_stage10/openai-agents-python/src/agents/__init__.py",
+      "revision": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "sha256": "322428026bff51f36ef520e884afc314f7dbd11fbb592fa7ec7ecf06a43a7791",
+      "source_root_relative": "external_stage10/openai-agents-python"
+    }
+  },
+  "historical_source_commit": "a7e331af996845e12468d4c36cfd25a3a676e6ff",
+  "manifest_payload_sha256": "8b9821a4513de7019a3d35543f4841d879e522b7aecebee84e4226edfe81270e",
+  "preflight_policy": {
+    "framework_import_only": true,
+    "main_git_required": false,
+    "results_root_must_not_exist": true,
+    "selected_execution_retry": false
+  },
+  "schema": "AgentTool.V11BExecutionArtifactManifest/1",
+  "selection_and_plan": {
+    "canonical_units": 93,
+    "native_units": 65,
+    "selected_content_changed": false,
+    "selected_units": 158
+  },
+  "source_trees": {
+    "ohttp": {
+      "file_count": 228,
+      "path": "third_party/ohttp-go",
+      "revision": "776f22a178b8332f4acacc2919176df8e61046cc",
+      "sha256": "264221b5daef50305a9a17a55f37d2ad547ef624331c12a0d716fce9a2629045"
+    },
+    "simplepir": {
+      "file_count": 23,
+      "path": "external_pir/simplepir",
+      "revision": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+      "sha256": "e69c38aa1f5db4b16f3e078a6c989c7edb21f3aa8ed508151f1668e38ce8d484"
+    }
+  },
+  "status": "FROZEN_FOR_V11B_EXECUTION"
+}
