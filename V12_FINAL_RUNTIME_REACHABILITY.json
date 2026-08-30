@@ -1,0 +1,86 @@
+{
+  "actual_selected_runtime": {
+    "calls_cryptographic_closure_pir_backend_run_simplepir": false,
+    "edges": [
+      "scripts.run_v12_confirmatory.execute_unit -> v11a_confirmatory.orchestrator",
+      "run_canonical_semantic_case -> CanonicalOnlineSession",
+      "run_canonical_online_trajectory_case -> CanonicalOnlineSession",
+      "run_structural_arm -> run_canonical_online_trajectory_case",
+      "CanonicalOnlineSession -> OnlineSimplePIRResolver",
+      "OnlineSimplePIRResolver -> pir_integration/simplepir_bridge/acv-simplepir-online"
+    ],
+    "go_or_gcc_runtime_discovery": false,
+    "imports_simplepir_commit_constant_only": true,
+    "prebuilt_bridge": "pir_integration/simplepir_bridge/acv-simplepir-online"
+  },
+  "base_commit": "fd2dd3a6e63a47ee98c9708052f979fa35ebf47f",
+  "checks": {
+    "actual_callers_do_not_reference_run_simplepir": true,
+    "actual_orchestrator_calls_online_session": true,
+    "legacy_bridge_calls_real_pir_select": true,
+    "legacy_pir_uses_go_run": true,
+    "legacy_real_pir_select_calls_run_simplepir": true,
+    "legacy_semantic_constructs_canonical_bridge": true,
+    "linux_online_source_fallback_disabled": true,
+    "online_resolver_selects_prebuilt_binary": true,
+    "online_session_imports_only_simplepir_commit_constant": true
+  },
+  "frozen_before_decisive_v12_final_execution": true,
+  "legacy_v10_1_compatibility": {
+    "edges": [
+      "v10_1_executor.semantic.run_canonical_case -> CanonicalSemanticBridge",
+      "CanonicalSemanticBridge -> canonical_v9.runner.real_pir_select",
+      "real_pir_select -> cryptographic_closure.pir_backend.run_simplepir",
+      "run_simplepir -> go run ."
+    ],
+    "requires_go_and_gcc_on_path": true
+  },
+  "schema": "AgentTool.V12Final.RuntimeReachability/1",
+  "selected_v12_cases_executed": 0,
+  "source_files": {
+    "canonical_v9/runner.py": {
+      "bytes": 23173,
+      "sha256": "13546027c570ac1bb4c36b5d0aabdec574547a57a7e0e01c073b62fc59a0afcc"
+    },
+    "cryptographic_closure/pir_backend.py": {
+      "bytes": 6407,
+      "sha256": "96ef5599a8882c24d73d7558e8158972ba3ebca0bbdf4ac8e0dacc0d29d5a524"
+    },
+    "scripts/run_v12_confirmatory.py": {
+      "bytes": 36362,
+      "sha256": "d13214ac969bfb20e68138390f294067f6b367a7c0605e21aba08bb5de53a033"
+    },
+    "v10_1_executor/canonical_bridge.py": {
+      "bytes": 4439,
+      "sha256": "4ae3e3278d881c5fbb42721ddb08c80cd06dceb2825dae7d006cba8a8137e815"
+    },
+    "v10_1_executor/semantic.py": {
+      "bytes": 1147,
+      "sha256": "7c9e67f79ca4059eb479251d131ed78b2db451e82e6c749f8897457b277854f0"
+    },
+    "v10_1_executor/structural.py": {
+      "bytes": 3552,
+      "sha256": "0718ffcbb37530390ce53128d34ebee3d0f059b5240e433325df95690e445782"
+    },
+    "v11_full_scope/canonical.py": {
+      "bytes": 29369,
+      "sha256": "2bfd1ffee0ec9199766be6b5cc81033ad6973573b7c9714117d358e73bc903fd"
+    },
+    "v11_full_scope/frameworks.py": {
+      "bytes": 19828,
+      "sha256": "ef08ea84987a6bc7688f477fa40fe9973a3b00e8bebd209d6d25f3d4b10eae63"
+    },
+    "v11_online/frameworks.py": {
+      "bytes": 13917,
+      "sha256": "5339f3821a8508edb1097f43ba901f269632ff63ae764e45fe77ab86da3d1465"
+    },
+    "v11_online/session.py": {
+      "bytes": 26347,
+      "sha256": "ccedf1e83ff5d759a8ee5e11d55a8627f5d8cc9378456550d0b57526f197e00d"
+    },
+    "v11a_confirmatory/orchestrator.py": {
+      "bytes": 8277,
+      "sha256": "834c4b3553ba46fa65aba03a030e0aa79694e1e5b34b59f5f9802365ab343830"
+    }
+  }
+}

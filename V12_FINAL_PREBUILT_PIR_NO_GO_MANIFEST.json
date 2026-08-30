@@ -1,0 +1,15 @@
+{
+  "schema": "AgentTool.V12Final.PrebuiltPIRNoGoPathManifest/1",
+  "frozen_before_execution": true,
+  "node_count": 1,
+  "nodes": [
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_prebuilt_pir_and_action_without_go_on_path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "reason": "actual OnlineSimplePIRResolver query and canonical online action with Go deliberately absent from PATH"
+    }
+  ],
+  "required_result": "ALL_PASS",
+  "selected_v12_cases_executed": 0
+}

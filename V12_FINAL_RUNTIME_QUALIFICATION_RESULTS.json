@@ -1,0 +1,47 @@
+{
+  "schema": "AgentTool.V12Final.RuntimeQualificationResults/1",
+  "base_commit": "fd2dd3a6e63a47ee98c9708052f979fa35ebf47f",
+  "actual_runtime_reachability": {
+    "status": "PASS",
+    "uses_historical_go_run_pir": false,
+    "prebuilt_bridge_path": "pir_integration/simplepir_bridge/acv-simplepir-online",
+    "prebuilt_bridge_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b"
+  },
+  "prebuilt_pir_without_go_path": {
+    "status": "PASS",
+    "passed": 1,
+    "attempted": 1,
+    "real_pir_queries": 2,
+    "dev_direct_query": 1,
+    "dev_canonical_actions": 1,
+    "go_found_in_process": false,
+    "source_fallback": false,
+    "raw_result_sha256": "666fe63de07eab6f6ec24336ac67846a1402daa9af1724b78fc3e2c01827c272",
+    "raw_log_sha256": "9b781d466f3fffc31ea6578bfdffbd4e22ac1161ef6b4090b10f432757ce1c87"
+  },
+  "legacy_v10_1_compatibility": {
+    "status": "PASS",
+    "passed": 11,
+    "attempted": 11,
+    "scoped_prepend_path": "/root/autodl-tmp/go1.26.5/bin",
+    "go_version": "go1.26.5 linux/amd64",
+    "gcc": "/usr/bin/gcc",
+    "global_path_modified": false,
+    "raw_result_sha256": "b14fec62a68cad05cbcf8fd6409dfea6f5f25c0d79ee4d41630492bb26cc7c86",
+    "raw_log_sha256": "a5ea9017962fe2a3f93f7c0bc2cec0399c72bf5e3cd5c207b4b0ac6f669d2bd0"
+  },
+  "current_runtime_class_a_serial": {
+    "status": "FAIL",
+    "passed": 69,
+    "attempted": 70,
+    "failed": 1,
+    "skipped": 0,
+    "failed_node": "tests/test_v12_final_runtime.py::test_actual_v12_online_multi_action_causal",
+    "failure_class": "DUPLICATE_LOGICAL_TOOL_NAME_BREAKS_OPERATION_ID_TRAJECTORY",
+    "failure_detail": "Two distinct operation IDs shared logical Tool name v11_tool_0. OpenAI registered a name collision; two outcomes were produced but outcomes_by_operation retained only one unique operation ID.",
+    "retry_performed": false,
+    "raw_result_sha256": "8e2988919e12a54ad50e44aadc00677729da6df4e491d0b51e1262a19de9d9dd",
+    "raw_log_sha256": "8127844980d608530f6666c80c017290e39e53c6d7b308ba76ff76425771337d"
+  },
+  "selected_v12_cases_executed": 0
+}

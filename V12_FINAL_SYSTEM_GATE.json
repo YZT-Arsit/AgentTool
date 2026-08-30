@@ -1,0 +1,51 @@
+{
+  "schema": "AgentTool.V12Final.SystemGate/1",
+  "status": "FAIL",
+  "base_commit": "fd2dd3a6e63a47ee98c9708052f979fa35ebf47f",
+  "blocking_gate": "CURRENT_RUNTIME_CLASS_A_SERIAL",
+  "blocking_result": "69 PASS / 1 FAIL / 0 SKIP",
+  "blocking_cause": "The actual OpenAI online causal workflow cannot preserve two operation IDs when both actions register the same logical Tool name.",
+  "preservation": {
+    "v12_3_failure_preserved": true,
+    "v12_3_final_system_gate_sha256": "bc253d0f518777053be7fcd2d5aba5dd8fb43ad952b1c2d7df261158f65b75b8",
+    "v11b_v12_v12_1_v12_2_v12_3_negative_evidence_preserved": true,
+    "v12_1_b5_post_repair_reliability": "200/200 PRESERVED",
+    "v12_2_windows_sensitive_linux_equivalents": "200/200 PRESERVED",
+    "runtime_code_changed_after_reliability": false
+  },
+  "gates": {
+    "ACTUAL_V12_RUNTIME_DEPENDENCY_GRAPH": "FROZEN_PASS",
+    "V12_RUNTIME_USES_HISTORICAL_GO_RUN_PIR": "NO",
+    "V12_PREBUILT_SIMPLEPIR_WITHOUT_GO_PATH": "PASS",
+    "LEGACY_V10_1_COMPATIBILITY": "11/11 PASS_SEPARATE",
+    "CURRENT_RUNTIME_CLASS_A_SERIAL": "FAIL: 69/70",
+    "CURRENT_RUNTIME_CLASS_A_DEFAULT": "NOT_RUN_SERIAL_GATE_FAILED",
+    "LINUX_GO_GATE": "NOT_RUN_SERIAL_GATE_FAILED",
+    "POST_REPAIR_PROFILE_REQUALIFICATION": "NOT_RUN_SERIAL_GATE_FAILED",
+    "POST_REPAIR_B4": "NOT_RUN_SERIAL_GATE_FAILED",
+    "POST_REPAIR_B5": "NOT_RUN_SERIAL_GATE_FAILED",
+    "AFFECTED_BASELINE_SECURITY_REVALIDATION": "NOT_RUN_SERIAL_GATE_FAILED"
+  },
+  "holdout_state": {
+    "execution_harness_freeze_created": false,
+    "master_exclusion_created": false,
+    "candidate_universe_built": false,
+    "selection_seed_derived": false,
+    "seed_search": false,
+    "fresh_s1_pool": "NOT_BUILT",
+    "s1_selected": 0,
+    "s2_selected": 0,
+    "s3_selected": 0,
+    "s4_selected": 0,
+    "structural_pairs_selected": 0,
+    "execution_plan_units": 0,
+    "selected_cases_executed": 0,
+    "results_v12_confirmatory_exists": false,
+    "authorization_exists": false
+  },
+  "timing_privacy": "OPEN / NOT TESTED",
+  "packet_level_timing": "OPEN",
+  "hardware_tee": "NOT_TESTED",
+  "source_body_executable_subset": 0,
+  "ready_for_independent_v12_final_freeze_audit": false
+}

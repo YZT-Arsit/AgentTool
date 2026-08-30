@@ -1,0 +1,15 @@
+{
+  "elapsed_ns": 7424131005,
+  "exit_code": 0,
+  "failed": 0,
+  "manifest_sha256": "109aee2c6ef02e52e39b46bbb76c854c4f235e3fe7d8ab5ccd1b9354f94ee0a8",
+  "mode": "serial",
+  "node_count": 1,
+  "passed": 1,
+  "prepend_path": null,
+  "raw_log_sha256": "9b781d466f3fffc31ea6578bfdffbd4e22ac1161ef6b4090b10f432757ce1c87",
+  "retry_performed": false,
+  "schema": "AgentTool.V12Final.PytestGate/1",
+  "selected_v12_cases_executed": 0,
+  "skipped": 0
+}

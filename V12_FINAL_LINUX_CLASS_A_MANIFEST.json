@@ -1,0 +1,503 @@
+{
+  "allowed_skips": 0,
+  "classification_sha256": "92184fc54deae6e42f7c0556ea96480c5ce4a73378e71d2b4951b5432e90268b",
+  "frozen_after_scoped_legacy_and_no_go_path_qualification": true,
+  "frozen_before_decisive_current_runtime_execution": true,
+  "node_count": 70,
+  "nodes": [
+    {
+      "node_id": "tests/test_v11_3_profile.py::V113OnlineProfileTests::test_admission_and_operation_capacity_are_independent",
+      "reason": "online Agent session admission and profile contract",
+      "source_path": "tests/test_v11_3_profile.py",
+      "source_sha256": "4f58305ecc6ffcc1fa2dbbb227278fc5209274d6eb3f5aed978b039f770c3a4e",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_3_profile.py::V113OnlineProfileTests::test_candidates_are_predeclared_and_capacity_is_mechanical",
+      "reason": "online Agent session admission and profile contract",
+      "source_path": "tests/test_v11_3_profile.py",
+      "source_sha256": "4f58305ecc6ffcc1fa2dbbb227278fc5209274d6eb3f5aed978b039f770c3a4e",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_3_profile.py::V113OnlineProfileTests::test_frozen_wire_and_suite_fields_cannot_change",
+      "reason": "online Agent session admission and profile contract",
+      "source_path": "tests/test_v11_3_profile.py",
+      "source_sha256": "4f58305ecc6ffcc1fa2dbbb227278fc5209274d6eb3f5aed978b039f770c3a4e",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_3_profile.py::V113OnlineProfileTests::test_profile_id_is_mechanically_public_and_consistent",
+      "reason": "online Agent session admission and profile contract",
+      "source_path": "tests/test_v11_3_profile.py",
+      "source_sha256": "4f58305ecc6ffcc1fa2dbbb227278fc5209274d6eb3f5aed978b039f770c3a4e",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_4_profile.py::V114ProfileTests::test_candidate_sets_and_capacity_formula_are_frozen",
+      "reason": "final online profile and causal session contract",
+      "source_path": "tests/test_v11_4_profile.py",
+      "source_sha256": "a7a6ca266be080307ba292048ba7767262a01c2921ed460237975c88febb5464",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_4_profile.py::V114ProfileTests::test_horizon_profiles_use_only_selected_predeclared_period",
+      "reason": "final online profile and causal session contract",
+      "source_path": "tests/test_v11_4_profile.py",
+      "source_sha256": "a7a6ca266be080307ba292048ba7767262a01c2921ed460237975c88febb5464",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_4_profile.py::V114ProfileTests::test_profile_ids_are_public_and_self_consistent",
+      "reason": "final online profile and causal session contract",
+      "source_path": "tests/test_v11_4_profile.py",
+      "source_sha256": "a7a6ca266be080307ba292048ba7767262a01c2921ed460237975c88febb5464",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_full_scope.py::test_microsoft_handoff_is_absent_not_invented",
+      "reason": "current native/canonical framework, routing, effect, and multi-action path",
+      "source_path": "tests/test_v11_full_scope.py",
+      "source_sha256": "966919202846ba0924a4bb00f47eaaf0adbd964457a98df78b2d6ecd16d38f60",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11_full_scope.py::test_structural_generator_binds_effect_semantics",
+      "reason": "current native/canonical framework, routing, effect, and multi-action path",
+      "source_path": "tests/test_v11_full_scope.py",
+      "source_sha256": "966919202846ba0924a4bb00f47eaaf0adbd964457a98df78b2d6ecd16d38f60",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_1_prefix_projection.py::V11A1PrefixProjectionTests::test_connection_count_uses_only_prefix_and_future_difference_is_absent",
+      "reason": "corrected structural-prefix projection",
+      "source_path": "tests/test_v11a_1_prefix_projection.py",
+      "source_sha256": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_1_prefix_projection.py::V11A1PrefixProjectionTests::test_every_sequence_is_a_true_prefix_and_full_horizon_is_identical",
+      "reason": "corrected structural-prefix projection",
+      "source_path": "tests/test_v11a_1_prefix_projection.py",
+      "source_sha256": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_1_prefix_projection.py::V11A1PrefixProjectionTests::test_prefix_does_not_mutate_full_projection",
+      "reason": "corrected structural-prefix projection",
+      "source_path": "tests/test_v11a_1_prefix_projection.py",
+      "source_sha256": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_confirmatory.py::V11AConfirmatoryFreezeTests::test_manifest_loader_is_mechanical_and_native_framework_runs_only_dev",
+      "reason": "generic confirmatory orchestrator and structural verdict contract",
+      "source_path": "tests/test_v11a_confirmatory.py",
+      "source_sha256": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_confirmatory.py::V11AConfirmatoryFreezeTests::test_projection_normalizes_authenticated_slot_order_and_excludes_time",
+      "reason": "generic confirmatory orchestrator and structural verdict contract",
+      "source_path": "tests/test_v11a_confirmatory.py",
+      "source_sha256": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_confirmatory.py::V11AConfirmatoryFreezeTests::test_selected_execution_requires_v11b",
+      "reason": "generic confirmatory orchestrator and structural verdict contract",
+      "source_path": "tests/test_v11a_confirmatory.py",
+      "source_sha256": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v11a_confirmatory.py::V11AConfirmatoryFreezeTests::test_trajectory_loader_never_executes",
+      "reason": "generic confirmatory orchestrator and structural verdict contract",
+      "source_path": "tests/test_v11a_confirmatory.py",
+      "source_sha256": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_verified_prebuilt_simplepir_does_not_require_go_or_gcc",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_partial_online_session_entry_releases_started_providers",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_v12_execution_permit_requires_capability_preflight",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_public_profile_config_epoch_mutation_fails_artifact_binding",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_performance_boundary_latency_uses_actual_private_trajectory",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_closure.py::test_profile_reanalysis_requires_causal_proof_only_for_dynamic_sequence",
+      "reason": "V12 runtime dependency, permit, profile binding, and requalification contract",
+      "source_path": "tests/test_v12_closure.py",
+      "source_sha256": "e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-success-READ_ONLY-SUCCESS-OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-success-READ_ONLY-SUCCESS-Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[idem-success-IDEMPOTENT_EFFECT-SUCCESS-OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[idem-success-IDEMPOTENT_EFFECT-SUCCESS-Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[nonidem-success-NON_IDEMPOTENT_EFFECT-SUCCESS-OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[nonidem-success-NON_IDEMPOTENT_EFFECT-SUCCESS-Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-error-READ_ONLY-ERROR-OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-error-READ_ONLY-ERROR-Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-timeout-READ_ONLY-BOUNDED_TIMEOUT-OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_tool_semantics[read-timeout-READ_ONLY-BOUNDED_TIMEOUT-Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_agent_as_tool[OpenAI Agents SDK]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_agent_as_tool[Microsoft Agent Framework]",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_openai_handoff",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_agent_service_subtype",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_online_multi_action_causal",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v12_final_runtime.py::test_actual_v12_prebuilt_pir_and_action_without_go_on_path",
+      "reason": "executes the actual v11a_confirmatory orchestrator, CanonicalOnlineSession, OnlineSimplePIRResolver, pinned native framework, or frozen prebuilt PIR path",
+      "source_path": "tests/test_v12_final_runtime.py",
+      "source_sha256": "b1c4ab4b7bf5b484cc41a8eb915e653c55f740b0f69c6e8f5e1004ae29379ff2",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v7_ohttp_architecture.py::test_agent_service_route_is_used_only_for_agent_service",
+      "reason": "RFC9458 action mediation, routing, and reliable-result contract",
+      "source_path": "tests/test_v7_ohttp_architecture.py",
+      "source_sha256": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v7_ohttp_architecture.py::test_tool_and_external_routes_require_agent_authorization_and_kind_match",
+      "reason": "RFC9458 action mediation, routing, and reliable-result contract",
+      "source_path": "tests/test_v7_ohttp_architecture.py",
+      "source_sha256": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v7_ohttp_architecture.py::test_noop_has_no_real_route_and_no_arguments",
+      "reason": "RFC9458 action mediation, routing, and reliable-result contract",
+      "source_path": "tests/test_v7_ohttp_architecture.py",
+      "source_sha256": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v7_ohttp_architecture.py::test_legacy_wire_cannot_be_promoted_to_canonical_ohttp",
+      "reason": "RFC9458 action mediation, routing, and reliable-result contract",
+      "source_path": "tests/test_v7_ohttp_architecture.py",
+      "source_sha256": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v7_ohttp_architecture.py::test_missing_offline_rfc9458_backend_fails_closed",
+      "reason": "RFC9458 action mediation, routing, and reliable-result contract",
+      "source_path": "tests/test_v7_ohttp_architecture.py",
+      "source_sha256": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_descriptor_v7_fixed_authenticated_and_bound_to_agent_epoch",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_descriptor_v7_rejects_authenticated_malformed_enum_and_schema",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_agent_service_preserves_declared_effect_semantics[READ_ONLY]",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_agent_service_preserves_declared_effect_semantics[IDEMPOTENT_EFFECT]",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_agent_service_preserves_declared_effect_semantics[NON_IDEMPOTENT_EFFECT]",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_strict_rejects_visible_cloud_local_and_never_downgrades",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_profiles_require_explicit_cloud_local_policy_and_record_leakage",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_tool_route_is_separate_from_agent_service_route_and_unauthorized_fails",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_trusted_delivery_ledger_suppresses_durable_duplicate",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_trusted_delivery_ledger_crash_before_framework_delivery_remains_deliverable",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v8_standards_closure.py::test_pir_server_log_audit_separates_private_client_fields",
+      "reason": "RFC9292/RFC9458 canonical standards path",
+      "source_path": "tests/test_v8_standards_closure.py",
+      "source_sha256": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_one_public_profile_accepts_multiple_private_action_counts",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-AGENT-17]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-LEGAL-AGENT]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-TOOL-EMAIL]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-PROVIDER-SLOW]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-ROUTE-EXTERNAL]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-ACTUAL-ACTIONS-14]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-REPEATED]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-RARE]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-FREQUENCY-99-1]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-WORKLOAD-TOOL]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H50-P1-ARM-A]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_profile_id_rejects_secret_derived_constructions[V9_1-STRICT-H14-P1]",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_connection_projection_ignores_ephemeral_ids_but_preserves_reuse",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_projection_rejects_missing_round",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    },
+    {
+      "node_id": "tests/test_v9_1_public_profile.py::test_projection_observes_actual_relay_profile_id",
+      "reason": "public profile, connection, lifetime, structural, and size projection",
+      "source_path": "tests/test_v9_1_public_profile.py",
+      "source_sha256": "13f872a39d56e10c1f0ee13ed68bc687665b72855527ab7231900da7bfe91a03",
+      "test_class": "V12_CURRENT_RUNTIME"
+    }
+  ],
+  "required_result": "ALL_PASS",
+  "runtime_reachability_sha256": "d23ae993ae818dbeef5b4fe2f812a8ebc35715d04b17cdf23e386cc01ea75bdc",
+  "schema": "AgentTool.V12Final.LinuxCurrentRuntimeClassAManifest/1",
+  "selected_v12_cases_executed": 0
+}

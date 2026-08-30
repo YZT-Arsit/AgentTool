@@ -1,0 +1,24 @@
+{
+  "schema": "AgentTool.V12Final.LegacyV10_1CompatibilityManifest/1",
+  "frozen_before_execution": true,
+  "node_count": 11,
+  "source_path": "tests/test_v10_1_executor.py",
+  "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927",
+  "nodes": [
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework]", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"},
+    {"node_id": "tests/test_v10_1_executor.py::test_structural_executor_on_non_holdout_v9_1_development_pair", "source_path": "tests/test_v10_1_executor.py", "source_sha256": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927"}
+  ],
+  "scoped_prepend_path": "/root/autodl-tmp/go1.26.5/bin",
+  "expected_go_version": "go1.26.5 linux/amd64",
+  "expected_gcc": "/usr/bin/gcc",
+  "selected_v12_cases_executed": 0
+}

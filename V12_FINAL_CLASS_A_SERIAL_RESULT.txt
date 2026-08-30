@@ -1,0 +1,156 @@
+....................................F.................................   [100%]
+=================================== FAILURES ===================================
+__________________ test_actual_v12_online_multi_action_causal __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_actual_v12_online_multi_a0')
+
+    def test_actual_v12_online_multi_action_causal(tmp_path: Path) -> None:
+        actions = (
+            _tool("DEV-V12-FINAL-causal-1", "OpenAI Agents SDK", "READ_ONLY", "SUCCESS"),
+            _tool("DEV-V12-FINAL-causal-2", "OpenAI Agents SDK", "IDEMPOTENT_EFFECT", "SUCCESS"),
+        )
+        spec = TrajectorySpec(
+            "DEV-V12-FINAL-causal",
+            "OpenAI Agents SDK",
+            "DYNAMIC_SEQUENCE",
+            actions,
+        )
+>       native = run_native_trajectory_case(spec, PERMIT)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v12_final_runtime.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v11a_confirmatory/orchestrator.py:173: in run_native_trajectory_case
+    return run_online_framework_workflow(spec.framework, spec.workflow, list(spec.actions), native_implementation)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v11_online/frameworks.py:282: in run_online_framework_workflow
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cases = [V11ActionCase(case_id='DEV-V12-FINAL-causal-1', framework='OpenAI Agents SDK', action_family=<CanonicalActionFamily.T...capability='agent.tools', agent_service_subtype=None, continuation={}, placement='EXTERNAL', development_fixture=True)]
+implementation = <function native_implementation at 0x7f3765331580>
+workflow = 'DYNAMIC_SEQUENCE'
+
+    async def _run_openai(cases: list[V11ActionCase], implementation: Implementation, workflow: str) -> dict[str, Any]:
+        from agents import Agent, RunConfig, Runner, function_tool, handoff
+        from agents.items import HandoffOutputItem, ToolCallOutputItem
+        from agents.testing import ModelStep, ScriptedModel
+    
+        outcomes: list[V11ActionOutcome] = []
+        outcomes_by_operation: dict[str, V11ActionOutcome] = {}
+        boundary: list[tuple[str, Any]] = []
+    
+        def ordinary_tool(case: V11ActionCase):
+            def invoke(value_case: V11ActionCase, values: dict[str, Any]) -> V11ActionOutcome:
+                outcome = implementation(value_case, values)
+                outcomes.append(outcome)
+                outcomes_by_operation[value_case.operation_id] = outcome
+                return outcome
+    
+            function = _make_structured_function(case, invoke, boundary)
+            return function_tool(function, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{workflow}"
+        if workflow in {"TOOL_TO_TOOL", "DYNAMIC_SEQUENCE", "INTERNAL_TO_EXTERNAL", "EXTERNAL_TO_INTERNAL", "PARALLEL_ACTIONS", "MIXED_PARALLEL"}:
+            tools = [ordinary_tool(case) for case in cases]
+            if workflow == "PARALLEL_ACTIONS":
+                call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases]]
+            elif workflow == "MIXED_PARALLEL":
+                midpoint = max(1, len(cases) // 2)
+                call_steps = [
+                    [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[:midpoint]],
+                    [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[midpoint:]],
+                ]
+            else:
+                call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id)] for case in cases]
+            model = ScriptedModel(call_steps + [[_openai_final(final_text)]])
+            agent = Agent(name="V11_2OnlineToolSequence", instructions="Execute actions causally.", model=model, tools=tools)
+            result = await Runner.run(
+                agent,
+                "online-development",
+                max_turns=max(10, len(cases) + 2),
+                run_config=RunConfig(tracing_disabled=True),
+            )
+            final_output = str(result.final_output)
+            tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        elif workflow in {"TOOL_TO_AGENT_AS_TOOL", "AGENT_AS_TOOL_TO_TOOL"}:
+            agent_case = next(case for case in cases if case.agent_service_subtype is AgentServiceSubtype.AGENT_AS_TOOL)
+            tool_case = next(case for case in cases if case.action_family is CanonicalActionFamily.TOOL)
+    
+            async def child_response(_call):
+                outcome = implementation(agent_case, agent_case.argument_schema.validate_values(agent_case.arguments))
+                outcomes.append(outcome)
+                outcomes_by_operation[agent_case.operation_id] = outcome
+                return [_openai_final(outcome.result)]
+    
+            child_model = ScriptedModel([ModelStep.respond(child_response)])
+            child = Agent(name="V11_2OnlineChild", instructions="Return mediated child result.", model=child_model)
+            child_tool = child.as_tool(tool_name=agent_case.logical_action_name, tool_description="Private child Agent service")
+            registered = ordinary_tool(tool_case)
+            ordered_calls = []
+            for case in cases:
+                if case is agent_case:
+                    ordered_calls.append([_openai_call(child_tool.name, {"input": str(next(iter(case.arguments.values())))}, case.operation_id)])
+                else:
+                    ordered_calls.append([_openai_call(case.logical_action_name, case.arguments, case.operation_id)])
+            model = ScriptedModel(ordered_calls + [[_openai_final(final_text)]])
+            agent = Agent(name="V11_2OnlineAgentToolSequence", instructions="Execute actions causally.", model=model, tools=[registered, child_tool])
+            result = await Runner.run(agent, "online-development", run_config=RunConfig(tracing_disabled=True))
+            final_output = str(result.final_output)
+            tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        elif workflow == "TOOL_TO_HANDOFF":
+            tool_case, handoff_case = cases
+            registered = ordinary_tool(tool_case)
+    
+            async def target_response(_call):
+                outcome = implementation(handoff_case, handoff_case.argument_schema.validate_values(handoff_case.arguments))
+                outcomes.append(outcome)
+                outcomes_by_operation[handoff_case.operation_id] = outcome
+                return [_openai_final(outcome.result)]
+    
+            target_model = ScriptedModel([ModelStep.respond(target_response)])
+            target = Agent(name="V11_2OnlineHandoffTarget", instructions="Return mediated handoff result.", model=target_model)
+            handoff_object = handoff(target)
+            source_model = ScriptedModel(
+                [
+                    [_openai_call(tool_case.logical_action_name, tool_case.arguments, tool_case.operation_id)],
+                    [_openai_call(handoff_object.tool_name, {}, handoff_case.operation_id)],
+                ]
+            )
+            source = Agent(
+                name="V11_2OnlineHandoffSource",
+                instructions="Execute Tool then hand off.",
+                model=source_model,
+                tools=[registered],
+                handoffs=[handoff_object],
+            )
+            result = await Runner.run(source, "online-development", run_config=RunConfig(tracing_disabled=True))
+            final_output = str(result.final_output)
+            tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+            if len([item for item in result.new_items if isinstance(item, HandoffOutputItem)]) != 1:
+                raise AssertionError("OpenAI online handoff boundary was not reached exactly once")
+        else:
+            raise ValueError(f"unsupported OpenAI online workflow: {workflow}")
+    
+        if len(outcomes_by_operation) != len(cases):
+>           raise AssertionError(f"OpenAI online workflow produced {len(outcomes)} outcomes for {len(cases)} actions")
+E           AssertionError: OpenAI online workflow produced 2 outcomes for 2 actions
+
+v11_online/frameworks.py:155: AssertionError
+------------------------------ Captured log call -------------------------------
+WARNING  openai.agents:_tool_identity.py:532 Tool name collision detected. Assign unique routed tool names or enable tool data logging for details.
+WARNING  openai.agents:_tool_identity.py:532 Tool name collision detected. Assign unique routed tool names or enable tool data logging for details.
+WARNING  openai.agents:_tool_identity.py:532 Tool name collision detected. Assign unique routed tool names or enable tool data logging for details.
+=========================== short test summary info ============================
+FAILED tests/test_v12_final_runtime.py::test_actual_v12_online_multi_action_causal
+1 failed, 69 passed in 101.00s (0:01:41)

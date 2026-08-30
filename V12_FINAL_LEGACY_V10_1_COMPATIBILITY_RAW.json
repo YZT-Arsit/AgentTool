@@ -1,0 +1,15 @@
+{
+  "elapsed_ns": 39643349629,
+  "exit_code": 0,
+  "failed": 0,
+  "manifest_sha256": "f7857767c5672e7307b18b66e9643f3ccf1e3a4bb17e081a9af35b95ff21627b",
+  "mode": "serial",
+  "node_count": 11,
+  "passed": 11,
+  "prepend_path": "/root/autodl-tmp/go1.26.5/bin",
+  "raw_log_sha256": "a5ea9017962fe2a3f93f7c0bc2cec0399c72bf5e3cd5c207b4b0ac6f669d2bd0",
+  "retry_performed": false,
+  "schema": "AgentTool.V12Final.PytestGate/1",
+  "selected_v12_cases_executed": 0,
+  "skipped": 0
+}
