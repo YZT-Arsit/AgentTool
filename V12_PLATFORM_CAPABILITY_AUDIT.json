@@ -1,0 +1,114 @@
+{
+  "schema": "AgentTool.V12PlatformCapabilityAudit/1",
+  "review_type": "INDEPENDENT_DESIGN_PLATFORM_REVIEW",
+  "base_commit": "9997e6ff26a2dd92534c502ebd1c1a1664d6bf24",
+  "historical_scheduler_evidence": {
+    "period_10_ms": "93/1000 schedule-only before first genuine miss",
+    "period_20_ms": "954/1000 schedule-only before first genuine miss",
+    "period_25_ms_schedule_only": "1000/1000",
+    "period_25_ms_workload": "135/240 before first genuine miss",
+    "maximum_launch_slip_ms": 42.823282,
+    "period_25_ms_workload_failure_lateness_ms": 29.056672,
+    "qualified_candidate_count": 0,
+    "current_vm_strict_profile": "NOT_QUALIFIED"
+  },
+  "provider_failure_disposition": {
+    "historical_provider_error": "NOT_REPRODUCED_UNRESOLVED",
+    "fresh_provider_ok": 1498,
+    "fresh_provider_attempts": 1498,
+    "interpretation": "evidence of fresh diagnostic closure, not proof that the historical event never occurred"
+  },
+  "audited_platform": {
+    "host_class": "AUTHORIZED_LINUX_DOCKER_CONTAINER",
+    "os": "Ubuntu 22.04.5 LTS",
+    "kernel": "5.15.0-94-generic #104-Ubuntu SMP",
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8470Q",
+    "logical_cpus_visible": 208,
+    "virtualization_detection": "docker",
+    "bare_metal_or_dedicated": "NO",
+    "dedication_basis": "container sees a shared 0-207 cpuset, is quota-limited, and had competing tasks on CPU 207",
+    "hypervisor_pause_under_operator_control": "NO",
+    "aggregate_steal_ticks_observed": 0,
+    "aggregate_steal_ticks_limit": "zero observed is not a host scheduling guarantee"
+  },
+  "capabilities": {
+    "cpuset": {
+      "configured": "0-207",
+      "effective": "0-207",
+      "exclusive_pacer_cpu": false
+    },
+    "kernel_isolation": {
+      "isolated_cpu_list": "",
+      "isolcpus_cmdline": false,
+      "nohz_full": false,
+      "rcu_nocbs": false,
+      "qualified": false
+    },
+    "irq_isolation": {
+      "default_affinity_includes_cpu_207": true,
+      "irq_affinity_files_visible": 565,
+      "irqs_allowing_cpu_207": 48,
+      "examples_pinned_exactly_to_cpu_207": [156, 285],
+      "qualified": false
+    },
+    "cgroup_cpu": {
+      "cpu_max": "2500000 100000",
+      "quota_equivalent_cpus": 25,
+      "visible_cpus": 208,
+      "nr_throttled_snapshot": 46,
+      "throttled_usec_snapshot": 75827923,
+      "no_quota_boundary": false
+    },
+    "frequency_policy": {
+      "cpu_0_governor": "schedutil",
+      "cpu_207_governor": "schedutil",
+      "operator_frozen_performance_policy": false
+    },
+    "pacer_runtime": {
+      "runtime_lock_os_thread": true,
+      "clock": "CLOCK_MONOTONIC",
+      "timer_mode": "TIMER_ABSTIME",
+      "affinity_to_cpu_207_observed": true,
+      "pacer_source_sha256_on_qualification_host": "8887fba1ac8c46f07f4b1edbd64b94ef2a673e46684040e2a7c2e18bc08499da",
+      "formal_candidate_runner_sha256": "63cd1b3e214104dd5792c5cdd820e557cdf2cd0a59383cdb77bc667f752d3346"
+    },
+    "realtime_scheduling": {
+      "kernel_exposes_sched_fifo_rr": true,
+      "cap_sys_nice": false,
+      "rlimit_rtprio": 0,
+      "sched_fifo_probe": "EPERM",
+      "available_to_campaign": false
+    },
+    "memory_locking": {
+      "rlimit_memlock": "unlimited",
+      "cap_ipc_lock": false,
+      "mlockall_campaign_contract_verified": false
+    },
+    "competing_work": {
+      "cpu_207_competitor_snapshot_count": 10,
+      "examples": [
+        "tokio-runtime-w",
+        "Reloader-024",
+        "Reloader-072",
+        "Reloader-111",
+        "Reloader-168",
+        "Reloader-201"
+      ],
+      "no_competing_process_contract": false
+    }
+  },
+  "platform_acceptance": {
+    "cpu_affinity_alone_sufficient": false,
+    "materially_stronger_than_failed_vm": false,
+    "qualified_new_platform_available": false,
+    "platform_strict_cadence_go": "NO"
+  },
+  "recommended_execution_contract": "REDEFINE_STRUCTURAL_TRANSCRIPT",
+  "new_profile_candidates_executed": false,
+  "v12_candidate_universe_exists": false,
+  "v12_seed_exists": false,
+  "selected_v12_cases_executed": 0,
+  "timing_privacy": "OPEN / NOT_TESTED",
+  "packet_level_timing": "OPEN"
+}
+
