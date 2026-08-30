@@ -38,6 +38,7 @@ v11_2_*.tgz
 
 # Compiled binaries
 *.exe
+pir_integration/simplepir_bridge/acv-simplepir-online
 
 # Python testing/cache
 .pytest_cache/

@@ -1,0 +1,63 @@
+{
+  "schema": "AgentTool.V11B0.1FinalDecisionRules/1",
+  "frozen_before_selected_execution": true,
+  "semantic_families": {
+    "S1": {
+      "claim": "LEVEL_A_ACTION_BOUNDARY",
+      "expected_cases": 32,
+      "pass_rule": "all native PASS; all canonical PASS; exact projection equality"
+    },
+    "S2": {
+      "claim": "FRAMEWORK_COMPOSITION_ACTION_BOUNDARY",
+      "expected_cases": 12,
+      "pass_rule": "all native PASS; all canonical PASS; exact projection equality"
+    },
+    "S3": {
+      "claim": "ONLINE_CAUSAL_TRAJECTORY_ACTION_BOUNDARY",
+      "expected_cases": 12,
+      "mandatory_depths": [
+        30,
+        50
+      ],
+      "pass_rule": "all native PASS; all canonical PASS; canonical causal proof PASS; exact trajectory projection equality"
+    },
+    "S4": {
+      "claim": "SYNTHETIC_CONFIRMATORY_CONTRACT",
+      "expected_cases": 9,
+      "pass_rule": "all native PASS; all canonical PASS; exact projection equality"
+    }
+  },
+  "structural": {
+    "expected_pairs": 14,
+    "prefix_horizons": [
+      1,
+      10,
+      50,
+      100,
+      200,
+      300,
+      356
+    ],
+    "pass_rule": "both arms functionally valid; full structural equal; size equal; every corrected prefix equal"
+  },
+  "execution_integrity": {
+    "expected_units": 158,
+    "expected_ledger_records": 158,
+    "automatic_retry": false,
+    "substitution": false,
+    "mid_campaign_harness_integrity_failure_allowed": false
+  },
+  "final_statuses": {
+    "CONFIRMATORY_SEMANTIC_GO": "S1_PASS && S2_PASS && S3_PASS && S4_PASS",
+    "CONFIRMATORY_STRUCTURAL_TRAJECTORY_GO": "STRUCTURAL_PASS",
+    "CONFIRMATORY_SOFTWARE_SCOPE_GO": "CONFIRMATORY_SEMANTIC_GO && CONFIRMATORY_STRUCTURAL_TRAJECTORY_GO && EXECUTION_INTEGRITY_PASS"
+  },
+  "claim_boundaries": {
+    "TIMING_PRIVACY": "OPEN / NOT TESTED",
+    "PACKET_LEVEL_TIMING": "OPEN",
+    "HARDWARE_TEE": "NOT_TESTED",
+    "SOURCE_BODY_EXECUTABLE_SUBSET": 0,
+    "SOURCE_BODY_EQUIVALENCE_GO": false
+  },
+  "selected_outcomes_observed": false
+}

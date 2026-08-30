@@ -1,0 +1,55 @@
+{
+  "schema": "AgentTool.V11B0.1SimplePIRBridgeFreeze/1",
+  "status": "FROZEN_LINUX_BINARY",
+  "authorized_linux_environment": {
+    "hostname": "autodl-container-65f24387ad-872166f7",
+    "kernel": "Linux 5.15.0-94-generic x86_64",
+    "go_version": "go version go1.26.5 linux/amd64"
+  },
+  "go_version": "go version go1.26.5 linux/amd64",
+  "simplepir_revision": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "simplepir_build_checkout": {
+    "path": "/root/autodl-tmp/v11b0_1_build/external_pir/simplepir",
+    "head": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+    "tracked_and_untracked_status_count": 0,
+    "source_origin": "local clone from the already-pinned authorized-host snapshot; no network download"
+  },
+  "bridge_source": {
+    "main_go_sha256": "978abd59e95cdd35826a909c1a781af9887de3700a3eda659072bdb1e884eaac",
+    "go_mod_sha256": "942208012164a313184f5688570d9b5f8190376fd35d967c0c27f1762cc04a7d",
+    "build_checkout": "/root/autodl-tmp/v11b0_1_build/pir_integration/simplepir_bridge",
+    "tracked_source_binding_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7"
+  },
+  "build": {
+    "command": "CGO_ENABLED=1 CC=/usr/bin/gcc /root/autodl-tmp/go1.26.5/bin/go build -o /root/autodl-tmp/mediation_trace_validation/pir_integration/simplepir_bridge/acv-simplepir-online .",
+    "network_dependency_fetch": false,
+    "selected_holdout_execution": false
+  },
+  "actual_resolver_binary_relative_path": "pir_integration/simplepir_bridge/acv-simplepir-online",
+  "authorized_host_binary_path": "/root/autodl-tmp/mediation_trace_validation/pir_integration/simplepir_bridge/acv-simplepir-online",
+  "binary_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b",
+  "binary_bytes": 3770632,
+  "framework_import_provenance": {
+    "openai": {
+      "revision": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+      "repository_clean_status_count": 0,
+      "source_root_relative": "external_stage10/openai-agents-python",
+      "import_path": "/root/autodl-tmp/mediation_trace_validation/external_stage10/openai-agents-python/src/agents/__init__.py",
+      "import_file_sha256": "322428026bff51f36ef520e884afc314f7dbd11fbb592fa7ec7ecf06a43a7791"
+    },
+    "microsoft": {
+      "revision": "af461de51da16f5cb800ff7febc0f8f96355607a",
+      "repository_clean_status_count": 0,
+      "source_root_relative": "external_stage9/agent-framework",
+      "import_path": "/root/autodl-tmp/mediation_trace_validation/external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
+      "import_file_sha256": "96d5d32906c31eb6688146354d2fa0451fc76556c6a83cc1752207887135acf6"
+    },
+    "simplepir": {
+      "revision": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+      "repository_clean_status_count": 0,
+      "source_root_relative": "external_pir/simplepir"
+    }
+  },
+  "selected_holdout_cases_executed": 0,
+  "approved_v11b_execution_permits_instantiated": 0
+}

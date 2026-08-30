@@ -1,0 +1,164 @@
+{
+  "aggregate_sha256": "cd984d13ce384ec61533e68235709bffb17630b8029a5fe76a8d93e156bbb5fe",
+  "append_only_campaign_finalization": "PASS",
+  "approved_v11b_execution_permits_instantiated": 0,
+  "canonical_linux_runner_sha256": "14eb0488813425a99e49ac74741777fb5022a04ada6577a5b00bb5d2ef119877",
+  "final_decision_rules_sha256": "f0596f91ff59963bfd7ae8ec346f7ce333690b1900461e71788358138422afd8",
+  "framework_import_provenance_checks": "FROZEN_AND_REQUIRED_AT_PREFLIGHT",
+  "git_bindings": [
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "592fbfdda2f881a79f2ad3494881b7cce3bbaf06c8c77004c6065805ba11f21f",
+      "path": "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "a8b97bd03cfcb4e970a874e84860f163d8ee2fbc3df0f9a0d79117a026af8dd9",
+      "path": "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "8da11c7d34f36b61de97647acd5950d3f61a97a5c04ece823f049d15f144c47a",
+      "path": "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "041c6dd866e6d7c709a873797524e919775f0700d965a1cc0ac07e7f761d0fd6",
+      "path": "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "946f77e6a0a87077aa353eb397ee7bbd6bb6d4856df75a084a67637e73a33f6d",
+      "path": "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "ab6c6d009597049653aadc0ad0473134db5ffe25e15f0fd9cacaa05892b28f96",
+      "path": "V11A_SELECTION_SEEDS.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "a47cbbc6b95ec9d6fb86600ba8808b27cb42c60f8240481e00eb47c2e6353636",
+      "path": "V11A_EXECUTION_ORDER.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "dced712c14bbe78844fd2914c255d61eec5bd8ebc57a34da24ff1bd46f67541d",
+      "path": "V11A_MASTER_EXCLUSION_SET.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "c9a156c599dc046a022294a74269ab54e6917db30c8b6bb88ad976a72cbce9c3",
+      "path": "V11A_CANDIDATE_UNIVERSES_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "a2413b6b0ba1eb225f37800604152ace7f5b6c967955528d8314c1540f4ed7b0",
+      "path": "V11A_SOURCE_TOOL_UNIVERSE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "d19eff2b92df20f07af1785832dfb948cf935adc684b217bfc9b3003a0da6df6",
+      "path": "V11A_COMPOSITION_UNIVERSE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "e98348a2f86a041fcf5c35befa50a851ced2c71a4722a232da1bc646d526271e",
+      "path": "V11A_CAUSAL_TRAJECTORY_UNIVERSE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "ad0b52cadf1792badf5e4944754e224beb9197b2d144842ce5b7bb096c700e97",
+      "path": "V11A_EFFECT_CONTRACT_UNIVERSE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "abcdf4f3165e17a12530e18b2dedc42428b30f8c02b088455a78634aae7dfa65",
+      "path": "V11A_STRUCTURAL_PAIR_UNIVERSE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "708c92ade64b2a6fa35853e78c26670d3c4af4425bcc9c7eff4ec05080dd27f1",
+      "path": "V11A_FINAL_CONFIRMATORY_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "891cf4a4db898cdaaa393c36e83b6c8ae8aacb8a30e58044c0141b8af554049f",
+      "path": "V11A_EXECUTION_ENVIRONMENT_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "c00d3198d57e9ba29595aacd2f8ad83f14b780c8a731c3824bdd85db11017eac",
+      "path": "V11B0_COMPOSED_BASELINE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "363afadf8d5c9826cedb780f0b9770db0e61bcd33eb599f901464681a3adb539",
+      "path": "V11B0_EXECUTION_PLAN.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "66af962bd305939d52761078de7ff12aeea9655f24c88ebf3316e3e4d3691625",
+      "path": "V11B0_ONE_SHOT_DRIVER_FREEZE.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "1bc17974513a0217437ec3d4e8606af9db59fcf22229d20165dfe639a30e24ea",
+      "path": "PUBLIC_PROFILE_ONLINE_V11_4.json"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "1162758f921de661438c294016ab3a371704e425cbd230bcd9d228c1093eb2d3",
+      "path": "v11a_confirmatory/orchestrator.py"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+      "path": "v11a_confirmatory/projection.py"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "978abd59e95cdd35826a909c1a781af9887de3700a3eda659072bdb1e884eaac",
+      "path": "pir_integration/simplepir_bridge/main.go"
+    },
+    {
+      "authoritative_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+      "git_blob_sha256": "942208012164a313184f5688570d9b5f8190376fd35d967c0c27f1762cc04a7d",
+      "path": "pir_integration/simplepir_bridge/go.mod"
+    }
+  ],
+  "lf_canonical_text_sha256": {
+    ".gitignore": "dbab38e6d98f91f8b3209ba3c4a419af182a284915577a6857366aa8ca23057b",
+    "V11B0_1_DRIVER_TESTS.md": "fed9bb8390e4cf6cffe815fa498058bdb464752e5de9709ce991e3cc7a5423dd",
+    "V11B0_1_FINAL_DECISION_RULES.json": "f0596f91ff59963bfd7ae8ec346f7ce333690b1900461e71788358138422afd8",
+    "V11B0_1_PREFLIGHT_HARDENING_AUDIT.md": "8cda2821cf4b53567012d99385c46fc687bcc8524fc1cbcee54d80a35d387f84",
+    "V11B0_1_SIMPLEPIR_BRIDGE_FREEZE.json": "408b1175f9dbe6b1d7c577c64d59425a6b2ef550268438d6dac145ee3a0321ff",
+    "scripts/freeze_v11b0_1.py": "73dc204412289dd834a82be7ddec3f66007778938a20e2714ce71aeaefcd2ab5",
+    "scripts/run_v11b_confirmatory.py": "cb5e4f9ee0d856fcd51fbf3101056d928e747421145c9b8b0e2b2ba7e2578d00",
+    "scripts/summarize_v11b_confirmatory.py": "ff985ce37eeb6aa464820f9f857d107a31c27c57634f90aa41daef0ad58cb914",
+    "tests/test_v11b0_1_hardening.py": "64d7320f35486861a64528252d012f6162b7edb962812245d01bf950e4fb45f9"
+  },
+  "ready_for_v11b_selected_execution": "YES",
+  "results_v11b_confirmatory_exists": false,
+  "schema": "AgentTool.V11B0.1OneShotDriverFreeze/1",
+  "selected_holdout_cases_executed": 0,
+  "simplepir_actual_binary": {
+    "bytes": 3770632,
+    "relative_path": "pir_integration/simplepir_bridge/acv-simplepir-online",
+    "sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b"
+  },
+  "status": "FROZEN_PREEXECUTION_ONLY",
+  "test_result": "12/12 PASS",
+  "unchanged_execution_order_sha256": "c484590870fd32f285d16d38744e52b26fd0d94c532aa22fcfda7b543e2eb9b6",
+  "unchanged_execution_plan_sha256": "363afadf8d5c9826cedb780f0b9770db0e61bcd33eb599f901464681a3adb539",
+  "unchanged_selected_manifest_sha256": {
+    "V11A_CAUSAL_TRAJECTORY_HOLDOUT_FREEZE.json": "06bf507ae6b31efb4f6098b989bdcd69a79228905268b1af3c1db81730c3f563",
+    "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json": "b4299bb842f46dcc9bee40b258aa54ca09b907d47fdc2ddf3b2749364a3b8d15",
+    "V11A_EFFECT_CONTRACT_HOLDOUT_FREEZE.json": "3b73f30f4ab7810ef4d9d37ceca2ced746fdbdcda437cf4485a88494928d90b9",
+    "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json": "f94f86baeb2406b4b6cabb235a3ea8f271027ab101c5380d4a44758de7067e4a",
+    "V11A_STRUCTURAL_SIZE_HOLDOUT_FREEZE.json": "d073ad9c166bd81f0aebc637584810127c9e5ed16c6b22e907f00a1190a4f3d7"
+  },
+  "unchanged_selection_seed_sha256": "4e6c84b492489d3a39ba48684ea8d2cac59985d73a12e128e30a8a26384f28d4",
+  "v11a_1_corrected_projection_sha256": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+  "v11b0_commit": "e8597888c47a08a9aaf63a8815a84956aed8b5e7"
+}

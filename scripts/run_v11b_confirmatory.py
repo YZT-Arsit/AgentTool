@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib
 import dataclasses
 import hashlib
 import json
@@ -8,6 +9,7 @@ import os
 import subprocess
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -27,12 +29,16 @@ from v11a_confirmatory.orchestrator import (
     run_native_trajectory_case,
     run_structural_arm,
 )
+from v11_full_scope.action_model import logical_request
 
 
 OUTPUT_ROOT = ROOT / "results_v11b_confirmatory"
 PLAN_PATH = ROOT / "V11B0_EXECUTION_PLAN.json"
 BASELINE_PATH = ROOT / "V11B0_COMPOSED_BASELINE.json"
 DRIVER_FREEZE_PATH = ROOT / "V11B0_ONE_SHOT_DRIVER_FREEZE.json"
+HARDENED_FREEZE_PATH = ROOT / "V11B0_1_ONE_SHOT_DRIVER_FREEZE.json"
+SIMPLEPIR_BRIDGE_FREEZE_PATH = ROOT / "V11B0_1_SIMPLEPIR_BRIDGE_FREEZE.json"
+FINAL_DECISION_RULES_PATH = ROOT / "V11B0_1_FINAL_DECISION_RULES.json"
 SEMANTIC_MANIFESTS = (
     ("S1", ROOT / "V11A_SOURCE_SEMANTIC_HOLDOUT_FREEZE.json"),
     ("S2", ROOT / "V11A_COMPOSITION_SEMANTIC_HOLDOUT_FREEZE.json"),
@@ -57,6 +63,17 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def lf_canonical_sha256_bytes(value: bytes) -> str:
+    """Hash UTF-8 text after canonicalizing platform newlines to LF."""
+
+    text = value.decode("utf-8")
+    return sha256_bytes(text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8"))
+
+
+def lf_canonical_sha256(path: Path) -> str:
+    return lf_canonical_sha256_bytes(path.read_bytes())
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -170,6 +187,16 @@ def _git_head(path: Path) -> str:
     ).strip()
 
 
+def _git_repo_clean(path: Path) -> bool:
+    return (
+        subprocess.check_output(
+            ["git", "-C", str(path), "status", "--porcelain", "--untracked-files=all"],
+            text=True,
+        ).strip()
+        == ""
+    )
+
+
 def _tree_manifest(source: Path) -> tuple[str, int]:
     entries = []
     for path in sorted(
@@ -187,21 +214,46 @@ def _tree_manifest(source: Path) -> tuple[str, int]:
     return sha256_bytes(canonical.encode()), len(entries)
 
 
-def _verify_git_binding(binding: dict[str, Any]) -> bool:
+def _verify_git_binding(binding: dict[str, Any], *, root: Path = ROOT) -> bool:
     path = str(binding["path"])
     commit = str(binding["authoritative_commit"])
     expected_blob_sha = str(binding["git_blob_sha256"])
-    blob = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=ROOT)
+    blob = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=root)
     if sha256_bytes(blob) != expected_blob_sha:
         return False
     return (
         subprocess.run(
             ["git", "diff", "--quiet", commit, "HEAD", "--", path],
-            cwd=ROOT,
+            cwd=root,
             capture_output=True,
         ).returncode
         == 0
     )
+
+
+def verify_committed_text_binding(
+    binding: dict[str, Any], *, root: Path = ROOT
+) -> bool:
+    """Verify commit/path semantics while tolerating clean LF/CRLF checkout forms."""
+
+    if not _verify_git_binding(binding, root=root):
+        return False
+    path = str(binding["path"])
+    unstaged_clean = (
+        subprocess.run(
+            ["git", "diff", "--quiet", "--", path], cwd=root, capture_output=True
+        ).returncode
+        == 0
+    )
+    staged_clean = (
+        subprocess.run(
+            ["git", "diff", "--cached", "--quiet", "--", path],
+            cwd=root,
+            capture_output=True,
+        ).returncode
+        == 0
+    )
+    return unstaged_clean and staged_clean
 
 
 def verify_composed_baseline(
@@ -280,6 +332,99 @@ def verify_driver_freeze() -> dict[str, Any]:
     return {"passed": all(checks.values()), "checks": checks}
 
 
+def verify_hardened_driver_freeze() -> dict[str, Any]:
+    freeze = load_json(HARDENED_FREEZE_PATH)
+    checks: dict[str, bool] = {
+        "freeze_status": freeze.get("status") == "FROZEN_PREEXECUTION_ONLY",
+        "v11b0_commit": freeze.get("v11b0_commit")
+        == "e8597888c47a08a9aaf63a8815a84956aed8b5e7",
+        "selected_execution_zero": freeze.get("selected_holdout_cases_executed") == 0,
+        "approved_permits_zero": freeze.get("approved_v11b_execution_permits_instantiated") == 0,
+    }
+    aggregate = dict(freeze)
+    expected_aggregate = aggregate.pop("aggregate_sha256", None)
+    checks["freeze_aggregate"] = expected_aggregate == canonical_sha(aggregate)
+    checks["git_bindings"] = all(
+        verify_committed_text_binding(item)
+        for item in freeze.get("git_bindings", [])
+    )
+    checks["lf_canonical_text"] = all(
+        (ROOT / path).is_file() and lf_canonical_sha256(ROOT / path) == expected
+        for path, expected in freeze.get("lf_canonical_text_sha256", {}).items()
+    )
+    return {"passed": all(checks.values()), "checks": checks}
+
+
+def verify_simplepir_bridge(
+    bridge_freeze: dict[str, Any], *, root: Path = ROOT
+) -> dict[str, Any]:
+    relative = Path(str(bridge_freeze["actual_resolver_binary_relative_path"]))
+    binary = root / relative
+    checks = {
+        "freeze_status": bridge_freeze.get("status") == "FROZEN_LINUX_BINARY",
+        "simplepir_revision": bridge_freeze.get("simplepir_revision")
+        == "e9020b03bf2872c75b8954e749e32408b5db87ed",
+        "binary_path": relative.as_posix()
+        == "pir_integration/simplepir_bridge/acv-simplepir-online",
+        "binary_exists": binary.is_file(),
+        "binary_sha256": binary.is_file()
+        and sha256(binary) == bridge_freeze.get("binary_sha256"),
+    }
+    return {"passed": all(checks.values()), "checks": checks}
+
+
+def verify_framework_import_provenance(
+    provenance: dict[str, Any], *, root: Path = ROOT
+) -> dict[str, Any]:
+    checks: dict[str, bool] = {}
+    repositories = {
+        "openai": (root / "external_stage10" / "openai-agents-python", provenance["openai"]),
+        "microsoft": (root / "external_stage9" / "agent-framework", provenance["microsoft"]),
+        "simplepir": (root / "external_pir" / "simplepir", provenance["simplepir"]),
+    }
+    for name, (repository, expected) in repositories.items():
+        try:
+            checks[f"{name}_head"] = _git_head(repository) == expected["revision"]
+            checks[f"{name}_clean"] = _git_repo_clean(repository)
+        except (OSError, subprocess.SubprocessError):
+            checks[f"{name}_head"] = False
+            checks[f"{name}_clean"] = False
+
+    for module_name, key in (("agents", "openai"), ("agent_framework", "microsoft")):
+        expected = provenance[key]
+        try:
+            module = importlib.import_module(module_name)
+            imported = Path(module.__file__).resolve()
+            source_root = (root / expected["source_root_relative"]).resolve()
+            checks[f"{key}_import_inside_source"] = imported.is_relative_to(source_root)
+            checks[f"{key}_import_file_sha256"] = sha256(imported) == expected["import_file_sha256"]
+        except (ImportError, AttributeError, OSError, TypeError):
+            checks[f"{key}_import_inside_source"] = False
+            checks[f"{key}_import_file_sha256"] = False
+    return {"passed": all(checks.values()), "checks": checks}
+
+
+def verify_linux_execution_dependencies() -> dict[str, Any]:
+    bridge_freeze = load_json(SIMPLEPIR_BRIDGE_FREEZE_PATH)
+    bridge = verify_simplepir_bridge(bridge_freeze)
+    provenance = verify_framework_import_provenance(bridge_freeze["framework_import_provenance"])
+    try:
+        go_version = subprocess.check_output(["go", "version"], text=True).strip()
+    except (OSError, subprocess.SubprocessError):
+        go_version = ""
+    checks = {
+        "bridge": bridge["passed"],
+        "framework_and_repo_provenance": provenance["passed"],
+        "go_version": go_version == bridge_freeze["go_version"],
+    }
+    return {
+        "passed": all(checks.values()),
+        "checks": checks,
+        "bridge_checks": bridge["checks"],
+        "provenance_checks": provenance["checks"],
+    }
+
+
 def preflight(
     authorization_path: Path,
     runner_path: Path,
@@ -298,20 +443,24 @@ def preflight(
         raise HarnessIntegrityFailure("working tree is not clean")
     if output_root.exists():
         raise HarnessIntegrityFailure("results_v11b_confirmatory already exists")
-    driver_freeze = verify_driver_freeze()
+    driver_freeze = verify_hardened_driver_freeze()
     if not driver_freeze["passed"]:
-        raise HarnessIntegrityFailure(f"V11B0 driver freeze failed: {driver_freeze['checks']}")
+        raise HarnessIntegrityFailure(f"V11B0.1 driver freeze failed: {driver_freeze['checks']}")
     baseline = load_json(BASELINE_PATH)
     result = verify_composed_baseline(baseline, runner_path=runner_path, require_runner=True)
     if not result["passed"]:
         raise HarnessIntegrityFailure(f"composed baseline failed: {result['checks']}")
     if sha256(PLAN_PATH) != baseline["execution_plan_sha256"]:
         raise HarnessIntegrityFailure("execution plan hash mismatch")
+    dependencies = verify_linux_execution_dependencies()
+    if not dependencies["passed"]:
+        raise HarnessIntegrityFailure(f"Linux dependency provenance failed: {dependencies}")
     return {
         "authorization": authorization,
         "authorized_commit": authorized_commit,
         "driver_freeze_verification": driver_freeze,
         "baseline_verification": result,
+        "linux_dependency_verification": dependencies,
     }
 
 
@@ -325,6 +474,12 @@ def mid_campaign_integrity(
     result = verify_composed_baseline(baseline, runner_path=runner_path, require_runner=True)
     if not result["passed"]:
         raise HarnessIntegrityFailure("frozen baseline drifted during campaign")
+    hardened = verify_hardened_driver_freeze()
+    if not hardened["passed"]:
+        raise HarnessIntegrityFailure("V11B0.1 driver freeze drifted during campaign")
+    dependencies = verify_linux_execution_dependencies()
+    if not dependencies["passed"]:
+        raise HarnessIntegrityFailure("Linux dependency provenance drifted during campaign")
 
 
 def _jsonable(value: Any) -> Any:
@@ -391,22 +546,39 @@ def classify_exception(error: BaseException, *, role: str) -> str:
     return "CANONICAL_FUNCTIONAL_FAIL"
 
 
-def structural_functional_valid(value: dict[str, Any], expected: int) -> bool:
+def structural_functional_valid(value: dict[str, Any], spec: Any) -> bool:
     trace = value["raw_trace"]
-    result_count = len(trace.get("results", []))
-    accepted = len(trace.get("accepted_operation_ids", []))
+    expected_ids = [case.operation_id for case in spec.actions]
+    accepted_ids = [str(item) for item in trace.get("accepted_operation_ids", [])]
+    result_ids = [str(item.get("operation_id")) for item in trace.get("results", [])]
+    trajectory = value.get("semantic", {}).get("projection", {}).get("trajectory", [])
+    trajectory_ids = [str(item.get("operation_id")) for item in trajectory]
+    expected_requests = {
+        case.operation_id: logical_request(case) for case in spec.actions
+    }
+    observed_requests = {
+        str(item.get("operation_id")): item.get("provider_visible_logical_request")
+        for item in trajectory
+    }
     return all(
         (
             trace.get("session_status") == "COMPLETE",
-            int(trace.get("admitted", -1)) == expected,
-            int(trace.get("provider_invocations", -1)) == expected,
-            result_count == expected,
-            accepted == expected,
+            int(trace.get("admitted", -1)) == len(expected_ids),
+            int(trace.get("provider_invocations", -1)) == len(expected_ids),
+            Counter(accepted_ids) == Counter(expected_ids),
+            Counter(result_ids) == Counter(expected_ids),
+            len(set(accepted_ids)) == len(expected_ids),
+            len(set(result_ids)) == len(expected_ids),
+            not trace.get("resolved_not_admitted_ids"),
+            not trace.get("framework_waiter_ids"),
             not trace.get("pending_operation_ids"),
             int(trace.get("dummy_provider_operations", -1)) == 0,
             int(trace.get("profile_overflow_events", -1)) == 0,
             int(trace.get("schedule_misses", -1)) == 0,
             int(trace.get("silent_committed_result_losses", -1)) == 0,
+            Counter(trajectory_ids) == Counter(expected_ids),
+            len(set(trajectory_ids)) == len(expected_ids),
+            observed_requests == expected_requests,
         )
     )
 
@@ -461,7 +633,7 @@ def execute_unit(
     spec = load_structural_arm(manifest)
     value = run_structural_arm(spec, unit_dir / "canonical", permit, runner_binary=runner_path)
     value["pair_id"] = pair_id
-    value["functional_valid"] = structural_functional_valid(value, len(spec.actions))
+    value["functional_valid"] = structural_functional_valid(value, spec)
     return ("PASS" if value["functional_valid"] else "CANONICAL_FUNCTIONAL_FAIL"), value
 
 
@@ -503,6 +675,44 @@ def write_structural_pair_verdicts(root: Path, content: dict[str, Any]) -> None:
         write_json_exclusive(root / f"pair_{pair['pair_id']}_verdict.json", verdict)
 
 
+def write_campaign_completion(
+    root: Path,
+    *,
+    ledger: AppendOnlyLedger,
+    summary_path: Path,
+    plan_path: Path = PLAN_PATH,
+    driver_freeze_path: Path = HARDENED_FREEZE_PATH,
+) -> None:
+    ledger_path = root / "execution_ledger.jsonl"
+    ledger_records = [
+        json.loads(line) for line in ledger_path.read_text(encoding="utf-8").splitlines()
+    ]
+    if len(ledger_records) != 158:
+        raise HarnessIntegrityFailure("campaign completion requires exactly 158 ledger records")
+    if ledger_records[-1].get("record_sha256") != ledger.previous:
+        raise HarnessIntegrityFailure("final ledger record does not match append-only writer state")
+    verdict_hashes = {
+        path.name: sha256(path)
+        for path in sorted(root.glob("pair_*_verdict.json"))
+    }
+    if len(verdict_hashes) != 14:
+        raise HarnessIntegrityFailure("campaign completion requires exactly 14 pair verdicts")
+    write_json_exclusive(
+        root / "campaign_completion.json",
+        {
+            "schema": "AgentTool.V11BCampaignCompletion/1",
+            "expected_unit_count": 158,
+            "completed_ledger_records": len(ledger_records),
+            "final_execution_ledger_record_sha256": ledger.previous,
+            "execution_ledger_file_sha256": sha256(ledger_path),
+            "structural_pair_verdict_hashes": verdict_hashes,
+            "v11b_confirmatory_summary_sha256": sha256(summary_path),
+            "frozen_execution_plan_sha256": sha256(plan_path),
+            "v11b0_1_driver_freeze_sha256": sha256(driver_freeze_path),
+        },
+    )
+
+
 def run_campaign(authorization_path: Path, runner_path: Path) -> int:
     try:
         checked = preflight(authorization_path, runner_path)
@@ -519,6 +729,8 @@ def run_campaign(authorization_path: Path, runner_path: Path) -> int:
         "authorized_commit": checked["authorized_commit"],
         "execution_plan_sha256": sha256(PLAN_PATH),
         "composed_baseline_sha256": sha256(BASELINE_PATH),
+        "v11b0_1_driver_freeze_sha256": sha256(HARDENED_FREEZE_PATH),
+        "final_decision_rules_sha256": sha256(FINAL_DECISION_RULES_PATH),
         "unit_count": plan["unit_count"],
         "automatic_retry": False,
     }
@@ -565,6 +777,11 @@ def run_campaign(authorization_path: Path, runner_path: Path) -> int:
             }
         )
     write_structural_pair_verdicts(OUTPUT_ROOT, content)
+    from scripts.summarize_v11b_confirmatory import summarize_campaign
+
+    summary_path = OUTPUT_ROOT / "V11B_CONFIRMATORY_SUMMARY.json"
+    summarize_campaign(OUTPUT_ROOT, output_path=summary_path)
+    write_campaign_completion(OUTPUT_ROOT, ledger=ledger, summary_path=summary_path)
     return 0
 
 
