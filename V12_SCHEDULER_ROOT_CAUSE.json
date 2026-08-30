@@ -1,0 +1,120 @@
+{
+  "schema": "AgentTool.V12SchedulerRootCauseAudit/1",
+  "base_commit": "362f84fd3671f574a67ef313beaf320ab4417c0c",
+  "prior_evidence_preserved": {
+    "historical_provider_error": "NOT_REPRODUCED_UNRESOLVED",
+    "provider_diagnostics": {
+      "provider_attempts": 1498,
+      "PROVIDER_OK": 1498,
+      "other_classes": 0
+    },
+    "historical_scheduler_failure": {
+      "workflow": "DEV-PC-DIAG-MS-REPEAT10-049",
+      "missed_slot_lateness_ms": [
+        33.506527,
+        23.508191,
+        13.509163
+      ],
+      "public_rounds": "353/356"
+    }
+  },
+  "pre_hardening_falsification": {
+    "schedule_only": {
+      "sessions": "500/500",
+      "slots": 178000,
+      "schedule_misses": 0,
+      "provider_invocations": 0,
+      "launch_slip_ns": {
+        "p50": 509975,
+        "p95": 1007765,
+        "p99": 1050512,
+        "p99_9": 1065190,
+        "max": 8366015
+      },
+      "identity_manifest_sha256": "ec58ebd542612282c3184b8427502bf200d37d5196def88038443edf614514c8"
+    },
+    "workload_contention": {
+      "openai": "100/100",
+      "microsoft": "100/100",
+      "slots": 71200,
+      "schedule_misses": 0,
+      "provider_attempts": 2000,
+      "launch_slip_ns": {
+        "p50": 510610,
+        "p95": 1008118,
+        "p99": 1050731,
+        "p99_9": 1067273,
+        "max": 4322210
+      },
+      "identity_manifest_sha256": "f4d7e7e0b7b76811460a5df70c2f24e2e44b99678621100155d134a1c5d46148"
+    }
+  },
+  "implementation_audit": {
+    "base_scheduler": "Go goroutine plus time.Sleep around absolute time.Time cutoffs and deadlines",
+    "delay_sources": [
+      "other Go goroutines",
+      "Go GC",
+      "OS scheduler descheduling",
+      "host or hypervisor activity",
+      "cgroup throttling",
+      "local framework and process contention"
+    ],
+    "base_failure_root_cause_was_observable": false
+  },
+  "hardened_pacer": {
+    "implementation": "runtime.LockOSThread plus clock_nanosleep(CLOCK_MONOTONIC,TIMER_ABSTIME)",
+    "pacer_cpu": 207,
+    "pacer_affinity": "207",
+    "framework_process_cpu_set": "0-206",
+    "affinity_succeeded": true,
+    "isolation_verified": true,
+    "kernel_isolated_cpu_available": false,
+    "no_catch_up": true,
+    "expired_slot_transmission": false,
+    "public_profile_changed_by_hardening": false
+  },
+  "observed_hardened_failures": [
+    {
+      "period_ms": 10,
+      "identity": "DEV-SCHED-HARDENED-NOOP-0093",
+      "slot": 108,
+      "launch_slip_ns": 10727857,
+      "cgroup_throttle_delta": 0,
+      "gc_pause_delta_ns_session_window": 1300538,
+      "nonvoluntary_context_switch_delta_session_window": 1,
+      "raw_result_sha256": "ad2620913e58f8405b6e1ca986a07ee0a1f7ccc09f662d800d4abb97aa1819b8"
+    },
+    {
+      "period_ms": 20,
+      "identity": "DEV-SCHED-REQUAL2-P20-NOOP-0954",
+      "slots": [
+        13,
+        14
+      ],
+      "launch_slip_ns": [
+        42823282,
+        25271952
+      ],
+      "cgroup_throttle_delta": 0,
+      "gc_pause_delta_ns_incident_window": 696143,
+      "raw_result_sha256": "ca092ad006382654f18045484b70a42d50ad6731ecff0b64e1867985e559f082"
+    },
+    {
+      "period_ms": 25,
+      "identity": "DEV-SCHED-P25-MS-REPEAT10-035",
+      "slot": 9,
+      "launch_slip_ns": 29056672,
+      "preparation_lateness_ns": 29041229,
+      "cgroup_throttle_delta": 0,
+      "gc_pause_delta_ns_incident_window": 0,
+      "nonvoluntary_context_switch_delta_incident_window": 0,
+      "raw_result_sha256": "a4718a79ce39bb6986efbcb128eea5d3a863cf9e4a25f625bb17bea4468a3ba8"
+    }
+  ],
+  "root_cause_class": "PACER_OS_THREAD_DESCHEDULING_ON_NON_KERNEL_ISOLATED_CPU",
+  "root_cause_detail": "Absolute monotonic waits and verified user-space affinity did not prevent 10.7-42.8 ms intervals in which the pinned pacer thread did not dispatch. Provider work, cgroup throttling, and measured GC pauses do not explain the failures. The authorized VM exposes no kernel-isolated CPU; the exact host process, interrupt, hypervisor pause, or scheduler trigger is not observable and remains UNRESOLVED.",
+  "exact_underlying_trigger": "UNRESOLVED",
+  "timing_privacy": "OPEN / NOT_TESTED",
+  "packet_level_timing": "OPEN",
+  "selected_v12_cases_executed": 0
+}

@@ -89,13 +89,66 @@ type PublicSetupEvent struct {
 }
 
 type SlotLaunch struct {
-	Session           uint32 `json:"session"`
-	Slot              uint32 `json:"slot"`
-	DeadlineNS        int64  `json:"deadline_ns"`
-	SubmitNS          int64  `json:"submit_ns,omitempty"`
-	LaunchSlipNS      int64  `json:"launch_slip_ns,omitempty"`
-	ToleranceExceeded bool   `json:"diagnostic_tolerance_exceeded,omitempty"`
-	ScheduleMiss      bool   `json:"schedule_miss"`
+	Session             uint32 `json:"session"`
+	Slot                uint32 `json:"slot"`
+	DeadlineNS          int64  `json:"deadline_ns"`
+	PreparationCutoffNS int64  `json:"preparation_cutoff_ns"`
+	PreparationWakeNS   int64  `json:"preparation_wake_ns,omitempty"`
+	PreparationLatenessNS int64 `json:"preparation_lateness_ns,omitempty"`
+	SleepEntryNS        int64  `json:"sleep_entry_ns,omitempty"`
+	SleepWakeNS         int64  `json:"sleep_wake_ns,omitempty"`
+	DispatchNS          int64  `json:"scheduler_dispatch_ns,omitempty"`
+	HTTPSubmissionNS    int64  `json:"http_submission_ns,omitempty"`
+	WakeLatenessNS      int64  `json:"wake_lateness_ns,omitempty"`
+	DispatchLatenessNS  int64  `json:"dispatch_lateness_ns,omitempty"`
+	SubmitNS            int64  `json:"submit_ns,omitempty"`
+	LaunchSlipNS        int64  `json:"launch_slip_ns,omitempty"`
+	ToleranceExceeded   bool   `json:"diagnostic_tolerance_exceeded,omitempty"`
+	ScheduleMiss        bool   `json:"schedule_miss"`
+}
+
+type SchedulerHostSnapshot struct {
+	PID                         int        `json:"pid"`
+	TID                         int        `json:"tid"`
+	CPU                         int        `json:"cpu"`
+	CPUAffinity                 string     `json:"cpu_affinity"`
+	GOMAXPROCS                  int        `json:"gomaxprocs"`
+	GCCycles                    uint32     `json:"gc_cycles"`
+	GCPauseTotalNS              uint64     `json:"gc_pause_total_ns"`
+	ProcessCPUTimeTicks         uint64     `json:"process_cpu_time_ticks,omitempty"`
+	CPUPressure                 string     `json:"proc_pressure_cpu,omitempty"`
+	CgroupNRThrottled           uint64     `json:"cgroup_nr_throttled,omitempty"`
+	CgroupThrottledUsec         uint64     `json:"cgroup_throttled_usec,omitempty"`
+	LoadAverage                 [3]float64 `json:"load_average"`
+	VoluntaryContextSwitches    uint64     `json:"voluntary_context_switches,omitempty"`
+	NonvoluntaryContextSwitches uint64     `json:"nonvoluntary_context_switches,omitempty"`
+	Unavailable                 []string   `json:"unavailable,omitempty"`
+}
+
+type SchedulerIncident struct {
+	Slot               uint32                `json:"slot"`
+	DeadlineNS         int64                 `json:"deadline_ns"`
+	WakeLatenessNS     int64                 `json:"wake_lateness_ns"`
+	DispatchLatenessNS int64                 `json:"dispatch_lateness_ns"`
+	LaunchSlipNS       int64                 `json:"launch_slip_ns"`
+	Before             SchedulerHostSnapshot `json:"before"`
+	After              SchedulerHostSnapshot `json:"after"`
+}
+
+type SchedulerConfiguration struct {
+	Implementation       string `json:"implementation"`
+	Clock                string `json:"clock"`
+	AbsoluteDeadlines    bool   `json:"absolute_deadlines"`
+	OSThreadLocked       bool   `json:"os_thread_locked"`
+	PacerTID             int    `json:"pacer_tid"`
+	PacerCPU             int    `json:"pacer_cpu"`
+	PacerAffinity        string `json:"pacer_affinity"`
+	FrameworkProcessCPUs string `json:"framework_process_cpu_set"`
+	AffinityRequested    bool   `json:"affinity_requested"`
+	AffinitySucceeded    bool   `json:"affinity_succeeded"`
+	IsolationVerified    bool   `json:"isolation_verified"`
+	AffinityError        string `json:"affinity_error,omitempty"`
+	WaitError            string `json:"wait_error,omitempty"`
 }
 
 type TransportDiagnostic struct {
@@ -116,7 +169,7 @@ type ProviderDiagnostic struct {
 	ElapsedNS               int64  `json:"elapsed_ns"`
 	ContextDeadlineNS       int64  `json:"context_deadline_monotonic_ns"`
 	ErrorType               string `json:"error_type,omitempty"`
-	Error                    string `json:"error,omitempty"`
+	Error                   string `json:"error,omitempty"`
 	HTTPStatus              int    `json:"http_status,omitempty"`
 	BoundedResponseBytes    int    `json:"bounded_response_bytes"`
 	JSONDecodeResult        string `json:"json_decode_result"`
@@ -135,34 +188,36 @@ const (
 )
 
 type RunResult struct {
-	ProfileID               string                `json:"profile_id"`
-	Rounds                  int                   `json:"rounds"`
-	Admitted                int                   `json:"admitted"`
-	ProviderInvocations     int64                 `json:"provider_invocations"`
-	DummyProviderOperations int64                 `json:"dummy_provider_operations"`
-	ProfileOverflowEvents   int                   `json:"profile_overflow_events"`
-	Results                 []ClientResult        `json:"results"`
-	PrivateEvents           []PrivateEvent        `json:"private_events"`
-	PublicRelayEvents       []v8.RelayPublicEvent `json:"public_relay_events"`
-	AfterCutoffOperations   []string              `json:"after_cutoff_operations"`
-	RequestFinalBytes       int                   `json:"request_final_bytes"`
-	ResponseFinalBytes      int                   `json:"response_final_bytes"`
-	SessionStatus           string                `json:"session_status"`
-	PublicSetupEvents       []PublicSetupEvent    `json:"public_setup_events"`
-	SlotLaunches            []SlotLaunch          `json:"slot_launches"`
-	ScheduleMisses          int                   `json:"schedule_misses"`
-	PendingOperationIDs     []string              `json:"pending_operation_ids"`
-	SilentCommittedLosses   int                   `json:"silent_committed_result_losses"`
-	ClientRelayHTTPVersion  string                `json:"client_relay_http_version"`
-	RelayGatewayHTTPVersion string                `json:"relay_gateway_http_version"`
-	OnlineMode              bool                  `json:"online_mode,omitempty"`
-	StartupActionCount      int                   `json:"startup_action_count"`
-	AcceptedOperationIDs    []string              `json:"accepted_operation_ids,omitempty"`
-	ResolvedNotAdmittedIDs  []string              `json:"resolved_not_admitted_ids,omitempty"`
-	UnresolvedOperationIDs  []string              `json:"unresolved_operation_ids,omitempty"`
-	FrameworkWaiterIDs      []string              `json:"framework_waiter_ids,omitempty"`
-	TransportDiagnostics    []TransportDiagnostic `json:"transport_diagnostics,omitempty"`
-	ProviderDiagnostics     []ProviderDiagnostic  `json:"provider_diagnostics,omitempty"`
+	ProfileID               string                 `json:"profile_id"`
+	Rounds                  int                    `json:"rounds"`
+	Admitted                int                    `json:"admitted"`
+	ProviderInvocations     int64                  `json:"provider_invocations"`
+	DummyProviderOperations int64                  `json:"dummy_provider_operations"`
+	ProfileOverflowEvents   int                    `json:"profile_overflow_events"`
+	Results                 []ClientResult         `json:"results"`
+	PrivateEvents           []PrivateEvent         `json:"private_events"`
+	PublicRelayEvents       []v8.RelayPublicEvent  `json:"public_relay_events"`
+	AfterCutoffOperations   []string               `json:"after_cutoff_operations"`
+	RequestFinalBytes       int                    `json:"request_final_bytes"`
+	ResponseFinalBytes      int                    `json:"response_final_bytes"`
+	SessionStatus           string                 `json:"session_status"`
+	PublicSetupEvents       []PublicSetupEvent     `json:"public_setup_events"`
+	SlotLaunches            []SlotLaunch           `json:"slot_launches"`
+	ScheduleMisses          int                    `json:"schedule_misses"`
+	PendingOperationIDs     []string               `json:"pending_operation_ids"`
+	SilentCommittedLosses   int                    `json:"silent_committed_result_losses"`
+	ClientRelayHTTPVersion  string                 `json:"client_relay_http_version"`
+	RelayGatewayHTTPVersion string                 `json:"relay_gateway_http_version"`
+	OnlineMode              bool                   `json:"online_mode,omitempty"`
+	StartupActionCount      int                    `json:"startup_action_count"`
+	AcceptedOperationIDs    []string               `json:"accepted_operation_ids,omitempty"`
+	ResolvedNotAdmittedIDs  []string               `json:"resolved_not_admitted_ids,omitempty"`
+	UnresolvedOperationIDs  []string               `json:"unresolved_operation_ids,omitempty"`
+	FrameworkWaiterIDs      []string               `json:"framework_waiter_ids,omitempty"`
+	TransportDiagnostics    []TransportDiagnostic  `json:"transport_diagnostics,omitempty"`
+	ProviderDiagnostics     []ProviderDiagnostic   `json:"provider_diagnostics,omitempty"`
+	SchedulerIncidents      []SchedulerIncident    `json:"scheduler_incidents,omitempty"`
+	SchedulerConfiguration  SchedulerConfiguration `json:"scheduler_configuration"`
 }
 
 type providerRequest struct {

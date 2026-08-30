@@ -325,15 +325,18 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 
 	emitter.emit(OnlineControlEvent{Type: "SESSION_READY"})
 	type slotResponse struct {
-		item        onlinePreparedRequest
-		wire        []byte
-		httpVersion string
-		err         error
-		diagnostic  *TransportDiagnostic
+		item             onlinePreparedRequest
+		wire             []byte
+		httpVersion      string
+		httpSubmissionNS int64
+		err              error
+		diagnostic       *TransportDiagnostic
 	}
 	responses := make(chan slotResponse, plan.Rounds)
 	var responseWG sync.WaitGroup
 	launches := make([]SlotLaunch, 0, plan.Rounds)
+	schedulerIncidents := make([]SchedulerIncident, 0)
+	schedulerConfiguration := SchedulerConfiguration{PacerCPU: -1}
 	submitted := 0
 	tolerance := time.Duration(plan.SchedulerToleranceMS) * time.Millisecond
 	if tolerance <= 0 {
@@ -342,9 +345,47 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	schedulerDone := make(chan struct{})
 	go func() {
 		defer close(schedulerDone)
+		pacer, pacerErr := newPublicPacer()
+		if pacerErr != nil {
+			schedulerConfiguration = SchedulerConfiguration{
+				Implementation: "PACER_INITIALIZATION_FAILED",
+				PacerCPU:       -1,
+				WaitError:      pacerErr.Error(),
+			}
+			for _, state := range slots {
+				launches = append(launches, SlotLaunch{
+					Session: 1, Slot: state.noop.slot.Slot,
+					DeadlineNS:          state.deadline.Sub(processClock).Nanoseconds(),
+					PreparationCutoffNS: state.cutoff.Sub(processClock).Nanoseconds(),
+					ScheduleMiss:        true,
+				})
+			}
+			close(responses)
+			return
+		}
+		pacerWaitError := ""
+		defer func() {
+			schedulerConfiguration = pacer.Close()
+			schedulerConfiguration.WaitError = pacerWaitError
+		}()
+		hostBefore := schedulerHostSnapshot()
 		for index, state := range slots {
-			if remaining := time.Until(state.cutoff); remaining > 0 {
-				time.Sleep(remaining)
+			if err := pacer.WaitUntil(state.cutoff); err != nil {
+				pacerWaitError = err.Error()
+				for _, remainingState := range slots[index:] {
+					launches = append(launches, SlotLaunch{
+						Session: 1, Slot: remainingState.noop.slot.Slot,
+						DeadlineNS:          remainingState.deadline.Sub(processClock).Nanoseconds(),
+						PreparationCutoffNS: remainingState.cutoff.Sub(processClock).Nanoseconds(),
+						ScheduleMiss:        true,
+					})
+				}
+				break
+			}
+			preparationWake := time.Now()
+			incidentBefore := hostBefore
+			if preparationWake.Sub(state.cutoff) > tolerance {
+				incidentBefore = schedulerHostSnapshot()
 			}
 			state.mu.Lock()
 			item := state.noop
@@ -357,22 +398,54 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				emitter.emit(OnlineControlEvent{Type: "ACTION_ADMITTED", OperationID: item.operationID, Round: index + 1})
 				engine.record(PrivateEvent{OperationID: item.operationID, Stage: "ONLINE_ACTION_ADMITTED", Round: index + 1})
 			}
-			if remaining := time.Until(state.deadline); remaining > 0 {
-				time.Sleep(remaining)
+			sleepEntry := time.Now()
+			if err := pacer.WaitUntil(state.deadline); err != nil {
+				pacerWaitError = err.Error()
+				for _, remainingState := range slots[index:] {
+					launches = append(launches, SlotLaunch{
+						Session: 1, Slot: remainingState.noop.slot.Slot,
+						DeadlineNS:          remainingState.deadline.Sub(processClock).Nanoseconds(),
+						PreparationCutoffNS: remainingState.cutoff.Sub(processClock).Nanoseconds(),
+						ScheduleMiss:        true,
+					})
+				}
+				break
 			}
+			sleepWake := time.Now()
 			if plan.FaultSchedulerStallSlot == index+1 && plan.FaultSchedulerStallMS > 0 {
 				time.Sleep(time.Duration(plan.FaultSchedulerStallMS) * time.Millisecond)
 			}
-			submitTime := time.Now()
-			slip := submitTime.Sub(state.deadline)
-			launch := SlotLaunch{Session: 1, Slot: uint32(index + 1), DeadlineNS: state.deadline.Sub(processClock).Nanoseconds(), LaunchSlipNS: slip.Nanoseconds()}
+			dispatchTime := time.Now()
+			slip := dispatchTime.Sub(state.deadline)
+			launch := SlotLaunch{
+				Session: 1, Slot: uint32(index + 1),
+				DeadlineNS:          state.deadline.Sub(processClock).Nanoseconds(),
+				PreparationCutoffNS: state.cutoff.Sub(processClock).Nanoseconds(),
+				PreparationWakeNS: preparationWake.Sub(processClock).Nanoseconds(),
+				PreparationLatenessNS: preparationWake.Sub(state.cutoff).Nanoseconds(),
+				SleepEntryNS:        sleepEntry.Sub(processClock).Nanoseconds(),
+				SleepWakeNS:         sleepWake.Sub(processClock).Nanoseconds(),
+				DispatchNS:          dispatchTime.Sub(processClock).Nanoseconds(),
+				WakeLatenessNS:      sleepWake.Sub(state.deadline).Nanoseconds(),
+				DispatchLatenessNS:  dispatchTime.Sub(state.deadline).Nanoseconds(),
+				LaunchSlipNS:        slip.Nanoseconds(),
+			}
 			launch.ToleranceExceeded = slip > tolerance
 			if slip >= period {
 				launch.ScheduleMiss = true
 				launches = append(launches, launch)
+				hostAfter := schedulerHostSnapshot()
+				schedulerIncidents = append(schedulerIncidents, SchedulerIncident{
+					Slot: launch.Slot, DeadlineNS: launch.DeadlineNS,
+					WakeLatenessNS:     launch.WakeLatenessNS,
+					DispatchLatenessNS: launch.DispatchLatenessNS,
+					LaunchSlipNS:       launch.LaunchSlipNS,
+					Before:             incidentBefore, After: hostAfter,
+				})
+				hostBefore = hostAfter
 				continue
 			}
-			launch.SubmitNS = submitTime.Sub(processClock).Nanoseconds()
+			launch.SubmitNS = dispatchTime.Sub(processClock).Nanoseconds()
 			launches = append(launches, launch)
 			submitted++
 			responseWG.Add(1)
@@ -387,9 +460,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				request.Header.Set("X-AgentTool-Public-Session", "1")
 				request.Header.Set("X-AgentTool-Public-Slot", strconv.FormatUint(uint64(value.slot.Slot), 10))
 				request.ContentLength = int64(len(value.wire))
+				httpSubmissionNS := time.Since(processClock).Nanoseconds()
 				response, requestErr := clientHTTP.Do(request)
 				if requestErr != nil {
-					responses <- slotResponse{item: value, err: requestErr}
+					responses <- slotResponse{item: value, err: requestErr, httpSubmissionNS: httpSubmissionNS}
 					return
 				}
 				responseWire, readErr := io.ReadAll(io.LimitReader(response.Body, int64(plan.ResponseFinalBytes+1)))
@@ -410,10 +484,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 					responses <- slotResponse{item: value,
 						err: fmt.Errorf("online canonical response validation failed: slot=%d http_status=%d observed_body_bytes=%d expected_body_bytes=%d class=%s",
 							value.slot.Slot, response.StatusCode, len(responseWire), plan.ResponseFinalBytes, failureClass),
-						diagnostic: diagnostic}
+						diagnostic: diagnostic, httpSubmissionNS: httpSubmissionNS}
 					return
 				}
-				responses <- slotResponse{item: value, wire: responseWire, httpVersion: response.Proto}
+				responses <- slotResponse{item: value, wire: responseWire, httpVersion: response.Proto, httpSubmissionNS: httpSubmissionNS}
 			}(item)
 		}
 		responseWG.Wait()
@@ -421,9 +495,13 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	}()
 
 	results := make([]ClientResult, 0, plan.MaximumRealOperations)
+	httpSubmissions := make(map[uint32]int64, plan.Rounds)
 	transportFailure := false
 	transportDiagnostics := make([]TransportDiagnostic, 0)
 	for response := range responses {
+		if response.httpSubmissionNS != 0 {
+			httpSubmissions[response.item.slot.Slot] = response.httpSubmissionNS
+		}
 		if response.err != nil || response.httpVersion != "HTTP/2.0" {
 			transportFailure = true
 			if response.diagnostic != nil {
@@ -452,6 +530,9 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				Status: fmt.Sprintf("%d", decoded.Status), Round: int(response.item.slot.Slot)})
 			emitter.emit(OnlineControlEvent{Type: "RESULT_AVAILABLE", OperationID: decoded.OperationID, Round: int(response.item.slot.Slot), Result: &result})
 		}
+	}
+	for index := range launches {
+		launches[index].HTTPSubmissionNS = httpSubmissions[launches[index].Slot]
 	}
 	<-schedulerDone
 	engine.workers.Wait()
@@ -495,7 +576,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
 		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),
-		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics()}
+		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics(),
+		SchedulerIncidents: schedulerIncidents, SchedulerConfiguration: schedulerConfiguration}
 	if status == "COMPLETE" {
 		emitter.emit(OnlineControlEvent{Type: "SESSION_COMPLETE"})
 	} else {

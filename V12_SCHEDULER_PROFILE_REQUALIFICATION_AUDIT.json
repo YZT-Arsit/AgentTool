@@ -1,0 +1,84 @@
+{
+  "schema": "AgentTool.V12SchedulerProfileRequalificationAudit/1",
+  "formal_candidate_runner_sha256": "63cd1b3e214104dd5792c5cdd820e557cdf2cd0a59383cdb77bc667f752d3346",
+  "candidate_manifest_sha256": "db020d435c58b7711cf4168e976f9149d1536aabe942fc5cc90a56c428d0cb04",
+  "candidate_periods_ms": [
+    10,
+    20,
+    25
+  ],
+  "selection_rule": "smallest candidate period satisfying the complete frozen reliability criterion",
+  "candidate_results": [
+    {
+      "period_ms": 10,
+      "profile": {
+        "total_rounds": 356,
+        "scheduled_lifetime_ms": 3560
+      },
+      "schedule_only": "93/1000 PASS before first failure",
+      "sessions_started": 94,
+      "slots_observed": 33464,
+      "schedule_misses": 1,
+      "max_launch_slip_ns": 10727857,
+      "status": "FAIL",
+      "identity_manifest_sha256": "d8ddcb665246ab4673a2a89e3ae1427d54bc7cdeffd7aa4a65e16f1fbad495c6",
+      "first_failure_sha256": "4a0b44d696a50d43292bdcdb8871cdd3633b99970db8c8c5f1afeb3bddd9f496"
+    },
+    {
+      "period_ms": 20,
+      "profile": {
+        "total_rounds": 204,
+        "scheduled_lifetime_ms": 4080
+      },
+      "schedule_only": "954/1000 PASS before first genuine failure",
+      "sessions_started": 955,
+      "slots_observed": 194820,
+      "schedule_misses": 2,
+      "max_launch_slip_ns": 42823282,
+      "status": "FAIL",
+      "identity_manifest_sha256": "e658204a534b8b0c54043a6b1801fabb90ef4e6f584872b16e9ea362bd7e3307",
+      "first_failure_sha256": "8211b4830cafbc89a293706778fd9cee6fd6c66a08212133096fc5b6a86984cb"
+    },
+    {
+      "period_ms": 25,
+      "profile": {
+        "total_rounds": 173,
+        "scheduled_lifetime_ms": 4325
+      },
+      "schedule_only": "1000/1000",
+      "schedule_only_slots": 173000,
+      "schedule_only_misses": 0,
+      "schedule_only_max_launch_slip_ns": 15056731,
+      "workload": {
+        "passed_before_failure": 135,
+        "required": 240,
+        "openai_repeat10": "100/100",
+        "microsoft_repeat10": "35/100 before first failure",
+        "openai_repeat30": "NOT_RUN",
+        "microsoft_repeat30": "NOT_RUN",
+        "schedule_misses": 1,
+        "failure_identity": "DEV-SCHED-P25-MS-REPEAT10-035",
+        "failure_slot": 9,
+        "launch_slip_ns": 29056672
+      },
+      "status": "FAIL",
+      "schedule_identity_manifest_sha256": "c9aa4ba1760801b47c3c9ead5abded5493f9efa204e7a2f758a325628b1a2114",
+      "workload_identity_manifest_sha256": "f12af8988c1ad8cc23dedd6335e2636b9ebd5413bdd9b51a2cf78c05b6a6ea18",
+      "workload_first_failure_sha256": "6661696216e6165cb7850c3edde572cac5af081861e56350642ab57df1b1390c"
+    }
+  ],
+  "diagnostic_false_negative_preserved": {
+    "root": "results_v12_scheduler_requal_p20_noop_20260830",
+    "identity": "DEV-SCHED-REQUAL-P20-NOOP-0017",
+    "classification": "HARNESS_DIAGNOSTIC_FALSE_NEGATIVE",
+    "session_status": "COMPLETE",
+    "rounds": "204/204",
+    "schedule_misses": 0,
+    "retry_performed": false
+  },
+  "selected_period_ms": null,
+  "selection_status": "NO_CANDIDATE_SATISFIED_COMPLETE_RELIABILITY_CRITERION",
+  "candidate_added_after_outcomes": false,
+  "seed_search": false,
+  "selected_v12_cases_executed": 0
+}

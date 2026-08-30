@@ -1,0 +1,50 @@
+{
+  "schema": "AgentTool.V12SchedulerEvidenceIndex/1",
+  "authorized_linux_root": "/root/autodl-tmp/mediation_trace_validation",
+  "hardened_10ms_runner_sha256": "eeba2bfdf3256707978341cc8931fd52956d95704bc121af3c84ffb93e3b69c4",
+  "formal_candidate_runner_sha256": "63cd1b3e214104dd5792c5cdd820e557cdf2cd0a59383cdb77bc667f752d3346",
+  "evidence_roots": [
+    {
+      "name": "current scheduler NOOP falsification",
+      "path": "results_v12_scheduler_current_noop_20260830",
+      "identity_manifest_sha256": "ec58ebd542612282c3184b8427502bf200d37d5196def88038443edf614514c8",
+      "status": "500/500 PASS"
+    },
+    {
+      "name": "current scheduler workload contention",
+      "path": "results_v12_scheduler_current_contention2_20260830",
+      "identity_manifest_sha256": "f4d7e7e0b7b76811460a5df70c2f24e2e44b99678621100155d134a1c5d46148",
+      "status": "200/200 PASS"
+    },
+    {
+      "name": "hardened 10 ms schedule qualification",
+      "path": "results_v12_scheduler_hardened_noop_20260830",
+      "identity_manifest_sha256": "d8ddcb665246ab4673a2a89e3ae1427d54bc7cdeffd7aa4a65e16f1fbad495c6",
+      "first_failure_sha256": "4a0b44d696a50d43292bdcdb8871cdd3633b99970db8c8c5f1afeb3bddd9f496",
+      "status": "FAIL"
+    },
+    {
+      "name": "20 ms decisive schedule requalification",
+      "path": "results_v12_scheduler_requal2_p20_noop_20260830",
+      "identity_manifest_sha256": "e658204a534b8b0c54043a6b1801fabb90ef4e6f584872b16e9ea362bd7e3307",
+      "first_failure_sha256": "8211b4830cafbc89a293706778fd9cee6fd6c66a08212133096fc5b6a86984cb",
+      "status": "FAIL"
+    },
+    {
+      "name": "25 ms schedule requalification",
+      "path": "results_v12_scheduler_requal2_p25_noop_20260830",
+      "identity_manifest_sha256": "c9aa4ba1760801b47c3c9ead5abded5493f9efa204e7a2f758a325628b1a2114",
+      "status": "1000/1000 PASS"
+    },
+    {
+      "name": "25 ms workload requalification",
+      "path": "results_v12_scheduler_requal_p25_workload_20260830",
+      "identity_manifest_sha256": "f12af8988c1ad8cc23dedd6335e2636b9ebd5413bdd9b51a2cf78c05b6a6ea18",
+      "first_failure_sha256": "6661696216e6165cb7850c3edde572cac5af081861e56350642ab57df1b1390c",
+      "status": "135/240 before first failure"
+    }
+  ],
+  "raw_evidence_overwritten": false,
+  "retry_performed": false,
+  "selected_v12_cases_executed": 0
+}

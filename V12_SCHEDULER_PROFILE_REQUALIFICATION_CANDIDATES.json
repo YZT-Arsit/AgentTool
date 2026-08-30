@@ -1,0 +1,57 @@
+{
+  "schema": "AgentTool.V12SchedulerProfileRequalificationCandidates/1",
+  "frozen_before_candidate_execution": true,
+  "candidate_periods_ms": [
+    10,
+    20,
+    25
+  ],
+  "capacity_model": {
+    "H_ms": 3000,
+    "M_maximum_operations": 50,
+    "B_provider_completion_bound_ms": 50,
+    "drain_rounds": 50,
+    "terminal_rounds": 1,
+    "admission_rounds_formula": "H_ms / period_ms",
+    "completion_rounds_formula": "ceil(B_ms / period_ms)",
+    "total_rounds_formula": "admission_rounds + completion_rounds + drain_rounds + terminal_rounds"
+  },
+  "derived_profiles": [
+    {
+      "period_ms": 10,
+      "admission_rounds": 300,
+      "completion_rounds": 5,
+      "drain_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 356,
+      "scheduled_lifetime_ms": 3560
+    },
+    {
+      "period_ms": 20,
+      "admission_rounds": 150,
+      "completion_rounds": 3,
+      "drain_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 204,
+      "scheduled_lifetime_ms": 4080
+    },
+    {
+      "period_ms": 25,
+      "admission_rounds": 120,
+      "completion_rounds": 2,
+      "drain_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 173,
+      "scheduled_lifetime_ms": 4325
+    }
+  ],
+  "fixed_sizes": {
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800
+  },
+  "schedule_only_denominator_per_candidate": 1000,
+  "workload_denominator_per_passing_candidate": 240,
+  "selection_rule": "smallest candidate period satisfying the complete frozen reliability criterion",
+  "seed_search": false,
+  "selected_v12_cases_executed": 0
+}
