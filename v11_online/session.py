@@ -268,7 +268,9 @@ class CanonicalOnlineSession:
         self.output.mkdir(parents=True)
         if not self.runner_binary.is_file():
             raise FileNotFoundError(f"V11.2 online runner is missing: {self.runner_binary}")
-        self.providers = V11EvidenceProviders(self.cases)
+        self.providers = V11EvidenceProviders(
+            self.cases, self.output / "private_provider_evidence.json"
+        )
         self.pir = OnlineSimplePIRResolver(
             self.output / "pir", record_count=self.pir_record_count
         )

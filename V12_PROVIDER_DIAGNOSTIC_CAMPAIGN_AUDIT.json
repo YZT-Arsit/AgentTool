@@ -1,0 +1,815 @@
+{
+  "campaign_status": "FAIL_NEW_SESSION_SCHEDULE_FAILURE",
+  "complete_workflows_by_framework": {
+    "Microsoft Agent Framework": 49,
+    "OpenAI Agents SDK": 100
+  },
+  "failures": [
+    {
+      "accepted_operation_ids": [
+        "opDEVPCDIAGMS04900",
+        "opDEVPCDIAGMS04901",
+        "opDEVPCDIAGMS04902",
+        "opDEVPCDIAGMS04903",
+        "opDEVPCDIAGMS04904",
+        "opDEVPCDIAGMS04905",
+        "opDEVPCDIAGMS04906",
+        "opDEVPCDIAGMS04907",
+        "opDEVPCDIAGMS04908"
+      ],
+      "go_result_sha256": "348ce8a1818a523526770c4fe7cd3441bcbca33aac624ffbce3a08eb3011fc19",
+      "missed_slots": [
+        {
+          "deadline_ns": 718161579,
+          "diagnostic_tolerance_exceeded": true,
+          "launch_slip_ns": 33506527,
+          "schedule_miss": true,
+          "session": 1,
+          "slot": 22
+        },
+        {
+          "deadline_ns": 728161579,
+          "diagnostic_tolerance_exceeded": true,
+          "launch_slip_ns": 23508191,
+          "schedule_miss": true,
+          "session": 1,
+          "slot": 23
+        },
+        {
+          "deadline_ns": 738161579,
+          "diagnostic_tolerance_exceeded": true,
+          "launch_slip_ns": 13509163,
+          "schedule_miss": true,
+          "session": 1,
+          "slot": 24
+        }
+      ],
+      "pending_operation_ids": [
+        "opDEVPCDIAGMS04908"
+      ],
+      "provider_diagnostics": [
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 560558068,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 1488251,
+          "http_return_monotonic_ns": 511961262,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04900",
+          "request_start_monotonic_ns": 510558068,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 580041688,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 824696,
+          "http_return_monotonic_ns": 530768318,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04901",
+          "request_start_monotonic_ns": 530041688,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 599312237,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 743690,
+          "http_return_monotonic_ns": 550016402,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04902",
+          "request_start_monotonic_ns": 549312237,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 620123274,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 706836,
+          "http_return_monotonic_ns": 570780488,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04903",
+          "request_start_monotonic_ns": 570123274,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 650366876,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 856049,
+          "http_return_monotonic_ns": 601126928,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04904",
+          "request_start_monotonic_ns": 600366876,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 679161120,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 772987,
+          "http_return_monotonic_ns": 629834760,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04905",
+          "request_start_monotonic_ns": 629161120,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 709761187,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 673047,
+          "http_return_monotonic_ns": 660393642,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04906",
+          "request_start_monotonic_ns": 659761187,
+          "route_handle": "route-tool-read"
+        },
+        {
+          "bounded_response_bytes": 79,
+          "class": "PROVIDER_OK",
+          "context_deadline_monotonic_ns": 740274876,
+          "decoded_provider_status": "OK",
+          "elapsed_ns": 983253,
+          "http_return_monotonic_ns": 691164712,
+          "http_status": 200,
+          "json_decode_result": "OK",
+          "operation_id": "opDEVPCDIAGMS04907",
+          "request_start_monotonic_ns": 690274876,
+          "route_handle": "route-tool-read"
+        }
+      ],
+      "raw_directory": "149-DEV-PC-DIAG-MS-REPEAT10-049",
+      "result_operation_ids": [
+        "opDEVPCDIAGMS04900",
+        "opDEVPCDIAGMS04901",
+        "opDEVPCDIAGMS04902",
+        "opDEVPCDIAGMS04903",
+        "opDEVPCDIAGMS04904",
+        "opDEVPCDIAGMS04905",
+        "opDEVPCDIAGMS04906",
+        "opDEVPCDIAGMS04907"
+      ],
+      "rounds_emitted": 353,
+      "schedule_misses": 3,
+      "session_status": "SESSION_SCHEDULE_FAILURE",
+      "workflow": {
+        "depth": 10,
+        "framework": "Microsoft Agent Framework",
+        "logical_action_names": [
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0",
+          "v11_tool_0"
+        ],
+        "operation_ids": [
+          "opDEVPCDIAGMS04900",
+          "opDEVPCDIAGMS04901",
+          "opDEVPCDIAGMS04902",
+          "opDEVPCDIAGMS04903",
+          "opDEVPCDIAGMS04904",
+          "opDEVPCDIAGMS04905",
+          "opDEVPCDIAGMS04906",
+          "opDEVPCDIAGMS04907",
+          "opDEVPCDIAGMS04908",
+          "opDEVPCDIAGMS04909"
+        ],
+        "scenario": "READ_ONLY_SUCCESS",
+        "workflow_id": "DEV-PC-DIAG-MS-REPEAT10-049"
+      }
+    }
+  ],
+  "identity_manifest_sha256": "acad7430010876c8c9a09831ac4fd88d91b3933bafaa8e7213b944e9a0e21045",
+  "old_decisive_identity_executed": false,
+  "private_provider_evidence_hashes": [
+    {
+      "raw_directory": "000-DEV-PC-DIAG-OA-REPEAT10-000",
+      "sha256": "d72852cb68be4c5cf41ed2bf6a5ee88bbd7decb1878dae6c889352cc5bef9d04"
+    },
+    {
+      "raw_directory": "001-DEV-PC-DIAG-OA-REPEAT10-001",
+      "sha256": "033de70b8638a245b2dc560c63577c2c42459d36fe38fac30daa3cccd07a91ed"
+    },
+    {
+      "raw_directory": "002-DEV-PC-DIAG-OA-REPEAT10-002",
+      "sha256": "65517b54ea725bd326f473dbd7aff03b10e3b38ce1444782dc6bf7f1fe7bf818"
+    },
+    {
+      "raw_directory": "003-DEV-PC-DIAG-OA-REPEAT10-003",
+      "sha256": "bee8516ef6cbfcff088c296c9407696a2d760e255ecede95546ff61b38a9d85e"
+    },
+    {
+      "raw_directory": "004-DEV-PC-DIAG-OA-REPEAT10-004",
+      "sha256": "3c5f2c736b6d9c954fb10fda0458c1a4ca7587589876b0b1778e3a0f5d9e93b9"
+    },
+    {
+      "raw_directory": "005-DEV-PC-DIAG-OA-REPEAT10-005",
+      "sha256": "fe30c604a4d3f03ef6bc7605786e93c591ce7ab848eb1fe5582c62bbe249e5ba"
+    },
+    {
+      "raw_directory": "006-DEV-PC-DIAG-OA-REPEAT10-006",
+      "sha256": "9e0848a9dec3e0874c72475c43e04f281b8248143d3e172e752aa739db2f1658"
+    },
+    {
+      "raw_directory": "007-DEV-PC-DIAG-OA-REPEAT10-007",
+      "sha256": "86efe0e6d55d56d7747403d1c60a2633b64938fc90c93902abca9aa2ad6f0da4"
+    },
+    {
+      "raw_directory": "008-DEV-PC-DIAG-OA-REPEAT10-008",
+      "sha256": "ca25410df4766c1f4322be035eb0d21173e8b53e19e054507ca18676a9a4ebce"
+    },
+    {
+      "raw_directory": "009-DEV-PC-DIAG-OA-REPEAT10-009",
+      "sha256": "f7645026a7829e8c709389ae19f87680c58fbce9c16bc98b5536c2ee7b19e5fa"
+    },
+    {
+      "raw_directory": "010-DEV-PC-DIAG-OA-REPEAT10-010",
+      "sha256": "e9908922527b71cc0c1b7df162c81c0c1de2765bab2a5c9b1a5cb5dbc1551808"
+    },
+    {
+      "raw_directory": "011-DEV-PC-DIAG-OA-REPEAT10-011",
+      "sha256": "ec05768f99ec9f3381a85adaff29cb1b5f86e8452a4b038ff89415e066188747"
+    },
+    {
+      "raw_directory": "012-DEV-PC-DIAG-OA-REPEAT10-012",
+      "sha256": "889ad87b117474781e8e700d7cdb3b3c53e18d59ef844b4a614179851f312f79"
+    },
+    {
+      "raw_directory": "013-DEV-PC-DIAG-OA-REPEAT10-013",
+      "sha256": "304f0a7e6f6b5184b558fe72cba90c3f32810ca65bed090f0f293867dfd6096f"
+    },
+    {
+      "raw_directory": "014-DEV-PC-DIAG-OA-REPEAT10-014",
+      "sha256": "54ea7f6a982ae9de0980e2040d4883a4d3c1fd36f09684d044bd07c212a365f1"
+    },
+    {
+      "raw_directory": "015-DEV-PC-DIAG-OA-REPEAT10-015",
+      "sha256": "82ebb4aa3a7f4262331383be338ee1c7ff8dc4a62d49e1e4afe6dcd581eed627"
+    },
+    {
+      "raw_directory": "016-DEV-PC-DIAG-OA-REPEAT10-016",
+      "sha256": "6b405adae509ee0fcfbbcf79e1bc80bb102f2871e0b64af1b47f930dac6c4f36"
+    },
+    {
+      "raw_directory": "017-DEV-PC-DIAG-OA-REPEAT10-017",
+      "sha256": "954d3e7f155672fecf460f8a2a3ed6d4ea96bdc3fc3c83f0af10403d18e0f419"
+    },
+    {
+      "raw_directory": "018-DEV-PC-DIAG-OA-REPEAT10-018",
+      "sha256": "eda25a9c366f4a25976384445b49b67e7628075aa846d709ebde2dd23625cf8b"
+    },
+    {
+      "raw_directory": "019-DEV-PC-DIAG-OA-REPEAT10-019",
+      "sha256": "fe9b2fdb9aa0c8886cac87fb92e5534a6ca16d8a3752837e37a0086596607bd6"
+    },
+    {
+      "raw_directory": "020-DEV-PC-DIAG-OA-REPEAT10-020",
+      "sha256": "658b76e13b53da5474e9cd6f2171665f368ddda864f6f0da350b33ed94383480"
+    },
+    {
+      "raw_directory": "021-DEV-PC-DIAG-OA-REPEAT10-021",
+      "sha256": "d70033a099ca132d9a7bf5eef79fe3c97a52b5f1b60d0228406bd09df7127527"
+    },
+    {
+      "raw_directory": "022-DEV-PC-DIAG-OA-REPEAT10-022",
+      "sha256": "633e5464190e3e8e146a5cc953f02a00b106555968381a3a44d2fec0668a353c"
+    },
+    {
+      "raw_directory": "023-DEV-PC-DIAG-OA-REPEAT10-023",
+      "sha256": "f09a5529075659f467d13badd96b3a52b0ceb0cdc1b46876794c7d603292204a"
+    },
+    {
+      "raw_directory": "024-DEV-PC-DIAG-OA-REPEAT10-024",
+      "sha256": "d2157817deadcd2530aabd2a1991c9eddc724f5795af62e635aeeb2d6a44f7ef"
+    },
+    {
+      "raw_directory": "025-DEV-PC-DIAG-OA-REPEAT10-025",
+      "sha256": "2701529fa028c08f80d4b556529309906ae74432768102820741492ba1c46c53"
+    },
+    {
+      "raw_directory": "026-DEV-PC-DIAG-OA-REPEAT10-026",
+      "sha256": "d62b479e3e295f34b4408b334875029d3e412e24a53023be0923619765e9ed82"
+    },
+    {
+      "raw_directory": "027-DEV-PC-DIAG-OA-REPEAT10-027",
+      "sha256": "f1c64cc11524ec016fe3f02a261b2d52547b15a15b8566633488bab4da023aa1"
+    },
+    {
+      "raw_directory": "028-DEV-PC-DIAG-OA-REPEAT10-028",
+      "sha256": "2e7ff7f8af9fb8e4a2d0def73643d648324869797dbcf1ede5094d9af8eb5aee"
+    },
+    {
+      "raw_directory": "029-DEV-PC-DIAG-OA-REPEAT10-029",
+      "sha256": "ce7342b8a2ff5ccf80bbe4a6efe1d3add300a9079dc90076f0414602a35db294"
+    },
+    {
+      "raw_directory": "030-DEV-PC-DIAG-OA-REPEAT10-030",
+      "sha256": "d26543ea636904641ea476ab94e627e2234c987ce86593a472dd5494e531301c"
+    },
+    {
+      "raw_directory": "031-DEV-PC-DIAG-OA-REPEAT10-031",
+      "sha256": "2a201bdf2e8b38bbae59f2548807a6b9e0a83fa3aa890967b4be56b7676ded5b"
+    },
+    {
+      "raw_directory": "032-DEV-PC-DIAG-OA-REPEAT10-032",
+      "sha256": "bf2e5f6ecf8666a6737f475e81c0c46641c1c8db21e359556b8947213c496b29"
+    },
+    {
+      "raw_directory": "033-DEV-PC-DIAG-OA-REPEAT10-033",
+      "sha256": "042fef48a46ba396c762020323f630b128824c501169c7d1eb705662ae4597ea"
+    },
+    {
+      "raw_directory": "034-DEV-PC-DIAG-OA-REPEAT10-034",
+      "sha256": "7775672518da52a00f57dc03c362d65b18013267c0ab197626b0c8bb9bf9132f"
+    },
+    {
+      "raw_directory": "035-DEV-PC-DIAG-OA-REPEAT10-035",
+      "sha256": "fea3d7f4fba497006771ce4ed7e3e4938ef78b4f623ba606b7948f006d16f551"
+    },
+    {
+      "raw_directory": "036-DEV-PC-DIAG-OA-REPEAT10-036",
+      "sha256": "d050056b1d33b46c0472bfbf6f11d08438b5ccec5b82d34e890d5732665642c1"
+    },
+    {
+      "raw_directory": "037-DEV-PC-DIAG-OA-REPEAT10-037",
+      "sha256": "00b2a852c47184847470a461881bd9703b60fbd06fc01959e71c3abd208e12f4"
+    },
+    {
+      "raw_directory": "038-DEV-PC-DIAG-OA-REPEAT10-038",
+      "sha256": "c9315cf7e596e156f008cf553e3c80958fb1ccf887173a62191db0bac5efa0ee"
+    },
+    {
+      "raw_directory": "039-DEV-PC-DIAG-OA-REPEAT10-039",
+      "sha256": "4c9ac6ce892055411e7355dad8dd575a0aea41b550f9341992cc4253e8594a8a"
+    },
+    {
+      "raw_directory": "040-DEV-PC-DIAG-OA-REPEAT10-040",
+      "sha256": "b2c0dd4833695598727dea4505b2afe525f309f898ff74b7dfa26e9192688ed7"
+    },
+    {
+      "raw_directory": "041-DEV-PC-DIAG-OA-REPEAT10-041",
+      "sha256": "2e54939005b31483790baccc920206f684fbd2e6f98dcbdab62d8a759463c772"
+    },
+    {
+      "raw_directory": "042-DEV-PC-DIAG-OA-REPEAT10-042",
+      "sha256": "943bd9079b801c695ef53a8f0f45e217e6b43d71938ed47ce8dbcabf15559428"
+    },
+    {
+      "raw_directory": "043-DEV-PC-DIAG-OA-REPEAT10-043",
+      "sha256": "05e778b5723a6e256e5303d6e438ceb5a77b5aabcce9e332f41f748c8f419560"
+    },
+    {
+      "raw_directory": "044-DEV-PC-DIAG-OA-REPEAT10-044",
+      "sha256": "361bcda77bf6f881e6d34743c6b31116f0e2d1a1f910a4ada441d495d3120998"
+    },
+    {
+      "raw_directory": "045-DEV-PC-DIAG-OA-REPEAT10-045",
+      "sha256": "2d88814c5afd68c3dd757b5bd80c093320acc7ed51b885ffd7d3d99396e86690"
+    },
+    {
+      "raw_directory": "046-DEV-PC-DIAG-OA-REPEAT10-046",
+      "sha256": "b734c8af512946eec1e5d752af6aee927abb70a190760d57589ddec94c011d91"
+    },
+    {
+      "raw_directory": "047-DEV-PC-DIAG-OA-REPEAT10-047",
+      "sha256": "f76714e8945ba104fa917baa9fc49466c8b34190ff30eaeea82c01a638f2b6ab"
+    },
+    {
+      "raw_directory": "048-DEV-PC-DIAG-OA-REPEAT10-048",
+      "sha256": "3b70b40e8e46ed00ceefa880651982ef5eb81d4f05d343d4cdab834befac1137"
+    },
+    {
+      "raw_directory": "049-DEV-PC-DIAG-OA-REPEAT10-049",
+      "sha256": "841c2e791ab529ef7e44debc1bdd3e8e3eeb1b80480e8b4b51e9ad7f0146bb0d"
+    },
+    {
+      "raw_directory": "050-DEV-PC-DIAG-OA-REPEAT10-050",
+      "sha256": "163a8bd7b13847438a30e29fe8c179b19c5506d134b24ef41fb15c29e25339e0"
+    },
+    {
+      "raw_directory": "051-DEV-PC-DIAG-OA-REPEAT10-051",
+      "sha256": "5e8f6052d96d5ee4c7b734f23799ef71d2dbbc803d10e927b01b1474b361feef"
+    },
+    {
+      "raw_directory": "052-DEV-PC-DIAG-OA-REPEAT10-052",
+      "sha256": "0a95ed017dc80b5cc083e95561a78ffebfce23e8c6298a009f44315fe82d290c"
+    },
+    {
+      "raw_directory": "053-DEV-PC-DIAG-OA-REPEAT10-053",
+      "sha256": "dc3c715bee317bf9fb7362754f9e417ac4d213404c51af95b24cc09a44fe31ff"
+    },
+    {
+      "raw_directory": "054-DEV-PC-DIAG-OA-REPEAT10-054",
+      "sha256": "4c63c1a6717604a14f376a759b1e1530a8183b15aa28209a90a631faf84ab0d8"
+    },
+    {
+      "raw_directory": "055-DEV-PC-DIAG-OA-REPEAT10-055",
+      "sha256": "8111cf76133b2b63ccb3ad929f11e734bb07fa383d5c654f921bbc78e502d59c"
+    },
+    {
+      "raw_directory": "056-DEV-PC-DIAG-OA-REPEAT10-056",
+      "sha256": "b0776c211d6ca8e416dbb0e9837669f47d4a60e44d4b94498137796770727c1f"
+    },
+    {
+      "raw_directory": "057-DEV-PC-DIAG-OA-REPEAT10-057",
+      "sha256": "df4f50fc6e9a489ef634f0ebce6d98d99e2bd9c54f2f50c41d6b5537bbcc47c5"
+    },
+    {
+      "raw_directory": "058-DEV-PC-DIAG-OA-REPEAT10-058",
+      "sha256": "d88ff5b46fb2f7b409613686db69556413cba536bc69b4e0daa34d835483a439"
+    },
+    {
+      "raw_directory": "059-DEV-PC-DIAG-OA-REPEAT10-059",
+      "sha256": "50765c66729b326294d74d80f2cbe4a4378f9bb974b4eb9ab825e8ee89390114"
+    },
+    {
+      "raw_directory": "060-DEV-PC-DIAG-OA-REPEAT10-060",
+      "sha256": "8e180512c0fb7b4ca295315840c0f0e4a326cc3b4b2143b1ebcddedc0c6bc7f5"
+    },
+    {
+      "raw_directory": "061-DEV-PC-DIAG-OA-REPEAT10-061",
+      "sha256": "5228883ad593acf8e28d987f99cf770cca9a896cb178a9e06d3a3cf09f063c10"
+    },
+    {
+      "raw_directory": "062-DEV-PC-DIAG-OA-REPEAT10-062",
+      "sha256": "916fa9551375609d775f845363fa251a13a61a07b5bb945e0f5f2598867280fa"
+    },
+    {
+      "raw_directory": "063-DEV-PC-DIAG-OA-REPEAT10-063",
+      "sha256": "9cff04857beb71d7b382329299ea3403e04988f06605c56bdb8aeba0c6b0fd12"
+    },
+    {
+      "raw_directory": "064-DEV-PC-DIAG-OA-REPEAT10-064",
+      "sha256": "bb83ab148d736ac1b275633322b774223b6b1b922086d9a1516f27caf38ab107"
+    },
+    {
+      "raw_directory": "065-DEV-PC-DIAG-OA-REPEAT10-065",
+      "sha256": "1f927850bf71fbd091415af5e4f05ab60ad579811dddee930e476f1abe210e8a"
+    },
+    {
+      "raw_directory": "066-DEV-PC-DIAG-OA-REPEAT10-066",
+      "sha256": "37387de2c05ca36f6330770813e6c499ad38eb0613a7b428af5b2c719fa0a708"
+    },
+    {
+      "raw_directory": "067-DEV-PC-DIAG-OA-REPEAT10-067",
+      "sha256": "c0518dc0328390865819be9ac825335afb917f0101e58e5796f9e8e167b680fd"
+    },
+    {
+      "raw_directory": "068-DEV-PC-DIAG-OA-REPEAT10-068",
+      "sha256": "fbcbd79ef7dbd4de41b2df70528fca66fd5358363253478a21bc1d25e319963f"
+    },
+    {
+      "raw_directory": "069-DEV-PC-DIAG-OA-REPEAT10-069",
+      "sha256": "975180791694537a4a136259624949131755cdc9795445a639a263c50b0569af"
+    },
+    {
+      "raw_directory": "070-DEV-PC-DIAG-OA-REPEAT10-070",
+      "sha256": "0a1f6f32a065db4f795d7951bcfda567286d677f4438e38b7aa2d05acc502ecb"
+    },
+    {
+      "raw_directory": "071-DEV-PC-DIAG-OA-REPEAT10-071",
+      "sha256": "7ca48b60b54a031c92321dcb0cb20d1e9e89895fe60d7bd8982bb2c3886daf24"
+    },
+    {
+      "raw_directory": "072-DEV-PC-DIAG-OA-REPEAT10-072",
+      "sha256": "a3401cdf255fddefa56d59f263168ea0e66b27a352f2a3640d031803f4e48317"
+    },
+    {
+      "raw_directory": "073-DEV-PC-DIAG-OA-REPEAT10-073",
+      "sha256": "65212a4490fd1cbe3d1b023f2a1495c4cddd4788486b8b971c20c80e93c75d90"
+    },
+    {
+      "raw_directory": "074-DEV-PC-DIAG-OA-REPEAT10-074",
+      "sha256": "b4d5776dd0c1ea2ee2dadb1a28b7a8e3c3cb3f22669973c6d9938290def8e9b1"
+    },
+    {
+      "raw_directory": "075-DEV-PC-DIAG-OA-REPEAT10-075",
+      "sha256": "674dceb1b4eb5048ec71c0265758e9432ae6c9d8593164cd6bd9666ee7815af7"
+    },
+    {
+      "raw_directory": "076-DEV-PC-DIAG-OA-REPEAT10-076",
+      "sha256": "0d18774188858042a5947fe181d4627d7bdca7a39aaa85fc470fa5755bbcd34f"
+    },
+    {
+      "raw_directory": "077-DEV-PC-DIAG-OA-REPEAT10-077",
+      "sha256": "5b05a7075024a50fc5e4866ddcca3505999a9f08ad8a6181e9d6db6d8a63c528"
+    },
+    {
+      "raw_directory": "078-DEV-PC-DIAG-OA-REPEAT10-078",
+      "sha256": "255f5f179ba58c9f0fa88351c522d6cd7f9355a632a91d17c47b617fefec9b61"
+    },
+    {
+      "raw_directory": "079-DEV-PC-DIAG-OA-REPEAT10-079",
+      "sha256": "9e9875fde6bb0e9436c049e2a58b145d4fea16187a0fb6a0f20ab14e8c5621ed"
+    },
+    {
+      "raw_directory": "080-DEV-PC-DIAG-OA-REPEAT10-080",
+      "sha256": "4784dcb9449e0189a66c07be50ca5bc1cff25c2a8dc6bd179c70c43951c8dfac"
+    },
+    {
+      "raw_directory": "081-DEV-PC-DIAG-OA-REPEAT10-081",
+      "sha256": "64132635706f3510708240dcf914a0672a428e0513919a38b0f4e61bdb6b56ae"
+    },
+    {
+      "raw_directory": "082-DEV-PC-DIAG-OA-REPEAT10-082",
+      "sha256": "b59c7dab76b060e22e17e6f67b1b0950c4e8b4d7d6895854ab62a6add7c0e013"
+    },
+    {
+      "raw_directory": "083-DEV-PC-DIAG-OA-REPEAT10-083",
+      "sha256": "0b43db1067aeb5f3917aa56a3d7c981179cc7782bd9c57e90096ad052d0bcb3e"
+    },
+    {
+      "raw_directory": "084-DEV-PC-DIAG-OA-REPEAT10-084",
+      "sha256": "67084a19c4cce977edab8dff12f5a0c4bf8bce7432e0a48b7e8d48f4c795bc9c"
+    },
+    {
+      "raw_directory": "085-DEV-PC-DIAG-OA-REPEAT10-085",
+      "sha256": "1b8b3094e8406910dc8d5c491e8925af08df9e1931c8a9e8fa7c261abb07b8e3"
+    },
+    {
+      "raw_directory": "086-DEV-PC-DIAG-OA-REPEAT10-086",
+      "sha256": "8b75f446a6a63f18d6137ad3d195c8250c7af6d4e805311d3dcd0f35be8dbb6c"
+    },
+    {
+      "raw_directory": "087-DEV-PC-DIAG-OA-REPEAT10-087",
+      "sha256": "473707615f462d03768b28825c97a98c03c327cefe46b2a74167b822f877e095"
+    },
+    {
+      "raw_directory": "088-DEV-PC-DIAG-OA-REPEAT10-088",
+      "sha256": "1e02d5236c705252aa6e3675b710db7a15c792355d1e71de9c169f39deade18a"
+    },
+    {
+      "raw_directory": "089-DEV-PC-DIAG-OA-REPEAT10-089",
+      "sha256": "087ddffe7d19e0d7cf5ace6c7f8d7e2503a357e366257a7dc7409f9df0bbc9af"
+    },
+    {
+      "raw_directory": "090-DEV-PC-DIAG-OA-REPEAT10-090",
+      "sha256": "3e04114c5bd06cb87c811070779bd0feaecb0f8e6f8ea0a59d33a8fe1e74e0f2"
+    },
+    {
+      "raw_directory": "091-DEV-PC-DIAG-OA-REPEAT10-091",
+      "sha256": "5b6624ae8ffd32c6bdfd16019506ca5a492e21338be7b0cd3e7749f3940e7235"
+    },
+    {
+      "raw_directory": "092-DEV-PC-DIAG-OA-REPEAT10-092",
+      "sha256": "3f84f52794206eac145b31de1871505312c126b4fe8449911acca8d3a4e99e78"
+    },
+    {
+      "raw_directory": "093-DEV-PC-DIAG-OA-REPEAT10-093",
+      "sha256": "90984bffe062f7b4b087d82fe46194b9db5c2013f3dbde18e7623378c5cad17c"
+    },
+    {
+      "raw_directory": "094-DEV-PC-DIAG-OA-REPEAT10-094",
+      "sha256": "0c3e2d2296e8f6b8f00b749871b40996eb6b5df1f02f08e28c1d2135787e2ad0"
+    },
+    {
+      "raw_directory": "095-DEV-PC-DIAG-OA-REPEAT10-095",
+      "sha256": "55a3a5354086fea204ef4b980984c4f136433725a5848db516fbf6959fb5da44"
+    },
+    {
+      "raw_directory": "096-DEV-PC-DIAG-OA-REPEAT10-096",
+      "sha256": "238c8d857b6653ff56117c1a66e6d6662fc6e8c6e21380e2a982f9d2465957e3"
+    },
+    {
+      "raw_directory": "097-DEV-PC-DIAG-OA-REPEAT10-097",
+      "sha256": "aec03a7ce59ed7d8daa9a512bd2f81796cf995af5d7717f96331bf1f79e36741"
+    },
+    {
+      "raw_directory": "098-DEV-PC-DIAG-OA-REPEAT10-098",
+      "sha256": "e91f9ab0ef951877acbe368449c665446d88d90a0af44feaf3e21c35e3669475"
+    },
+    {
+      "raw_directory": "099-DEV-PC-DIAG-OA-REPEAT10-099",
+      "sha256": "4fa4b6b11614d535696fb9d82c594bfadb0224ddf7197b28df2d03b4ab233a8e"
+    },
+    {
+      "raw_directory": "100-DEV-PC-DIAG-MS-REPEAT10-000",
+      "sha256": "05b4b275bd44ef5231fc76c062507dc8921b8ec807278c6b1c5a4810b7c6c566"
+    },
+    {
+      "raw_directory": "101-DEV-PC-DIAG-MS-REPEAT10-001",
+      "sha256": "4ccad882d05032eddda263ce7c284ae0876ce55456b685a340ebe575d491c666"
+    },
+    {
+      "raw_directory": "102-DEV-PC-DIAG-MS-REPEAT10-002",
+      "sha256": "afbf166d08d243ee22d29c52055d0a3ed962dfcbc6c5ee641da853758c791906"
+    },
+    {
+      "raw_directory": "103-DEV-PC-DIAG-MS-REPEAT10-003",
+      "sha256": "4c56494f9e16192af5535d9a0c69c69dd0e1b0dc5c449f82b7c8e34ae4a9ac43"
+    },
+    {
+      "raw_directory": "104-DEV-PC-DIAG-MS-REPEAT10-004",
+      "sha256": "be176750bb75516f1327d741a0c434224b7dad5ef1db8d0e11c57a378cea71dc"
+    },
+    {
+      "raw_directory": "105-DEV-PC-DIAG-MS-REPEAT10-005",
+      "sha256": "4a7f39335c309c266c8b88446a8829f4be3f66aa5971e601d750feda7d9055dd"
+    },
+    {
+      "raw_directory": "106-DEV-PC-DIAG-MS-REPEAT10-006",
+      "sha256": "2a2aff8669d025a3fc93d95cc9d25585beac562dcf1a840bbd8d2f36faaf1a36"
+    },
+    {
+      "raw_directory": "107-DEV-PC-DIAG-MS-REPEAT10-007",
+      "sha256": "def3dcf23449e468c2b23e0543eee551b95dcbd1e44b486dde5d11c3a940afc1"
+    },
+    {
+      "raw_directory": "108-DEV-PC-DIAG-MS-REPEAT10-008",
+      "sha256": "8da7b32a0705ac8ddae4415c000ca68ca5bfb65f0c66805847cdd2b45987f844"
+    },
+    {
+      "raw_directory": "109-DEV-PC-DIAG-MS-REPEAT10-009",
+      "sha256": "930e02fe5de82df45c22070cf509d106c85b3be6939a2b92bd71fdab47923d98"
+    },
+    {
+      "raw_directory": "110-DEV-PC-DIAG-MS-REPEAT10-010",
+      "sha256": "fd89cd7ee96058bed1c65d22b320703b434db2f9a9d096b08f13513101bf2d42"
+    },
+    {
+      "raw_directory": "111-DEV-PC-DIAG-MS-REPEAT10-011",
+      "sha256": "69a005f735543b1939a88bbc1c2f90da11c2cd6e947b651686f4965438da3dbc"
+    },
+    {
+      "raw_directory": "112-DEV-PC-DIAG-MS-REPEAT10-012",
+      "sha256": "5d6f3646f2c345e410598a8212359d0420f0338d075d2b9b5dd872535e1669ea"
+    },
+    {
+      "raw_directory": "113-DEV-PC-DIAG-MS-REPEAT10-013",
+      "sha256": "0e464089e24de71936b04009ebd5abe9892ffdc07d692bfde3f2d4c7ba4cbdd1"
+    },
+    {
+      "raw_directory": "114-DEV-PC-DIAG-MS-REPEAT10-014",
+      "sha256": "eeec60d5607baae644a1de4ce9f6a8345c61515425f0f5f6cb84d8d43635b580"
+    },
+    {
+      "raw_directory": "115-DEV-PC-DIAG-MS-REPEAT10-015",
+      "sha256": "4bc89166943fc54a8b1fe1800691c8743db2cfa1e1cc4289e0f6f8a588501312"
+    },
+    {
+      "raw_directory": "116-DEV-PC-DIAG-MS-REPEAT10-016",
+      "sha256": "9081d6f1cb4060a8eb1eadba4019c950879971cc71f6cd1ffb0d4bf180ec5057"
+    },
+    {
+      "raw_directory": "117-DEV-PC-DIAG-MS-REPEAT10-017",
+      "sha256": "f63e53c65880896565293c7072e286193a0d7964e5d8947e1ac09d3bfaac60ca"
+    },
+    {
+      "raw_directory": "118-DEV-PC-DIAG-MS-REPEAT10-018",
+      "sha256": "5bb007c4ca222393515c26c03c8b3c4426721b661d1fcfc7c7d2a6f2cfe70d22"
+    },
+    {
+      "raw_directory": "119-DEV-PC-DIAG-MS-REPEAT10-019",
+      "sha256": "3daa07bfc3f68d15b0f35f46f1d51e3060d73144bf1961e079540a39776660a3"
+    },
+    {
+      "raw_directory": "120-DEV-PC-DIAG-MS-REPEAT10-020",
+      "sha256": "3a44d3a76a6e4b429c65c5085d8ba31252d6d43b12f118aec33293db9896c68f"
+    },
+    {
+      "raw_directory": "121-DEV-PC-DIAG-MS-REPEAT10-021",
+      "sha256": "d374d86fa83a10e13bbc8d15bbf5d685b2c1af0c86b84817f154cd6940138917"
+    },
+    {
+      "raw_directory": "122-DEV-PC-DIAG-MS-REPEAT10-022",
+      "sha256": "21f9e3da24a2a488dc9ab7272b2e85d08e545e600c812db190f6e709cc72c117"
+    },
+    {
+      "raw_directory": "123-DEV-PC-DIAG-MS-REPEAT10-023",
+      "sha256": "d71da188fb425c90896138637a859a335783c6d902d061c1a208b4bc4f6b53ac"
+    },
+    {
+      "raw_directory": "124-DEV-PC-DIAG-MS-REPEAT10-024",
+      "sha256": "7a55e54e1b762d2d2a9c0dfb7deeb6780170bc93735cf657a72e57eb0dbb2e34"
+    },
+    {
+      "raw_directory": "125-DEV-PC-DIAG-MS-REPEAT10-025",
+      "sha256": "b9d06fff63136ec9907789e3cf43618daff97847c9c75a8b5a589bbd743a0407"
+    },
+    {
+      "raw_directory": "126-DEV-PC-DIAG-MS-REPEAT10-026",
+      "sha256": "9ee1c4e5d75119b2841abfcc779cc215fa8b6e2ac7ed91835b1af145d3b59c99"
+    },
+    {
+      "raw_directory": "127-DEV-PC-DIAG-MS-REPEAT10-027",
+      "sha256": "2b05a35b14f1b82374b6b3af951cb8a7ebc56dca6c06a0ca6d6ff2cbd4ebec83"
+    },
+    {
+      "raw_directory": "128-DEV-PC-DIAG-MS-REPEAT10-028",
+      "sha256": "1fe8f9bd57324a2fe460e6347a96ee68db7d3989f5b58310309385d90d97eb4f"
+    },
+    {
+      "raw_directory": "129-DEV-PC-DIAG-MS-REPEAT10-029",
+      "sha256": "94a29eca20f1db7621f1057b117a8b2cc382294c30e68f7d387b33446591e855"
+    },
+    {
+      "raw_directory": "130-DEV-PC-DIAG-MS-REPEAT10-030",
+      "sha256": "8f2aecb4b66d4e64d9991c3c2ace79a8de7c793ed7d2f92adbf426115f5d705d"
+    },
+    {
+      "raw_directory": "131-DEV-PC-DIAG-MS-REPEAT10-031",
+      "sha256": "ae1a510b28a88eae29eeb08e14e63dabf4677e20339c2f1fe91a78105e75e2a2"
+    },
+    {
+      "raw_directory": "132-DEV-PC-DIAG-MS-REPEAT10-032",
+      "sha256": "81f1ce7126cc64c9a65f3bb7a1f657eff73189458f73eecd1cad00862e08af7c"
+    },
+    {
+      "raw_directory": "133-DEV-PC-DIAG-MS-REPEAT10-033",
+      "sha256": "94613b3a7fb2930cc61bb931a7884fc4c8bccd2ddeec18c59f936fe702241723"
+    },
+    {
+      "raw_directory": "134-DEV-PC-DIAG-MS-REPEAT10-034",
+      "sha256": "5ff86a7c4d81e1e8b6df86693f8c7a88d685de2c2774c51f6d91783a2037e14c"
+    },
+    {
+      "raw_directory": "135-DEV-PC-DIAG-MS-REPEAT10-035",
+      "sha256": "e72c742da18eafef0d1039335b85c6959d22383747cc58fb1826d625a4df8e0f"
+    },
+    {
+      "raw_directory": "136-DEV-PC-DIAG-MS-REPEAT10-036",
+      "sha256": "5b689f18cea52be6315e804bb0c7729302c12b6ae427d8c5869fa9081fe57fa3"
+    },
+    {
+      "raw_directory": "137-DEV-PC-DIAG-MS-REPEAT10-037",
+      "sha256": "0abc3939cc06a06ecb388f941993f23be6bcae7e37166c2076051a0eac0850e7"
+    },
+    {
+      "raw_directory": "138-DEV-PC-DIAG-MS-REPEAT10-038",
+      "sha256": "c3a19ad75115147487761fa8b9e08621f2a47aa4818e8956525f4722b4b384ee"
+    },
+    {
+      "raw_directory": "139-DEV-PC-DIAG-MS-REPEAT10-039",
+      "sha256": "b3d9662659a9b64cba22d07cad7dc582c5918cda86b6fd15f91e8fb822e9ec87"
+    },
+    {
+      "raw_directory": "140-DEV-PC-DIAG-MS-REPEAT10-040",
+      "sha256": "4d978938df83747a8bc61bedf5bacf840c77af0b389dc913f86f9ce847e53659"
+    },
+    {
+      "raw_directory": "141-DEV-PC-DIAG-MS-REPEAT10-041",
+      "sha256": "5af65e6b571258671e6c9c3358b7126d83a1eeea91ad71fd2fe547918446a3e3"
+    },
+    {
+      "raw_directory": "142-DEV-PC-DIAG-MS-REPEAT10-042",
+      "sha256": "ba3345e265af782aec306a254cc8d27a0b19324ea97c8e291eba3eb308225dc0"
+    },
+    {
+      "raw_directory": "143-DEV-PC-DIAG-MS-REPEAT10-043",
+      "sha256": "8900768bcfa7c4201c5152495944ba6a3581cf01d04751e5b52167310958d1c9"
+    },
+    {
+      "raw_directory": "144-DEV-PC-DIAG-MS-REPEAT10-044",
+      "sha256": "8d85494cc333ae0764450e00a05273cf0aafd1f701efa225c0c778b341201617"
+    },
+    {
+      "raw_directory": "145-DEV-PC-DIAG-MS-REPEAT10-045",
+      "sha256": "d0ed4089f4fd1a8db3489d582e83b4cb4a48cf7a5e30e6d39b5eb93b5c8fea64"
+    },
+    {
+      "raw_directory": "146-DEV-PC-DIAG-MS-REPEAT10-046",
+      "sha256": "e9d3f964e96320b0ed51cf8f58d3eecae38dc435620707050d9ec7a640ff1a2e"
+    },
+    {
+      "raw_directory": "147-DEV-PC-DIAG-MS-REPEAT10-047",
+      "sha256": "be2c7e1e6b1ffeab12a2d19342fe43c367f933d31bedc8f33a4e280a611ff432"
+    },
+    {
+      "raw_directory": "148-DEV-PC-DIAG-MS-REPEAT10-048",
+      "sha256": "146ad9e92b882bc2911d79ce8763abd6591f6933e087ec8d7cd97cf8fd36cad8"
+    },
+    {
+      "raw_directory": "149-DEV-PC-DIAG-MS-REPEAT10-049",
+      "sha256": "1d14edb509bd9edda0968ec352392abe5f8b71c52c784423587ae85ae9fbe133"
+    }
+  ],
+  "provider_attempts_observed": 1498,
+  "provider_diagnostic_class_counts": {
+    "PROVIDER_OK": 1498
+  },
+  "raw_workflows_started": 150,
+  "retry_performed": false,
+  "root_cause_of_retained_v12_rc_provider_error": "NOT_REPRODUCED_UNRESOLVED",
+  "schema": "AgentTool.V12ProviderDiagnosticCampaignAudit/1",
+  "selected_v12_cases_executed": 0
+}

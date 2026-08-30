@@ -128,13 +128,19 @@ class ProviderObservation:
 class V11EvidenceProviders:
     """Loopback provider set that decodes only the private V11 payload."""
 
-    def __init__(self, cases: dict[str, V11ActionCase]):
+    def __init__(
+        self,
+        cases: dict[str, V11ActionCase],
+        private_evidence_path: Path | None = None,
+    ):
         from canonical_v9.runner import Providers
 
         self._definitions = Providers.definitions
         self._cases = cases
         self.endpoints: dict[str, str] = {}
         self.observations: list[ProviderObservation] = []
+        self.private_evidence: list[dict[str, Any]] = []
+        self.private_evidence_path = private_evidence_path
         self.effects: set[str] = set()
         self._servers: list[ThreadingHTTPServer] = []
         self._threads: list[threading.Thread] = []
@@ -155,9 +161,25 @@ class V11EvidenceProviders:
 
         class Handler(BaseHTTPRequestHandler):
             def do_POST(self) -> None:  # noqa: N802
+                started_ns = time.monotonic_ns()
+                evidence: dict[str, Any] = {
+                    "route_handle": route_handle,
+                    "handler_start_monotonic_ns": started_ns,
+                    "request_received": False,
+                    "request_decoded_successfully": False,
+                    "handler_logical_completion_monotonic_ns": 0,
+                    "http_response_status_emitted": 0,
+                    "encoded_response_bytes": 0,
+                    "response_write_success": False,
+                    "response_write_error_class": "",
+                }
                 length = int(self.headers.get("Content-Length", "0"))
-                outer = json.loads(self.rfile.read(length))
+                raw_request = self.rfile.read(length)
+                evidence["request_received"] = True
+                evidence["request_received_monotonic_ns"] = time.monotonic_ns()
+                outer = json.loads(raw_request)
                 operation_id = str(outer["operation_id"])
+                evidence["operation_id"] = operation_id
                 case = owner._cases[operation_id]
                 payload = base64.b64decode(outer.get("payload", ""))
                 if case.action_family is CanonicalActionFamily.AGENT_SERVICE:
@@ -176,6 +198,8 @@ class V11EvidenceProviders:
                         "agent_service_subtype": None,
                         "arguments": value["arguments"],
                     }
+                evidence["request_decoded_successfully"] = True
+                evidence["request_decoded_monotonic_ns"] = time.monotonic_ns()
                 with owner._lock:
                     owner.observations.append(
                         ProviderObservation(operation_id, route_handle, request, case.scenario)
@@ -193,27 +217,48 @@ class V11EvidenceProviders:
                     "LATE_READY_WITHIN_BOUND": 30,
                 }.get(readiness_mode)
                 if readiness_delay is None:
+                    evidence["handler_logical_completion_monotonic_ns"] = time.monotonic_ns()
+                    evidence["http_response_status_emitted"] = 400
                     self.send_error(400)
+                    evidence["response_write_success"] = True
+                    evidence["handler_elapsed_ns"] = time.monotonic_ns() - started_ns
+                    with owner._lock:
+                        owner.private_evidence.append(evidence)
                     return
                 if readiness_delay:
                     time.sleep(readiness_delay / 1000.0)
                 if case.scenario in {"BOUNDED_TIMEOUT", "AMBIGUOUS_RESTART"}:
                     time.sleep(0.080)
                 if case.scenario == "ERROR":
+                    evidence["handler_logical_completion_monotonic_ns"] = time.monotonic_ns()
+                    evidence["http_response_status_emitted"] = 503
                     self.send_error(503)
+                    evidence["response_write_success"] = True
+                    evidence["handler_elapsed_ns"] = time.monotonic_ns() - started_ns
+                    with owner._lock:
+                        owner.private_evidence.append(evidence)
                     return
                 result = _deterministic_result(request).encode()
                 encoded = json.dumps(
                     {"status": "OK", "payload": base64.b64encode(result).decode()}
                 ).encode()
+                evidence["handler_logical_completion_monotonic_ns"] = time.monotonic_ns()
+                evidence["encoded_response_bytes"] = len(encoded)
                 try:
                     self.send_response(200)
+                    evidence["http_response_status_emitted"] = 200
                     self.send_header("Content-Type", "application/json")
                     self.send_header("Content-Length", str(len(encoded)))
                     self.end_headers()
                     self.wfile.write(encoded)
-                except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
-                    pass
+                    self.wfile.flush()
+                    evidence["response_write_success"] = True
+                except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError) as exc:
+                    evidence["response_write_error_class"] = type(exc).__name__
+                finally:
+                    evidence["handler_elapsed_ns"] = time.monotonic_ns() - started_ns
+                    with owner._lock:
+                        owner.private_evidence.append(evidence)
 
             def log_message(self, _format: str, *_args: object) -> None:
                 return
@@ -227,6 +272,10 @@ class V11EvidenceProviders:
             server.server_close()
         for thread in self._threads:
             thread.join(timeout=2)
+        if self.private_evidence_path is not None:
+            self.private_evidence_path.write_text(
+                json.dumps(self.private_evidence, indent=2) + "\n", encoding="utf-8"
+            )
 
     def observed(self, operation_id: str) -> ProviderObservation:
         values = [value for value in self.observations if value.operation_id == operation_id]

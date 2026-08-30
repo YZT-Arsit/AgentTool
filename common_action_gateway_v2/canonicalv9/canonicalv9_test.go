@@ -3,7 +3,9 @@ package canonicalv9
 import (
 	"bufio"
 	"bytes"
+	"context"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -14,6 +16,71 @@ import (
 	gatewayv2 "common-action-gateway-v2"
 	"common-action-gateway-v2/v7ohttp"
 )
+
+type roundTripFunc func(*http.Request) (*http.Response, error)
+
+func (function roundTripFunc) RoundTrip(request *http.Request) (*http.Response, error) {
+	return function(request)
+}
+
+func providerDiagnosticEngine(client *http.Client) *engine {
+	return &engine{
+		plan:       Plan{ProviderCompletionBoundMS: 50},
+		httpClient: client,
+		started:    time.Now(),
+	}
+}
+
+func TestProviderDiagnosticClassification(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		switch request.URL.Path {
+		case "/ok":
+			_, _ = writer.Write([]byte(`{"status":"OK","payload":"b2s="}`))
+		case "/http":
+			writer.WriteHeader(http.StatusServiceUnavailable)
+			_, _ = writer.Write([]byte("unavailable"))
+		case "/decode":
+			_, _ = writer.Write([]byte("not-json"))
+		case "/status":
+			_, _ = writer.Write([]byte(`{"status":"ERROR","payload":""}`))
+		default:
+			http.NotFound(writer, request)
+		}
+	}))
+	defer server.Close()
+
+	transportError := errors.New("synthetic transport error")
+	cases := []struct {
+		name     string
+		endpoint string
+		client   *http.Client
+		want     string
+	}{
+		{"ok", server.URL + "/ok", server.Client(), ProviderOK},
+		{"transport", "http://127.0.0.1/execute", &http.Client{Transport: roundTripFunc(func(*http.Request) (*http.Response, error) {
+			return nil, transportError
+		})}, ProviderTransportError},
+		{"deadline", "http://127.0.0.1/execute", &http.Client{Transport: roundTripFunc(func(*http.Request) (*http.Response, error) {
+			return nil, context.DeadlineExceeded
+		})}, ProviderContextDeadlineExceeded},
+		{"http-non-2xx", server.URL + "/http", server.Client(), ProviderHTTPNon2XX},
+		{"decode", server.URL + "/decode", server.Client(), ProviderResponseDecodeError},
+		{"provider-status", server.URL + "/status", server.Client(), ProviderStatusError},
+	}
+	for _, item := range cases {
+		t.Run(item.name, func(t *testing.T) {
+			attempt := providerDiagnosticEngine(item.client).callProvider(
+				RouteSpec{RouteHandle: "private-route", Endpoint: item.endpoint}, "operation", nil,
+			)
+			if attempt.diagnostic.Class != item.want {
+				t.Fatalf("provider diagnostic class=%s want=%s diagnostic=%+v", attempt.diagnostic.Class, item.want, attempt.diagnostic)
+			}
+			if (item.want == ProviderOK) != (attempt.status == gatewayv2.StatusOK) {
+				t.Fatalf("public result semantics changed for %s: status=%d", item.want, attempt.status)
+			}
+		})
+	}
+}
 
 func runOnlineControl(t *testing.T, plan Plan, actions []ActionSpec) (RunResult, []OnlineControlEvent) {
 	t.Helper()

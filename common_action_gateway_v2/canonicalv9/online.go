@@ -495,7 +495,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
 		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),
-		TransportDiagnostics: transportDiagnostics}
+		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics()}
 	if status == "COMPLETE" {
 		emitter.emit(OnlineControlEvent{Type: "SESSION_COMPLETE"})
 	} else {

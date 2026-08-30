@@ -107,6 +107,33 @@ type TransportDiagnostic struct {
 	Error             string `json:"error,omitempty"`
 }
 
+type ProviderDiagnostic struct {
+	OperationID             string `json:"operation_id"`
+	RouteHandle             string `json:"route_handle"`
+	Class                   string `json:"class"`
+	RequestStartMonotonicNS int64  `json:"request_start_monotonic_ns"`
+	HTTPReturnMonotonicNS   int64  `json:"http_return_monotonic_ns,omitempty"`
+	ElapsedNS               int64  `json:"elapsed_ns"`
+	ContextDeadlineNS       int64  `json:"context_deadline_monotonic_ns"`
+	ErrorType               string `json:"error_type,omitempty"`
+	Error                    string `json:"error,omitempty"`
+	HTTPStatus              int    `json:"http_status,omitempty"`
+	BoundedResponseBytes    int    `json:"bounded_response_bytes"`
+	JSONDecodeResult        string `json:"json_decode_result"`
+	DecodedProviderStatus   string `json:"decoded_provider_status,omitempty"`
+}
+
+const (
+	ProviderOK                      = "PROVIDER_OK"
+	ProviderTransportError          = "PROVIDER_TRANSPORT_ERROR"
+	ProviderContextDeadlineExceeded = "PROVIDER_CONTEXT_DEADLINE_EXCEEDED"
+	ProviderHTTPNon2XX              = "PROVIDER_HTTP_NON_2XX"
+	ProviderResponseDecodeError     = "PROVIDER_RESPONSE_DECODE_ERROR"
+	ProviderStatusError             = "PROVIDER_STATUS_ERROR"
+	ProviderResponseTooLarge        = "PROVIDER_RESPONSE_TOO_LARGE"
+	ProviderInternalOtherError      = "PROVIDER_INTERNAL_OTHER_ERROR"
+)
+
 type RunResult struct {
 	ProfileID               string                `json:"profile_id"`
 	Rounds                  int                   `json:"rounds"`
@@ -135,6 +162,7 @@ type RunResult struct {
 	UnresolvedOperationIDs  []string              `json:"unresolved_operation_ids,omitempty"`
 	FrameworkWaiterIDs      []string              `json:"framework_waiter_ids,omitempty"`
 	TransportDiagnostics    []TransportDiagnostic `json:"transport_diagnostics,omitempty"`
+	ProviderDiagnostics     []ProviderDiagnostic  `json:"provider_diagnostics,omitempty"`
 }
 
 type providerRequest struct {
@@ -164,6 +192,9 @@ type engine struct {
 	slotsMu       sync.Mutex
 	seenSlots     map[uint32]bool
 	deliveryMu    sync.Mutex
+	providerMu    sync.Mutex
+	providerDiags []ProviderDiagnostic
+	started       time.Time
 }
 
 func effect(value string) (gatewayv2.EffectSemantics, error) {
@@ -263,31 +294,117 @@ func resultRecord(operationID string, status byte, payload []byte) gatewayv2.Res
 	return result
 }
 
+type providerAttempt struct {
+	status     byte
+	payload    []byte
+	diagnostic ProviderDiagnostic
+}
+
+func (e *engine) callProvider(route RouteSpec, operationID string, protectedArgs []byte) providerAttempt {
+	start := time.Now()
+	startNS := start.Sub(e.started).Nanoseconds()
+	bound := time.Duration(e.plan.ProviderCompletionBoundMS) * time.Millisecond
+	diagnostic := ProviderDiagnostic{
+		OperationID:             operationID,
+		RouteHandle:             route.RouteHandle,
+		Class:                   ProviderInternalOtherError,
+		RequestStartMonotonicNS: startNS,
+		ContextDeadlineNS:       startNS + bound.Nanoseconds(),
+		JSONDecodeResult:        "NOT_ATTEMPTED",
+	}
+	finish := func() providerAttempt {
+		diagnostic.ElapsedNS = time.Since(start).Nanoseconds()
+		return providerAttempt{status: gatewayv2.StatusError, diagnostic: diagnostic}
+	}
+	body, err := json.Marshal(providerRequest{OperationID: operationID, Payload: protectedArgs})
+	if err != nil {
+		diagnostic.ErrorType = fmt.Sprintf("%T", err)
+		diagnostic.Error = err.Error()
+		return finish()
+	}
+	request, err := http.NewRequestWithContext(context.Background(), http.MethodPost, route.Endpoint, bytes.NewReader(body))
+	if err != nil {
+		diagnostic.ErrorType = fmt.Sprintf("%T", err)
+		diagnostic.Error = err.Error()
+		return finish()
+	}
+	request.Header.Set("Content-Type", "application/json")
+	response, err := e.httpClient.Do(request)
+	diagnostic.HTTPReturnMonotonicNS = time.Since(e.started).Nanoseconds()
+	if err != nil {
+		diagnostic.ErrorType = fmt.Sprintf("%T", err)
+		diagnostic.Error = err.Error()
+		if errors.Is(err, context.DeadlineExceeded) {
+			diagnostic.Class = ProviderContextDeadlineExceeded
+		} else {
+			diagnostic.Class = ProviderTransportError
+		}
+		return finish()
+	}
+	defer response.Body.Close()
+	diagnostic.HTTPStatus = response.StatusCode
+	const responseLimit = int64(gatewayv2.ResultPayloadBytes + 1024)
+	raw, readErr := io.ReadAll(io.LimitReader(response.Body, responseLimit+1))
+	diagnostic.BoundedResponseBytes = len(raw)
+	if readErr != nil {
+		diagnostic.ErrorType = fmt.Sprintf("%T", readErr)
+		diagnostic.Error = readErr.Error()
+		return finish()
+	}
+	if int64(len(raw)) > responseLimit {
+		diagnostic.Class = ProviderResponseTooLarge
+		diagnostic.JSONDecodeResult = "SKIPPED_RESPONSE_TOO_LARGE"
+		return finish()
+	}
+	if response.StatusCode/100 != 2 {
+		diagnostic.Class = ProviderHTTPNon2XX
+		diagnostic.JSONDecodeResult = "SKIPPED_HTTP_NON_2XX"
+		return finish()
+	}
+	var decoded providerResponse
+	if err := json.NewDecoder(bytes.NewReader(raw)).Decode(&decoded); err != nil {
+		diagnostic.Class = ProviderResponseDecodeError
+		diagnostic.ErrorType = fmt.Sprintf("%T", err)
+		diagnostic.Error = err.Error()
+		diagnostic.JSONDecodeResult = "ERROR"
+		return finish()
+	}
+	diagnostic.JSONDecodeResult = "OK"
+	diagnostic.DecodedProviderStatus = decoded.Status
+	if decoded.Status != "OK" {
+		diagnostic.Class = ProviderStatusError
+		return finish()
+	}
+	diagnostic.Class = ProviderOK
+	diagnostic.ElapsedNS = time.Since(start).Nanoseconds()
+	return providerAttempt{status: gatewayv2.StatusOK, payload: decoded.Payload, diagnostic: diagnostic}
+}
+
+func (e *engine) recordProviderDiagnostic(diagnostic ProviderDiagnostic) {
+	e.providerMu.Lock()
+	defer e.providerMu.Unlock()
+	e.providerDiags = append(e.providerDiags, diagnostic)
+}
+
+func (e *engine) providerDiagnostics() []ProviderDiagnostic {
+	e.providerMu.Lock()
+	defer e.providerMu.Unlock()
+	return append([]ProviderDiagnostic(nil), e.providerDiags...)
+}
+
 func (e *engine) execute(route RouteSpec, action v7ohttp.PrivateActionMessage, currentRound uint32) {
 	defer e.workers.Done()
 	operationID := string(action.OperationID)
 	e.providerCalls.Add(1)
 	e.record(PrivateEvent{OperationID: operationID, Stage: "PROVIDER_CALL_BEGIN", ActionKind: string(action.Kind), RouteHandle: route.RouteHandle, Round: int(currentRound)})
-	body, _ := json.Marshal(providerRequest{OperationID: operationID, Payload: action.ProtectedArgs})
-	request, _ := http.NewRequestWithContext(context.Background(), http.MethodPost, route.Endpoint, bytes.NewReader(body))
-	request.Header.Set("Content-Type", "application/json")
-	response, err := e.httpClient.Do(request)
-	status := gatewayv2.StatusError
-	var payload []byte
-	if err == nil {
-		defer response.Body.Close()
-		var decoded providerResponse
-		if response.StatusCode/100 == 2 && json.NewDecoder(io.LimitReader(response.Body, gatewayv2.ResultPayloadBytes+1024)).Decode(&decoded) == nil && decoded.Status == "OK" {
-			status = gatewayv2.StatusOK
-			payload = decoded.Payload
-		}
-	}
-	result := resultRecord(operationID, status, payload)
+	attempt := e.callProvider(route, operationID, action.ProtectedArgs)
+	e.recordProviderDiagnostic(attempt.diagnostic)
+	result := resultRecord(operationID, attempt.status, attempt.payload)
 	if err := e.journal.Commit(operationID, result); err != nil {
 		e.record(PrivateEvent{OperationID: operationID, Stage: "RESULT_COMMIT_FAILED", Status: err.Error()})
 		return
 	}
-	e.record(PrivateEvent{OperationID: operationID, Stage: "RESULT_COMMITTED", Status: fmt.Sprintf("%d", status)})
+	e.record(PrivateEvent{OperationID: operationID, Stage: "RESULT_COMMITTED", Status: fmt.Sprintf("%d", attempt.status)})
 	if _, err := e.ready.Enqueue(result, time.Now().UnixNano()); err != nil {
 		e.record(PrivateEvent{OperationID: operationID, Stage: "READY_PUBLICATION_FAILED", Status: err.Error()})
 		return
@@ -504,7 +621,7 @@ func newEngine(plan Plan) (*engine, error) {
 	return &engine{plan: plan, codec: v9ohttp.RFC9292Codec{}, client: client, gateway: gateway,
 		routes: routes, journal: journal, ready: ready, memory: memory,
 		httpClient: &http.Client{Timeout: time.Duration(plan.ProviderCompletionBoundMS) * time.Millisecond},
-		seenSlots:  make(map[uint32]bool, plan.Rounds)}, nil
+		seenSlots:  make(map[uint32]bool, plan.Rounds), started: time.Now()}, nil
 }
 
 func bindAdmission(plan Plan) error {
@@ -759,5 +876,5 @@ func Run(plan Plan) (RunResult, error) {
 		SessionStatus: status, PublicSetupEvents: setupEvents, SlotLaunches: launches,
 		ScheduleMisses: scheduleMisses, PendingOperationIDs: pending, SilentCommittedLosses: 0,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
-		TransportDiagnostics: transportDiagnostics}, nil
+		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics()}, nil
 }
