@@ -1,0 +1,29 @@
+{
+  "classification": "STARTED_INCOMPLETE_NO_RETRY",
+  "execution_ledger_sha256": "1e78428ba3f614cfe087e83c9d943f17563130cf2018be8c9ee7ef06b279663db",
+  "final_ledger_record_sha256": "550ba235aef5186c5a8cc5d5cfa1265c380aa39d69c32baf0642d77894c33158e",
+  "ledger_records": 157,
+  "missing_artifacts_not_synthesized": [
+    "158th ledger record",
+    "V11B_CONFIRMATORY_SUMMARY.json",
+    "campaign_completion.json",
+    "missing pair verdicts"
+  ],
+  "primary_common_failure": "FileNotFoundError: online SimplePIR requires Go and gcc",
+  "privacy_failure_inferred": false,
+  "result_tree_aggregate_sha256": "944538f9bcf89066851cd5c91469f45da46f821b7afc014da1dc1e3fc8f9f857",
+  "result_tree_bytes": 94546436,
+  "result_tree_files": 251,
+  "result_tree_manifest_file_sha256": "f0196db503d6d966f2b1b67999e5d9bae292109419e261b5d97c0a76ba80c7ec",
+  "schema": "AgentTool.V11B.AbortedConfirmatoryAudit/1",
+  "selected_unit_158_entered_without_final_ledger_record": true,
+  "selected_units_planned": 158,
+  "status_class_counts": {
+    "CANONICAL_FUNCTIONAL_FAIL": 92,
+    "PASS": 65
+  },
+  "terminal_campaign_failure": "OSError: [Errno 24] Too many open files",
+  "v11b_confirmatory_result_available": false,
+  "v11b_holdout_consumed": true,
+  "v11b_rerun_allowed": false
+}

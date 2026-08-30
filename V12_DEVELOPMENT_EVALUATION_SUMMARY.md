@@ -1,0 +1,9 @@
+# V12 development evaluation summary
+
+Development/freeze gate: **FAIL**. The unchanged V11.4 profile was requalified with 450/450 final-reliability sessions, 240/240 mixed-causal sessions, depths 10/20/30/50, and zero safety counters. The security-negative matrix, B0-B5 baseline ladder (B0 1/14, B1 2/14, B2 11/14, B3 13/14, B4 13/14, B5 14/14), six ablations, 22/22 security negatives, SimplePIR integration evidence, the 500-unit resource stress, five full campaign rehearsals, and all 30 performance cells at 30 attempted repetitions are bound by the machine-readable summary. One of 300 fixed-transcript performance attempts had a real SESSION_SCHEDULE_FAILURE (355/356 rounds, one schedule miss); it is retained and was not retried. Successful FULL_STRICT sessions are verified at 356 rounds, 3560 ms scheduled lifetime, and 668,924 Relay-observed action-transport bytes.
+
+The final full local regression run was 299/302, not PASS. Two timeout failures passed a serial no-change recheck; the 50-action V10-H50 case reproducibly failed with `canonical response final size mismatch`. The failed run and serial recheck are retained. This independently keeps the pre-holdout system gate closed.
+
+The original one-shot requalification analyzer emitted FAIL because it incorrectly required a sequential causal proof from the predeclared PARALLEL_ACTIONS control in the CAUSAL_DEPTH pair. That original result remains preserved. A read-only reanalysis using the pre-existing V11.3 workflow-specific rule corrected this sole false negative; no qualification arm was rerun.
+
+Corpus scope remains 894 MEDIATED, 473 PARTIAL, and 3 UNSUPPORTED action sites out of 1,370. Claim boundaries remain: timing privacy OPEN/NOT TESTED; packet-level timing OPEN; hardware TEE NOT_TESTED; source-body executable subset 0; source-body equivalence false. No selected V12 holdout result exists.

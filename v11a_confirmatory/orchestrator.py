@@ -38,6 +38,7 @@ DECISION_CLASSES = {
 class ExecutionPermit:
     phase: str
     approved: bool
+    capability_preflight_passed: bool = False
 
     def require(self, cases: Iterable[V11ActionCase]) -> None:
         values = list(cases)
@@ -47,8 +48,12 @@ class ExecutionPermit:
             if any(not case.case_id.startswith("DEV-") for case in values):
                 raise PermissionError("development permit cannot execute non-development case")
             return
+        if self.phase == "V12":
+            if not self.capability_preflight_passed:
+                raise PermissionError("V12 capability preflight has not passed")
+            return
         if self.phase != "V11B":
-            raise PermissionError("selected execution requires an explicit V11B permit")
+            raise PermissionError("selected execution requires an explicit frozen campaign permit")
 
 
 @dataclass(frozen=True)

@@ -1,0 +1,7 @@
+ablation,reference,lost_property,equal_structural_dimensions_out_of_14,evidence_class
+-PIR,B0_DIRECT_NATIVE,private Agent selection/index,1,ACTUAL_DEV_EXECUTION
+-OHTTP,B1_PIR_PLUS_DIRECT_ACTION,action content and common egress endpoint,2,ACTUAL_DEV_EXECUTION
+-PADDING,B2_PIR_PLUS_OHTTP_UNSHAPED,request/response size equality,11,ACTUAL_DEV_EXECUTION
+-FIXED_SCHEDULE,B3_PIR_PLUS_OHTTP_PADDED,count/order/public lifetime equality,13,ACTUAL_DEV_EXECUTION
+-INTERNAL_COVER,B4_PIR_PLUS_FIXED_TRANSCRIPT_EXTERNAL,internal/external placement equality,13,ACTUAL_DEV_EXECUTION
+STATIC_PREDECLARED_PLAN,historical V11.1,same-session causal action generation,NOT_APPLICABLE,FROZEN_HISTORICAL_FUNCTIONAL_COMPARISON

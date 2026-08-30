@@ -90,6 +90,7 @@ def run_online_development(
     require_strict_causal: bool = True,
     pir_delay_ms: int = 0,
     decision_delay_ms: int = 0,
+    pir_record_count: int = 1000,
 ) -> dict[str, Any]:
     """Execute one non-holdout development session exactly once."""
 
@@ -112,6 +113,7 @@ def run_online_development(
             public_profile=profile,
             pir_delay_ms=pir_delay_ms,
             decision_delay_ms=decision_delay_ms,
+            pir_record_count=pir_record_count,
         )
         with session:
             canonical = run_online_framework_workflow(framework, workflow, cases, session.implementation())
@@ -136,9 +138,8 @@ def run_online_development(
     )
     dynamic_pir = bool(
         session is not None
-        and session.pir is not None
-        and session.pir.query_count == len(cases)
-        and len(session.pir.query_hashes) == len(set(session.pir.query_hashes))
+        and session.pir_query_count == len(cases)
+        and len(session.pir_query_hashes) == len(set(session.pir_query_hashes))
     )
     passed = bool(
         not error

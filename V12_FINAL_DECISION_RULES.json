@@ -1,0 +1,53 @@
+{
+  "claim_boundaries": {
+    "hardware_tee": "NOT_TESTED",
+    "packet_level_timing": "OPEN",
+    "source_body_equivalence_go": false,
+    "source_body_executable_subset": 0,
+    "timing_privacy": "OPEN / NOT TESTED"
+  },
+  "execution_integrity": {
+    "append_only_ledger_records": 134,
+    "expected_units": 134,
+    "mid_campaign_harness_integrity_failure_allowed": false,
+    "retry_allowed": false,
+    "substitution_allowed": false
+  },
+  "schema": "AgentTool.V12.FinalDecisionRules/1",
+  "semantic_families": {
+    "S1": {
+      "expected_cases": 20,
+      "require_exact_projection_equality": true,
+      "scope": "LEVEL_A_ACTION_BOUNDARY"
+    },
+    "S2": {
+      "expected_cases": 12,
+      "require_exact_projection_equality": true,
+      "scope": "FRAMEWORK_COMPOSITION_ACTION_BOUNDARY"
+    },
+    "S3": {
+      "expected_cases": 12,
+      "mandatory_depths": [30, 50],
+      "require_causal_proof": true,
+      "require_exact_projection_equality": true
+    },
+    "S4": {
+      "expected_cases": 9,
+      "require_exact_projection_equality": true,
+      "scope": "SYNTHETIC_CONFIRMATORY_CONTRACT"
+    }
+  },
+  "status_formulas": {
+    "CONFIRMATORY_SEMANTIC_GO": "S1_PASS && S2_PASS && S3_PASS && S4_PASS",
+    "CONFIRMATORY_SOFTWARE_SCOPE_GO": "CONFIRMATORY_SEMANTIC_GO && CONFIRMATORY_STRUCTURAL_TRAJECTORY_GO && EXECUTION_INTEGRITY_PASS",
+    "CONFIRMATORY_STRUCTURAL_TRAJECTORY_GO": "STRUCTURAL_PASS"
+  },
+  "structural": {
+    "expected_pairs": 14,
+    "functional_validity_precedes_equality": true,
+    "prefix_horizons": [1, 10, 50, 100, 200, 300, 356],
+    "require_full_structural_equality": true,
+    "require_size_equality": true,
+    "timestamps_compared": false
+  }
+}

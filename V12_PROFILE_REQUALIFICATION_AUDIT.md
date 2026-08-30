@@ -1,0 +1,3 @@
+# V12 profile requalification audit
+
+Status: **PASS**. The one-shot execution completed 450/450 final-reliability cases, 240/240 mixed-causal cases, depths 10/20/30/50, ten semantic regressions, and twelve structural pairs with zero dummy-heavy operations, overflow, scheduler misses, or silent losses. Its original analyzer result remains preserved as FAIL: it accidentally required sequential causal proof from the predeclared PARALLEL_ACTIONS control in CAUSAL_DEPTH. A read-only analysis correction reapplied the pre-existing V11.3 rule (causal proof only for DYNAMIC_SEQUENCE), changing that one classification. No arm was rerun and no selected V12 case was loaded or executed.

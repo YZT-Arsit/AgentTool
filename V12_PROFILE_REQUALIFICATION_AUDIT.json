@@ -1,0 +1,29 @@
+{
+  "analysis_corrected_result_sha256": "633079e3d6bb517e593301b5880aa7c83ac1fb9d4b9be96544b5029e6bb9237e",
+  "analysis_corrected_result_status": "PASS",
+  "analysis_rule": "causal proof is required for DYNAMIC_SEQUENCE and not for the predeclared PARALLEL_ACTIONS control",
+  "corrected_pairs": [
+    "CAUSAL_DEPTH"
+  ],
+  "counters": {
+    "dummy_heavy_ops": 0,
+    "profile_overflow": 0,
+    "schedule_misses": 0,
+    "silent_committed_result_loss": 0
+  },
+  "execution_rerun": false,
+  "gates": {
+    "capability_preflight": true,
+    "causal_depths_10_20_30_50": true,
+    "final_reliability_450_of_450": true,
+    "mixed_causal_240_of_240": true,
+    "semantic_regression_at_least_10": true,
+    "structural_regression_at_least_12": true,
+    "zero_safety_counters": true
+  },
+  "original_one_shot_result_sha256": "a4b96d38e382e3cd37aae95c0eefbd57f38128f2ae0b4809013c0914940bde61",
+  "original_one_shot_result_status": "FAIL",
+  "schema": "AgentTool.V12ProfileRequalificationAudit/1",
+  "selected_v12_cases_executed": 0,
+  "status": "PASS"
+}

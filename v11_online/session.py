@@ -55,8 +55,11 @@ class OnlineSessionFailure(RuntimeError):
 class OnlineSimplePIRResolver:
     """Persistent official SimplePIR setup with indices supplied only online."""
 
-    def __init__(self, output: Path):
+    def __init__(self, output: Path, *, record_count: int = 1000):
         self.output = output.resolve()
+        if record_count < 64:
+            raise ValueError("online SimplePIR development catalog must contain at least 64 rows")
+        self.record_count = record_count
         self.process: subprocess.Popen[str] | None = None
         self.codec: AgentDescriptorV7Codec | None = None
         self.stderr_lines: list[str] = []
@@ -74,35 +77,40 @@ class OnlineSimplePIRResolver:
         # The dynamic catalog contains both external Agents and the development
         # local-trusted Agent. No future query index is passed to preprocessing.
         with registry.open("xb") as handle:
-            for agent_id in range(1000):
+            for agent_id in range(self.record_count):
                 value = internal_descriptor(agent_id) if agent_id == 20 else descriptor(agent_id)
                 handle.write(self.codec.encode(value))
-        if registry.stat().st_size != 1000 * AGENT_DESCRIPTOR_V7_BYTES:
+        if registry.stat().st_size != self.record_count * AGENT_DESCRIPTOR_V7_BYTES:
             raise AssertionError("online SimplePIR registry size mismatch")
 
         bridge = ROOT / "pir_integration" / "simplepir_bridge"
         env = dict(os.environ)
-        if os.name == "nt":
+        prebuilt_bridge = bridge / (
+            "acv-simplepir-online.exe" if os.name == "nt" else "acv-simplepir-online"
+        )
+        self.prebuilt_bridge_used = prebuilt_bridge.is_file()
+        if self.prebuilt_bridge_used:
+            # A verified prebuilt CGO binary is self-contained with respect to
+            # the Go compiler and C compiler.  Toolchain discovery belongs to
+            # the build path and must not gate or silently alter execution.
+            command = [str(prebuilt_bridge), "--interactive"]
+        elif os.name == "nt":
+            # Retained solely for Windows development fixtures.  Linux/V12
+            # execution fails closed rather than silently changing to go run.
             go = ROOT / ".toolchains" / "go" / "Go" / "bin" / "go.exe"
             gcc_dir = ROOT / ".toolchains" / "winlibs" / "mingw64" / "bin"
+            if not go.is_file() or not (gcc_dir / "gcc.exe").is_file():
+                raise FileNotFoundError("online SimplePIR prebuilt bridge is unavailable")
             env["PATH"] = str(go.parent) + os.pathsep + str(gcc_dir) + os.pathsep + env.get("PATH", "")
             env["CC"] = str(gcc_dir / "gcc.exe")
+            env["CGO_ENABLED"] = "1"
+            command = [str(go), "run", ".", "--interactive"]
         else:
-            discovered = shutil.which("go")
-            if discovered is None or shutil.which("gcc") is None:
-                raise FileNotFoundError("online SimplePIR requires Go and gcc")
-            go = Path(discovered)
-            env["CC"] = str(shutil.which("gcc"))
-        env["CGO_ENABLED"] = "1"
-        prebuilt_bridge = bridge / "acv-simplepir-online"
-        self.prebuilt_bridge_used = prebuilt_bridge.is_file()
-        command = (
-            [str(prebuilt_bridge), "--interactive"]
-            if prebuilt_bridge.is_file()
-            else [str(go), "run", ".", "--interactive"]
-        )
+            raise FileNotFoundError(
+                "online SimplePIR requires the frozen prebuilt bridge; source fallback is disabled"
+            )
         command.extend([
-            "--database", str(registry), "--records", "1000",
+            "--database", str(registry), "--records", str(self.record_count),
             "--client-trace", str(self.output / "client_private_trace.jsonl"),
             "--server-trace", str(self.output / "server_visible_trace.jsonl"),
             "--commit", SIMPLEPIR_COMMIT,
@@ -126,7 +134,11 @@ class OnlineSimplePIRResolver:
                 break
         if ready is None:
             raise RuntimeError("online SimplePIR exited before PIR_READY: " + self.process.stderr.read())
-        if ready != {"future_indices_received": 0, "records": 1000, "type": "PIR_READY"}:
+        if ready != {
+            "future_indices_received": 0,
+            "records": self.record_count,
+            "type": "PIR_READY",
+        }:
             raise AssertionError(f"unexpected online SimplePIR readiness record: {ready}")
         self.stderr_thread = threading.Thread(target=self._drain_stderr, daemon=True)
         self.stderr_thread.start()
@@ -165,38 +177,45 @@ class OnlineSimplePIRResolver:
     def __exit__(self, *_args: object) -> None:
         if self.process is None:
             return
-        if self.process.stdin is not None:
-            self.process.stdin.close()
         try:
-            self.process.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            self.process.terminate()
-            self.process.wait(timeout=5)
-        if self.stderr_thread is not None:
-            self.stderr_thread.join(timeout=2)
-        (self.output / "bridge_stderr.txt").write_text("".join(self.stderr_lines), encoding="utf-8")
-        (self.output / "online_query_summary.json").write_text(
-            json.dumps(
-                {
-                    "official_simplepir": True,
-                    "commit": SIMPLEPIR_COMMIT,
-                    "query_count": self.query_count,
-                    "fresh_query_hashes": len(self.query_hashes) == len(set(self.query_hashes)),
-                    "future_indices_in_startup": 0,
-                    "prebuilt_bridge_binary": self.prebuilt_bridge_used,
-                },
-                indent=2,
+            if self.process.stdin is not None and not self.process.stdin.closed:
+                self.process.stdin.close()
+            try:
+                self.process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                self.process.terminate()
+                try:
+                    self.process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    self.process.kill()
+                    self.process.wait(timeout=5)
+            if self.stderr_thread is not None:
+                self.stderr_thread.join(timeout=2)
+            (self.output / "bridge_stderr.txt").write_text("".join(self.stderr_lines), encoding="utf-8")
+            (self.output / "online_query_summary.json").write_text(
+                json.dumps(
+                    {
+                        "official_simplepir": True,
+                        "commit": SIMPLEPIR_COMMIT,
+                        "query_count": self.query_count,
+                        "fresh_query_hashes": len(self.query_hashes) == len(set(self.query_hashes)),
+                        "future_indices_in_startup": 0,
+                        "prebuilt_bridge_binary": self.prebuilt_bridge_used,
+                        "record_count": self.record_count,
+                    },
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
             )
-            + "\n",
-            encoding="utf-8",
-        )
-        # Popen does not close PIPE file objects merely because the child has
-        # exited.  Qualification executes hundreds of independent sessions in
-        # one process, so explicitly release every descriptor.
-        for stream in (self.process.stdout, self.process.stderr):
-            if stream is not None and not stream.closed:
-                stream.close()
-        self.process = None
+        finally:
+            # Popen does not close PIPE file objects merely because the child
+            # exited.  Release every descriptor even when shutdown or evidence
+            # serialization fails.
+            for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
+                if stream is not None and not stream.closed:
+                    stream.close()
+            self.process = None
 
 
 class CanonicalOnlineSession:
@@ -212,6 +231,7 @@ class CanonicalOnlineSession:
         public_profile: OnlinePublicProfile | None = None,
         pir_delay_ms: int = 0,
         decision_delay_ms: int = 0,
+        pir_record_count: int = 1000,
     ):
         self.output = output
         self.cases = {case.operation_id: case for case in cases}
@@ -222,12 +242,15 @@ class CanonicalOnlineSession:
         self.public_profile = public_profile
         self.pir_delay_ms = pir_delay_ms
         self.decision_delay_ms = decision_delay_ms
+        self.pir_record_count = pir_record_count
         if pir_delay_ms < 0 or decision_delay_ms < 0:
             raise ValueError("private development delays cannot be negative")
         self.providers: V11EvidenceProviders | None = None
         self.pir: OnlineSimplePIRResolver | None = None
         self.process: subprocess.Popen[str] | None = None
         self.reader_thread: threading.Thread | None = None
+        self.pir_query_count = 0
+        self.pir_query_hashes: tuple[str, ...] = ()
         self.events: list[dict[str, Any]] = []
         self.lifecycle: list[dict[str, Any]] = []
         self.condition = threading.Condition()
@@ -245,56 +268,75 @@ class CanonicalOnlineSession:
         self.output.mkdir(parents=True)
         if not self.runner_binary.is_file():
             raise FileNotFoundError(f"V11.2 online runner is missing: {self.runner_binary}")
-        self.providers = V11EvidenceProviders(self.cases).__enter__()
-        self.pir = OnlineSimplePIRResolver(self.output / "pir").__enter__()
-        profile = self.public_profile or load_v10_profile()
-        plan = profile.go_plan_fields()
-        plan.update(
-            {
-                "profile_id": profile.profile_id if self.public_profile is not None else "V11_2-DEV-H50-ONLINE-P5",
-                "state_directory": str(self.output / "gateway_state"),
-                "routes": route_specs(self.providers),
-                "actions": [],
-                # Qualification profiles own the public slot period.  The old
-                # unconditional value of 5 ms made a non-5-ms profile only a
-                # label change and invalidated scheduler qualification.
-                "round_period_ms": profile.round_period_ms if self.public_profile is not None else 5,
-                "scheduler_tolerance_ms": 3,
-                "preparation_lead_ms": 1,
+        self.providers = V11EvidenceProviders(self.cases)
+        self.pir = OnlineSimplePIRResolver(
+            self.output / "pir", record_count=self.pir_record_count
+        )
+        try:
+            self.providers.__enter__()
+            self.pir.__enter__()
+            profile = self.public_profile or load_v10_profile()
+            plan = profile.go_plan_fields()
+            plan.update(
+                {
+                    "profile_id": profile.profile_id
+                    if self.public_profile is not None
+                    else "V11_2-DEV-H50-ONLINE-P5",
+                    "state_directory": str(self.output / "gateway_state"),
+                    "routes": route_specs(self.providers),
+                    "actions": [],
+                    # Qualification profiles own the public slot period.  The old
+                    # unconditional value of 5 ms made a non-5-ms profile only a
+                    # label change and invalidated scheduler qualification.
+                    "round_period_ms": profile.round_period_ms
+                    if self.public_profile is not None
+                    else 5,
+                    "scheduler_tolerance_ms": 3,
+                    "preparation_lead_ms": 1,
+                }
+            )
+            allowed = {
+                "fault_scheduler_stall_slot",
+                "fault_scheduler_stall_ms",
+                "fault_delay_response_slot",
+                "fault_delay_response_ms",
             }
-        )
-        allowed = {
-            "fault_scheduler_stall_slot",
-            "fault_scheduler_stall_ms",
-            "fault_delay_response_slot",
-            "fault_delay_response_ms",
-        }
-        unknown = set(self.plan_overrides) - allowed
-        if unknown:
-            raise ValueError(f"unsupported online development override: {sorted(unknown)}")
-        plan.update(self.plan_overrides)
-        (self.output / "trusted_online_startup_plan.json").write_text(
-            json.dumps(plan, indent=2) + "\n", encoding="utf-8"
-        )
-        if plan["actions"]:
-            raise AssertionError("online startup plan contains future actions")
-        result_path = self.output / "go_online_result.json"
-        self.process = subprocess.Popen(
-            [str(self.runner_binary), "--online", "--plan", str(self.output / "trusted_online_startup_plan.json"), "--output", str(result_path)],
-            cwd=ROOT,
-            text=True,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            bufsize=1,
-        )
-        self._started_ns = time.monotonic_ns()
-        self._ledger = DeliveryLedger(self.output / "trusted_delivery_ledger.json")
-        self.reader_thread = threading.Thread(target=self._read_events, daemon=True)
-        self.reader_thread.start()
-        self._wait(lambda: any(event.get("type") == "SESSION_READY" for event in self.events), timeout=10)
-        self._record("SESSION_T0")
-        return self
+            unknown = set(self.plan_overrides) - allowed
+            if unknown:
+                raise ValueError(f"unsupported online development override: {sorted(unknown)}")
+            plan.update(self.plan_overrides)
+            (self.output / "trusted_online_startup_plan.json").write_text(
+                json.dumps(plan, indent=2) + "\n", encoding="utf-8"
+            )
+            if plan["actions"]:
+                raise AssertionError("online startup plan contains future actions")
+            result_path = self.output / "go_online_result.json"
+            self.process = subprocess.Popen(
+                [
+                    str(self.runner_binary),
+                    "--online",
+                    "--plan",
+                    str(self.output / "trusted_online_startup_plan.json"),
+                    "--output",
+                    str(result_path),
+                ],
+                cwd=ROOT,
+                text=True,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                bufsize=1,
+            )
+            self._started_ns = time.monotonic_ns()
+            self._ledger = DeliveryLedger(self.output / "trusted_delivery_ledger.json")
+            self.reader_thread = threading.Thread(target=self._read_events, daemon=True)
+            self.reader_thread.start()
+            self._wait(lambda: any(event.get("type") == "SESSION_READY" for event in self.events), timeout=10)
+            self._record("SESSION_T0")
+            return self
+        except BaseException:
+            self._release_resources(suppress_errors=True)
+            raise
 
     def _read_events(self) -> None:
         assert self.process is not None and self.process.stdout is not None
@@ -433,12 +475,13 @@ class CanonicalOnlineSession:
     def close(self) -> dict[str, Any]:
         if self.process is None:
             raise RuntimeError("online session was not started")
-        if self.process.stdin is not None:
+        if self.process.stdin is not None and not self.process.stdin.closed:
             self.process.stdin.close()
         try:
             return_code = self.process.wait(timeout=15)
         except subprocess.TimeoutExpired as exc:
             self.process.kill()
+            self.process.wait(timeout=5)
             raise OnlineSessionFailure("online runner did not stop at public session end") from exc
         if self.reader_thread is not None:
             self.reader_thread.join(timeout=2)
@@ -459,19 +502,43 @@ class CanonicalOnlineSession:
         self.trace = json.loads((self.output / "go_online_result.json").read_text(encoding="utf-8"))
         return self.trace
 
-    def __exit__(self, exc_type, exc, _traceback) -> None:
-        close_error: Exception | None = None
-        try:
-            if self.process is not None and self.trace is None:
-                self.close()
-        except Exception as value:  # preserve the framework exception if one exists
-            close_error = value
+    def _release_resources(self, *, suppress_errors: bool) -> None:
+        errors: list[BaseException] = []
+        if self.process is not None:
+            try:
+                if self.trace is None:
+                    self.close()
+            except BaseException as value:
+                errors.append(value)
+            finally:
+                for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
+                    if stream is not None and not stream.closed:
+                        stream.close()
+                if self.process.poll() is None:
+                    self.process.kill()
+                    self.process.wait(timeout=5)
+                self.process = None
         if self.pir is not None:
-            self.pir.__exit__()
+            try:
+                self.pir_query_count = self.pir.query_count
+                self.pir_query_hashes = tuple(self.pir.query_hashes)
+                self.pir.__exit__()
+            except BaseException as value:
+                errors.append(value)
+            finally:
+                self.pir = None
         if self.providers is not None:
-            self.providers.__exit__()
-        if exc is None and close_error is not None:
-            raise close_error
+            try:
+                self.providers.__exit__()
+            except BaseException as value:
+                errors.append(value)
+            finally:
+                self.providers = None
+        if errors and not suppress_errors:
+            raise errors[0]
+
+    def __exit__(self, exc_type, exc, _traceback) -> None:
+        self._release_resources(suppress_errors=exc is not None)
 
     def public_projections(self) -> tuple[dict[str, Any], dict[str, Any]]:
         if self.trace is None:

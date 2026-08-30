@@ -1,0 +1,138 @@
+{
+  "executed_rehearsal_script_sha256": "c0d2ef53b7b6ff77d8d0f51219e8f5bda6000b65f30a96dde724410ec3a46780",
+  "passed": 5,
+  "resource_stress_result_sha256": "26cb294f77d54efd30090fe937b419cf82a1ca0fda5940187abac99a7d2f3ccd",
+  "resource_stress_status": "PASS",
+  "resource_stress_thresholds_sha256": "ab3671e0e767ee40b8e094583e315ea054c83b34dc3a8413048c7b8e053ff8c9",
+  "schema": "AgentTool.V12FullCampaignRehearsalResults/1",
+  "selected_holdout_cases_executed": 0,
+  "source_rehearsal_result_sha256": "e2a6b25bb007a8e823ce32672415c5534ca9005c3725f865676f57272fbcd9ae",
+  "summaries": [
+    {
+      "final_ledger_record_sha256": "20a3d12463a3342989ab0deaf609a6214b2442b29fd597fc84a57fba74a4c783",
+      "ledger_records": 158,
+      "rehearsal": 1,
+      "resource": {
+        "canonical_runner_processes": 0,
+        "live_child_processes": 0,
+        "open_fd_count": 3,
+        "open_pipe_fds": 0,
+        "open_socket_fds": 0,
+        "pid": 942777,
+        "relevant_processes": [],
+        "simplepir_processes": 0,
+        "zombie_children": 0
+      },
+      "schema": "AgentTool.V12DevelopmentCampaignRehearsalSummary/1",
+      "selected_holdout_cases_executed": 0,
+      "semantic_pass": 53,
+      "status": "PASS",
+      "status_counts": {
+        "PASS": 158
+      },
+      "structural_pair_pass": 14,
+      "trajectory_pass": 12
+    },
+    {
+      "final_ledger_record_sha256": "5a7bb5451ad50c716c3c84791602be5bfc7147be6683958a2287645a90757434",
+      "ledger_records": 158,
+      "rehearsal": 2,
+      "resource": {
+        "canonical_runner_processes": 0,
+        "live_child_processes": 0,
+        "open_fd_count": 3,
+        "open_pipe_fds": 0,
+        "open_socket_fds": 0,
+        "pid": 942777,
+        "relevant_processes": [],
+        "simplepir_processes": 0,
+        "zombie_children": 0
+      },
+      "schema": "AgentTool.V12DevelopmentCampaignRehearsalSummary/1",
+      "selected_holdout_cases_executed": 0,
+      "semantic_pass": 53,
+      "status": "PASS",
+      "status_counts": {
+        "PASS": 158
+      },
+      "structural_pair_pass": 14,
+      "trajectory_pass": 12
+    },
+    {
+      "final_ledger_record_sha256": "df3497930e85fc07f45c3927200014cce5ea6a07e6f01965e706b344e26b9441",
+      "ledger_records": 158,
+      "rehearsal": 3,
+      "resource": {
+        "canonical_runner_processes": 0,
+        "live_child_processes": 0,
+        "open_fd_count": 3,
+        "open_pipe_fds": 0,
+        "open_socket_fds": 0,
+        "pid": 942777,
+        "relevant_processes": [],
+        "simplepir_processes": 0,
+        "zombie_children": 0
+      },
+      "schema": "AgentTool.V12DevelopmentCampaignRehearsalSummary/1",
+      "selected_holdout_cases_executed": 0,
+      "semantic_pass": 53,
+      "status": "PASS",
+      "status_counts": {
+        "PASS": 158
+      },
+      "structural_pair_pass": 14,
+      "trajectory_pass": 12
+    },
+    {
+      "final_ledger_record_sha256": "ad709d0ce5311a66432438fbdde9de8e3896204ef05a20b24c17015000195f62",
+      "ledger_records": 158,
+      "rehearsal": 4,
+      "resource": {
+        "canonical_runner_processes": 0,
+        "live_child_processes": 0,
+        "open_fd_count": 3,
+        "open_pipe_fds": 0,
+        "open_socket_fds": 0,
+        "pid": 942777,
+        "relevant_processes": [],
+        "simplepir_processes": 0,
+        "zombie_children": 0
+      },
+      "schema": "AgentTool.V12DevelopmentCampaignRehearsalSummary/1",
+      "selected_holdout_cases_executed": 0,
+      "semantic_pass": 53,
+      "status": "PASS",
+      "status_counts": {
+        "PASS": 158
+      },
+      "structural_pair_pass": 14,
+      "trajectory_pass": 12
+    },
+    {
+      "final_ledger_record_sha256": "2d931f2d3d1c1d9f41280bb6f3ff484ee607055be89fd20b09994a229a319da0",
+      "ledger_records": 158,
+      "rehearsal": 5,
+      "resource": {
+        "canonical_runner_processes": 0,
+        "live_child_processes": 0,
+        "open_fd_count": 3,
+        "open_pipe_fds": 0,
+        "open_socket_fds": 0,
+        "pid": 942777,
+        "relevant_processes": [],
+        "simplepir_processes": 0,
+        "zombie_children": 0
+      },
+      "schema": "AgentTool.V12DevelopmentCampaignRehearsalSummary/1",
+      "selected_holdout_cases_executed": 0,
+      "semantic_pass": 53,
+      "status": "PASS",
+      "status_counts": {
+        "PASS": 158
+      },
+      "structural_pair_pass": 14,
+      "trajectory_pass": 12
+    }
+  ],
+  "total": 5
+}

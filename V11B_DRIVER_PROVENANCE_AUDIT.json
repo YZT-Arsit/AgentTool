@@ -1,0 +1,14 @@
+{
+  "artifact_manifest_sha256": "bba86fe789cf735a05aaa873f4fa710d8287517a2a1a90c8f9d1421180312b72",
+  "canonical_runner_sha256": "14eb0488813425a99e49ac74741777fb5022a04ada6577a5b00bb5d2ef119877",
+  "driver_sha256": "981f91a5bfec211d29882d1ccdbd8dc269e7dc0547978edc2e24d8b52f6f90b3",
+  "frozen_execution_plan_sha256": "363afadf8d5c9826cedb780f0b9770db0e61bcd33eb599f901464681a3adb539",
+  "historical_source_commit": "5294978fdf1a8cfd35e04b2e1e9b08158fc435e3",
+  "ledger_record_count": 157,
+  "planned_unit_count": 158,
+  "rerun_performed": false,
+  "result_tree_mutated_by_v12": false,
+  "schema": "AgentTool.V11B.DriverProvenanceAudit/1",
+  "simplepir_bridge_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b",
+  "summarizer_sha256": "ff985ce37eeb6aa464820f9f857d107a31c27c57634f90aa41daef0ad58cb914"
+}

@@ -1,0 +1,133 @@
+{
+  "ablations": [
+    "-PIR",
+    "-OHTTP",
+    "-PADDING",
+    "-FIXED_SCHEDULE",
+    "-INTERNAL_COVER",
+    "STATIC_PREDECLARED_PLAN"
+  ],
+  "action_corpus_coverage": {
+    "mediated": 894,
+    "partial": 473,
+    "total": 1370,
+    "unsupported": 3
+  },
+  "baseline_equal_dimensions_out_of_14": {
+    "B0_DIRECT_NATIVE": 1,
+    "B1_PIR_PLUS_DIRECT_ACTION": 2,
+    "B2_PIR_PLUS_OHTTP_UNSHAPED": 11,
+    "B3_PIR_PLUS_OHTTP_PADDED": 13,
+    "B4_PIR_PLUS_FIXED_TRANSCRIPT_EXTERNAL": 13,
+    "B5_FULL_STRICT": 14
+  },
+  "development_semantic_and_causal": {
+    "causal_depths": [
+      10,
+      20,
+      30,
+      50
+    ],
+    "final_reliability": "450/450",
+    "mixed_causal_families": "240/240",
+    "safety_counters": {
+      "dummy_heavy_ops": 0,
+      "profile_overflow": 0,
+      "schedule_misses": 0,
+      "silent_committed_result_loss": 0
+    },
+    "semantic_regression_gate": true,
+    "structural_regression_gate": true
+  },
+  "gates": {
+    "ablation_complete": true,
+    "baseline_b0_b5_complete": true,
+    "full_campaign_rehearsals_5_of_5": true,
+    "full_unit_tests": false,
+    "performance_complete": true,
+    "performance_functional_reliability": false,
+    "profile_requalified": true,
+    "resource_stress_500": true,
+    "results_v12_confirmatory_absent": true,
+    "security_negative_matrix": true,
+    "simplepir_privacy_and_benchmark": true,
+    "simplepir_runtime_dependency_closed": true,
+    "v11b_immutably_sealed": true
+  },
+  "full_unit_test_regression": {
+    "failed": 3,
+    "passed": 299,
+    "serial_recheck": {
+      "failed": 1,
+      "passed": 2,
+      "reproducible_failure": "test_tool_multi_action_capacity[50]: canonical response final size mismatch"
+    },
+    "total": 302
+  },
+  "hardware_tee": "NOT_TESTED",
+  "packet_level_timing": "OPEN",
+  "performance": {
+    "baseline_count_cells": 30,
+    "full_strict_action_transport_bytes": 668924,
+    "full_strict_failure_identities": [
+      {
+        "baseline": "B5_FULL_STRICT",
+        "real_operations": 25,
+        "repetition": 3,
+        "rounds_observed": 355,
+        "schedule_misses": 1,
+        "status_class": "SESSION_SCHEDULE_FAILURE"
+      },
+      {
+        "baseline": "B5_FULL_STRICT",
+        "real_operations": 50,
+        "repetition": 7,
+        "rounds_observed": 356,
+        "schedule_misses": 0,
+        "status_class": "COMPLETE"
+      },
+      {
+        "baseline": "B5_FULL_STRICT",
+        "real_operations": 50,
+        "repetition": 16,
+        "rounds_observed": 356,
+        "schedule_misses": 0,
+        "status_class": "COMPLETE"
+      },
+      {
+        "baseline": "B5_FULL_STRICT",
+        "real_operations": 50,
+        "repetition": 25,
+        "rounds_observed": 356,
+        "schedule_misses": 0,
+        "status_class": "COMPLETE"
+      }
+    ],
+    "full_strict_failures": 4,
+    "full_strict_rounds": 356,
+    "full_strict_scheduled_lifetime_ms": 3560,
+    "full_strict_successful_sessions": 296,
+    "repetitions_per_cell": 30,
+    "rows": 900
+  },
+  "profile_requalification_analysis_correction": {
+    "corrected_pairs": [
+      "CAUSAL_DEPTH"
+    ],
+    "execution_rerun": false,
+    "rule": "causal proof is required for DYNAMIC_SEQUENCE and not for the predeclared PARALLEL_ACTIONS control"
+  },
+  "profile_requalification_original_result_sha256": "a4b96d38e382e3cd37aae95c0eefbd57f38128f2ae0b4809013c0914940bde61",
+  "profile_requalification_sha256": "633079e3d6bb517e593301b5880aa7c83ac1fb9d4b9be96544b5029e6bb9237e",
+  "ready_for_holdout_freeze": false,
+  "schema": "AgentTool.V12DevelopmentEvaluationSummary/1",
+  "security_negatives": {
+    "passed": 22,
+    "total": 22
+  },
+  "selected_v12_cases_executed": 0,
+  "source_body_equivalence_go": false,
+  "source_body_executable_subset": 0,
+  "status": "FAIL",
+  "timing_privacy": "OPEN / NOT TESTED"
+}

@@ -1,0 +1,5 @@
+catalog_records,queries,median_query_latency_ms,p95_query_latency_ms,median_client_cpu_ms,request_bytes,response_bytes,correct
+64,30,1.8787605,3.37127,0.13539,280.0,3296.0,True
+256,30,2.812129,4.673213,0.136383,1048.0,3296.0,True
+1024,30,4.5150500000000005,6.400757,0.133129,2068.0,6592.0,True
+4096,30,2.9145525,9.508388,0.131441,5488.0,9888.0,True

@@ -1,0 +1,29 @@
+{
+  "ambiguous_fallback": false,
+  "dependency_class": "BUILD_TIME_ONLY_FOR_FROZEN_PREBUILT_BINARY",
+  "evidence": {
+    "agent_id": 17,
+    "bridge_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b",
+    "capability_ids": [
+      "agent.filler.17"
+    ],
+    "elapsed_ns": 2386311402,
+    "fd_after": 4,
+    "fd_before": 4,
+    "fd_delta": 0,
+    "path_without_go_gcc": true,
+    "prebuilt": true,
+    "status": "PASS"
+  },
+  "evidence_sha256": "a1f9907cc7c6ff9e6a2825a04907790fc34748408ac69182c368a53480ba7730",
+  "linux_missing_prebuilt_policy": "FAIL_CLOSED_NO_GO_RUN",
+  "runtime_dynamic_dependencies": [
+    "\tlinux-vdso.so.1 (0x00007ffdb1fb9000)",
+    "\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007f1da2b34000)",
+    "\t/lib64/ld-linux-x86-64.so.2 (0x00007f1da2d6f000)"
+  ],
+  "runtime_dynamic_dependencies_sha256": "03a9947140039eda53c9e9a2fd89534276b278041c5d13b21aef8e846f152221",
+  "schema": "AgentTool.V12SimplePIRRuntimeClosure/1",
+  "selected_v12_cases_executed": 0,
+  "status": "PASS"
+}

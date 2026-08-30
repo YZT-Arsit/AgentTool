@@ -138,6 +138,7 @@ def execute_once(
     require_strict_causal: bool = True,
     pir_delay_ms: int = 0,
     decision_delay_ms: int = 0,
+    pir_record_count: int = 1000,
 ) -> dict[str, Any]:
     summary = raw / "v11_3_development_summary.json"
     if summary.is_file():
@@ -164,6 +165,7 @@ def execute_once(
         require_strict_causal=require_strict_causal,
         pir_delay_ms=pir_delay_ms,
         decision_delay_ms=decision_delay_ms,
+        pir_record_count=pir_record_count,
     )
 
 
