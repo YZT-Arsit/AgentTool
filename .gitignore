@@ -37,6 +37,7 @@ results_v11_2_*.tgz
 v11_2_*.tgz
 results_v12_development/
 results_v12_1_development/
+results_v12_3_development/
 results_v12_confirmatory/
 
 # Compiled binaries

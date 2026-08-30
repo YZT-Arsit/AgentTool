@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12_3.EnvironmentPrerequisites/1",
+  "base_commit": "903728276e0ece3731f044543dacdf66b363d324",
+  "authoritative_files": [
+    {
+      "path": "CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json",
+      "bytes": 45731,
+      "authoritative_sha256": "6699fe315ab35ab059c7e2e44e09f24a36ed07b047c1646d491f2daacaf10f9d",
+      "linux_sha256": "6699fe315ab35ab059c7e2e44e09f24a36ed07b047c1646d491f2daacaf10f9d",
+      "exact_bytes_restored": true
+    },
+    {
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V10_FREEZE.json",
+      "bytes": 140996,
+      "authoritative_sha256": "2022c655161d339a2751637f997fa62a68c0bc600427d5d4adf9a17281a72827",
+      "linux_sha256": "2022c655161d339a2751637f997fa62a68c0bc600427d5d4adf9a17281a72827",
+      "exact_bytes_restored": true
+    }
+  ],
+  "manifest_prerequisite_gate": "PASS",
+  "decisive_test_environment": {
+    "python": "3.12.3",
+    "gcc_discovered": "/usr/bin/gcc",
+    "go_discovered_on_path": null,
+    "frozen_go_binary_present": "/root/autodl-tmp/go1.26.5/bin/go",
+    "frozen_go_version": "go1.26.5 linux/amd64",
+    "noninteractive_path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+  },
+  "environment_complete_for_simplepir": false,
+  "selected_v12_cases_executed": 0
+}

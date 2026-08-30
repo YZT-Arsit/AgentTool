@@ -1,0 +1,826 @@
+FFFFFFFFFFF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco0')
+framework = 'OpenAI Agents SDK', suffix = 'read', changes = {}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-oread', framework='OpenAI Agents SDK', adapter_id='OPENAI_GENERIC_FUNCTION_TOOL_V...logical_action_name='lookup_weather', argument_name='city', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08bf461040>
+
+    async def _run_openai(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agents import Agent, RunConfig, Runner, function_tool
+        from agents.items import ToolCallOutputItem
+        from agents.testing import ScriptedModel
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = function_tool(execute_action, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{case.case_id}"
+        model = ScriptedModel(
+            [[_openai_call(case.logical_action_name, {case.argument_name: case.protected_argument}, case.operation_id)], [_openai_final(final_text)]]
+        )
+        agent = Agent(name=f"V10_1_{case.case_id}", instructions="Execute the registered local action once.", model=model, tools=[registered_tool])
+        result = await Runner.run(agent, case.prompt, run_config=RunConfig(tracing_disabled=True))
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        if len(outcomes) != 1 or len(tool_outputs) != 1:
+>           raise AssertionError("OpenAI native action machinery did not execute exactly once")
+E           AssertionError: OpenAI native action machinery did not execute exactly once
+
+v10_1_executor/frameworks.py:72: AssertionError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco1')
+framework = 'Microsoft Agent Framework', suffix = 'read', changes = {}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-mread', framework='Microsoft Agent Framework', adapter_id='MICROSOFT_GENERIC_FUNC...logical_action_name='lookup_weather', argument_name='city', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba2065d0>
+
+    async def _run_microsoft(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agent_framework import Agent, tool
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = tool(name=case.logical_action_name, approval_mode="never_require")(execute_action)
+    
+        client = _MicrosoftToolClient(case)
+        agent = Agent(client=client, name=f"V10_1_{case.case_id}", instructions="Execute the local action once.", tools=[registered_tool])
+        result = await agent.run(case.prompt)
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        if len(outcomes) != 1:
+>           raise AssertionError("Microsoft native FunctionInvocationLayer did not execute exactly once")
+E           AssertionError: Microsoft native FunctionInvocationLayer did not execute exactly once
+
+v10_1_executor/frameworks.py:151: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    agent_framework:_tools.py:772 Function failed. Error: Linux SimplePIR integration requires Go and gcc on PATH
+WARNING  agent_framework:_tools.py:1420 Function 'lookup_weather' raised an exception; returning an error result to the model. Set include_detailed_errors=True for the full detail. Exception: FileNotFoundError('Linux SimplePIR integration requires Go and gcc on PATH')
+_ test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco2')
+framework = 'OpenAI Agents SDK', suffix = 'idem'
+changes = {'capability': 'tool.idem', 'effect_semantics': 'IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-oidem', framework='OpenAI Agents SDK', adapter_id='OPENAI_GENERIC_FUNCTION_TOOL_V...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba23fda0>
+
+    async def _run_openai(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agents import Agent, RunConfig, Runner, function_tool
+        from agents.items import ToolCallOutputItem
+        from agents.testing import ScriptedModel
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = function_tool(execute_action, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{case.case_id}"
+        model = ScriptedModel(
+            [[_openai_call(case.logical_action_name, {case.argument_name: case.protected_argument}, case.operation_id)], [_openai_final(final_text)]]
+        )
+        agent = Agent(name=f"V10_1_{case.case_id}", instructions="Execute the registered local action once.", model=model, tools=[registered_tool])
+        result = await Runner.run(agent, case.prompt, run_config=RunConfig(tracing_disabled=True))
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        if len(outcomes) != 1 or len(tool_outputs) != 1:
+>           raise AssertionError("OpenAI native action machinery did not execute exactly once")
+E           AssertionError: OpenAI native action machinery did not execute exactly once
+
+v10_1_executor/frameworks.py:72: AssertionError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco3')
+framework = 'Microsoft Agent Framework', suffix = 'idem'
+changes = {'capability': 'tool.idem', 'effect_semantics': 'IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-midem', framework='Microsoft Agent Framework', adapter_id='MICROSOFT_GENERIC_FUNC...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba0104a0>
+
+    async def _run_microsoft(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agent_framework import Agent, tool
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = tool(name=case.logical_action_name, approval_mode="never_require")(execute_action)
+    
+        client = _MicrosoftToolClient(case)
+        agent = Agent(client=client, name=f"V10_1_{case.case_id}", instructions="Execute the local action once.", tools=[registered_tool])
+        result = await agent.run(case.prompt)
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        if len(outcomes) != 1:
+>           raise AssertionError("Microsoft native FunctionInvocationLayer did not execute exactly once")
+E           AssertionError: Microsoft native FunctionInvocationLayer did not execute exactly once
+
+v10_1_executor/frameworks.py:151: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    agent_framework:_tools.py:772 Function failed. Error: Linux SimplePIR integration requires Go and gcc on PATH
+WARNING  agent_framework:_tools.py:1420 Function 'execute_action' raised an exception; returning an error result to the model. Set include_detailed_errors=True for the full detail. Exception: FileNotFoundError('Linux SimplePIR integration requires Go and gcc on PATH')
+_ test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco4')
+framework = 'OpenAI Agents SDK', suffix = 'nonidem'
+changes = {'capability': 'tool.nonidem', 'effect_semantics': 'NON_IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-ononidem', framework='OpenAI Agents SDK', adapter_id='OPENAI_GENERIC_FUNCTION_TOO...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08b9fb7860>
+
+    async def _run_openai(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agents import Agent, RunConfig, Runner, function_tool
+        from agents.items import ToolCallOutputItem
+        from agents.testing import ScriptedModel
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = function_tool(execute_action, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{case.case_id}"
+        model = ScriptedModel(
+            [[_openai_call(case.logical_action_name, {case.argument_name: case.protected_argument}, case.operation_id)], [_openai_final(final_text)]]
+        )
+        agent = Agent(name=f"V10_1_{case.case_id}", instructions="Execute the registered local action once.", model=model, tools=[registered_tool])
+        result = await Runner.run(agent, case.prompt, run_config=RunConfig(tracing_disabled=True))
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        if len(outcomes) != 1 or len(tool_outputs) != 1:
+>           raise AssertionError("OpenAI native action machinery did not execute exactly once")
+E           AssertionError: OpenAI native action machinery did not execute exactly once
+
+v10_1_executor/frameworks.py:72: AssertionError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco5')
+framework = 'Microsoft Agent Framework', suffix = 'nonidem'
+changes = {'capability': 'tool.nonidem', 'effect_semantics': 'NON_IDEMPOTENT_EFFECT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-mnonidem', framework='Microsoft Agent Framework', adapter_id='MICROSOFT_GENERIC_F...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba012f00>
+
+    async def _run_microsoft(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agent_framework import Agent, tool
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = tool(name=case.logical_action_name, approval_mode="never_require")(execute_action)
+    
+        client = _MicrosoftToolClient(case)
+        agent = Agent(client=client, name=f"V10_1_{case.case_id}", instructions="Execute the local action once.", tools=[registered_tool])
+        result = await agent.run(case.prompt)
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        if len(outcomes) != 1:
+>           raise AssertionError("Microsoft native FunctionInvocationLayer did not execute exactly once")
+E           AssertionError: Microsoft native FunctionInvocationLayer did not execute exactly once
+
+v10_1_executor/frameworks.py:151: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    agent_framework:_tools.py:772 Function failed. Error: Linux SimplePIR integration requires Go and gcc on PATH
+WARNING  agent_framework:_tools.py:1420 Function 'execute_action' raised an exception; returning an error result to the model. Set include_detailed_errors=True for the full detail. Exception: FileNotFoundError('Linux SimplePIR integration requires Go and gcc on PATH')
+_ test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco6')
+framework = 'OpenAI Agents SDK', suffix = 'error'
+changes = {'scenario': 'ERROR'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-oerror', framework='OpenAI Agents SDK', adapter_id='OPENAI_GENERIC_FUNCTION_TOOL_...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08c0453170>
+
+    async def _run_openai(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agents import Agent, RunConfig, Runner, function_tool
+        from agents.items import ToolCallOutputItem
+        from agents.testing import ScriptedModel
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = function_tool(execute_action, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{case.case_id}"
+        model = ScriptedModel(
+            [[_openai_call(case.logical_action_name, {case.argument_name: case.protected_argument}, case.operation_id)], [_openai_final(final_text)]]
+        )
+        agent = Agent(name=f"V10_1_{case.case_id}", instructions="Execute the registered local action once.", model=model, tools=[registered_tool])
+        result = await Runner.run(agent, case.prompt, run_config=RunConfig(tracing_disabled=True))
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        if len(outcomes) != 1 or len(tool_outputs) != 1:
+>           raise AssertionError("OpenAI native action machinery did not execute exactly once")
+E           AssertionError: OpenAI native action machinery did not execute exactly once
+
+v10_1_executor/frameworks.py:72: AssertionError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco7')
+framework = 'Microsoft Agent Framework', suffix = 'error'
+changes = {'scenario': 'ERROR'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-merror', framework='Microsoft Agent Framework', adapter_id='MICROSOFT_GENERIC_FUN...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba05dbb0>
+
+    async def _run_microsoft(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agent_framework import Agent, tool
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = tool(name=case.logical_action_name, approval_mode="never_require")(execute_action)
+    
+        client = _MicrosoftToolClient(case)
+        agent = Agent(client=client, name=f"V10_1_{case.case_id}", instructions="Execute the local action once.", tools=[registered_tool])
+        result = await agent.run(case.prompt)
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        if len(outcomes) != 1:
+>           raise AssertionError("Microsoft native FunctionInvocationLayer did not execute exactly once")
+E           AssertionError: Microsoft native FunctionInvocationLayer did not execute exactly once
+
+v10_1_executor/frameworks.py:151: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    agent_framework:_tools.py:772 Function failed. Error: Linux SimplePIR integration requires Go and gcc on PATH
+WARNING  agent_framework:_tools.py:1420 Function 'execute_action' raised an exception; returning an error result to the model. Set include_detailed_errors=True for the full detail. Exception: FileNotFoundError('Linux SimplePIR integration requires Go and gcc on PATH')
+_ test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco8')
+framework = 'OpenAI Agents SDK', suffix = 'timeout'
+changes = {'scenario': 'BOUNDED_TIMEOUT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-otimeout', framework='OpenAI Agents SDK', adapter_id='OPENAI_GENERIC_FUNCTION_TOO...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba05eb40>
+
+    async def _run_openai(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agents import Agent, RunConfig, Runner, function_tool
+        from agents.items import ToolCallOutputItem
+        from agents.testing import ScriptedModel
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = function_tool(execute_action, name_override=case.logical_action_name)
+    
+        final_text = f"framework-completed:{case.case_id}"
+        model = ScriptedModel(
+            [[_openai_call(case.logical_action_name, {case.argument_name: case.protected_argument}, case.operation_id)], [_openai_final(final_text)]]
+        )
+        agent = Agent(name=f"V10_1_{case.case_id}", instructions="Execute the registered local action once.", model=model, tools=[registered_tool])
+        result = await Runner.run(agent, case.prompt, run_config=RunConfig(tracing_disabled=True))
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
+        if len(outcomes) != 1 or len(tool_outputs) != 1:
+>           raise AssertionError("OpenAI native action machinery did not execute exactly once")
+E           AssertionError: OpenAI native action machinery did not execute exactly once
+
+v10_1_executor/frameworks.py:72: AssertionError
+_ test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_native_and_canonical_reco9')
+framework = 'Microsoft Agent Framework', suffix = 'timeout'
+changes = {'scenario': 'BOUNDED_TIMEOUT'}
+
+    @pytest.mark.parametrize("framework", ["OpenAI Agents SDK", "Microsoft Agent Framework"])
+    @pytest.mark.parametrize(
+        ("suffix", "changes"),
+        [
+            ("read", {}),
+            ("idem", {"capability": "tool.idem", "effect_semantics": "IDEMPOTENT_EFFECT"}),
+            ("nonidem", {"capability": "tool.nonidem", "effect_semantics": "NON_IDEMPOTENT_EFFECT"}),
+            ("error", {"scenario": "ERROR"}),
+            ("timeout", {"scenario": "BOUNDED_TIMEOUT"}),
+        ],
+    )
+    def test_native_and_canonical_records_are_independently_executed_and_equal(
+        tmp_path: Path, framework: str, suffix: str, changes: dict[str, str]
+    ) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no Python substitute is permitted"
+        marker = "o" if framework.startswith("OpenAI") else "m"
+        case = _case(framework, marker + suffix, **changes)
+        if suffix == "read":
+            case = CaseSpec(**{**case.__dict__, "logical_action_name": "lookup_weather", "argument_name": "city"})
+        before = _hashes()
+        native = run_native_case(case)
+>       canonical = run_canonical_case(case, tmp_path / f"canonical-{marker}-{suffix}")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/semantic.py:22: in run_canonical_case
+    evidence = run_framework(case_spec.validate(), bridge)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v10_1_executor/frameworks.py:173: in run_framework
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:194: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/miniconda3/lib/python3.12/asyncio/base_events.py:687: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = CaseSpec(case_id='NON-HOLDOUT-V9-DEV-mtimeout', framework='Microsoft Agent Framework', adapter_id='MICROSOFT_GENERIC_F...cal_action_name='execute_action', argument_name='argument', source_path='SYNTHETIC_NON_HOLDOUT_FIXTURE', source_line=0)
+implementation = <v10_1_executor.canonical_bridge.CanonicalSemanticBridge object at 0x7f08ba011a00>
+
+    async def _run_microsoft(case: CaseSpec, implementation: ActionImplementation) -> FrameworkRunEvidence:
+        from agent_framework import Agent, tool
+    
+        boundary: list[tuple[str, Any]] = []
+    
+        execute_action = _make_action_function(case, implementation, boundary)
+        registered_tool = tool(name=case.logical_action_name, approval_mode="never_require")(execute_action)
+    
+        client = _MicrosoftToolClient(case)
+        agent = Agent(client=client, name=f"V10_1_{case.case_id}", instructions="Execute the local action once.", tools=[registered_tool])
+        result = await agent.run(case.prompt)
+        outcomes = [value for stage, value in boundary if stage == "ACTION_RESULT"]
+        if len(outcomes) != 1:
+>           raise AssertionError("Microsoft native FunctionInvocationLayer did not execute exactly once")
+E           AssertionError: Microsoft native FunctionInvocationLayer did not execute exactly once
+
+v10_1_executor/frameworks.py:151: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    agent_framework:_tools.py:772 Function failed. Error: Linux SimplePIR integration requires Go and gcc on PATH
+WARNING  agent_framework:_tools.py:1420 Function 'execute_action' raised an exception; returning an error result to the model. Set include_detailed_errors=True for the full detail. Exception: FileNotFoundError('Linux SimplePIR integration requires Go and gcc on PATH')
+________ test_structural_executor_on_non_holdout_v9_1_development_pair _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_structural_executor_on_no0')
+
+    def test_structural_executor_on_non_holdout_v9_1_development_pair(tmp_path: Path) -> None:
+        assert GO_RUNNER.is_file(), "accepted canonical-v9-runner binary is required; no projection-only substitute is permitted"
+        before = _hashes()
+        left = StructuralArmSpec(
+            "NON-HOLDOUT-V9_1-DIFFERENT-TOOL-A",
+            10,
+            "agent.tools",
+            (StructuralAction("v101structa", "tool.read", "TOOL", "development-a"),),
+        )
+        right = StructuralArmSpec(
+            "NON-HOLDOUT-V9_1-DIFFERENT-TOOL-B",
+            10,
+            "agent.tools",
+            (StructuralAction("v101structb", "tool.idem", "TOOL", "development-b"),),
+        )
+>       a = run_structural_arm(left, output=tmp_path / "left")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_v10_1_executor.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+v10_1_executor/structural.py:55: in run_structural_arm
+    selected = real_pir_select(output / "pir", [spec])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+canonical_v9/runner.py:109: in real_pir_select
+    artifacts = run_simplepir(ROOT, registry, 1000, requests, output / "simplepir")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/root/autodl-tmp/mediation_trace_validation')
+registry = PosixPath('/tmp/pytest-of-root/pytest-7/test_structural_executor_on_no0/left/pir/encrypted_agent_descriptor_v7_rows.bin')
+record_count = 1000
+requests = [PIRRequest(episode='NON-HOLDOUT-V9_1-DIFFERENT-TOOL-A', round=0, index=10, private_class='PRIVATE_AGENT_SELECTION')]
+output_dir = PosixPath('/tmp/pytest-of-root/pytest-7/test_structural_executor_on_no0/left/pir/simplepir')
+paced_delta_ms = 0.0, paced_start_delay_ms = 20.0
+
+    def run_simplepir(
+        root: Path,
+        registry: Path,
+        record_count: int,
+        requests: list[PIRRequest],
+        output_dir: Path,
+        *,
+        paced_delta_ms: float = 0.0,
+        paced_start_delay_ms: float = 20.0,
+    ) -> SimplePIRArtifacts:
+        root = root.resolve()
+        registry = registry.resolve()
+        output_dir = output_dir.resolve()
+        output_dir.mkdir(parents=True, exist_ok=True)
+        query_path = output_dir / "private_queries.csv"
+        write_requests(query_path, requests)
+        metrics_path = output_dir / "metrics.json"
+        client_path = output_dir / "client_private_trace.jsonl"
+        server_path = output_dir / "server_visible_trace.jsonl"
+        recovered_path = output_dir / "client_recovered_records.jsonl"
+        raw_path = output_dir / "server_raw_queries.bin"
+        bridge_dir = root / "pir_integration" / "simplepir_bridge"
+        env = dict(os.environ)
+        if os.name == "nt":
+            go_executable = root / ".toolchains" / "go" / "Go" / "bin" / "go.exe"
+            if not go_executable.exists():
+                raise FileNotFoundError("project-local Windows Go toolchain is missing")
+            gcc_bin = root / ".toolchains" / "winlibs" / "mingw64" / "bin"
+            env["PATH"] = (str(go_executable.parent) + os.pathsep + str(gcc_bin)
+                           + os.pathsep + env.get("PATH", ""))
+            compiler = gcc_bin / "gcc.exe"
+        else:
+            discovered_go = shutil.which("go")
+            discovered_cc = shutil.which("gcc")
+            if discovered_go is None or discovered_cc is None:
+>               raise FileNotFoundError("Linux SimplePIR integration requires Go and gcc on PATH")
+E               FileNotFoundError: Linux SimplePIR integration requires Go and gcc on PATH
+
+cryptographic_closure/pir_backend.py:105: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK]
+FAILED tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework]
+FAILED tests/test_v10_1_executor.py::test_structural_executor_on_non_holdout_v9_1_development_pair
+11 failed in 2.37s

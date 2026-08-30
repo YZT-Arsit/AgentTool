@@ -1,0 +1,19 @@
+{
+  "schema": "AgentTool.V12_3.RetainedV10_1GateSummary/1",
+  "status": "FAIL",
+  "attempted": 11,
+  "passed": 0,
+  "failed": 11,
+  "skipped": 0,
+  "manifest_prerequisites_restored": true,
+  "tests_reached_native_execution": true,
+  "tests_reached_canonical_execution": true,
+  "failure_class": "LINUX_SIMPLEPIR_GO_NOT_ON_NONINTERACTIVE_PATH",
+  "exact_failure": "FileNotFoundError: Linux SimplePIR integration requires Go and gcc on PATH",
+  "go_binary_present_but_not_discoverable": true,
+  "frozen_go_binary": "/root/autodl-tmp/go1.26.5/bin/go",
+  "retry_performed": false,
+  "raw_result_sha256": "dd4e2081f18150984b09b3db5c05d68471f54a1df09a2be765b7b2596c2029ba",
+  "raw_log_sha256": "03cfced4bbf1b46735629f757a8a957fcbe0ffcdfb54356f808585ff0eafbade",
+  "selected_v12_cases_executed": 0
+}

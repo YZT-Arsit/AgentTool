@@ -1,0 +1,38 @@
+{
+  "elapsed_ns": 2873935894,
+  "exit_code": 1,
+  "failed": null,
+  "native_and_canonical_execution_required_by_test_source": true,
+  "node_count": 11,
+  "nodes": [
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[read-changes0-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[idem-changes1-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[nonidem-changes2-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[error-changes3-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_and_canonical_records_are_independently_executed_and_equal[timeout-changes4-Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_structural_executor_on_non_holdout_v9_1_development_pair"
+  ],
+  "passed": null,
+  "prerequisites": [
+    {
+      "bytes": 45731,
+      "path": "CANONICAL_SEMANTIC_HOLDOUT_V10_FREEZE.json",
+      "sha256": "6699fe315ab35ab059c7e2e44e09f24a36ed07b047c1646d491f2daacaf10f9d"
+    },
+    {
+      "bytes": 140996,
+      "path": "STRUCTURAL_SIZE_HOLDOUT_V10_FREEZE.json",
+      "sha256": "2022c655161d339a2751637f997fa62a68c0bc600427d5d4adf9a17281a72827"
+    }
+  ],
+  "raw_log_sha256": "03cfced4bbf1b46735629f757a8a957fcbe0ffcdfb54356f808585ff0eafbade",
+  "retry_performed": false,
+  "schema": "AgentTool.V12_3.RetainedV10_1Gate/1",
+  "selected_v12_cases_executed": 0,
+  "skipped": null
+}
