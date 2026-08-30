@@ -89,12 +89,22 @@ type PublicSetupEvent struct {
 }
 
 type SlotLaunch struct {
-	Session      uint32 `json:"session"`
-	Slot         uint32 `json:"slot"`
-	DeadlineNS   int64  `json:"deadline_ns"`
-	SubmitNS     int64  `json:"submit_ns,omitempty"`
-	LaunchSlipNS int64  `json:"launch_slip_ns,omitempty"`
-	ScheduleMiss bool   `json:"schedule_miss"`
+	Session           uint32 `json:"session"`
+	Slot              uint32 `json:"slot"`
+	DeadlineNS        int64  `json:"deadline_ns"`
+	SubmitNS          int64  `json:"submit_ns,omitempty"`
+	LaunchSlipNS      int64  `json:"launch_slip_ns,omitempty"`
+	ToleranceExceeded bool   `json:"diagnostic_tolerance_exceeded,omitempty"`
+	ScheduleMiss      bool   `json:"schedule_miss"`
+}
+
+type TransportDiagnostic struct {
+	Slot              uint32 `json:"slot"`
+	HTTPStatus        int    `json:"http_status,omitempty"`
+	ObservedBodyBytes int    `json:"observed_body_bytes,omitempty"`
+	ExpectedBodyBytes int    `json:"expected_body_bytes,omitempty"`
+	FailureClass      string `json:"failure_class"`
+	Error             string `json:"error,omitempty"`
 }
 
 type RunResult struct {
@@ -124,6 +134,7 @@ type RunResult struct {
 	ResolvedNotAdmittedIDs  []string              `json:"resolved_not_admitted_ids,omitempty"`
 	UnresolvedOperationIDs  []string              `json:"unresolved_operation_ids,omitempty"`
 	FrameworkWaiterIDs      []string              `json:"framework_waiter_ids,omitempty"`
+	TransportDiagnostics    []TransportDiagnostic `json:"transport_diagnostics,omitempty"`
 }
 
 type providerRequest struct {
@@ -305,10 +316,7 @@ func (e *engine) accept(action v7ohttp.PrivateActionMessage, currentRound uint32
 	}
 	semantics, _ := effect(route.EffectSemantics)
 	operationID := string(action.OperationID)
-	if err := e.journal.Accept(operationID, semantics); err != nil {
-		return err
-	}
-	decision, committed, err := e.journal.Recover(operationID)
+	decision, committed, err := e.journal.Begin(operationID, semantics)
 	if err != nil {
 		return err
 	}
@@ -331,17 +339,10 @@ func (e *engine) accept(action v7ohttp.PrivateActionMessage, currentRound uint32
 		e.record(PrivateEvent{OperationID: operationID, Stage: "RECOVERY_EFFECT_OUTCOME_UNKNOWN"})
 		return nil
 	case v7.RecoveryExecute:
-		// A fresh operation transitions ACCEPTED -> PROVIDER_STARTED. On a
-		// restart, READ_ONLY or explicitly idempotent work may already be in
-		// PROVIDER_STARTED; Recover authorizes replay with the same operation ID.
-		if err := e.journal.MarkProviderStarted(operationID); err != nil {
-			if semantics == gatewayv2.NonIdempotentEffect {
-				return errors.New("non-idempotent provider restart was not converted to outcome unknown")
-			}
-			e.record(PrivateEvent{OperationID: operationID, Stage: "RECOVERY_PROVIDER_RETRY_AUTHORIZED"})
-		} else {
-			e.record(PrivateEvent{OperationID: operationID, Stage: "PROVIDER_STARTED_DURABLE"})
-		}
+		// Begin atomically persists a fresh operation in PROVIDER_STARTED. On
+		// restart, READ_ONLY or explicitly idempotent work is replay-authorized;
+		// non-idempotent ambiguity is handled above.
+		e.record(PrivateEvent{OperationID: operationID, Stage: "PROVIDER_STARTED_DURABLE"})
 	default:
 		return errors.New("unknown canonical recovery decision")
 	}
@@ -614,6 +615,7 @@ func Run(plan Plan) (RunResult, error) {
 		wire        []byte
 		httpVersion string
 		err         error
+		diagnostic  *TransportDiagnostic
 	}
 	responses := make(chan slotResponse, plan.Rounds)
 	period := time.Duration(plan.RoundPeriodMS) * time.Millisecond
@@ -642,7 +644,8 @@ func Run(plan Plan) (RunResult, error) {
 		// A slot that has crossed the next public deadline is expired even if a
 		// looser diagnostic tolerance was configured.  Submitting it would
 		// recreate the historical catch-up burst.
-		if slip >= period || slip > tolerance {
+		launch.ToleranceExceeded = slip > tolerance
+		if slip >= period {
 			launch.ScheduleMiss = true
 			launches = append(launches, launch)
 			continue
@@ -672,7 +675,17 @@ func Run(plan Plan) (RunResult, error) {
 				return
 			}
 			if response.StatusCode != http.StatusOK || len(responseWire) != plan.ResponseFinalBytes {
-				responses <- slotResponse{slot: value.slot, err: errors.New("canonical response final size mismatch")}
+				failureClass := "RESPONSE_BODY_LENGTH_MISMATCH"
+				if response.StatusCode != http.StatusOK {
+					failureClass = "GATEWAY_NON_200"
+				}
+				diagnostic := &TransportDiagnostic{Slot: value.slot.Slot, HTTPStatus: response.StatusCode,
+					ObservedBodyBytes: len(responseWire), ExpectedBodyBytes: plan.ResponseFinalBytes,
+					FailureClass: failureClass}
+				responses <- slotResponse{slot: value.slot,
+					err: fmt.Errorf("canonical response validation failed: slot=%d http_status=%d observed_body_bytes=%d expected_body_bytes=%d class=%s",
+						value.slot.Slot, response.StatusCode, len(responseWire), plan.ResponseFinalBytes, failureClass),
+					diagnostic: diagnostic}
 				return
 			}
 			responses <- slotResponse{slot: value.slot, wire: responseWire, httpVersion: response.Proto}
@@ -681,10 +694,17 @@ func Run(plan Plan) (RunResult, error) {
 
 	results := make([]ClientResult, 0, len(plan.Actions))
 	transportFailure := false
+	transportDiagnostics := make([]TransportDiagnostic, 0)
 	for count := 0; count < submitted; count++ {
 		response := <-responses
 		if response.err != nil || response.httpVersion != "HTTP/2.0" {
 			transportFailure = true
+			if response.diagnostic != nil {
+				transportDiagnostics = append(transportDiagnostics, *response.diagnostic)
+			} else if response.err != nil {
+				transportDiagnostics = append(transportDiagnostics, TransportDiagnostic{Slot: response.slot.Slot,
+					FailureClass: "TRANSPORT_ERROR", Error: response.err.Error()})
+			}
 			continue
 		}
 		context := prepared[int(response.slot.Slot)-1].context
@@ -738,5 +758,6 @@ func Run(plan Plan) (RunResult, error) {
 		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes,
 		SessionStatus: status, PublicSetupEvents: setupEvents, SlotLaunches: launches,
 		ScheduleMisses: scheduleMisses, PendingOperationIDs: pending, SilentCommittedLosses: 0,
-		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0"}, nil
+		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
+		TransportDiagnostics: transportDiagnostics}, nil
 }

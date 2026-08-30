@@ -270,6 +270,24 @@ func TestV11_1ExpiredSlotCannotBeSubmittedUnderLooseTolerance(t *testing.T) {
 	}
 }
 
+func TestV12_1SubperiodSlipIsDiagnosticNotScheduleMiss(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.RoundPeriodMS = 20
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 5
+	result, err := Run(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.SessionStatus != "COMPLETE" || result.ScheduleMisses != 0 || len(result.PublicRelayEvents) != plan.Rounds {
+		t.Fatalf("subperiod diagnostic slip changed public schedule: status=%s misses=%d events=%d", result.SessionStatus, result.ScheduleMisses, len(result.PublicRelayEvents))
+	}
+	if !result.SlotLaunches[2].ToleranceExceeded || result.SlotLaunches[2].ScheduleMiss {
+		t.Fatalf("subperiod slip was not separated from a true miss: %+v", result.SlotLaunches[2])
+	}
+}
+
 func TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots(t *testing.T) {
 	plan := diagnosticPlan()
 	plan.StateDirectory = filepath.Join(t.TempDir(), "state")
@@ -363,6 +381,23 @@ func TestV11_2OnlineSchedulerFailureIsExplicitAndDoesNotRestart(t *testing.T) {
 		if launch.ScheduleMiss && launch.SubmitNS != 0 {
 			t.Fatalf("failed online slot was transmitted as catch-up: %+v", launch)
 		}
+	}
+}
+
+func TestV12_1OnlineSubperiodSlipIsDiagnosticNotScheduleMiss(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 13, 0)
+	plan.Actions = nil
+	plan.PreparationLeadMS = 2
+	plan.RoundPeriodMS = 20
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 5
+	result, _ := runOnlineControl(t, plan, nil)
+	if result.SessionStatus != "COMPLETE" || result.ScheduleMisses != 0 || len(result.PublicRelayEvents) != plan.Rounds {
+		t.Fatalf("online subperiod slip changed public schedule: %+v", result)
+	}
+	if !result.SlotLaunches[2].ToleranceExceeded || result.SlotLaunches[2].ScheduleMiss {
+		t.Fatalf("online subperiod slip was not diagnostic-only: %+v", result.SlotLaunches[2])
 	}
 }
 

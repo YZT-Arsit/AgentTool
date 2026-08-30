@@ -329,6 +329,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		wire        []byte
 		httpVersion string
 		err         error
+		diagnostic  *TransportDiagnostic
 	}
 	responses := make(chan slotResponse, plan.Rounds)
 	var responseWG sync.WaitGroup
@@ -365,7 +366,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			submitTime := time.Now()
 			slip := submitTime.Sub(state.deadline)
 			launch := SlotLaunch{Session: 1, Slot: uint32(index + 1), DeadlineNS: state.deadline.Sub(processClock).Nanoseconds(), LaunchSlipNS: slip.Nanoseconds()}
-			if slip >= period || slip > tolerance {
+			launch.ToleranceExceeded = slip > tolerance
+			if slip >= period {
 				launch.ScheduleMiss = true
 				launches = append(launches, launch)
 				continue
@@ -393,7 +395,22 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				responseWire, readErr := io.ReadAll(io.LimitReader(response.Body, int64(plan.ResponseFinalBytes+1)))
 				response.Body.Close()
 				if readErr != nil || response.StatusCode != http.StatusOK || len(responseWire) != plan.ResponseFinalBytes {
-					responses <- slotResponse{item: value, err: errors.New("online canonical response invalid")}
+					failureClass := "RESPONSE_BODY_LENGTH_MISMATCH"
+					if readErr != nil {
+						failureClass = "RESPONSE_READ_ERROR"
+					} else if response.StatusCode != http.StatusOK {
+						failureClass = "GATEWAY_NON_200"
+					}
+					diagnostic := &TransportDiagnostic{Slot: value.slot.Slot, HTTPStatus: response.StatusCode,
+						ObservedBodyBytes: len(responseWire), ExpectedBodyBytes: plan.ResponseFinalBytes,
+						FailureClass: failureClass}
+					if readErr != nil {
+						diagnostic.Error = readErr.Error()
+					}
+					responses <- slotResponse{item: value,
+						err: fmt.Errorf("online canonical response validation failed: slot=%d http_status=%d observed_body_bytes=%d expected_body_bytes=%d class=%s",
+							value.slot.Slot, response.StatusCode, len(responseWire), plan.ResponseFinalBytes, failureClass),
+						diagnostic: diagnostic}
 					return
 				}
 				responses <- slotResponse{item: value, wire: responseWire, httpVersion: response.Proto}
@@ -405,9 +422,16 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 
 	results := make([]ClientResult, 0, plan.MaximumRealOperations)
 	transportFailure := false
+	transportDiagnostics := make([]TransportDiagnostic, 0)
 	for response := range responses {
 		if response.err != nil || response.httpVersion != "HTTP/2.0" {
 			transportFailure = true
+			if response.diagnostic != nil {
+				transportDiagnostics = append(transportDiagnostics, *response.diagnostic)
+			} else if response.err != nil {
+				transportDiagnostics = append(transportDiagnostics, TransportDiagnostic{Slot: response.item.slot.Slot,
+					FailureClass: "TRANSPORT_ERROR", Error: response.err.Error()})
+			}
 			continue
 		}
 		opened, err := engine.client.DecapsulateResponse(response.item.context, response.wire)
@@ -470,7 +494,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		ScheduleMisses: scheduleMisses, PendingOperationIDs: pending, SilentCommittedLosses: 0,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
-		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...)}
+		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),
+		TransportDiagnostics: transportDiagnostics}
 	if status == "COMPLETE" {
 		emitter.emit(OnlineControlEvent{Type: "SESSION_COMPLETE"})
 	} else {

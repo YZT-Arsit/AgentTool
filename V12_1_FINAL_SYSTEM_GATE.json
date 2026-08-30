@@ -1,0 +1,35 @@
+{
+  "schema": "AgentTool.V12_1.FinalSystemGate/1",
+  "status": "FAIL",
+  "blocker": "FULL_SERIAL_TEST_SUITE_NOT_GREEN_ON_THE_EVIDENCE_COMPLETE_WINDOWS_HOST; TWO_V12_REACHABLE_STATIC_CANONICAL_CASES_EXHAUSTED_THE_PUBLIC_BUDGET_UNDER_WINDOWS_DURABLE_IO_LATENCY",
+  "gates": {
+    "SIMPLEPIR_RUNTIME_CLOSURE": "PASS",
+    "RESOURCE_LIFECYCLE": "PASS",
+    "500_UNIT_RESOURCE_STRESS": "PASS",
+    "FULL_CAMPAIGN_REHEARSALS": "5/5 PASS",
+    "SECURITY_NEGATIVES": "22/22 PASS",
+    "B5_TARGETED_RELIABILITY": "200/200 PASS",
+    "FULL_SERIAL_TEST_SUITE": "FAIL: 297 PASS / 2 FAIL / 2 PREEXISTING_ENVIRONMENT_SKIP / 1 EXPLICIT_LEGACY_V10_DESELECTION",
+    "FULL_DEFAULT_TEST_SUITE": "NOT_RUN_AFTER_SERIAL_GATE_FAILURE",
+    "GO_TESTS": "PASS",
+    "PROFILE_REQUALIFICATION_AFTER_RUNTIME_CHANGE": "NOT_RUN_AFTER_SERIAL_GATE_FAILURE"
+  },
+  "historical_evidence_preserved": {
+    "B0_B5": true,
+    "security_negatives": true,
+    "performance_failures": true,
+    "V11B_postmortem": true
+  },
+  "holdout_state": {
+    "candidate_universe_built": false,
+    "selection_seed_derived": false,
+    "selected_cases": 0,
+    "selected_cases_executed": 0,
+    "results_v12_confirmatory_exists": false
+  },
+  "timing_privacy": "OPEN / NOT TESTED",
+  "packet_level_timing": "OPEN",
+  "hardware_tee": "NOT_TESTED",
+  "source_body_executable_subset": 0,
+  "ready_for_independent_v12_final_freeze_audit": false
+}

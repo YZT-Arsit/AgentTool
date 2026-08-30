@@ -1,0 +1,34 @@
+{
+  "schema": "AgentTool.V12_1.TargetedReliabilityAudit/1",
+  "status": "PASS",
+  "runner_sha256": "ed5659057dc18844362b941dc1bc0f9680e13b8688201a213298f8f12d015243",
+  "count25": {
+    "attempted": 100,
+    "passed": 100
+  },
+  "count50": {
+    "attempted": 100,
+    "passed": 100
+  },
+  "all_sessions": {
+    "rounds": "356/356",
+    "schedule_misses": 0,
+    "exact_operation_id_sets": true,
+    "pending_ids_empty": true,
+    "unresolved_ids_empty": true,
+    "framework_waiter_ids_empty": true,
+    "dummy_heavy_ops": 0,
+    "profile_overflow": 0,
+    "silent_committed_result_loss": 0,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "session_status": "COMPLETE"
+  },
+  "evidence_sha256": {
+    "frozen_dev_identities.json": "28105aa570811248055478b1357a75db31136fd57b6fb185783739c6bc65b8cf",
+    "attempts.jsonl": "aff1fdf8b25b27d87d44dee0d755d670e179f096d18327a4c1e69cea6cfbee86",
+    "summary.json": "cc01b4d1f2f3d6c37224619ed878e3047bca739d36481dd9ff8778a7bf9d4ec1"
+  },
+  "retry_count": 0,
+  "selected_v12_cases_executed": 0
+}

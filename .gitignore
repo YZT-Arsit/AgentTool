@@ -36,6 +36,7 @@ results_v9/v9_canonical*.tgz
 results_v11_2_*.tgz
 v11_2_*.tgz
 results_v12_development/
+results_v12_1_development/
 results_v12_confirmatory/
 
 # Compiled binaries

@@ -1,6 +1,8 @@
 package v7
 
 import (
+	"encoding/json"
+	"os"
 	"path/filepath"
 	"strconv"
 	"testing"
@@ -126,6 +128,33 @@ func TestDeliveryOfOneTenFiftyAndOneHundredOperations(t *testing.T) {
 				t.Fatalf("delivered=%d pending=%d want=%d", len(delivered), queue.Pending(), count)
 			}
 		})
+	}
+}
+
+func TestLegacyReadySnapshotMigratesToWAL(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "ready.json")
+	entry := ReadyEntry{Sequence: 0, Result: result("legacy", 0), State: DeliveryReady}
+	raw, _ := json.Marshal(readySnapshot{Schema: "gateway-v7-ready-queue-v1", Capacity: 2, NextSequence: 1, Entries: []ReadyEntry{entry}})
+	if err := os.WriteFile(path, raw, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	queue, err := OpenDurableReadyQueue(path, 2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	selected, err := queue.ReserveEligible(1, 1)
+	if err != nil || selected == nil {
+		t.Fatalf("legacy result not selectable: %v %v", selected, err)
+	}
+	if err := queue.MarkDelivered("legacy"); err != nil {
+		t.Fatal(err)
+	}
+	restarted, err := OpenDurableReadyQueue(path, 2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if restarted.Pending() != 0 {
+		t.Fatalf("migrated queue did not retain delivery: pending=%d", restarted.Pending())
 	}
 }
 

@@ -1,6 +1,8 @@
 package v7
 
 import (
+	"encoding/json"
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -80,5 +82,36 @@ func TestCrashAfterFrameworkDeliveryRemainsDeduplicated(t *testing.T) {
 	decision, _, err := reopenRecovery(t, path).Recover("op")
 	if err != nil || decision != RecoveryReturnResult {
 		t.Fatalf("decision=%s err=%v", decision, err)
+	}
+}
+
+func TestBeginPersistsProviderStartInOneRecoveryTransition(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "journal.json")
+	journal := reopenRecovery(t, path)
+	decision, _, err := journal.Begin("op", gatewayv2.NonIdempotentEffect)
+	if err != nil || decision != RecoveryExecute {
+		t.Fatalf("begin decision=%s err=%v", decision, err)
+	}
+	decision, result, err := reopenRecovery(t, path).Recover("op")
+	if err != nil || decision != RecoveryOutcomeUnknown || result.Status != gatewayv2.StatusAmbiguous {
+		t.Fatalf("recovery decision=%s status=%d err=%v", decision, result.Status, err)
+	}
+}
+
+func TestLegacyRecoverySnapshotMigratesToWAL(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "journal.json")
+	legacy := map[string]recoveryEntry{
+		"old": {OperationID: "old", Semantics: gatewayv2.ReadOnly, Stage: RecoveryAccepted},
+	}
+	raw, _ := json.Marshal(legacy)
+	if err := os.WriteFile(path, raw, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	journal := reopenRecovery(t, path)
+	if _, _, err := journal.Begin("new", gatewayv2.IdempotentEffect); err != nil {
+		t.Fatal(err)
+	}
+	if decision, _, err := reopenRecovery(t, path).Recover("old"); err != nil || decision != RecoveryExecute {
+		t.Fatalf("legacy entry was not preserved: decision=%s err=%v", decision, err)
 	}
 }

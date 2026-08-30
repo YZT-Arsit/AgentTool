@@ -1,0 +1,21 @@
+{
+  "B4_PIR_PLUS_FIXED_TRANSCRIPT_EXTERNAL": {
+    "attempted": 150,
+    "functional": 150
+  },
+  "B5_FULL_STRICT": {
+    "attempted": 150,
+    "functional": 146
+  },
+  "append_only_correction": true,
+  "combined_fixed_transcript": {
+    "attempted": 300,
+    "functional": 296
+  },
+  "correct_semantics": "combined B4+B5 fixed-transcript functional sessions",
+  "historical_numbers_changed": false,
+  "historical_value": 296,
+  "mislabelled_historical_field": "full_strict_successful_sessions",
+  "schema": "AgentTool.V12_1.PerformanceLabelCorrection/1",
+  "selected_v12_cases_executed": 0
+}

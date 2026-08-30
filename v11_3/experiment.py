@@ -182,6 +182,40 @@ def run_online_development(
         "elapsed_seconds": time.monotonic() - started,
         "holdout": False,
         "selected_v10_or_v10_1_case": False,
+        "diagnostic_operation_ids": {
+            "expected": [case.operation_id for case in cases],
+            "action_intent_submitted": [
+                item["operation_id"] for item in (session.lifecycle if session is not None else [])
+                if item.get("stage") == "ACTION_INTENT_SUBMITTED"
+            ],
+            "dynamic_pir_descriptor_recovered": [
+                item["operation_id"] for item in (session.lifecycle if session is not None else [])
+                if item.get("stage") == "DYNAMIC_PIR_DESCRIPTOR_RECOVERED"
+            ],
+            "accepted": list(trace.get("accepted_operation_ids", [])),
+            "admitted": [
+                item["operation_id"] for item in trace.get("private_events", [])
+                if item.get("stage") == "ONLINE_ACTION_ADMITTED"
+            ],
+            "provider_invoked": [
+                item["operation_id"] for item in trace.get("private_events", [])
+                if item.get("stage") == "PROVIDER_CALL_BEGIN"
+            ],
+            "result_committed": [
+                item["operation_id"] for item in trace.get("private_events", [])
+                if item.get("stage") == "RESULT_COMMITTED"
+            ],
+            "result_available": [str(item.get("operation_id", "")) for item in trace.get("results", [])],
+            "framework_delivered": [
+                item["operation_id"] for item in (session.lifecycle if session is not None else [])
+                if item.get("stage") == "FRAMEWORK_RESULT_DELIVERED"
+            ],
+            "pending": list(trace.get("pending_operation_ids", [])),
+            "resolved_not_admitted": list(trace.get("resolved_not_admitted_ids", [])),
+            "unresolved": list(trace.get("unresolved_operation_ids", [])),
+            "framework_waiters": list(trace.get("framework_waiter_ids", [])),
+        },
+        "transport_diagnostics": list(trace.get("transport_diagnostics", [])),
     }
     output.mkdir(parents=True, exist_ok=True)
     (output / "v11_3_development_summary.json").write_text(
