@@ -1,0 +1,27 @@
+{
+  "schema": "AgentTool.V12RC.InvocationRoutingRootCause/1",
+  "base_commit": "c20fa6adf23ba652f5c4c8b82a566788032cfd82",
+  "v12_final_failure_preserved": true,
+  "historical_failed_node": "tests/test_v12_final_runtime.py::test_actual_v12_online_multi_action_causal",
+  "historical_result_hashes": {
+    "V12_FINAL_CLASS_A_SERIAL_RESULT_RAW.json": "8e2988919e12a54ad50e44aadc00677729da6df4e491d0b51e1262a19de9d9dd",
+    "V12_FINAL_CLASS_A_SERIAL_RESULT.txt": "8127844980d608530f6666c80c017290e39e53c6d7b308ba76ff76425771337d"
+  },
+  "root_cause": "logical_action_name was used simultaneously as semantic Tool identity and framework registry dispatch identity; repeated logical Tools therefore registered under one name, and OpenAI resolved distinct operation calls through the same registered callable, collapsing operation-specific outcome attribution",
+  "causal_chain": [
+    "distinct operation IDs share logical_action_name v11_tool_0",
+    "v11_online.frameworks registered and called both FunctionTool objects as v11_tool_0",
+    "framework name collision selected one registered callable for both calls",
+    "both provider calls returned outcomes attributed through the selected callable closure",
+    "outcomes_by_operation lacked one expected operation ID",
+    "exact causal trajectory comparison failed"
+  ],
+  "repair_invariant": {
+    "logical_identity_may_repeat": true,
+    "private_framework_routing_identity_injective": true,
+    "operation_id_unchanged": true,
+    "provider_visible_logical_request_unchanged": true,
+    "public_projection_must_exclude_private_alias": true
+  },
+  "selected_v12_cases_executed": 0
+}

@@ -1,0 +1,82 @@
+{
+  "campaign_resumed": false,
+  "canonical_workflows_started": 108,
+  "diagnostic_limit": "the frozen Go engine records only generic ERROR for provider HTTP transport, non-2xx, decode, or provider-status failure and discards the underlying error detail; the retained evidence cannot distinguish those subcauses without a new run",
+  "execution_started_sha256": "c3ae4186127616304c95d1c359cb0b7057bb9d0b9699eb6d6230433d05272bb0",
+  "failure": {
+    "accepted_operation_ids": [
+      "opDEVRCOA1000700",
+      "opDEVRCOA1000701",
+      "opDEVRCOA1000702",
+      "opDEVRCOA1000703",
+      "opDEVRCOA1000704",
+      "opDEVRCOA1000705",
+      "opDEVRCOA1000706",
+      "opDEVRCOA1000707",
+      "opDEVRCOA1000708",
+      "opDEVRCOA1000709"
+    ],
+    "admitted": 10,
+    "canonical_payload": null,
+    "canonical_private_response_status": 3,
+    "canonical_status_name": "ERROR",
+    "declared_scenario": "SUCCESS",
+    "delivery_ledger_sha256": "8d0a35b8d1a89b0718696dc442094066fa2f626942d22d429d744bcefdb5cb68",
+    "depth": 10,
+    "dummy_heavy_ops": 0,
+    "failure_class": "CANONICAL_PROVIDER_RESULT_ERROR_FIRST_OPERATION",
+    "framework": "OpenAI Agents SDK",
+    "gateway_effect_recovery_sha256": "8e062b607ad4b9fa993e6139f52367ece3d0d167024290dc12cb486753dbb065",
+    "gateway_ready_results_sha256": "34f283aea32d14dc371f204072f37c35ddc2d5cbfe61d3a2e5358b17c93ec308",
+    "go_result_sha256": "d871ab9a065a51d371525bac715732ef43b1caf86e3708696ada0fad87105623",
+    "native_expected_status": "READ_ONLY:SUCCESS",
+    "observed_assertion": "native/canonical repeated-name semantic mismatch",
+    "operation_id": "opDEVRCOA1000700",
+    "pending_operation_ids": [],
+    "private_alias_in_go_result": false,
+    "private_trajectory_sha256": "6248d95162ace119338446a77101fed69071f985ff7dfc661a065428bc51d95d",
+    "profile_overflow": 0,
+    "provider_invocations": 10,
+    "result_operation_ids": [
+      "opDEVRCOA1000700",
+      "opDEVRCOA1000701",
+      "opDEVRCOA1000702",
+      "opDEVRCOA1000703",
+      "opDEVRCOA1000704",
+      "opDEVRCOA1000705",
+      "opDEVRCOA1000706",
+      "opDEVRCOA1000707",
+      "opDEVRCOA1000708",
+      "opDEVRCOA1000709"
+    ],
+    "results": 10,
+    "schedule_misses": 0,
+    "session_status": "COMPLETE",
+    "silent_committed_result_loss": 0,
+    "trusted_control_events_sha256": "bc3f2c43864d4cba220aaa02465a641ad32200d791679931dec2b396d9f82d6c",
+    "workflow_id": "DEV-RC-OA-REPEAT10-007",
+    "workflow_index": 107
+  },
+  "identity_manifest_sha256": "2d591618a2c9c84dba9ed679ccf2793fc828cb1900ff24100d60447de9d52e86",
+  "long_repeated_target": {
+    "failed": 1,
+    "not_run": 72,
+    "passed_before_failure": 7,
+    "planned": 80
+  },
+  "microsoft_duplicate_name_stress": {
+    "passed": 0,
+    "planned": 100,
+    "status": "NOT_RUN_EARLIER_DECISIVE_FAILURE"
+  },
+  "openai_duplicate_name_stress": {
+    "passed": 100,
+    "planned": 100
+  },
+  "planned_workflows": 280,
+  "retry_performed": false,
+  "schema": "AgentTool.V12RC.RoutingStressFailurePostmortem/1",
+  "selected_v12_cases_executed": 0,
+  "v12_system_gate": "FAIL",
+  "workflow_comparisons_completed_before_failure": 107
+}

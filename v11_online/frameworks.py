@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+from collections import Counter
 from collections.abc import Awaitable, Mapping, MutableSequence
 from typing import Any, Callable
 
@@ -14,6 +15,38 @@ from v11_full_scope.models import AgentServiceSubtype, CanonicalActionFamily, V1
 
 
 Implementation = Callable[[V11ActionCase, dict[str, Any]], V11ActionOutcome]
+PRIVATE_ROUTED_CALLABLE_PREFIX = "acv_private_route_"
+
+
+def _private_routed_names(cases: list[V11ActionCase]) -> list[str]:
+    """Return injective framework-only callable names for one private registry."""
+
+    operation_ids = [case.operation_id for case in cases]
+    if len(operation_ids) != len(set(operation_ids)):
+        raise ValueError("online workflow operation IDs must be unique")
+    return [f"{PRIVATE_ROUTED_CALLABLE_PREFIX}{index:03d}" for index in range(len(cases))]
+
+
+def _ordered_outcomes(
+    framework: str,
+    cases: list[V11ActionCase],
+    executed_operation_ids: list[str],
+    outcomes_by_operation: dict[str, V11ActionOutcome],
+) -> list[V11ActionOutcome]:
+    expected = [case.operation_id for case in cases]
+    if Counter(expected) != Counter(executed_operation_ids):
+        raise AssertionError(
+            f"{framework} online workflow operation-ID execution mismatch: "
+            f"expected={expected!r} executed={executed_operation_ids!r}"
+        )
+    if Counter(expected) != Counter(outcomes_by_operation.keys()):
+        raise AssertionError(
+            f"{framework} online workflow outcome mapping mismatch: "
+            f"expected={expected!r} outcomes={list(outcomes_by_operation)!r}"
+        )
+    if len(executed_operation_ids) != len(cases):
+        raise AssertionError(f"{framework} online workflow did not execute every action exactly once")
+    return [outcomes_by_operation[case.operation_id] for case in cases]
 
 
 def prewarm_framework(framework: str) -> None:
@@ -56,32 +89,39 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
     from agents.testing import ModelStep, ScriptedModel
 
     outcomes: list[V11ActionOutcome] = []
+    executed_operation_ids: list[str] = []
     outcomes_by_operation: dict[str, V11ActionOutcome] = {}
     boundary: list[tuple[str, Any]] = []
+    routed_names = _private_routed_names(cases)
+    routed_name_by_operation = {
+        case.operation_id: routed_name
+        for case, routed_name in zip(cases, routed_names, strict=True)
+    }
 
-    def ordinary_tool(case: V11ActionCase):
+    def ordinary_tool(case: V11ActionCase, routed_name: str):
         def invoke(value_case: V11ActionCase, values: dict[str, Any]) -> V11ActionOutcome:
             outcome = implementation(value_case, values)
             outcomes.append(outcome)
+            executed_operation_ids.append(value_case.operation_id)
             outcomes_by_operation[value_case.operation_id] = outcome
             return outcome
 
         function = _make_structured_function(case, invoke, boundary)
-        return function_tool(function, name_override=case.logical_action_name)
+        return function_tool(function, name_override=routed_name)
 
     final_text = f"framework-completed:{workflow}"
     if workflow in {"TOOL_TO_TOOL", "DYNAMIC_SEQUENCE", "INTERNAL_TO_EXTERNAL", "EXTERNAL_TO_INTERNAL", "PARALLEL_ACTIONS", "MIXED_PARALLEL"}:
-        tools = [ordinary_tool(case) for case in cases]
+        tools = [ordinary_tool(case, routed_name_by_operation[case.operation_id]) for case in cases]
         if workflow == "PARALLEL_ACTIONS":
-            call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases]]
+            call_steps = [[_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id) for case in cases]]
         elif workflow == "MIXED_PARALLEL":
             midpoint = max(1, len(cases) // 2)
             call_steps = [
-                [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[:midpoint]],
-                [_openai_call(case.logical_action_name, case.arguments, case.operation_id) for case in cases[midpoint:]],
+                [_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id) for case in cases[:midpoint]],
+                [_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id) for case in cases[midpoint:]],
             ]
         else:
-            call_steps = [[_openai_call(case.logical_action_name, case.arguments, case.operation_id)] for case in cases]
+            call_steps = [[_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id)] for case in cases]
         model = ScriptedModel(call_steps + [[_openai_final(final_text)]])
         agent = Agent(name="V11_2OnlineToolSequence", instructions="Execute actions causally.", model=model, tools=tools)
         result = await Runner.run(
@@ -99,19 +139,23 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         async def child_response(_call):
             outcome = implementation(agent_case, agent_case.argument_schema.validate_values(agent_case.arguments))
             outcomes.append(outcome)
+            executed_operation_ids.append(agent_case.operation_id)
             outcomes_by_operation[agent_case.operation_id] = outcome
             return [_openai_final(outcome.result)]
 
         child_model = ScriptedModel([ModelStep.respond(child_response)])
         child = Agent(name="V11_2OnlineChild", instructions="Return mediated child result.", model=child_model)
-        child_tool = child.as_tool(tool_name=agent_case.logical_action_name, tool_description="Private child Agent service")
-        registered = ordinary_tool(tool_case)
+        child_tool = child.as_tool(
+            tool_name=routed_name_by_operation[agent_case.operation_id],
+            tool_description="Private child Agent service",
+        )
+        registered = ordinary_tool(tool_case, routed_name_by_operation[tool_case.operation_id])
         ordered_calls = []
         for case in cases:
             if case is agent_case:
                 ordered_calls.append([_openai_call(child_tool.name, {"input": str(next(iter(case.arguments.values())))}, case.operation_id)])
             else:
-                ordered_calls.append([_openai_call(case.logical_action_name, case.arguments, case.operation_id)])
+                ordered_calls.append([_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id)])
         model = ScriptedModel(ordered_calls + [[_openai_final(final_text)]])
         agent = Agent(name="V11_2OnlineAgentToolSequence", instructions="Execute actions causally.", model=model, tools=[registered, child_tool])
         result = await Runner.run(agent, "online-development", run_config=RunConfig(tracing_disabled=True))
@@ -119,11 +163,12 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
     elif workflow == "TOOL_TO_HANDOFF":
         tool_case, handoff_case = cases
-        registered = ordinary_tool(tool_case)
+        registered = ordinary_tool(tool_case, routed_name_by_operation[tool_case.operation_id])
 
         async def target_response(_call):
             outcome = implementation(handoff_case, handoff_case.argument_schema.validate_values(handoff_case.arguments))
             outcomes.append(outcome)
+            executed_operation_ids.append(handoff_case.operation_id)
             outcomes_by_operation[handoff_case.operation_id] = outcome
             return [_openai_final(outcome.result)]
 
@@ -132,7 +177,7 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         handoff_object = handoff(target)
         source_model = ScriptedModel(
             [
-                [_openai_call(tool_case.logical_action_name, tool_case.arguments, tool_case.operation_id)],
+                [_openai_call(routed_name_by_operation[tool_case.operation_id], tool_case.arguments, tool_case.operation_id)],
                 [_openai_call(handoff_object.tool_name, {}, handoff_case.operation_id)],
             ]
         )
@@ -151,9 +196,9 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
     else:
         raise ValueError(f"unsupported OpenAI online workflow: {workflow}")
 
-    if len(outcomes_by_operation) != len(cases):
-        raise AssertionError(f"OpenAI online workflow produced {len(outcomes)} outcomes for {len(cases)} actions")
-    ordered_outcomes = [outcomes_by_operation[case.operation_id] for case in cases]
+    ordered_outcomes = _ordered_outcomes(
+        "OpenAI", cases, executed_operation_ids, outcomes_by_operation
+    )
     return {
         "framework": "OpenAI Agents SDK",
         "workflow": workflow,
@@ -215,10 +260,13 @@ async def _run_microsoft(cases: list[V11ActionCase], implementation: Implementat
     from agent_framework import Agent, tool
 
     outcomes: list[V11ActionOutcome] = []
+    executed_operation_ids: list[str] = []
+    outcomes_by_operation: dict[str, V11ActionOutcome] = {}
     boundary: list[tuple[str, Any]] = []
     registered: list[Any] = []
     calls: list[tuple[str, dict[str, Any], str]] = []
-    for case in cases:
+    routed_names = _private_routed_names(cases)
+    for case, routed_name in zip(cases, routed_names, strict=True):
         if case.agent_service_subtype is AgentServiceSubtype.HANDOFF:
             raise NotImplementedError("FRAMEWORK_NATIVE_MECHANISM_ABSENT")
         if case.agent_service_subtype is AgentServiceSubtype.AGENT_AS_TOOL:
@@ -228,6 +276,8 @@ async def _run_microsoft(cases: list[V11ActionCase], implementation: Implementat
             def child_implementation(value_case: V11ActionCase, values: dict[str, Any]) -> V11ActionOutcome:
                 outcome = implementation(value_case, values)
                 outcomes.append(outcome)
+                executed_operation_ids.append(value_case.operation_id)
+                outcomes_by_operation[value_case.operation_id] = outcome
                 return outcome
 
             child = Agent(
@@ -235,29 +285,32 @@ async def _run_microsoft(cases: list[V11ActionCase], implementation: Implementat
                 name=f"V11_2Child_{agent_case.case_id}",
                 instructions="Return mediated result",
             )
-            child_tool = child.as_tool(name=agent_case.logical_action_name, arg_name="task", approval_mode="never_require")
+            child_tool = child.as_tool(name=routed_name, arg_name="task", approval_mode="never_require")
             registered.append(child_tool)
             calls.append((child_tool.name, {"task": str(next(iter(agent_case.arguments.values())))}, agent_case.operation_id))
         else:
             def invoke(value_case: V11ActionCase, values: dict[str, Any]) -> V11ActionOutcome:
                 outcome = implementation(value_case, values)
                 outcomes.append(outcome)
+                executed_operation_ids.append(value_case.operation_id)
+                outcomes_by_operation[value_case.operation_id] = outcome
                 return outcome
 
             function = _make_structured_function(case, invoke, boundary)
-            registered.append(tool(name=case.logical_action_name, approval_mode="never_require")(function))
-            calls.append((case.logical_action_name, case.arguments, case.operation_id))
+            registered.append(tool(name=routed_name, approval_mode="never_require")(function))
+            calls.append((routed_name, case.arguments, case.operation_id))
 
     final_text = f"framework-completed:{workflow}"
     client = _MicrosoftSequenceClient(calls, final_text)
     parent = Agent(client=client, name="V11_2MicrosoftOnline", instructions="Execute actions causally.", tools=registered)
     result = await parent.run("online-development")
-    if len(outcomes) != len(cases):
-        raise AssertionError(f"Microsoft online workflow produced {len(outcomes)} outcomes for {len(cases)} actions")
+    ordered_outcomes = _ordered_outcomes(
+        "Microsoft", cases, executed_operation_ids, outcomes_by_operation
+    )
     return {
         "framework": "Microsoft Agent Framework",
         "workflow": workflow,
-        "projection": trajectory_projection(cases, outcomes, result.text),
+        "projection": trajectory_projection(cases, ordered_outcomes, result.text),
         "observed_function_results": client.observed_results,
         "native_framework_api": "agent_framework.Agent.run",
     }
