@@ -8,12 +8,29 @@
       "record_count": 64,
       "private_index": 10,
       "selected_holdout": false
+    },
+    {
+      "identity": "DEV-V12-NTRC-native-routing-suite",
+      "kind": "current native framework routing workload family",
+      "frameworks": ["OpenAI Agents SDK", "Microsoft Agent Framework"],
+      "workflows": ["DYNAMIC_SEQUENCE", "PARALLEL_ACTIONS", "TOOL_TO_AGENT_AS_TOOL", "AGENT_AS_TOOL_TO_TOOL"],
+      "case_id_prefix": "DEV-V12-NTRC-",
+      "selected_holdout": false
+    },
+    {
+      "identity": "DEV-V12-NTRC2-native-routing-suite",
+      "kind": "superseding current native framework routing workload family",
+      "frameworks": ["OpenAI Agents SDK", "Microsoft Agent Framework"],
+      "workflows": ["DYNAMIC_SEQUENCE", "PARALLEL_ACTIONS", "TOOL_TO_AGENT_AS_TOOL", "AGENT_AS_TOOL_TO_TOOL"],
+      "case_id_prefix": "DEV-V12-NTRC2-",
+      "selected_holdout": false
     }
   ],
   "test_manifests": [
     "V12_NON_TIMING_PYTHON_MANIFEST.json",
     "V12_NON_TIMING_GO_MANIFEST.json",
-    "V12_NON_TIMING_SECURITY_NEGATIVE_MANIFEST.json"
+    "V12_NON_TIMING_SECURITY_NEGATIVE_MANIFEST.json",
+    "V12_CURRENT_NON_TIMING_PYTHON_MANIFEST.json"
   ],
   "future_rule": "Exclude every listed identity and exact test workload signature from any future fresh V12 holdout.",
   "v12_candidate_universe_constructed": false,

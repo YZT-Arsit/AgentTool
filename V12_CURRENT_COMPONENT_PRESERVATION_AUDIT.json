@@ -1,0 +1,19 @@
+{
+  "schema": "AgentTool.V12CurrentComponentPreservationAudit/1",
+  "changed_executable_runtime_files": [],
+  "changed_go_files": [],
+  "changed_python_files": [
+    "tests/test_v12_closure.py",
+    "tests/test_v12_rc_invocation_routing.py"
+  ],
+  "NON_TIMING_GO": "PRESERVED 70/70",
+  "NON_TIMING_SECURITY_NEGATIVES": "22/22: 20 PRESERVED + 2 AFFECTED ROUTING NEGATIVES REVALIDATED",
+  "PROVIDER_DIAGNOSTICS": "PASS_REVALIDATED_IN_SERIAL",
+  "EFFECT_RECOVERY": "PASS_REVALIDATED_OR_PRESERVED",
+  "SIMPLEPIR_RUNTIME": "PASS_REVALIDATED_COMPONENT_CONTRACT",
+  "OHTTP_BHTTP": "PASS_REVALIDATED_IN_SERIAL_AND_GO_PRESERVED",
+  "ACTION_MEDIATION_CORPUS": "894 MEDIATED / 473 PARTIAL / 3 UNSUPPORTED",
+  "B0_B3_EVIDENCE": "PRESERVED",
+  "B4_B5_FINAL": "DEFERRED_TIMING_PROFILE",
+  "timing_dependency_changed": false
+}

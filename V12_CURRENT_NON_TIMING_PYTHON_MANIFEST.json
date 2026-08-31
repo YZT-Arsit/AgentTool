@@ -1,0 +1,53 @@
+{
+  "schema": "AgentTool.V12CurrentNonTimingPythonManifest/1",
+  "revision": 2,
+  "supersedes_precheck_manifest_sha256": "449f411daf042e93b0f5e9f71285cc9f64c840986e032466d46e6f30820f018f",
+  "supersession_reason": "Pre-decisive routing precheck exposed a framework-specific test assertion schema error; runtime and reachability classification are unchanged, and fresh identities are used.",
+  "base_commit": "a7c58e29b2a879cb58d2e3c8b429c1846f0fc8dd",
+  "reachability_freeze": "V12_CURRENT_RUNTIME_REACHABILITY.json",
+  "classification_freeze": "V12_CURRENT_RUNTIME_TEST_CLASSIFICATION.json",
+  "frozen_after_sections_1_through_9": true,
+  "frozen_before_decisive_execution": true,
+  "node_count": 46,
+  "node_list_sha256_lf": "34c675895db6b66d9c26c25bc2c40dbacb13325b33f9ad06ff80e8fea4aca656",
+  "file_hashes": {
+    "tests/test_v12_closure.py": "18f00a2cf1e189de92c9b9890b3df360331312b32da9910071a4c593d76a39f6",
+    "tests/test_v12_provider_diagnostics.py": "e56463b0bd0dc2a9cc9b9ed06601d9f5137adae344b848df30c3e1cf3bc19981",
+    "tests/test_v12_rc_invocation_routing.py": "3c02d865a2711f2659ba654276632f86547a09d8cd49babb048dbe4e37145832",
+    "tests/test_v11a_confirmatory.py": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+    "tests/test_v11a_1_prefix_projection.py": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+    "tests/test_v8_standards_closure.py": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+    "tests/test_v7_ohttp_architecture.py": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b"
+  },
+  "complete_files": [
+    "tests/test_v12_closure.py",
+    "tests/test_v12_provider_diagnostics.py",
+    "tests/test_v11a_confirmatory.py",
+    "tests/test_v11a_1_prefix_projection.py",
+    "tests/test_v8_standards_closure.py",
+    "tests/test_v7_ohttp_architecture.py"
+  ],
+  "mixed_file_current_nodes": [
+    "tests/test_v12_rc_invocation_routing.py::test_sequential_duplicate_logical_tool_routes_by_operation[False-OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_sequential_duplicate_logical_tool_routes_by_operation[False-Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_sequential_duplicate_logical_tool_routes_by_operation[True-OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_sequential_duplicate_logical_tool_routes_by_operation[True-Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_ten_repeated_logical_tools_preserve_every_operation[OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_ten_repeated_logical_tools_preserve_every_operation[Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_openai_parallel_duplicate_logical_tools_preserve_every_operation",
+    "tests/test_v12_rc_invocation_routing.py::test_same_logical_name_can_have_different_capabilities_and_effects[OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_same_logical_name_can_have_different_capabilities_and_effects[Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_tool_and_agent_as_tool_share_private_routing_namespace[TOOL_TO_AGENT_AS_TOOL-OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_tool_and_agent_as_tool_share_private_routing_namespace[TOOL_TO_AGENT_AS_TOOL-Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_tool_and_agent_as_tool_share_private_routing_namespace[AGENT_AS_TOOL_TO_TOOL-OpenAI Agents SDK]",
+    "tests/test_v12_rc_invocation_routing.py::test_tool_and_agent_as_tool_share_private_routing_namespace[AGENT_AS_TOOL_TO_TOOL-Microsoft Agent Framework]",
+    "tests/test_v12_rc_invocation_routing.py::test_private_routing_names_are_injective_and_not_operation_derived",
+    "tests/test_v12_rc_invocation_routing.py::test_duplicate_operation_ids_are_rejected_before_framework_construction"
+  ],
+  "excluded_mixed_file_nodes": [
+    {"node":"tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[OpenAI Agents SDK]","class":"TIMING_DEPENDENT"},
+    {"node":"tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[Microsoft Agent Framework]","class":"TIMING_DEPENDENT"}
+  ],
+  "expected_skips": 0,
+  "selected_v12_cases_executed": 0
+}

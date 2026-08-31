@@ -1,0 +1,30 @@
+{
+  "schema": "AgentTool.V12CurrentNonTimingPythonGate/1",
+  "manifest": "V12_CURRENT_NON_TIMING_PYTHON_MANIFEST.json",
+  "manifest_sha256": "2f8150a975b16474b42a1da954cbb617a22cd5f1879512b8df21dab4b77fe3f1",
+  "manifest_revision": 2,
+  "serial": {
+    "status": "PASS",
+    "passed": 46,
+    "total": 46,
+    "failed": 0,
+    "skipped": 0,
+    "predeclared_timing_deselections": 2,
+    "log_sha256": "a91654db115b62da089ae05edce328617cc49a5555e12fa773b57654a000a626"
+  },
+  "default": {
+    "status": "FAIL",
+    "passed": 0,
+    "planned_total": 46,
+    "collected": 0,
+    "collection_errors": 7,
+    "skipped": 0,
+    "failure_class": "PYTEST_CONSOLE_ENTRYPOINT_REPOSITORY_IMPORT_PATH_ABSENT",
+    "detail": "The .venv-linux/bin/pytest console entrypoint did not put the repository root on sys.path; all seven selected test modules failed collection with ModuleNotFoundError.",
+    "rerun_with_replacement_command": false,
+    "log_sha256": "f9066da119dd95c2f77d0cc53ae5d54b72392d5e1a41da2f3364193afad2891b"
+  },
+  "cleanup_fixture": "PASS",
+  "current_runtime_skips": 0,
+  "selected_v12_cases_executed": 0
+}

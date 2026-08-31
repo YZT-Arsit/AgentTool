@@ -1,0 +1,97 @@
+{
+  "schema": "AgentTool.V12CurrentRuntimeReachability/1",
+  "phase": "V12-NON-TIMING-REACHABILITY-CLOSURE",
+  "base_commit": "a7c58e29b2a879cb58d2e3c8b429c1846f0fc8dd",
+  "frozen_before_current_runtime_manifest": true,
+  "frozen_before_decisive_execution": true,
+  "entrypoint": "scripts/run_v12_confirmatory.py",
+  "selected_runtime_edges": [
+    "scripts.run_v12_confirmatory -> v11a_confirmatory.orchestrator",
+    "v11a_confirmatory.orchestrator.run_native_semantic_case -> v11_full_scope.frameworks.run_framework_case -> pinned native framework",
+    "v11a_confirmatory.orchestrator.run_native_trajectory_case -> v11_online.frameworks.run_online_framework_workflow -> pinned native framework",
+    "v11a_confirmatory.orchestrator.run_canonical_semantic_case -> v11_online.session.CanonicalOnlineSession",
+    "v11a_confirmatory.orchestrator.run_canonical_online_trajectory_case -> v11_online.session.CanonicalOnlineSession",
+    "v11_online.session.CanonicalOnlineSession -> OnlineSimplePIRResolver -> pir_integration/simplepir_bridge/acv-simplepir-online",
+    "v11_online.session.CanonicalOnlineSession -> V11EvidenceProviders -> canonical Go runner / Gateway / provider",
+    "scripts.run_v12_confirmatory -> scripts.summarize_v12_confirmatory"
+  ],
+  "module_classification": {
+    "CURRENT_SELECTED_RUNTIME": [
+      "scripts/run_v12_confirmatory.py",
+      "scripts/summarize_v12_confirmatory.py",
+      "v11a_confirmatory/orchestrator.py",
+      "v11a_confirmatory/projection.py",
+      "v11_online/frameworks.py",
+      "v11_online/session.py",
+      "v11_full_scope/frameworks.py",
+      "v11_full_scope/canonical.py",
+      "v11_full_scope/models.py",
+      "v11_full_scope/action_model.py",
+      "v11_full_scope/structural.py",
+      "v11_4/profile.py",
+      "canonical_v9/runner.py",
+      "canonical_v9_1/projection.py",
+      "action_privacy_v8"
+    ],
+    "CURRENT_SUPPORT_COMPONENT": [
+      "cryptographic_closure/pir_backend.py:SIMPLEPIR_COMMIT only",
+      "v10_holdout/harness.py:profile loader",
+      "pir_integration/simplepir_bridge/acv-simplepir-online",
+      "common_action_gateway_v2/canonicalv9",
+      "common_action_gateway_v2/v7",
+      "common_action_gateway_v2/v7ohttp",
+      "common_action_gateway_v2/v8",
+      "common_action_gateway_v2/v9ohttp"
+    ],
+    "LEGACY_COMPATIBILITY": [
+      "agent_control_virtualization/compiler_v2.py",
+      "agent_control_virtualization/runtime_v2.py",
+      "agent_control_virtualization/ir_v2.py",
+      "v10_1_executor"
+    ],
+    "HISTORICAL_EVIDENCE_ONLY": [
+      "tests/test_crypto_closure.py historical result-tree assertions",
+      "tests/test_validation_v4.py frozen V2/V4 artifact assertions",
+      "tests/test_stage10.py historical Stage-10 runtime experiment"
+    ],
+    "PLATFORM_SPECIFIC_HISTORICAL": [
+      "tests/test_stage9.py::Stage9AdaptiveTests::test_l2_public_runtime_existing_approval_path"
+    ],
+    "TIMING_DEPENDENT": [
+      "CanonicalOnlineSession public cadence execution",
+      "tests/test_v12_final_runtime.py",
+      "tests/test_v12_rc_invocation_routing.py canonical public-view parameterizations",
+      "scheduler/pacer/deadline/profile qualification"
+    ],
+    "NOT_REACHABLE": [
+      "AgentRuntimeV2",
+      "compile_workload_v2",
+      "CALL_AGENT / RETURN_AGENT IR lowering",
+      "Windows .venv-stage9/Scripts/python.exe layout"
+    ]
+  },
+  "agent_ir_v2": {
+    "selected_runtime_reachable": false,
+    "classification": "LEGACY_COMPATIBILITY",
+    "static_reference_count_from_selected_runtime_closure": 0,
+    "driver_import_probe_loaded_agent_control_virtualization_modules": [],
+    "legacy_agent_as_tool_result": "FAIL 0/2 PRESERVED",
+    "current_private_routing_blocker": false
+  },
+  "source_hashes": {
+    "scripts/run_v12_confirmatory.py": "d13214ac969bfb20e68138390f294067f6b367a7c0605e21aba08bb5de53a033",
+    "scripts/summarize_v12_confirmatory.py": "3c908273b972b9d8f4eda80f4cf3998f2a0934a855080d2536e74560fac3151f",
+    "v11a_confirmatory/orchestrator.py": "834c4b3553ba46fa65aba03a030e0aa79694e1e5b34b59f5f9802365ab343830",
+    "v11a_confirmatory/projection.py": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+    "v11_online/frameworks.py": "75ae8a5faf78359bacb4dd43261feb8cea574d370973497cb21c8ec7cc39c791",
+    "v11_online/session.py": "b7a0ec81cb42a66e3a900033b701ff14b2be4ae92f755db04d71ed9a7e454e4b",
+    "v11_full_scope/frameworks.py": "ef08ea84987a6bc7688f477fa40fe9973a3b00e8bebd209d6d25f3d4b10eae63",
+    "v11_full_scope/canonical.py": "abe15dc7bfe49edfebf8b8036fd81d01ad8fee132704dbf2ed534c14fe54dc99",
+    "canonical_v9/runner.py": "13546027c570ac1bb4c36b5d0aabdec574547a57a7e0e01c073b62fc59a0afcc",
+    "canonical_v9_1/projection.py": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+    "agent_control_virtualization/compiler_v2.py": "8613b6437a4f84fd88afd280bcdf490cc3a6049b02c980539049e3c3bf43e9ed",
+    "agent_control_virtualization/runtime_v2.py": "a3d821c5257a0533ce3824192f2ad68681891835389038b2dbb07dd3a3d8f089"
+  },
+  "timing_work_authorized": false,
+  "holdout_work_authorized": false
+}

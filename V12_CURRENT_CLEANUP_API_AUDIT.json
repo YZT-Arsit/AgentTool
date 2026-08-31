@@ -1,0 +1,11 @@
+{
+  "schema": "AgentTool.V12CurrentCleanupApiAudit/1",
+  "production_constructor": "V11EvidenceProviders(cases, private_evidence_path=None)",
+  "production_call": "CanonicalOnlineSession.__enter__ passes cases and output/private_provider_evidence.json",
+  "production_api_status": "CORRECT",
+  "prior_fixture": "Providers.__init__(self, _cases)",
+  "root_cause": "STALE_DEVELOPMENT_FIXTURE",
+  "repair_scope": "tests/test_v12_closure.py only",
+  "regression": "partial startup failure must exit PIR and providers, clear session references, and bind the expected private evidence path",
+  "scheduler_profile_timing_changed": false
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "AgentTool.V12LegacyCompatibilityStatus/1",
+  "AGENT_IR_V2_SELECTED_RUNTIME_REACHABLE": false,
+  "LEGACY_AGENT_IR_AGENT_AS_TOOL": "FAIL 0/2 PRESERVED",
+  "historical_evidence_authoritative_copy": "PASS 9/9",
+  "historical_evidence_linux_bundle": "MISSING 9/9 PRESERVED",
+  "windows_historical_compatibility": "NOT_RUN_PLATFORM_SPECIFIC_HISTORICAL",
+  "stage10": "NOT_RUN: 1 SOURCE_COMPATIBILITY_ONLY + 8 HISTORICAL; OPTIONAL WINDOWS RUNTIME UNAVAILABLE",
+  "official_sample_compatibility": "PARTIAL_SOURCE_UNAVAILABLE: 8/9 paths; historical 53/28/4 preserved",
+  "LEGACY_COMPATIBILITY_STATUS": "FAIL_PRESERVED"
+}

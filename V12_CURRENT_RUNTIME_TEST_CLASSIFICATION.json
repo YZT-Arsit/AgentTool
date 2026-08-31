@@ -1,0 +1,45 @@
+{
+  "schema": "AgentTool.V12CurrentRuntimeTestClassification/1",
+  "base_commit": "a7c58e29b2a879cb58d2e3c8b429c1846f0fc8dd",
+  "frozen_before_manifest": true,
+  "frozen_before_execution": true,
+  "classification_inputs": ["V12_CURRENT_RUNTIME_REACHABILITY.json", "static imports/calls", "runtime support-component dependency"],
+  "outcome_used_for_classification": false,
+  "CURRENT_SELECTED_RUNTIME_OR_SUPPORT": [
+    {"path":"tests/test_v12_closure.py","selection":"ALL","reason":"V12 driver integrity, execution permit, prebuilt PIR launch contract, cleanup/resource release, and result-analysis guards"},
+    {"path":"tests/test_v12_provider_diagnostics.py","selection":"ALL","reason":"current evidence-provider diagnostics and public non-interference"},
+    {"path":"tests/test_v12_rc_invocation_routing.py","selection":"ALL_EXCEPT_CANONICAL_PUBLIC_VIEW_PARAMETERIZATIONS","reason":"current v11_online native framework routing; canonical public-view nodes require cadence"},
+    {"path":"tests/test_v11a_confirmatory.py","selection":"ALL","reason":"current orchestrator loader, native execution permit, and projections"},
+    {"path":"tests/test_v11a_1_prefix_projection.py","selection":"ALL","reason":"current corrected projection implementation"},
+    {"path":"tests/test_v8_standards_closure.py","selection":"ALL","reason":"current descriptor, authorization, DeliveryLedger, and PIR log contracts"},
+    {"path":"tests/test_v7_ohttp_architecture.py","selection":"ALL","reason":"current OHTTP/BHTTP route and fail-closed support contracts"}
+  ],
+  "LEGACY_COMPATIBILITY": [
+    {"path":"tests/test_agent_ir_v2.py","selection":"ALL","reason":"AgentRuntimeV2 and compile_workload_v2 are unreachable from selected V12 runtime"},
+    {"path":"tests/test_v10_1_executor.py","selection":"ALL","reason":"historical CanonicalSemanticBridge/source-run compatibility path"}
+  ],
+  "HISTORICAL_EVIDENCE_ONLY": [
+    {"path":"tests/test_crypto_closure.py","nodes":["test_real_pir_100k_was_correct_and_fully_preprocessed","test_server_trace_excludes_private_labels_and_uses_fresh_queries","test_recovered_capsule_feeds_the_common_executor","test_action_structural_and_size_results_are_at_chance"],"reason":"read-only assertions over frozen historical result trees"},
+    {"path":"tests/test_validation_v4.py","nodes":["test_whole_workflow_coverage_uses_distinct_frozen_corpus_units","test_mixed_unproven_decomposition_preserves_all_1904_rows_without_coverage_claim","test_semantic_holdout_manifest_is_still_frozen_and_outcomes_are_not_rewritten","test_long_horizon_freeze_is_intact_and_functional_failure_blocks_e2e_claim","test_tcb_inventory_separates_runtime_from_tooling_and_emulator"],"reason":"read-only frozen V2/V4 evidence integrity"}
+  ],
+  "PLATFORM_SPECIFIC_HISTORICAL": [
+    {"node":"tests/test_stage9.py::Stage9AdaptiveTests::test_l2_public_runtime_existing_approval_path","reason":"requires historical Windows .venv-stage9/Scripts/python.exe; selected runtime is Linux and does not import Stage9"}
+  ],
+  "STAGE10": [
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_second_runtime_is_unmodified_public_source","class":"SOURCE_COMPATIBILITY_ONLY"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_native_private_state_changes_adaptive_trajectory","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_same_task_final_effect_and_effect_count","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_no_private_label_in_host_trace","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_ground_truth_is_serialized_separately","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_same_stage9_ir_and_normalizer_reused","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_required_variant_pattern","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_b2_structure_exactly_equal_per_seed","class":"HISTORICAL"},
+    {"node":"tests/test_stage10.py::Stage10IndependentRuntimeTests::test_function_and_effect_equivalence_without_dummy_effects","class":"HISTORICAL"}
+  ],
+  "TIMING_DEPENDENT": [
+    {"path":"tests/test_v12_final_runtime.py","selection":"ALL","reason":"every node invokes CanonicalOnlineSession after or alongside its native action"},
+    {"nodes":["tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[OpenAI Agents SDK]","tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[Microsoft Agent Framework]"],"reason":"canonical public session cadence"}
+  ],
+  "official_sample_compatibility": "PARTIAL_SOURCE_UNAVAILABLE",
+  "selected_v12_cases_executed": 0
+}

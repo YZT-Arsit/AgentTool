@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12HistoricalEvidenceIntegrityAudit/1",
+  "classification_frozen_before_current_gate": true,
+  "authoritative_repository_copy": {
+    "present": 9,
+    "required": 9,
+    "status": "PASS_9_OF_9",
+    "artifacts": [
+      {"path":"results_crypto_closure/scale_100000/run4/metrics.json","sha256":"66b7b9ec812a26420b9b362c518d583c9108f1e84f540dd62541ad86a2639d55"},
+      {"path":"results_crypto_closure/scale_100000/run4/server_visible_trace.jsonl","sha256":"640178f35345b1d3c044c3cd3fa36beae9aeb615ccfcbea01bd9669991c0f877"},
+      {"path":"results_crypto_closure/scale_100000/run4/client_recovered_records.jsonl","sha256":"cdcc8f81066c503f5f8787019e7fd3abb0c9a56b232cdff2b94e724ba56b0245"},
+      {"path":"results_crypto_closure/tool_action/ACTION_TYPE_ATTACK_RESULTS.csv","sha256":"d085a2dfc1de95eb5cea047fb74b479df9f103d768336e95bde0eee0abe3d0b3"},
+      {"path":"WHOLE_WORKFLOW_EXECUTABLE_COVERAGE_V2.csv","sha256":"197bf5818c2c6dcf752c92c12a9321b564883ef37bc02b918983ebaac4f2ed88"},
+      {"path":"MIXED_UNPROVEN_DECOMPOSITION_V2.csv","sha256":"90180faa6ed70db7058963449cfe3cbbc22914a85176dc1cbe831d3f7b1d4c3d"},
+      {"path":"SEMANTIC_HOLDOUT_V2_FREEZE_SHA256.txt","sha256":"6ccf592b2ab1e1367931f1add76c919f20520e1da43307bdc32c360fac9266fb"},
+      {"path":"LONG_HORIZON_STRUCTURAL_FREEZE_SHA256.txt","sha256":"c2816d9a6e07087826fc4d644f9cf6ea760911467ba7fc154dce013ea1cea0a7"},
+      {"path":"TCB_INVENTORY_V4.csv","sha256":"977728aba94c8de047869b36fb30648574bf58809b2d4e1dc0aa97da514a46da"}
+    ]
+  },
+  "linux_execution_bundle": {
+    "present": 0,
+    "required_for_historical_tests": 9,
+    "status": "MISSING_9_OF_9_PRESERVED",
+    "restored_or_regenerated": false
+  },
+  "current_selected_runtime_dependency": false,
+  "windows_historical_compatibility": "NOT_RUN_PLATFORM_SPECIFIC_HISTORICAL"
+}

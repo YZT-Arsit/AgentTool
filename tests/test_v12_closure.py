@@ -71,10 +71,12 @@ def test_partial_online_session_entry_releases_started_providers(monkeypatch, tm
     runner = tmp_path / "runner"
     runner.write_bytes(b"runner")
     events: list[str] = []
+    provider_evidence_paths: list[Path] = []
 
     class Providers:
-        def __init__(self, _cases):
+        def __init__(self, _cases, private_evidence_path):
             self.endpoints = {}
+            provider_evidence_paths.append(private_evidence_path)
 
         def __enter__(self):
             events.append("providers_enter")
@@ -102,6 +104,9 @@ def test_partial_online_session_entry_releases_started_providers(monkeypatch, tm
         session.__enter__()
 
     assert events == ["providers_enter", "pir_enter", "pir_exit", "providers_exit"]
+    assert provider_evidence_paths == [
+        tmp_path / "run" / "private_provider_evidence.json"
+    ]
     assert session.providers is None
     assert session.pir is None
 

@@ -1,0 +1,16 @@
+{
+  "schema": "AgentTool.V12CurrentRoutingPrecheckFailure/1",
+  "status": "FAIL_PRESERVED",
+  "manifest_sha256": "449f411daf042e93b0f5e9f71285cc9f64c840986e032466d46e6f30820f018f",
+  "routing_test_source_sha256": "00a05e26377b3cc75664284668e859781fb3cb4e353b731d8ca1bdc39abbeb69",
+  "fresh_identity_prefix": "DEV-V12-NTRC-",
+  "passed": 9,
+  "failed": 6,
+  "deselected_timing_nodes": 2,
+  "failure_framework": "Microsoft Agent Framework",
+  "failure_class": "NEW_TEST_ASSERTION_SCHEMA_MISMATCH",
+  "detail": "The common assertion read OpenAI-only tool_output_count. Microsoft exposes the equivalent exact native invocation evidence as observed_function_results. Operation-ID, logical-action, argument, projection, and outcome checks had already passed.",
+  "runtime_source_changed_after_failure": false,
+  "same_identity_retried": false,
+  "superseding_identity_prefix": "DEV-V12-NTRC2-"
+}

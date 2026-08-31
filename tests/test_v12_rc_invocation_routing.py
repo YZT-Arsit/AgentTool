@@ -56,6 +56,10 @@ def _assert_exact_projection(value: dict, cases) -> None:
         case.logical_action_name for case in cases
     ]
     assert [item["arguments"] for item in trajectory] == [case.arguments for case in cases]
+    if value["framework"] == "OpenAI Agents SDK":
+        assert value["tool_output_count"] == len(cases)
+    else:
+        assert len(value["observed_function_results"]) == len(cases)
     encoded = json.dumps(value, sort_keys=True)
     assert PRIVATE_ROUTED_CALLABLE_PREFIX not in encoded
     for item in trajectory:
@@ -70,9 +74,9 @@ def test_sequential_duplicate_logical_tool_routes_by_operation(
     framework: str, same_arguments: bool, caplog: pytest.LogCaptureFixture
 ) -> None:
     cases = (
-        _case(f"DEV-V12-RC-seq-{framework[:2]}-A-{same_arguments}", framework, value="Paris"),
+        _case(f"DEV-V12-NTRC2-seq-{framework[:2]}-A-{same_arguments}", framework, value="Paris"),
         _case(
-            f"DEV-V12-RC-seq-{framework[:2]}-B-{same_arguments}",
+            f"DEV-V12-NTRC2-seq-{framework[:2]}-B-{same_arguments}",
             framework,
             value="Paris" if same_arguments else "Tokyo",
         ),
@@ -88,7 +92,7 @@ def test_sequential_duplicate_logical_tool_routes_by_operation(
 @pytest.mark.parametrize("framework", FRAMEWORKS)
 def test_ten_repeated_logical_tools_preserve_every_operation(framework: str) -> None:
     cases = tuple(
-        _case(f"DEV-V12-RC-ten-{framework[:2]}-{index:02d}", framework, value=f"value-{index}")
+        _case(f"DEV-V12-NTRC2-ten-{framework[:2]}-{index:02d}", framework, value=f"value-{index}")
         for index in range(10)
     )
     assert len({case.logical_action_name for case in cases}) == 1
@@ -98,7 +102,7 @@ def test_ten_repeated_logical_tools_preserve_every_operation(framework: str) -> 
 def test_openai_parallel_duplicate_logical_tools_preserve_every_operation() -> None:
     framework = "OpenAI Agents SDK"
     cases = tuple(
-        _case(f"DEV-V12-RC-parallel-{index}", framework, value=f"parallel-{index}")
+        _case(f"DEV-V12-NTRC2-parallel-{index}", framework, value=f"parallel-{index}")
         for index in range(3)
     )
     _assert_exact_projection(_run(framework, cases, "PARALLEL_ACTIONS"), cases)
@@ -107,9 +111,9 @@ def test_openai_parallel_duplicate_logical_tools_preserve_every_operation() -> N
 @pytest.mark.parametrize("framework", FRAMEWORKS)
 def test_same_logical_name_can_have_different_capabilities_and_effects(framework: str) -> None:
     cases = (
-        _case(f"DEV-V12-RC-effects-{framework[:2]}-read", framework, effect="READ_ONLY"),
+        _case(f"DEV-V12-NTRC2-effects-{framework[:2]}-read", framework, effect="READ_ONLY"),
         _case(
-            f"DEV-V12-RC-effects-{framework[:2]}-idem",
+            f"DEV-V12-NTRC2-effects-{framework[:2]}-idem",
             framework,
             effect="IDEMPOTENT_EFFECT",
         ),
@@ -124,25 +128,30 @@ def test_same_logical_name_can_have_different_capabilities_and_effects(framework
 
 
 @pytest.mark.parametrize("framework", FRAMEWORKS)
-def test_tool_and_agent_as_tool_share_private_routing_namespace(framework: str) -> None:
-    ordinary = _case(f"DEV-V12-RC-mixed-{framework[:2]}-tool", framework)
+@pytest.mark.parametrize(
+    "workflow", ["TOOL_TO_AGENT_AS_TOOL", "AGENT_AS_TOOL_TO_TOOL"]
+)
+def test_tool_and_agent_as_tool_share_private_routing_namespace(
+    framework: str, workflow: str
+) -> None:
+    ordinary = _case(f"DEV-V12-NTRC2-mixed-{framework[:2]}-tool", framework)
     child = replace(
         agent_case(
-            f"DEV-V12-RC-mixed-{framework[:2]}-agent",
+            f"DEV-V12-NTRC2-mixed-{framework[:2]}-agent",
             framework,
             AgentServiceSubtype.AGENT_AS_TOOL,
         ),
         logical_action_name=ordinary.logical_action_name,
     )
-    cases = (ordinary, child)
-    value = _run(framework, cases, "TOOL_TO_AGENT_AS_TOOL")
+    cases = (ordinary, child) if workflow == "TOOL_TO_AGENT_AS_TOOL" else (child, ordinary)
+    value = _run(framework, cases, workflow)
     _assert_exact_projection(value, cases)
 
 
 def test_private_routing_names_are_injective_and_not_operation_derived() -> None:
     cases = [
-        _case("DEV-V12-RC-route-A", "OpenAI Agents SDK"),
-        _case("DEV-V12-RC-route-B", "OpenAI Agents SDK"),
+        _case("DEV-V12-NTRC2-route-A", "OpenAI Agents SDK"),
+        _case("DEV-V12-NTRC2-route-B", "OpenAI Agents SDK"),
     ]
     names = _private_routed_names(cases)
     assert names == ["acv_private_route_000", "acv_private_route_001"]
@@ -156,11 +165,11 @@ def test_private_routing_alias_absent_from_canonical_public_and_private_views(
     tmp_path: Path, framework: str
 ) -> None:
     cases = tuple(
-        _case(f"DEV-V12-RC-public-{framework[:2]}-{index}", framework, value=f"v-{index}")
+        _case(f"DEV-V12-NTRC2-public-{framework[:2]}-{index}", framework, value=f"v-{index}")
         for index in range(2)
     )
     spec = TrajectorySpec(
-        f"DEV-V12-RC-public-{framework[:2]}", framework, "DYNAMIC_SEQUENCE", cases
+        f"DEV-V12-NTRC2-public-{framework[:2]}", framework, "DYNAMIC_SEQUENCE", cases
     )
     value = run_canonical_online_trajectory_case(
         spec, tmp_path / "canonical", PERMIT, runner_binary=RUNNER
@@ -176,9 +185,9 @@ def test_private_routing_alias_absent_from_canonical_public_and_private_views(
 
 
 def test_duplicate_operation_ids_are_rejected_before_framework_construction() -> None:
-    first = _case("DEV-V12-RC-duplicate-op-A", "OpenAI Agents SDK")
+    first = _case("DEV-V12-NTRC2-duplicate-op-A", "OpenAI Agents SDK")
     second = replace(
-        _case("DEV-V12-RC-duplicate-op-B", "OpenAI Agents SDK"),
+        _case("DEV-V12-NTRC2-duplicate-op-B", "OpenAI Agents SDK"),
         operation_id=first.operation_id,
     )
     with pytest.raises(ValueError, match="operation IDs must be unique"):

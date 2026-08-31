@@ -1,0 +1,37 @@
+{
+  "schema": "AgentTool.V12CurrentNativePrivateRoutingGate/1",
+  "current_runtime": "v11_online/frameworks.py",
+  "precheck": {
+    "status": "FAIL_PRESERVED",
+    "passed": 9,
+    "total": 15,
+    "failure_class": "NEW_TEST_ASSERTION_SCHEMA_MISMATCH",
+    "identity_prefix": "DEV-V12-NTRC-",
+    "log_sha256": "b40bd88bc277b9ba50a4a88382416ba6fa0278c8458a9663b1b5997401b20267"
+  },
+  "corrected_fresh_gate": {
+    "status": "PASS",
+    "passed": 15,
+    "total": 15,
+    "failed": 0,
+    "skipped": 0,
+    "predeclared_timing_deselections": 2,
+    "identity_prefix": "DEV-V12-NTRC2-",
+    "log_sha256": "d87be4bb682cb27a4bff05e0dbc6795ebe26ca5a4237832c445d4111a63e79f0"
+  },
+  "coverage": {
+    "openai_repeated_tool": "PASS",
+    "microsoft_repeated_tool": "PASS",
+    "openai_agent_as_tool": "PASS",
+    "microsoft_agent_as_tool": "PASS",
+    "tool_to_agent_as_tool": "PASS_BOTH_FRAMEWORKS",
+    "agent_as_tool_to_tool": "PASS_BOTH_FRAMEWORKS",
+    "exact_operation_ids": "PASS",
+    "exact_native_invocation_count": "PASS",
+    "exact_semantic_outcome_mapping": "PASS",
+    "alias_absent_from_semantic_and_provider_request": "PASS",
+    "alias_absent_from_relay_structural_size": "PRESERVED_STATIC_AND_PRIOR_CANONICAL_EVIDENCE; NOT_RERUN_TIMING_DEPENDENT"
+  },
+  "CURRENT_NATIVE_PRIVATE_ROUTING": "PASS",
+  "selected_v12_cases_executed": 0
+}
