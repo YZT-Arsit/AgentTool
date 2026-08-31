@@ -1,0 +1,59 @@
+....................................................................F... [ 96%]
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+___ test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule ____
+
+tmp_path = PosixPath('/root/autodl-tmp/v12_chr_python_serial/pytest_tmp/test_actual_timing_profile_emi0')
+
+    @pytest.mark.skipif(not (Path(__file__).resolve().parents[1] / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner").is_file(), reason="Linux timing development binary unavailable")
+    def test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule(tmp_path: Path) -> None:
+        case = replace(
+            tool_case("DEV-V12-TIMING-COMPONENT-001", "OpenAI Agents SDK"),
+            capability="tool.read",
+        )
+        profile = TimingIndistinguishabilityProfile(
+            profile_id="V12-TIMING-INDIST-H50-H3000-P10-PIR60",
+            round_period_ms=10,
+            pir_resolution_period_ms=60,
+        ).validate()
+        with CanonicalOnlineSession(tmp_path / "canonical", [case], public_profile=profile) as session:
+            canonical = run_framework_case(case, session.implementation())
+        assert canonical.operation_outcome_semantics == "READ_ONLY:SUCCESS"
+        assert session.trace is not None
+        assert session.trace["session_status"] == "COMPLETE"
+        assert session.trace["public_transcript_complete"]
+        assert session.trace["emitted_cells"] == profile.total_rounds
+        assert len(session.trace["public_relay_events"]) == profile.total_rounds
+        summary = (tmp_path / "canonical" / "pir" / "online_query_summary.json").read_text(encoding="utf-8")
+>       assert '"query_count": 50' in summary
+E       assert '"query_count": 50' in '{\n  "official_simplepir": true,\n  "commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",\n  "query_count": 100,\n  "...uery_hashes": true,\n  "future_indices_in_startup": 0,\n  "prebuilt_bridge_binary": true,\n  "record_count": 1000\n}\n'
+
+tests/test_v12_timing_indistinguishability.py:149: AssertionError
+____ test_actual_v2_profile_uses_effective_clock_runner_and_full_transcript ____
+
+tmp_path = PosixPath('/root/autodl-tmp/v12_chr_python_serial/pytest_tmp/test_actual_v2_profile_uses_ef0')
+
+    @pytest.mark.skipif(not CAUSAL_HORIZON_RUNNER.is_file(), reason="Linux causal-horizon runner unavailable")
+    def test_actual_v2_profile_uses_effective_clock_runner_and_full_transcript(tmp_path: Path) -> None:
+        profile = causal_horizon_candidate_profiles()[0]
+        case = replace(
+            tool_case("DEV-CHR-COMPONENT-V2-001", "OpenAI Agents SDK"),
+            capability="tool.read",
+        )
+        with CanonicalOnlineSession(tmp_path / "canonical", [case], public_profile=profile) as session:
+            outcome = run_framework_case(case, session.implementation())
+        assert session.runner_binary == CAUSAL_HORIZON_RUNNER
+        assert outcome.operation_outcome_semantics == "READ_ONLY:SUCCESS"
+        assert session.trace is not None
+        assert session.trace["session_status"] == "COMPLETE"
+        assert session.trace["emitted_cells"] == 506
+        assert len(session.trace["public_relay_events"]) == 506
+>       assert session.trace["resolved_not_admitted_ids"] == []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'resolved_not_admitted_ids'
+
+tests/test_v12_causal_horizon.py:90: KeyError
+=========================== short test summary info ============================
+FAILED tests/test_v12_timing_indistinguishability.py::test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule
+FAILED tests/test_v12_causal_horizon.py::test_actual_v2_profile_uses_effective_clock_runner_and_full_transcript
+2 failed, 73 passed in 21.99s

@@ -14,6 +14,7 @@ import (
 	"time"
 
 	gatewayv2 "common-action-gateway-v2"
+	"common-action-gateway-v2/v7"
 	"common-action-gateway-v2/v7ohttp"
 	"common-action-gateway-v2/v9ohttp"
 )
@@ -496,6 +497,131 @@ func TestV12TimingProfileEmitsEverySlotAfterThirtyFiveMillisecondDelay(t *testin
 		}
 		if index > 0 && launch.DispatchNS-result.SlotLaunches[index-1].DispatchNS < int64(10*time.Millisecond) {
 			t.Fatalf("public recovery produced catch-up burst: %+v", result.SlotLaunches)
+		}
+	}
+}
+
+func TestV12EffectivePublicClockStateMachine(t *testing.T) {
+	base := time.Unix(100, 0)
+	period := 10 * time.Millisecond
+	lead := time.Millisecond
+	nominal := base.Add(30 * time.Millisecond)
+	previousDispatch := base.Add(55 * time.Millisecond)
+	eligible := effectivePublicEligibility(nominal, previousDispatch, period)
+	if want := previousDispatch.Add(period); !eligible.Equal(want) {
+		t.Fatalf("effective eligibility=%s want=%s", eligible, want)
+	}
+	state := newOnlineSlotState(nominal, onlinePreparedRequest{operationID: "noop"})
+	if !state.fixEffectiveClock(eligible, lead) {
+		t.Fatal("effective cutoff was not fixed exactly once")
+	}
+	if state.fixEffectiveClock(eligible, lead) {
+		t.Fatal("effective cutoff was mutable after being fixed")
+	}
+	afterNominalBeforeEffective := nominal.Add(2 * time.Millisecond)
+	if !state.tryInstallReal(onlinePreparedRequest{operationID: "real", real: true}, afterNominalBeforeEffective) {
+		t.Fatal("action after nominal but before effective cutoff was rejected")
+	}
+	if got := state.commit(); !got.real || got.operationID != "real" {
+		t.Fatalf("effective-cutoff REAL was not logically committed: %+v", got)
+	}
+	if state.tryInstallReal(onlinePreparedRequest{operationID: "late", real: true}, eligible) {
+		t.Fatal("post-commit action entered immutable slot")
+	}
+	state.markEmitted()
+	if state.phase != onlineSlotPhysicallyEmitted {
+		t.Fatalf("slot phase=%d want physically emitted", state.phase)
+	}
+}
+
+func TestV12EffectivePublicClockRejectsAfterEffectiveCutoff(t *testing.T) {
+	base := time.Unix(100, 0)
+	state := newOnlineSlotState(base.Add(10*time.Millisecond), onlinePreparedRequest{})
+	eligible := base.Add(45 * time.Millisecond)
+	if !state.fixEffectiveClock(eligible, time.Millisecond) {
+		t.Fatal("failed to fix effective clock")
+	}
+	if state.tryInstallReal(onlinePreparedRequest{real: true}, eligible.Add(-time.Millisecond)) {
+		t.Fatal("action at effective cutoff was accepted")
+	}
+}
+
+func TestV12EffectiveClockDependsOnlyOnPublicDispatch(t *testing.T) {
+	base := time.Unix(100, 0)
+	period := 10 * time.Millisecond
+	nominal := []time.Time{base, base.Add(period), base.Add(2 * period), base.Add(3 * period)}
+	publicDispatch := []time.Time{base, base.Add(45 * time.Millisecond), base.Add(55 * time.Millisecond), base.Add(65 * time.Millisecond)}
+	sequence := func(_ []string) []time.Time {
+		values := make([]time.Time, len(nominal))
+		previous := time.Time{}
+		for index := range nominal {
+			values[index] = effectivePublicEligibility(nominal[index], previous, period)
+			previous = publicDispatch[index]
+		}
+		return values
+	}
+	a := sequence([]string{"rare", "read", "agent", "tool"})
+	b := sequence([]string{"common", "write", "tool", "agent"})
+	for index := range a {
+		if !a[index].Equal(b[index]) {
+			t.Fatalf("private labels changed effective clock at slot %d", index+1)
+		}
+	}
+}
+
+func TestV12ResultEligibilityUsesFrozenEffectiveCutoff(t *testing.T) {
+	ready, err := v7.OpenDurableReadyQueue(filepath.Join(t.TempDir(), "ready.json"), 4)
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := &engine{ready: ready, deliveryCutoffs: make(map[uint32]int64)}
+	nominalCutoff := int64(100)
+	effectiveCutoff := int64(140)
+	if _, err := ready.Enqueue(resultRecord("between-cutoffs", gatewayv2.StatusOK, nil), nominalCutoff+20); err != nil {
+		t.Fatal(err)
+	}
+	engine.setDeliveryCutoff(1, effectiveCutoff)
+	cutoff, ok := engine.deliveryCutoff(1)
+	if !ok || cutoff != effectiveCutoff {
+		t.Fatalf("effective delivery cutoff=(%d,%t) want=(%d,true)", cutoff, ok, effectiveCutoff)
+	}
+	selected, err := ready.ReserveEligibleBefore(1, 1, cutoff)
+	if err != nil || selected == nil || gatewayv2.OperationIDString(selected.OperationID) != "between-cutoffs" {
+		t.Fatalf("result after nominal but before effective cutoff was not eligible: selected=%+v err=%v", selected, err)
+	}
+	if _, err := ready.Enqueue(resultRecord("after-effective", gatewayv2.StatusOK, nil), effectiveCutoff+1); err != nil {
+		t.Fatal(err)
+	}
+	late, err := ready.ReserveEligibleBefore(1, 2, effectiveCutoff)
+	if err != nil || late != nil {
+		t.Fatalf("result after effective cutoff entered committed slot: selected=%+v err=%v", late, err)
+	}
+}
+
+func TestV12TimingProfilePreservesTranscriptAfterHundredMillisecondDelay(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 8, 0)
+	plan.Actions = nil
+	plan.ProfileID = "V12-TIMING-INDIST-V2-H50-H4500-P10-PIR60"
+	plan.ProfileClass = TimingIndistinguishabilityProfile
+	plan.TimingSemanticRevision = "EFFECTIVE_PUBLIC_CLOCK_V2"
+	plan.PIRResolutionPeriodMS = 60
+	plan.PIRPublicEpochMS = 6000
+	plan.PIRResolutionOpportunities = 100
+	plan.PIRInitialLeadMS = 25
+	plan.PublicSessionLivenessCapMS = TimingPublicSessionLivenessCapMS
+	plan.PreparationLeadMS = 2
+	plan.RoundPeriodMS = 10
+	plan.AdmissionHorizonMS = plan.AdmissionRounds * plan.RoundPeriodMS
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 100
+	result, _ := runOnlineControl(t, plan, nil)
+	if result.SessionStatus != "COMPLETE" || !result.PublicTranscriptComplete || result.EmittedCells != plan.Rounds {
+		t.Fatalf("100-ms stall changed fixed transcript: %+v", result)
+	}
+	for index := 1; index < len(result.SlotLaunches); index++ {
+		if result.SlotLaunches[index].DispatchNS-result.SlotLaunches[index-1].DispatchNS < int64(10*time.Millisecond) {
+			t.Fatalf("100-ms stall produced catch-up burst: %+v", result.SlotLaunches)
 		}
 	}
 }

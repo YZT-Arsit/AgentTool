@@ -1,0 +1,36 @@
+....................................................................F... [ 96%]
+...                                                                      [100%]
+=================================== FAILURES ===================================
+___ test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule ____
+
+tmp_path = PosixPath('/root/autodl-tmp/v12_chr_python_serial_r2/pytest_tmp/test_actual_timing_profile_emi0')
+
+    @pytest.mark.skipif(not (Path(__file__).resolve().parents[1] / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner").is_file(), reason="Linux timing development binary unavailable")
+    def test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule(tmp_path: Path) -> None:
+        case = replace(
+            tool_case("DEV-CHR-COMPONENT-V1-COMPAT-R2-001", "OpenAI Agents SDK"),
+            capability="tool.read",
+        )
+        profile = TimingIndistinguishabilityProfile(
+            profile_id="V12-TIMING-INDIST-H50-H3000-P10-PIR60",
+            round_period_ms=10,
+            pir_resolution_period_ms=60,
+        ).validate()
+        with CanonicalOnlineSession(tmp_path / "canonical", [case], public_profile=profile) as session:
+            canonical = run_framework_case(case, session.implementation())
+        assert canonical.operation_outcome_semantics == "READ_ONLY:SUCCESS"
+        assert session.trace is not None
+        assert session.trace["session_status"] == "COMPLETE"
+        assert session.trace["public_transcript_complete"]
+        assert session.trace["emitted_cells"] == profile.total_rounds
+        assert len(session.trace["public_relay_events"]) == profile.total_rounds
+        summary = (tmp_path / "canonical" / "pir" / "online_query_summary.json").read_text(encoding="utf-8")
+        assert f'"query_count": {profile.pir_resolution_opportunities}' in summary
+        assert '"real_query_count": 1' in summary
+>       assert '"dummy_query_count": 49' in summary
+E       assert '"dummy_query_count": 49' in '{\n  "official_simplepir": true,\n  "commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",\n  "query_count": 100,\n  "...uery_hashes": true,\n  "future_indices_in_startup": 0,\n  "prebuilt_bridge_binary": true,\n  "record_count": 1000\n}\n'
+
+tests/test_v12_timing_indistinguishability.py:151: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_v12_timing_indistinguishability.py::test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule
+1 failed, 74 passed in 21.90s

@@ -1,0 +1,77 @@
+{
+  "schema": "AgentTool.V12CausalHorizonLiveManifest/1",
+  "phase": "V12-TIMING-CAUSAL-HORIZON-REQUALIFICATION",
+  "base_commit": "4a577ec8c4f610e7f9b8fa1b852a518fb4eb2e0c",
+  "frozen_after_deterministic_and_post_change_regression_pass": true,
+  "frozen_before_transitive_deployment_verification": true,
+  "frozen_before_live_execution": true,
+  "selection_rule": "SMALLEST_PREDECLARED_H_PASSING_BOTH_DEPTH50_AND_COMPLETE_CAPACITY_MATRIX",
+  "forbidden_identities": [
+    "DEV-TD-CAPACITY50-P10-PIR60",
+    "DEV-TPCIC-MS-SAME-AGENT-DEPTH50-001",
+    "DEV-MDCC-OA-SAME-AGENT-DEPTH50-001",
+    "DEV-CHR-COMPONENT-V2-001",
+    "DEV-CHR-COMPONENT-V2-R2-001",
+    "DEV-CHR-COMPONENT-V1-COMPAT-R2-001"
+  ],
+  "candidates": [
+    {
+      "horizon_ms": 4500,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H4500-P10-PIR60",
+      "workloads": [
+        {"identity":"DEV-CHR-H4500-OA-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H4500-MS-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H4500-OA-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H4500-MS-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H4500-OA-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H4500-MS-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H4500-OA-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H4500-MS-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"Microsoft Agent Framework"}
+      ]
+    },
+    {
+      "horizon_ms": 5000,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H5000-P10-PIR60",
+      "workloads": [
+        {"identity":"DEV-CHR-H5000-OA-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H5000-MS-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H5000-OA-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H5000-MS-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H5000-OA-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H5000-MS-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H5000-OA-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H5000-MS-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"Microsoft Agent Framework"}
+      ]
+    },
+    {
+      "horizon_ms": 6000,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H6000-P10-PIR60",
+      "workloads": [
+        {"identity":"DEV-CHR-H6000-OA-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H6000-MS-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H6000-OA-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H6000-MS-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H6000-OA-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H6000-MS-AAT-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"Microsoft Agent Framework"},
+        {"identity":"DEV-CHR-H6000-OA-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"OpenAI Agents SDK"},
+        {"identity":"DEV-CHR-H6000-MS-CACHE30-001","kind":"SAME_AGENT_CACHE_HIT_30","framework":"Microsoft Agent Framework"}
+      ]
+    }
+  ],
+  "public_invariants": {
+    "maximum_real_operations": 50,
+    "maximum_real_agent_resolutions_K": 6,
+    "pir_period_ms": 60,
+    "pir_public_epoch_ms": 6000,
+    "fixed_pir_query_count_Q": 100,
+    "pir_initial_lead_ms": 25,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "timing_semantic_revision": "EFFECTIVE_PUBLIC_CLOCK_V2"
+  },
+  "retry_count": 0,
+  "replacement_count": 0,
+  "timing_attack_sessions": 0,
+  "timing_confirmatory_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}

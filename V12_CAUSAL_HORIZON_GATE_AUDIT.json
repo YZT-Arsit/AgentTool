@@ -1,0 +1,40 @@
+{
+  "schema": "AgentTool.V12CausalHorizonGateAudit/1",
+  "phase": "V12-TIMING-CAUSAL-HORIZON-REQUALIFICATION",
+  "preserved_prequalification_outcomes": {
+    "go_repository_wide_exploratory": "FAIL_1_HISTORICAL_V11_5MS_TIMING_TEST",
+    "go_manifest_r1": "FAIL_HISTORICAL_TIMING_NODE_REINTRODUCED_BY_HARNESS",
+    "go_manifest_r2": "FAIL_HARNESS_COUNTED_SUBTESTS_AND_STALE_ALL_N_DENOMINATOR",
+    "python_manifest_r1_serial": "73/75 FAIL_STALE_TEST_ASSERTIONS",
+    "python_manifest_r2_serial": "74/75 FAIL_REMAINING_STALE_DUMMY49_ASSERTION"
+  },
+  "decisive_current_results": {
+    "python_serial": "75/75 PASS",
+    "python_default": "75/75 PASS",
+    "native_routing": "15/15 PASS",
+    "go": "79/79 PASS",
+    "security_negatives": "22/22 PASS",
+    "deployment_files": "696/696",
+    "deployment_python_modules": "8/8",
+    "deployment_binaries": "2/2",
+    "pir_initial_lead": "PASS"
+  },
+  "artifact_hashes": {
+    "python_serial_gate": "9348b3855d57015b7103e716b5b6b3377f8323417e65f016f422c81a1a2072f0",
+    "python_serial_log": "ea6b68bfd70e4869fe68115d247e441da0d777acc744db65bc8b5d240060533b",
+    "python_default_gate": "1563451fc6324076bef01896c8f522c70f13fefcacbd9849c85fd3947090f650",
+    "python_default_log": "58f546cc32af9b33b27f79c9f0d64da4f22a502de09913bdf4b8fc684f8a6dc4",
+    "go_r3_gate": "4f10b047083123e12b094c6f5a45d82705e332a970412888db32bc4517d02e8c",
+    "go_r3_log": "dd04688978d2872785bfcfb6646208a0ffaf8b9e7f5ac0a7e1c671509d56d7d4",
+    "security_result": "3ea99922651c50ad62bceff64a09b2e3a6bf1bc064b0cd76fa2dc4e37108ffdd",
+    "security_python_log": "7639c4ed0a2ed22fce7e4e1386776a89779938e35b2155d151dde3aba64c1f01",
+    "native_routing_log": "222e6ca61ff7d377a91122c01c0750dae0cdff370e2e4fe0c20883e8483bed3b",
+    "deployment_verification": "350a35570b0f01f844fd7cef6ea06918d544bf415006579215de1860bf342ddf",
+    "pir_lead_preflight": "881f2e0d87dd1661176eb09411653d981b030c61ddb5467b4584d0af97dd1749",
+    "live_completion": "26ba2867b73e6cc2b7e83af8e6eda7ce00526e0340e147721f3588ac3ce9edb4",
+    "live_ledger": "b07e57674341656d736b088726916c1c666173ee795474d3b3e92045e5ace5e3"
+  },
+  "runtime_source_changed_after_decisive_gates": false,
+  "timing_attack_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}

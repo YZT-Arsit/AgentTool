@@ -1,0 +1,103 @@
+{
+  "horizon_ms": 4500,
+  "profile_id": "V12-TIMING-INDIST-V2-H50-H4500-P10-PIR60",
+  "status": "PASS",
+  "workloads": [
+    {
+      "index": 0,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-OA-DEPTH50-001",
+      "kind": "SAME_AGENT_CAUSAL_DEPTH_50",
+      "framework": "OpenAI Agents SDK",
+      "started_ns": 1788201365798876245,
+      "ended_ns": 1788201377778615827,
+      "passed": true,
+      "verdict_sha256": "a7762e458e3cc41d81d4c699ac3b4a3d777f87f8b9f3bc8ba3f3478f98cf7662",
+      "previous_record_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "index": 1,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-MS-DEPTH50-001",
+      "kind": "SAME_AGENT_CAUSAL_DEPTH_50",
+      "framework": "Microsoft Agent Framework",
+      "started_ns": 1788201377779071345,
+      "ended_ns": 1788201386653968598,
+      "passed": true,
+      "verdict_sha256": "268fc07279fdabc8221d8133548ca587d378a07ef297eae24382b8ca402f5737",
+      "previous_record_sha256": "ab79916f0eced7f3060e2e8a2be4e52b9b3ffa60b3dd71c575e1d859574758c7"
+    },
+    {
+      "index": 2,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-OA-K6-001",
+      "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS",
+      "framework": "OpenAI Agents SDK",
+      "started_ns": 1788201386654282622,
+      "ended_ns": 1788201395257382940,
+      "passed": true,
+      "verdict_sha256": "b05ca8e8af709a0e291ccbd0f500ba305d924a9ef93d1fa34a8f259987036e35",
+      "previous_record_sha256": "0cfcee7014b713a72a324891c74a4c8a9562f6263309b1e0d010bd8eef379b7d"
+    },
+    {
+      "index": 3,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-MS-K6-001",
+      "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS",
+      "framework": "Microsoft Agent Framework",
+      "started_ns": 1788201395257709212,
+      "ended_ns": 1788201403950690145,
+      "passed": true,
+      "verdict_sha256": "d1efb0be443d30cd0d1cc628305e46bc37e15df88a17d077e7857ee90173299d",
+      "previous_record_sha256": "e90210fce821fc65cb7c13d03f181b1c27b24df8370afc05f9670eaa58dd8eed"
+    },
+    {
+      "index": 4,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-OA-AAT-001",
+      "kind": "AGENT_AS_TOOL_TRANSITION",
+      "framework": "OpenAI Agents SDK",
+      "started_ns": 1788201403950978995,
+      "ended_ns": 1788201412564873111,
+      "passed": true,
+      "verdict_sha256": "d62db40cb0e82c2e05e18283d0efd926bd4f6252c68bd8e54168bd4d4c1b3669",
+      "previous_record_sha256": "709eb86999ce3b39810f3746b0ee66884d2bddcbc8f0ad1581cc6e49d4459536"
+    },
+    {
+      "index": 5,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-MS-AAT-001",
+      "kind": "AGENT_AS_TOOL_TRANSITION",
+      "framework": "Microsoft Agent Framework",
+      "started_ns": 1788201412565201158,
+      "ended_ns": 1788201421260502246,
+      "passed": true,
+      "verdict_sha256": "4bd559777519b2867fa3f33d5b4fc86cfed48eb6da088876c9de680b498cf86b",
+      "previous_record_sha256": "3572f3ee86864c5dd9ebf82950c6007b070d83fe084cca96156522ddfa3c6e7a"
+    },
+    {
+      "index": 6,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-OA-CACHE30-001",
+      "kind": "SAME_AGENT_CACHE_HIT_30",
+      "framework": "OpenAI Agents SDK",
+      "started_ns": 1788201421260793611,
+      "ended_ns": 1788201430178737947,
+      "passed": true,
+      "verdict_sha256": "ebb68dbda660a7b8a1d1d3c663aca0eb81db10e9bce34e20e52da38b1a3a61b7",
+      "previous_record_sha256": "791b76a7db1d08733ff9a7724e12287469b0e11fe8b896c1c422790fd75e37ec"
+    },
+    {
+      "index": 7,
+      "horizon_ms": 4500,
+      "identity": "DEV-CHR-H4500-MS-CACHE30-001",
+      "kind": "SAME_AGENT_CACHE_HIT_30",
+      "framework": "Microsoft Agent Framework",
+      "started_ns": 1788201430179039527,
+      "ended_ns": 1788201439013662737,
+      "passed": true,
+      "verdict_sha256": "ef78bfaaedacfb395f631b5cf9fa7196f206eedf5869e57a22c07f5fee6910b9",
+      "previous_record_sha256": "c62c3a5634960f591d3b7566166113aba0dc53b88049149daad28c5061a5efda"
+    }
+  ]
+}

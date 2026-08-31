@@ -129,7 +129,7 @@ def test_pir_query_has_no_direct_process_write_outside_protocol_executor() -> No
 @pytest.mark.skipif(not (Path(__file__).resolve().parents[1] / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner").is_file(), reason="Linux timing development binary unavailable")
 def test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule(tmp_path: Path) -> None:
     case = replace(
-        tool_case("DEV-V12-TIMING-COMPONENT-001", "OpenAI Agents SDK"),
+        tool_case("DEV-CHR-COMPONENT-V1-COMPAT-R3-001", "OpenAI Agents SDK"),
         capability="tool.read",
     )
     profile = TimingIndistinguishabilityProfile(
@@ -146,6 +146,6 @@ def test_actual_timing_profile_emits_full_transcript_and_fixed_pir_schedule(tmp_
     assert session.trace["emitted_cells"] == profile.total_rounds
     assert len(session.trace["public_relay_events"]) == profile.total_rounds
     summary = (tmp_path / "canonical" / "pir" / "online_query_summary.json").read_text(encoding="utf-8")
-    assert '"query_count": 50' in summary
+    assert f'"query_count": {profile.pir_resolution_opportunities}' in summary
     assert '"real_query_count": 1' in summary
-    assert '"dummy_query_count": 49' in summary
+    assert f'"dummy_query_count": {profile.pir_resolution_opportunities - 1}' in summary

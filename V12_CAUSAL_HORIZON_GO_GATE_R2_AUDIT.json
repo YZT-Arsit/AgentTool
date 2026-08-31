@@ -1,0 +1,23 @@
+{
+  "schema": "AgentTool.V12CausalHorizonGoGateTopLevelAudit/1",
+  "manifest_sha256": "e6f62eedf158835999d2c6af4271da7aa861f11b1dbc3c41c764f56cb1db5459",
+  "raw_gate_sha256": "360b7cc3a768cc8b34cab9dd57bbeed51db2d90d62dd4578a10ab185786adcf4",
+  "raw_log_sha256": "4a373af259bc787530c9964720620a2d54579b667dc4e90cf084b90683ace2b5",
+  "raw_gate_status_preserved": "FAIL",
+  "raw_gate_counting_defect": "Go subtests containing '/' were counted in addition to their frozen top-level parent nodes",
+  "expected_top_level_tests": 78,
+  "passed_top_level_tests": 79,
+  "failed_top_level_tests": [],
+  "package_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "audited_status": "FAIL",
+  "no_test_reexecution": true,
+  "timing_attack_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}

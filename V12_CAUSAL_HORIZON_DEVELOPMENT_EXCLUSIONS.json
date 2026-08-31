@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12CausalHorizonDevelopmentExclusions/1",
+  "phase": "V12-TIMING-CAUSAL-HORIZON-REQUALIFICATION",
+  "identities": [
+    "DEV-CHR-COMPONENT-V1-COMPAT-R2-001",
+    "DEV-CHR-COMPONENT-V1-COMPAT-R3-001",
+    "DEV-CHR-COMPONENT-V2-001",
+    "DEV-CHR-COMPONENT-V2-R2-001",
+    "DEV-CHR-H4500-MS-AAT-001",
+    "DEV-CHR-H4500-MS-CACHE30-001",
+    "DEV-CHR-H4500-MS-DEPTH50-001",
+    "DEV-CHR-H4500-MS-K6-001",
+    "DEV-CHR-H4500-OA-AAT-001",
+    "DEV-CHR-H4500-OA-CACHE30-001",
+    "DEV-CHR-H4500-OA-DEPTH50-001",
+    "DEV-CHR-H4500-OA-K6-001"
+  ],
+  "future_holdout_exclusion_required": true,
+  "does_not_construct_final_holdout": true
+}

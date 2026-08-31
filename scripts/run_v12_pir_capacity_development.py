@@ -40,6 +40,15 @@ def build_cases(kind: str, framework: str, identity: str):
             ).validate()
             for index in range(50)
         ]
+    if kind == "SAME_AGENT_CACHE_HIT_30":
+        return "DYNAMIC_SEQUENCE", [
+            replace(
+                tool_case(f"{identity}-A{index:02d}", framework),
+                operation_id=operation_id(identity, index),
+                logical_action_name="repeated_same_agent_cache_tool",
+            ).validate()
+            for index in range(30)
+        ]
     if kind == "MAX_K_DISTINCT_AGENT_RESOLUTIONS":
         values = [
             tool_case(f"{identity}-A00", framework),
@@ -99,6 +108,11 @@ def run_one(output: Path, item: dict[str, str], profile: TimingIndistinguishabil
         "session_complete": trace.get("session_status") == "COMPLETE",
         "public_transcript_complete": trace.get("public_transcript_complete") is True,
         "exact_rounds": int(trace.get("emitted_cells", -1)) == profile.total_rounds,
+        "exact_relay_cells": len(trace.get("public_relay_events", [])) == profile.total_rounds,
+        "authenticated_slot_order": [int(value["round"]) for value in trace.get("public_relay_events", [])]
+        == list(range(1, profile.total_rounds + 1)),
+        "no_missing_or_duplicate_slots": len({int(value["round"]) for value in trace.get("public_relay_events", [])})
+        == profile.total_rounds,
         "exact_operation_ids_recovered": recovered == expected_ids,
         "exact_operation_ids_delivered": delivered == expected_ids,
         "exact_external_accepted_ids": sorted(trace.get("accepted_operation_ids", [])) == sorted(external_ids),
@@ -107,6 +121,9 @@ def run_one(output: Path, item: dict[str, str], profile: TimingIndistinguishabil
         "exact_real_resolution_count": summary["real_query_count"] == len(unique_agents),
         "exact_dummy_query_count": summary["dummy_query_count"] == profile.pir_resolution_opportunities - len(unique_agents),
         "cache_accounting": summary["descriptor_cache_hits"] + summary["descriptor_cache_misses"] == len(cases),
+        "real_plus_dummy_is_fixed_Q": summary["real_query_count"] + summary["dummy_query_count"]
+        == profile.pir_resolution_opportunities,
+        "zero_resolved_not_admitted": trace.get("resolved_not_admitted_ids", []) == [],
         "no_dummy_heavy": int(trace.get("dummy_provider_operations", -1)) == 0,
         "no_silent_loss": int(trace.get("silent_committed_result_losses", -1)) == 0,
         "no_profile_overflow": int(trace.get("profile_overflow_events", -1)) == 0,

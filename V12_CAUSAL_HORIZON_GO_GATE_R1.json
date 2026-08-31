@@ -1,0 +1,44 @@
+{
+  "schema": "AgentTool.V12CausalHorizonGoGate/1",
+  "manifest_sha256": "f84054207f26b6d4e51077e16645b24cea64efa8e9d214ce8fb3d61cd54424eb",
+  "commands": [
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestEffectGateAllowsOneEffectPerPrivateOperationID|TestOpaqueClientFramesRequireNoWorkloadOrKey|TestJournalCrashBeforeCommitRespectsProviderSemantics|TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash|TestJournalReadOnlyCanRetrySameOperationIDAfterCrash|TestJournalCommittedResultSurvivesCrashBeforeRingPublication|TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay|TestJournalFailedNonIdempotentCallRequiresReconciliation|TestJournalRejectsOperationIDSemanticReuse|TestLateResultContinuesInNextPublicSession|TestRequestFixedSizeRoundTrip|TestResultAndWaitUseSamePreparedSize|TestResponsePreparationHasNoPerCallAllocation|TestPublicHeaderIsAuthenticated|TestSequenceValidatorRejectsReplayAndWrongSession|TestFunctionalIsolationDoesNotSelfDeclareTimingReference|TestProviderTimeoutBeforeEffectRecordsNoEffect|TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous|TestProviderDuplicateOperationIDCanReturnCachedResultExactlyOnce|TestProviderErrorAndConnectionInterruptionMapToPrivateError|TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative|TestSPSCRingFixedRecords|TestResultRingSaturationFailsClosedWithoutOverwrite)$",
+      "."
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestProviderDiagnosticClassification|TestCanonicalWireSizesAndAdmissionBinding|TestCanonicalLiveRecoveryTypesAtEveryGatewayCrashPoint|TestCanonicalPlanRejectsNonLoopbackPrivateProvider|TestCanonicalAcceptUsesLiveRecoveryDecisionOnRestart|TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots|TestV11_2OnlineModeRejectsStartupActionList|TestV11_2OnlineCausalActionsUseOnePreconnectedSession|TestV11_2OnlineSchedulerFailureIsExplicitAndDoesNotRestart|TestV12_1OnlineSubperiodSlipIsDiagnosticNotScheduleMiss|TestV12TimingProfileEmitsEverySlotAfterThirtyFiveMillisecondDelay|TestV12EffectivePublicClockStateMachine|TestV12EffectivePublicClockRejectsAfterEffectiveCutoff|TestV12EffectiveClockDependsOnlyOnPublicDispatch|TestV12ResultEligibilityUsesFrozenEffectiveCutoff|TestV12TimingProfilePreservesTranscriptAfterHundredMillisecondDelay|TestV12TimingSemanticErrorDoesNotTruncatePublicCover|TestV12TimingNoDropNoBurstRecoveryIsPublicAndComplete)$",
+      "./canonicalv9"
+    ]
+  ],
+  "started_ns": 1788200212843198497,
+  "ended_ns": 1788200219991711387,
+  "expected_tests": 81,
+  "passed_tests": 49,
+  "failed_tests": [
+    {
+      "package": "_/root/autodl-tmp/mediation_trace_validation/common_action_gateway_v2/canonicalv9",
+      "test": "TestV11_2OnlineCausalActionsUseOnePreconnectedSession"
+    }
+  ],
+  "exit_codes": [
+    0,
+    1
+  ],
+  "log_sha256": "7ae99d2c6ca0c4da83413670acbb2a6a29479a8088ad6fa71ba8bcec737010ee",
+  "status": "FAIL",
+  "timing_attack_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}

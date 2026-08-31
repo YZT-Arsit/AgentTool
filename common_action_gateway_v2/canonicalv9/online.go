@@ -54,14 +54,100 @@ type onlinePreparedRequest struct {
 	real        bool
 }
 
+type onlineSlotPhase uint8
+
+const (
+	onlineSlotFuture onlineSlotPhase = iota
+	onlineSlotEffectiveCutoffFixed
+	onlineSlotLogicallyCommitted
+	onlineSlotPhysicallyEmitted
+)
+
 type onlineSlotState struct {
 	mu              sync.Mutex
-	deadline        time.Time
+	nominalDeadline time.Time
+	effective       time.Time
 	cutoff          time.Time
-	committed       bool
+	phase           onlineSlotPhase
+	cutoffReady     chan struct{}
 	noop            onlinePreparedRequest
 	real            *onlinePreparedRequest
 	realCommittedAt time.Time
+}
+
+func newOnlineSlotState(deadline time.Time, noop onlinePreparedRequest) *onlineSlotState {
+	return &onlineSlotState{
+		nominalDeadline: deadline,
+		phase:           onlineSlotFuture,
+		cutoffReady:     make(chan struct{}),
+		noop:            noop,
+	}
+}
+
+func effectivePublicEligibility(nominal, previousDispatch time.Time, period time.Duration) time.Time {
+	if !previousDispatch.IsZero() && previousDispatch.Add(period).After(nominal) {
+		return previousDispatch.Add(period)
+	}
+	return nominal
+}
+
+func (s *onlineSlotState) fixEffectiveClock(eligible time.Time, lead time.Duration) bool {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.phase != onlineSlotFuture {
+		return false
+	}
+	s.effective = eligible
+	s.cutoff = eligible.Add(-lead)
+	s.phase = onlineSlotEffectiveCutoffFixed
+	close(s.cutoffReady)
+	return true
+}
+
+func (s *onlineSlotState) waitForEffectiveClock(done <-chan struct{}) bool {
+	select {
+	case <-s.cutoffReady:
+		return true
+	case <-done:
+		return false
+	}
+}
+
+func (s *onlineSlotState) effectiveClock() (time.Time, time.Time) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.effective, s.cutoff
+}
+
+func (s *onlineSlotState) tryInstallReal(candidate onlinePreparedRequest, preparedAt time.Time) bool {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.phase != onlineSlotEffectiveCutoffFixed || !preparedAt.Before(s.cutoff) {
+		return false
+	}
+	s.real = &candidate
+	s.realCommittedAt = preparedAt
+	return true
+}
+
+func (s *onlineSlotState) commit() onlinePreparedRequest {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	item := s.noop
+	if s.phase == onlineSlotEffectiveCutoffFixed && s.real != nil &&
+		!s.realCommittedAt.IsZero() && s.realCommittedAt.Before(s.cutoff) {
+		item = *s.real
+	}
+	s.phase = onlineSlotLogicallyCommitted
+	return item
+}
+
+func (s *onlineSlotState) markEmitted() {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.phase == onlineSlotLogicallyCommitted {
+		s.phase = onlineSlotPhysicallyEmitted
+	}
 }
 
 // onlinePublicStartLeadPeriods is a public, secret-independent setup budget.
@@ -220,9 +306,31 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			return RunResult{}, err
 		}
 		deadline := t0.Add(time.Duration(index) * period)
-		slots[index] = &onlineSlotState{deadline: deadline, cutoff: deadline.Add(-lead), noop: noop}
+		slots[index] = newOnlineSlotState(deadline, noop)
+	}
+	fixSlotClock := func(index int, previousDispatch time.Time) {
+		state := slots[index]
+		eligible := state.nominalDeadline
 		if timingIndistinguishability {
-			engine.deliveryCutoffs[uint32(index+1)] = deadline.Add(-lead).UnixNano()
+			eligible = effectivePublicEligibility(state.nominalDeadline, previousDispatch, period)
+		}
+		if !state.fixEffectiveClock(eligible, lead) {
+			return
+		}
+		if timingIndistinguishability {
+			engine.setDeliveryCutoff(uint32(index+1), eligible.Add(-lead).UnixNano())
+		}
+	}
+	if timingIndistinguishability {
+		// Effective timing slots are frozen one at a time because E_i uses only
+		// the previous actual public dispatch.  No private state participates.
+		fixSlotClock(0, time.Time{})
+	} else {
+		// Historical strict/non-timing profiles retain their pre-existing
+		// nominal clock.  Every cutoff is known at T0, including after a
+		// deliberately failed public slot.
+		for index := range slots {
+			fixSlotClock(index, time.Time{})
 		}
 	}
 	setupEvents = append(setupEvents,
@@ -291,7 +399,11 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 					index := nextSlot
 					nextSlot++
 					state := slots[index]
-					if !time.Now().Before(state.cutoff) {
+					if !state.waitForEffectiveClock(done) {
+						return
+					}
+					_, cutoff := state.effectiveClock()
+					if !time.Now().Before(cutoff) {
 						continue
 					}
 					message, err := actionMessage(action)
@@ -302,14 +414,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 					if err != nil {
 						break
 					}
-					state.mu.Lock()
 					commitTime := time.Now()
-					if !state.committed && commitTime.Before(state.cutoff) {
-						state.real = &candidate
-						state.realCommittedAt = commitTime
-						admitted = true
-					}
-					state.mu.Unlock()
+					admitted = state.tryInstallReal(candidate, commitTime)
 					if admitted {
 						acceptedMu.Lock()
 						acceptedIDs = append(acceptedIDs, action.OperationID)
@@ -361,10 +467,11 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				WaitError:      pacerErr.Error(),
 			}
 			for _, state := range slots {
+				nominalCutoff := state.nominalDeadline.Add(-lead)
 				launches = append(launches, SlotLaunch{
 					Session: 1, Slot: state.noop.slot.Slot,
-					DeadlineNS:          state.deadline.Sub(processClock).Nanoseconds(),
-					PreparationCutoffNS: state.cutoff.Sub(processClock).Nanoseconds(),
+					DeadlineNS:          state.nominalDeadline.Sub(processClock).Nanoseconds(),
+					PreparationCutoffNS: nominalCutoff.Sub(processClock).Nanoseconds(),
 					ScheduleMiss:        true,
 				})
 			}
@@ -380,13 +487,18 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		previousDispatch := time.Time{}
 		livenessDeadline := processClock.Add(time.Duration(plan.PublicSessionLivenessCapMS) * time.Millisecond)
 		for index, state := range slots {
-			if err := pacer.WaitUntil(state.cutoff); err != nil {
+			if !state.waitForEffectiveClock(done) {
+				break
+			}
+			eligible, cutoff := state.effectiveClock()
+			if err := pacer.WaitUntil(cutoff); err != nil {
 				pacerWaitError = err.Error()
 				for _, remainingState := range slots[index:] {
+					remainingCutoff := remainingState.nominalDeadline.Add(-lead)
 					launches = append(launches, SlotLaunch{
 						Session: 1, Slot: remainingState.noop.slot.Slot,
-						DeadlineNS:          remainingState.deadline.Sub(processClock).Nanoseconds(),
-						PreparationCutoffNS: remainingState.cutoff.Sub(processClock).Nanoseconds(),
+						DeadlineNS:          remainingState.nominalDeadline.Sub(processClock).Nanoseconds(),
+						PreparationCutoffNS: remainingCutoff.Sub(processClock).Nanoseconds(),
 						ScheduleMiss:        true,
 					})
 				}
@@ -394,35 +506,26 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			}
 			preparationWake := time.Now()
 			incidentBefore := hostBefore
-			if preparationWake.Sub(state.cutoff) > tolerance {
+			if preparationWake.Sub(cutoff) > tolerance {
 				incidentBefore = schedulerHostSnapshot()
 			}
-			state.mu.Lock()
-			item := state.noop
 			// NOOP is the precommitted default. A REAL payload may replace it
-			// only if preparation completed before the nominal logical cutoff.
+			// only if preparation completed before the effective public cutoff.
 			// Late physical emission never consults newly eligible private state.
-			if state.real != nil && !state.realCommittedAt.IsZero() && state.realCommittedAt.Before(state.cutoff) {
-				item = *state.real
-			}
-			state.committed = true
-			state.mu.Unlock()
+			item := state.commit()
 			if item.real {
 				emitter.emit(OnlineControlEvent{Type: "ACTION_ADMITTED", OperationID: item.operationID, Round: index + 1})
 				engine.record(PrivateEvent{OperationID: item.operationID, Stage: "ONLINE_ACTION_ADMITTED", Round: index + 1})
-			}
-			eligible := state.deadline
-			if timingIndistinguishability && !previousDispatch.IsZero() && previousDispatch.Add(period).After(eligible) {
-				eligible = previousDispatch.Add(period)
 			}
 			sleepEntry := time.Now()
 			if err := pacer.WaitUntil(eligible); err != nil {
 				pacerWaitError = err.Error()
 				for _, remainingState := range slots[index:] {
+					remainingCutoff := remainingState.nominalDeadline.Add(-lead)
 					launches = append(launches, SlotLaunch{
 						Session: 1, Slot: remainingState.noop.slot.Slot,
-						DeadlineNS:          remainingState.deadline.Sub(processClock).Nanoseconds(),
-						PreparationCutoffNS: remainingState.cutoff.Sub(processClock).Nanoseconds(),
+						DeadlineNS:          remainingState.nominalDeadline.Sub(processClock).Nanoseconds(),
+						PreparationCutoffNS: remainingCutoff.Sub(processClock).Nanoseconds(),
 						ScheduleMiss:        true,
 					})
 				}
@@ -437,19 +540,19 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				infrastructureLivenessFailure = true
 				break
 			}
-			slip := dispatchTime.Sub(state.deadline)
+			slip := dispatchTime.Sub(state.nominalDeadline)
 			launch := SlotLaunch{
 				Session: 1, Slot: uint32(index + 1),
-				DeadlineNS:            state.deadline.Sub(processClock).Nanoseconds(),
+				DeadlineNS:            state.nominalDeadline.Sub(processClock).Nanoseconds(),
 				EligibleNS:            eligible.Sub(processClock).Nanoseconds(),
-				PreparationCutoffNS:   state.cutoff.Sub(processClock).Nanoseconds(),
+				PreparationCutoffNS:   cutoff.Sub(processClock).Nanoseconds(),
 				PreparationWakeNS:     preparationWake.Sub(processClock).Nanoseconds(),
-				PreparationLatenessNS: preparationWake.Sub(state.cutoff).Nanoseconds(),
+				PreparationLatenessNS: preparationWake.Sub(cutoff).Nanoseconds(),
 				SleepEntryNS:          sleepEntry.Sub(processClock).Nanoseconds(),
 				SleepWakeNS:           sleepWake.Sub(processClock).Nanoseconds(),
 				DispatchNS:            dispatchTime.Sub(processClock).Nanoseconds(),
-				WakeLatenessNS:        sleepWake.Sub(state.deadline).Nanoseconds(),
-				DispatchLatenessNS:    dispatchTime.Sub(state.deadline).Nanoseconds(),
+				WakeLatenessNS:        sleepWake.Sub(state.nominalDeadline).Nanoseconds(),
+				DispatchLatenessNS:    dispatchTime.Sub(state.nominalDeadline).Nanoseconds(),
 				LaunchSlipNS:          slip.Nanoseconds(),
 			}
 			launch.ToleranceExceeded = slip > tolerance
@@ -473,6 +576,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			launch.Emitted = true
 			launches = append(launches, launch)
 			previousDispatch = dispatchTime
+			state.markEmitted()
+			if index+1 < len(slots) {
+				fixSlotClock(index+1, previousDispatch)
+			}
 			submitted++
 			responseWG.Add(1)
 			go func(value onlinePreparedRequest) {

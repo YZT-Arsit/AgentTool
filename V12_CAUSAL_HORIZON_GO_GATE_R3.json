@@ -1,0 +1,83 @@
+{
+  "schema": "AgentTool.V12CausalHorizonGoGate/1",
+  "manifest_sha256": "057ea4ecdc20155fbada2df99f7551d9d2f6ecb50dfd4c939bb93a98147b6b5c",
+  "commands": [
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestEffectGateAllowsOneEffectPerPrivateOperationID|TestOpaqueClientFramesRequireNoWorkloadOrKey|TestJournalCrashBeforeCommitRespectsProviderSemantics|TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash|TestJournalReadOnlyCanRetrySameOperationIDAfterCrash|TestJournalCommittedResultSurvivesCrashBeforeRingPublication|TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay|TestJournalFailedNonIdempotentCallRequiresReconciliation|TestJournalRejectsOperationIDSemanticReuse|TestLateResultContinuesInNextPublicSession|TestRequestFixedSizeRoundTrip|TestResultAndWaitUseSamePreparedSize|TestResponsePreparationHasNoPerCallAllocation|TestPublicHeaderIsAuthenticated|TestSequenceValidatorRejectsReplayAndWrongSession|TestFunctionalIsolationDoesNotSelfDeclareTimingReference|TestProviderTimeoutBeforeEffectRecordsNoEffect|TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous|TestProviderDuplicateOperationIDCanReturnCachedResultExactlyOnce|TestProviderErrorAndConnectionInterruptionMapToPrivateError|TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative|TestSPSCRingFixedRecords|TestResultRingSaturationFailsClosedWithoutOverwrite)$",
+      "."
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestProviderDiagnosticClassification|TestCanonicalWireSizesAndAdmissionBinding|TestCanonicalLiveRecoveryTypesAtEveryGatewayCrashPoint|TestCanonicalPlanRejectsNonLoopbackPrivateProvider|TestCanonicalAcceptUsesLiveRecoveryDecisionOnRestart|TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots|TestV11_2OnlineModeRejectsStartupActionList|TestV12TimingProfileEmitsEverySlotAfterThirtyFiveMillisecondDelay|TestV12EffectivePublicClockStateMachine|TestV12EffectivePublicClockRejectsAfterEffectiveCutoff|TestV12EffectiveClockDependsOnlyOnPublicDispatch|TestV12ResultEligibilityUsesFrozenEffectiveCutoff|TestV12TimingProfilePreservesTranscriptAfterHundredMillisecondDelay|TestV12TimingSemanticErrorDoesNotTruncatePublicCover|TestV12TimingNoDropNoBurstRecoveryIsPublicAndComplete)$",
+      "./canonicalv9"
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestCrashAfterAcceptedBeforeProviderIsRetryableForAllSemantics|TestCrashAfterProviderStartUsesDeclaredEffectSemantics|TestCommittedResultRecoveryDoesNotReplayEffect|TestCrashAfterFrameworkDeliveryRemainsDeduplicated|TestBeginPersistsProviderStartInOneRecoveryTransition|TestLegacyRecoverySnapshotMigratesToWAL|TestPublicAdmissionRequiresCompletionAndDrainTail|TestV6LikeProfileFailsCapacityProof|TestPublicTerminalStatuses|TestDurableQueueSurvivesCrashBeforePublicSend|TestDurableQueueCrashAfterSendBeforeAckReplaysForTrustedDedup|TestDurableQueueOutOfOrderAndLateEligibility|TestDurableQueueDeduplicatesAndFailsClosedAtCapacity|TestDeliveryOfOneTenFiftyAndOneHundredOperations|TestLegacyReadySnapshotMigratesToWAL|TestReadyQueueNominalCutoffExcludesLateResultUntilFutureSlot)$",
+      "./v7"
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestLocalHTTPRelayForwardsExactBytesAndReusesGatewayConnection|TestLocalHTTPRelayRejectsVariableLengthBeforeGateway|TestUnavailableBHTTPCodecFailsClosed|TestUnavailableBackendFailsClosedAndLegacyIsNotCanonical|TestOpaqueRelayForwardsExactBytesAndLogsOnlyPublicMetadata|TestRelayRejectsWrongLengthOrContentType|TestLateResultUsesCurrentSlotContextOnly|TestProfileRequiresFixedSizesAndLifetime|TestNoopHasNoPrivateRouteAndOuterMetadataHasNoSemanticFields)$",
+      "./v7ohttp"
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestAdmissionIsMechanicallyBoundToActualSchedule|TestMemoryDeliveryCutoffAndDeadlinePathPerformNoDurabilityIO|TestFreshRequestRelayDropsAllNonAllowlistedInboundMetadata|TestFreshRequestRelayRefusesNonLoopbackGateway)$",
+      "./v8"
+    ],
+    [
+      "/root/autodl-tmp/go1.26.5/bin/go",
+      "test",
+      "-count=1",
+      "-timeout=10m",
+      "-json",
+      "-run",
+      "^(?:TestV9RuntimeAdmissionBindingFailsClosedForEveryPublicCapacityInput|TestRealOHTTPBytesTraverseV8RelayExactly|TestRFC9292AllActionCasesRoundTripWithCanonicalPadding|TestRFC9292AllResponseCasesRoundTrip|TestRFC9292AuthenticatedPublicSlotBinding|TestRFC9292RejectsMalformedAndNonzeroPadding|TestRFC9458PerSlotRoundTripAndContextBinding|TestRFC9458WrongSlotAndModifiedResponseFail|TestRFC9458RejectsTruncatedAndUnconfiguredSuite|TestActualOHTTPLengthsEqualWithinPublicBHTTPBuckets|TestPublicConfigMultipleSuitesRoundTrip|TestReportActualRFCExpansion)$",
+      "./v9ohttp"
+    ]
+  ],
+  "started_ns": 1788200630839196887,
+  "ended_ns": 1788200638036472374,
+  "expected_tests": 79,
+  "passed_tests": 79,
+  "failed_tests": [],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "log_sha256": "dd04688978d2872785bfcfb6646208a0ffaf8b9e7f5ac0a7e1c671509d56d7d4",
+  "status": "PASS",
+  "timing_attack_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}

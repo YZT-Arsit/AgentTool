@@ -231,8 +231,9 @@ func (q *DurableReadyQueue) ReserveEligible(publicSession, publicSlot uint32) (*
 }
 
 // ReserveEligibleBefore commits a public response slot using only results that
-// were durably published by its public nominal cutoff. A zero cutoff retains
-// the legacy behavior.
+// were durably published by its frozen public logical cutoff. The caller may
+// derive that cutoff from a nominal or a secret-independent effective public
+// clock. A zero cutoff retains the legacy behavior.
 func (q *DurableReadyQueue) ReserveEligibleBefore(publicSession, publicSlot uint32, cutoffNS int64) (*gatewayv2.ResultRecord, error) {
 	if cutoffNS <= 0 {
 		return nil, errors.New("result commitment cutoff must be positive")

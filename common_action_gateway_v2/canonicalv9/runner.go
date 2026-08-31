@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -60,6 +61,12 @@ type Plan struct {
 	SchedulerToleranceMS       int          `json:"scheduler_tolerance_ms,omitempty"`
 	PreparationLeadMS          int          `json:"preparation_lead_ms,omitempty"`
 	PublicSessionLivenessCapMS int          `json:"public_session_liveness_cap_ms,omitempty"`
+	AdmissionHorizonMS         int          `json:"admission_horizon_ms,omitempty"`
+	PIRResolutionPeriodMS      int          `json:"pir_resolution_period_ms,omitempty"`
+	PIRPublicEpochMS           int          `json:"pir_public_epoch_ms,omitempty"`
+	PIRResolutionOpportunities int          `json:"pir_resolution_opportunities,omitempty"`
+	PIRInitialLeadMS           int          `json:"pir_initial_lead_ms,omitempty"`
+	TimingSemanticRevision     string       `json:"timing_semantic_revision,omitempty"`
 	FaultDelayResponseSlot     int          `json:"fault_delay_response_slot,omitempty"`
 	FaultDelayResponseMS       int          `json:"fault_delay_response_ms,omitempty"`
 	FaultSchedulerStallSlot    int          `json:"fault_scheduler_stall_slot,omitempty"`
@@ -243,26 +250,40 @@ type providerResponse struct {
 }
 
 type engine struct {
-	plan            Plan
-	codec           v9ohttp.RFC9292Codec
-	client          *v9ohttp.RFC9458Client
-	gateway         *v9ohttp.RFC9458Gateway
-	routes          map[string]RouteSpec
-	journal         *v7.EffectRecoveryJournal
-	ready           *v7.DurableReadyQueue
-	memory          *v8.MemoryDeliveryQueue
-	httpClient      *http.Client
-	providerCalls   atomic.Int64
-	eventsMu        sync.Mutex
-	events          []PrivateEvent
-	workers         sync.WaitGroup
-	slotsMu         sync.Mutex
-	seenSlots       map[uint32]bool
-	deliveryCutoffs map[uint32]int64
-	deliveryMu      sync.Mutex
-	providerMu      sync.Mutex
-	providerDiags   []ProviderDiagnostic
-	started         time.Time
+	plan             Plan
+	codec            v9ohttp.RFC9292Codec
+	client           *v9ohttp.RFC9458Client
+	gateway          *v9ohttp.RFC9458Gateway
+	routes           map[string]RouteSpec
+	journal          *v7.EffectRecoveryJournal
+	ready            *v7.DurableReadyQueue
+	memory           *v8.MemoryDeliveryQueue
+	httpClient       *http.Client
+	providerCalls    atomic.Int64
+	eventsMu         sync.Mutex
+	events           []PrivateEvent
+	workers          sync.WaitGroup
+	slotsMu          sync.Mutex
+	seenSlots        map[uint32]bool
+	deliveryCutoffs  map[uint32]int64
+	deliveryCutoffMu sync.RWMutex
+	deliveryMu       sync.Mutex
+	providerMu       sync.Mutex
+	providerDiags    []ProviderDiagnostic
+	started          time.Time
+}
+
+func (e *engine) setDeliveryCutoff(slot uint32, cutoffNS int64) {
+	e.deliveryCutoffMu.Lock()
+	defer e.deliveryCutoffMu.Unlock()
+	e.deliveryCutoffs[slot] = cutoffNS
+}
+
+func (e *engine) deliveryCutoff(slot uint32) (int64, bool) {
+	e.deliveryCutoffMu.RLock()
+	defer e.deliveryCutoffMu.RUnlock()
+	cutoff, ok := e.deliveryCutoffs[slot]
+	return cutoff, ok
 }
 
 func effect(value string) (gatewayv2.EffectSemantics, error) {
@@ -323,6 +344,18 @@ func validatePlan(plan Plan) error {
 	}
 	if plan.ProfileClass == TimingIndistinguishabilityProfile && plan.PublicSessionLivenessCapMS != TimingPublicSessionLivenessCapMS {
 		return errors.New("timing-indistinguishability profile requires frozen 60000 ms public liveness cap")
+	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V2-") {
+		if plan.TimingSemanticRevision != "EFFECTIVE_PUBLIC_CLOCK_V2" {
+			return errors.New("V12 V2 timing profile requires effective public clock revision")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 V2 public admission horizon disagrees with fixed slot count")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 V2 public PIR schedule changed")
+		}
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
 		if slot < 0 || slot > plan.Rounds {
@@ -606,7 +639,12 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 	e.deliveryMu.Lock()
 	var selected *gatewayv2.ResultRecord
 	if e.plan.ProfileClass == TimingIndistinguishabilityProfile {
-		cutoffNS := e.deliveryCutoffs[currentRound]
+		cutoffNS, ok := e.deliveryCutoff(currentRound)
+		if !ok {
+			e.deliveryMu.Unlock()
+			http.Error(writer, "effective result cutoff unavailable", http.StatusInternalServerError)
+			return
+		}
 		selected, err = e.ready.ReserveEligibleBefore(1, currentRound, cutoffNS)
 	} else {
 		selected, err = e.ready.ReserveEligible(1, currentRound)
