@@ -1,6 +1,10 @@
 {
   "schema": "AgentTool.V12ApplicationObservabilityGoManifest/1",
+  "revision": 2,
+  "supersedes_preliminary_manifest_sha256": "95b66781fec35e057815a951127d38a4c97bc6959fa1b47e873845c58aa5a2bb6",
+  "preliminary_gate_disposition": "FAILED_TEST_FIXTURE_PRESERVED",
   "frozen_before_full_affected_gate": true,
+  "frozen_before_decisive_rerun": true,
   "inherits": "V12_CAUSAL_HORIZON_GO_MANIFEST_R3.json",
   "inherits_sha256": "d63242ac9544dbf87df073b23c7d6d397bc3fb27f3f6a9f49f5dc54f1bfe5c6d",
   "packages": {
@@ -109,11 +113,11 @@
     "common_action_gateway_v2/v8/http_relay.go": "08a37d23999344ec96e1036b0c99793e9390c374b208676661c2eb831511acd3",
     "common_action_gateway_v2/v8/v8_test.go": "768308d540f448d513a49b498661023ed509556e8071aa9108dfd34bc3aaef29",
     "common_action_gateway_v2/canonicalv9/runner.go": "5753ea56ad58bcae6dc961bb433c67501ac70e4f126e476505f61e8527396979",
-    "common_action_gateway_v2/canonicalv9/canonicalv9_test.go": "19661f65e92f6426a6b6b0941bb1734a5bbdbe5bebe3121af2d51caee9efdb48",
+    "common_action_gateway_v2/canonicalv9/canonicalv9_test.go": "f4f219fe05abd80d3ec1cb9914bcb5b5e7d90751ed22814e70bbb2ba64042da6",
     "pir_integration/simplepir_bridge/main.go": "ca6e0c4ff68384b2f883544130af828921d8ce31cff8846b1fdcf7b914bf8d70",
     "pir_integration/simplepir_bridge/main_test.go": "5fdcb7ab06af32ffd11af1a71cc5626e10d2ec2ae04d2f139a4da3ea8093bb73"
   },
   "classifier_training_runs": 0,
   "real_auc_calculations": 0,
-  "payload_sha256": "bae740224c5eaa0a5fe6500448ac5518e67158d1fd92ea69c8d126e9d29707bb"
+  "payload_sha256": "b4084625cc679210697decb3f4b6d5905d4f637158cfe06f7f8aa4bcee4644d0"
 }

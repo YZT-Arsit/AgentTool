@@ -36,7 +36,11 @@ def main() -> int:
     count = sum(len(value) for value in packages.values())
     payload = {
         "schema": "AgentTool.V12ApplicationObservabilityGoManifest/1",
+        "revision": 2,
+        "supersedes_preliminary_manifest_sha256": "95b66781fec35e057815a951127d38a4c97bc6959fa1b47e873845c58aa5a2bb6",
+        "preliminary_gate_disposition": "FAILED_TEST_FIXTURE_PRESERVED",
         "frozen_before_full_affected_gate": True,
+        "frozen_before_decisive_rerun": True,
         "inherits": "V12_CAUSAL_HORIZON_GO_MANIFEST_R3.json",
         "inherits_sha256": sha(ROOT / "V12_CAUSAL_HORIZON_GO_MANIFEST_R3.json"),
         "packages": packages, "test_count": count,
