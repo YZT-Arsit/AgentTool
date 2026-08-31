@@ -1,0 +1,43 @@
+{
+  "schema": "AgentTool.V12TimingObserverContract/2",
+  "view": "TIMING_ONLY_VIEW",
+  "roles": {
+    "REGISTRY": "REGISTRY_APPLICATION_OPERATOR",
+    "RELAY": "RELAY_APPLICATION_OPERATOR"
+  },
+  "allowed_provenance": [
+    "APPLICATION_RECEIVE_TIMESTAMP",
+    "APPLICATION_SEND_TIMESTAMP",
+    "PUBLIC_WIRE_METADATA",
+    "PUBLIC_CONFIGURATION",
+    "DERIVED_FROM_ALLOWED_FIELDS"
+  ],
+  "relay": {
+    "request_observed_ns": "APPLICATION_RECEIVE_TIMESTAMP",
+    "response_send_ns": "APPLICATION_SEND_TIMESTAMP",
+    "response_observed_ns": "INTERNAL_PRIVATE_STATE",
+    "session": "PUBLIC_WIRE_METADATA",
+    "round": "PUBLIC_WIRE_METADATA",
+    "request_length": "PUBLIC_WIRE_METADATA",
+    "response_length": "PUBLIC_WIRE_METADATA",
+    "profile_id": "PUBLIC_CONFIGURATION",
+    "derived_timing_fields": "DERIVED_FROM_ALLOWED_FIELDS",
+    "session_policy": "EXACTLY_ONE_SESSION_PRIMARY",
+    "cross_session_gaps": false
+  },
+  "registry": {
+    "request_arrival_ns": "APPLICATION_RECEIVE_TIMESTAMP",
+    "response_send_ns": "APPLICATION_SEND_TIMESTAMP",
+    "ordinal": "PUBLIC_WIRE_METADATA",
+    "query_answer_sizes_and_protocol_dimensions": "PUBLIC_WIRE_METADATA",
+    "profile_period_q": "PUBLIC_CONFIGURATION",
+    "derived_timing_fields": "DERIVED_FROM_ALLOWED_FIELDS",
+    "answer_ready_ns": "INTERNAL_PRIVATE_STATE"
+  },
+  "excluded": [
+    "executor", "request_kind", "real_dummy", "private_agent_identity",
+    "tool_identity", "route_alias", "provider_diagnostics", "scheduler_diagnostics",
+    "gc_cpu_cgroup_diagnostics", "result_readiness", "operation_id", "unknown_source_fields"
+  ],
+  "unknown_source_fields_copied": false
+}

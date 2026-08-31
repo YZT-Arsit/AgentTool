@@ -1,0 +1,30 @@
+{
+  "schema": "AgentTool.V12TimingMethodologyRedesignClosure/1",
+  "base_commit": "1cf12990fdfc005f59ee6d31943c40db53c5408b",
+  "historical_matrix": {"primary_nonlinear_validity": "FAIL", "disposition": "AUXILIARY_FACTORIAL_ONLY"},
+  "observers": {"registry": "REGISTRY_APPLICATION_OPERATOR", "relay": "RELAY_APPLICATION_OPERATOR"},
+  "primary_view": "TIMING_ONLY_VIEW",
+  "tasks": {
+    "T1": {"status": "NOT_FEASIBLE", "reason": "frozen harness cannot vary cache reuse while holding Agent identity and action workload fixed"},
+    "T2": {"status": "PASS", "estimand": "PRIVATE_AGENT_IDENTITY", "observers": ["REGISTRY", "RELAY"]},
+    "T3": {"status": "PASS", "estimand": "TOOL_ACTION_IDENTITY", "observers": ["RELAY"]},
+    "T4": {"status": "PASS", "estimand": "REPEATED_TARGET_PATTERN", "observers": ["RELAY"]},
+    "T5": {"status": "PASS", "estimand": "RARE_TARGET_PATTERN", "observers": ["RELAY"]},
+    "T6": {"status": "PASS", "estimand": "TRANSITION_ORDER", "observers": ["RELAY"]},
+    "T7": {"status": "COMPOSITE", "estimand": "TOOL_VERSUS_AGENT_AS_TOOL", "observers": ["REGISTRY", "RELAY"]},
+    "T8": {"status": "COMPOSITE", "estimand": "TRUSTED_LOCAL_VERSUS_EXTERNAL_MEDIATED", "observers": ["REGISTRY", "RELAY"]},
+    "T9": {"status": "PASS", "estimand": "PROVIDER_READINESS", "observers": ["RELAY"]},
+    "T10": {"status": "COMPOSITE", "estimand": "CAUSAL_DEPTH_AND_COUNT", "observers": ["RELAY"]}
+  },
+  "public_pair_profile_equality": "REQUIRED_AND_MECHANICALLY_CHECKED",
+  "framework_counterbalancing": "INDEPENDENT_PAIRS_PER_FRAMEWORK",
+  "train_eval": {"unit": "COMPLETE_MATCHED_BLOCK", "train_percent": 60, "eval_percent": 40},
+  "family_statistic": "MAX_OF_FOUR_FROZEN_MODEL_AUCS",
+  "eval_bootstrap": {"unit": "COMPLETE_MATCHED_EVAL_BLOCK", "resamples": 10000, "refit": false},
+  "randomization": "INDEPENDENT_WITHIN_PAIR_LABEL_SWAP",
+  "timing_workload_sessions": 0,
+  "real_trace_classifier_training_runs": 0,
+  "profile_selected": false,
+  "confirmatory_sessions": 0,
+  "final_holdout_authorized": false
+}

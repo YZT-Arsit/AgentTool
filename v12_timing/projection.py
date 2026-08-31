@@ -6,30 +6,93 @@ import statistics
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+APPLICATION_RECEIVE_TIMESTAMP = "APPLICATION_RECEIVE_TIMESTAMP"
+APPLICATION_SEND_TIMESTAMP = "APPLICATION_SEND_TIMESTAMP"
+PUBLIC_WIRE_METADATA = "PUBLIC_WIRE_METADATA"
+PUBLIC_CONFIGURATION = "PUBLIC_CONFIGURATION"
+DERIVED_FROM_ALLOWED_FIELDS = "DERIVED_FROM_ALLOWED_FIELDS"
+INTERNAL_PRIVATE_STATE = "INTERNAL_PRIVATE_STATE"
+TIMING_ONLY_VIEW = "TIMING_ONLY_VIEW"
 
-RELAY_PRIVATE_KEYS = frozenset(
-    {
-        "operation_id",
-        "logical_action_name",
-        "agent_id",
-        "route_handle",
-        "private_route_alias",
-        "result_readiness",
-        "provider_diagnostics",
-        "scheduler_incidents",
-    }
+# Explicit output schemas. Inputs are read field-by-field; unknown keys cannot
+# flow into a projection.
+RELAY_TIMING_ONLY_PROVENANCE = {
+    "observer": PUBLIC_CONFIGURATION, "view": PUBLIC_CONFIGURATION,
+    "profile_id": PUBLIC_CONFIGURATION,
+    "public_session_ids": PUBLIC_WIRE_METADATA, "public_slot_order": PUBLIC_WIRE_METADATA,
+    # Historical compatibility name. This classifies the slot header as public
+    # wire metadata; it does not assert cryptographic authentication by Relay.
+    "authenticated_slot_order": PUBLIC_WIRE_METADATA,
+    "session_relative_request_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "request_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "session_relative_response_send_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "response_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "request_response_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "total_session_span_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "request_bytes": PUBLIC_WIRE_METADATA, "response_bytes": PUBLIC_WIRE_METADATA,
+}
+REGISTRY_TIMING_ONLY_PROVENANCE = {
+    "observer": PUBLIC_CONFIGURATION, "view": PUBLIC_CONFIGURATION,
+    "profile_id": PUBLIC_CONFIGURATION, "public_pir_period_ms": PUBLIC_CONFIGURATION,
+    "public_resolution_opportunities": PUBLIC_CONFIGURATION, "ordinals": PUBLIC_WIRE_METADATA,
+    "session_relative_query_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "inter_query_gap_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "total_resolution_session_span_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "session_relative_response_send_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "query_response_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "query_bytes": PUBLIC_WIRE_METADATA, "answer_bytes": PUBLIC_WIRE_METADATA,
+    "query_rows": PUBLIC_WIRE_METADATA, "query_cols": PUBLIC_WIRE_METADATA,
+}
+RELAY_SOURCE_PROVENANCE = {
+    "request_observed_ns": APPLICATION_RECEIVE_TIMESTAMP,
+    "response_send_ns": APPLICATION_SEND_TIMESTAMP,
+    "response_observed_ns": INTERNAL_PRIVATE_STATE,
+    "session": PUBLIC_WIRE_METADATA, "round": PUBLIC_WIRE_METADATA,
+    "request_length": PUBLIC_WIRE_METADATA, "response_length": PUBLIC_WIRE_METADATA,
+    "profile_id": PUBLIC_CONFIGURATION,
+}
+REGISTRY_SOURCE_PROVENANCE = {
+    "request_arrival_ns": APPLICATION_RECEIVE_TIMESTAMP,
+    "response_send_ns": APPLICATION_SEND_TIMESTAMP,
+    "ordinal": PUBLIC_WIRE_METADATA, "query_bytes": PUBLIC_WIRE_METADATA,
+    "answer_bytes": PUBLIC_WIRE_METADATA, "query_rows": PUBLIC_WIRE_METADATA,
+    "query_cols": PUBLIC_WIRE_METADATA, "profile_id": PUBLIC_CONFIGURATION,
+    "pir_period_ms": PUBLIC_CONFIGURATION, "opportunities": PUBLIC_CONFIGURATION,
+    "answer_ready_ns": INTERNAL_PRIVATE_STATE,
+}
+RELAY_REQUEST_TIMING_KEYS = ("session_relative_request_ns", "request_inter_arrival_ns")
+RELAY_RESPONSE_TIMING_KEYS = (
+    "session_relative_response_send_ns", "response_inter_arrival_ns", "request_response_ns",
 )
-REGISTRY_PRIVATE_KEYS = frozenset(
-    {
-        "operation_id",
-        "private_index",
-        "private_class",
-        "logical_agent_identity",
-        "route_handle",
-        "real",
-        "dummy",
+REGISTRY_REQUEST_TIMING_KEYS = ("session_relative_query_arrival_ns", "inter_query_gap_ns")
+REGISTRY_RESPONSE_TIMING_KEYS = ("session_relative_response_send_ns", "query_response_ns")
+
+
+def observer_contract() -> dict[str, Any]:
+    return {
+        "roles": {"REGISTRY": "REGISTRY_APPLICATION_OPERATOR", "RELAY": "RELAY_APPLICATION_OPERATOR"},
+        "allowed_provenance": [APPLICATION_RECEIVE_TIMESTAMP, APPLICATION_SEND_TIMESTAMP,
+                               PUBLIC_WIRE_METADATA, PUBLIC_CONFIGURATION, DERIVED_FROM_ALLOWED_FIELDS],
+        "relay_source_fields": dict(RELAY_SOURCE_PROVENANCE),
+        "registry_source_fields": dict(REGISTRY_SOURCE_PROVENANCE),
+        "relay_projection_fields": dict(RELAY_TIMING_ONLY_PROVENANCE),
+        "registry_projection_fields": dict(REGISTRY_TIMING_ONLY_PROVENANCE),
     }
-)
+
+
+def validate_projection_schema(projection: Mapping[str, Any]) -> None:
+    observer = projection.get("observer")
+    if observer == "RELAY":
+        schema = RELAY_TIMING_ONLY_PROVENANCE
+    elif observer == "REGISTRY":
+        schema = REGISTRY_TIMING_ONLY_PROVENANCE
+    else:
+        raise ValueError("unknown timing observer projection")
+    unknown = set(projection) - set(schema)
+    if unknown:
+        raise AssertionError(f"observer projection contains non-allowlisted fields: {sorted(unknown)}")
+    if projection.get("view") != TIMING_ONLY_VIEW:
+        raise AssertionError("observer projection is not the timing-only view")
 
 
 def _relative(values: Sequence[int], origin: int) -> list[int]:
@@ -40,47 +103,51 @@ def _gaps(values: Sequence[int]) -> list[int]:
     return [int(right) - int(left) for left, right in zip(values, values[1:])]
 
 
-def _assert_no_keys(value: Any, forbidden: frozenset[str]) -> None:
-    if isinstance(value, Mapping):
-        overlap = set(value) & forbidden
-        if overlap:
-            raise AssertionError(f"attacker projection contains private fields: {sorted(overlap)}")
-        for item in value.values():
-            _assert_no_keys(item, forbidden)
-    elif isinstance(value, (list, tuple)):
-        for item in value:
-            _assert_no_keys(item, forbidden)
+def _strictly_monotonic(values: Sequence[int], name: str) -> None:
+    if any(right <= left for left, right in zip(values, values[1:])):
+        raise ValueError(f"{name} must be strictly chronological within one session")
 
 
-def relay_timing_projection(trace: Mapping[str, Any]) -> dict[str, Any]:
-    events = sorted(
-        (dict(item) for item in trace.get("public_relay_events", [])),
-        key=lambda item: (int(item["session"]), int(item["round"])),
-    )
-    if not events:
+def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | None = None) -> dict[str, Any]:
+    source = [dict(item) for item in trace.get("public_relay_events", [])]
+    if not source:
         raise ValueError("Relay timing projection requires public events")
+    if len({int(item["session"]) for item in source}) != 1:
+        raise ValueError("primary Relay timing projection requires exactly one public session")
+    events = sorted(source, key=lambda item: int(item["request_observed_ns"]))
+    if expected_rounds is not None and len(events) != expected_rounds:
+        raise ValueError(f"Relay trace has {len(events)} cells, expected public R={expected_rounds}")
     requests = [int(item["request_observed_ns"]) for item in events]
-    responses = [int(item["response_observed_ns"]) for item in events]
-    origin = min(requests)
+    _strictly_monotonic(requests, "Relay request timestamps")
+    slots = [int(item["round"]) for item in events]
+    if slots != list(range(1, len(events) + 1)):
+        raise ValueError("Relay public slots do not match chronological one-session order")
+    origin = requests[0]
     projection = {
-        "observer": "RELAY",
+        "observer": "RELAY", "view": TIMING_ONLY_VIEW,
         "profile_id": str(events[0]["profile_id"]),
         "public_session_ids": [int(item["session"]) for item in events],
-        "authenticated_slot_order": [int(item["round"]) for item in events],
+        "public_slot_order": slots,
+        "authenticated_slot_order": slots,
         "session_relative_request_ns": _relative(requests, origin),
-        "session_relative_response_ns": _relative(responses, origin),
         "request_inter_arrival_ns": _gaps(requests),
-        "response_inter_arrival_ns": _gaps(responses),
-        "request_response_ns": [response - request for request, response in zip(requests, responses)],
-        "total_session_span_ns": max(responses) - origin,
+        "total_session_span_ns": requests[-1] - origin,
         "request_bytes": [int(item["request_length"]) for item in events],
         "response_bytes": [int(item["response_length"]) for item in events],
-        "relay_endpoint_classes": [str(item["relay_endpoint"]) for item in events],
-        "gateway_endpoint_classes": [str(item["gateway_endpoint"]) for item in events],
-        "client_http_versions": [str(item.get("client_http_version", "")) for item in events],
-        "gateway_http_versions": [str(item.get("gateway_http_version", "")) for item in events],
     }
-    _assert_no_keys(projection, RELAY_PRIVATE_KEYS)
+    send_presence = ["response_send_ns" in item for item in events]
+    if any(send_presence) and not all(send_presence):
+        raise ValueError("Relay response-send instrumentation is incomplete")
+    if all(send_presence):
+        sends = [int(item["response_send_ns"]) for item in events]
+        _strictly_monotonic(sends, "Relay response-send timestamps")
+        if any(send < request for request, send in zip(requests, sends)):
+            raise ValueError("Relay response-send timestamp precedes its request")
+        projection["session_relative_response_send_ns"] = _relative(sends, origin)
+        projection["response_inter_arrival_ns"] = _gaps(sends)
+        projection["request_response_ns"] = [send - request for request, send in zip(requests, sends)]
+        projection["total_session_span_ns"] = sends[-1] - origin
+    validate_projection_schema(projection)
     return projection
 
 
@@ -88,38 +155,41 @@ def load_registry_server_trace(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
-def registry_timing_projection(
-    rows: Iterable[Mapping[str, Any]],
-    *,
-    profile_id: str,
-    pir_period_ms: int,
-    opportunities: int,
-) -> dict[str, Any]:
+def registry_timing_projection(rows: Iterable[Mapping[str, Any]], *, profile_id: str,
+                               pir_period_ms: int, opportunities: int) -> dict[str, Any]:
     events = sorted((dict(item) for item in rows), key=lambda item: int(item["ordinal"]))
     if len(events) != opportunities:
-        raise ValueError(f"Registry trace has {len(events)} queries, expected {opportunities}")
+        raise ValueError(f"Registry trace has {len(events)} queries, expected public Q={opportunities}")
+    ordinals = [int(item["ordinal"]) for item in events]
+    if ordinals != list(range(opportunities)):
+        raise ValueError("Registry ordinals must be the complete public Q sequence")
     arrivals = [int(item["request_arrival_ns"]) for item in events]
-    ready = [int(item["answer_ready_ns"]) for item in events]
+    _strictly_monotonic(arrivals, "Registry request timestamps")
     origin = arrivals[0]
-    projection = {
-        "observer": "REGISTRY",
-        "profile_id": profile_id,
+    projection: dict[str, Any] = {
+        "observer": "REGISTRY", "view": TIMING_ONLY_VIEW, "profile_id": profile_id,
         "public_pir_period_ms": int(pir_period_ms),
-        "public_resolution_opportunities": int(opportunities),
-        "ordinals": [int(item["ordinal"]) for item in events],
+        "public_resolution_opportunities": int(opportunities), "ordinals": ordinals,
         "session_relative_query_arrival_ns": _relative(arrivals, origin),
-        "session_relative_response_ready_ns": _relative(ready, origin),
         "inter_query_gap_ns": _gaps(arrivals),
-        "query_response_ns": [response - request for request, response in zip(arrivals, ready)],
-        "total_resolution_session_span_ns": ready[-1] - origin,
+        "total_resolution_session_span_ns": arrivals[-1] - origin,
         "query_bytes": [int(item["query_bytes"]) for item in events],
         "answer_bytes": [int(item["answer_bytes"]) for item in events],
         "query_rows": [int(item["query_rows"]) for item in events],
         "query_cols": [int(item["query_cols"]) for item in events],
-        "executors": [str(item["executor"]) for item in events],
-        "request_kinds": [str(item["request_kind"]) for item in events],
     }
-    _assert_no_keys(projection, REGISTRY_PRIVATE_KEYS)
+    send_presence = ["response_send_ns" in item for item in events]
+    if any(send_presence) and not all(send_presence):
+        raise ValueError("Registry response-send instrumentation is incomplete")
+    if all(send_presence):
+        sends = [int(item["response_send_ns"]) for item in events]
+        _strictly_monotonic(sends, "Registry response-send timestamps")
+        if any(send < arrival for arrival, send in zip(arrivals, sends)):
+            raise ValueError("Registry response-send timestamp precedes request arrival")
+        projection["session_relative_response_send_ns"] = _relative(sends, origin)
+        projection["query_response_ns"] = [send - arrival for arrival, send in zip(arrivals, sends)]
+        projection["total_resolution_session_span_ns"] = sends[-1] - origin
+    validate_projection_schema(projection)
     return projection
 
 
@@ -127,8 +197,7 @@ def _quantile(values: Sequence[float], fraction: float) -> float:
     if not values:
         return 0.0
     ordered = sorted(float(value) for value in values)
-    index = min(len(ordered) - 1, max(0, math.ceil(fraction * len(ordered)) - 1))
-    return ordered[index]
+    return ordered[min(len(ordered) - 1, max(0, math.ceil(fraction * len(ordered)) - 1))]
 
 
 def _longest_true_run(values: Sequence[bool]) -> int:
@@ -146,8 +215,7 @@ def _lag_one_autocorrelation(values: Sequence[float]) -> float:
     denominator = sum((value - mean) ** 2 for value in values)
     if denominator == 0:
         return 0.0
-    numerator = sum((left - mean) * (right - mean) for left, right in zip(values, values[1:]))
-    return numerator / denominator
+    return sum((a - mean) * (b - mean) for a, b in zip(values, values[1:])) / denominator
 
 
 def _low_frequency_energy_ratio(values: Sequence[float]) -> float:
@@ -158,61 +226,50 @@ def _low_frequency_energy_ratio(values: Sequence[float]) -> float:
     total = sum(value * value for value in centered)
     if total == 0:
         return 0.0
-    # Fixed dependency-free DFT bins 1..min(4,n/2).  These summary bins do
-    # not inspect private state and are frozen before timing qualification.
-    count = min(4, len(centered) // 2)
     energy = 0.0
-    for frequency in range(1, count + 1):
-        real = sum(value * math.cos(2 * math.pi * frequency * index / len(centered)) for index, value in enumerate(centered))
-        imag = sum(value * math.sin(2 * math.pi * frequency * index / len(centered)) for index, value in enumerate(centered))
+    for frequency in range(1, min(4, len(centered) // 2) + 1):
+        real = sum(v * math.cos(2 * math.pi * frequency * i / len(centered)) for i, v in enumerate(centered))
+        imag = sum(v * math.sin(2 * math.pi * frequency * i / len(centered)) for i, v in enumerate(centered))
         energy += (real * real + imag * imag) / len(centered)
     return energy / total
 
 
-def timing_feature_vector(projection: Mapping[str, Any]) -> list[float]:
-    if projection.get("observer") == "RELAY":
-        sequences = [
-            projection["session_relative_request_ns"],
-            projection["session_relative_response_ns"],
-            projection["request_inter_arrival_ns"],
-            projection["response_inter_arrival_ns"],
-            projection["request_response_ns"],
-        ]
+def expected_raw_timing_widths(observer: str, *, public_r: int, public_q: int,
+                               has_registry_send: bool = False,
+                               has_relay_send: bool = False) -> tuple[int, ...]:
+    if observer == "RELAY":
+        return (public_r, public_r - 1) + ((public_r, public_r - 1, public_r) if has_relay_send else ())
+    if observer == "REGISTRY":
+        return (public_q, public_q - 1) + ((public_q, public_q) if has_registry_send else ())
+    raise ValueError("unknown timing observer")
+
+
+def timing_feature_vector(projection: Mapping[str, Any], *, raw_widths: Sequence[int] | None = None) -> list[float]:
+    validate_projection_schema(projection)
+    if projection["observer"] == "RELAY":
+        keys = RELAY_REQUEST_TIMING_KEYS + tuple(k for k in RELAY_RESPONSE_TIMING_KEYS if k in projection)
         total = float(projection["total_session_span_ns"])
-    elif projection.get("observer") == "REGISTRY":
-        sequences = [
-            projection["session_relative_query_arrival_ns"],
-            projection["session_relative_response_ready_ns"],
-            projection["inter_query_gap_ns"],
-            projection["query_response_ns"],
-        ]
-        total = float(projection["total_resolution_session_span_ns"])
     else:
-        raise ValueError("unknown timing observer projection")
+        keys = REGISTRY_REQUEST_TIMING_KEYS + tuple(k for k in REGISTRY_RESPONSE_TIMING_KEYS if k in projection)
+        total = float(projection["total_resolution_session_span_ns"])
+    sequences = [projection[key] for key in keys]
+    widths = tuple(len(sequence) for sequence in sequences) if raw_widths is None else tuple(raw_widths)
+    if len(widths) != len(sequences):
+        raise ValueError("raw timing widths do not match the timing-only schema")
     vector: list[float] = []
-    for sequence in sequences:
+    for sequence, width in zip(sequences, widths, strict=True):
         values = [float(value) for value in sequence]
+        if len(values) != int(width):
+            raise ValueError("timing sequence length differs from its public-profile-defined width")
         vector.extend(values)
         if values:
             mean = statistics.fmean(values)
-            late_threshold = mean * 1.5
-            late = [value > late_threshold for value in values]
-            vector.extend(
-                [
-                    mean,
-                    statistics.pstdev(values),
-                    min(values),
-                    max(values),
-                    _quantile(values, 0.50),
-                    _quantile(values, 0.90),
-                    _quantile(values, 0.95),
-                    _quantile(values, 0.99),
-                    float(sum(late)),
-                    float(_longest_true_run(late)),
-                    _lag_one_autocorrelation(values),
-                    _low_frequency_energy_ratio(values),
-                ]
-            )
+            late = [value > mean * 1.5 for value in values]
+            vector.extend([mean, statistics.pstdev(values), min(values), max(values),
+                           _quantile(values, .50), _quantile(values, .90),
+                           _quantile(values, .95), _quantile(values, .99),
+                           float(sum(late)), float(_longest_true_run(late)),
+                           _lag_one_autocorrelation(values), _low_frequency_energy_ratio(values)])
         else:
             vector.extend([0.0] * 12)
     vector.append(total)
