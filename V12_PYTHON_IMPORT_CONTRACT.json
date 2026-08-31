@@ -1,0 +1,100 @@
+{
+  "schema": "AgentTool.V12PythonImportContract/1",
+  "phase": "V12-NON-TIMING-DEFAULT-ENV-CLOSURE",
+  "base_commit": "4649407d70794591d8803b3757418c5dab8ab391",
+  "audit_scope": "selected-runtime Python launch and import environment only",
+  "selected_runtime_launch": {
+    "python_executable": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+    "python_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+    "python_version": "3.12.3",
+    "implementation_build": "Anaconda CPython 3.12.3; GCC 11.2.0",
+    "working_directory": "/root/autodl-tmp/mediation_trace_validation",
+    "entrypoint": "scripts/run_v12_confirmatory.py",
+    "repository_root_insertion": "scripts/run_v12_confirmatory.py resolves parents[1] and inserts it at sys.path[0] when absent",
+    "repository_install_required": false,
+    "pythonpath_override_required": false
+  },
+  "observed_environment": {
+    "sys_prefix": "/root/autodl-tmp/mediation_trace_validation/.venv-linux",
+    "sys_base_prefix": "/root/miniconda3",
+    "site_packages": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages",
+    "PYTHONPATH": null,
+    "PYTHONHOME": null,
+    "PYTHONNOUSERSITE": null,
+    "VIRTUAL_ENV": null,
+    "pytest_version": "9.1.1"
+  },
+  "selected_runtime_sys_path_before_driver_root_insertion": [
+    "",
+    "/root/miniconda3/lib/python312.zip",
+    "/root/miniconda3/lib/python3.12",
+    "/root/miniconda3/lib/python3.12/lib-dynload",
+    "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages",
+    "/root/autodl-tmp/mediation_trace_validation/external_stage10/openai-agents-python/src",
+    "/root/autodl-tmp/mediation_trace_validation/external_stage9/agent-framework/python/packages/core"
+  ],
+  "selected_runtime_sys_path_after_driver_root_insertion_first_entry": "/root/autodl-tmp/mediation_trace_validation",
+  "framework_path_bindings": {
+    "openai_pth": {
+      "path": ".venv-linux/lib/python3.12/site-packages/_editable_impl_openai_agents.pth",
+      "sha256": "5842eb7bd00d5caae81f80330c67822789f226861b730b202a5d8ba889b8142e",
+      "target": "/root/autodl-tmp/mediation_trace_validation/external_stage10/openai-agents-python/src"
+    },
+    "microsoft_pth": {
+      "path": ".venv-linux/lib/python3.12/site-packages/agent_framework.pth",
+      "sha256": "abc4360384d5f5177e9e266a91d8ee2fc1f87e244999a69176f782cce79ac841",
+      "target": "/root/autodl-tmp/mediation_trace_validation/external_stage9/agent-framework/python/packages/core"
+    }
+  },
+  "import_probes": {
+    "v11a_confirmatory": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/v11a_confirmatory/__init__.py",
+      "sha256": "03804c3c4c8f198b26fec0cf6d3dcc58e330dfbea8ecc7fdc8f751d1a01b3d87"
+    },
+    "v11_online": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/v11_online/__init__.py",
+      "sha256": "a77ce9dcea11713dab1151d285d9ca5eed79278ccf64377fe8ec0c9e22ce24da"
+    },
+    "canonical_v9_1": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/canonical_v9_1/__init__.py",
+      "sha256": "dfce0d89068975d2e9970c6ffefb2f4790a1df1dc361f7bd2b6d13e6115b0dcd"
+    },
+    "v11_online.frameworks": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/v11_online/frameworks.py",
+      "sha256": "75ae8a5faf78359bacb4dd43261feb8cea574d370973497cb21c8ec7cc39c791"
+    },
+    "v11_online.session": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/v11_online/session.py",
+      "sha256": "b7a0ec81cb42a66e3a900033b701ff14b2be4ae92f755db04d71ed9a7e454e4b"
+    },
+    "agents": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/external_stage10/openai-agents-python/src/agents/__init__.py",
+      "sha256": "322428026bff51f36ef520e884afc314f7dbd11fbb592fa7ec7ecf06a43a7791",
+      "distribution": "openai-agents 0.22.0"
+    },
+    "agent_framework": {
+      "path": "/root/autodl-tmp/mediation_trace_validation/external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
+      "sha256": "96d5d32906c31eb6688146354d2fa0451fc76556c6a83cc1752207887135acf6",
+      "distribution": "agent-framework-core 1.15.0"
+    }
+  },
+  "entrypoint_comparison": {
+    "console_script": {
+      "command": ".venv-linux/bin/pytest",
+      "sha256": "db6a5f7c625bfa8c3e9f4b732da2658196ec35303bd2ad2ba451c1005d29eeca",
+      "shebang": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+      "repository_root_on_initial_sys_path": false,
+      "prior_result": "0/46 executed; 7 collection errors; FAIL_PRESERVED"
+    },
+    "module_entrypoint": {
+      "command": ".venv-linux/bin/python -m pytest",
+      "repository_root_on_initial_sys_path": true,
+      "matches_selected_runtime_root_availability": true,
+      "selected_as_canonical_default_test_entrypoint": true
+    }
+  },
+  "contract_status": "PASS",
+  "runtime_source_modified": false,
+  "timing_work_performed": false,
+  "holdout_work_performed": false
+}

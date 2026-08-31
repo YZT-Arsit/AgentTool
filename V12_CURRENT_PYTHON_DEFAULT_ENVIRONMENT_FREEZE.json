@@ -1,0 +1,73 @@
+{
+  "schema": "AgentTool.V12CurrentPythonDefaultEnvironmentFreeze/1",
+  "phase": "V12-NON-TIMING-DEFAULT-ENV-CLOSURE",
+  "base_commit": "4649407d70794591d8803b3757418c5dab8ab391",
+  "frozen_before_collection_preflight": true,
+  "frozen_before_decisive_execution": true,
+  "python_executable": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+  "python_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "python_version": "3.12.3",
+  "pytest_version": "9.1.1",
+  "working_directory": "/root/autodl-tmp/mediation_trace_validation",
+  "environment_contract": {
+    "PYTHONPATH": null,
+    "PYTHONHOME": null,
+    "PYTHONNOUSERSITE": null,
+    "repository_editable_install": false,
+    "framework_source_bindings": "frozen virtual-environment .pth files"
+  },
+  "selected_manifest": "V12_CURRENT_NON_TIMING_PYTHON_MANIFEST.json",
+  "selected_manifest_sha256": "2f8150a975b16474b42a1da954cbb617a22cd5f1879512b8df21dab4b77fe3f1",
+  "selected_manifest_revision": 2,
+  "selected_node_count": 46,
+  "selected_node_list_sha256_lf": "34c675895db6b66d9c26c25bc2c40dbacb13325b33f9ad06ff80e8fea4aca656",
+  "test_source_hashes": {
+    "tests/test_v12_closure.py": "18f00a2cf1e189de92c9b9890b3df360331312b32da9910071a4c593d76a39f6",
+    "tests/test_v12_provider_diagnostics.py": "e56463b0bd0dc2a9cc9b9ed06601d9f5137adae344b848df30c3e1cf3bc19981",
+    "tests/test_v12_rc_invocation_routing.py": "3c02d865a2711f2659ba654276632f86547a09d8cd49babb048dbe4e37145832",
+    "tests/test_v11a_confirmatory.py": "1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046",
+    "tests/test_v11a_1_prefix_projection.py": "32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6",
+    "tests/test_v8_standards_closure.py": "fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d",
+    "tests/test_v7_ohttp_architecture.py": "bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b"
+  },
+  "runtime_source_hashes": {
+    "scripts/run_v12_confirmatory.py": "d13214ac969bfb20e68138390f294067f6b367a7c0605e21aba08bb5de53a033",
+    "scripts/summarize_v12_confirmatory.py": "3c908273b972b9d8f4eda80f4cf3998f2a0934a855080d2536e74560fac3151f",
+    "v11a_confirmatory/orchestrator.py": "834c4b3553ba46fa65aba03a030e0aa79694e1e5b34b59f5f9802365ab343830",
+    "v11a_confirmatory/projection.py": "1938b9f9611c8baf393bcb7aa04ccb404221b1115e0e0f0b3c1f28df7b6f6ce1",
+    "v11_online/frameworks.py": "75ae8a5faf78359bacb4dd43261feb8cea574d370973497cb21c8ec7cc39c791",
+    "v11_online/session.py": "b7a0ec81cb42a66e3a900033b701ff14b2be4ae92f755db04d71ed9a7e454e4b",
+    "v11_full_scope/frameworks.py": "ef08ea84987a6bc7688f477fa40fe9973a3b00e8bebd209d6d25f3d4b10eae63",
+    "canonical_v9_1/projection.py": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea"
+  },
+  "collection_only_command": [
+    "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+    "-m", "pytest", "-q", "--collect-only",
+    "tests/test_v12_closure.py",
+    "tests/test_v12_provider_diagnostics.py",
+    "tests/test_v12_rc_invocation_routing.py",
+    "tests/test_v11a_confirmatory.py",
+    "tests/test_v11a_1_prefix_projection.py",
+    "tests/test_v8_standards_closure.py",
+    "tests/test_v7_ohttp_architecture.py",
+    "--deselect=tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[OpenAI Agents SDK]",
+    "--deselect=tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[Microsoft Agent Framework]"
+  ],
+  "decisive_default_command": [
+    "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+    "-m", "pytest", "-q",
+    "tests/test_v12_closure.py",
+    "tests/test_v12_provider_diagnostics.py",
+    "tests/test_v12_rc_invocation_routing.py",
+    "tests/test_v11a_confirmatory.py",
+    "tests/test_v11a_1_prefix_projection.py",
+    "tests/test_v8_standards_closure.py",
+    "tests/test_v7_ohttp_architecture.py",
+    "--deselect=tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[OpenAI Agents SDK]",
+    "--deselect=tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[Microsoft Agent Framework]"
+  ],
+  "relevant_source_change_since_base_commit": false,
+  "serial_gate_disposition": "PRESERVED 46/46 PASS",
+  "runtime_or_timing_source_modified": false,
+  "holdout_work_authorized": false
+}
