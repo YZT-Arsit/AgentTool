@@ -22,8 +22,12 @@ PROFILE_ID = re.compile(
 EFFECTIVE_PROFILE_ID = re.compile(
     r"^V12-TIMING-INDIST-V2-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
 )
+EFFECTIVE_PROFILE_V3_ID = re.compile(
+    r"^V12-TIMING-INDIST-V3-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
+)
 NOMINAL_COMMITMENT_V1 = "NOMINAL_COMMITMENT_V1"
 EFFECTIVE_PUBLIC_CLOCK_V2 = "EFFECTIVE_PUBLIC_CLOCK_V2"
+EFFECTIVE_PUBLIC_CLOCK_V3 = "EFFECTIVE_PUBLIC_CLOCK_V3"
 
 
 @dataclass(frozen=True)
@@ -96,7 +100,13 @@ class TimingIndistinguishabilityProfile:
         )
 
     def validate(self) -> "TimingIndistinguishabilityProfile":
-        grammar = EFFECTIVE_PROFILE_ID if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2 else PROFILE_ID
+        grammar = {
+            NOMINAL_COMMITMENT_V1: PROFILE_ID,
+            EFFECTIVE_PUBLIC_CLOCK_V2: EFFECTIVE_PROFILE_ID,
+            EFFECTIVE_PUBLIC_CLOCK_V3: EFFECTIVE_PROFILE_V3_ID,
+        }.get(self.timing_semantic_revision)
+        if grammar is None:
+            raise ValueError("unknown V12 timing semantic revision")
         match = grammar.fullmatch(self.profile_id)
         if match is None:
             raise ValueError("V12 timing profile ID violates the distinct public grammar")
@@ -125,6 +135,11 @@ class TimingIndistinguishabilityProfile:
                 raise ValueError("V12 causal horizon is outside the predeclared candidates")
             if self.round_period_ms != 10 or self.pir_resolution_period_ms != 60:
                 raise ValueError("V12 causal-horizon phase freezes Delta10/PIR60")
+        elif self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V3:
+            if self.admission_horizon_ms != 4500:
+                raise ValueError("V12 functional Delta qualification freezes H4500")
+            if self.round_period_ms not in (10, 20, 25) or self.pir_resolution_period_ms != 60:
+                raise ValueError("V12 V3 freezes Delta10/20/25 and PIR60")
         else:
             raise ValueError("unknown V12 timing semantic revision")
         if self.provider_completion_bound_ms != 50 or self.terminal_rounds != 1:
@@ -175,9 +190,11 @@ class TimingIndistinguishabilityProfile:
         value.update(
             {
                 "schema": (
-                    "AgentTool.V12TimingIndistinguishabilityProfile/2"
-                    if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2
-                    else "AgentTool.V12TimingIndistinguishabilityProfile/1"
+                    "AgentTool.V12TimingIndistinguishabilityProfile/3"
+                    if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V3
+                    else ("AgentTool.V12TimingIndistinguishabilityProfile/2"
+                          if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2
+                          else "AgentTool.V12TimingIndistinguishabilityProfile/1")
                 ),
                 "admission_rounds": self.admission_rounds,
                 "completion_rounds": self.completion_rounds,
@@ -192,7 +209,7 @@ class TimingIndistinguishabilityProfile:
                 "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
                 "slot_commitment_clock": (
                     "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE"
-                    if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2
+                    if self.timing_semantic_revision in {EFFECTIVE_PUBLIC_CLOCK_V2, EFFECTIVE_PUBLIC_CLOCK_V3}
                     else "D_i_MINUS_L_NOMINAL"
                 ),
                 "timing_privacy": "OPEN / NOT TESTED",
@@ -225,4 +242,17 @@ def causal_horizon_candidate_profiles() -> tuple[TimingIndistinguishabilityProfi
             timing_semantic_revision=EFFECTIVE_PUBLIC_CLOCK_V2,
         ).validate()
         for horizon in CAUSAL_HORIZON_CANDIDATES_MS
+    )
+
+
+def delta_functional_candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
+    return tuple(
+        TimingIndistinguishabilityProfile(
+            profile_id=f"V12-TIMING-INDIST-V3-H50-H4500-P{period}-PIR60",
+            round_period_ms=period,
+            pir_resolution_period_ms=60,
+            admission_horizon_ms=4500,
+            timing_semantic_revision=EFFECTIVE_PUBLIC_CLOCK_V3,
+        ).validate()
+        for period in (10, 20, 25)
     )

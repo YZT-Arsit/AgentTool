@@ -1,0 +1,12 @@
+{
+  "schema": "AgentTool.V12TimingMethodologyAUCOrientationErratum/1",
+  "base_methodology_commit": "20cf66a1bf1d3c5b588d67325284dcb7ec92d6ee",
+  "status": "PASS",
+  "distinguishability_auc": "max(raw_auc, 1 - raw_auc)",
+  "range": [0.5, 1.0],
+  "model_family_statistic": "max distinguishability_auc across four frozen models",
+  "bootstrap_application": "inside every complete-EVAL-block replicate before the family maximum",
+  "synthetic_examples": {"0.40": 0.60, "0.50": 0.50, "0.80": 0.80},
+  "real_trace_classifier_training_runs": 0,
+  "real_timing_auc_calculations": 0
+}

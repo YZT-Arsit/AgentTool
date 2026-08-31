@@ -109,10 +109,57 @@ func TestFreshRequestRelayDropsAllNonAllowlistedInboundMetadata(t *testing.T) {
 	if len(events) != 1 || events[0].RelayClientConnectionID == "" || events[0].RelayGatewayConnectionID == "" {
 		t.Fatal("separate Relay connection identities were not recorded")
 	}
+	if events[0].ResponseSendNS <= 0 || events[0].ResponseSendNS < events[0].ResponseObservedNS {
+		t.Fatalf("Relay application-send timestamp missing or before response-ready: %+v", events[0])
+	}
 	encoded, _ := json.Marshal(events)
 	for _, forbidden := range [][]byte{[]byte("operation_id"), []byte("agent"), []byte("tool"), []byte("body_digest")} {
 		if bytes.Contains(bytes.ToLower(encoded), forbidden) {
 			t.Fatalf("private semantic field appeared in Relay log: %s", forbidden)
+		}
+	}
+}
+
+func TestRelayResponseSendInstrumentationIsOpaqueContentIndependent(t *testing.T) {
+	profile := scheduleProfile()
+	responseBody := bytes.Repeat([]byte{0x44}, profile.ResponseFinalBytes)
+	gateway := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		_, _ = io.ReadAll(request.Body)
+		writer.Header().Set("Content-Type", OHTTPResponseContentType)
+		writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(responseBody)))
+		writer.WriteHeader(http.StatusOK)
+		_, _ = writer.Write(responseBody)
+	}))
+	defer gateway.Close()
+	relay, err := NewFreshRequestRelay(profile, gateway.URL)
+	if err != nil {
+		t.Fatal(err)
+	}
+	relayServer := httptest.NewServer(relay)
+	defer relayServer.Close()
+	for index, fill := range []byte{0x00, 0x55, 0xff} {
+		body := bytes.Repeat([]byte{fill}, profile.RequestFinalBytes)
+		request, _ := http.NewRequest(http.MethodPost, relayServer.URL, bytes.NewReader(body))
+		request.Header.Set("Content-Type", OHTTPRequestContentType)
+		request.Header.Set("X-Public-Round", fmt.Sprintf("%d", index+1))
+		request.ContentLength = int64(len(body))
+		response, err := relayServer.Client().Do(request)
+		if err != nil {
+			t.Fatal(err)
+		}
+		got, _ := io.ReadAll(response.Body)
+		response.Body.Close()
+		if response.StatusCode != http.StatusOK || !bytes.Equal(got, responseBody) {
+			t.Fatalf("opaque class %d changed Relay response", index)
+		}
+	}
+	events := relay.Events()
+	if len(events) != 3 {
+		t.Fatalf("got %d observer events, want 3", len(events))
+	}
+	for _, event := range events {
+		if event.ResponseSendNS <= 0 || event.ResponseSendNS < event.ResponseObservedNS {
+			t.Fatalf("class-independent send timestamp missing: %+v", event)
 		}
 	}
 }

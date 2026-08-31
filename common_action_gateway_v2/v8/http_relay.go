@@ -37,6 +37,7 @@ type RelayPublicEvent struct {
 	ConfigEpoch              uint64 `json:"config_epoch"`
 	RequestObservedNS        int64  `json:"request_observed_ns"`
 	ResponseObservedNS       int64  `json:"response_observed_ns"`
+	ResponseSendNS           int64  `json:"response_send_ns"`
 	ClientHTTPVersion        string `json:"client_http_version,omitempty"`
 	GatewayHTTPVersion       string `json:"gateway_http_version,omitempty"`
 }
@@ -199,20 +200,26 @@ func (r *FreshRequestRelay) ServeHTTP(writer http.ResponseWriter, inbound *http.
 		http.Error(writer, "canonical Gateway response is not HTTP/2", http.StatusBadGateway)
 		return
 	}
-	r.record(RelayPublicEvent{
+	responseObserved := time.Now().UnixNano()
+	event := RelayPublicEvent{
 		ProfileID: r.Profile.ProfileID, Session: session, Round: round, RequestLength: len(body), ResponseLength: len(responseBody),
 		RelayClientConnectionID: inbound.RemoteAddr, RelayGatewayConnectionID: gatewayConnection,
 		RelayEndpoint: r.Profile.RelayEndpoint, GatewayEndpoint: r.Profile.GatewayEndpoint,
 		OHTTPKeyID: r.Profile.OHTTPSuite.KeyID, KEMID: r.Profile.OHTTPSuite.KEMID,
 		KDFID: r.Profile.OHTTPSuite.KDFID, AEADID: r.Profile.OHTTPSuite.AEADID,
 		ConfigEpoch: r.Profile.OHTTPSuite.ConfigEpoch, RequestObservedNS: observed,
-		ResponseObservedNS: time.Now().UnixNano(), ClientHTTPVersion: inbound.Proto,
+		ResponseObservedNS: responseObserved, ClientHTTPVersion: inbound.Proto,
 		GatewayHTTPVersion: response.Proto,
-	})
+	}
 	writer.Header().Set("Content-Type", OHTTPResponseContentType)
 	writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(responseBody)))
+	// Capture immediately before the application's actual response write path.
+	// Event persistence is deliberately after the write and is independent of
+	// the opaque REAL/NOOP/WAIT contents.
+	event.ResponseSendNS = time.Now().UnixNano()
 	writer.WriteHeader(http.StatusOK)
 	_, _ = writer.Write(responseBody)
+	r.record(event)
 }
 
 func (r *FreshRequestRelay) record(event RelayPublicEvent) {

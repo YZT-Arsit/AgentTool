@@ -345,9 +345,13 @@ func validatePlan(plan Plan) error {
 	if plan.ProfileClass == TimingIndistinguishabilityProfile && plan.PublicSessionLivenessCapMS != TimingPublicSessionLivenessCapMS {
 		return errors.New("timing-indistinguishability profile requires frozen 60000 ms public liveness cap")
 	}
-	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V2-") {
-		if plan.TimingSemanticRevision != "EFFECTIVE_PUBLIC_CLOCK_V2" {
-			return errors.New("V12 V2 timing profile requires effective public clock revision")
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V2-") || strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V3-") {
+		expectedRevision := "EFFECTIVE_PUBLIC_CLOCK_V2"
+		if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V3-") {
+			expectedRevision = "EFFECTIVE_PUBLIC_CLOCK_V3"
+		}
+		if plan.TimingSemanticRevision != expectedRevision {
+			return errors.New("V12 effective-clock profile ID and revision disagree")
 		}
 		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
 			return errors.New("V12 V2 public admission horizon disagrees with fixed slot count")

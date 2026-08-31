@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12OriginalDirtyWorktreePreservation/1",
+  "recorded_before_phase_changes": true,
+  "original_worktree": "D:/projects/mediation_trace_validation",
+  "head": "20cf66a1bf1d3c5b588d67325284dcb7ec92d6ee",
+  "tracked_diff_git_blob": "c363472a4fc503914395cf86bc52bcad0bd8cd0b",
+  "cached_diff_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+  "untracked_manifest_git_blob": "758eaf95b18188d6b6c85fbaab3013e30f1ce548",
+  "untracked_count": 13,
+  "phase_worktree": "D:/projects/mediation_trace_validation_v12_app_observability",
+  "phase_branch": "v12-application-observability-delta-functional",
+  "clean_phase_start": "PASS"
+}

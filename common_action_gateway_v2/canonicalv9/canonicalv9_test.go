@@ -534,6 +534,38 @@ func TestV12EffectivePublicClockStateMachine(t *testing.T) {
 	}
 }
 
+func TestV12V3EffectiveClockRecurrenceAcrossFrozenDeltas(t *testing.T) {
+	base := time.Unix(0, 0)
+	for _, delta := range []time.Duration{10 * time.Millisecond, 20 * time.Millisecond, 25 * time.Millisecond} {
+		nominal := base.Add(2 * delta)
+		previous := base.Add(100 * time.Millisecond)
+		eligible := effectivePublicEligibility(nominal, previous, delta)
+		if want := previous.Add(delta); !eligible.Equal(want) {
+			t.Fatalf("delta=%s effective eligibility=%s want=%s", delta, eligible, want)
+		}
+	}
+}
+
+func TestV12V3ProfileRevisionBinding(t *testing.T) {
+	plan := testPlan()
+	plan.ProfileClass = TimingIndistinguishabilityProfile
+	plan.ProfileID = "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60"
+	plan.TimingSemanticRevision = "EFFECTIVE_PUBLIC_CLOCK_V3"
+	plan.RoundPeriodMS = 20
+	plan.AdmissionHorizonMS = plan.AdmissionRounds * plan.RoundPeriodMS
+	plan.PIRResolutionPeriodMS = 60
+	plan.PIRPublicEpochMS = 6000
+	plan.PIRResolutionOpportunities = 100
+	plan.PIRInitialLeadMS = 25
+	if err := validatePlan(plan); err != nil {
+		t.Fatalf("valid V3 plan rejected: %v", err)
+	}
+	plan.TimingSemanticRevision = "EFFECTIVE_PUBLIC_CLOCK_V2"
+	if err := validatePlan(plan); err == nil {
+		t.Fatal("V3 profile accepted V2 semantic revision")
+	}
+}
+
 func TestV12EffectivePublicClockRejectsAfterEffectiveCutoff(t *testing.T) {
 	base := time.Unix(100, 0)
 	state := newOnlineSlotState(base.Add(10*time.Millisecond), onlinePreparedRequest{})

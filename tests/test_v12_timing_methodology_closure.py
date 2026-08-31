@@ -12,13 +12,13 @@ from v12_timing.matched_tasks import (
 from v12_timing.matrix import TASKS as OLD_TASKS, _labels
 from v12_timing.profile import causal_horizon_candidate_profiles
 from v12_timing.projection import (
-    INTERNAL_PRIVATE_STATE, REGISTRY_SOURCE_PROVENANCE, TIMING_ONLY_VIEW,
+    INTERNAL_PRIVATE_STATE, PARTIAL_TIMING_VIEW, REGISTRY_SOURCE_PROVENANCE, TIMING_ONLY_VIEW,
     expected_raw_timing_widths, observer_contract, registry_timing_projection,
     relay_timing_projection, timing_feature_vector, validate_projection_schema,
 )
 from v12_timing.statistics import (
     bootstrap_family_auc, deterministic_block_split, family_auc,
-    paired_label_randomization, partition_indices, resample_complete_blocks,
+    distinguishability_auc, paired_label_randomization, partition_indices, resample_complete_blocks,
     validate_matched_blocks,
 )
 
@@ -116,7 +116,7 @@ def test_protected_fixed_transcript_vector_dimensions_are_public_r_and_q() -> No
 def test_observer_allowlist_and_derived_provenance_exclude_new_private_fields() -> None:
     relay = relay_timing_projection({"public_relay_events": _relay_rows(3)})
     registry = registry_timing_projection(_registry_rows(3), profile_id="profile", pir_period_ms=60, opportunities=3)
-    assert relay["view"] == registry["view"] == TIMING_ONLY_VIEW
+    assert relay["view"] == registry["view"] == PARTIAL_TIMING_VIEW
     encoded = repr((relay, registry))
     assert "secret" not in encoded and "renamed_secret" not in encoded and "executor" not in encoded
     contract = observer_contract()
@@ -132,6 +132,10 @@ def test_registry_uses_only_application_send_timestamp_and_never_answer_ready() 
     with_send = registry_timing_projection(_registry_rows(3, add_send=True), profile_id="p", pir_period_ms=60, opportunities=3)
     assert "query_response_ns" not in without_send
     assert with_send["query_response_ns"] == [1000, 1000, 1000]
+    assert with_send["view"] == TIMING_ONLY_VIEW
+    with pytest.raises(ValueError, match="complete Registry"):
+        registry_timing_projection(_registry_rows(3), profile_id="p", pir_period_ms=60, opportunities=3,
+                                   require_complete_application_timing=True)
     assert REGISTRY_SOURCE_PROVENANCE["answer_ready_ns"] == INTERNAL_PRIVATE_STATE
 
 
@@ -143,6 +147,10 @@ def test_relay_uses_only_explicit_application_send_timestamp() -> None:
         row["response_send_ns"] = 1_001_000 + index * 10_000
     with_send = relay_timing_projection({"public_relay_events": rows})
     assert with_send["request_response_ns"] == [1000, 1000, 1000]
+    assert with_send["view"] == TIMING_ONLY_VIEW
+    with pytest.raises(ValueError, match="complete Relay"):
+        relay_timing_projection({"public_relay_events": _relay_rows(3)},
+                                require_complete_application_timing=True)
 
 
 def test_relay_requires_one_session_and_chronological_public_slots() -> None:
@@ -204,9 +212,14 @@ def test_complete_pair_resampling_family_max_and_randomization() -> None:
         assert sorted(labels[sample[offset:offset + 2]].tolist()) == [0, 1]
     predictions = {"a": [.1, .9, .2, .8, .3, .7], "b": [.9, .1, .8, .2, .7, .3]}
     maximum, components = family_auc(labels, predictions)
-    assert maximum == max(components.values()) == 1.0
+    assert maximum == max(distinguishability_auc(value) for value in components.values()) == 1.0
     result = bootstrap_family_auc(labels, predictions, blocks, seed=9, resamples=50)
-    assert result["family_auc"] == 1.0 and result["refit_inside_bootstrap"] is False
+    assert result["model_family_distinguishability_auc"] == 1.0 and result["refit_inside_bootstrap"] is False
     randomized = paired_label_randomization(labels, blocks, seed=4)
     for indices in members.values():
         assert sorted(randomized[indices].tolist()) == [0, 1]
+
+
+@pytest.mark.parametrize(("raw", "expected"), ((0.40, 0.60), (0.50, 0.50), (0.80, 0.80)))
+def test_auc_orientation_erratum(raw: float, expected: float) -> None:
+    assert distinguishability_auc(raw) == pytest.approx(expected)

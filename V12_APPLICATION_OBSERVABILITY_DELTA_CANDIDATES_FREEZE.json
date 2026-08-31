@@ -1,0 +1,43 @@
+{
+  "schema": "AgentTool.V12ApplicationObservabilityDeltaCandidatesFreeze/1",
+  "base_commit": "20cf66a1bf1d3c5b588d67325284dcb7ec92d6ee",
+  "frozen_before_live_execution": true,
+  "H_ms": 4500,
+  "Delta_candidates_ms": [10, 20, 25],
+  "fixed": {"M": 50, "B_ms": 50, "T": 1, "K": 6, "pir_period_ms": 60, "pir_epoch_ms": 6000, "Q": 100, "pir_initial_lead_ms": 25, "request_bytes": 1079, "response_bytes": 800},
+  "profiles": [
+    {"period_ms": 10, "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P10-PIR60", "admission_rounds": 450, "completion_rounds": 5, "R": 506, "nominal_lifetime_ms": 5060},
+    {"period_ms": 20, "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60", "admission_rounds": 225, "completion_rounds": 3, "R": 279, "nominal_lifetime_ms": 5580},
+    {"period_ms": 25, "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60", "admission_rounds": 180, "completion_rounds": 2, "R": 233, "nominal_lifetime_ms": 5825}
+  ],
+  "workload_matrix": [
+    {"period_ms": 10, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P10-OA-DEPTH50-001"},
+    {"period_ms": 10, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P10-MS-DEPTH50-001"},
+    {"period_ms": 10, "framework": "OpenAI Agents SDK", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P10-OA-K6-001"},
+    {"period_ms": 10, "framework": "Microsoft Agent Framework", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P10-MS-K6-001"},
+    {"period_ms": 10, "framework": "OpenAI Agents SDK", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P10-OA-AAT-001"},
+    {"period_ms": 10, "framework": "Microsoft Agent Framework", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P10-MS-AAT-001"},
+    {"period_ms": 10, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P10-OA-CACHE-001"},
+    {"period_ms": 10, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P10-MS-CACHE-001"},
+    {"period_ms": 20, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P20-OA-DEPTH50-001"},
+    {"period_ms": 20, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P20-MS-DEPTH50-001"},
+    {"period_ms": 20, "framework": "OpenAI Agents SDK", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P20-OA-K6-001"},
+    {"period_ms": 20, "framework": "Microsoft Agent Framework", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P20-MS-K6-001"},
+    {"period_ms": 20, "framework": "OpenAI Agents SDK", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P20-OA-AAT-001"},
+    {"period_ms": 20, "framework": "Microsoft Agent Framework", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P20-MS-AAT-001"},
+    {"period_ms": 20, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P20-OA-CACHE-001"},
+    {"period_ms": 20, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P20-MS-CACHE-001"},
+    {"period_ms": 25, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P25-OA-DEPTH50-001"},
+    {"period_ms": 25, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CAUSAL_DEPTH_50", "identity": "DEV-AOFQ-P25-MS-DEPTH50-001"},
+    {"period_ms": 25, "framework": "OpenAI Agents SDK", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P25-OA-K6-001"},
+    {"period_ms": 25, "framework": "Microsoft Agent Framework", "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS", "identity": "DEV-AOFQ-P25-MS-K6-001"},
+    {"period_ms": 25, "framework": "OpenAI Agents SDK", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P25-OA-AAT-001"},
+    {"period_ms": 25, "framework": "Microsoft Agent Framework", "kind": "AGENT_AS_TOOL_TRANSITION", "identity": "DEV-AOFQ-P25-MS-AAT-001"},
+    {"period_ms": 25, "framework": "OpenAI Agents SDK", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P25-OA-CACHE-001"},
+    {"period_ms": 25, "framework": "Microsoft Agent Framework", "kind": "SAME_AGENT_CACHE_HIT_30", "identity": "DEV-AOFQ-P25-MS-CACHE-001"}
+  ],
+  "forbidden_identity_prefixes": ["DEV-TD", "DEV-TPCIC", "DEV-MDCC", "DEV-CHR"],
+  "classifier_training_authorized": false,
+  "real_auc_calculation_authorized": false,
+  "confirmatory_or_final_authorized": false
+}

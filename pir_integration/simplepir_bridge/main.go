@@ -56,6 +56,7 @@ type serverTrace struct {
 	ScheduledNs int64   `json:"scheduled_ns,omitempty"`
 	ArrivalNs   int64   `json:"request_arrival_ns,omitempty"`
 	ReadyNs     int64   `json:"answer_ready_ns,omitempty"`
+	SendNs      int64   `json:"response_send_ns,omitempty"`
 }
 
 type recoveredTrace struct {
@@ -264,6 +265,13 @@ func writeJSON(writer *bufio.Writer, value any) {
 	writer.WriteByte('\n')
 }
 
+func emitInteractiveResponse(encoder *json.Encoder, response interactiveResponse) (int64, error) {
+	// This helper is deliberately content-agnostic: all successful Registry
+	// responses cross the same application emission boundary.
+	responseSendNS := time.Now().UnixNano()
+	return responseSendNS, encoder.Encode(response)
+}
+
 func waitUntil(deadline int64) int64 {
 	for {
 		now := time.Now().UnixNano()
@@ -320,17 +328,24 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 		correct := string(record) == string(expected)
 		queryHash := hex.EncodeToString(hash[:])
 		readyNS := time.Now().UnixNano()
-		writeJSON(clientWriter, clientTrace{req.OperationID, ordinal, req.Index, "PRIVATE_AGENT_SELECTION", queryMs, recoveryMs, correct})
-		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
-			query.Data[0].Cols, queryHash, answer.Size() * 4, answerMs,
-			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, arrivalNS, readyNS})
-		clientWriter.Flush()
-		serverWriter.Flush()
-		_ = encoder.Encode(interactiveResponse{
+		observerResponse := interactiveResponse{
 			Type: "PIR_RESULT", OperationID: req.OperationID,
 			Record: base64.StdEncoding.EncodeToString(record), QuerySHA256: queryHash,
 			QueryBytes: uint64(len(serializedQuery)), AnswerBytes: answer.Size() * 4, Correct: correct,
-		})
+		}
+		// Capture immediately at the application response-emission boundary.
+		// Observer trace persistence happens only after the actual encode/write so
+		// measurement logging cannot sit between this timestamp and emission.
+		responseSendNS, err := emitInteractiveResponse(encoder, observerResponse)
+		if err != nil {
+			return
+		}
+		writeJSON(clientWriter, clientTrace{req.OperationID, ordinal, req.Index, "PRIVATE_AGENT_SELECTION", queryMs, recoveryMs, correct})
+		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
+			query.Data[0].Cols, queryHash, answer.Size() * 4, answerMs,
+			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, arrivalNS, readyNS, responseSendNS})
+		clientWriter.Flush()
+		serverWriter.Flush()
 		ordinal++
 	}
 	if err := reader.Err(); err != nil {
@@ -443,7 +458,7 @@ func main() {
 		writeJSON(clientWriter, clientTrace{req.Episode, req.Round, req.Index, req.Class, queryMs, recoveryMs, isCorrect})
 		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
 			query.Data[0].Cols, hex.EncodeToString(hash[:]), answerBytes, answerMs,
-			"SimplePIRServer", "PIR_QUERY", scheduledNs, arrivalNs, readyNs})
+			"SimplePIRServer", "PIR_QUERY", scheduledNs, arrivalNs, readyNs, 0})
 		writeJSON(recoveredWriter, recoveredTrace{req.Episode, req.Round, base64.StdEncoding.EncodeToString(record)})
 	}
 

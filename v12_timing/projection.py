@@ -13,6 +13,7 @@ PUBLIC_CONFIGURATION = "PUBLIC_CONFIGURATION"
 DERIVED_FROM_ALLOWED_FIELDS = "DERIVED_FROM_ALLOWED_FIELDS"
 INTERNAL_PRIVATE_STATE = "INTERNAL_PRIVATE_STATE"
 TIMING_ONLY_VIEW = "TIMING_ONLY_VIEW"
+PARTIAL_TIMING_VIEW = "PARTIAL_TIMING_VIEW"
 
 # Explicit output schemas. Inputs are read field-by-field; unknown keys cannot
 # flow into a projection.
@@ -91,8 +92,8 @@ def validate_projection_schema(projection: Mapping[str, Any]) -> None:
     unknown = set(projection) - set(schema)
     if unknown:
         raise AssertionError(f"observer projection contains non-allowlisted fields: {sorted(unknown)}")
-    if projection.get("view") != TIMING_ONLY_VIEW:
-        raise AssertionError("observer projection is not the timing-only view")
+    if projection.get("view") not in {TIMING_ONLY_VIEW, PARTIAL_TIMING_VIEW}:
+        raise AssertionError("observer projection has an unknown timing view")
 
 
 def _relative(values: Sequence[int], origin: int) -> list[int]:
@@ -108,7 +109,8 @@ def _strictly_monotonic(values: Sequence[int], name: str) -> None:
         raise ValueError(f"{name} must be strictly chronological within one session")
 
 
-def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | None = None) -> dict[str, Any]:
+def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | None = None,
+                            require_complete_application_timing: bool = False) -> dict[str, Any]:
     source = [dict(item) for item in trace.get("public_relay_events", [])]
     if not source:
         raise ValueError("Relay timing projection requires public events")
@@ -124,7 +126,7 @@ def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | 
         raise ValueError("Relay public slots do not match chronological one-session order")
     origin = requests[0]
     projection = {
-        "observer": "RELAY", "view": TIMING_ONLY_VIEW,
+        "observer": "RELAY", "view": PARTIAL_TIMING_VIEW,
         "profile_id": str(events[0]["profile_id"]),
         "public_session_ids": [int(item["session"]) for item in events],
         "public_slot_order": slots,
@@ -138,15 +140,19 @@ def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | 
     send_presence = ["response_send_ns" in item for item in events]
     if any(send_presence) and not all(send_presence):
         raise ValueError("Relay response-send instrumentation is incomplete")
+    if require_complete_application_timing and not all(send_presence):
+        raise ValueError("complete Relay application timing requires response_send_ns for every public cell")
     if all(send_presence):
         sends = [int(item["response_send_ns"]) for item in events]
-        _strictly_monotonic(sends, "Relay response-send timestamps")
         if any(send < request for request, send in zip(requests, sends)):
             raise ValueError("Relay response-send timestamp precedes its request")
-        projection["session_relative_response_send_ns"] = _relative(sends, origin)
-        projection["response_inter_arrival_ns"] = _gaps(sends)
+        chronological_sends = sorted(sends)
+        _strictly_monotonic(chronological_sends, "Relay response-send timestamps")
+        projection["session_relative_response_send_ns"] = _relative(chronological_sends, origin)
+        projection["response_inter_arrival_ns"] = _gaps(chronological_sends)
         projection["request_response_ns"] = [send - request for request, send in zip(requests, sends)]
-        projection["total_session_span_ns"] = sends[-1] - origin
+        projection["total_session_span_ns"] = chronological_sends[-1] - origin
+        projection["view"] = TIMING_ONLY_VIEW
     validate_projection_schema(projection)
     return projection
 
@@ -156,7 +162,8 @@ def load_registry_server_trace(path: Path) -> list[dict[str, Any]]:
 
 
 def registry_timing_projection(rows: Iterable[Mapping[str, Any]], *, profile_id: str,
-                               pir_period_ms: int, opportunities: int) -> dict[str, Any]:
+                               pir_period_ms: int, opportunities: int,
+                               require_complete_application_timing: bool = False) -> dict[str, Any]:
     events = sorted((dict(item) for item in rows), key=lambda item: int(item["ordinal"]))
     if len(events) != opportunities:
         raise ValueError(f"Registry trace has {len(events)} queries, expected public Q={opportunities}")
@@ -167,7 +174,7 @@ def registry_timing_projection(rows: Iterable[Mapping[str, Any]], *, profile_id:
     _strictly_monotonic(arrivals, "Registry request timestamps")
     origin = arrivals[0]
     projection: dict[str, Any] = {
-        "observer": "REGISTRY", "view": TIMING_ONLY_VIEW, "profile_id": profile_id,
+        "observer": "REGISTRY", "view": PARTIAL_TIMING_VIEW, "profile_id": profile_id,
         "public_pir_period_ms": int(pir_period_ms),
         "public_resolution_opportunities": int(opportunities), "ordinals": ordinals,
         "session_relative_query_arrival_ns": _relative(arrivals, origin),
@@ -181,6 +188,8 @@ def registry_timing_projection(rows: Iterable[Mapping[str, Any]], *, profile_id:
     send_presence = ["response_send_ns" in item for item in events]
     if any(send_presence) and not all(send_presence):
         raise ValueError("Registry response-send instrumentation is incomplete")
+    if require_complete_application_timing and not all(send_presence):
+        raise ValueError("complete Registry application timing requires response_send_ns for every PIR query")
     if all(send_presence):
         sends = [int(item["response_send_ns"]) for item in events]
         _strictly_monotonic(sends, "Registry response-send timestamps")
@@ -189,6 +198,7 @@ def registry_timing_projection(rows: Iterable[Mapping[str, Any]], *, profile_id:
         projection["session_relative_response_send_ns"] = _relative(sends, origin)
         projection["query_response_ns"] = [send - arrival for arrival, send in zip(arrivals, sends)]
         projection["total_resolution_session_span_ns"] = sends[-1] - origin
+        projection["view"] = TIMING_ONLY_VIEW
     validate_projection_schema(projection)
     return projection
 

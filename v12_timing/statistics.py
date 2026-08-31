@@ -54,19 +54,27 @@ def partition_indices(blocks: Sequence[int], split: BlockSplit) -> tuple[np.ndar
     return train, evaluation
 
 
+def distinguishability_auc(auc: float) -> float:
+    value = float(auc)
+    if not 0.0 <= value <= 1.0:
+        raise ValueError("AUC must be in [0, 1]")
+    return max(value, 1.0 - value)
+
+
 def family_auc(labels: Sequence[int], predictions: Mapping[str, Sequence[float]]) -> tuple[float, dict[str, float]]:
     target = np.asarray(labels, dtype=np.int64)
     if set(target.tolist()) != {0, 1}:
         raise ValueError("AUC requires both protected classes")
-    aucs = {}
+    raw_aucs = {}
     for name, values in predictions.items():
         scores = np.asarray(values, dtype=np.float64)
         if len(scores) != len(target):
             raise ValueError("prediction vector does not align with labels")
-        aucs[name] = float(roc_auc_score(target, scores))
-    if not aucs:
+        raw_aucs[name] = float(roc_auc_score(target, scores))
+    if not raw_aucs:
         raise ValueError("classifier family is empty")
-    return max(aucs.values()), aucs
+    oriented = {name: distinguishability_auc(value) for name, value in raw_aucs.items()}
+    return max(oriented.values()), raw_aucs
 
 
 def resample_complete_blocks(members: Mapping[int, np.ndarray], generator: np.random.Generator) -> np.ndarray:
@@ -81,7 +89,8 @@ def bootstrap_family_auc(labels: Sequence[int], predictions: Mapping[str, Sequen
     target = np.asarray(labels, dtype=np.int64)
     members = validate_matched_blocks(target, blocks)
     vectors = {name: np.asarray(values, dtype=np.float64) for name, values in predictions.items()}
-    point, component = family_auc(target, vectors)
+    point, raw_component = family_auc(target, vectors)
+    oriented_component = {name: distinguishability_auc(value) for name, value in raw_component.items()}
     generator = np.random.default_rng(seed)
     values = np.empty(resamples, dtype=np.float64)
     for index in range(resamples):
@@ -89,7 +98,9 @@ def bootstrap_family_auc(labels: Sequence[int], predictions: Mapping[str, Sequen
         values[index] = family_auc(target[sample], {name: vector[sample] for name, vector in vectors.items()})[0]
     low, high = np.quantile(values, [0.025, 0.975])
     return {
-        "family_auc": point, "component_aucs": component,
+        "model_family_distinguishability_auc": point,
+        "raw_component_aucs": raw_component,
+        "component_distinguishability_aucs": oriented_component,
         "ci_low": float(low), "ci_high": float(high),
         "bootstrap_unit": "MATCHED_EVAL_BLOCK", "bootstrap_resamples": int(resamples),
         "refit_inside_bootstrap": False,

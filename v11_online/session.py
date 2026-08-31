@@ -50,11 +50,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v11_2-runner"
 TIMING_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner"
 CAUSAL_HORIZON_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-causal-horizon-runner"
+DELTA_FUNCTIONAL_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-delta-functional-runner"
 TIMING_PIR_BRIDGE = ROOT / "pir_integration" / "simplepir_bridge" / "acv-simplepir-v12-timing"
 if os.name == "nt":
     DEFAULT_RUNNER = DEFAULT_RUNNER.with_suffix(".exe")
     TIMING_RUNNER = TIMING_RUNNER.with_suffix(".exe")
     CAUSAL_HORIZON_RUNNER = CAUSAL_HORIZON_RUNNER.with_suffix(".exe")
+    DELTA_FUNCTIONAL_RUNNER = DELTA_FUNCTIONAL_RUNNER.with_suffix(".exe")
     TIMING_PIR_BRIDGE = TIMING_PIR_BRIDGE.with_suffix(".exe")
 
 
@@ -488,10 +490,12 @@ class CanonicalOnlineSession:
         if len(self.cases) != len(cases):
             raise ValueError("online trajectory operation IDs must be unique")
         timing_profile = getattr(public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE"
-        effective_clock_v2 = getattr(public_profile, "timing_semantic_revision", "") == "EFFECTIVE_PUBLIC_CLOCK_V2"
+        timing_revision = getattr(public_profile, "timing_semantic_revision", "")
         if runner_binary is not None:
             self.runner_binary = runner_binary
-        elif effective_clock_v2:
+        elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":
+            self.runner_binary = DELTA_FUNCTIONAL_RUNNER
+        elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V2":
             self.runner_binary = CAUSAL_HORIZON_RUNNER
         elif timing_profile:
             self.runner_binary = TIMING_RUNNER
