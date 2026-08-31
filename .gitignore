@@ -44,6 +44,7 @@ results_v12_confirmatory/
 # Compiled binaries
 *.exe
 pir_integration/simplepir_bridge/acv-simplepir-online
+pir_integration/simplepir_bridge/acv-simplepir-v12-timing
 
 # Python testing/cache
 .pytest_cache/
