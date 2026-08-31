@@ -1,0 +1,11 @@
+{
+  "schema": "AgentTool.V12TimingDevelopmentExclusions/1",
+  "phase": "V12-TIMING-INDISTINGUISHABILITY-CLOSURE",
+  "excluded_observed_identities": [
+    "DEV-V12-TIMING-COMPONENT-001",
+    "DEV-TD-CAPACITY50-P10-PIR60"
+  ],
+  "candidate_attack_workflows_observed": 0,
+  "timing_confirmatory_workflows_observed": 0,
+  "reason": "all executed development identities are permanently excluded from any later fresh timing or final V12 holdout"
+}

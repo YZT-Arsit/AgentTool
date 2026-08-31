@@ -15,6 +15,7 @@ import (
 
 	gatewayv2 "common-action-gateway-v2"
 	"common-action-gateway-v2/v7ohttp"
+	"common-action-gateway-v2/v9ohttp"
 )
 
 type roundTripFunc func(*http.Request) (*http.Response, error)
@@ -496,6 +497,30 @@ func TestV12TimingProfileEmitsEverySlotAfterThirtyFiveMillisecondDelay(t *testin
 		if index > 0 && launch.DispatchNS-result.SlotLaunches[index-1].DispatchNS < int64(10*time.Millisecond) {
 			t.Fatalf("public recovery produced catch-up burst: %+v", result.SlotLaunches)
 		}
+	}
+}
+
+func TestV12TimingSemanticErrorDoesNotTruncatePublicCover(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 8, 0)
+	errorProvider := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		writer.Header().Set("Content-Type", "application/json")
+		_, _ = writer.Write([]byte(`{"status":"ERROR","payload":""}`))
+	}))
+	defer errorProvider.Close()
+	plan.Routes[0].Endpoint = errorProvider.URL
+	plan.Actions = nil
+	plan.ProfileID = "V12-TIMING-INDIST-H50-H3000-P10-PIR60"
+	plan.ProfileClass = TimingIndistinguishabilityProfile
+	plan.PublicSessionLivenessCapMS = TimingPublicSessionLivenessCapMS
+	plan.PreparationLeadMS = 2
+	plan.RoundPeriodMS = 10
+	action := ActionSpec{OperationID: "semantic-error-operation", ActionKind: "REAL_TOOL", RouteHandle: "private-route", EffectSemantics: "READ_ONLY", PolicyID: "private-policy"}
+	result, _ := runOnlineControl(t, plan, []ActionSpec{action})
+	if len(result.Results) != 1 || result.Results[0].Status != v9ohttp.StatusError {
+		t.Fatalf("semantic provider error was not preserved: %+v", result.Results)
+	}
+	if !result.PublicTranscriptComplete || result.EmittedCells != plan.Rounds || len(result.PublicRelayEvents) != plan.Rounds {
+		t.Fatalf("semantic error truncated public cover: %+v", result)
 	}
 }
 

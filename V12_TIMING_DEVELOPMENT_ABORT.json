@@ -1,0 +1,81 @@
+{
+  "schema": "AgentTool.V12TimingDevelopmentAbort/1",
+  "phase": "V12-TIMING-INDISTINGUISHABILITY-CLOSURE",
+  "status": "ABORTED_HARNESS_INTEGRITY_FAILURE_BEFORE_ATTACK_SESSIONS",
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": false,
+  "failed_identity": "DEV-TD-CAPACITY50-P10-PIR60",
+  "retry_count": 0,
+  "replacement_count": 0,
+  "candidate_profile_attack_sessions_executed": 0,
+  "timing_confirmatory_sessions_executed": 0,
+  "first_failure": {
+    "exception_class": "AssertionError",
+    "exception_summary": "OpenAI online workflow expected 50 operation IDs but executed only opTDC1000 through opTDC1003",
+    "expected_operations": 50,
+    "framework_executed_operations": 4,
+    "first_unexecuted_operation_id": "opTDC1004"
+  },
+  "observed_runtime": {
+    "session_status": "COMPLETE",
+    "rounds": 356,
+    "emitted_cells": 356,
+    "public_relay_events": 356,
+    "public_transcript_complete": true,
+    "admitted": 4,
+    "provider_invocations": 4,
+    "results": 4,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "silent_committed_result_losses": 0,
+    "infrastructure_liveness_failure": false,
+    "nominal_late_cells": 219,
+    "maximum_launch_slip_ns": 24006959,
+    "pir_query_count": 50,
+    "pir_real_query_count": 4,
+    "pir_dummy_query_count": 46,
+    "pir_real_ordinals": [42, 44, 46, 48],
+    "first_action_intent_after_session_t0_ns": 2734094438,
+    "lifecycle_stage_counts": {
+      "SESSION_T0": 1,
+      "ACTION_INTENT_SUBMITTED": 50,
+      "DYNAMIC_PIR_DESCRIPTOR_RECOVERED": 4,
+      "FRAMEWORK_RESULT_DELIVERED": 4
+    }
+  },
+  "integrity_failure": {
+    "frozen_local_v11_online_session_sha256": "a82c90cf33331c9e15936f159f5974b4933941f6f162ca58d5a425c78df5a052",
+    "executed_remote_v11_online_session_sha256": "2d6059549423e7c6c9879d576041e9d8606333fd0a0ca5fb552b1d786e8e8f13",
+    "hash_equal": false,
+    "frozen_profile_sha256": "3c21a0139a2e38270b947517517c878fd3bc976f1e66e3ffc3e9de83cec06d70",
+    "executed_remote_profile_sha256": "3c21a0139a2e38270b947517517c878fd3bc976f1e66e3ffc3e9de83cec06d70",
+    "profile_hash_equal": true,
+    "observed_pir_nominal_first_ns": 0,
+    "frozen_pir_nominal_first_ns": 25000000,
+    "conclusion": "the execution host imported a stale session implementation that did not implement the frozen 25 ms public PIR initial lead"
+  },
+  "independent_protocol_capacity_finding": {
+    "status": "DESIGN_REVIEW_REQUIRED_NEW_PHASE",
+    "observation": "sequential causal execution occupied alternating fixed PIR opportunities after it began; a schedule with exactly M opportunities does not mechanically guarantee M real resolutions when later actions do not exist until prior framework results are delivered",
+    "claim": "not used to regrade the invalid run as a candidate-profile failure"
+  },
+  "immutable_remote_evidence_root": "/root/autodl-tmp/results_v12_timing_dev_p10",
+  "raw_artifact_sha256": {
+    "campaign_manifest.json": "67db749a21986e7492cc4450cfe0bdb4b071b8f1d97ef5d00366ee638e0fc8c9",
+    "capacity50/go_online_result.json": "98ec572479dd6676b861f333f580aca804152ee9051c89198ce5a55f48e13732",
+    "capacity50/private_trajectory.json": "eaf268968c2a0365c48c80522e27be1063c44d3ed99b715ba34cd88d3c0ed458",
+    "capacity50/trusted_control_events.jsonl": "8b67a50fb98881bde730a83224223fe81aded71e6c7795a5c488f1c45eb3921f",
+    "capacity50/pir/online_query_summary.json": "45f32c9da3e653c5e24e64ab17b53d2ad967521921631b0c6871f6c21484dbe2",
+    "capacity50/pir/private_pir_cover_schedule.json": "5961c8e711e68c9907c690be22f169fb5e2992d41fb3e881f2236a31a6f89e13",
+    "capacity50/pir/server_visible_trace.jsonl": "9f15a47955dbc0fb7818ef9744250d2ee861717c667d9b6f4d319939cdd7e14b",
+    "capacity50/private_provider_evidence.json": "a3a4a8d7bfe5059d24e28531b5bb262cbbe4b1f671bdda123683187a8a0ee5c2",
+    "capacity50/trusted_online_startup_plan.json": "be7b7e99e28f0d770c329d1899a60c35ac5a629821dd9c989aedbbfb4946c344"
+  },
+  "executed_binary_sha256": {
+    "canonical_v12_timing_runner": "781668441792da5c52a5cbfb1a8d64a2d97746dac259cf1f2ac607416efd3ad6",
+    "simplepir_v12_timing": "b6cd630ac72eb5ae425a289fa0c5f50a8dbf3ae78355c4847788fd9bf9b9a247"
+  },
+  "final_v12_candidate_universe_exists": false,
+  "final_v12_seed_exists": false,
+  "selected_final_v12_cases_executed": 0
+}
