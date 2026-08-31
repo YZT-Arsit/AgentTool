@@ -1,0 +1,21 @@
+{
+  "schema": "AgentTool.V12MDCCAffectedSecurityNegativeManifest/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "frozen_before_affected_security_execution": true,
+  "dependency_reason": "v11_online/frameworks.py changed; only the private routing construction and public operation-capacity boundary are newly affected",
+  "cases": [
+    {
+      "id": "MDCC-NEG-01",
+      "node": "tests/test_v12_rc_invocation_routing.py::test_duplicate_operation_ids_are_rejected_before_framework_construction",
+      "property": "duplicate operation IDs fail before native framework construction"
+    },
+    {
+      "id": "MDCC-NEG-02",
+      "node": "tests/test_v12_microsoft_depth_contract.py::test_fifty_first_real_operation_is_rejected_by_public_system_capacity",
+      "property": "the 51st real operation fails before Microsoft native execution despite the public framework completion budget"
+    }
+  ],
+  "expected": "2/2 PASS",
+  "timing_negatives": 0,
+  "selected_v12_cases": 0
+}

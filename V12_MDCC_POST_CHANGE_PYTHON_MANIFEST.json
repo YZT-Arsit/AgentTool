@@ -1,0 +1,26 @@
+{
+  "schema": "AgentTool.V12MDCCPostChangePythonManifest/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "base_commit": "d34453f18aae631f39ad795f5685b2add584c343",
+  "frozen_before_decisive_execution": true,
+  "prior_current_runtime_nodes": 46,
+  "preserved_timing_pir_capacity_nodes": 5,
+  "new_depth_contract_nodes": 11,
+  "total_nodes": 62,
+  "specification_source": "scripts/run_v12_mdcc_python_gate.py:selected_specs",
+  "prior_manifest": {
+    "path": "V12_CURRENT_NON_TIMING_PYTHON_MANIFEST.json",
+    "sha256": "2f8150a975b16474b42a1da954cbb617a22cd5f1879512b8df21dab4b77fe3f1"
+  },
+  "new_files": {
+    "v11_online/frameworks.py": "4132223a43d99fa165dd381f798479a6ceb795aa42afa943377bae6652eb62e8",
+    "tests/test_v12_microsoft_depth_contract.py": "9a998f350075f3c02bcf5d5cd7fbaad2737614f0c97faf02bbf0c397220f2971",
+    "tests/test_v12_timing_pir_capacity.py": "b51be2d8222eedd98c8a692e35f112ab517e47b633039d0a275ba131ca7eec2a",
+    "scripts/run_v12_pir_capacity_development.py": "43f59e08e20479491285000233ca5baafa1caf1a96bfa68cc4e48ea7fa0e69cc",
+    "scripts/run_v12_mdcc_python_gate.py": "1821359b1c893f9f3173e81ef30519128ef7c10ffddcc28883f1068f4965097c"
+  },
+  "expected_failures": 0,
+  "expected_skips": 0,
+  "timing_attack_nodes": 0,
+  "selected_v12_nodes": 0
+}

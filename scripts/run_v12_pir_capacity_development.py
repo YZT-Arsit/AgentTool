@@ -5,6 +5,7 @@ import hashlib
 import json
 import sys
 import time
+import traceback
 from dataclasses import replace
 from pathlib import Path
 
@@ -138,10 +139,12 @@ def main() -> int:
     if args.output.exists():
         raise FileExistsError(f"refusing to overwrite live capacity root: {args.output}")
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
-    if manifest["prior_failed_identity"] == "DEV-TD-CAPACITY50-P10-PIR60" and any(
-        item["identity"] == manifest["prior_failed_identity"] for item in manifest["workloads"]
-    ):
-        raise ValueError("prior failed capacity identity was selected for retry")
+    forbidden_identities = set(manifest.get("forbidden_identities", [manifest["prior_failed_identity"]]))
+    forbidden_prefixes = tuple(manifest.get("forbidden_identity_prefixes", []))
+    for item in manifest["workloads"]:
+        identity = item["identity"]
+        if identity in forbidden_identities or identity.startswith(forbidden_prefixes):
+            raise ValueError(f"prior capacity identity was selected for retry: {identity}")
     args.output.mkdir(parents=True)
     profile = TimingIndistinguishabilityProfile(
         profile_id="V12-TIMING-INDIST-H50-H3000-P10-PIR60",
@@ -152,7 +155,40 @@ def main() -> int:
     previous = "0" * 64
     for index, item in enumerate(manifest["workloads"]):
         started = time.time_ns()
-        record = run_one(args.output / f"{index:02d}_{item['identity']}", item, profile)
+        try:
+            record = run_one(args.output / f"{index:02d}_{item['identity']}", item, profile)
+        except Exception as error:
+            failure = {
+                "schema": "AgentTool.V12LiveCapacityFailure/1",
+                "index": index,
+                "identity": item["identity"],
+                "kind": item["kind"],
+                "framework": item["framework"],
+                "started_ns": started,
+                "ended_ns": time.time_ns(),
+                "status": "FAIL_STOPPED_NO_RETRY",
+                "exception_class": type(error).__name__,
+                "exception_string": str(error),
+                "traceback": traceback.format_exc(),
+                "retry_count": 0,
+                "replacement_count": 0,
+                "timing_attack_session": False,
+            }
+            failure_path = args.output / "campaign_failure.json"
+            failure_path.write_text(json.dumps(failure, indent=2) + "\n", encoding="utf-8", newline="\n")
+            ledger_record = {
+                "index": index,
+                "identity": item["identity"],
+                "started_ns": started,
+                "ended_ns": failure["ended_ns"],
+                "passed": False,
+                "failure_sha256": sha(failure_path),
+                "previous_record_sha256": previous,
+            }
+            encoded = json.dumps(ledger_record, sort_keys=True, separators=(",", ":"))
+            with ledger.open("a", encoding="utf-8", newline="\n") as handle:
+                handle.write(encoded + "\n")
+            return 2
         ledger_record = {
             "index": index,
             "identity": item["identity"],

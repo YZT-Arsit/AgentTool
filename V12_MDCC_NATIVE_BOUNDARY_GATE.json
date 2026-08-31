@@ -1,0 +1,18 @@
+{
+  "schema": "AgentTool.V12MDCCNativeBoundaryGate/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "platform": "frozen Linux development host",
+  "execution_class": "NATIVE_ONLY_NO_CANONICAL_NO_PIR_NO_TIMING_ATTACK",
+  "total": 11,
+  "passed": 11,
+  "failed": 0,
+  "skipped": 0,
+  "microsoft_boundary_counts": [1, 30, 40, 41, 50],
+  "microsoft_depth50": "PASS",
+  "microsoft_fifty_plus_final_response": "PASS",
+  "microsoft_51st_rejected_by_system": "PASS",
+  "microsoft_iteration_configuration_secret_independent": "PASS",
+  "openai_fixed_public_turn_bound": "PASS",
+  "log_sha256": "6b3a7e5c29e9cb3f5f33e0b90ea2da4be991087f966ae621e7a1ef6f425fa804",
+  "selected_final_v12_cases_executed": 0
+}

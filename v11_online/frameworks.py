@@ -16,6 +16,9 @@ from v11_full_scope.models import AgentServiceSubtype, CanonicalActionFamily, V1
 
 Implementation = Callable[[V11ActionCase, dict[str, Any]], V11ActionOutcome]
 PRIVATE_ROUTED_CALLABLE_PREFIX = "acv_private_route_"
+SYSTEM_MAX_REAL_OPERATIONS_PUBLIC = 50
+MICROSOFT_NATIVE_MAX_ITERATIONS_PUBLIC = SYSTEM_MAX_REAL_OPERATIONS_PUBLIC
+OPENAI_NATIVE_MAX_TURNS_PUBLIC = SYSTEM_MAX_REAL_OPERATIONS_PUBLIC + 2
 
 
 def _private_routed_names(cases: list[V11ActionCase]) -> list[str]:
@@ -127,7 +130,7 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         result = await Runner.run(
             agent,
             "online-development",
-            max_turns=max(10, len(cases) + 2),
+            max_turns=OPENAI_NATIVE_MAX_TURNS_PUBLIC,
             run_config=RunConfig(tracing_disabled=True),
         )
         final_output = str(result.final_output)
@@ -148,6 +151,7 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         child_tool = child.as_tool(
             tool_name=routed_name_by_operation[agent_case.operation_id],
             tool_description="Private child Agent service",
+            max_turns=OPENAI_NATIVE_MAX_TURNS_PUBLIC,
         )
         registered = ordinary_tool(tool_case, routed_name_by_operation[tool_case.operation_id])
         ordered_calls = []
@@ -158,7 +162,12 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
                 ordered_calls.append([_openai_call(routed_name_by_operation[case.operation_id], case.arguments, case.operation_id)])
         model = ScriptedModel(ordered_calls + [[_openai_final(final_text)]])
         agent = Agent(name="V11_2OnlineAgentToolSequence", instructions="Execute actions causally.", model=model, tools=[registered, child_tool])
-        result = await Runner.run(agent, "online-development", run_config=RunConfig(tracing_disabled=True))
+        result = await Runner.run(
+            agent,
+            "online-development",
+            max_turns=OPENAI_NATIVE_MAX_TURNS_PUBLIC,
+            run_config=RunConfig(tracing_disabled=True),
+        )
         final_output = str(result.final_output)
         tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
     elif workflow == "TOOL_TO_HANDOFF":
@@ -188,7 +197,12 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
             tools=[registered],
             handoffs=[handoff_object],
         )
-        result = await Runner.run(source, "online-development", run_config=RunConfig(tracing_disabled=True))
+        result = await Runner.run(
+            source,
+            "online-development",
+            max_turns=OPENAI_NATIVE_MAX_TURNS_PUBLIC,
+            run_config=RunConfig(tracing_disabled=True),
+        )
         final_output = str(result.final_output)
         tool_outputs = [str(item.output) for item in result.new_items if isinstance(item, ToolCallOutputItem)]
         if len([item for item in result.new_items if isinstance(item, HandoffOutputItem)]) != 1:
@@ -205,6 +219,10 @@ async def _run_openai(cases: list[V11ActionCase], implementation: Implementation
         "projection": trajectory_projection(cases, ordered_outcomes, final_output),
         "tool_output_count": len(tool_outputs),
         "native_framework_api": "agents.Runner.run",
+        "private_execution_configuration": {
+            "max_turns": OPENAI_NATIVE_MAX_TURNS_PUBLIC,
+            "source": "PUBLIC_MAX_REAL_OPERATIONS_PLUS_TWO",
+        },
     }
 
 
@@ -214,7 +232,13 @@ class _MicrosoftSequenceClient:
 
         class Client(FunctionInvocationLayer[Any], BaseChatClient[Any]):
             def __init__(self) -> None:
-                super().__init__(middleware=[])
+                super().__init__(
+                    middleware=[],
+                    function_invocation_configuration={
+                        "max_iterations": MICROSOFT_NATIVE_MAX_ITERATIONS_PUBLIC,
+                        "max_function_calls": SYSTEM_MAX_REAL_OPERATIONS_PUBLIC,
+                    },
+                )
                 self.iteration = 0
                 self.observed_results: list[str] = []
 
@@ -313,6 +337,11 @@ async def _run_microsoft(cases: list[V11ActionCase], implementation: Implementat
         "projection": trajectory_projection(cases, ordered_outcomes, result.text),
         "observed_function_results": client.observed_results,
         "native_framework_api": "agent_framework.Agent.run",
+        "private_execution_configuration": {
+            "max_iterations": client.function_invocation_configuration["max_iterations"],
+            "max_function_calls": client.function_invocation_configuration["max_function_calls"],
+            "source": "PUBLIC_MAX_REAL_OPERATIONS",
+        },
     }
 
 
@@ -322,6 +351,11 @@ def run_online_framework_workflow(
     cases: list[V11ActionCase],
     implementation: Implementation,
 ) -> dict[str, Any]:
+    if len(cases) > SYSTEM_MAX_REAL_OPERATIONS_PUBLIC:
+        raise ValueError(
+            "PROFILE_CAPACITY_EXCEEDED: online workflow exceeds the public maximum "
+            f"of {SYSTEM_MAX_REAL_OPERATIONS_PUBLIC} real operations"
+        )
     for case in cases:
         case.validate()
         if case.framework != framework:

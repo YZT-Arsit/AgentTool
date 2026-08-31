@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12MDCCLiveCapacityManifest/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "frozen_after_native_and_non_timing_regression_pass": true,
+  "frozen_before_live_capacity_execution": true,
+  "prior_failed_identity": "DEV-TD-CAPACITY50-P10-PIR60",
+  "forbidden_identities": [
+    "DEV-TD-CAPACITY50-P10-PIR60",
+    "DEV-TPCIC-MS-SAME-AGENT-DEPTH50-001"
+  ],
+  "forbidden_identity_prefixes": ["DEV-TD-", "DEV-TPCIC-"],
+  "workloads": [
+    {"identity":"DEV-MDCC-OA-SAME-AGENT-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-MDCC-MS-SAME-AGENT-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"Microsoft Agent Framework"},
+    {"identity":"DEV-MDCC-OA-DISTINCT-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-MDCC-MS-DISTINCT-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"Microsoft Agent Framework"},
+    {"identity":"DEV-MDCC-OA-AGENT-AS-TOOL-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-MDCC-MS-AGENT-AS-TOOL-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"Microsoft Agent Framework"}
+  ],
+  "public_capacity_candidate": {
+    "maximum_real_operations": 50,
+    "maximum_real_agent_resolutions_K": 6,
+    "pir_period_ms": 60,
+    "pir_public_epoch_ms": 6000,
+    "fixed_pir_query_count_Q": 100,
+    "pir_initial_lead_ms": 25
+  },
+  "retry_count": 0,
+  "replacement_count": 0,
+  "timing_attack_sessions": 0,
+  "timing_confirmatory_sessions": 0,
+  "selected_v12_cases": false
+}

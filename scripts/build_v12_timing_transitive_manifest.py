@@ -9,7 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_COMMIT = "16e0c83adb5f7548b3b0815fed06ddc99cf4bbf0"
+BASE_COMMIT = "d34453f18aae631f39ad795f5685b2add584c343"
+PHASE = "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE"
 ENTRYPOINT = Path("scripts/run_v12_timing_development.py")
 
 
@@ -105,7 +106,7 @@ def main() -> int:
         Path("V12_TIMING_PROFILE_CANDIDATE_FREEZE.json"),
         Path("V12_TIMING_OBSERVER_PROJECTIONS.json"),
         Path("V12_TIMING_THREAT_MODEL.json"),
-        Path("V12_TPCIC_LIVE_CAPACITY_MANIFEST.json"),
+        Path("V12_MDCC_LIVE_CAPACITY_MANIFEST.json"),
     }
     entries: list[dict[str, object]] = []
     for path in sorted(python_files):
@@ -122,7 +123,7 @@ def main() -> int:
         add(entries, path, "FROZEN_TIMING_PROTOCOL_OR_PROFILE")
     payload = {
         "schema": "AgentTool.V12TimingTransitiveRuntimeManifest/1",
-        "phase": "V12-TIMING-PIR-CAPACITY-INTEGRITY-CLOSURE",
+        "phase": PHASE,
         "base_commit": BASE_COMMIT,
         "entrypoint": ENTRYPOINT.as_posix(),
         "enumeration_policy": {

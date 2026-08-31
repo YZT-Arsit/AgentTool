@@ -1,0 +1,35 @@
+{
+  "schema": "AgentTool.V12MicrosoftNativeDepthAPIAudit/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "base_commit": "d34453f18aae631f39ad795f5685b2add584c343",
+  "frozen_before_native_boundary_execution": true,
+  "pinned_source": {
+    "path": "external_stage9/agent-framework/python/packages/core/agent_framework/_tools.py",
+    "sha256": "aa52744502388b1d5e734e7e5849af152bc1bf24b352041feef2d8be33731bc8",
+    "default_max_iterations": 40,
+    "public_configuration_type": "agent_framework.FunctionInvocationConfiguration",
+    "public_property": "FunctionInvocationLayer.function_invocation_configuration",
+    "constructor_parameter": "FunctionInvocationLayer(function_invocation_configuration=...)",
+    "public_export_path": "external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
+    "public_export_sha256": "96d5d32906c31eb6688146354d2fa0451fc76556c6a83cc1752207887135acf6"
+  },
+  "iteration_semantics": {
+    "unit": "one LLM roundtrip",
+    "initial_request_counted": true,
+    "one_response_with_multiple_function_calls": "one iteration; each function call is counted separately by max_function_calls",
+    "final_response_after_budget_exhaustion": "one additional tools-disabled model response outside range(attempt_start, max_iterations)",
+    "normal_early_final_response": "returns from within the current iteration when no function calls remain"
+  },
+  "derivation": {
+    "public_maximum_real_operations_M": 50,
+    "sequential_calls_per_iteration": 1,
+    "minimum_max_iterations": 50,
+    "reason": "iterations 1..50 can each request and execute one action; after iteration 50, the pinned loop obtains the final tools-disabled response outside the iteration loop",
+    "max_function_calls": 50
+  },
+  "MICROSOFT_NATIVE_MAX_ITERATIONS_PUBLIC": 50,
+  "PINNED_PUBLIC_MAX_ITERATION_OVERRIDE_AVAILABLE": true,
+  "framework_source_modified": false,
+  "monkeypatch_used": false,
+  "private_framework_internal_mutation_used": false
+}

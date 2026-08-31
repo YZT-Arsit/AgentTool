@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12MDCCDevelopmentExclusions/1",
+  "phase": "V12-TIMING-MICROSOFT-DEPTH-CONTRACT-CLOSURE",
+  "append_only_successor_to": "V12_TPCIC_DEVELOPMENT_EXCLUSIONS.json",
+  "excluded_identity_prefix": "DEV-MDCC-",
+  "excluded_identities": [
+    "DEV-MDCC-MSBOUND01-*",
+    "DEV-MDCC-MSBOUND30-*",
+    "DEV-MDCC-MSBOUND40-*",
+    "DEV-MDCC-MSBOUND41-*",
+    "DEV-MDCC-MSBOUND50-*",
+    "DEV-MDCC-MSFINAL50-*",
+    "DEV-MDCC-MSREJECT51-*",
+    "DEV-MDCC-MSCONFIGORD-*",
+    "DEV-MDCC-MSCONFIGREP-*",
+    "DEV-MDCC-MSCONFIGAAT",
+    "DEV-MDCC-OACONFIG01-*",
+    "DEV-MDCC-OACONFIG10-*",
+    "DEV-MDCC-OACONFIG50-*",
+    "DEV-MDCC-OA-SAME-AGENT-DEPTH50-001",
+    "DEV-MDCC-MS-SAME-AGENT-DEPTH50-001",
+    "DEV-MDCC-OA-DISTINCT-K6-001",
+    "DEV-MDCC-MS-DISTINCT-K6-001",
+    "DEV-MDCC-OA-AGENT-AS-TOOL-001",
+    "DEV-MDCC-MS-AGENT-AS-TOOL-001"
+  ],
+  "purpose": "future fresh V12 holdout exclusion only; not a candidate universe, seed, selection, or execution plan"
+}

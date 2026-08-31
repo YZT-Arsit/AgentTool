@@ -1,0 +1,12 @@
+{
+  "schema": "AgentTool.V12MDCCAffectedSecurityNegatives/1",
+  "manifest": "V12_MDCC_AFFECTED_SECURITY_NEGATIVE_MANIFEST.json",
+  "affected_cases": 2,
+  "affected_passed": 2,
+  "affected_failed": 0,
+  "preserved_unaffected_cases": 20,
+  "aggregate_non_timing_security_negatives": "22/22 PASS",
+  "log_sha256": "615346574e154b3beff92a0c3300cc216b1d715cbac6441c7dbf923797c8c68f",
+  "timing_negative_cases": 0,
+  "selected_final_v12_cases_executed": 0
+}
