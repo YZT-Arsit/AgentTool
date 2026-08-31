@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12TimingProfileCandidateFreeze/1",
+  "frozen_before_runtime_implementation": true,
+  "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+  "legacy_profile_ids_reused": false,
+  "maximum_real_operations": 50,
+  "admission_horizon_ms": 3000,
+  "provider_completion_bound_ms": 50,
+  "result_drain_rounds": 50,
+  "terminal_rounds": 1,
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800,
+  "public_session_liveness_cap_ms": 60000,
+  "capacity_formula": "R = ceil(H/Delta) + ceil(B/Delta) + M + T",
+  "public_candidates": [
+    {"delta_ms":10,"admission_rounds":300,"completion_rounds":5,"total_rounds":356,"nominal_lifetime_ms":3560},
+    {"delta_ms":20,"admission_rounds":150,"completion_rounds":3,"total_rounds":204,"nominal_lifetime_ms":4080},
+    {"delta_ms":25,"admission_rounds":120,"completion_rounds":2,"total_rounds":173,"nominal_lifetime_ms":4325}
+  ],
+  "pir_registry_in_claim": true,
+  "pir_resolution_opportunities": 50,
+  "pir_period_candidates_ms": [60,75,100],
+  "dummy_descriptor_row": 999,
+  "dummy_descriptor_contract": "authenticated fixed-width descriptor with no real route, no Agent service, and no allowed Tool capability; result discarded",
+  "public_cell_recovery": "eligible_1=nominal_1; eligible_i=max(nominal_i,actual_send_(i-1)+Delta)",
+  "pir_recovery": "same no-drop/no-burst recurrence using public PIR period",
+  "logical_commitment_cutoff": "nominal_i - preparation_lead_ms",
+  "late_commitment_rule": "a prebuilt NOOP is the default logical commitment; only a REAL payload completed before the nominal cutoff may replace it",
+  "selection_rule": "smallest public Delta and smallest PIR period satisfying full-transcript, functional, liveness, and development timing-equivalence criteria",
+  "candidate_addition_after_observation": false
+}

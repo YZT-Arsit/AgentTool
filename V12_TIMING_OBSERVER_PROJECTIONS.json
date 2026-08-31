@@ -1,0 +1,73 @@
+{
+  "schema": "AgentTool.V12TimingObserverProjections/1",
+  "frozen_before_projection_implementation": true,
+  "registry": {
+    "primary": true,
+    "allowed_fields": [
+      "session_relative_query_arrival_ns",
+      "session_relative_response_ready_ns",
+      "inter_query_gap_ns",
+      "query_response_ns",
+      "total_resolution_session_span_ns",
+      "query_bytes",
+      "answer_bytes",
+      "query_rows",
+      "query_cols",
+      "executor",
+      "request_kind",
+      "public_pir_profile_id",
+      "public_pir_period_ms",
+      "public_resolution_opportunities"
+    ],
+    "forbidden_fields": [
+      "private_index",
+      "logical_agent_identity",
+      "operation_id",
+      "private_route",
+      "private_action_label",
+      "real_or_dummy_label",
+      "framework_state",
+      "scheduler_host_diagnostics"
+    ]
+  },
+  "relay": {
+    "primary": true,
+    "allowed_fields": [
+      "session_relative_request_arrival_ns",
+      "session_relative_response_transmission_ns",
+      "request_inter_arrival_gap_ns",
+      "response_inter_arrival_gap_ns",
+      "request_response_delay_ns",
+      "total_session_span_ns",
+      "request_bytes",
+      "response_bytes",
+      "public_session_id",
+      "authenticated_slot_order",
+      "public_profile_id",
+      "public_endpoint_classes",
+      "public_http_versions",
+      "public_connection_policy"
+    ],
+    "forbidden_fields": [
+      "ohttp_plaintext",
+      "logical_tool_name",
+      "logical_agent_identity",
+      "operation_id",
+      "private_route_alias",
+      "result_readiness",
+      "provider_diagnostics",
+      "scheduler_cpu_gc_cgroup_diagnostics"
+    ]
+  },
+  "provider": {
+    "primary_timing_indistinguishability_observer": false,
+    "boundary": "provider sees its own invocation and provider-visible logical request"
+  },
+  "joint_registry_relay": {
+    "evaluated": false,
+    "reason": "frozen non-colluding-role threat model"
+  },
+  "supervised_target_rule": "secret class label is stored separately from attacker features",
+  "sample_unit": "one complete session or workflow",
+  "cells_are_independent_samples": false
+}

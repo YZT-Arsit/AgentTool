@@ -1,0 +1,39 @@
+{
+  "schema": "AgentTool.V12TimingThreatModel/1",
+  "phase": "V12-TIMING-INDISTINGUISHABILITY-CLOSURE",
+  "base_commit": "ca6a79a92f3c6730f0909e015de1c6db722ac812",
+  "frozen_before_timing_runtime_change": true,
+  "primary_adversary": "PASSIVE_METADATA_OBSERVER",
+  "primary_observers": [
+    "PIR_REGISTRY_APPLICATION_CHANNEL",
+    "OHTTP_RELAY_APPLICATION_CHANNEL"
+  ],
+  "observer_collusion": false,
+  "joint_registry_relay_view": "OUT_OF_SCOPE",
+  "provider_boundary": "SEPARATE_TRUSTED_APPLICATION_OBSERVER; provider learns its own invocation",
+  "adversary_capabilities": [
+    "observe modeled application-channel timestamps",
+    "observe public request and response sizes",
+    "observe public connection, session, profile, and endpoint-class metadata available at its interface"
+  ],
+  "adversary_exclusions": [
+    "control guest OS scheduler",
+    "control hypervisor scheduler",
+    "deliberately suspend VM based on protected secret",
+    "inject secret-dependent CPU starvation",
+    "control trusted timing component",
+    "decrypt OHTTP plaintext",
+    "observe private framework or provider diagnostics"
+  ],
+  "active_host_scheduling_attack": "OUT_OF_SCOPE",
+  "packet_level_timing": "OPEN / NOT_TESTED",
+  "global_internet_traffic_analysis": "OUT_OF_SCOPE",
+  "hardware_tee": "NOT_TESTED",
+  "registry_timing_in_claim": true,
+  "relay_timing_in_claim": true,
+  "timing_privacy_status_at_freeze": "OPEN / NOT_TESTED",
+  "historical_strict_candidate_result": "FAIL_NO_QUALIFYING_CANDIDATE",
+  "historical_provider_error": "NOT_REPRODUCED_UNRESOLVED",
+  "historical_agent_ir_v2": "FAIL 0/2 PRESERVED; selected-runtime reachable = NO",
+  "structural_only_recommendation": "PRESERVED_NOT_IMPLEMENTED"
+}

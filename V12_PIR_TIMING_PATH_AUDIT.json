@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12PIRTimingPathAudit/1",
+  "base_commit": "ca6a79a92f3c6730f0909e015de1c6db722ac812",
+  "frozen_before_pir_timing_repair": true,
+  "selected_path": [
+    "scripts/run_v12_confirmatory.py",
+    "v11a_confirmatory/orchestrator.py",
+    "v11_online/session.py:CanonicalOnlineSession.submit",
+    "v11_online/session.py:OnlineSimplePIRResolver.query",
+    "pir_integration/simplepir_bridge/acv-simplepir-online --interactive"
+  ],
+  "finding": "REAL_QUERY_TRIGGERED_ONLY_BY_PRIVATE_ACTION_SUBMIT",
+  "registry_frequency_leak": true,
+  "registry_timing_in_claim": true,
+  "required_disposition": "FIXED_REAL_SIMPLEPIR_RESOLUTION_SCHEDULE",
+  "immediate_secret_triggered_queries_allowed_after_repair": false,
+  "source_hashes": {
+    "v11_online/session.py": "b7a0ec81cb42a66e3a900033b701ff14b2be4ae92f755db04d71ed9a7e454e4b",
+    "pir_integration/simplepir_bridge/main.go": "978abd59e95cdd35826a909c1a781af9887de3700a3eda659072bdb1e884eaac",
+    "common_action_gateway_v2/canonicalv9/online.go": "ca32097b31fe6e14a7e6980cdf760895f175229894c24406d1b618b7b31de877"
+  },
+  "mechanical_evidence": [
+    "CanonicalOnlineSession.submit calls self.pir.query immediately after ACTION_INTENT_SUBMITTED",
+    "OnlineSimplePIRResolver.query writes one interactive request directly to the SimplePIR process",
+    "there is no dummy query or fixed resolution opportunity loop",
+    "server_visible_trace therefore has one entry per real resolution"
+  ]
+}
