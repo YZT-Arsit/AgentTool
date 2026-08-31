@@ -55,12 +55,13 @@ type onlinePreparedRequest struct {
 }
 
 type onlineSlotState struct {
-	mu        sync.Mutex
-	deadline  time.Time
-	cutoff    time.Time
-	committed bool
-	noop      onlinePreparedRequest
-	real      *onlinePreparedRequest
+	mu              sync.Mutex
+	deadline        time.Time
+	cutoff          time.Time
+	committed       bool
+	noop            onlinePreparedRequest
+	real            *onlinePreparedRequest
+	realCommittedAt time.Time
 }
 
 // onlinePublicStartLeadPeriods is a public, secret-independent setup budget.
@@ -140,6 +141,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	if err := bindAdmission(plan); err != nil {
 		return RunResult{}, err
 	}
+	timingIndistinguishability := plan.ProfileClass == TimingIndistinguishabilityProfile
 	if err := os.MkdirAll(plan.StateDirectory, 0o700); err != nil {
 		return RunResult{}, err
 	}
@@ -219,6 +221,9 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		}
 		deadline := t0.Add(time.Duration(index) * period)
 		slots[index] = &onlineSlotState{deadline: deadline, cutoff: deadline.Add(-lead), noop: noop}
+		if timingIndistinguishability {
+			engine.deliveryCutoffs[uint32(index+1)] = deadline.Add(-lead).UnixNano()
+		}
 	}
 	setupEvents = append(setupEvents,
 		PublicSetupEvent{Stage: "PREBUILT_NOOP_TABLE_COMPLETE", MonotonicNS: monotonicNS()},
@@ -298,8 +303,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 						break
 					}
 					state.mu.Lock()
-					if !state.committed && time.Now().Before(state.cutoff) {
+					commitTime := time.Now()
+					if !state.committed && commitTime.Before(state.cutoff) {
 						state.real = &candidate
+						state.realCommittedAt = commitTime
 						admitted = true
 					}
 					state.mu.Unlock()
@@ -343,6 +350,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		tolerance = 2 * period
 	}
 	schedulerDone := make(chan struct{})
+	infrastructureLivenessFailure := false
 	go func() {
 		defer close(schedulerDone)
 		pacer, pacerErr := newPublicPacer()
@@ -369,6 +377,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			schedulerConfiguration.WaitError = pacerWaitError
 		}()
 		hostBefore := schedulerHostSnapshot()
+		previousDispatch := time.Time{}
+		livenessDeadline := processClock.Add(time.Duration(plan.PublicSessionLivenessCapMS) * time.Millisecond)
 		for index, state := range slots {
 			if err := pacer.WaitUntil(state.cutoff); err != nil {
 				pacerWaitError = err.Error()
@@ -389,7 +399,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			}
 			state.mu.Lock()
 			item := state.noop
-			if state.real != nil {
+			// NOOP is the precommitted default. A REAL payload may replace it
+			// only if preparation completed before the nominal logical cutoff.
+			// Late physical emission never consults newly eligible private state.
+			if state.real != nil && !state.realCommittedAt.IsZero() && state.realCommittedAt.Before(state.cutoff) {
 				item = *state.real
 			}
 			state.committed = true
@@ -398,8 +411,12 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				emitter.emit(OnlineControlEvent{Type: "ACTION_ADMITTED", OperationID: item.operationID, Round: index + 1})
 				engine.record(PrivateEvent{OperationID: item.operationID, Stage: "ONLINE_ACTION_ADMITTED", Round: index + 1})
 			}
+			eligible := state.deadline
+			if timingIndistinguishability && !previousDispatch.IsZero() && previousDispatch.Add(period).After(eligible) {
+				eligible = previousDispatch.Add(period)
+			}
 			sleepEntry := time.Now()
-			if err := pacer.WaitUntil(state.deadline); err != nil {
+			if err := pacer.WaitUntil(eligible); err != nil {
 				pacerWaitError = err.Error()
 				for _, remainingState := range slots[index:] {
 					launches = append(launches, SlotLaunch{
@@ -416,24 +433,28 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 				time.Sleep(time.Duration(plan.FaultSchedulerStallMS) * time.Millisecond)
 			}
 			dispatchTime := time.Now()
+			if timingIndistinguishability && dispatchTime.After(livenessDeadline) {
+				infrastructureLivenessFailure = true
+				break
+			}
 			slip := dispatchTime.Sub(state.deadline)
 			launch := SlotLaunch{
 				Session: 1, Slot: uint32(index + 1),
-				DeadlineNS:          state.deadline.Sub(processClock).Nanoseconds(),
-				PreparationCutoffNS: state.cutoff.Sub(processClock).Nanoseconds(),
-				PreparationWakeNS: preparationWake.Sub(processClock).Nanoseconds(),
+				DeadlineNS:            state.deadline.Sub(processClock).Nanoseconds(),
+				EligibleNS:            eligible.Sub(processClock).Nanoseconds(),
+				PreparationCutoffNS:   state.cutoff.Sub(processClock).Nanoseconds(),
+				PreparationWakeNS:     preparationWake.Sub(processClock).Nanoseconds(),
 				PreparationLatenessNS: preparationWake.Sub(state.cutoff).Nanoseconds(),
-				SleepEntryNS:        sleepEntry.Sub(processClock).Nanoseconds(),
-				SleepWakeNS:         sleepWake.Sub(processClock).Nanoseconds(),
-				DispatchNS:          dispatchTime.Sub(processClock).Nanoseconds(),
-				WakeLatenessNS:      sleepWake.Sub(state.deadline).Nanoseconds(),
-				DispatchLatenessNS:  dispatchTime.Sub(state.deadline).Nanoseconds(),
-				LaunchSlipNS:        slip.Nanoseconds(),
+				SleepEntryNS:          sleepEntry.Sub(processClock).Nanoseconds(),
+				SleepWakeNS:           sleepWake.Sub(processClock).Nanoseconds(),
+				DispatchNS:            dispatchTime.Sub(processClock).Nanoseconds(),
+				WakeLatenessNS:        sleepWake.Sub(state.deadline).Nanoseconds(),
+				DispatchLatenessNS:    dispatchTime.Sub(state.deadline).Nanoseconds(),
+				LaunchSlipNS:          slip.Nanoseconds(),
 			}
 			launch.ToleranceExceeded = slip > tolerance
 			if slip >= period {
 				launch.ScheduleMiss = true
-				launches = append(launches, launch)
 				hostAfter := schedulerHostSnapshot()
 				schedulerIncidents = append(schedulerIncidents, SchedulerIncident{
 					Slot: launch.Slot, DeadlineNS: launch.DeadlineNS,
@@ -443,10 +464,15 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 					Before:             incidentBefore, After: hostAfter,
 				})
 				hostBefore = hostAfter
-				continue
+				if !timingIndistinguishability {
+					launches = append(launches, launch)
+					continue
+				}
 			}
 			launch.SubmitNS = dispatchTime.Sub(processClock).Nanoseconds()
+			launch.Emitted = true
 			launches = append(launches, launch)
+			previousDispatch = dispatchTime
 			submitted++
 			responseWG.Add(1)
 			go func(value onlinePreparedRequest) {
@@ -559,20 +585,24 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		}
 	}
 	status := "COMPLETE"
-	if scheduleMisses > 0 {
+	if infrastructureLivenessFailure {
+		status = "INFRASTRUCTURE_LIVENESS_FAILURE"
+	} else if scheduleMisses > 0 && !timingIndistinguishability {
 		status = "SESSION_SCHEDULE_FAILURE"
 	} else if transportFailure || submitted != plan.Rounds {
 		status = "SESSION_TRANSPORT_FAILURE"
 	} else if len(pending) > 0 {
 		status = "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
 	}
-	result := RunResult{ProfileID: plan.ProfileID, Rounds: plan.Rounds, Admitted: len(acceptedCopy),
+	result := RunResult{ProfileID: plan.ProfileID, ProfileClass: plan.ProfileClass, Rounds: plan.Rounds, Admitted: len(acceptedCopy),
 		ProviderInvocations: engine.providerCalls.Load(), DummyProviderOperations: 0,
 		Results: results, PrivateEvents: append([]PrivateEvent(nil), engine.events...),
 		PublicRelayEvents: relay.Events(), AfterCutoffOperations: []string{"atomic slot snapshot", "PreparedSlot.Send", "one fixed-size writer.Write", "byte-count validation"},
 		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes,
 		SessionStatus: status, PublicSetupEvents: setupEvents, SlotLaunches: launches,
-		ScheduleMisses: scheduleMisses, PendingOperationIDs: pending, SilentCommittedLosses: 0,
+		ScheduleMisses: scheduleMisses, NominalLateCells: scheduleMisses, EmittedCells: submitted,
+		PublicTranscriptComplete: submitted == plan.Rounds, InfrastructureLivenessFailure: infrastructureLivenessFailure,
+		PendingOperationIDs: pending, SilentCommittedLosses: 0,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
 		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),

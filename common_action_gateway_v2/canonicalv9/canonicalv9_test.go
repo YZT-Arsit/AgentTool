@@ -468,6 +468,37 @@ func TestV12_1OnlineSubperiodSlipIsDiagnosticNotScheduleMiss(t *testing.T) {
 	}
 }
 
+func TestV12TimingProfileEmitsEverySlotAfterThirtyFiveMillisecondDelay(t *testing.T) {
+	plan, _ := liveSchedulerPlan(t, 8, 0)
+	plan.Actions = nil
+	plan.ProfileID = "V12-TIMING-INDIST-H50-H3000-P10-PIR60"
+	plan.ProfileClass = TimingIndistinguishabilityProfile
+	plan.PublicSessionLivenessCapMS = TimingPublicSessionLivenessCapMS
+	plan.PreparationLeadMS = 2
+	plan.RoundPeriodMS = 10
+	plan.SchedulerToleranceMS = 1
+	plan.FaultSchedulerStallSlot = 3
+	plan.FaultSchedulerStallMS = 35
+	result, _ := runOnlineControl(t, plan, nil)
+	if result.SessionStatus != "COMPLETE" || !result.PublicTranscriptComplete {
+		t.Fatalf("jitter-tolerant transcript failed: %+v", result)
+	}
+	if result.EmittedCells != plan.Rounds || len(result.PublicRelayEvents) != plan.Rounds || len(result.SlotLaunches) != plan.Rounds {
+		t.Fatalf("late slot changed fixed transcript: emitted=%d relay=%d launches=%d", result.EmittedCells, len(result.PublicRelayEvents), len(result.SlotLaunches))
+	}
+	if result.NominalLateCells == 0 || result.InfrastructureLivenessFailure {
+		t.Fatalf("artificial lateness was not retained as diagnostics: %+v", result)
+	}
+	for index, launch := range result.SlotLaunches {
+		if !launch.Emitted || launch.Slot != uint32(index+1) {
+			t.Fatalf("authenticated slot missing or reordered: %+v", result.SlotLaunches)
+		}
+		if index > 0 && launch.DispatchNS-result.SlotLaunches[index-1].DispatchNS < int64(10*time.Millisecond) {
+			t.Fatalf("public recovery produced catch-up burst: %+v", result.SlotLaunches)
+		}
+	}
+}
+
 func TestV11_2OnlineCapacityRejectsWithoutSecondSession(t *testing.T) {
 	plan, providerCalls := liveSchedulerPlan(t, 13, time.Millisecond)
 	plan.Actions = nil

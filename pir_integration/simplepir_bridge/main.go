@@ -299,6 +299,7 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 	reader.Buffer(make([]byte, 4096), 64*1024)
 	ordinal := 0
 	for reader.Scan() {
+		arrivalNS := time.Now().UnixNano()
 		var req interactiveRequest
 		if err := json.Unmarshal(reader.Bytes(), &req); err != nil || req.OperationID == "" || req.Index >= recordCount {
 			_ = encoder.Encode(interactiveResponse{Type: "PIR_ERROR", Error: "invalid interactive PIR request"})
@@ -318,10 +319,11 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 		expected := raw[req.Index*recordBytes : (req.Index+1)*recordBytes]
 		correct := string(record) == string(expected)
 		queryHash := hex.EncodeToString(hash[:])
+		readyNS := time.Now().UnixNano()
 		writeJSON(clientWriter, clientTrace{req.OperationID, ordinal, req.Index, "PRIVATE_AGENT_SELECTION", queryMs, recoveryMs, correct})
 		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
 			query.Data[0].Cols, queryHash, answer.Size() * 4, answerMs,
-			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, time.Now().UnixNano(), time.Now().UnixNano()})
+			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, arrivalNS, readyNS})
 		clientWriter.Flush()
 		serverWriter.Flush()
 		_ = encoder.Encode(interactiveResponse{

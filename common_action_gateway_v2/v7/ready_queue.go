@@ -227,11 +227,26 @@ func (q *DurableReadyQueue) Enqueue(result gatewayv2.ResultRecord, publishedNS i
 // later than the current public session.  Later completions may bypass an
 // ineligible future-session entry; publication order is private state.
 func (q *DurableReadyQueue) ReserveEligible(publicSession, publicSlot uint32) (*gatewayv2.ResultRecord, error) {
+	return q.reserveEligible(publicSession, publicSlot, 0)
+}
+
+// ReserveEligibleBefore commits a public response slot using only results that
+// were durably published by its public nominal cutoff. A zero cutoff retains
+// the legacy behavior.
+func (q *DurableReadyQueue) ReserveEligibleBefore(publicSession, publicSlot uint32, cutoffNS int64) (*gatewayv2.ResultRecord, error) {
+	if cutoffNS <= 0 {
+		return nil, errors.New("result commitment cutoff must be positive")
+	}
+	return q.reserveEligible(publicSession, publicSlot, cutoffNS)
+}
+
+func (q *DurableReadyQueue) reserveEligible(publicSession, publicSlot uint32, cutoffNS int64) (*gatewayv2.ResultRecord, error) {
 	q.mu.Lock()
 	defer q.mu.Unlock()
 	selected := -1
 	for index, entry := range q.entries {
-		if entry.State == DeliveryReady && entry.Result.Session <= publicSession {
+		eligibleByTime := cutoffNS == 0 || entry.PublishedNS <= cutoffNS
+		if entry.State == DeliveryReady && entry.Result.Session <= publicSession && eligibleByTime {
 			if selected < 0 || entry.Sequence < q.entries[selected].Sequence {
 				selected = index
 			}

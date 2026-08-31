@@ -65,3 +65,31 @@ func TestV12PublicPacerUsesAbsoluteDeadlineContract(t *testing.T) {
 		t.Fatal("absolute pacer returned before deadline")
 	}
 }
+
+func TestV12TimingNoDropNoBurstRecoveryIsPublicAndComplete(t *testing.T) {
+	period := int64(10 * time.Millisecond)
+	t0 := int64(100 * time.Millisecond)
+	opportunities := []int64{
+		t0,
+		t0 + period,
+		t0 + 2*period + int64(35*time.Millisecond),
+		t0 + 2*period + int64(35*time.Millisecond),
+		t0 + 2*period + int64(35*time.Millisecond),
+		t0 + 5*period + int64(36*time.Millisecond),
+	}
+	decisions := evaluateJitterTolerantSlots(t0, period, opportunities)
+	if len(decisions) != len(opportunities) {
+		t.Fatalf("fixed public slot count changed: got=%d want=%d", len(decisions), len(opportunities))
+	}
+	for index, decision := range decisions {
+		if !decision.Transmit {
+			t.Fatalf("late slot %d was deleted: %+v", index+1, decision)
+		}
+		if index > 0 && decision.DispatchNS-decisions[index-1].DispatchNS < period {
+			t.Fatalf("recovery emitted a catch-up burst at slot %d: %+v", index+1, decisions)
+		}
+	}
+	if !decisions[2].Late || decisions[3].EligibleNS != decisions[2].DispatchNS+period {
+		t.Fatalf("35 ms delay did not propagate by the public recurrence: %+v", decisions)
+	}
+}

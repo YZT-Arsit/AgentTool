@@ -1,0 +1,53 @@
+{
+  "schema": "AgentTool.V12TimingDevelopmentProtocol/1",
+  "matrix_sha256": "7c7f57ca88b355c2321a0920e2ed388e4ba9f6739374de4434429ad2680a3f36",
+  "profiles": [
+    {
+      "delta_ms": 10,
+      "pir_period_ms": 60
+    },
+    {
+      "delta_ms": 20,
+      "pir_period_ms": 60
+    },
+    {
+      "delta_ms": 25,
+      "pir_period_ms": 60
+    }
+  ],
+  "profile_execution_order": [
+    10,
+    20,
+    25
+  ],
+  "functional_gate": {
+    "native_canonical_level_a_projection_equal": true,
+    "causal_proof": "PASS",
+    "public_transcript_complete": true,
+    "exact_authenticated_slot_order": true,
+    "fixed_request_bytes": 1079,
+    "fixed_response_bytes": 800,
+    "duplicate_slots": 0,
+    "missing_slots": 0,
+    "dummy_provider_operations": 0,
+    "profile_overflow_events": 0,
+    "silent_committed_result_losses": 0,
+    "infrastructure_liveness_failures": 0
+  },
+  "development_attack_screen": {
+    "models": [
+      "LOGISTIC_REGRESSION",
+      "EXTRA_TREES",
+      "HIST_GRADIENT_BOOSTING",
+      "RBF_SVM"
+    ],
+    "cross_validation": "5-fold stratified-group by randomized block",
+    "bootstrap_resamples": 10000,
+    "protected_rule": "best-attacker upper 95% session-bootstrap AUC <= 0.55",
+    "positive_control_rule": "best-attacker lower 95% session-bootstrap AUC >= 0.60",
+    "all_tasks_and_both_observers_required": true
+  },
+  "selection_rule": "smallest Delta satisfying functional full transcript and development attack rules; all three candidates are nevertheless executed and reported",
+  "first_decisive_failure": "preserve and stop without retry",
+  "selected_final_v12_holdout": false
+}

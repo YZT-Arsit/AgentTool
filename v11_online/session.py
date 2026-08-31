@@ -7,6 +7,8 @@ import shutil
 import subprocess
 import threading
 import time
+from collections import deque
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -15,6 +17,7 @@ from action_privacy_v8 import (
     AgentDescriptorV7Codec,
     DeliveryLedger,
     PrivacyProfile,
+    PlacementClass,
     ProtectedActionIntent,
     TrustedActionRouter,
 )
@@ -44,22 +47,36 @@ from v11_3.profile import OnlinePublicProfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v11_2-runner"
+TIMING_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner"
+TIMING_PIR_BRIDGE = ROOT / "pir_integration" / "simplepir_bridge" / "acv-simplepir-v12-timing"
 if os.name == "nt":
     DEFAULT_RUNNER = DEFAULT_RUNNER.with_suffix(".exe")
+    TIMING_RUNNER = TIMING_RUNNER.with_suffix(".exe")
+    TIMING_PIR_BRIDGE = TIMING_PIR_BRIDGE.with_suffix(".exe")
 
 
 class OnlineSessionFailure(RuntimeError):
     pass
 
 
+@dataclass
+class _PendingPIRResolution:
+    operation_id: str
+    index: int
+    ready: threading.Event = field(default_factory=threading.Event)
+    result: AgentDescriptorV7 | None = None
+    error: BaseException | None = None
+
+
 class OnlineSimplePIRResolver:
     """Persistent official SimplePIR setup with indices supplied only online."""
 
-    def __init__(self, output: Path, *, record_count: int = 1000):
+    def __init__(self, output: Path, *, record_count: int = 1000, bridge_binary: Path | None = None):
         self.output = output.resolve()
         if record_count < 64:
             raise ValueError("online SimplePIR development catalog must contain at least 64 rows")
         self.record_count = record_count
+        self.bridge_binary = bridge_binary.resolve() if bridge_binary is not None else None
         self.process: subprocess.Popen[str] | None = None
         self.codec: AgentDescriptorV7Codec | None = None
         self.stderr_lines: list[str] = []
@@ -68,6 +85,33 @@ class OnlineSimplePIRResolver:
         self.query_hashes: list[str] = []
         self.prebuilt_bridge_used = False
         self.query_lock = threading.Lock()
+        self.cover_condition = threading.Condition()
+        self.cover_pending: deque[_PendingPIRResolution] = deque()
+        self.cover_thread: threading.Thread | None = None
+        self.cover_complete = False
+        self.cover_error: BaseException | None = None
+        self.cover_opportunities = 0
+        self.cover_period_ms = 0
+        self.cover_dummy_index = 999
+        self.cover_initial_lead_ms = 25
+        self.cover_liveness_cap_ms = 60_000
+        self.real_query_count = 0
+        self.dummy_query_count = 0
+        self.cover_events: list[dict[str, Any]] = []
+
+    @staticmethod
+    def _dummy_descriptor(agent_id: int) -> AgentDescriptorV7:
+        return AgentDescriptorV7(
+            agent_id=agent_id,
+            capability_ids=("agent.cover.noop",),
+            publisher_key_id="publisher-local",
+            agent_version=1,
+            placement=PlacementClass.EXTERNAL,
+            agent_service=None,
+            allowed_tool_capabilities=(),
+            trust_class="AUTHENTICATED_COVER_NOOP",
+            catalog_epoch=EPOCH,
+        ).validated()
 
     def __enter__(self) -> "OnlineSimplePIRResolver":
         self.output.mkdir(parents=True, exist_ok=False)
@@ -78,14 +122,17 @@ class OnlineSimplePIRResolver:
         # local-trusted Agent. No future query index is passed to preprocessing.
         with registry.open("xb") as handle:
             for agent_id in range(self.record_count):
-                value = internal_descriptor(agent_id) if agent_id == 20 else descriptor(agent_id)
+                if agent_id == self.cover_dummy_index:
+                    value = self._dummy_descriptor(agent_id)
+                else:
+                    value = internal_descriptor(agent_id) if agent_id == 20 else descriptor(agent_id)
                 handle.write(self.codec.encode(value))
         if registry.stat().st_size != self.record_count * AGENT_DESCRIPTOR_V7_BYTES:
             raise AssertionError("online SimplePIR registry size mismatch")
 
         bridge = ROOT / "pir_integration" / "simplepir_bridge"
         env = dict(os.environ)
-        prebuilt_bridge = bridge / (
+        prebuilt_bridge = self.bridge_binary or bridge / (
             "acv-simplepir-online.exe" if os.name == "nt" else "acv-simplepir-online"
         )
         self.prebuilt_bridge_used = prebuilt_bridge.is_file()
@@ -153,7 +200,7 @@ class OnlineSimplePIRResolver:
         assert self.process is not None and self.process.stderr is not None
         self.stderr_lines.extend(self.process.stderr)
 
-    def query(self, operation_id: str, index: int) -> AgentDescriptorV7:
+    def _execute_query(self, operation_id: str, index: int) -> AgentDescriptorV7:
         with self.query_lock:
             if self.process is None or self.codec is None or self.process.stdin is None or self.process.stdout is None:
                 raise RuntimeError("online SimplePIR is not active")
@@ -167,17 +214,132 @@ class OnlineSimplePIRResolver:
             raise RuntimeError(f"online SimplePIR query failed: {response}")
         row = base64.b64decode(response["record_base64"])
         recovered = self.codec.decode(row, expected_agent_id=index)
-        expected = internal_descriptor(index) if index == 20 else descriptor(index)
+        if index == self.cover_dummy_index:
+            expected = self._dummy_descriptor(index)
+        else:
+            expected = internal_descriptor(index) if index == 20 else descriptor(index)
         if recovered != expected:
             raise AssertionError("online PIR-selected descriptor semantic mismatch")
         self.query_count += 1
         self.query_hashes.append(str(response["query_sha256"]))
         return recovered
 
+    def start_cover_schedule(
+        self,
+        *,
+        opportunities: int,
+        period_ms: int,
+        dummy_index: int = 999,
+        initial_lead_ms: int = 25,
+        liveness_cap_ms: int = 60_000,
+    ) -> None:
+        if self.cover_thread is not None:
+            raise RuntimeError("PIR cover schedule already started")
+        if opportunities != 50:
+            raise ValueError("V12 timing profile requires exactly 50 PIR opportunities")
+        if period_ms not in (60, 75, 100):
+            raise ValueError("PIR period is outside the predeclared candidates")
+        if dummy_index != 999 or dummy_index >= self.record_count:
+            raise ValueError("invalid frozen dummy PIR descriptor row")
+        if initial_lead_ms != 25:
+            raise ValueError("V12 timing profile requires the frozen 25 ms PIR initial lead")
+        if liveness_cap_ms != 60_000:
+            raise ValueError("PIR cover liveness cap changed")
+        self.cover_opportunities = opportunities
+        self.cover_period_ms = period_ms
+        self.cover_dummy_index = dummy_index
+        self.cover_initial_lead_ms = initial_lead_ms
+        self.cover_liveness_cap_ms = liveness_cap_ms
+        self.cover_thread = threading.Thread(target=self._run_cover_schedule, daemon=True)
+        self.cover_thread.start()
+
+    def _run_cover_schedule(self) -> None:
+        start_ns = time.monotonic_ns()
+        period_ns = self.cover_period_ms * 1_000_000
+        previous_send_ns = 0
+        try:
+            for ordinal in range(self.cover_opportunities):
+                nominal_ns = start_ns + self.cover_initial_lead_ms * 1_000_000 + ordinal * period_ns
+                eligible_ns = nominal_ns
+                if ordinal and previous_send_ns + period_ns > eligible_ns:
+                    eligible_ns = previous_send_ns + period_ns
+                remaining_ns = eligible_ns - time.monotonic_ns()
+                if remaining_ns > 0:
+                    time.sleep(remaining_ns / 1_000_000_000)
+                send_ns = time.monotonic_ns()
+                if send_ns - start_ns > self.cover_liveness_cap_ms * 1_000_000:
+                    raise TimeoutError("PIR cover schedule exceeded public liveness cap")
+                with self.cover_condition:
+                    pending = self.cover_pending.popleft() if self.cover_pending else None
+                real = pending is not None
+                operation_id = pending.operation_id if pending else f"pir-cover-{ordinal + 1:06d}"
+                index = pending.index if pending else self.cover_dummy_index
+                try:
+                    result = self._execute_query(operation_id, index)
+                    if pending is not None:
+                        pending.result = result
+                except BaseException as exc:
+                    if pending is not None:
+                        pending.error = exc
+                    raise
+                finally:
+                    complete_ns = time.monotonic_ns()
+                    self.cover_events.append(
+                        {
+                            "ordinal": ordinal,
+                            "nominal_ns": nominal_ns - start_ns,
+                            "eligible_ns": eligible_ns - start_ns,
+                            "send_ns": send_ns - start_ns,
+                            "complete_ns": complete_ns - start_ns,
+                            "real": real,
+                        }
+                    )
+                    if pending is not None:
+                        pending.ready.set()
+                if real:
+                    self.real_query_count += 1
+                else:
+                    self.dummy_query_count += 1
+                previous_send_ns = send_ns
+        except BaseException as exc:
+            self.cover_error = exc
+        finally:
+            with self.cover_condition:
+                self.cover_complete = True
+                while self.cover_pending:
+                    pending = self.cover_pending.popleft()
+                    pending.error = self.cover_error or RuntimeError("PIR cover opportunities exhausted")
+                    pending.ready.set()
+                self.cover_condition.notify_all()
+
+    def query(self, operation_id: str, index: int) -> AgentDescriptorV7:
+        if self.cover_thread is None:
+            return self._execute_query(operation_id, index)
+        pending = _PendingPIRResolution(operation_id, index)
+        with self.cover_condition:
+            if self.cover_complete:
+                raise RuntimeError("PIR cover opportunities exhausted")
+            self.cover_pending.append(pending)
+            self.cover_condition.notify_all()
+        if not pending.ready.wait(self.cover_liveness_cap_ms / 1000):
+            raise TimeoutError("PIR resolution exceeded public liveness cap")
+        if pending.error is not None:
+            raise pending.error
+        if pending.result is None:
+            raise RuntimeError("PIR cover opportunity did not return a descriptor")
+        return pending.result
+
     def __exit__(self, *_args: object) -> None:
         if self.process is None:
             return
+        cover_failure: BaseException | None = None
         try:
+            if self.cover_thread is not None:
+                self.cover_thread.join(timeout=self.cover_liveness_cap_ms / 1000 + 5)
+                if self.cover_thread.is_alive():
+                    cover_failure = TimeoutError("PIR cover scheduler did not terminate")
+                elif self.cover_error is not None:
+                    cover_failure = self.cover_error
             if self.process.stdin is not None and not self.process.stdin.closed:
                 self.process.stdin.close()
             try:
@@ -198,6 +360,11 @@ class OnlineSimplePIRResolver:
                         "official_simplepir": True,
                         "commit": SIMPLEPIR_COMMIT,
                         "query_count": self.query_count,
+                        "real_query_count": self.real_query_count,
+                        "dummy_query_count": self.dummy_query_count,
+                        "fixed_cover_opportunities": self.cover_opportunities,
+                        "cover_period_ms": self.cover_period_ms,
+                        "cover_initial_lead_ms": self.cover_initial_lead_ms,
                         "fresh_query_hashes": len(self.query_hashes) == len(set(self.query_hashes)),
                         "future_indices_in_startup": 0,
                         "prebuilt_bridge_binary": self.prebuilt_bridge_used,
@@ -208,6 +375,12 @@ class OnlineSimplePIRResolver:
                 + "\n",
                 encoding="utf-8",
             )
+            if self.cover_thread is not None:
+                (self.output / "private_pir_cover_schedule.json").write_text(
+                    json.dumps(self.cover_events, indent=2) + "\n", encoding="utf-8"
+                )
+            if cover_failure is not None:
+                raise cover_failure
         finally:
             # Popen does not close PIPE file objects merely because the child
             # exited.  Release every descriptor even when shutdown or evidence
@@ -237,7 +410,8 @@ class CanonicalOnlineSession:
         self.cases = {case.operation_id: case for case in cases}
         if len(self.cases) != len(cases):
             raise ValueError("online trajectory operation IDs must be unique")
-        self.runner_binary = runner_binary or DEFAULT_RUNNER
+        timing_profile = getattr(public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE"
+        self.runner_binary = runner_binary or (TIMING_RUNNER if timing_profile else DEFAULT_RUNNER)
         self.plan_overrides = dict(plan_overrides or {})
         self.public_profile = public_profile
         self.pir_delay_ms = pir_delay_ms
@@ -272,7 +446,13 @@ class CanonicalOnlineSession:
             self.cases, self.output / "private_provider_evidence.json"
         )
         self.pir = OnlineSimplePIRResolver(
-            self.output / "pir", record_count=self.pir_record_count
+            self.output / "pir",
+            record_count=self.pir_record_count,
+            bridge_binary=(
+                TIMING_PIR_BRIDGE
+                if getattr(self.public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE"
+                else None
+            ),
         )
         try:
             self.providers.__enter__()
@@ -334,6 +514,14 @@ class CanonicalOnlineSession:
             self.reader_thread = threading.Thread(target=self._read_events, daemon=True)
             self.reader_thread.start()
             self._wait(lambda: any(event.get("type") == "SESSION_READY" for event in self.events), timeout=10)
+            if getattr(profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE":
+                self.pir.start_cover_schedule(
+                    opportunities=int(profile.pir_resolution_opportunities),
+                    period_ms=int(profile.pir_resolution_period_ms),
+                    dummy_index=int(profile.dummy_descriptor_row),
+                    initial_lead_ms=int(profile.pir_initial_lead_ms),
+                    liveness_cap_ms=int(profile.public_session_liveness_cap_ms),
+                )
             self._record("SESSION_T0")
             return self
         except BaseException:
@@ -479,8 +667,11 @@ class CanonicalOnlineSession:
             raise RuntimeError("online session was not started")
         if self.process.stdin is not None and not self.process.stdin.closed:
             self.process.stdin.close()
+        close_timeout = 15
+        if getattr(self.public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE":
+            close_timeout = int(self.public_profile.public_session_liveness_cap_ms / 1000) + 5
         try:
-            return_code = self.process.wait(timeout=15)
+            return_code = self.process.wait(timeout=close_timeout)
         except subprocess.TimeoutExpired as exc:
             self.process.kill()
             self.process.wait(timeout=5)

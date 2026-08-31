@@ -158,6 +158,33 @@ func TestLegacyReadySnapshotMigratesToWAL(t *testing.T) {
 	}
 }
 
+func TestReadyQueueNominalCutoffExcludesLateResultUntilFutureSlot(t *testing.T) {
+	queue, err := OpenDurableReadyQueue(filepath.Join(t.TempDir(), "ready.json"), 4)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := queue.Enqueue(result("before", 1), 100); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := queue.Enqueue(result("after", 1), 300); err != nil {
+		t.Fatal(err)
+	}
+	first, err := queue.ReserveEligibleBefore(1, 1, 200)
+	if err != nil || first == nil || gatewayv2.OperationIDString(first.OperationID) != "before" {
+		t.Fatalf("nominal cutoff selected wrong result: result=%+v err=%v", first, err)
+	}
+	if err := queue.MarkDelivered("before"); err != nil {
+		t.Fatal(err)
+	}
+	if late, err := queue.ReserveEligibleBefore(1, 2, 200); err != nil || late != nil {
+		t.Fatalf("late result entered expired slot: result=%+v err=%v", late, err)
+	}
+	future, err := queue.ReserveEligibleBefore(1, 3, 400)
+	if err != nil || future == nil || gatewayv2.OperationIDString(future.OperationID) != "after" {
+		t.Fatalf("late result did not roll to future slot: result=%+v err=%v", future, err)
+	}
+}
+
 func fmtID(index int) string {
 	return "op-" + strconv.Itoa(index)
 }

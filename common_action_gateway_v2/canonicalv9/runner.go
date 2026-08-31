@@ -45,25 +45,27 @@ type ActionSpec struct {
 }
 
 type Plan struct {
-	ProfileID                 string       `json:"profile_id"`
-	StateDirectory            string       `json:"state_directory"`
-	Rounds                    int          `json:"rounds"`
-	AdmissionRounds           int          `json:"admission_rounds"`
-	MaximumRealOperations     int          `json:"maximum_real_operations"`
-	RoundPeriodMS             int          `json:"round_period_ms"`
-	ProviderCompletionBoundMS int          `json:"provider_completion_bound_ms"`
-	RequestBHTTPBytes         int          `json:"request_bhttp_bytes"`
-	ResponseBHTTPBytes        int          `json:"response_bhttp_bytes"`
-	RequestFinalBytes         int          `json:"request_final_bytes"`
-	ResponseFinalBytes        int          `json:"response_final_bytes"`
-	SchedulerToleranceMS      int          `json:"scheduler_tolerance_ms,omitempty"`
-	PreparationLeadMS         int          `json:"preparation_lead_ms,omitempty"`
-	FaultDelayResponseSlot    int          `json:"fault_delay_response_slot,omitempty"`
-	FaultDelayResponseMS      int          `json:"fault_delay_response_ms,omitempty"`
-	FaultSchedulerStallSlot   int          `json:"fault_scheduler_stall_slot,omitempty"`
-	FaultSchedulerStallMS     int          `json:"fault_scheduler_stall_ms,omitempty"`
-	Routes                    []RouteSpec  `json:"routes"`
-	Actions                   []ActionSpec `json:"actions"`
+	ProfileID                  string       `json:"profile_id"`
+	ProfileClass               string       `json:"profile_class,omitempty"`
+	StateDirectory             string       `json:"state_directory"`
+	Rounds                     int          `json:"rounds"`
+	AdmissionRounds            int          `json:"admission_rounds"`
+	MaximumRealOperations      int          `json:"maximum_real_operations"`
+	RoundPeriodMS              int          `json:"round_period_ms"`
+	ProviderCompletionBoundMS  int          `json:"provider_completion_bound_ms"`
+	RequestBHTTPBytes          int          `json:"request_bhttp_bytes"`
+	ResponseBHTTPBytes         int          `json:"response_bhttp_bytes"`
+	RequestFinalBytes          int          `json:"request_final_bytes"`
+	ResponseFinalBytes         int          `json:"response_final_bytes"`
+	SchedulerToleranceMS       int          `json:"scheduler_tolerance_ms,omitempty"`
+	PreparationLeadMS          int          `json:"preparation_lead_ms,omitempty"`
+	PublicSessionLivenessCapMS int          `json:"public_session_liveness_cap_ms,omitempty"`
+	FaultDelayResponseSlot     int          `json:"fault_delay_response_slot,omitempty"`
+	FaultDelayResponseMS       int          `json:"fault_delay_response_ms,omitempty"`
+	FaultSchedulerStallSlot    int          `json:"fault_scheduler_stall_slot,omitempty"`
+	FaultSchedulerStallMS      int          `json:"fault_scheduler_stall_ms,omitempty"`
+	Routes                     []RouteSpec  `json:"routes"`
+	Actions                    []ActionSpec `json:"actions"`
 }
 
 type PrivateEvent struct {
@@ -89,22 +91,24 @@ type PublicSetupEvent struct {
 }
 
 type SlotLaunch struct {
-	Session             uint32 `json:"session"`
-	Slot                uint32 `json:"slot"`
-	DeadlineNS          int64  `json:"deadline_ns"`
-	PreparationCutoffNS int64  `json:"preparation_cutoff_ns"`
-	PreparationWakeNS   int64  `json:"preparation_wake_ns,omitempty"`
-	PreparationLatenessNS int64 `json:"preparation_lateness_ns,omitempty"`
-	SleepEntryNS        int64  `json:"sleep_entry_ns,omitempty"`
-	SleepWakeNS         int64  `json:"sleep_wake_ns,omitempty"`
-	DispatchNS          int64  `json:"scheduler_dispatch_ns,omitempty"`
-	HTTPSubmissionNS    int64  `json:"http_submission_ns,omitempty"`
-	WakeLatenessNS      int64  `json:"wake_lateness_ns,omitempty"`
-	DispatchLatenessNS  int64  `json:"dispatch_lateness_ns,omitempty"`
-	SubmitNS            int64  `json:"submit_ns,omitempty"`
-	LaunchSlipNS        int64  `json:"launch_slip_ns,omitempty"`
-	ToleranceExceeded   bool   `json:"diagnostic_tolerance_exceeded,omitempty"`
-	ScheduleMiss        bool   `json:"schedule_miss"`
+	Session               uint32 `json:"session"`
+	Slot                  uint32 `json:"slot"`
+	DeadlineNS            int64  `json:"deadline_ns"`
+	EligibleNS            int64  `json:"eligible_ns,omitempty"`
+	PreparationCutoffNS   int64  `json:"preparation_cutoff_ns"`
+	PreparationWakeNS     int64  `json:"preparation_wake_ns,omitempty"`
+	PreparationLatenessNS int64  `json:"preparation_lateness_ns,omitempty"`
+	SleepEntryNS          int64  `json:"sleep_entry_ns,omitempty"`
+	SleepWakeNS           int64  `json:"sleep_wake_ns,omitempty"`
+	DispatchNS            int64  `json:"scheduler_dispatch_ns,omitempty"`
+	HTTPSubmissionNS      int64  `json:"http_submission_ns,omitempty"`
+	WakeLatenessNS        int64  `json:"wake_lateness_ns,omitempty"`
+	DispatchLatenessNS    int64  `json:"dispatch_lateness_ns,omitempty"`
+	SubmitNS              int64  `json:"submit_ns,omitempty"`
+	LaunchSlipNS          int64  `json:"launch_slip_ns,omitempty"`
+	ToleranceExceeded     bool   `json:"diagnostic_tolerance_exceeded,omitempty"`
+	ScheduleMiss          bool   `json:"schedule_miss"`
+	Emitted               bool   `json:"emitted"`
 }
 
 type SchedulerHostSnapshot struct {
@@ -177,6 +181,9 @@ type ProviderDiagnostic struct {
 }
 
 const (
+	TimingIndistinguishabilityProfile = "TIMING_INDISTINGUISHABILITY_PROFILE"
+	TimingPublicSessionLivenessCapMS  = 60000
+
 	ProviderOK                      = "PROVIDER_OK"
 	ProviderTransportError          = "PROVIDER_TRANSPORT_ERROR"
 	ProviderContextDeadlineExceeded = "PROVIDER_CONTEXT_DEADLINE_EXCEEDED"
@@ -188,36 +195,41 @@ const (
 )
 
 type RunResult struct {
-	ProfileID               string                 `json:"profile_id"`
-	Rounds                  int                    `json:"rounds"`
-	Admitted                int                    `json:"admitted"`
-	ProviderInvocations     int64                  `json:"provider_invocations"`
-	DummyProviderOperations int64                  `json:"dummy_provider_operations"`
-	ProfileOverflowEvents   int                    `json:"profile_overflow_events"`
-	Results                 []ClientResult         `json:"results"`
-	PrivateEvents           []PrivateEvent         `json:"private_events"`
-	PublicRelayEvents       []v8.RelayPublicEvent  `json:"public_relay_events"`
-	AfterCutoffOperations   []string               `json:"after_cutoff_operations"`
-	RequestFinalBytes       int                    `json:"request_final_bytes"`
-	ResponseFinalBytes      int                    `json:"response_final_bytes"`
-	SessionStatus           string                 `json:"session_status"`
-	PublicSetupEvents       []PublicSetupEvent     `json:"public_setup_events"`
-	SlotLaunches            []SlotLaunch           `json:"slot_launches"`
-	ScheduleMisses          int                    `json:"schedule_misses"`
-	PendingOperationIDs     []string               `json:"pending_operation_ids"`
-	SilentCommittedLosses   int                    `json:"silent_committed_result_losses"`
-	ClientRelayHTTPVersion  string                 `json:"client_relay_http_version"`
-	RelayGatewayHTTPVersion string                 `json:"relay_gateway_http_version"`
-	OnlineMode              bool                   `json:"online_mode,omitempty"`
-	StartupActionCount      int                    `json:"startup_action_count"`
-	AcceptedOperationIDs    []string               `json:"accepted_operation_ids,omitempty"`
-	ResolvedNotAdmittedIDs  []string               `json:"resolved_not_admitted_ids,omitempty"`
-	UnresolvedOperationIDs  []string               `json:"unresolved_operation_ids,omitempty"`
-	FrameworkWaiterIDs      []string               `json:"framework_waiter_ids,omitempty"`
-	TransportDiagnostics    []TransportDiagnostic  `json:"transport_diagnostics,omitempty"`
-	ProviderDiagnostics     []ProviderDiagnostic   `json:"provider_diagnostics,omitempty"`
-	SchedulerIncidents      []SchedulerIncident    `json:"scheduler_incidents,omitempty"`
-	SchedulerConfiguration  SchedulerConfiguration `json:"scheduler_configuration"`
+	ProfileID                     string                 `json:"profile_id"`
+	ProfileClass                  string                 `json:"profile_class,omitempty"`
+	Rounds                        int                    `json:"rounds"`
+	Admitted                      int                    `json:"admitted"`
+	ProviderInvocations           int64                  `json:"provider_invocations"`
+	DummyProviderOperations       int64                  `json:"dummy_provider_operations"`
+	ProfileOverflowEvents         int                    `json:"profile_overflow_events"`
+	Results                       []ClientResult         `json:"results"`
+	PrivateEvents                 []PrivateEvent         `json:"private_events"`
+	PublicRelayEvents             []v8.RelayPublicEvent  `json:"public_relay_events"`
+	AfterCutoffOperations         []string               `json:"after_cutoff_operations"`
+	RequestFinalBytes             int                    `json:"request_final_bytes"`
+	ResponseFinalBytes            int                    `json:"response_final_bytes"`
+	SessionStatus                 string                 `json:"session_status"`
+	PublicSetupEvents             []PublicSetupEvent     `json:"public_setup_events"`
+	SlotLaunches                  []SlotLaunch           `json:"slot_launches"`
+	ScheduleMisses                int                    `json:"schedule_misses"`
+	NominalLateCells              int                    `json:"nominal_late_cells,omitempty"`
+	EmittedCells                  int                    `json:"emitted_cells,omitempty"`
+	PublicTranscriptComplete      bool                   `json:"public_transcript_complete"`
+	InfrastructureLivenessFailure bool                   `json:"infrastructure_liveness_failure"`
+	PendingOperationIDs           []string               `json:"pending_operation_ids"`
+	SilentCommittedLosses         int                    `json:"silent_committed_result_losses"`
+	ClientRelayHTTPVersion        string                 `json:"client_relay_http_version"`
+	RelayGatewayHTTPVersion       string                 `json:"relay_gateway_http_version"`
+	OnlineMode                    bool                   `json:"online_mode,omitempty"`
+	StartupActionCount            int                    `json:"startup_action_count"`
+	AcceptedOperationIDs          []string               `json:"accepted_operation_ids,omitempty"`
+	ResolvedNotAdmittedIDs        []string               `json:"resolved_not_admitted_ids,omitempty"`
+	UnresolvedOperationIDs        []string               `json:"unresolved_operation_ids,omitempty"`
+	FrameworkWaiterIDs            []string               `json:"framework_waiter_ids,omitempty"`
+	TransportDiagnostics          []TransportDiagnostic  `json:"transport_diagnostics,omitempty"`
+	ProviderDiagnostics           []ProviderDiagnostic   `json:"provider_diagnostics,omitempty"`
+	SchedulerIncidents            []SchedulerIncident    `json:"scheduler_incidents,omitempty"`
+	SchedulerConfiguration        SchedulerConfiguration `json:"scheduler_configuration"`
 }
 
 type providerRequest struct {
@@ -231,25 +243,26 @@ type providerResponse struct {
 }
 
 type engine struct {
-	plan          Plan
-	codec         v9ohttp.RFC9292Codec
-	client        *v9ohttp.RFC9458Client
-	gateway       *v9ohttp.RFC9458Gateway
-	routes        map[string]RouteSpec
-	journal       *v7.EffectRecoveryJournal
-	ready         *v7.DurableReadyQueue
-	memory        *v8.MemoryDeliveryQueue
-	httpClient    *http.Client
-	providerCalls atomic.Int64
-	eventsMu      sync.Mutex
-	events        []PrivateEvent
-	workers       sync.WaitGroup
-	slotsMu       sync.Mutex
-	seenSlots     map[uint32]bool
-	deliveryMu    sync.Mutex
-	providerMu    sync.Mutex
-	providerDiags []ProviderDiagnostic
-	started       time.Time
+	plan            Plan
+	codec           v9ohttp.RFC9292Codec
+	client          *v9ohttp.RFC9458Client
+	gateway         *v9ohttp.RFC9458Gateway
+	routes          map[string]RouteSpec
+	journal         *v7.EffectRecoveryJournal
+	ready           *v7.DurableReadyQueue
+	memory          *v8.MemoryDeliveryQueue
+	httpClient      *http.Client
+	providerCalls   atomic.Int64
+	eventsMu        sync.Mutex
+	events          []PrivateEvent
+	workers         sync.WaitGroup
+	slotsMu         sync.Mutex
+	seenSlots       map[uint32]bool
+	deliveryCutoffs map[uint32]int64
+	deliveryMu      sync.Mutex
+	providerMu      sync.Mutex
+	providerDiags   []ProviderDiagnostic
+	started         time.Time
 }
 
 func effect(value string) (gatewayv2.EffectSemantics, error) {
@@ -304,6 +317,12 @@ func validatePlan(plan Plan) error {
 	}
 	if plan.SchedulerToleranceMS < 0 || plan.PreparationLeadMS < 0 || plan.FaultDelayResponseMS < 0 || plan.FaultSchedulerStallMS < 0 {
 		return errors.New("negative canonical scheduler configuration")
+	}
+	if plan.ProfileClass != "" && plan.ProfileClass != TimingIndistinguishabilityProfile {
+		return errors.New("unsupported canonical profile class")
+	}
+	if plan.ProfileClass == TimingIndistinguishabilityProfile && plan.PublicSessionLivenessCapMS != TimingPublicSessionLivenessCapMS {
+		return errors.New("timing-indistinguishability profile requires frozen 60000 ms public liveness cap")
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
 		if slot < 0 || slot > plan.Rounds {
@@ -585,7 +604,13 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 		return
 	}
 	e.deliveryMu.Lock()
-	selected, err := e.ready.ReserveEligible(1, currentRound)
+	var selected *gatewayv2.ResultRecord
+	if e.plan.ProfileClass == TimingIndistinguishabilityProfile {
+		cutoffNS := e.deliveryCutoffs[currentRound]
+		selected, err = e.ready.ReserveEligibleBefore(1, currentRound, cutoffNS)
+	} else {
+		selected, err = e.ready.ReserveEligible(1, currentRound)
+	}
 	if err != nil {
 		e.deliveryMu.Unlock()
 		http.Error(writer, "ready-result selection failed", http.StatusInternalServerError)
@@ -676,7 +701,8 @@ func newEngine(plan Plan) (*engine, error) {
 	return &engine{plan: plan, codec: v9ohttp.RFC9292Codec{}, client: client, gateway: gateway,
 		routes: routes, journal: journal, ready: ready, memory: memory,
 		httpClient: &http.Client{Timeout: time.Duration(plan.ProviderCompletionBoundMS) * time.Millisecond},
-		seenSlots:  make(map[uint32]bool, plan.Rounds), started: time.Now()}, nil
+		seenSlots:  make(map[uint32]bool, plan.Rounds), deliveryCutoffs: make(map[uint32]int64, plan.Rounds),
+		started: time.Now()}, nil
 }
 
 func bindAdmission(plan Plan) error {
