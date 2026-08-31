@@ -547,12 +547,15 @@ func TestV12V3EffectiveClockRecurrenceAcrossFrozenDeltas(t *testing.T) {
 }
 
 func TestV12V3ProfileRevisionBinding(t *testing.T) {
-	plan := testPlan()
+	plan := diagnosticPlan()
 	plan.ProfileClass = TimingIndistinguishabilityProfile
 	plan.ProfileID = "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60"
 	plan.TimingSemanticRevision = "EFFECTIVE_PUBLIC_CLOCK_V3"
 	plan.RoundPeriodMS = 20
+	plan.AdmissionRounds = 225
+	plan.Rounds = 279
 	plan.AdmissionHorizonMS = plan.AdmissionRounds * plan.RoundPeriodMS
+	plan.PublicSessionLivenessCapMS = TimingPublicSessionLivenessCapMS
 	plan.PIRResolutionPeriodMS = 60
 	plan.PIRPublicEpochMS = 6000
 	plan.PIRResolutionOpportunities = 100
