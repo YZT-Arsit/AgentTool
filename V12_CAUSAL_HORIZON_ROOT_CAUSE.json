@@ -1,0 +1,40 @@
+{
+  "schema": "AgentTool.V12CausalHorizonRootCause/1",
+  "phase": "V12-TIMING-CAUSAL-HORIZON-REQUALIFICATION",
+  "base_commit": "4a577ec8c4f610e7f9b8fa1b852a518fb4eb2e0c",
+  "frozen_before_implementation": true,
+  "historical_outcomes": {
+    "DEV-TD-CAPACITY50-P10-PIR60": "ABORTED_HARNESS_INTEGRITY_FAILURE_NEVER_RETRIED",
+    "DEV-TPCIC-MS-SAME-AGENT-DEPTH50-001": "MICROSOFT_NATIVE_DEFAULT_MAX_ITERATIONS_FAILURE_NEVER_RETRIED",
+    "DEV-MDCC-OA-SAME-AGENT-DEPTH50-001": "INTEGRATED_LIVE_CAPACITY_FAIL_46_OF_50_NEVER_RETRIED",
+    "effective_clock_replay_h3000": "46/50"
+  },
+  "independent_facts": {
+    "fact_a": {
+      "clock_mismatch_confirmed": true,
+      "logical_commitment_clock": "NOMINAL_D_i_MINUS_L",
+      "public_emission_clock": "E_i=max(D_i,S_(i-1)+Delta)",
+      "interpretation": "genuine action and result commitment inconsistency"
+    },
+    "fact_b": {
+      "operation_47_descriptor_ready_earliest_ms": 3840.726615,
+      "last_h3000_effective_admission_cutoff_ms": 3543.653121,
+      "gap_ms": 297.073494,
+      "effective_clock_replay": "46/50",
+      "interpretation": "H3000 independently lacks depth-50 online causal capacity"
+    }
+  },
+  "claim_contract": {
+    "maximum_real_operations_M": 50,
+    "depth_50_retained": true,
+    "outcome_derived_denominator_reduction": false
+  },
+  "evidence_sha256": {
+    "V12_TIMING_ADMISSION_CLOCK_ROOT_CAUSE.json": "f9cc600a9be178fabc06c94f9f1c961d8fe000d06d2b21f5e0f4e3a0afde0529",
+    "V12_MDCC_LIVE_CAPACITY_FIRST_GO_RESULT.json": "aec7832873781d2e4f42799029369657aacea19a1ec6eb09f84a8312c43221c3",
+    "V12_MDCC_LIVE_CAPACITY_FIRST_PRIVATE_TRAJECTORY.json": "e93ffa466ae17f023d23ceeb8a7b6b93e59a0729ca633dbdec7f0cd46960eb1e",
+    "common_action_gateway_v2/canonicalv9/online.go": "1fe95b190d20d44ed2a9e31d46a871107d647390e3b3fbd9e370d9a4aaa43026",
+    "common_action_gateway_v2/canonicalv9/runner.go": "628a3d01d35c0bfe9a8fd771700ffe2a02426f93009f36171d93f463912424f0",
+    "v12_timing/profile.py": "a2e7a3616900442fbc25e6cdd7ddeb15d4e6aa92c45303c059a021a501d31b7a"
+  }
+}

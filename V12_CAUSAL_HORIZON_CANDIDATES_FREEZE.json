@@ -1,0 +1,68 @@
+{
+  "schema": "AgentTool.V12CausalHorizonCandidatesFreeze/1",
+  "phase": "V12-TIMING-CAUSAL-HORIZON-REQUALIFICATION",
+  "base_commit": "4a577ec8c4f610e7f9b8fa1b852a518fb4eb2e0c",
+  "frozen_before_implementation": true,
+  "selection_rule": "SMALLEST_COMPLETE_FROZEN_LIVE_CAPACITY_PASS",
+  "no_post_outcome_candidates": true,
+  "fixed_parameters": {
+    "delta_ms": 10,
+    "provider_completion_bound_ms": 50,
+    "maximum_real_operations": 50,
+    "terminal_rounds": 1,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "pir_maximum_real_agent_resolutions_K": 6,
+    "pir_period_ms": 60,
+    "pir_public_epoch_ms": 6000,
+    "pir_query_count_Q": 100,
+    "pir_initial_lead_ms": 25,
+    "pir_completion_bound_ms": 50,
+    "preparation_margin_ms": 1,
+    "timing_semantic_revision": "EFFECTIVE_PUBLIC_CLOCK_V2"
+  },
+  "candidates": [
+    {
+      "horizon_ms": 4500,
+      "admission_rounds": 450,
+      "completion_rounds": 5,
+      "result_capacity_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 506,
+      "nominal_lifetime_ms": 5060,
+      "latest_real_descriptor_arrival_ms": 4089,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H4500-P10-PIR60",
+      "rationale": "first frozen 500-ms-grid candidate with material capacity after the 3840.726615-ms operation-47 readiness bound"
+    },
+    {
+      "horizon_ms": 5000,
+      "admission_rounds": 500,
+      "completion_rounds": 5,
+      "result_capacity_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 556,
+      "nominal_lifetime_ms": 5560,
+      "latest_real_descriptor_arrival_ms": 4589,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H5000-P10-PIR60",
+      "rationale": "next predeclared public candidate"
+    },
+    {
+      "horizon_ms": 6000,
+      "admission_rounds": 600,
+      "completion_rounds": 5,
+      "result_capacity_rounds": 50,
+      "terminal_rounds": 1,
+      "total_rounds": 656,
+      "nominal_lifetime_ms": 6560,
+      "latest_real_descriptor_arrival_ms": 5589,
+      "profile_id": "V12-TIMING-INDIST-V2-H50-H6000-P10-PIR60",
+      "rationale": "largest candidate in this phase and equal to the frozen PIR public epoch boundary"
+    }
+  ],
+  "historical_negative_not_reexecuted": {
+    "horizon_ms": 3000,
+    "effective_clock_replay": "46/50"
+  },
+  "timing_attack_sessions": 0,
+  "selected_final_v12_cases_executed": 0
+}
