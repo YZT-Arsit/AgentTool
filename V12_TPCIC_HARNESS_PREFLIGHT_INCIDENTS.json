@@ -1,0 +1,22 @@
+{
+  "schema": "AgentTool.V12TimingPIRCapacityHarnessPreflightIncidents/1",
+  "incidents": [
+    {
+      "root": "/root/autodl-tmp/results_v12_tpcic_python_serial",
+      "class": "PYTEST_XDIST_OPTION_UNAVAILABLE",
+      "executed_test_bodies": 0,
+      "detail": "The wrapper supplied -n 0 but xdist was not installed. Pytest rejected the command before collection/execution.",
+      "disposition": "preserved; corrected plugin-independent serial command used a fresh v2 root"
+    },
+    {
+      "root": "/root/autodl-tmp/results_v12_tpcic_security_negatives",
+      "class": "SSH_CONTROL_SESSION_INTERRUPTED_BEFORE_WRAPPER_RESULT_SERIALIZATION",
+      "executed_test_bodies": "UNKNOWN_PARTIAL_DEVELOPMENT_REGRESSION_ONLY",
+      "detail": "The local 30-second SSH control deadline terminated the remote wrapper before it serialized a result log.",
+      "disposition": "preserved; no selected, timing-attack, confirmatory, or live-capacity identity was involved; fresh v2 harness root produced the frozen 22/22 result"
+    }
+  ],
+  "selected_v12_cases_executed": 0,
+  "timing_attack_sessions": 0,
+  "timing_confirmatory_sessions": 0
+}

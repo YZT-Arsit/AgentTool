@@ -1,0 +1,10 @@
+{
+  "schema": "AgentTool.V12TPCICSecurityNegativeRerun/1",
+  "manifest_sha256": "8175c41440129d6f573b8902d77136664dde6521a54aa881a7a5643a4a8511da",
+  "python_case_count": 15,
+  "go_case_count": 7,
+  "python_exit_code": 0,
+  "python_log_sha256": "ff73c3b52ec6f9e718effa95c0d20b197d8448ce77ac3ccff7acce737a494962",
+  "go_evidence": "/root/autodl-tmp/V12_TPCIC_GO_GATE.log contains all seven frozen Go negatives",
+  "selected_v12_cases_executed": 0
+}

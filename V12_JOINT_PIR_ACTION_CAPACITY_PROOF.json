@@ -1,0 +1,26 @@
+{
+  "schema": "AgentTool.V12JointPIRActionCapacityProof/1",
+  "status": "PASS",
+  "admission_horizon_ms": 3000,
+  "K": 6,
+  "PIR_period_ms": 60,
+  "PIR_query_completion_bound_ms": 50,
+  "action_preparation_margin_ms": 1,
+  "latest_new_descriptor_arrival_ms": 2589,
+  "formula": "A = H - K*P - B_pir - L_prepare = 3000 - 6*60 - 50 - 1 = 2589 ms",
+  "proof": "For every cache miss arriving at or before A, even immediately after a cover opportunity and in a burst of K, the Kth query starts strictly before A+K*P, completes strictly before H-L_prepare, and leaves the public preparation margin before H.",
+  "runtime_enforcement": {
+    "cache_miss_at_or_after_cutoff": "PIR_REAL_RESOLUTION_ADMISSION_CLOSED",
+    "cached_descriptor_action": "continues under ordinary H=3000 action admission",
+    "PIR_query_over_50ms": "FAIL_CLOSED_TIMEOUT",
+    "fixed_cover_after_failure": "cover scheduler retains its fixed epoch unless infrastructure process failure prevents execution"
+  },
+  "same_agent_depth_50": "one real descriptor resolution plus 49 cache hits; actions remain generated online",
+  "distinct_agent_transition_capacity": "at most K=6 new authenticated descriptor identities before the public cutoff",
+  "future_action_ids_known_before_T0": false,
+  "action_horizon_changed": false,
+  "public_profile_finalized": false,
+  "deterministic_model_pass": true,
+  "model_maximum_queue_occupancy": 6,
+  "model_worst_resolution_delay_ms": 409.999
+}

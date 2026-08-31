@@ -8,8 +8,11 @@ from dataclasses import asdict, dataclass
 PROFILE_CLASS = "TIMING_INDISTINGUISHABILITY_PROFILE"
 PUBLIC_PERIOD_CANDIDATES_MS = (10, 20, 25)
 PIR_PERIOD_CANDIDATES_MS = (60, 75, 100)
+PIR_PUBLIC_EPOCH_CANDIDATES_MS = (6000, 8000, 10000)
 PUBLIC_SESSION_LIVENESS_CAP_MS = 60_000
-PIR_RESOLUTION_OPPORTUNITIES = 50
+PIR_PUBLIC_EPOCH_MS = 6000
+PIR_QUERY_COMPLETION_BOUND_MS = 50
+MAX_REAL_AGENT_RESOLUTIONS = 6
 DUMMY_DESCRIPTOR_ROW = 999
 PIR_INITIAL_LEAD_MS = 25
 PROFILE_ID = re.compile(
@@ -42,7 +45,9 @@ class TimingIndistinguishabilityProfile:
     scheduled_start_policy: str = "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0"
     profile_class: str = PROFILE_CLASS
     public_session_liveness_cap_ms: int = PUBLIC_SESSION_LIVENESS_CAP_MS
-    pir_resolution_opportunities: int = PIR_RESOLUTION_OPPORTUNITIES
+    pir_public_epoch_ms: int = PIR_PUBLIC_EPOCH_MS
+    pir_query_completion_bound_ms: int = PIR_QUERY_COMPLETION_BOUND_MS
+    maximum_real_agent_resolutions: int = MAX_REAL_AGENT_RESOLUTIONS
     dummy_descriptor_row: int = DUMMY_DESCRIPTOR_ROW
     pir_initial_lead_ms: int = PIR_INITIAL_LEAD_MS
 
@@ -70,6 +75,19 @@ class TimingIndistinguishabilityProfile:
     def scheduled_lifetime_ns(self) -> int:
         return self.scheduled_lifetime_ms * 1_000_000
 
+    @property
+    def pir_resolution_opportunities(self) -> int:
+        return self.pir_public_epoch_ms // self.pir_resolution_period_ms
+
+    @property
+    def pir_real_resolution_arrival_cutoff_ms(self) -> int:
+        return (
+            self.admission_horizon_ms
+            - self.maximum_real_agent_resolutions * self.pir_resolution_period_ms
+            - self.pir_query_completion_bound_ms
+            - 1
+        )
+
     def validate(self) -> "TimingIndistinguishabilityProfile":
         match = PROFILE_ID.fullmatch(self.profile_id)
         if match is None:
@@ -95,7 +113,13 @@ class TimingIndistinguishabilityProfile:
             raise ValueError("V12 timing B/T values changed")
         if self.public_session_liveness_cap_ms != 60_000:
             raise ValueError("V12 timing liveness cap changed")
-        if self.pir_resolution_opportunities != 50 or self.dummy_descriptor_row != 999:
+        if self.pir_public_epoch_ms not in PIR_PUBLIC_EPOCH_CANDIDATES_MS:
+            raise ValueError("PIR public epoch is outside the predeclared development candidates")
+        if self.pir_public_epoch_ms % self.pir_resolution_period_ms:
+            raise ValueError("PIR public epoch must contain an integral fixed opportunity count")
+        if self.pir_query_completion_bound_ms != 50 or self.maximum_real_agent_resolutions != 6:
+            raise ValueError("V12 causal PIR capacity contract changed")
+        if self.pir_resolution_opportunities <= self.maximum_real_agent_resolutions or self.dummy_descriptor_row != 999:
             raise ValueError("V12 fixed PIR schedule changed")
         if self.pir_initial_lead_ms != 25:
             raise ValueError("V12 fixed PIR initial lead changed")
@@ -134,6 +158,9 @@ class TimingIndistinguishabilityProfile:
                 "nominal_lifetime_ms": self.scheduled_lifetime_ms,
                 "nominal_lifetime_ns": self.scheduled_lifetime_ns,
                 "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+                "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+                "pir_resolution_opportunities": self.pir_resolution_opportunities,
+                "pir_real_resolution_arrival_cutoff_ms": self.pir_real_resolution_arrival_cutoff_ms,
                 "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
                 "timing_privacy": "OPEN / NOT TESTED",
                 "packet_level_timing": "OPEN / NOT TESTED",

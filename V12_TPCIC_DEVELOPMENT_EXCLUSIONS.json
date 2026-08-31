@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12TPCICDevelopmentExclusions/1",
+  "phase": "V12-TIMING-PIR-CAPACITY-INTEGRITY-CLOSURE",
+  "excluded_identities": [
+    "DEV-TD-CAPACITY50-P10-PIR60",
+    "DEV-TPCIC-OA-SAME-AGENT-DEPTH50-001",
+    "DEV-TPCIC-MS-SAME-AGENT-DEPTH50-001",
+    "DEV-TPCIC-OA-DISTINCT-K6-001",
+    "DEV-TPCIC-OA-AGENT-AS-TOOL-001",
+    "DEV-TPCIC-MS-AGENT-AS-TOOL-001"
+  ],
+  "purpose": "future fresh V12 holdout exclusion only; this is not a candidate universe or selection seed"
+}

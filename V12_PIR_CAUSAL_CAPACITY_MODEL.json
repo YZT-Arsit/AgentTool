@@ -1,0 +1,420 @@
+{
+  "schema": "AgentTool.V12PIRCausalCapacityModelResult/1",
+  "contract": {
+    "K": 6,
+    "Q": 100,
+    "pir_period_ms": 60,
+    "pir_public_epoch_ms": 6000,
+    "pir_initial_lead_ms": 25,
+    "pir_query_completion_bound_ms": 50,
+    "latest_real_resolution_arrival_ms": 2589,
+    "admission_horizon_ms": 3000
+  },
+  "traces": {
+    "all_K_immediate": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 6,
+      "cache_hit_count": 0,
+      "cache_hit_request_ids": [],
+      "maximum_queue_occupancy": 6,
+      "worst_case_modeled_resolution_delay_ms": 375.0,
+      "assignments": [
+        {
+          "request_id": "immediate-0",
+          "agent_id": 10,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 0,
+          "start_ms": 25,
+          "completion_ms": 75,
+          "resolution_delay_ms": 75.0
+        },
+        {
+          "request_id": "immediate-1",
+          "agent_id": 11,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 1,
+          "start_ms": 85,
+          "completion_ms": 135,
+          "resolution_delay_ms": 135.0
+        },
+        {
+          "request_id": "immediate-2",
+          "agent_id": 12,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 2,
+          "start_ms": 145,
+          "completion_ms": 195,
+          "resolution_delay_ms": 195.0
+        },
+        {
+          "request_id": "immediate-3",
+          "agent_id": 13,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 3,
+          "start_ms": 205,
+          "completion_ms": 255,
+          "resolution_delay_ms": 255.0
+        },
+        {
+          "request_id": "immediate-4",
+          "agent_id": 20,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 4,
+          "start_ms": 265,
+          "completion_ms": 315,
+          "resolution_delay_ms": 315.0
+        },
+        {
+          "request_id": "immediate-5",
+          "agent_id": 21,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 5,
+          "start_ms": 325,
+          "completion_ms": 375,
+          "resolution_delay_ms": 375.0
+        }
+      ]
+    },
+    "first_near_latest_supported_boundary": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 1,
+      "cache_hit_count": 0,
+      "cache_hit_request_ids": [],
+      "maximum_queue_occupancy": 1,
+      "worst_case_modeled_resolution_delay_ms": 66.0,
+      "assignments": [
+        {
+          "request_id": "delayed-boundary",
+          "agent_id": 10,
+          "arrival_ms": 2589.0,
+          "opportunity_ordinal": 43,
+          "start_ms": 2605,
+          "completion_ms": 2655,
+          "resolution_delay_ms": 66.0
+        }
+      ]
+    },
+    "one_after_each_prior_resolution_result": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 6,
+      "cache_hit_count": 0,
+      "cache_hit_request_ids": [],
+      "maximum_queue_occupancy": 1,
+      "worst_case_modeled_resolution_delay_ms": 75.0,
+      "assignments": [
+        {
+          "request_id": "causal-0",
+          "agent_id": 10,
+          "arrival_ms": 0.0,
+          "opportunity_ordinal": 0,
+          "start_ms": 25,
+          "completion_ms": 75,
+          "resolution_delay_ms": 75.0
+        },
+        {
+          "request_id": "causal-1",
+          "agent_id": 11,
+          "arrival_ms": 135.0,
+          "opportunity_ordinal": 2,
+          "start_ms": 145,
+          "completion_ms": 195,
+          "resolution_delay_ms": 60.0
+        },
+        {
+          "request_id": "causal-2",
+          "agent_id": 12,
+          "arrival_ms": 255.0,
+          "opportunity_ordinal": 4,
+          "start_ms": 265,
+          "completion_ms": 315,
+          "resolution_delay_ms": 60.0
+        },
+        {
+          "request_id": "causal-3",
+          "agent_id": 13,
+          "arrival_ms": 375.0,
+          "opportunity_ordinal": 6,
+          "start_ms": 385,
+          "completion_ms": 435,
+          "resolution_delay_ms": 60.0
+        },
+        {
+          "request_id": "causal-4",
+          "agent_id": 20,
+          "arrival_ms": 495.0,
+          "opportunity_ordinal": 8,
+          "start_ms": 505,
+          "completion_ms": 555,
+          "resolution_delay_ms": 60.0
+        },
+        {
+          "request_id": "causal-5",
+          "agent_id": 21,
+          "arrival_ms": 615.0,
+          "opportunity_ordinal": 10,
+          "start_ms": 625,
+          "completion_ms": 675,
+          "resolution_delay_ms": 60.0
+        }
+      ]
+    },
+    "arrivals_immediately_after_cover_opportunity": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 6,
+      "cache_hit_count": 0,
+      "cache_hit_request_ids": [],
+      "maximum_queue_occupancy": 6,
+      "worst_case_modeled_resolution_delay_ms": 409.999,
+      "assignments": [
+        {
+          "request_id": "after-opportunity-0",
+          "agent_id": 10,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 1,
+          "start_ms": 85,
+          "completion_ms": 135,
+          "resolution_delay_ms": 109.999
+        },
+        {
+          "request_id": "after-opportunity-1",
+          "agent_id": 11,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 2,
+          "start_ms": 145,
+          "completion_ms": 195,
+          "resolution_delay_ms": 169.999
+        },
+        {
+          "request_id": "after-opportunity-2",
+          "agent_id": 12,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 3,
+          "start_ms": 205,
+          "completion_ms": 255,
+          "resolution_delay_ms": 229.999
+        },
+        {
+          "request_id": "after-opportunity-3",
+          "agent_id": 13,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 4,
+          "start_ms": 265,
+          "completion_ms": 315,
+          "resolution_delay_ms": 289.999
+        },
+        {
+          "request_id": "after-opportunity-4",
+          "agent_id": 20,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 5,
+          "start_ms": 325,
+          "completion_ms": 375,
+          "resolution_delay_ms": 349.999
+        },
+        {
+          "request_id": "after-opportunity-5",
+          "agent_id": 21,
+          "arrival_ms": 25.001,
+          "opportunity_ordinal": 6,
+          "start_ms": 385,
+          "completion_ms": 435,
+          "resolution_delay_ms": 409.999
+        }
+      ]
+    },
+    "multiple_pending_bursts": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 6,
+      "cache_hit_count": 0,
+      "cache_hit_request_ids": [],
+      "maximum_queue_occupancy": 3,
+      "worst_case_modeled_resolution_delay_ms": 215.0,
+      "assignments": [
+        {
+          "request_id": "burst-a-0",
+          "agent_id": 10,
+          "arrival_ms": 1000.0,
+          "opportunity_ordinal": 17,
+          "start_ms": 1045,
+          "completion_ms": 1095,
+          "resolution_delay_ms": 95.0
+        },
+        {
+          "request_id": "burst-a-1",
+          "agent_id": 11,
+          "arrival_ms": 1000.0,
+          "opportunity_ordinal": 18,
+          "start_ms": 1105,
+          "completion_ms": 1155,
+          "resolution_delay_ms": 155.0
+        },
+        {
+          "request_id": "burst-a-2",
+          "agent_id": 12,
+          "arrival_ms": 1000.0,
+          "opportunity_ordinal": 19,
+          "start_ms": 1165,
+          "completion_ms": 1215,
+          "resolution_delay_ms": 215.0
+        },
+        {
+          "request_id": "burst-b-0",
+          "agent_id": 13,
+          "arrival_ms": 2000.0,
+          "opportunity_ordinal": 33,
+          "start_ms": 2005,
+          "completion_ms": 2055,
+          "resolution_delay_ms": 55.0
+        },
+        {
+          "request_id": "burst-b-1",
+          "agent_id": 20,
+          "arrival_ms": 2000.0,
+          "opportunity_ordinal": 34,
+          "start_ms": 2065,
+          "completion_ms": 2115,
+          "resolution_delay_ms": 115.0
+        },
+        {
+          "request_id": "burst-b-2",
+          "agent_id": 21,
+          "arrival_ms": 2000.0,
+          "opportunity_ordinal": 35,
+          "start_ms": 2125,
+          "completion_ms": 2175,
+          "resolution_delay_ms": 175.0
+        }
+      ]
+    },
+    "cache_hits_mixed_with_new_resolutions": {
+      "passed": true,
+      "failures": [],
+      "K": 6,
+      "Q": 100,
+      "pir_period_ms": 60,
+      "pir_public_epoch_ms": 6000,
+      "latest_real_arrival_ms": 2589,
+      "real_resolution_count": 6,
+      "cache_hit_count": 3,
+      "cache_hit_request_ids": [
+        "cache-1",
+        "cache-3",
+        "cache-5"
+      ],
+      "maximum_queue_occupancy": 6,
+      "worst_case_modeled_resolution_delay_ms": 387.0,
+      "assignments": [
+        {
+          "request_id": "cache-0",
+          "agent_id": 10,
+          "arrival_ms": 100.0,
+          "opportunity_ordinal": 2,
+          "start_ms": 145,
+          "completion_ms": 195,
+          "resolution_delay_ms": 95.0
+        },
+        {
+          "request_id": "cache-2",
+          "agent_id": 21,
+          "arrival_ms": 102.0,
+          "opportunity_ordinal": 3,
+          "start_ms": 205,
+          "completion_ms": 255,
+          "resolution_delay_ms": 153.0
+        },
+        {
+          "request_id": "cache-4",
+          "agent_id": 11,
+          "arrival_ms": 104.0,
+          "opportunity_ordinal": 4,
+          "start_ms": 265,
+          "completion_ms": 315,
+          "resolution_delay_ms": 211.0
+        },
+        {
+          "request_id": "cache-6",
+          "agent_id": 12,
+          "arrival_ms": 106.0,
+          "opportunity_ordinal": 5,
+          "start_ms": 325,
+          "completion_ms": 375,
+          "resolution_delay_ms": 269.0
+        },
+        {
+          "request_id": "cache-7",
+          "agent_id": 13,
+          "arrival_ms": 107.0,
+          "opportunity_ordinal": 6,
+          "start_ms": 385,
+          "completion_ms": 435,
+          "resolution_delay_ms": 328.0
+        },
+        {
+          "request_id": "cache-8",
+          "agent_id": 20,
+          "arrival_ms": 108.0,
+          "opportunity_ordinal": 7,
+          "start_ms": 445,
+          "completion_ms": 495,
+          "resolution_delay_ms": 387.0
+        }
+      ]
+    }
+  },
+  "passed": true,
+  "maximum_queue_occupancy": 6,
+  "worst_case_modeled_resolution_delay_ms": 409.999,
+  "phase": "V12-TIMING-PIR-CAPACITY-INTEGRITY-CLOSURE",
+  "old_Q_equals_M_rule": "REJECTED",
+  "cover_construction": "FIXED_PUBLIC_EPOCH",
+  "predeclared_epoch_candidates_ms": [
+    6000,
+    8000,
+    10000
+  ],
+  "predeclared_period_candidates_ms": [
+    60,
+    75,
+    100
+  ],
+  "capacity_candidate_not_final_timing_profile": {
+    "pir_public_epoch_ms": 6000,
+    "pir_period_ms": 60,
+    "Q": 100,
+    "selection_basis": "smallest predeclared integral epoch/period pair satisfying deterministic K=6 queue capacity before live outcomes"
+  },
+  "no_secret_dependent_extra_query": true,
+  "no_schedule_extension": true,
+  "overflow_policy": "FAIL_CLOSED_WHILE_FIXED_COVER_CONTINUES",
+  "model_source_sha256": "4fcda108c2ac50fcec2068c4cd3706a75322f6591c4e44fbed422ca628fc9af5"
+}

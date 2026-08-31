@@ -1,0 +1,32 @@
+{
+  "schema": "AgentTool.V12PIRResolutionSemantics/1",
+  "phase": "V12-TIMING-PIR-CAPACITY-INTEGRITY-CLOSURE",
+  "old_implementation_unit": "ONE_REAL_PIR_QUERY_PER_TOOL_OR_AGENT_ACTION",
+  "old_rule_status": "REJECTED_AS_SEMANTICALLY_UNNECESSARY",
+  "resolution_semantic_unit": "one authenticated AgentDescriptorV7 resolution per (catalog_epoch, agent_id) on first private Agent activation, Agent change/handoff, Agent-as-Tool target selection, or descriptor epoch invalidation",
+  "trusted_cache_key": [
+    "catalog_epoch",
+    "agent_id"
+  ],
+  "cache_scope": "ONE_CANONICAL_ONLINE_SESSION_INSIDE_TRUSTED_BOUNDARY",
+  "cache_hit_registry_behavior": "scheduled cover opportunity remains and executes dummy SimplePIR query",
+  "cache_hit_public_visibility": false,
+  "supported_descriptor_identities": {
+    "10": "external Tool Agent",
+    "11": "READ_ONLY external Agent service",
+    "12": "IDEMPOTENT_EFFECT external Agent service",
+    "13": "NON_IDEMPOTENT_EFFECT external Agent service",
+    "20": "trusted-module-local Agent",
+    "21": "external workflow/composition Agent"
+  },
+  "maximum_real_agent_resolutions_K": 6,
+  "K_derivation": "cardinality of the complete selected-runtime descriptor identity set, not action M and not empirical convenience",
+  "descriptor_authentication_reused": true,
+  "descriptor_epoch_invalidation_forces_new_resolution": true,
+  "future_actions_predeclared": false,
+  "source_hashes": {
+    "v11_online/session.py": "465f7c4d146eaad6e02ceef03f06c39d0a5fd58bf11bd270de579329c7336954",
+    "canonical_v9/runner.py": "13546027c570ac1bb4c36b5d0aabdec574547a57a7e0e01c073b62fc59a0afcc",
+    "v11_full_scope/canonical.py": "abe15dc7bfe49edfebf8b8036fd81d01ad8fee132704dbf2ed534c14fe54dc99"
+  }
+}

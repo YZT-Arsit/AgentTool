@@ -1,0 +1,17 @@
+{
+  "schema": "AgentTool.V12TPCICLiveCapacityManifest/1",
+  "phase": "V12-TIMING-PIR-CAPACITY-INTEGRITY-CLOSURE",
+  "frozen_after_integrity_regression_and_deterministic_capacity_pass": true,
+  "prior_failed_identity": "DEV-TD-CAPACITY50-P10-PIR60",
+  "retry_prior_identity": false,
+  "workloads": [
+    {"identity":"DEV-TPCIC-OA-SAME-AGENT-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-TPCIC-MS-SAME-AGENT-DEPTH50-001","kind":"SAME_AGENT_CAUSAL_DEPTH_50","framework":"Microsoft Agent Framework"},
+    {"identity":"DEV-TPCIC-OA-DISTINCT-K6-001","kind":"MAX_K_DISTINCT_AGENT_RESOLUTIONS","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-TPCIC-OA-AGENT-AS-TOOL-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"OpenAI Agents SDK"},
+    {"identity":"DEV-TPCIC-MS-AGENT-AS-TOOL-001","kind":"AGENT_AS_TOOL_TRANSITION","framework":"Microsoft Agent Framework"}
+  ],
+  "timing_attack_sessions": 0,
+  "timing_confirmatory_sessions": 0,
+  "selected_v12_cases": false
+}

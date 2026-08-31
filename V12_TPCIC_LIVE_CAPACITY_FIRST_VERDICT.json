@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12TPCICLiveCapacityResult/1",
+  "identity": "DEV-TPCIC-OA-SAME-AGENT-DEPTH50-001",
+  "kind": "SAME_AGENT_CAUSAL_DEPTH_50",
+  "framework": "OpenAI Agents SDK",
+  "operation_count": 50,
+  "unique_agent_resolution_count": 1,
+  "checks": {
+    "semantic_projection_equal": true,
+    "causal_proof": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_rounds": true,
+    "exact_operation_ids_recovered": true,
+    "exact_operation_ids_delivered": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_result_ids": true,
+    "fixed_total_pir_queries": true,
+    "exact_real_resolution_count": true,
+    "exact_dummy_query_count": true,
+    "cache_accounting": true,
+    "no_dummy_heavy": true,
+    "no_silent_loss": true,
+    "no_profile_overflow": true,
+    "no_infrastructure_liveness_failure": true,
+    "fixed_request_size": true,
+    "fixed_response_size": true
+  },
+  "passed": true,
+  "pir_summary_sha256": "88602dcf756ccab6011eae228f4b7d400de60400dcd122d67aab126e97eeed3b",
+  "go_trace_sha256": "ec90c588832df85ba16fd5d8e6173e4ffdb3e18b0dca790938e7926e0043a780",
+  "timing_attack_session": false
+}

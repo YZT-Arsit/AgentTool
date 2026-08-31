@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 
 from v11_full_scope.fixtures import tool_case
 from v11_full_scope.frameworks import native_implementation
-from v11_online.frameworks import run_online_framework_workflow
+from v11_online.frameworks import prewarm_framework, run_online_framework_workflow
 from v11_online.session import CanonicalOnlineSession
 from v12_timing.matrix import TimingWorkflow, frozen_order
 from v12_timing.profile import TimingIndistinguishabilityProfile
@@ -117,16 +117,24 @@ def _functional(
     return not failures, failures
 
 
-def _run_capacity(output: Path, period: int, profile: TimingIndistinguishabilityProfile) -> None:
+def _run_capacity(
+    output: Path,
+    period: int,
+    profile: TimingIndistinguishabilityProfile,
+    identity_prefix: str,
+) -> None:
     framework = "OpenAI Agents SDK"
+    if identity_prefix == "DEV-TD-CAPACITY50-P10-PIR60":
+        raise ValueError("the aborted V12 timing development identity may never be retried")
     cases = [
         replace(
-            tool_case(f"DEV-TD-CAPACITY50-P{period}-A{index:02d}", framework),
-            operation_id=f"opTDC{period:02d}{index:02d}",
+            tool_case(f"{identity_prefix}-A{index:02d}", framework),
+            operation_id=f"opTPC{period:02d}{index:02d}",
             logical_action_name=f"capacity_tool_{index}",
         ).validate()
         for index in range(50)
     ]
+    prewarm_framework(framework)
     with CanonicalOnlineSession(output, cases, public_profile=profile) as session:
         run_online_framework_workflow(framework, "DYNAMIC_SEQUENCE", cases, session.implementation())
     assert session.trace is not None
@@ -137,15 +145,20 @@ def _run_capacity(output: Path, period: int, profile: TimingIndistinguishability
         expected_provider_count=len(cases),
     )
     summary = json.loads((output / "pir" / "online_query_summary.json").read_text(encoding="utf-8"))
-    if summary["query_count"] != 50 or summary["real_query_count"] != 50 or summary["dummy_query_count"] != 0:
-        failures.append("capacity_50_fixed_pir_schedule")
-    record = {"identity": f"DEV-TD-CAPACITY50-P{period}-PIR60", "passed": passed and not failures, "failures": failures, "pir": summary}
+    if (
+        summary["query_count"] != profile.pir_resolution_opportunities
+        or summary["real_query_count"] != 1
+        or summary["dummy_query_count"] != profile.pir_resolution_opportunities - 1
+    ):
+        failures.append("same_agent_descriptor_cache_or_fixed_pir_epoch")
+    record = {"identity": identity_prefix, "passed": passed and not failures, "failures": failures, "pir": summary}
     (output / "capacity_verdict.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     if not record["passed"]:
         raise RuntimeError(f"capacity gate failed: {record}")
 
 
 def _run_workflow(output: Path, item: TimingWorkflow, profile: TimingIndistinguishabilityProfile) -> dict[str, Any]:
+    prewarm_framework(item.framework)
     native = run_online_framework_workflow(item.framework, item.workflow, list(item.cases), native_implementation)
     with CanonicalOnlineSession(output, list(item.cases), public_profile=profile) as session:
         canonical = run_online_framework_workflow(item.framework, item.workflow, list(item.cases), session.implementation())
@@ -201,6 +214,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--period", type=int, choices=(10, 20, 25), required=True)
+    parser.add_argument("--capacity-identity-prefix", required=True)
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(f"refusing to overwrite timing development root: {args.output}")
@@ -222,7 +236,7 @@ def main() -> int:
         "completed_sessions": 0,
     }
     (args.output / "campaign_manifest.json").write_text(json.dumps(campaign, indent=2) + "\n", encoding="utf-8")
-    _run_capacity(args.output / "capacity50", args.period, profile)
+    _run_capacity(args.output / "capacity50", args.period, profile, args.capacity_identity_prefix)
     rows = frozen_order(
         profile_period=args.period,
         blocks=int(matrix["blocks_per_profile"]),
