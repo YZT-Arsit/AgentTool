@@ -1,0 +1,22 @@
+{
+  "schema": "AgentTool.V12NonTimingDevelopmentExclusions/1",
+  "append_only_phase": "V12-NON-TIMING-CLOSURE",
+  "identities": [
+    {
+      "identity": "DEV-V12-NON-TIMING-PIR-001",
+      "kind": "SimplePIR query",
+      "record_count": 64,
+      "private_index": 10,
+      "selected_holdout": false
+    }
+  ],
+  "test_manifests": [
+    "V12_NON_TIMING_PYTHON_MANIFEST.json",
+    "V12_NON_TIMING_GO_MANIFEST.json",
+    "V12_NON_TIMING_SECURITY_NEGATIVE_MANIFEST.json"
+  ],
+  "future_rule": "Exclude every listed identity and exact test workload signature from any future fresh V12 holdout.",
+  "v12_candidate_universe_constructed": false,
+  "v12_seed_derived": false,
+  "selected_v12_cases_executed": 0
+}

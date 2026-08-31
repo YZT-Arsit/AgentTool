@@ -1,0 +1,66 @@
+{
+  "schema": "AgentTool.V12NonTimingGoManifest/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "frozen_before_execution": true,
+  "environment": {
+    "go": "go1.26.5 linux/amd64",
+    "mode": "GO111MODULE=off",
+    "gopath": "/root/autodl-tmp/v12_sched_gopath:/root/autodl-tmp/v11_1_gopath_8f7071b1",
+    "source_root": "/root/autodl-tmp/v12_sched_gopath/src/common-action-gateway-v2"
+  },
+  "test_count": 70,
+  "packages": {
+    "common-action-gateway-v2": [
+      "TestEffectGateAllowsOneEffectPerPrivateOperationID",
+      "TestOpaqueClientFramesRequireNoWorkloadOrKey",
+      "TestJournalCrashBeforeCommitRespectsProviderSemantics",
+      "TestJournalIdempotentEffectCanRetrySameOperationIDAfterCrash",
+      "TestJournalReadOnlyCanRetrySameOperationIDAfterCrash",
+      "TestJournalCommittedResultSurvivesCrashBeforeRingPublication",
+      "TestJournalCrashAfterCommitReturnsDurableResultWithoutEffectReplay",
+      "TestJournalFailedNonIdempotentCallRequiresReconciliation",
+      "TestJournalRejectsOperationIDSemanticReuse",
+      "TestLateResultContinuesInNextPublicSession",
+      "TestRequestFixedSizeRoundTrip",
+      "TestResultAndWaitUseSamePreparedSize",
+      "TestResponsePreparationHasNoPerCallAllocation",
+      "TestPublicHeaderIsAuthenticated",
+      "TestSequenceValidatorRejectsReplayAndWrongSession",
+      "TestFunctionalIsolationDoesNotSelfDeclareTimingReference",
+      "TestProviderTimeoutBeforeEffectRecordsNoEffect",
+      "TestProviderTimeoutAfterEffectIsExplicitlyAmbiguous",
+      "TestProviderDuplicateOperationIDCanReturnCachedResultExactlyOnce",
+      "TestProviderErrorAndConnectionInterruptionMapToPrivateError",
+      "TestProviderEffectSemanticsAreExplicitAndLegacyFlagsAreConservative",
+      "TestSPSCRingFixedRecords",
+      "TestResultRingSaturationFailsClosedWithoutOverwrite"
+    ],
+    "common-action-gateway-v2/canonicalv9": [
+      "TestProviderDiagnosticClassification",
+      "TestCanonicalWireSizesAndAdmissionBinding",
+      "TestCanonicalLiveRecoveryTypesAtEveryGatewayCrashPoint",
+      "TestCanonicalPlanRejectsNonLoopbackPrivateProvider",
+      "TestCanonicalAcceptUsesLiveRecoveryDecisionOnRestart",
+      "TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots",
+      "TestV11_2OnlineModeRejectsStartupActionList"
+    ],
+    "common-action-gateway-v2/v7": "ALL_15_COLLECTED_TESTS",
+    "common-action-gateway-v2/v7ohttp": "ALL_9_COLLECTED_TESTS",
+    "common-action-gateway-v2/v8": "ALL_4_COLLECTED_TESTS",
+    "common-action-gateway-v2/v9ohttp": "ALL_12_COLLECTED_TESTS"
+  },
+  "excluded_exact_timing_tests": [
+    "canonicalv9/TestV11_1HTTP2SlotsAreIndependentAndPreconnected",
+    "canonicalv9/TestV11_1SchedulerStallFailsWithoutCatchUpBurst",
+    "canonicalv9/TestV11_1ExpiredSlotCannotBeSubmittedUnderLooseTolerance",
+    "canonicalv9/TestV12_1SubperiodSlipIsDiagnosticNotScheduleMiss",
+    "canonicalv9/TestV11_2OnlineCausalActionsUseOnePreconnectedSession",
+    "canonicalv9/TestV11_2OnlineSchedulerFailureIsExplicitAndDoesNotRestart",
+    "canonicalv9/TestV12_1OnlineSubperiodSlipIsDiagnosticNotScheduleMiss",
+    "canonicalv9/TestV11_2OnlineCapacityRejectsWithoutSecondSession",
+    "canonicalv9/TestV12AffinityIsolationUsesFrozenFrameworkCPUSet",
+    "canonicalv9/TestV12AbsolutePacerDeadlineAndMissRules",
+    "canonicalv9/TestV12PublicPacerUsesAbsoluteDeadlineContract"
+  ],
+  "selected_v12_cases_executed": 0
+}

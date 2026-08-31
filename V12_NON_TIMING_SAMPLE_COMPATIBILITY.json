@@ -1,0 +1,29 @@
+{
+  "schema": "AgentTool.V12NonTimingSampleCompatibility/1",
+  "pinned_framework_revisions_changed": false,
+  "historical_static_matrix": {
+    "source": "results_control_virtualization/framework_coverage.csv",
+    "sha256": "dc4dfe77b65d33ae8b2f7e62112e5254a7361763bd49e7e279a2e65416a51d20",
+    "workloads": 9,
+    "total_behaviors": 85,
+    "SUPPORTED_BY_CURRENT_MEDIATION": 53,
+    "SHARED_PRIMITIVE_ONLY": 28,
+    "UNSUPPORTED": 4,
+    "OUTSIDE_CLAIM": 0
+  },
+  "fresh_source_availability_check": {
+    "available_source_paths": 8,
+    "declared_source_paths": 9,
+    "status": "PARTIAL_SOURCE_UNAVAILABLE",
+    "missing": ["external_stage9/agent-framework/python/packages/core/tests/agents/test_agent.py"],
+    "available_rows_static_counts": {
+      "total_behaviors": 81,
+      "SUPPORTED_BY_CURRENT_MEDIATION": 51,
+      "SHARED_PRIMITIVE_ONLY": 26,
+      "UNSUPPORTED": 4,
+      "OUTSIDE_CLAIM": 0
+    }
+  },
+  "runtime_cases_executed": 0,
+  "selected_or_future_v12_cases_invoked": 0
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "AgentTool.V12NonTimingComponentAudit/1",
+  "private_routing": {
+    "status": "FAIL",
+    "v12_rc_routed_identity_repair": "PASS",
+    "regression_scope": "OpenAI and Microsoft private routed identities, repeated logical names, operation-ID uniqueness, alias non-interference, and Agent-as-Tool private-call lowering",
+    "failure": "Two predeclared Agent-IR v2 regressions failed: OpenAI emitted no CALL_AGENT step and Microsoft reported agent_tools=0 instead of 1.",
+    "canonical_online_timing_stress_executed": false
+  },
+  "provider_diagnostics": {
+    "status": "PASS",
+    "deterministic_classes": ["PROVIDER_OK","PROVIDER_TRANSPORT_ERROR","PROVIDER_CONTEXT_DEADLINE_EXCEEDED","PROVIDER_HTTP_NON_2XX","PROVIDER_RESPONSE_DECODE_ERROR","PROVIDER_STATUS_ERROR","PROVIDER_RESPONSE_TOO_LARGE","PROVIDER_INTERNAL_OTHER_ERROR"],
+    "public_projection_changed": false,
+    "historical_provider_error": "NOT_REPRODUCED_UNRESOLVED"
+  },
+  "effect_recovery": {
+    "status": "PASS",
+    "non_idempotent_ambiguous_completion": "EFFECT_OUTCOME_UNKNOWN",
+    "general_exactly_once_claim": false
+  },
+  "simplepir_runtime": {
+    "status": "PASS",
+    "binary": "pir_integration/simplepir_bridge/acv-simplepir-online",
+    "binary_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b",
+    "real_queries": 1,
+    "query_identity": "DEV-V12-NON-TIMING-PIR-001",
+    "recovered_agent_id": 10,
+    "prebuilt_bridge_used": true,
+    "go_in_process_path": null,
+    "source_fallback": "disabled"
+  },
+  "ohttp_bhttp": {
+    "status": "PASS",
+    "go_tests": "25/25 across v7ohttp and v9ohttp plus authenticated-header/slot tests",
+    "timing_privacy_claim": false
+  },
+  "selected_v12_cases_executed": 0
+}

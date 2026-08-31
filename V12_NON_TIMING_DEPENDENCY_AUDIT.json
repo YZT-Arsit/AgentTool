@@ -1,0 +1,93 @@
+{
+  "schema": "AgentTool.V12NonTimingDependencyAudit/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "frozen_before_decisive_non_timing_tests": true,
+  "classification_rule": "code and data dependency only; test outcome is not an input",
+  "historical_structural_only_recommendation": "PRESERVED_NOT_IMPLEMENTED",
+  "timing_remains_core_claim": true,
+  "categories": {
+    "NON_TIMING_INDEPENDENT": [
+      {
+        "area": "private_framework_routing",
+        "sources": ["v11_online/frameworks.py"],
+        "boundary": "private routed aliases, operation uniqueness, and native framework action projection; excludes CanonicalOnlineSession"
+      },
+      {
+        "area": "provider_diagnostics_and_result_mapping",
+        "sources": ["common_action_gateway_v2/canonicalv9/runner.go", "tests/test_v12_provider_diagnostics.py"],
+        "boundary": "deterministic HTTP/result classification and private evidence non-interference"
+      },
+      {
+        "area": "effect_recovery_and_delivery",
+        "sources": ["common_action_gateway_v2/journal.go", "common_action_gateway_v2/v7/recovery.go", "common_action_gateway_v2/v7/ready_queue.go"],
+        "boundary": "WAL, READY recovery, effect ambiguity, duplicate suppression, and operation/result binding"
+      },
+      {
+        "area": "simplepir_runtime_and_correctness",
+        "sources": ["v11_online/session.py", "pir_integration/simplepir_bridge/acv-simplepir-online"],
+        "boundary": "OnlineSimplePIRResolver prebuilt process, real query/recovery, descriptor equality; excludes public-session cadence"
+      },
+      {
+        "area": "ohttp_bhttp_gateway",
+        "sources": ["common_action_gateway_v2/v9ohttp", "common_action_gateway_v2/v7ohttp", "common_action_gateway_v2/v8"],
+        "boundary": "codec, authentication, fixed-width representation, route policy, replay and slot/session binding; excludes emission deadlines"
+      },
+      {
+        "area": "static_projection_and_generality",
+        "sources": ["canonical_v9_1/projection.py", "ACTION_MEDIATION_COVERAGE_V11.csv", "results_control_virtualization/framework_coverage.csv"],
+        "boundary": "timestamp-erased structural/size implementation, frozen corpus disposition, and static official-sample compatibility"
+      },
+      {
+        "area": "confirmatory_harness_guards",
+        "sources": ["v11a_confirmatory/orchestrator.py", "scripts/run_v12_confirmatory.py"],
+        "boundary": "manifest parsing, authorization guards, integrity, append-only behavior; excludes selected execution"
+      }
+    ],
+    "TIMING_PROFILE_DEPENDENT": [
+      {
+        "area": "public_profile",
+        "fields": ["Delta", "R", "admission_rounds", "scheduled_public_lifetime", "profile_id"]
+      },
+      {
+        "area": "profile_evaluation",
+        "tests": ["B4/B5 final runs", "profile qualification", "exact round/lifetime assertions"]
+      },
+      {
+        "area": "hard_deadline_semantics",
+        "sources": ["common_action_gateway_v2/canonicalv9/online.go", "common_action_gateway_v2/canonicalv9/pacer.go"]
+      }
+    ],
+    "TIMING_PLATFORM_DEPENDENT": [
+      {
+        "area": "cadence_reliability",
+        "properties": ["launch slip", "deadline crossing", "session schedule completion"]
+      },
+      {
+        "area": "online_semantic_execution",
+        "sources": ["v11_online/session.CanonicalOnlineSession", "v11a_confirmatory.orchestrator.run_canonical_online_trajectory_case"],
+        "reason": "the current runtime couples semantic completion to the hard-deadline public session"
+      },
+      {
+        "area": "traffic_timing",
+        "properties": ["socket timing", "packet timing", "timing classifier", "host scheduling pauses"]
+      }
+    ]
+  },
+  "source_hashes": {
+    "common_action_gateway_v2/canonicalv9/runner.go": "ab0bedc9b331c88d05688d25a3f05ddbcaf274c57aba03ddcd966e1ab3a09e20",
+    "common_action_gateway_v2/canonicalv9/online.go": "ca32097b31fe6e14a7e6980cdf760895f175229894c24406d1b618b7b31de877",
+    "common_action_gateway_v2/canonicalv9/pacer.go": "455215ce8c85482d5db0a795a8759cdee63938f90d4482202d21b3fe285101fa",
+    "canonical_v9_1/projection.py": "3a9fc710f98c586e98be64b04e5c8875f8297906199458199340b41fb981f9ea",
+    "v11_online/session.py": "b7a0ec81cb42a66e3a900033b701ff14b2be4ae92f755db04d71ed9a7e454e4b",
+    "v11_online/frameworks.py": "75ae8a5faf78359bacb4dd43261feb8cea574d370973497cb21c8ec7cc39c791"
+  },
+  "prohibitions": {
+    "new_timing_period": true,
+    "pacer_or_deadline_change": true,
+    "structural_only_implementation": true,
+    "timing_classifier": true,
+    "v12_universe_or_seed": true,
+    "selected_v12_execution": true
+  }
+}
+

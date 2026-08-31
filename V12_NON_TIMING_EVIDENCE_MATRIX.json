@@ -1,0 +1,22 @@
+{
+  "schema": "AgentTool.V12NonTimingEvidenceMatrix/1",
+  "claims": [
+    {"claim":"PIR Agent-selection privacy","status":"DEVELOPMENT_SUPPORTED","basis":"real prebuilt query plus preserved 100K SimplePIR evidence","limit":"not a timing claim"},
+    {"claim":"descriptor authentication","status":"CLOSED","basis":"codec and tamper-negative tests"},
+    {"claim":"private route resolution","status":"LIMITATION","basis":"V12-RC injective identity and authorization tests pass, but two Agent-IR Agent-as-Tool regressions fail"},
+    {"claim":"Agent/Tool action mediation","status":"DEVELOPMENT_SUPPORTED","basis":"894/1370 frozen MEDIATED source sites","limit":"473 PARTIAL and 3 UNSUPPORTED"},
+    {"claim":"framework semantic fidelity","status":"LIMITATION","basis":"Level-A projection remains the claim, but the frozen Python gate found two Agent-IR regressions"},
+    {"claim":"repeated Tool routing","status":"DEVELOPMENT_SUPPORTED","basis":"OpenAI/Microsoft private routed-identity regressions pass","limit":"broader Agent-as-Tool IR regressions fail"},
+    {"claim":"provider-result diagnostics","status":"CLOSED","basis":"deterministic Python/Go classifier tests","limit":"historical error remains unresolved"},
+    {"claim":"effect/recovery semantics","status":"CLOSED","basis":"WAL, ready queue, replay, ambiguity, and DeliveryLedger component tests","limit":"no general exactly-once claim"},
+    {"claim":"OHTTP/BHTTP confidentiality and integrity path","status":"CLOSED","basis":"RFC9458/RFC9292 component and negative tests"},
+    {"claim":"structural/size projection implementation","status":"DEVELOPMENT_SUPPORTED","basis":"static projection and fixed-width component tests","limit":"final timing profile unresolved"},
+    {"claim":"corpus coverage","status":"DEVELOPMENT_SUPPORTED","basis":"894 MEDIATED / 473 PARTIAL / 3 UNSUPPORTED"},
+    {"claim":"timing privacy","status":"DEFERRED_TIMING","basis":"no qualified platform","verdict":"OPEN / NOT_TESTED"},
+    {"claim":"packet-level timing","status":"NOT_TESTED","verdict":"OPEN"},
+    {"claim":"hardware TEE","status":"NOT_TESTED","basis":"trusted software/local module plus trusted/common action gateway only"},
+    {"claim":"source-body equivalence","status":"LIMITATION","basis":"Level-A boundary only","source_body_executable_subset":0}
+  ],
+  "non_timing_software_closure": "FAIL",
+  "reason": "The frozen non-timing Python serial gate was not 100 percent PASS."
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "AgentTool.V12NonTimingGoGate/1",
+  "manifest": "V12_NON_TIMING_GO_MANIFEST.json",
+  "executed_once": true,
+  "tests": 70,
+  "passed": 70,
+  "failed": 0,
+  "status": "PASS",
+  "package_results": {
+    "common-action-gateway-v2": "23/23",
+    "common-action-gateway-v2/canonicalv9": "7/7",
+    "common-action-gateway-v2/v7": "15/15",
+    "common-action-gateway-v2/v7ohttp": "9/9",
+    "common-action-gateway-v2/v8": "4/4",
+    "common-action-gateway-v2/v9ohttp": "12/12"
+  },
+  "logs": [
+    {"path":"results_v12_non_timing_closure_20260831/go_root.txt","sha256":"32059f938b57abecfe520c17e224e9affd2d7c87c3af6ceca4c9e6038565c676"},
+    {"path":"results_v12_non_timing_closure_20260831/go_canonicalv9.txt","sha256":"bfd6f023ac53e875b9adf9aa623ce36ac0b1aab155317a4776bed48152e749a3"},
+    {"path":"results_v12_non_timing_closure_20260831/go_protocols.txt","sha256":"71b4259cc7b1fedaece73053710be7b4d8e882b1d24d0d960652a1cf3d01e70a"}
+  ],
+  "timing_tests_executed": 0,
+  "selected_v12_cases_executed": 0
+}

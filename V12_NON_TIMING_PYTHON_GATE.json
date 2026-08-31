@@ -1,0 +1,44 @@
+{
+  "schema": "AgentTool.V12NonTimingPythonGate/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "platform": "authorized offline Linux test instance",
+  "manifest": "V12_NON_TIMING_PYTHON_MANIFEST.json",
+  "serial": {
+    "executed_once": true,
+    "collected": 220,
+    "passed": 198,
+    "failed": 13,
+    "skipped": 9,
+    "predeclared_deselected": 3,
+    "status": "FAIL",
+    "raw_log": "results_v12_non_timing_closure_20260831/python_serial.txt",
+    "raw_log_sha256": "263b75cd745c25839cf5d4ee8cbd9a33c72ab8ec34f3348571253f89d4b84d66"
+  },
+  "failure_classes": {
+    "CURRENT_NON_TIMING_SEMANTIC_REGRESSION": 2,
+    "CURRENT_NON_TIMING_TEST_HARNESS_REGRESSION": 1,
+    "HISTORICAL_EVIDENCE_FILES_ABSENT_FROM_LINUX_BUNDLE": 9,
+    "WINDOWS_SPECIFIC_HISTORICAL_RUNTIME_PATH_ABSENT": 1
+  },
+  "failed_nodes": [
+    "tests/test_agent_ir_v2.py::test_openai_agent_as_tool_lowers_to_private_call_stack_without_public_handoff",
+    "tests/test_agent_ir_v2.py::test_microsoft_agent_as_tool_lowers_to_same_private_call_stack",
+    "tests/test_crypto_closure.py::test_real_pir_100k_was_correct_and_fully_preprocessed",
+    "tests/test_crypto_closure.py::test_server_trace_excludes_private_labels_and_uses_fresh_queries",
+    "tests/test_crypto_closure.py::test_recovered_capsule_feeds_the_common_executor",
+    "tests/test_crypto_closure.py::test_action_structural_and_size_results_are_at_chance",
+    "tests/test_stage9.py::Stage9AdaptiveTests::test_l2_public_runtime_existing_approval_path",
+    "tests/test_v12_closure.py::test_partial_online_session_entry_releases_started_providers",
+    "tests/test_validation_v4.py::test_whole_workflow_coverage_uses_distinct_frozen_corpus_units",
+    "tests/test_validation_v4.py::test_mixed_unproven_decomposition_preserves_all_1904_rows_without_coverage_claim",
+    "tests/test_validation_v4.py::test_semantic_holdout_manifest_is_still_frozen_and_outcomes_are_not_rewritten",
+    "tests/test_validation_v4.py::test_long_horizon_freeze_is_intact_and_functional_failure_blocks_e2e_claim",
+    "tests/test_validation_v4.py::test_tcb_inventory_separates_runtime_from_tooling_and_emulator"
+  ],
+  "default": {
+    "status": "NOT_RUN_AFTER_SERIAL_FAILURE",
+    "reason": "The frozen serial gate did not satisfy its 100 percent prerequisite; default mode is not a replacement or retry."
+  },
+  "outcome_dependent_reclassification": false,
+  "selected_v12_cases_executed": 0
+}

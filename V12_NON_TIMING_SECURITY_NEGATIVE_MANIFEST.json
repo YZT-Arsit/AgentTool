@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12NonTimingSecurityNegativeManifest/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "frozen_before_execution": true,
+  "case_count": 22,
+  "cases": [
+    {"id":"NTNEG-01","property":"unauthorized capability and wrong route fail closed","test":"tests/test_v8_standards_closure.py::test_tool_route_is_separate_from_agent_service_route_and_unauthorized_fails"},
+    {"id":"NTNEG-02","property":"authenticated malformed descriptor rejected","test":"tests/test_v8_standards_closure.py::test_descriptor_v7_rejects_authenticated_malformed_enum_and_schema"},
+    {"id":"NTNEG-03","property":"visible cloud-local downgrade rejected","test":"tests/test_v8_standards_closure.py::test_strict_rejects_visible_cloud_local_and_never_downgrades"},
+    {"id":"NTNEG-04","property":"missing RFC9458 backend fails closed","test":"tests/test_v7_ohttp_architecture.py::test_missing_offline_rfc9458_backend_fails_closed"},
+    {"id":"NTNEG-05","property":"legacy transport cannot be promoted to OHTTP","test":"tests/test_v7_ohttp_architecture.py::test_legacy_wire_cannot_be_promoted_to_canonical_ohttp"},
+    {"id":"NTNEG-06","property":"duplicate operation ID rejected before framework construction","test":"tests/test_v12_rc_invocation_routing.py::test_duplicate_operation_ids_are_rejected_before_framework_construction"},
+    {"id":"NTNEG-07","property":"private routed alias excluded from semantic/public projections","test":"tests/test_v12_rc_invocation_routing.py::test_private_routing_names_are_injective_and_not_operation_derived"},
+    {"id":"NTNEG-08","property":"provider diagnostic metadata excluded from public projections","test":"tests/test_v12_provider_diagnostics.py::test_provider_diagnostics_do_not_change_public_projections"},
+    {"id":"NTNEG-09","property":"tampered execution profile binding rejected","test":"tests/test_v12_closure.py::test_public_profile_config_epoch_mutation_fails_artifact_binding"},
+    {"id":"NTNEG-10","property":"execution permit requires capability preflight","test":"tests/test_v12_closure.py::test_v12_execution_permit_requires_capability_preflight"},
+    {"id":"NTNEG-11","property":"DeliveryLedger durable duplicate suppressed","test":"tests/test_v8_standards_closure.py::test_trusted_delivery_ledger_suppresses_durable_duplicate"},
+    {"id":"NTNEG-12","property":"DeliveryLedger pre-delivery crash remains deliverable","test":"tests/test_v8_standards_closure.py::test_trusted_delivery_ledger_crash_before_framework_delivery_remains_deliverable"},
+    {"id":"NTNEG-13","property":"malformed and duplicated ORAM buckets rejected","test":"tests/test_stage7.py::Stage7SecurityTests::test_missing_and_duplicated_bucket_detection"},
+    {"id":"NTNEG-14","property":"old tree and block replay rejected","test":"tests/test_stage7.py::Stage7SecurityTests::test_old_tree_and_block_replay_detection"},
+    {"id":"NTNEG-15","property":"non-idempotent ambiguous timeout reconciled without false exactly-once","test":"tests/test_stage7.py::Stage7SecurityTests::test_crash_after_effect_and_ambiguous_timeout_reconcile"},
+    {"id":"NTNEG-16","property":"provider diagnostic OK transport deadline HTTP decode and status classes exact","test":"go:canonicalv9/TestProviderDiagnosticClassification"},
+    {"id":"NTNEG-17","property":"invalid and duplicate authenticated public slots rejected","test":"go:canonicalv9/TestV11_1GatewaySlotRegistryRejectsInvalidAndDuplicateSlots"},
+    {"id":"NTNEG-18","property":"non-loopback private provider rejected","test":"go:canonicalv9/TestCanonicalPlanRejectsNonLoopbackPrivateProvider"},
+    {"id":"NTNEG-19","property":"non-idempotent restart returns explicit ambiguous outcome","test":"go:canonicalv9/TestCanonicalAcceptUsesLiveRecoveryDecisionOnRestart"},
+    {"id":"NTNEG-20","property":"public header authentication rejects tamper","test":"go:root/TestPublicHeaderIsAuthenticated"},
+    {"id":"NTNEG-21","property":"sequence validator rejects replay and wrong session","test":"go:root/TestSequenceValidatorRejectsReplayAndWrongSession"},
+    {"id":"NTNEG-22","property":"journal rejects operation ID semantic reuse","test":"go:root/TestJournalRejectsOperationIDSemanticReuse"}
+  ],
+  "excluded_properties": ["scheduler deadline", "launch slip", "cadence", "public-period timing"],
+  "outcome_dependent_reclassification": false
+}
+

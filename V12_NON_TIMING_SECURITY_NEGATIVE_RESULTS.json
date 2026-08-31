@@ -1,0 +1,11 @@
+{
+  "schema": "AgentTool.V12NonTimingSecurityNegativeResults/1",
+  "manifest": "V12_NON_TIMING_SECURITY_NEGATIVE_MANIFEST.json",
+  "executed_after_manifest_freeze": true,
+  "python": {"passed":15,"total":15,"log_sha256":"c98c6aa926cffcd9b85d2e9ece50ab0f8a5d7eadb1f160aa451da8f9207b51a0"},
+  "go": {"passed":7,"total":7},
+  "aggregate": {"passed":22,"total":22,"status":"PASS"},
+  "timing_negative_cases": 0,
+  "outcome_dependent_reclassification": false,
+  "selected_v12_cases_executed": 0
+}

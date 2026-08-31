@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12NonTimingBaselineEvidenceAudit/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "dependency_diff_from_base_commit": false,
+  "baseline_matrix_sha256": "68acddfacb2d21eaf990416120dc7ab9cf499eae6ad9366cf380163668d9f52e",
+  "B0": "1/14 PRESERVED",
+  "B1": "2/14 PRESERVED",
+  "B2": "11/14 PRESERVED",
+  "B3": "13/14 PRESERVED",
+  "B4_FINAL": "DEFERRED_TIMING_PROFILE",
+  "B5_FINAL": "DEFERRED_TIMING_PROFILE",
+  "simplepir_100k": {
+    "status": "PRESERVED_AUTHORITATIVE_EVIDENCE",
+    "logical_records": 100000,
+    "correct_queries": "10/10",
+    "fresh_repeated_queries": true,
+    "metrics_sha256": "66b7b9ec812a26420b9b362c518d583c9108f1e84f540dd62541ad86a2639d55",
+    "linux_test_bundle_complete": false
+  }
+}

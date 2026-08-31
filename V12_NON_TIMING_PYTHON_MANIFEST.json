@@ -1,0 +1,70 @@
+{
+  "schema": "AgentTool.V12NonTimingPythonManifest/1",
+  "base_commit": "56351503228e51c1497f54555aee4ece4ffaa9a4",
+  "frozen_before_execution": true,
+  "selection_unit": "all collected nodes from complete_files plus explicit_nodes minus predeclared deselected_nodes",
+  "collected_node_count": 220,
+  "collected_node_list_sha256_lf": "cddf3ac81a6e0684af531786f205fd97ac686c0293b940e0fbdba9cfd6ddec72",
+  "complete_files": [
+    {"path":"tests/test_agent_ir_v2.py","sha256":"fef65675f1320b6882877985def07c19898715b2824e0957c6025f01b30dd8e6"},
+    {"path":"tests/test_canonical_v3.py","sha256":"6e536fa23fb960fd59a8544c4019781da0abbde88d1546db06d88ae05d5e155f"},
+    {"path":"tests/test_canonical_v9_artifacts.py","sha256":"c0170ad1f2d91f3d3a2bc476377844a9cbd9cc6296e0b841fd3bd53a7c92dc3f"},
+    {"path":"tests/test_control_virtualization.py","sha256":"f46f8ba92e8b0b64e05e9e93dedadeeb684b91c44ce8a7bf2a5605801f33b5af"},
+    {"path":"tests/test_crypto_closure.py","sha256":"9ec4d957b8c8bcbf8efb3e3394de5cef87897abcb66aa4960393530e29fd10f2"},
+    {"path":"tests/test_ir_v1_freeze.py","sha256":"448829a84aed876df053c816bf5bb02546de8584f8b3410ac73f5bf015aa6d2a"},
+    {"path":"tests/test_semantic_harness_v3.py","sha256":"d06dc2319d59f49eb1c423393728a23a0a725f420f664b32663d894f99ef6bb5"},
+    {"path":"tests/test_stage10.py","sha256":"af990114e2290bd8508418115857c4fd9d92676a23ef6ce43f6a59b8d50fa794"},
+    {"path":"tests/test_stage2.py","sha256":"020303ff1af65a80b6e7a24fd488e1f126838ed15c7a2fa3cd2bbee4b0d4a64f"},
+    {"path":"tests/test_stage3.py","sha256":"ecc3ca9fb8863e0ae42b833850a536f443ec77adea6aba75f18a1780ea13c8b7"},
+    {"path":"tests/test_stage4.py","sha256":"fd0a93fe69f1b79bbf638ae52ee1c53092d33e3a4ecc2ddbebea4a25d397ec8e"},
+    {"path":"tests/test_stage5.py","sha256":"81472094464f5bad088e889458f0c4e94191ef57b528a5e1ee8226c27203cdcf"},
+    {"path":"tests/test_stage6.py","sha256":"49b4192eb43b1be79951462a34e3ad5c4aef3be375f3c92f76da2194f116d9a2"},
+    {"path":"tests/test_stage7.py","sha256":"1ca7dd0c81bf69b4439ec6b9b1788b6a36e478f69aacc5c37bdf50bbff017fcb"},
+    {"path":"tests/test_stage8.py","sha256":"9f8670ab78d4c9aabbcb413a6d5d93d67db6c8a7888abe4f8e39e63fef44d2d6"},
+    {"path":"tests/test_stage9.py","sha256":"25dc83ebadad6de6cb6768e2a90ed915c61320775fb9d1f08b1c178500d82629"},
+    {"path":"tests/test_v10_holdout_harness.py","sha256":"a0fa34f7f9fc522e844f8e8a9695122fa1fa81ccd2f61101f6a8687f094fb99a"},
+    {"path":"tests/test_v11a_1_prefix_projection.py","sha256":"32f190e5ae4c0eb2e566ace95d65b340ab5d78e3e3738581f2481281c05b12c6"},
+    {"path":"tests/test_v11a_confirmatory.py","sha256":"1b5b5bf35771f89ce026a96652738123969babe5c60af283d519be186176f046"},
+    {"path":"tests/test_v11b0_1_hardening.py","sha256":"64d7320f35486861a64528252d012f6162b7edb962812245d01bf950e4fb45f9"},
+    {"path":"tests/test_v12_closure.py","sha256":"e18ca94d58e4a3413968e3ca1305cfb3d22e008618081e88b09e51bd7eec7156"},
+    {"path":"tests/test_v12_provider_diagnostics.py","sha256":"e56463b0bd0dc2a9cc9b9ed06601d9f5137adae344b848df30c3e1cf3bc19981"},
+    {"path":"tests/test_v12_rc_invocation_routing.py","sha256":"88344f00d8ef467c959aa8f465a3c93cebc93d88d3ba377bc3cd6e1e397f867d"},
+    {"path":"tests/test_v12_scheduler_diagnostics.py","sha256":"8c3fdd6236bdc1194e92dcb2f51505a08f3b8d1b1782a1e62e2f151556063e51"},
+    {"path":"tests/test_v5_confidential.py","sha256":"de408b879d6a6f820e968ac143583f326e384238b366b90826958dff8b1e5548"},
+    {"path":"tests/test_v6_action_privacy.py","sha256":"1f4dfc87962ea3e0c60c55ef49ad8098691b6b8d65e57441947a7b6e1186deff"},
+    {"path":"tests/test_v7_ohttp_architecture.py","sha256":"bdd8072d944e4279f79b9be8ad4c9c316615bc6665821d8e9408fb8f8e854e2b"},
+    {"path":"tests/test_v8_standards_closure.py","sha256":"fddf180814799f2fa23445508d2984530ade0082e1f45903484d7250217b7c9d"},
+    {"path":"tests/test_validation.py","sha256":"61874e6e5c649ce7206ce47c2e4dd45a5bf70337f8b819056a38eaeb48e005ea"},
+    {"path":"tests/test_validation_v4.py","sha256":"d4996135d4cdcd3d44489a64aed9ea4f852db0e49a4e2caa7a6c1acb54327abc"}
+  ],
+  "explicit_nodes": [
+    "tests/test_v10_1_executor.py::test_native_framework_executor_uses_real_action_machinery[OpenAI Agents SDK]",
+    "tests/test_v10_1_executor.py::test_native_framework_executor_uses_real_action_machinery[Microsoft Agent Framework]",
+    "tests/test_v10_1_executor.py::test_adapter_registry_does_not_promote_unsupported_families",
+    "tests/test_v11b0_driver.py::V11B0DriverTests::test_append_only_ledger_hash_chain",
+    "tests/test_v11b0_driver.py::V11B0DriverTests::test_driver_has_no_selected_case_specific_literal",
+    "tests/test_v11b0_driver.py::V11B0DriverTests::test_plan_has_exact_frozen_order_and_counts_without_runtime_calls"
+  ],
+  "mixed_file_hashes": {
+    "tests/test_v10_1_executor.py": "c2122a2e791388802fb3d7dc290190096f8312925593812c2bbc4e452f867927",
+    "tests/test_v11b0_driver.py": "110b7e6096c6d1db30084d43081533b2f7adc4ccb3c42bd9a7d8fd526d356e12"
+  },
+  "deselected_nodes": [
+    {
+      "node": "tests/test_canonical_v3.py::test_canonical_gateway_result_consumer_and_fixed_schedule",
+      "class": "TIMING_PROFILE_DEPENDENT"
+    },
+    {
+      "node": "tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[OpenAI Agents SDK]",
+      "class": "TIMING_PLATFORM_DEPENDENT"
+    },
+    {
+      "node": "tests/test_v12_rc_invocation_routing.py::test_private_routing_alias_absent_from_canonical_public_and_private_views[Microsoft Agent Framework]",
+      "class": "TIMING_PLATFORM_DEPENDENT"
+    }
+  ],
+  "serial_command_policy": "pytest selected set, repository default plugins disabled only if required by offline environment",
+  "default_command_policy": "same selected set under repository-supported default mode",
+  "selected_v12_cases_executed": 0
+}
+

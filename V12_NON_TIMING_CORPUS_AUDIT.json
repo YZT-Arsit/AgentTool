@@ -1,0 +1,14 @@
+{
+  "schema": "AgentTool.V12NonTimingCorpusAudit/1",
+  "source": "ACTION_MEDIATION_COVERAGE_V11.csv",
+  "source_sha256": "e16f6b23bfd01e57f9e3994aaac130c119a2274028a30da707a266d286199f94",
+  "frozen_denominator": 1370,
+  "MEDIATED": 894,
+  "PARTIAL": 473,
+  "UNSUPPORTED": 3,
+  "mediated_fraction": 0.6525547445255474,
+  "openai": {"MEDIATED":240,"PARTIAL":60,"UNSUPPORTED":3},
+  "microsoft": {"MEDIATED":654,"PARTIAL":413,"UNSUPPORTED":0},
+  "extractor_or_corpus_dependency_changed": false,
+  "source_body_equivalence_claim": false
+}
