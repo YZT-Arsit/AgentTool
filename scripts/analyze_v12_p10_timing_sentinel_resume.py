@@ -41,6 +41,11 @@ from v12_timing.statistics import (
     validate_matched_blocks,
 )
 
+ANALYSIS_SCHEMA = "AgentTool.V12P10TimingSentinelResumeAnalysis/1"
+ANALYSIS_PHASE = "V12-P10-TIMING-DISTINGUISHABILITY-SENTINEL-RESUME"
+ANALYSIS_FILENAME = "sentinel_resume_analysis.json"
+COMPARISONS_FILENAME = "observer_comparisons.csv"
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -278,9 +283,9 @@ def _combined_verdict(
     failure_concern = any(row["failure_channel_flag"] for row in completion)
     operational_concern = any(row["operational_reliability_concern"] for row in completion)
     evaluated = [row for row in results if row["status"] == "EVALUATED"]
-    timing = "EARLY_FAIL" if any(row["early_fail"] for row in evaluated) else "PASS_TO_FULL"
     if insufficient:
-        return "INSUFFICIENT_COMPLETE_BLOCKS", timing, False
+        return "INSUFFICIENT_COMPLETE_BLOCKS", "NOT_EVALUABLE", False
+    timing = "EARLY_FAIL" if any(row["early_fail"] for row in evaluated) else "PASS_TO_FULL"
     if failure_concern:
         return "FAILURE_CHANNEL_CONCERN", timing, False
     if operational_concern:
@@ -318,8 +323,8 @@ def main() -> int:
     results = _analysis_rows(records, manifest, selection)
     verdict, timing_verdict, ready = _combined_verdict(completion, selection, results)
     report = {
-        "schema": "AgentTool.V12P10TimingSentinelResumeAnalysis/1",
-        "phase": "V12-P10-TIMING-DISTINGUISHABILITY-SENTINEL-RESUME",
+        "schema": ANALYSIS_SCHEMA,
+        "phase": ANALYSIS_PHASE,
         "protocol_base_sha": manifest["protocol_base_sha"],
         "latest_development_evidence_sha": manifest["latest_development_evidence_sha"],
         "execution_source_commit": manifest["execution_source_commit"],
@@ -353,8 +358,8 @@ def main() -> int:
         "final_v12_cases_executed": 0,
         "platform_diagnostics": _platform_diagnostics(records),
     }
-    write_json(args.output / "sentinel_resume_analysis.json", report)
-    with (args.output / "observer_comparisons.csv").open(
+    write_json(args.output / ANALYSIS_FILENAME, report)
+    with (args.output / COMPARISONS_FILENAME).open(
         "w", encoding="utf-8", newline=""
     ) as handle:
         fieldnames = (

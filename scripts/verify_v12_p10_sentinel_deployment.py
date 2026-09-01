@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+VERIFICATION_SCHEMA = "AgentTool.V12P10TimingSentinelDeploymentVerification/1"
 
 
 def sha256(path: Path) -> str:
@@ -77,7 +78,7 @@ def main() -> int:
         and all(row["path_match"] and row["hash_match"] for row in probes)
     )
     record = {
-        "schema": "AgentTool.V12P10TimingSentinelDeploymentVerification/1",
+        "schema": VERIFICATION_SCHEMA,
         "repository_commit_expected": manifest["repository_commit"],
         "repository_commit_actual": head,
         "tracked_source_clean": tracked_clean,

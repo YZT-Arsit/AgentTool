@@ -31,6 +31,12 @@ from v12_timing.sentinel_resume import (
     validate_freeze_manifest,
 )
 
+SESSION_SCHEMA = "AgentTool.V12P10TimingSentinelResumeSession/1"
+COLLECTION_SCHEMA = "AgentTool.V12P10TimingSentinelResumeCollection/1"
+DATASET_SCHEMA = "AgentTool.V12P10TimingSentinelResumeDatasetManifest/1"
+ABORT_SCHEMA = "AgentTool.V12P10TimingSentinelResumeCommonAbort/1"
+SESSION_RECORD_FILENAME = "sentinel_resume_session_record.json"
+
 
 class CommonIntegrityFailure(RuntimeError):
     pass
@@ -122,7 +128,7 @@ def _existing_hashes(unit_root: Path) -> dict[str, str]:
 
 def _base_record(expected: Mapping[str, Any], workload: Any, *, profile_id: str) -> dict[str, Any]:
     return {
-        "schema": "AgentTool.V12P10TimingSentinelResumeSession/1",
+        "schema": SESSION_SCHEMA,
         "identity": workload.identity,
         "task_id": workload.task_id,
         "framework": workload.framework,
@@ -236,8 +242,8 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         ),
         "fixed_request_size": all(int(row["request_length"]) == 1079 for row in relay_events),
         "fixed_response_size": all(int(row["response_length"]) == 800 for row in relay_events),
-        "fixed_relay_slot_order": [int(row["round"]) for row in relay_events]
-        == list(range(1, 507)),
+        "complete_unique_relay_slot_set": len(relay_events) == 506
+        and sorted(int(row["round"]) for row in relay_events) == list(range(1, 507)),
         "fixed_registry_query_order": [int(row["ordinal"]) for row in registry_rows]
         == list(range(100)),
         "no_out_of_schedule_PIR": len(cover) == 100
@@ -253,6 +259,8 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
             {"public_relay_events": relay_events},
             expected_rounds=profile.total_rounds,
             require_complete_application_timing=True,
+            expected_request_bytes=1079,
+            expected_response_bytes=800,
         )
         registry_projection = registry_timing_projection(
             registry_rows,
@@ -265,6 +273,18 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         raise CommonIntegrityFailure(f"complete timing projection defect: {error}") from error
     if relay_projection["view"] != TIMING_ONLY_VIEW or registry_projection["view"] != TIMING_ONLY_VIEW:
         raise CommonIntegrityFailure("completed session projection did not use TIMING_ONLY_VIEW")
+    relay_widths = tuple(
+        len(relay_projection[key])
+        for key in (
+            "slot_indexed_session_relative_request_ns",
+            "chronological_request_inter_arrival_ns",
+            "slot_indexed_session_relative_response_send_ns",
+            "chronological_response_send_inter_arrival_ns",
+            "slot_paired_request_response_ns",
+        )
+    )
+    if relay_widths != (506, 505, 506, 505, 506):
+        raise CommonIntegrityFailure("completed Relay V3 raw feature widths drifted")
 
     expected_ids = [case.operation_id for case in cases]
     external_ids = [case.operation_id for case in cases if case.placement != "TRUSTED_MODULE_LOCAL"]
@@ -337,9 +357,11 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
             "platform_diagnostics": {
                 "nominal_late_cells": int(trace.get("nominal_late_cells", 0)),
                 "launch_slip_ns": [int(row.get("launch_slip_ns", 0)) for row in launches],
-                "relay_request_gap_ns": list(relay_projection["request_inter_arrival_ns"]),
+                "relay_request_gap_ns": list(
+                    relay_projection["chronological_request_inter_arrival_ns"]
+                ),
                 "relay_response_send_gap_ns": list(
-                    relay_projection["response_inter_arrival_ns"]
+                    relay_projection["chronological_response_send_inter_arrival_ns"]
                 ),
                 "registry_query_gap_ns": list(registry_projection["inter_query_gap_ns"]),
                 "registry_request_response_ns": list(
@@ -362,7 +384,7 @@ def _close_dataset(
     common_abort: bool,
 ) -> dict[str, Any]:
     dataset: dict[str, Any] = {
-        "schema": "AgentTool.V12P10TimingSentinelResumeDatasetManifest/1",
+        "schema": DATASET_SCHEMA,
         "collection_closed": True,
         "common_integrity_abort": common_abort,
         "frozen_manifest_sha256": sha256(manifest_path),
@@ -389,7 +411,7 @@ def main() -> int:
     args.output.mkdir(parents=True)
     (args.output / "frozen_manifest.json").write_bytes(args.manifest.read_bytes())
     campaign: dict[str, Any] = {
-        "schema": "AgentTool.V12P10TimingSentinelResumeCollection/1",
+        "schema": COLLECTION_SCHEMA,
         "manifest_sha256": sha256(args.manifest),
         "execution_source_commit": manifest["execution_source_commit"],
         "expected_sessions": TOTAL_SESSIONS,
@@ -438,7 +460,7 @@ def main() -> int:
                 error=error,
             )
             record["failure_category"] = "COMMON_CAMPAIGN_INTEGRITY_FAILURE"
-        record_path = unit_root / "sentinel_resume_session_record.json"
+        record_path = unit_root / SESSION_RECORD_FILENAME
         write_json(record_path, record)
         record_hash = sha256(record_path)
         ledger_row = {
@@ -483,7 +505,7 @@ def main() -> int:
                 common_abort=True,
             )
             abort = {
-                "schema": "AgentTool.V12P10TimingSentinelResumeCommonAbort/1",
+                "schema": ABORT_SCHEMA,
                 "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
                 "identity": identity,
                 "execution_ordinal": ordinal,

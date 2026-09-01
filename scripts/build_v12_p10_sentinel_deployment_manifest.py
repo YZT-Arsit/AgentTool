@@ -15,6 +15,15 @@ ENTRYPOINTS = (
     Path("scripts/build_v12_p10_sentinel_deployment_manifest.py"),
     Path("scripts/verify_v12_p10_sentinel_deployment.py"),
 )
+PROTOCOL_ARTIFACTS = (
+    "V12_TIMING_STATISTICAL_PROTOCOL_V2.json",
+    "V12_TIMING_OBSERVER_CONTRACT_V2.json",
+    "V12_APPLICATION_OBSERVABILITY_DELTA_CANDIDATES_FREEZE.json",
+    "V12_APPLICATION_OBSERVABILITY_CAPACITY_FREEZE.json",
+    "V12_APPLICATION_OBSERVABILITY_GO_MANIFEST.json",
+)
+EXTRA_PROBES: dict[str, str] = {}
+DEPLOYMENT_SCHEMA = "AgentTool.V12P10TimingSentinelDeploymentManifest/1"
 
 
 def sha256(path: Path) -> str:
@@ -128,16 +137,7 @@ def main() -> int:
     files |= files_under("third_party/ohttp-go", (".go", ".mod", ".sum", ".s"))
     files |= files_under("pir_integration/simplepir_bridge", (".go", ".mod", ".sum"))
     files |= tracked_nested("external_pir/simplepir")
-    files |= {
-        Path(value)
-        for value in (
-            "V12_TIMING_STATISTICAL_PROTOCOL_V2.json",
-            "V12_TIMING_OBSERVER_CONTRACT_V2.json",
-            "V12_APPLICATION_OBSERVABILITY_DELTA_CANDIDATES_FREEZE.json",
-            "V12_APPLICATION_OBSERVABILITY_CAPACITY_FREEZE.json",
-            "V12_APPLICATION_OBSERVABILITY_GO_MANIFEST.json",
-        )
-    }
+    files |= {Path(value) for value in PROTOCOL_ARTIFACTS}
     entries = [
         {
             "path": path.as_posix(),
@@ -165,8 +165,9 @@ def main() -> int:
         "agents": "external_stage10/openai-agents-python/src/agents/__init__.py",
         "agent_framework": "external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
     }
+    probes.update(EXTRA_PROBES)
     payload = {
-        "schema": "AgentTool.V12P10TimingSentinelDeploymentManifest/1",
+        "schema": DEPLOYMENT_SCHEMA,
         "repository_commit": head,
         "protocol_base_sha": freeze["protocol_base_sha"],
         "freeze_path": args.freeze.name,
