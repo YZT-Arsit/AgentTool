@@ -1,0 +1,1183 @@
+{
+  "schema": "AgentTool.V12TimingAttackDevelopmentProtocolFreeze/1",
+  "phase": "V12-TIMING-ATTACK-DEVELOPMENT-AND-PROFILE-SELECTION",
+  "base_commit": "1cf12990fdfc005f59ee6d31943c40db53c5408b",
+  "source_hashes": {
+    "v12_timing/profile.py": "fd4b0c417e911e02f241913444f81e1ef680e3b7feae959204ffa45c0bee1d1a",
+    "v12_timing/matrix.py": "306f3f1dbf1ecc94dae3497fa918cb0ce241ef49e36f566186ed26d807c093d6",
+    "v12_timing/isolated_tasks.py": "203c198b58f447676d673c034cfdf390cbf2864325c6ebb9141aab5c252ec9b2",
+    "v12_timing/projection.py": "de70d8d95baf4d085953dba81c30aad17d98cb07b67a5bb9e4a0a17fee520435",
+    "v12_timing/attack.py": "90d60cd325aef87e55ed0b9ff565eafab5bc08fcb42ae2eb88cf4cac171b6388",
+    "v12_timing/controls.py": "fb46431a0000c91d92794a8c1e6b1268c5cc9de4108cde7fba30983bad766332",
+    "v12_timing/development.py": "29cbf4de8e07dc628176470adc89686f539f87a113b7e873bc13e9b9b29f7c4b",
+    "v11_online/session.py": "3f90aa0eb76a236aed8b6e1cd419832ccadbf44c10a56a5e6e74af0769570163",
+    "common_action_gateway_v2/canonicalv9/online.go": "37a31bf7642af93b8564e07a4709c666e7c5e3ab2cf3ff299eca54bde6e52774",
+    "common_action_gateway_v2/canonicalv9/runner.go": "fa7e28892462d6b0c013c588c4042310e09b6167e071618bee4b600df3e07015",
+    "scripts/run_v12_timing_attack_campaign.py": "6c51c852af2cbf0f151b6ce4507f0dbedcb89934fa7ff750347f852cd23c6574",
+    "scripts/analyze_v12_timing_attack.py": "827b5ba54cd087df542f06631d88f2bfa78d0d3cacede00800fd362ce23ba9e5",
+    "scripts/run_v12_timing_v3_functional_capacity.py": "ed964d10618f28cd179643b1ea4768162eea09f6fe28da538f6ce1466985e99d"
+  },
+  "causal_horizon_ms": 4500,
+  "profiles": [
+    {
+      "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P10-PIR60",
+      "round_period_ms": 10,
+      "pir_resolution_period_ms": 60,
+      "maximum_real_operations": 50,
+      "admission_horizon_ms": 4500,
+      "provider_completion_bound_ms": 50,
+      "terminal_rounds": 1,
+      "session_count": 1,
+      "request_bhttp_bytes": 1024,
+      "response_bhttp_bytes": 768,
+      "request_final_bytes": 1079,
+      "response_final_bytes": 800,
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "relay_endpoint_class": "LOCAL_RELAY",
+      "gateway_endpoint_class": "LOCAL_GATEWAY",
+      "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+      "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+      "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+      "public_session_liveness_cap_ms": 60000,
+      "pir_public_epoch_ms": 6000,
+      "pir_query_completion_bound_ms": 50,
+      "maximum_real_agent_resolutions": 6,
+      "dummy_descriptor_row": 999,
+      "pir_initial_lead_ms": 25,
+      "timing_semantic_revision": "EFFECTIVE_PUBLIC_CLOCK_V3",
+      "schema": "AgentTool.V12TimingIndistinguishabilityProfile/3",
+      "admission_rounds": 450,
+      "completion_rounds": 5,
+      "result_drain_rounds": 50,
+      "total_rounds": 506,
+      "nominal_lifetime_ms": 5060,
+      "nominal_lifetime_ns": 5060000000,
+      "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+      "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+      "pir_resolution_opportunities": 100,
+      "pir_real_resolution_arrival_cutoff_ms": 4089,
+      "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
+      "slot_commitment_clock": "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE",
+      "timing_privacy": "OPEN / NOT TESTED",
+      "packet_level_timing": "OPEN / NOT TESTED",
+      "hardware_tee": "NOT_TESTED"
+    },
+    {
+      "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60",
+      "round_period_ms": 20,
+      "pir_resolution_period_ms": 60,
+      "maximum_real_operations": 50,
+      "admission_horizon_ms": 4500,
+      "provider_completion_bound_ms": 50,
+      "terminal_rounds": 1,
+      "session_count": 1,
+      "request_bhttp_bytes": 1024,
+      "response_bhttp_bytes": 768,
+      "request_final_bytes": 1079,
+      "response_final_bytes": 800,
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "relay_endpoint_class": "LOCAL_RELAY",
+      "gateway_endpoint_class": "LOCAL_GATEWAY",
+      "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+      "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+      "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+      "public_session_liveness_cap_ms": 60000,
+      "pir_public_epoch_ms": 6000,
+      "pir_query_completion_bound_ms": 50,
+      "maximum_real_agent_resolutions": 6,
+      "dummy_descriptor_row": 999,
+      "pir_initial_lead_ms": 25,
+      "timing_semantic_revision": "EFFECTIVE_PUBLIC_CLOCK_V3",
+      "schema": "AgentTool.V12TimingIndistinguishabilityProfile/3",
+      "admission_rounds": 225,
+      "completion_rounds": 3,
+      "result_drain_rounds": 50,
+      "total_rounds": 279,
+      "nominal_lifetime_ms": 5580,
+      "nominal_lifetime_ns": 5580000000,
+      "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+      "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+      "pir_resolution_opportunities": 100,
+      "pir_real_resolution_arrival_cutoff_ms": 4089,
+      "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
+      "slot_commitment_clock": "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE",
+      "timing_privacy": "OPEN / NOT TESTED",
+      "packet_level_timing": "OPEN / NOT TESTED",
+      "hardware_tee": "NOT_TESTED"
+    },
+    {
+      "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60",
+      "round_period_ms": 25,
+      "pir_resolution_period_ms": 60,
+      "maximum_real_operations": 50,
+      "admission_horizon_ms": 4500,
+      "provider_completion_bound_ms": 50,
+      "terminal_rounds": 1,
+      "session_count": 1,
+      "request_bhttp_bytes": 1024,
+      "response_bhttp_bytes": 768,
+      "request_final_bytes": 1079,
+      "response_final_bytes": 800,
+      "ohttp_key_id": 7,
+      "kem_id": 32,
+      "kdf_id": 1,
+      "aead_id": 1,
+      "config_epoch": 3,
+      "relay_endpoint_class": "LOCAL_RELAY",
+      "gateway_endpoint_class": "LOCAL_GATEWAY",
+      "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+      "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+      "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+      "public_session_liveness_cap_ms": 60000,
+      "pir_public_epoch_ms": 6000,
+      "pir_query_completion_bound_ms": 50,
+      "maximum_real_agent_resolutions": 6,
+      "dummy_descriptor_row": 999,
+      "pir_initial_lead_ms": 25,
+      "timing_semantic_revision": "EFFECTIVE_PUBLIC_CLOCK_V3",
+      "schema": "AgentTool.V12TimingIndistinguishabilityProfile/3",
+      "admission_rounds": 180,
+      "completion_rounds": 2,
+      "result_drain_rounds": 50,
+      "total_rounds": 233,
+      "nominal_lifetime_ms": 5825,
+      "nominal_lifetime_ns": 5825000000,
+      "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+      "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+      "pir_resolution_opportunities": 100,
+      "pir_real_resolution_arrival_cutoff_ms": 4089,
+      "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
+      "slot_commitment_clock": "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE",
+      "timing_privacy": "OPEN / NOT TESTED",
+      "packet_level_timing": "OPEN / NOT TESTED",
+      "hardware_tee": "NOT_TESTED"
+    }
+  ],
+  "profile_order_delta_ms": [
+    10,
+    20,
+    25
+  ],
+  "profile_selection_rule": "smallest functionally valid Delta passing all informative claim-bearing Stage-B attacks",
+  "runtime_repairs_between_candidates": "PROHIBITED",
+  "tasks": {
+    "T1": "REGISTRY_REAL_RESOLUTION_PATTERN",
+    "T2": "PRIVATE_AGENT_IDENTITY",
+    "T3": "TOOL_ACTION_IDENTITY",
+    "T4": "REPEATED_TARGET_LINKABILITY",
+    "T5": "RARE_TARGET",
+    "T6": "TRANSITION_ORDER",
+    "T7": "ACTION_KIND",
+    "T8": "INTERNAL_EXTERNAL_ROUTING",
+    "T9": "PROVIDER_READINESS",
+    "T10": "PRIVATE_COUNT_CAUSAL_DEPTH"
+  },
+  "claim_observers": {
+    "T1": [
+      "REGISTRY"
+    ],
+    "T2": [
+      "REGISTRY",
+      "RELAY"
+    ],
+    "T3": [
+      "RELAY"
+    ],
+    "T4": [
+      "RELAY"
+    ],
+    "T5": [
+      "RELAY"
+    ],
+    "T6": [
+      "RELAY"
+    ],
+    "T7": [
+      "REGISTRY",
+      "RELAY"
+    ],
+    "T8": [
+      "REGISTRY",
+      "RELAY"
+    ],
+    "T9": [
+      "RELAY"
+    ],
+    "T10": [
+      "RELAY"
+    ]
+  },
+  "frameworks": [
+    "OpenAI Agents SDK",
+    "Microsoft Agent Framework"
+  ],
+  "framework_pooling": "OPTIONAL_SECONDARY_NEVER_HIDES_WORST_FRAMEWORK",
+  "task_isolation_audits": [
+    {
+      "task_id": "T1",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "agent_ids"
+      ],
+      "allowed_target_differences": [
+        "agent_ids"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T1",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "agent_ids"
+      ],
+      "allowed_target_differences": [
+        "agent_ids"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T2",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "agent_ids"
+      ],
+      "allowed_target_differences": [
+        "agent_ids"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T2",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "agent_ids"
+      ],
+      "allowed_target_differences": [
+        "agent_ids"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T3",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T3",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T5",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T5",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T6",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T6",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "logical_action_names"
+      ],
+      "allowed_target_differences": [
+        "logical_action_names"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "workflow"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "workflow"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "workflow"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "workflow"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T8",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "placements"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "placements"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T8",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "placements"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "placements"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "readiness_modes"
+      ],
+      "allowed_target_differences": [
+        "readiness_modes"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "readiness_modes"
+      ],
+      "allowed_target_differences": [
+        "readiness_modes"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T10",
+      "framework": "OpenAI Agents SDK",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "logical_action_names",
+        "placements",
+        "private_case_count",
+        "readiness_modes"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "logical_action_names",
+        "placements",
+        "private_case_count",
+        "readiness_modes"
+      ],
+      "pass": true
+    },
+    {
+      "task_id": "T10",
+      "framework": "Microsoft Agent Framework",
+      "observed_controlled_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "logical_action_names",
+        "placements",
+        "private_case_count",
+        "readiness_modes"
+      ],
+      "allowed_target_differences": [
+        "action_families",
+        "agent_ids",
+        "argument_signature_sha256",
+        "logical_action_names",
+        "placements",
+        "private_case_count",
+        "readiness_modes"
+      ],
+      "pass": true
+    }
+  ],
+  "sentinel_tasks": [
+    "T1",
+    "T4",
+    "T7",
+    "T9"
+  ],
+  "positive_control_blocks": 100,
+  "sentinel_blocks": 100,
+  "full_blocks": 300,
+  "sentinel_sessions_per_class_framework_profile": 100,
+  "full_sessions_per_class_framework_profile": 300,
+  "sentinel_included_in_full_denominator": true,
+  "sentinel_full_additional_blocks": [
+    100,
+    299
+  ],
+  "full_nonsentinel_blocks": [
+    0,
+    299
+  ],
+  "maximum_automatic_sessions_per_class": 1000,
+  "block_randomization_seed_sha256": "fb314d820ef5f85825e5f1b1ee767f8169ed0ac6f8c6a972792aa4d922061766",
+  "model_seed_sha256": "ee1881ea2f16775ac33fe7b25ada9d3e3a01991c8e5b7f779d43c24fb6d3029c",
+  "seed_search": false,
+  "model_family": [
+    "LOGISTIC_REGRESSION",
+    "EXTRA_TREES",
+    "HIST_GRADIENT_BOOSTING",
+    "RBF_SVM"
+  ],
+  "statistics": {
+    "cross_validation": "5-fold StratifiedGroupKFold by randomized pair block",
+    "bootstrap": "whole randomized pair blocks with replacement",
+    "bootstrap_resamples": 10000,
+    "chance_auc": 0.5,
+    "protected_upper_ci_limit": 0.55,
+    "positive_control_lower_ci_minimum": 0.6,
+    "sentinel_early_fail": "best point AUC >= 0.60 OR lower 95% group CI > 0.55",
+    "session_is_semantic_unit": true,
+    "cell_independence_assumed": false
+  },
+  "power": {
+    "method": "Hanley-McNeil independent-session approximation used only for pre-execution denominator planning; decisive CI is paired-block bootstrap",
+    "per_class": 300,
+    "chance_auc_standard_error": 0.02358985971729127,
+    "approximate_two_sided_95_half_width": 0.046236125045890884,
+    "conclusion": "300/class is retained as the frozen minimum; no protected-outcome sample extension is permitted"
+  },
+  "feature_set": {
+    "absolute_wall_clock": "EXCLUDED",
+    "experiment_order": "EXCLUDED",
+    "block_identity": "EXCLUDED",
+    "raw_session_relative_sequences": true,
+    "summary_features": [
+      "mean",
+      "std",
+      "min",
+      "max",
+      "p50",
+      "p90",
+      "p95",
+      "p99",
+      "late_count_at_1.5x_within_sequence_mean",
+      "longest_late_run",
+      "lag1_autocorrelation",
+      "low_frequency_energy",
+      "total_session_span"
+    ],
+    "outlier_trimming": "PROHIBITED",
+    "winsorization": "PROHIBITED"
+  },
+  "feature_raw_widths": {
+    "CONTROL": {
+      "0": {
+        "T1": {
+          "RELAY": [
+            6,
+            6,
+            5,
+            5,
+            6
+          ],
+          "REGISTRY": [
+            2,
+            2,
+            1,
+            2
+          ]
+        },
+        "T2": {
+          "RELAY": [
+            6,
+            6,
+            5,
+            5,
+            6
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T3": {
+          "RELAY": [
+            6,
+            6,
+            5,
+            5,
+            6
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T4": {
+          "RELAY": [
+            10,
+            10,
+            9,
+            9,
+            10
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T5": {
+          "RELAY": [
+            10,
+            10,
+            9,
+            9,
+            10
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T6": {
+          "RELAY": [
+            2,
+            2,
+            1,
+            1,
+            2
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T7": {
+          "RELAY": [
+            2,
+            2,
+            1,
+            1,
+            2
+          ],
+          "REGISTRY": [
+            2,
+            2,
+            1,
+            2
+          ]
+        },
+        "T8": {
+          "RELAY": [
+            4,
+            4,
+            3,
+            3,
+            4
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T9": {
+          "RELAY": [
+            10,
+            10,
+            9,
+            9,
+            10
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "T10": {
+          "RELAY": [
+            30,
+            30,
+            29,
+            29,
+            30
+          ],
+          "REGISTRY": [
+            1,
+            1,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "PROTECTED": {
+      "10": {
+        "T1": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T2": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T3": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T4": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T5": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T6": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T7": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T8": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T9": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T10": {
+          "RELAY": [
+            506,
+            506,
+            505,
+            505,
+            506
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        }
+      },
+      "20": {
+        "T1": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T2": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T3": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T4": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T5": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T6": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T7": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T8": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T9": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T10": {
+          "RELAY": [
+            279,
+            279,
+            278,
+            278,
+            279
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        }
+      },
+      "25": {
+        "T1": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T2": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T3": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T4": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T5": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T6": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T7": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T8": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T9": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        },
+        "T10": {
+          "RELAY": [
+            233,
+            233,
+            232,
+            232,
+            233
+          ],
+          "REGISTRY": [
+            100,
+            100,
+            99,
+            100
+          ]
+        }
+      }
+    }
+  },
+  "session_conditioning": "conditioned on public session existence; within-session relative timestamps only",
+  "positive_control_path": "pinned native framework, direct unshaped action observations, real authenticated descriptor resolution only, no fixed dummy schedule",
+  "liveness_cap_ms": 60000,
+  "timing_confirmatory_sessions": 0,
+  "final_holdout_construction": false
+}

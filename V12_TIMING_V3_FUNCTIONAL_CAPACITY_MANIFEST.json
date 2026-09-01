@@ -1,0 +1,150 @@
+{
+  "schema": "AgentTool.V12TimingV3FunctionalCapacityManifest/1",
+  "protocol_sha256": "c35c62412cdf5d9f0b0ad063004d71a1afd2f817867cfd3629cb859d9f3e825e",
+  "p10_prior_capacity_reuse": "INVALIDATED_BY_V3_PROFILE_AND_RUNNER_BINDING_CHANGE",
+  "candidates": [
+    {
+      "delta_ms": 10,
+      "workloads": [
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-OA-DEPTH50-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-OA-K6-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-OA-AAT-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-OA-CACHE30-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-MS-DEPTH50-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-MS-K6-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-MS-AAT-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P10-MS-CACHE30-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        }
+      ]
+    },
+    {
+      "delta_ms": 20,
+      "workloads": [
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-OA-DEPTH50-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-OA-K6-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-OA-AAT-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-OA-CACHE30-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-MS-DEPTH50-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-MS-K6-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-MS-AAT-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P20-MS-CACHE30-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        }
+      ]
+    },
+    {
+      "delta_ms": 25,
+      "workloads": [
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-OA-DEPTH50-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-OA-K6-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-OA-AAT-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-OA-CACHE30-001",
+          "framework": "OpenAI Agents SDK",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-MS-DEPTH50-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CAUSAL_DEPTH_50"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-MS-K6-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "MAX_K_DISTINCT_AGENT_RESOLUTIONS"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-MS-AAT-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "AGENT_AS_TOOL_TRANSITION"
+        },
+        {
+          "identity": "DEV-TAD-FUNCTIONAL-P25-MS-CACHE30-001",
+          "framework": "Microsoft Agent Framework",
+          "kind": "SAME_AGENT_CACHE_HIT_30"
+        }
+      ]
+    }
+  ],
+  "forbidden_identity_prefixes": [
+    "DEV-TD-",
+    "DEV-TPCIC-",
+    "DEV-MDCC-",
+    "DEV-CHR-"
+  ],
+  "retry": "PROHIBITED",
+  "replacement": "PROHIBITED"
+}

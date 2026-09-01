@@ -1,0 +1,29 @@
+{
+  "schema": "AgentTool.V12TimingAttackProjectionAudit/1",
+  "relay_attack_timing_fields": [
+    "session_relative_request_ns",
+    "session_relative_response_ns",
+    "request_inter_arrival_ns",
+    "response_inter_arrival_ns",
+    "request_response_ns",
+    "total_session_span_ns"
+  ],
+  "registry_attack_timing_fields": [
+    "session_relative_query_arrival_ns",
+    "session_relative_response_ready_ns",
+    "inter_query_gap_ns",
+    "query_response_ns",
+    "total_resolution_session_span_ns"
+  ],
+  "absolute_wall_clock": "EXCLUDED",
+  "experiment_order": "EXCLUDED",
+  "block_identity": "EXCLUDED",
+  "operation_ids": "EXCLUDED",
+  "agent_and_tool_identity": "EXCLUDED",
+  "private_route_alias": "EXCLUDED",
+  "real_dummy_labels": "EXCLUDED",
+  "internal_result_readiness": "EXCLUDED",
+  "scheduler_cpu_gc_cgroup_diagnostics": "EXCLUDED",
+  "session_conditioning": "conditioned on public session existence; timestamps are relative to first observer-visible event",
+  "pass": true
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12TimingAttackMatrixAudit/1",
+  "phase": "V12-TIMING-ATTACK-DEVELOPMENT-AND-PROFILE-SELECTION",
+  "base_commit": "1cf12990fdfc005f59ee6d31943c40db53c5408b",
+  "old_matrix": "AUXILIARY_ONLY_INVALID_FOR_PRIMARY_ML",
+  "old_rows": 16,
+  "independent_row_bits": 4,
+  "derived_binary_labels": 10,
+  "defect": "nonlinear attackers can infer one derived label through timing caused by other simultaneously varied labels",
+  "primary_repair": "one task-isolated randomized pair per block; all non-target secret dimensions frozen",
+  "outcome_dependent_reclassification": false,
+  "pass": true
+}

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Sequence
+from typing import Sequence
 
 import numpy as np
 from sklearn.base import ClassifierMixin
@@ -29,6 +29,7 @@ class AttackResult:
     ci_high: float
     sample_count: int
     bootstrap_resamples: int = BOOTSTRAP_RESAMPLES
+    bootstrap_unit: str = "RANDOMIZED_PAIR_BLOCK"
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -38,6 +39,7 @@ class AttackResult:
             "ci_high": self.ci_high,
             "sample_count": self.sample_count,
             "bootstrap_resamples": self.bootstrap_resamples,
+            "bootstrap_unit": self.bootstrap_unit,
         }
 
 
@@ -68,25 +70,39 @@ def frozen_models(seed: int) -> dict[str, ClassifierMixin]:
     }
 
 
-def _bootstrap_auc(
+def group_bootstrap_auc(
     labels: np.ndarray,
     predictions: np.ndarray,
+    groups: np.ndarray,
     *,
     seed: int,
     resamples: int = BOOTSTRAP_RESAMPLES,
 ) -> tuple[float, float]:
     generator = np.random.default_rng(seed)
     values: list[float] = []
-    indices = np.arange(len(labels))
+    unique_groups = np.unique(groups)
+    members = {group: np.flatnonzero(groups == group) for group in unique_groups}
+    for group, indices in members.items():
+        if tuple(np.bincount(labels[indices], minlength=2)) != (1, 1):
+            raise ValueError(f"randomized block {group!r} must contain exactly one member of each class")
     for _ in range(resamples):
-        sample = generator.choice(indices, size=len(indices), replace=True)
+        sample = resample_whole_groups(unique_groups, members, generator)
         if np.unique(labels[sample]).size != 2:
             continue
         values.append(float(roc_auc_score(labels[sample], predictions[sample])))
     if len(values) < int(resamples * 0.99):
-        raise RuntimeError("bootstrap produced too many single-class resamples")
+        raise RuntimeError("group bootstrap produced too many single-class resamples")
     low, high = np.quantile(np.asarray(values), [0.025, 0.975])
     return float(low), float(high)
+
+
+def resample_whole_groups(
+    unique_groups: np.ndarray,
+    members: dict[object, np.ndarray],
+    generator: np.random.Generator,
+) -> np.ndarray:
+    sampled_groups = generator.choice(unique_groups, size=len(unique_groups), replace=True)
+    return np.concatenate([members[group] for group in sampled_groups])
 
 
 def evaluate_binary_attack_family(
@@ -118,9 +134,10 @@ def evaluate_binary_attack_family(
             n_jobs=1,
         )[:, 1]
         auc = float(roc_auc_score(target, probabilities))
-        low, high = _bootstrap_auc(
+        low, high = group_bootstrap_auc(
             target,
             probabilities,
+            group_values,
             seed=seed + 10_000 * (offset + 1),
             resamples=resamples,
         )
@@ -140,3 +157,7 @@ def protected_pass(result: AttackResult) -> bool:
 
 def positive_control_informative(result: AttackResult) -> bool:
     return result.ci_low >= POSITIVE_CONTROL_LOWER_LIMIT
+
+
+def sentinel_early_fail(result: AttackResult) -> bool:
+    return result.auc >= 0.60 or result.ci_low > BINARY_EQUIVALENCE_LIMIT

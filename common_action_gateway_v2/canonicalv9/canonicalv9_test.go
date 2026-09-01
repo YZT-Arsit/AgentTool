@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -23,6 +24,41 @@ type roundTripFunc func(*http.Request) (*http.Response, error)
 
 func (function roundTripFunc) RoundTrip(request *http.Request) (*http.Response, error) {
 	return function(request)
+}
+
+func TestV12TimingV3ProfileAcceptsFrozenH4500Candidates(t *testing.T) {
+	for _, value := range []struct {
+		period int
+		rounds int
+	}{
+		{period: 10, rounds: 506},
+		{period: 20, rounds: 279},
+		{period: 25, rounds: 233},
+	} {
+		plan := Plan{
+			ProfileID:                  fmt.Sprintf("V12-TIMING-INDIST-V3-H50-H4500-P%d-PIR60", value.period),
+			ProfileClass:               TimingIndistinguishabilityProfile,
+			Rounds:                     value.rounds,
+			AdmissionRounds:            4500 / value.period,
+			MaximumRealOperations:      50,
+			RoundPeriodMS:              value.period,
+			ProviderCompletionBoundMS:  50,
+			RequestBHTTPBytes:          1024,
+			ResponseBHTTPBytes:         768,
+			RequestFinalBytes:          1079,
+			ResponseFinalBytes:         800,
+			PublicSessionLivenessCapMS: TimingPublicSessionLivenessCapMS,
+			AdmissionHorizonMS:         4500,
+			PIRResolutionPeriodMS:      60,
+			PIRPublicEpochMS:           6000,
+			PIRResolutionOpportunities: 100,
+			PIRInitialLeadMS:           25,
+			TimingSemanticRevision:     "EFFECTIVE_PUBLIC_CLOCK_V3",
+		}
+		if err := validatePlan(plan); err != nil {
+			t.Fatalf("V3 P%d rejected: %v", value.period, err)
+		}
+	}
 }
 
 func providerDiagnosticEngine(client *http.Client) *engine {
