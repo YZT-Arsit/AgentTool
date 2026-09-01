@@ -1,0 +1,90 @@
+{
+  "schema": "AgentTool.V12TimingProtocolRemoteProvenanceContentAudit/1",
+  "phase": "V12-TIMING-PROTOCOL-REMOTE-PROVENANCE-CLOSURE",
+  "generated_at": "2026-08-31T18:26:28.0355425-07:00",
+  "expected_protocol_commit": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "object_type": "commit",
+  "parents": [
+    "d3a042aae00033ad2b0cf81b2571b7c428405685"
+  ],
+  "direct_parent_is_expected_predecessor": true,
+  "expected_predecessor_is_ancestor": true,
+  "tree": "6a3768d1cd3f085fd3e15b8f6bb1394151a19ed4",
+  "subject": "Freeze V12 train-selected timing protocol",
+  "author": "YZT-Arsit <yangzhaoting21@gmail.com>",
+  "author_timestamp": "2026-08-31T18:06:42-07:00",
+  "committer": "YZT-Arsit <yangzhaoting21@gmail.com>",
+  "committer_timestamp": "2026-08-31T18:06:42-07:00",
+  "diff_base": "d3a042aae00033ad2b0cf81b2571b7c428405685",
+  "diff_file_count": 19,
+  "diff_insertions": 3251,
+  "diff_deletions": 2,
+  "allowed_scope": {
+    "statistical_methodology": [
+      "v12_timing/classifier.py",
+      "v12_timing/controls.py",
+      "v12_timing/matched_tasks.py",
+      "v12_timing/planning.py",
+      "v12_timing/statistics.py"
+    ],
+    "methodology_tests": [
+      "tests/test_v12_timing_statistical_protocol_v2.py"
+    ],
+    "methodology_scripts": [
+      "scripts/finalize_v12_timing_statistical_protocol.py",
+      "scripts/run_v12_null_precision_calibration.py",
+      "scripts/run_v12_synthetic_timing_control.py"
+    ],
+    "append_only_evidence": [
+      "V12_TIMING_DEVELOPMENT_EXCLUSIONS_V2.json",
+      "V12_TIMING_LOCAL_CONTROL_AUDIT.json",
+      "V12_TIMING_LOCAL_CONTROL_AUDIT.md",
+      "V12_TIMING_NULL_PRECISION_CALIBRATION.json",
+      "V12_TIMING_NULL_PRECISION_CALIBRATION.md",
+      "V12_TIMING_STATISTICAL_PROTOCOL_AND_LOCAL_CONTROL_CLOSURE.json",
+      "V12_TIMING_STATISTICAL_PROTOCOL_AND_LOCAL_CONTROL_CLOSURE.md",
+      "V12_TIMING_STATISTICAL_PROTOCOL_V2.json",
+      "V12_TIMING_STATISTICAL_PROTOCOL_V2.md",
+      "V12_TIMING_SYNTHETIC_PIPELINE_CONTROL.json"
+    ]
+  },
+  "changed_blobs": {
+    "V12_TIMING_DEVELOPMENT_EXCLUSIONS_V2.json": "326a252f4cb56eadd22bc03b7bc32309f984863e",
+    "V12_TIMING_LOCAL_CONTROL_AUDIT.json": "cb2c377b93cf24de5178b129edb471e76c2f3bf4",
+    "V12_TIMING_LOCAL_CONTROL_AUDIT.md": "6b40beb87181b90f1ef752444f8104bdb4c207f9",
+    "V12_TIMING_NULL_PRECISION_CALIBRATION.json": "307c84a71fe04d789cd8fc13808fafe801e34b1e",
+    "V12_TIMING_NULL_PRECISION_CALIBRATION.md": "90e3fc7da0144a885c5c619755c956cc1c72812f",
+    "V12_TIMING_STATISTICAL_PROTOCOL_AND_LOCAL_CONTROL_CLOSURE.json": "68ab71bdc79a19bfbf748f923e56b4c4f1dc65bf",
+    "V12_TIMING_STATISTICAL_PROTOCOL_AND_LOCAL_CONTROL_CLOSURE.md": "6be3b2a50dcc1ad98d6359b6fc79604b6ae59845",
+    "V12_TIMING_STATISTICAL_PROTOCOL_V2.json": "e013aaf4fabe3369b041cc95cdc396d1d0d65b0e",
+    "V12_TIMING_STATISTICAL_PROTOCOL_V2.md": "e120b648cd4d884c41680db79bac67177bcff659",
+    "V12_TIMING_SYNTHETIC_PIPELINE_CONTROL.json": "a7243a888405612bd5551aa1802253cededcc9c0",
+    "scripts/finalize_v12_timing_statistical_protocol.py": "6e78d615a076f5d1c93b40fb94800cb33f394839",
+    "scripts/run_v12_null_precision_calibration.py": "dad82534fa88c33573c1f2bcb82bff98238b2865",
+    "scripts/run_v12_synthetic_timing_control.py": "52c5f03fbcf1558f275dd174740408747ed1c20f",
+    "tests/test_v12_timing_statistical_protocol_v2.py": "e24099981dc8421200d16ed907951ee7988e56ff",
+    "v12_timing/classifier.py": "371f761d5b0c8fa796c818c939b1978da248ce08",
+    "v12_timing/controls.py": "2b5ad7a755fa4675a373061eb90a62c9e3306a1d",
+    "v12_timing/matched_tasks.py": "c40d325b7ca7412cfdd2d577ff777d4959265ef6",
+    "v12_timing/planning.py": "321bb06f954521d092ed3b53a07acd1565f20b55",
+    "v12_timing/statistics.py": "553ce6e83955857f98ccc224d8e90bb04a8cc1d6"
+  },
+  "unexpected_changed_files": [],
+  "missing_expected_changed_files": [],
+  "protected_runtime_blob_comparison": {
+    "common_action_gateway_v2/canonicalv9/runner.go": "8b866e61b2b017a2618312cd2c72c55d24f4056f",
+    "common_action_gateway_v2/v8/http_relay.go": "052d11bd89598ff71330427fb75e1e29dc083170",
+    "pir_integration/simplepir_bridge/main.go": "e02e36d0ea425c1772dbc6e2cb53b3c62b3f57e8",
+    "v11_online/session.py": "f147e534fa0073336a5e9d61e25fd5667a22498e",
+    "v12_timing/profile.py": "0d1702c79b86cc60f342a51de56bb6ba6f41ed08"
+  },
+  "protected_runtime_diff": [],
+  "diff_check": "PASS",
+  "content_allowlist": "PASS",
+  "local_content_audit": "PASS",
+  "workloads_executed": 0,
+  "traces_accessed": 0,
+  "classifiers_trained": 0,
+  "auc_calculations": 0,
+  "artifact_commit_status": "UNCOMMITTED_BY_DESIGN_TO_PRESERVE_REQUIRED_REMOTE_BRANCH_TIP"
+}
