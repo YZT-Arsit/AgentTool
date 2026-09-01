@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12P10SentinelResumeProtectedRuntimeAudit/1",
+  "phase": "V12-P10-TIMING-DISTINGUISHABILITY-SENTINEL-RESUME",
+  "qualified_execution_source": "3c6c19feaa49054428703314067fadd9b1f75ad5",
+  "latest_development_evidence": "da87c792ffacb7964446ab369768dd48d8ef997f",
+  "comparison_reason": "3c6c19f is the exact source used by the prior deployment-verified P10 sentinel and already includes the frozen C1 campaign workload definition",
+  "protected_runtime_diff": "NONE",
+  "protected_files": [
+    {"path": "v11_online/session.py", "blob": "f147e534fa0073336a5e9d61e25fd5667a22498e"},
+    {"path": "v11_online/frameworks.py", "blob": "d224672a6bc86423c7942c350be94983d0ca05e6"},
+    {"path": "v11_full_scope/frameworks.py", "blob": "d76b35fbd94019221ae4e08164dbb16e3c4a22fd"},
+    {"path": "v11_full_scope/canonical.py", "blob": "8d86787127b90534d7d8e9ebdb7d5e25bb3093d0"},
+    {"path": "v12_timing/profile.py", "blob": "0d1702c79b86cc60f342a51de56bb6ba6f41ed08"},
+    {"path": "v12_timing/projection.py", "blob": "434430c546d3e88af7a03dcc2df82564c4dd5415"},
+    {"path": "v12_timing/isolated_tasks.py", "blob": "a7b2d3880521b09b2ba4920a27aaecbf315a2898"},
+    {"path": "common_action_gateway_v2/canonicalv9/online.go", "blob": "9fa31b6c7c1307c50e7f0ffd7e5ffb5fe8a4ef3e"},
+    {"path": "common_action_gateway_v2/canonicalv9/pacer.go", "blob": "1fa1144ef1c51704e33e7a74a2e357990ebec336"},
+    {"path": "common_action_gateway_v2/canonicalv9/runner.go", "blob": "8b866e61b2b017a2618312cd2c72c55d24f4056f"},
+    {"path": "common_action_gateway_v2/v9ohttp/ohttp_backend.go", "blob": "63b4edb0605bc0d4545e1031deae7888e3a20e92"},
+    {"path": "pir_integration/simplepir_bridge/main.go", "blob": "e02e36d0ea425c1772dbc6e2cb53b3c62b3f57e8"}
+  ],
+  "campaign_only_change_boundary": [
+    "v12_timing/sentinel_resume.py",
+    "scripts/freeze_v12_p10_timing_sentinel_resume.py",
+    "scripts/collect_v12_p10_timing_sentinel_resume.py",
+    "scripts/analyze_v12_p10_timing_sentinel_resume.py",
+    "tests/test_v12_p10_timing_sentinel_resume.py",
+    "append-only evidence"
+  ],
+  "proceed": true
+}
