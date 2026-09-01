@@ -3,12 +3,11 @@ from __future__ import annotations
 import hashlib
 import json
 import random
+from collections.abc import Iterable
 from dataclasses import dataclass, replace
-from typing import Iterable
 
 from v11_full_scope.fixtures import agent_case, tool_case, with_readiness
 from v11_full_scope.models import AgentServiceSubtype, V11ActionCase
-
 
 TASKS = {
     "T1": "REGISTRY_REAL_RESOLUTION_PATTERN",
@@ -24,6 +23,7 @@ TASKS = {
 }
 
 SENTINEL_TASKS = ("T1", "T4", "T7", "T9")
+AUXILIARY_REGISTRY_COMPOSITE = "C1_REGISTRY_RESOLUTION_PATTERN"
 FRAMEWORKS = ("OpenAI Agents SDK", "Microsoft Agent Framework")
 CLAIM_OBSERVERS = {
     "T1": ("REGISTRY",),
@@ -36,6 +36,7 @@ CLAIM_OBSERVERS = {
     "T8": ("REGISTRY", "RELAY"),
     "T9": ("RELAY",),
     "T10": ("RELAY",),
+    AUXILIARY_REGISTRY_COMPOSITE: ("REGISTRY",),
 }
 
 
@@ -62,7 +63,7 @@ def _framework_code(framework: str) -> str:
 
 
 def _operation_id(delta_ms: int, task_id: str, framework: str, stage: str, block: int, label: int, index: int) -> str:
-    task_number = int(task_id[1:])
+    task_number = 1 if task_id == AUXILIARY_REGISTRY_COMPOSITE else int(task_id[1:])
     stage_code = {"CONTROL": "C", "SENTINEL": "S", "FULL": "F"}[stage]
     return f"opTA{delta_ms:02d}{task_number:02d}{_framework_code(framework)}{stage_code}{block:04d}{label}{index:02d}"
 
@@ -122,7 +123,9 @@ def build_primary_workload(
     stage: str,
     delta_ms: int,
 ) -> PrimaryTimingWorkload:
-    if task_id not in TASKS or framework not in FRAMEWORKS or label not in (0, 1):
+    if task_id not in TASKS and task_id != AUXILIARY_REGISTRY_COMPOSITE:
+        raise ValueError("invalid isolated timing workload coordinate")
+    if framework not in FRAMEWORKS or label not in (0, 1):
         raise ValueError("invalid isolated timing workload coordinate")
     if stage not in {"CONTROL", "SENTINEL", "FULL"}:
         raise ValueError("invalid isolated timing stage")
@@ -133,7 +136,8 @@ def build_primary_workload(
         return _operation_id(delta_ms, task_id, framework, stage, block, label, index)
 
     workflow = "DYNAMIC_SEQUENCE"
-    if task_id == "T1":
+    construction_task_id = "T1" if task_id == AUXILIARY_REGISTRY_COMPOSITE else task_id
+    if construction_task_id == "T1":
         for index in range(6):
             if label == 0 or index % 2 == 0:
                 cases.append(_tool(base, framework, op(index), logical_name=f"resolution_step_{index}"))
@@ -148,7 +152,7 @@ def build_primary_workload(
                         agent_capability="agent.workflow.21",
                     )
                 )
-    elif task_id == "T2":
+    elif construction_task_id == "T2":
         for index in range(6):
             cases.append(
                 _tool(
@@ -160,10 +164,10 @@ def build_primary_workload(
                     agent_capability="agent.tools" if label == 0 else "agent.workflow.21",
                 )
             )
-    elif task_id == "T3":
+    elif construction_task_id == "T3":
         target = "private_tool_alpha" if label == 0 else "private_tool_beta"
         cases = [_tool(base, framework, op(index), logical_name=target) for index in range(6)]
-    elif task_id == "T4":
+    elif construction_task_id == "T4":
         cases = [
             _tool(
                 base,
@@ -173,7 +177,7 @@ def build_primary_workload(
             )
             for index in range(10)
         ]
-    elif task_id == "T5":
+    elif construction_task_id == "T5":
         cases = [
             _tool(
                 base,
@@ -183,35 +187,40 @@ def build_primary_workload(
             )
             for index in range(10)
         ]
-    elif task_id == "T6":
+    elif construction_task_id == "T6":
         names = ("transition_a", "transition_b") if label == 0 else ("transition_b", "transition_a")
         cases = [_tool(base, framework, op(index), logical_name=name) for index, name in enumerate(names)]
-    elif task_id == "T7":
+    elif construction_task_id == "T7":
         first = _tool(base, framework, op(0), logical_name="action_kind_anchor")
         if label == 0:
             cases = [first, _tool(base, framework, op(1), logical_name="matched_action_target")]
         else:
             cases = [first, _agent_tool(base, framework, op(1), logical_name="matched_action_target")]
             workflow = "TOOL_TO_AGENT_AS_TOOL"
-    elif task_id == "T8":
+    elif construction_task_id == "T8":
         if label == 0:
             cases = [_internal(base, framework, op(index), logical_name=f"matched_route_step_{index}") for index in range(4)]
         else:
             cases = [_tool(base, framework, op(index), logical_name=f"matched_route_step_{index}") for index in range(4)]
-    elif task_id == "T9":
+    elif construction_task_id == "T9":
         readiness = "EARLY_READY" if label == 0 else "LATE_READY_WITHIN_BOUND"
         cases = [
             _tool(base, framework, op(index), logical_name=f"readiness_step_{index}", readiness=readiness)
             for index in range(10)
         ]
-    elif task_id == "T10":
+    elif construction_task_id == "T10":
         depth = 10 if label == 0 else 30
         cases = [_tool(base, framework, op(index), logical_name=f"causal_step_{index}") for index in range(depth)]
     else:  # pragma: no cover - exhaustive guard
         raise AssertionError(task_id)
     if len(cases) > 50:
         raise AssertionError("isolated timing workload exceeds M=50")
-    return PrimaryTimingWorkload(base, task_id, TASKS[task_id], framework, label, block, stage, delta_ms, workflow, tuple(cases))
+    task_name = (
+        "REGISTRY_RESOLUTION_PATTERN_COMPOSITE"
+        if task_id == AUXILIARY_REGISTRY_COMPOSITE
+        else TASKS[task_id]
+    )
+    return PrimaryTimingWorkload(base, task_id, task_name, framework, label, block, stage, delta_ms, workflow, tuple(cases))
 
 
 def randomized_pair_order(
@@ -290,6 +299,7 @@ def task_isolation_audit(task_id: str, framework: str) -> dict[str, object]:
             "readiness_modes",
             "argument_signature_sha256",
         },
+        AUXILIARY_REGISTRY_COMPOSITE: {"agent_ids"},
     }[task_id]
     if task_id == "T10":
         differences.append("private_case_count")
