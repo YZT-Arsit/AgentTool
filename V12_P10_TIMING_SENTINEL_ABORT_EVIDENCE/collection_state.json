@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelCollection/1",
+  "manifest_sha256": "3e1e14f567cba9cfa490bd10422d41cf69a5684de2c35a59ba87700a4afc01ff",
+  "execution_source_commit": "3c6c19feaa49054428703314067fadd9b1f75ad5",
+  "expected_sessions": 4800,
+  "completed_sessions": 1203,
+  "retries": 0,
+  "serial_same_host_execution": true,
+  "classifier_training_during_collection": 0,
+  "auc_calculations_during_collection": 0,
+  "status": "ABORTED",
+  "started_ns": 1788228304101883352,
+  "last_ledger_record_sha256": "123612f3b8d167f319a83cfa909bd2ff459ce4f75a0b782182ac59deb0e0b550",
+  "ended_ns": 1788238615797714488,
+  "abort": {
+    "schema": "AgentTool.V12P10TimingSentinelAbort/1",
+    "status": "ABORTED",
+    "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+    "execution_ordinal": 1203,
+    "completed_sessions_before_failure": 1203,
+    "identity_consumed_no_retry": true,
+    "exception_class": "AssertionError",
+    "exception_string": "Microsoft online workflow operation-ID execution mismatch: expected=['opTA1007MSS0075100', 'opTA1007MSS0075101'] executed=[]",
+    "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/v12_app_observability_f2ce59e/scripts/collect_v12_p10_timing_sentinel.py\", line 260, in main\n    record = _collect_one(unit_root, expected, profile=profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_app_observability_f2ce59e/scripts/collect_v12_p10_timing_sentinel.py\", line 90, in _collect_one\n    canonical = run_online_framework_workflow(\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_app_observability_f2ce59e/v11_online/frameworks.py\", line 369, in run_online_framework_workflow\n    return asyncio.run(coroutine)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/miniconda3/lib/python3.12/asyncio/runners.py\", line 194, in run\n    return runner.run(main)\n           ^^^^^^^^^^^^^^^^\n  File \"/root/miniconda3/lib/python3.12/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/miniconda3/lib/python3.12/asyncio/base_events.py\", line 687, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_app_observability_f2ce59e/v11_online/frameworks.py\", line 331, in _run_microsoft\n    ordered_outcomes = _ordered_outcomes(\n                       ^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_app_observability_f2ce59e/v11_online/frameworks.py\", line 41, in _ordered_outcomes\n    raise AssertionError(\nAssertionError: Microsoft online workflow operation-ID execution mismatch: expected=['opTA1007MSS0075100', 'opTA1007MSS0075101'] executed=[]\n",
+    "classifier_training_runs": 0,
+    "auc_calculations": 0
+  }
+}
