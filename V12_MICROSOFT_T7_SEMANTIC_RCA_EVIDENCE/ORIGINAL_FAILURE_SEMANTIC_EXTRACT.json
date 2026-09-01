@@ -1,0 +1,65 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7OriginalFailureSemanticExtract/1",
+  "base_abort_evidence_commit": "f063d8bec6696f003020b1b6dab71e918e073aac",
+  "protocol_baseline": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "failed_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+  "failed_identity_reexecuted": false,
+  "source_artifacts": {
+    "campaign_abort_sha256": "05938bdf941299bc6cd13513e3b1fc5023874afb294c6ea45bd7758152e73938",
+    "collector_log_sha256": "c9d7668f2688514491e1f2678302bd7fd690feaf59d2db6b41842cf2ac305d16",
+    "collector_log_size_bytes": 8026
+  },
+  "abort_record": {
+    "execution_ordinal": 1203,
+    "completed_sessions_before_failure": 1203,
+    "expected_operation_ids": [
+      "opTA1007MSS0075100",
+      "opTA1007MSS0075101"
+    ],
+    "recorded_executed_operation_ids": [],
+    "classifier_training_runs": 0,
+    "auc_calculations": 0
+  },
+  "semantic_framework_diagnostics": [
+    {
+      "collector_log_line": 77,
+      "message": "Function failed. Error: SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
+    },
+    {
+      "collector_log_line": 78,
+      "function_name": "acv_private_route_000",
+      "exception_class": "OnlineSessionFailure",
+      "exception_string": "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
+    },
+    {
+      "collector_log_line": 79,
+      "message": "Function failed. Error: PIR_REAL_RESOLUTION_ADMISSION_CLOSED"
+    },
+    {
+      "collector_log_line": 80,
+      "function_name": "acv_private_route_001",
+      "exception_class": "OnlineSessionFailure",
+      "exception_string": "PIR_REAL_RESOLUTION_ADMISSION_CLOSED"
+    }
+  ],
+  "localization": {
+    "parent_agent_run_entry": "YES",
+    "parent_scripted_client_response": "YES",
+    "function_call_content_created": "YES",
+    "function_invocation_layer_recognized_first_call": "YES",
+    "registered_ordinary_tool_lookup": "YES",
+    "first_ordinary_tool_reached": "YES",
+    "first_function_error_result_created": "YES",
+    "second_call_generated": "YES",
+    "registered_agent_as_tool_lookup": "YES",
+    "agent_as_tool_wrapper_reached": "YES",
+    "child_client_implementation_reached": "YES",
+    "latest_reached_stage": "SECOND_AGENT_AS_TOOL_CHILD_IMPLEMENTATION_ENTERED_THEN_DESCRIPTOR_CACHE_MISS_REJECTED_AFTER_PIR_ADMISSION_CUTOFF"
+  },
+  "interpretation": {
+    "executed_list_semantics": "The adapter appends an operation ID only after the implementation returns successfully. Framework error results therefore left the list empty even though both registered functions were invoked.",
+    "initial_classification_correction": "The evidence rules out failure before the ordinary anchor invocation. Root cause classification remains separate from the prior generic workload-specific abort label.",
+    "timing_features_accessed": false,
+    "protected_timing_statistics_computed": false
+  }
+}

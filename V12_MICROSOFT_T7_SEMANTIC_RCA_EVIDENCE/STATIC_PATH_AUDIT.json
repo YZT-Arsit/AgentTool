@@ -1,0 +1,45 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7StaticPathAudit/1",
+  "status": "PASS",
+  "framework_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+  "failed_identity_reexecuted": false,
+  "stages": {
+    "parent_response_generated": "v11_online/frameworks.py:245-278",
+    "function_call_content_created": "v11_online/frameworks.py:265-271",
+    "function_name_resolved": "pinned agent_framework/_tools.py:1750-1879",
+    "ordinary_tool_invoked": "v11_online/frameworks.py:316-325",
+    "function_result_returned": "pinned agent_framework/_tools.py:1573-1574 and 1640-1641",
+    "second_call_generated": "v11_online/frameworks.py:265-275",
+    "agent_as_tool_invoked": "v11_online/frameworks.py:296-314",
+    "child_client_invoked": "v11_full_scope/frameworks.py:360-384"
+  },
+  "state_audit": {
+    "global_tool_registry_found": false,
+    "global_routed_name_cache_found": false,
+    "agent_tool_binding": "PER_CHILD_AGENT_FUNCTION_TOOL",
+    "tool_registry_scope": "PER_AGENT_OR_INVOCATION_TOOL_LIST",
+    "duplicate_name_behavior": "EXPLICIT_VALUE_ERROR",
+    "function_invocation_configuration_scope": "CLIENT_INSTANCE",
+    "iteration_budget_scope": "RUN_REQUEST_CONTEXT",
+    "parent_may_return_without_calls": "YES_IF_MODEL_RESPONSE_CONTAINS_NO_FUNCTION_CALLS_OR_NO_TOOLS",
+    "applicable_to_original_abort": false,
+    "original_abort_reason": "BOTH_ROUTED_FUNCTIONS_WERE_RECOGNIZED_AND_INVOKED"
+  },
+  "fixed_schedule_path": {
+    "first_function_exception": "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT",
+    "first_function_source": "common_action_gateway_v2/canonicalv9/online.go:674-703",
+    "second_function_exception": "PIR_REAL_RESOLUTION_ADMISSION_CLOSED",
+    "second_function_source": "v11_online/session.py:676-683 and 279-280"
+  },
+  "resource_audit": {
+    "exception_or_cancellation_recorded": "FIXED_SCHEDULE_ONLINE_SESSION_FAILURES_ONLY",
+    "file_descriptor_count_recorded": false,
+    "task_leak_recorded": false,
+    "memory_resource_error_recorded": false,
+    "event_loop_warning_recorded": false,
+    "broad_system_profiling_performed": false
+  },
+  "timing_features_accessed": false,
+  "classifier_training_runs": 0,
+  "auc_calculations": 0
+}
