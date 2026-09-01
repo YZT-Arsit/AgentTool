@@ -9,6 +9,10 @@ from .isolated_tasks import FRAMEWORKS, PrimaryTimingWorkload, build_primary_wor
 from .profile import TimingIndistinguishabilityProfile
 
 PRIMARY_TASKS = tuple(f"T{index}" for index in range(2, 11))
+PRIMARY_ISOLATED_TASKS = ("T2", "T3", "T4", "T5", "T6", "T9")
+PRIMARY_COMPOSITE_TASKS = ("T7", "T8", "T10")
+AUXILIARY_REGISTRY_COMPOSITE = "C1_REGISTRY_RESOLUTION_PATTERN"
+SENTINEL_COMPARISONS = (AUXILIARY_REGISTRY_COMPOSITE, "T4", "T7", "T9")
 T1_PRIMARY_ISOLATION = "NOT_FEASIBLE"
 PAIR_PRIVATE_FIELDS = frozenset({"pair_id", "label", "task_id", "framework", "partition"})
 
@@ -116,4 +120,25 @@ def task_definition_manifest() -> dict[str, Any]:
             "estimand": value.estimand,
         }
         for task_id, value in TASK_DEFINITIONS.items()
+    }
+
+
+def timing_task_protocol_manifest() -> dict[str, Any]:
+    return {
+        "primary": task_definition_manifest(),
+        "primary_isolated_tasks": list(PRIMARY_ISOLATED_TASKS),
+        "primary_composite_tasks": list(PRIMARY_COMPOSITE_TASKS),
+        "auxiliary_registry_composite": {
+            "task_id": AUXILIARY_REGISTRY_COMPOSITE,
+            "historical_construction": "T1_REGISTRY_REAL_RESOLUTION_PATTERN",
+            "estimand": "COMPOSITE",
+            "changed_factors": [
+                "legitimate real descriptor-resolution pattern",
+                "private Agent identity pattern",
+                "trusted descriptor-cache behavior",
+            ],
+            "public_schedule": "fixed Q=100 under one public profile",
+            "causal_attribution": False,
+        },
+        "sentinel_comparisons": list(SENTINEL_COMPARISONS),
     }

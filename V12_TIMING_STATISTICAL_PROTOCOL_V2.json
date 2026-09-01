@@ -1,0 +1,178 @@
+{
+  "schema": "AgentTool.V12TimingStatisticalProtocolV2/1",
+  "phase": "V12-TIMING-STATISTICAL-PROTOCOL-AND-LOCAL-CONTROL-CLOSURE",
+  "base_functional_commit": "d3a042aae00033ad2b0cf81b2571b7c428405685",
+  "frozen_methodology_results": {
+    "old_16_row_primary_nonlinear_validity": "FAIL_PRESERVED",
+    "old_matrix_disposition": "AUXILIARY_FACTORIAL_ONLY",
+    "t1_isolated_primary": "NOT_FEASIBLE",
+    "observers": ["REGISTRY_APPLICATION_OPERATOR", "RELAY_APPLICATION_OPERATOR"],
+    "view": "TIMING_ONLY_VIEW",
+    "complete_application_timing_view": "PASS"
+  },
+  "historical_eval_family_max": "PRESERVED_BUT_SUPERSEDED_FOR_DECISIVE_USE",
+  "protocol_revision": "TRAIN_SELECTED_CLASSIFIER_V2",
+  "development_seed": {
+    "label": "V12-TIMING-TRAIN-SELECTED-V2-20260831",
+    "coordinate_derivation": "first 64 bits of SHA256(label|profile|task|framework|observer)",
+    "is_final_v12_seed": false
+  },
+  "coordinate": [
+    "profile",
+    "task",
+    "framework",
+    "observer"
+  ],
+  "block": "one class-0 session plus one class-1 session",
+  "split": {
+    "train_percent": 60,
+    "eval_percent": 40,
+    "unit": "COMPLETE_MATCHED_BLOCK"
+  },
+  "candidate_models": [
+    "LOGISTIC_REGRESSION",
+    "EXTRA_TREES",
+    "HIST_GRADIENT_BOOSTING",
+    "RBF_SVM"
+  ],
+  "model_definitions": {
+    "LOGISTIC_REGRESSION": {
+      "preprocessing": "StandardScaler fit on applicable TRAIN fold or all TRAIN only",
+      "hyperparameters": {"C": 1.0, "max_iter": 2000}
+    },
+    "EXTRA_TREES": {
+      "preprocessing": "NONE",
+      "hyperparameters": {"n_estimators": 300, "min_samples_leaf": 3, "max_features": "sqrt", "n_jobs": 1}
+    },
+    "HIST_GRADIENT_BOOSTING": {
+      "preprocessing": "NONE",
+      "hyperparameters": {"learning_rate": 0.08, "max_iter": 200, "max_leaf_nodes": 15, "l2_regularization": 1.0}
+    },
+    "RBF_SVM": {
+      "preprocessing": "StandardScaler fit on applicable TRAIN fold or all TRAIN only",
+      "hyperparameters": {"C": 1.0, "gamma": "scale", "kernel": "rbf", "probability": true}
+    }
+  },
+  "tie_break_order": [
+    "LOGISTIC_REGRESSION",
+    "EXTRA_TREES",
+    "HIST_GRADIENT_BOOSTING",
+    "RBF_SVM"
+  ],
+  "selection": {
+    "data": "DEVELOPMENT_TRAIN_ONLY",
+    "cross_validation": "DETERMINISTIC_GROUPED_BLOCK_RESPECTING_5_FOLD",
+    "orientation": "NORMAL if TRAIN-CV AUC >= 0.5 else INVERTED",
+    "ranking": "max(TRAIN_CV_AUC, 1-TRAIN_CV_AUC)",
+    "selected_model_count": 1,
+    "preprocessing_fit": "TRAIN_ONLY",
+    "final_fit": "ALL_TRAIN_BLOCKS_ONLY"
+  },
+  "evaluation": {
+    "statistic": "SELECTED_MODEL_EVAL_AUC",
+    "fixed_prediction_vectors": 1,
+    "post_hoc_eval_orientation": false,
+    "other_models_eval_used_for_verdict": false
+  },
+  "bootstrap": {
+    "population": "DEVELOPMENT_EVAL_ONLY",
+    "unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+    "resamples": 10000,
+    "refit": false,
+    "reselect_model": false,
+    "reselect_orientation": false,
+    "protected_ucb95_rule": "95th percentile <= 0.55",
+    "control_lcb95_rule": "5th percentile >= 0.60",
+    "secondary_two_sided_ci": "2.5th and 97.5th percentiles"
+  },
+  "randomization": {
+    "operation": "independently swap labels within complete matched EVAL blocks",
+    "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC_ONLY"
+  },
+  "tasks": {
+    "primary_isolated": [
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T9"
+    ],
+    "primary_composite": [
+      "T7",
+      "T8",
+      "T10"
+    ],
+    "t1": "NOT_FEASIBLE_AS_ISOLATED_PRIMARY",
+    "auxiliary_registry_composite": "C1_REGISTRY_RESOLUTION_PATTERN",
+    "c1_claim_limit": "end-to-end Registry timing comparison only; no one-factor causal attribution"
+  },
+  "frameworks": [
+    "OpenAI Agents SDK",
+    "Microsoft Agent Framework"
+  ],
+  "observer_reuse": "one generated session may provide both applicable observer projections",
+  "profile_order": [
+    "P10",
+    "P20",
+    "P25"
+  ],
+  "sentinel": {
+    "comparisons": [
+      "C1_REGISTRY_RESOLUTION_PATTERN",
+      "T4",
+      "T7",
+      "T9"
+    ],
+    "train_blocks": 75,
+    "eval_blocks": 50,
+    "total_blocks": 125,
+    "sessions_per_coordinate": 250,
+    "independent_from_full_dataset": true,
+    "only_outcome": "EARLY_STATISTICAL_FAIL when one-sided LCB95 > 0.55",
+    "privacy_pass_allowed": false,
+    "model_feature_task_changes_allowed": false
+  },
+  "runtime_immutability": {
+    "status": "PASS",
+    "files": {
+      "common_action_gateway_v2/canonicalv9/runner.go": {
+        "base_git_blob": "8b866e61b2b017a2618312cd2c72c55d24f4056f",
+        "current_git_blob": "8b866e61b2b017a2618312cd2c72c55d24f4056f",
+        "normalized_content_sha256": "f4ec11eeaea1a2eb678012633232d52acaefd8ee6aa1d609204db483785c873d",
+        "match": true
+      },
+      "common_action_gateway_v2/v8/http_relay.go": {
+        "base_git_blob": "052d11bd89598ff71330427fb75e1e29dc083170",
+        "current_git_blob": "052d11bd89598ff71330427fb75e1e29dc083170",
+        "normalized_content_sha256": "08a37d23999344ec96e1036b0c99793e9390c374b208676661c2eb831511acd3",
+        "match": true
+      },
+      "pir_integration/simplepir_bridge/main.go": {
+        "base_git_blob": "e02e36d0ea425c1772dbc6e2cb53b3c62b3f57e8",
+        "current_git_blob": "e02e36d0ea425c1772dbc6e2cb53b3c62b3f57e8",
+        "normalized_content_sha256": "ca6e0c4ff68384b2f883544130af828921d8ce31cff8846b1fdcf7b914bf8d70",
+        "match": true
+      },
+      "v11_online/session.py": {
+        "base_git_blob": "f147e534fa0073336a5e9d61e25fd5667a22498e",
+        "current_git_blob": "f147e534fa0073336a5e9d61e25fd5667a22498e",
+        "normalized_content_sha256": "b6d0e5395c4118d1d3673b4af73fe0d69679fa752fc00eee151d4e3ec1000946",
+        "match": true
+      },
+      "v12_timing/profile.py": {
+        "base_git_blob": "0d1702c79b86cc60f342a51de56bb6ba6f41ed08",
+        "current_git_blob": "0d1702c79b86cc60f342a51de56bb6ba6f41ed08",
+        "normalized_content_sha256": "b151c86bb273e282fe4de78f9e48f5591e02575112920c25bf7f72f3b3d04fe1",
+        "match": true
+      }
+    }
+  },
+  "protected_execution_in_this_phase": {
+    "P10_sessions": 0,
+    "P20_sessions": 0,
+    "P25_sessions": 0,
+    "protected_classifier_training_runs": 0,
+    "protected_real_auc_calculations": 0
+  }
+}

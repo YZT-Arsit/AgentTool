@@ -1,0 +1,115 @@
+{
+  "schema": "AgentTool.V12TimingStatisticalProtocolAndLocalControlClosure/1",
+  "phase": "V12-TIMING-STATISTICAL-PROTOCOL-AND-LOCAL-CONTROL-CLOSURE",
+  "base_functional_commit": "d3a042aae00033ad2b0cf81b2571b7c428405685",
+  "frozen_methodology_results": {
+    "old_16_row_primary_nonlinear_validity": "FAIL_PRESERVED",
+    "old_matrix_disposition": "AUXILIARY_FACTORIAL_ONLY",
+    "t1_isolated_primary": "NOT_FEASIBLE",
+    "observers": ["REGISTRY_APPLICATION_OPERATOR", "RELAY_APPLICATION_OPERATOR"],
+    "view": "TIMING_ONLY_VIEW",
+    "complete_application_timing_view": "PASS"
+  },
+  "functional_eligibility": {
+    "P10": "ELIGIBLE_PRESERVED",
+    "P20": "ELIGIBLE_PRESERVED",
+    "P25": "ELIGIBLE_PRESERVED"
+  },
+  "prior_software_evidence_preserved": {
+    "python_serial": "100/100",
+    "python_default": "100/100",
+    "native_routing": "15/15",
+    "go": "83/83",
+    "security_negatives": "22/22",
+    "deployment": "691/691 files + 8/8 module probes + 2/2 binaries"
+  },
+  "train_only_model_selection": "PASS",
+  "train_only_score_orientation": "PASS",
+  "decisive_eval_model_count": 1,
+  "matched_eval_block_bootstrap": "PASS",
+  "protected_one_sided_ucb_rule": "UCB95 <= 0.55",
+  "control_one_sided_lcb_rule": "LCB95 >= 0.60",
+  "null_precision_calibration": "PASS",
+  "selected_eval_blocks": 600,
+  "selected_train_blocks": 900,
+  "total_blocks_per_coordinate": 1500,
+  "estimated_protected_session_cost": {
+    "total_blocks_per_coordinate": 1500,
+    "train_blocks": 900,
+    "eval_blocks": 600,
+    "sessions_per_coordinate": 3000,
+    "workload_comparisons_per_framework": 10,
+    "frameworks": 2,
+    "observer_projection_session_reuse": true,
+    "coordinates_per_profile": 20,
+    "profiles": [
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P10-PIR60",
+        "delta_ms": 10,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      },
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60",
+        "delta_ms": 20,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      },
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60",
+        "delta_ms": 25,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      }
+    ],
+    "all_three_profile_sessions_worst_case": 180000,
+    "all_three_profile_serial_public_schedule_floor_ms": 1080000000,
+    "all_three_profile_serial_public_schedule_floor_hours": 300.0,
+    "all_three_profile_serial_public_schedule_floor_days": 12.5,
+    "cost_scope": "PUBLIC_SCHEDULE_FLOOR_ONLY_EXCLUDES_STARTUP_ANALYSIS_AND_QUEUEING"
+  },
+  "resource_limit_before_protected_evaluation": "NOT_DECLARED; operational review required for the frozen cost",
+  "synthetic_timing_pipeline_control": "PASS",
+  "live_relay_control": "NOT_FEASIBLE",
+  "live_registry_control": "NOT_FEASIBLE",
+  "primary_isolated_tasks": [
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T9"
+  ],
+  "primary_composite_tasks": [
+    "T7",
+    "T8",
+    "T10"
+  ],
+  "auxiliary_registry_composite": "C1_REGISTRY_RESOLUTION_PATTERN",
+  "development_exclusions": "V12_TIMING_DEVELOPMENT_EXCLUSIONS_V2.json",
+  "runtime_immutability": "PASS",
+  "prohibited_execution": {
+    "protected_classifier_training_runs": 0,
+    "protected_real_auc_calculations": 0,
+    "selected_timing_delta_ms": "NONE",
+    "timing_confirmatory_sessions": 0,
+    "final_b4_b5": "NOT_RUN",
+    "final_candidate_universe_exists": "NO",
+    "final_seed_exists": "NO",
+    "selected_final_v12_cases_executed": 0
+  },
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "ready_for_protected_timing_development": "YES",
+  "ready_for_timing_confirmatory": "NO",
+  "ready_for_final_v12_holdout": "NO"
+}

@@ -1,0 +1,160 @@
+{
+  "schema": "AgentTool.V12TimingNullPrecisionCalibration/1",
+  "input_kind": "ARTIFICIAL_NUMERIC_SCORE_ARRAYS_ONLY",
+  "reads_project_traces": false,
+  "true_auc": 0.5,
+  "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+  "bootstrap_resamples": 10000,
+  "one_sided_ucb_percentile": 95,
+  "protected_ucb_limit": 0.55,
+  "required_probability": 0.9,
+  "outer_null_trials": 250,
+  "seed": 120260831,
+  "extended_beyond_500": true,
+  "results": [
+    {
+      "eval_blocks": 150,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5528011111111111,
+      "p90_ucb95": 0.5991308888888889,
+      "p95_ucb95": 0.6136133333333333,
+      "probability_ucb95_le_0_55": 0.468,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 200,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.54770125,
+      "p90_ucb95": 0.5814762499999999,
+      "p95_ucb95": 0.592813625,
+      "probability_ucb95_le_0_55": 0.536,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 250,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5432804,
+      "p90_ucb95": 0.5763699999999999,
+      "p95_ucb95": 0.58143696,
+      "probability_ucb95_le_0_55": 0.604,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 300,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5382230555555556,
+      "p90_ucb95": 0.5690320000000001,
+      "p95_ucb95": 0.577425,
+      "probability_ucb95_le_0_55": 0.696,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 400,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.53426265625,
+      "p90_ucb95": 0.561251125,
+      "p95_ucb95": 0.5665112187499999,
+      "probability_ucb95_le_0_55": 0.776,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 500,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5319062,
+      "p90_ucb95": 0.5541237800000001,
+      "p95_ucb95": 0.56054891,
+      "probability_ucb95_le_0_55": 0.864,
+      "planning_criterion_pass": false
+    },
+    {
+      "eval_blocks": 600,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5269520138888888,
+      "p90_ucb95": 0.5479810833333333,
+      "p95_ucb95": 0.5546533194444444,
+      "probability_ucb95_le_0_55": 0.908,
+      "planning_criterion_pass": true
+    },
+    {
+      "eval_blocks": 750,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5249254222222222,
+      "p90_ucb95": 0.5463049333333333,
+      "p95_ucb95": 0.5511758133333333,
+      "probability_ucb95_le_0_55": 0.944,
+      "planning_criterion_pass": true
+    },
+    {
+      "eval_blocks": 1000,
+      "outer_null_trials": 250,
+      "bootstrap_resamples_per_trial": 10000,
+      "median_ucb95": 0.5204352,
+      "p90_ucb95": 0.53765249,
+      "p95_ucb95": 0.542621495,
+      "probability_ucb95_le_0_55": 0.988,
+      "planning_criterion_pass": true
+    }
+  ],
+  "selected_eval_blocks": 600,
+  "denominator": {
+    "total_blocks_per_coordinate": 1500,
+    "train_blocks": 900,
+    "eval_blocks": 600,
+    "sessions_per_coordinate": 3000
+  },
+  "protected_execution_cost": {
+    "total_blocks_per_coordinate": 1500,
+    "train_blocks": 900,
+    "eval_blocks": 600,
+    "sessions_per_coordinate": 3000,
+    "workload_comparisons_per_framework": 10,
+    "frameworks": 2,
+    "observer_projection_session_reuse": true,
+    "coordinates_per_profile": 20,
+    "profiles": [
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P10-PIR60",
+        "delta_ms": 10,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      },
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P20-PIR60",
+        "delta_ms": 20,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      },
+      {
+        "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60",
+        "delta_ms": 25,
+        "workload_coordinates": 20,
+        "sessions": 60000,
+        "public_schedule_floor_ms_per_session": 6000,
+        "serial_public_schedule_floor_ms": 360000000,
+        "serial_public_schedule_floor_hours": 100.0
+      }
+    ],
+    "all_three_profile_sessions_worst_case": 180000,
+    "all_three_profile_serial_public_schedule_floor_ms": 1080000000,
+    "all_three_profile_serial_public_schedule_floor_hours": 300.0,
+    "all_three_profile_serial_public_schedule_floor_days": 12.5,
+    "cost_scope": "PUBLIC_SCHEDULE_FLOOR_ONLY_EXCLUDES_STARTUP_ANALYSIS_AND_QUEUEING"
+  },
+  "protected_trace_sessions_read": 0,
+  "protected_classifier_training_runs": 0,
+  "protected_real_auc_calculations": 0
+}

@@ -1,0 +1,152 @@
+{
+  "schema": "AgentTool.V12SyntheticTimingPipelineControlClosure/1",
+  "results": [
+    {
+      "schema": "AgentTool.V12SyntheticTimingPipelineControl/1",
+      "observer": "RELAY",
+      "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60",
+      "artificial_numeric_timing_only": true,
+      "reads_project_traces": false,
+      "fixed_public_R": 233,
+      "fixed_public_Q": 100,
+      "fixed_raw_sequence_widths": [
+        233,
+        232,
+        233,
+        232,
+        233
+      ],
+      "feature_vector_width": 1224,
+      "total_blocks": 250,
+      "train_blocks": 150,
+      "eval_blocks": 100,
+      "class_members_per_block": 2,
+      "response_shift_ns": 3000000,
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_frozen_orientation": "NORMAL",
+      "train_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        }
+      },
+      "decisive_eval_model_count": 1,
+      "inference": {
+        "selected_model_eval_auc": 1.0,
+        "auc_ucb95_one_sided": 1.0,
+        "auc_lcb95_one_sided": 1.0,
+        "ci95_two_sided_low": 1.0,
+        "ci95_two_sided_high": 1.0,
+        "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+        "bootstrap_resamples": 10000,
+        "model_refit_inside_bootstrap": false,
+        "model_reselected_inside_bootstrap": false,
+        "orientation_reselected_inside_bootstrap": false,
+        "post_hoc_eval_orientation": false
+      },
+      "randomization": {
+        "observed_auc": 1.0,
+        "one_sided_randomization_p": 0.0004997501249375312,
+        "randomization_resamples": 2000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "control_lcb_rule": "AUC_LCB95 >= 0.60",
+      "status": "PASS",
+      "protected_trace_sessions_read": 0,
+      "protected_classifier_training_runs": 0,
+      "protected_real_auc_calculations": 0
+    },
+    {
+      "schema": "AgentTool.V12SyntheticTimingPipelineControl/1",
+      "observer": "REGISTRY",
+      "profile_id": "V12-TIMING-INDIST-V3-H50-H4500-P25-PIR60",
+      "artificial_numeric_timing_only": true,
+      "reads_project_traces": false,
+      "fixed_public_R": 233,
+      "fixed_public_Q": 100,
+      "fixed_raw_sequence_widths": [
+        100,
+        99,
+        100,
+        100
+      ],
+      "feature_vector_width": 448,
+      "total_blocks": 250,
+      "train_blocks": 150,
+      "eval_blocks": 100,
+      "class_members_per_block": 2,
+      "response_shift_ns": 3000000,
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_frozen_orientation": "NORMAL",
+      "train_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 1.0,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 1.0
+        }
+      },
+      "decisive_eval_model_count": 1,
+      "inference": {
+        "selected_model_eval_auc": 1.0,
+        "auc_ucb95_one_sided": 1.0,
+        "auc_lcb95_one_sided": 1.0,
+        "ci95_two_sided_low": 1.0,
+        "ci95_two_sided_high": 1.0,
+        "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+        "bootstrap_resamples": 10000,
+        "model_refit_inside_bootstrap": false,
+        "model_reselected_inside_bootstrap": false,
+        "orientation_reselected_inside_bootstrap": false,
+        "post_hoc_eval_orientation": false
+      },
+      "randomization": {
+        "observed_auc": 1.0,
+        "one_sided_randomization_p": 0.0004997501249375312,
+        "randomization_resamples": 2000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "control_lcb_rule": "AUC_LCB95 >= 0.60",
+      "status": "PASS",
+      "protected_trace_sessions_read": 0,
+      "protected_classifier_training_runs": 0,
+      "protected_real_auc_calculations": 0
+    }
+  ],
+  "status": "PASS",
+  "protected_trace_sessions_read": 0,
+  "protected_classifier_training_runs": 0,
+  "protected_real_auc_calculations": 0
+}
