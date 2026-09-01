@@ -24,11 +24,11 @@ RELAY_TIMING_ONLY_PROVENANCE = {
     # Historical compatibility name. This classifies the slot header as public
     # wire metadata; it does not assert cryptographic authentication by Relay.
     "authenticated_slot_order": PUBLIC_WIRE_METADATA,
-    "session_relative_request_ns": DERIVED_FROM_ALLOWED_FIELDS,
-    "request_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
-    "session_relative_response_send_ns": DERIVED_FROM_ALLOWED_FIELDS,
-    "response_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
-    "request_response_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "slot_indexed_session_relative_request_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "chronological_request_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "slot_indexed_session_relative_response_send_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "chronological_response_send_inter_arrival_ns": DERIVED_FROM_ALLOWED_FIELDS,
+    "slot_paired_request_response_ns": DERIVED_FROM_ALLOWED_FIELDS,
     "total_session_span_ns": DERIVED_FROM_ALLOWED_FIELDS,
     "request_bytes": PUBLIC_WIRE_METADATA, "response_bytes": PUBLIC_WIRE_METADATA,
 }
@@ -61,9 +61,14 @@ REGISTRY_SOURCE_PROVENANCE = {
     "pir_period_ms": PUBLIC_CONFIGURATION, "opportunities": PUBLIC_CONFIGURATION,
     "answer_ready_ns": INTERNAL_PRIVATE_STATE,
 }
-RELAY_REQUEST_TIMING_KEYS = ("session_relative_request_ns", "request_inter_arrival_ns")
+RELAY_REQUEST_TIMING_KEYS = (
+    "slot_indexed_session_relative_request_ns",
+    "chronological_request_inter_arrival_ns",
+)
 RELAY_RESPONSE_TIMING_KEYS = (
-    "session_relative_response_send_ns", "response_inter_arrival_ns", "request_response_ns",
+    "slot_indexed_session_relative_response_send_ns",
+    "chronological_response_send_inter_arrival_ns",
+    "slot_paired_request_response_ns",
 )
 REGISTRY_REQUEST_TIMING_KEYS = ("session_relative_query_arrival_ns", "inter_query_gap_ns")
 REGISTRY_RESPONSE_TIMING_KEYS = ("session_relative_response_send_ns", "query_response_ns")
@@ -109,33 +114,60 @@ def _strictly_monotonic(values: Sequence[int], name: str) -> None:
         raise ValueError(f"{name} must be strictly chronological within one session")
 
 
+def _nonnegative_gaps(values: Sequence[int], name: str) -> list[int]:
+    gaps = _gaps(sorted(int(value) for value in values))
+    if any(gap < 0 for gap in gaps):  # Defensive: sorting mechanically guarantees this.
+        raise AssertionError(f"{name} chronological gaps must be nonnegative")
+    return gaps
+
+
 def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | None = None,
-                            require_complete_application_timing: bool = False) -> dict[str, Any]:
+                            require_complete_application_timing: bool = False,
+                            expected_request_bytes: int | None = None,
+                            expected_response_bytes: int | None = None) -> dict[str, Any]:
     source = [dict(item) for item in trace.get("public_relay_events", [])]
     if not source:
         raise ValueError("Relay timing projection requires public events")
     if len({int(item["session"]) for item in source}) != 1:
         raise ValueError("primary Relay timing projection requires exactly one public session")
-    events = sorted(source, key=lambda item: int(item["request_observed_ns"]))
+    # Public slot identity is the structural index. HTTP/2 handlers may observe
+    # later logical slots before earlier ones, so arrival chronology is a timing
+    # signal and is never used as a structural completeness condition.
+    events = sorted(source, key=lambda item: int(item["round"]))
     if expected_rounds is not None and len(events) != expected_rounds:
         raise ValueError(f"Relay trace has {len(events)} cells, expected public R={expected_rounds}")
-    requests = [int(item["request_observed_ns"]) for item in events]
-    _strictly_monotonic(requests, "Relay request timestamps")
     slots = [int(item["round"]) for item in events]
-    if slots != list(range(1, len(events) + 1)):
-        raise ValueError("Relay public slots do not match chronological one-session order")
-    origin = requests[0]
+    required_slots = list(range(1, (expected_rounds or len(events)) + 1))
+    if slots != required_slots:
+        raise ValueError("Relay public slots must be the complete unique public R sequence")
+    profiles = {str(item["profile_id"]) for item in events}
+    if len(profiles) != 1:
+        raise ValueError("Relay events must use one public profile")
+    requests = [int(item["request_observed_ns"]) for item in events]
+    origin = min(requests)
+    request_bytes = [int(item["request_length"]) for item in events]
+    response_bytes = [int(item["response_length"]) for item in events]
+    if any(value <= 0 for value in request_bytes + response_bytes):
+        raise ValueError("Relay request and response sizes must be positive")
+    if len(set(request_bytes)) != 1 or len(set(response_bytes)) != 1:
+        raise ValueError("Relay request and response sizes must be fixed within one public profile")
+    if expected_request_bytes is not None and any(value != expected_request_bytes for value in request_bytes):
+        raise ValueError("Relay request size differs from the public profile")
+    if expected_response_bytes is not None and any(value != expected_response_bytes for value in response_bytes):
+        raise ValueError("Relay response size differs from the public profile")
     projection = {
         "observer": "RELAY", "view": PARTIAL_TIMING_VIEW,
-        "profile_id": str(events[0]["profile_id"]),
+        "profile_id": profiles.pop(),
         "public_session_ids": [int(item["session"]) for item in events],
         "public_slot_order": slots,
         "authenticated_slot_order": slots,
-        "session_relative_request_ns": _relative(requests, origin),
-        "request_inter_arrival_ns": _gaps(requests),
-        "total_session_span_ns": requests[-1] - origin,
-        "request_bytes": [int(item["request_length"]) for item in events],
-        "response_bytes": [int(item["response_length"]) for item in events],
+        "slot_indexed_session_relative_request_ns": _relative(requests, origin),
+        "chronological_request_inter_arrival_ns": _nonnegative_gaps(
+            requests, "Relay request"
+        ),
+        "total_session_span_ns": max(requests) - origin,
+        "request_bytes": request_bytes,
+        "response_bytes": response_bytes,
     }
     send_presence = ["response_send_ns" in item for item in events]
     if any(send_presence) and not all(send_presence):
@@ -146,12 +178,14 @@ def relay_timing_projection(trace: Mapping[str, Any], *, expected_rounds: int | 
         sends = [int(item["response_send_ns"]) for item in events]
         if any(send < request for request, send in zip(requests, sends)):
             raise ValueError("Relay response-send timestamp precedes its request")
-        chronological_sends = sorted(sends)
-        _strictly_monotonic(chronological_sends, "Relay response-send timestamps")
-        projection["session_relative_response_send_ns"] = _relative(chronological_sends, origin)
-        projection["response_inter_arrival_ns"] = _gaps(chronological_sends)
-        projection["request_response_ns"] = [send - request for request, send in zip(requests, sends)]
-        projection["total_session_span_ns"] = chronological_sends[-1] - origin
+        projection["slot_indexed_session_relative_response_send_ns"] = _relative(sends, origin)
+        projection["chronological_response_send_inter_arrival_ns"] = _nonnegative_gaps(
+            sends, "Relay response-send"
+        )
+        projection["slot_paired_request_response_ns"] = [
+            send - request for request, send in zip(requests, sends)
+        ]
+        projection["total_session_span_ns"] = max(sends) - origin
         projection["view"] = TIMING_ONLY_VIEW
     validate_projection_schema(projection)
     return projection

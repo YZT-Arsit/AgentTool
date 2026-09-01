@@ -1,0 +1,32 @@
+{
+  "schema": "AgentTool.V12RelayProjectionOrderingMethodologyTests/1",
+  "status": "PASS",
+  "pytest": {
+    "command": "python -m pytest -q tests/test_v12_relay_projection_ordering.py tests/test_v12_application_observability_delta.py tests/test_v12_timing_methodology_closure.py --basetemp .pytest-tmp-ordering-final",
+    "passed": 35,
+    "failed": 0,
+    "duration_seconds": 1.13
+  },
+  "ruff_new_files": {
+    "command": "python -m ruff check scripts/audit_v12_relay_projection_ordering.py tests/test_v12_relay_projection_ordering.py --output-format concise",
+    "status": "PASS"
+  },
+  "coverage": [
+    "complete slot set accepted despite timestamp reordering",
+    "duplicate slot rejected",
+    "missing slot rejected",
+    "wrong slot ID rejected",
+    "slot-indexed timestamps preserve inversion",
+    "chronological gaps remain nonnegative",
+    "response pairing remains by public slot",
+    "raw feature width remains fixed",
+    "unknown private fields cannot enter projection",
+    "strictly ordered historical trace remains valid",
+    "fixed public request/response sizes enforced",
+    "Registry sequential request/response path audited",
+    "statistical protocol V3 preserves statistical decisions"
+  ],
+  "workloads_executed": 0,
+  "classifier_training_runs": 0,
+  "protected_auc_calculations": 0
+}

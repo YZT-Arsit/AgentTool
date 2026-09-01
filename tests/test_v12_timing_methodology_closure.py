@@ -142,18 +142,18 @@ def test_registry_uses_only_application_send_timestamp_and_never_answer_ready() 
 def test_relay_uses_only_explicit_application_send_timestamp() -> None:
     rows = _relay_rows(3)
     without_send = relay_timing_projection({"public_relay_events": rows})
-    assert "request_response_ns" not in without_send
+    assert "slot_paired_request_response_ns" not in without_send
     for index, row in enumerate(rows):
         row["response_send_ns"] = 1_001_000 + index * 10_000
     with_send = relay_timing_projection({"public_relay_events": rows})
-    assert with_send["request_response_ns"] == [1000, 1000, 1000]
+    assert with_send["slot_paired_request_response_ns"] == [1000, 1000, 1000]
     assert with_send["view"] == TIMING_ONLY_VIEW
     with pytest.raises(ValueError, match="complete Relay"):
         relay_timing_projection({"public_relay_events": _relay_rows(3)},
                                 require_complete_application_timing=True)
 
 
-def test_relay_requires_one_session_and_chronological_public_slots() -> None:
+def test_relay_requires_one_session_and_complete_public_slots() -> None:
     rows = _relay_rows(3)
     rows[0], rows[1] = rows[1], rows[0]
     projection = relay_timing_projection({"public_relay_events": rows})
@@ -164,7 +164,7 @@ def test_relay_requires_one_session_and_chronological_public_slots() -> None:
         relay_timing_projection({"public_relay_events": rows})
     rows = _relay_rows(3)
     rows[1]["round"] = 3
-    with pytest.raises(ValueError, match="chronological"):
+    with pytest.raises(ValueError, match="complete unique"):
         relay_timing_projection({"public_relay_events": rows})
 
 

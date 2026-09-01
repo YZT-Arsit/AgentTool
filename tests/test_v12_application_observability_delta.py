@@ -104,9 +104,9 @@ def test_relay_response_sequence_is_chronological_when_slots_complete_out_of_ord
     } for index, send in enumerate((1500, 1400, 1600))]
     projection = relay_timing_projection({"public_relay_events": rows}, expected_rounds=3,
                                          require_complete_application_timing=True)
-    assert projection["session_relative_response_send_ns"] == [400, 500, 600]
-    assert projection["response_inter_arrival_ns"] == [100, 100]
-    assert projection["request_response_ns"] == [500, 300, 400]
+    assert projection["slot_indexed_session_relative_response_send_ns"] == [500, 400, 600]
+    assert projection["chronological_response_send_inter_arrival_ns"] == [100, 100]
+    assert projection["slot_paired_request_response_ns"] == [500, 300, 400]
 
 
 def test_registry_trace_persistence_follows_actual_response_emission() -> None:

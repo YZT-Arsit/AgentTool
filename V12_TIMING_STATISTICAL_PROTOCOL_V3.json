@@ -1,0 +1,66 @@
+{
+  "schema": "AgentTool.V12TimingStatisticalProtocolV3/1",
+  "protocol_revision": "V12_TIMING_STATISTICAL_PROTOCOL_V3",
+  "status": "PASS",
+  "supersedes_commit": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "supersession_reason": "Correct Relay application-operator ordering semantics before any protected statistical evaluation",
+  "outcome_timing": "PRE_OUTCOME_METHODOLOGY_REPAIR",
+  "relay_integrity_contract": {
+    "name": "LOGICAL_SLOT_COMPLETENESS",
+    "requirements": [
+      "exactly public R events",
+      "exactly one public slot ID from 1 through R",
+      "no duplicate, missing, or out-of-range slot ID",
+      "one public session and one public profile",
+      "fixed public request and response sizes",
+      "response_send_ns present for every slot in decisive timing view",
+      "response_send_ns does not precede request_observed_ns for the same public slot"
+    ],
+    "chronological_slot_equality_required": false
+  },
+  "relay_timing_representation": {
+    "origin": "minimum application request_observed_ns in the one-session public transcript",
+    "fields": [
+      "slot_indexed_session_relative_request_ns[R]",
+      "chronological_request_inter_arrival_ns[R-1]",
+      "slot_indexed_session_relative_response_send_ns[R]",
+      "chronological_response_send_inter_arrival_ns[R-1]",
+      "slot_paired_request_response_ns[R]",
+      "total_session_span_ns"
+    ],
+    "arrival_rank_by_public_slot_included": false,
+    "arrival_rank_reason": "The slot-indexed request timestamp vector determines the complete arrival ranking, including inversions, and a duplicate permutation field would be redundant",
+    "request_response_pairing": "PUBLIC_SLOT_ID",
+    "raw_widths_with_complete_send": ["R", "R-1", "R", "R-1", "R"],
+    "private_length_padding": false
+  },
+  "registry_ordering_contract": {
+    "status": "STRICT_ORDINAL_AND_APPLICATION_TIMESTAMP_ORDER_RETAINED",
+    "reason": "One cover thread performs ordinal queries sequentially through a query-locked request/response channel; the pinned bridge consumes one request, emits one response, persists it, then increments ordinal",
+    "revision_required": false
+  },
+  "unchanged_statistical_protocol": {
+    "matched_pair_design": true,
+    "train_only_model_selection": true,
+    "train_only_score_orientation": true,
+    "frozen_model_family": [
+      "LOGISTIC_REGRESSION",
+      "EXTRA_TREES",
+      "HIST_GRADIENT_BOOSTING",
+      "RBF_SVM"
+    ],
+    "complete_matched_eval_block_bootstrap": true,
+    "bootstrap_resamples": 10000,
+    "auc_metric": "SELECTED_MODEL_EVAL_AUC_WITH_TRAIN_FROZEN_ORIENTATION",
+    "protected_rule": "UCB95 <= 0.55",
+    "sentinel_rule": "ANY observer comparison LCB99.5 > 0.55 means EARLY_FAIL",
+    "sentinel_privacy_pass_authority": false,
+    "campaign_specific_denominators": "UNCHANGED_BY_THIS_REVISION"
+  },
+  "protected_execution": {
+    "new_sessions": 0,
+    "classifier_training_runs": 0,
+    "protected_auc_calculations": 0,
+    "bootstrap_runs_on_protected_data": 0
+  }
+}

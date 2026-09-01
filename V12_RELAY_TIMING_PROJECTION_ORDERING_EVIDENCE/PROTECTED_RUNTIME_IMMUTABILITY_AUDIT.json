@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12RelayProjectionProtectedRuntimeImmutabilityAudit/1",
+  "base_commit": "63bdd948dc5364cf3bdfa85bcc5170f5c5d5712b",
+  "status": "PASS",
+  "protected_runtime_diff": "NONE",
+  "audited_paths": [
+    "common_action_gateway_v2/canonicalv9/runner.go",
+    "common_action_gateway_v2/canonicalv9/online.go",
+    "common_action_gateway_v2/v8/http_relay.go",
+    "pir_integration/simplepir_bridge/main.go",
+    "v11_online/session.py",
+    "v11_online/frameworks.py",
+    "v11_full_scope/frameworks.py",
+    "v12_timing/profile.py"
+  ],
+  "modified_scope": [
+    "observer projection",
+    "fixed-width timing feature methodology",
+    "methodology-only structural audit utility",
+    "deterministic methodology tests",
+    "superseding protocol metadata",
+    "append-only closure evidence"
+  ],
+  "projection_sha256": "56ab8b6b1f0bb7aa22fec3b517c7ff4f1090682fa88ce2fd57d7db8af9c6dd06",
+  "audit_utility_sha256": "41d9f6380636eb1f706eb7237950ce25119c73f57fcab5d95527f7327af7f6be",
+  "ordering_test_sha256": "16c44ec53fb5d2ed229aa7246e8c26c2c20d5f6da22e686fab7cda768ed6a86b",
+  "protocol_v3_sha256": "12f556c85ce3b4d274e524fa642a2a06298882701c5433263249e74d5675f160"
+}

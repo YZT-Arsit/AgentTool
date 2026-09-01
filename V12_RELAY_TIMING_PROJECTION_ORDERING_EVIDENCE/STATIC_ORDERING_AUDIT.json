@@ -1,0 +1,28 @@
+{
+  "schema": "AgentTool.V12RelayProjectionStaticOrderingAudit/1",
+  "base_abort_evidence": "63bdd948dc5364cf3bdfa85bcc5170f5c5d5712b",
+  "current_projection_assumption": "Events were sorted by request_observed_ns, then round IDs in that chronological order were required to equal [1,2,...,R]",
+  "runtime_findings": {
+    "logical_public_slot_identifier": "X-AgentTool-Public-Slot is parsed into RelayPublicEvent.Round and range-checked against the public profile",
+    "physical_send_order": "The scheduler independently submits public HTTP/2 slots near their deadlines",
+    "http2_transport": "Multiple slot streams may be concurrently in flight and later requests are not blocked by an earlier delayed response",
+    "application_handler_observation": "request_observed_ns is captured at ServeHTTP entry before request validation and forwarding",
+    "event_record_append_order": "The event is mutex-appended only after response WriteHeader/Write, so append order is response-completion order",
+    "export_order": "Events() sorts a copy by public session and round for structural export while retaining raw timestamps"
+  },
+  "source_locations": [
+    "common_action_gateway_v2/v8/http_relay.go:128",
+    "common_action_gateway_v2/v8/http_relay.go:133",
+    "common_action_gateway_v2/v8/http_relay.go:219",
+    "common_action_gateway_v2/v8/http_relay.go:225",
+    "common_action_gateway_v2/v8/http_relay.go:231",
+    "common_action_gateway_v2/canonicalv9/canonicalv9_test.go:266",
+    "v11_online/session.py:229",
+    "v11_online/session.py:331",
+    "pir_integration/simplepir_bridge/main.go:308"
+  ],
+  "chronological_slot_equality_required_by_runtime": false,
+  "public_slot_completeness_contract": "PASS",
+  "registry_ordering_contract": "STRICT_ORDINAL_AND_APPLICATION_TIMESTAMP_ORDER_MECHANICALLY_GUARANTEED_AND_RETAINED",
+  "root_cause_of_abort": "PROJECTION_CONTRACT_DEFECT"
+}
