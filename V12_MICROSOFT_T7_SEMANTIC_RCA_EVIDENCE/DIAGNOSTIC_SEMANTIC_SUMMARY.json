@@ -1,0 +1,34 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7SemanticRCASummary/1",
+  "status": "COMPLETE",
+  "manifest_sha256": "d814bd6f366e2baf086deb6c477e419f876afa66a98dbf099568c582d2b8d1de",
+  "diagnostic_identities": 1200,
+  "diagnostic_retries": 0,
+  "failed_immutable_identity_reexecuted": false,
+  "semantic_counts": {
+    "D1_T7_CLASS0_ADAPTER": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D2_T7_CLASS1_ADAPTER": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D3_ORDINARY_TOOL_ONLY": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D4_AGENT_AS_TOOL_ONLY": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D5_MIXED_UNIQUE_ROUTED_NAMES": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D6_MIXED_REPEATED_ROUTED_NAMES": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    }
+  },
+  "semantic_results_sha256": "c24da5ea11811f14041d64488e8a36a8a997fc888184332d7a0efeb20d27ee93",
+  "semantic_inventory_sha256": "f0122dbc4c55968faf035a9b1949993077f1b24eb0a2990f0d9963a9f4442507",
+  "last_record_sha256": "78aeee77727fb4c669983fe672fc236d351a606eb6551404e5409f2eea1d28a9",
+  "timing_features_collected": false,
+  "classifier_training": 0,
+  "auc_calculations": 0
+}

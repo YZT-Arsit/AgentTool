@@ -1,0 +1,71 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7SemanticReliabilityClosure/1",
+  "base_abort_evidence": "f063d8bec6696f003020b1b6dab71e918e073aac",
+  "protocol_baseline": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "failed_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+  "failed_identity_reexecuted": false,
+  "original_sentinel": "PERMANENTLY_ABORTED",
+  "sealed_original_complete_sessions": 1203,
+  "static_path_audit": "PASS",
+  "failed_stage_localization": "SECOND_AGENT_AS_TOOL_CHILD_IMPLEMENTATION_ENTERED_THEN_DESCRIPTOR_CACHE_MISS_REJECTED_AFTER_PIR_ADMISSION_CUTOFF",
+  "first_ordinary_tool_reached": "YES",
+  "agent_as_tool_stage_reached": "YES",
+  "proximate_failure_sequence": [
+    "acv_private_route_000 invoked ordinary Tool implementation",
+    "first admitted operation ended as SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT",
+    "FunctionInvocationLayer converted the exception to a function error result",
+    "acv_private_route_001 invoked Agent-as-Tool and its child client",
+    "child descriptor cache miss was rejected as PIR_REAL_RESOLUTION_ADMISSION_CLOSED",
+    "FunctionInvocationLayer converted the second exception to a function error result",
+    "adapter exact-success validation observed no successfully returned operation IDs"
+  ],
+  "microsoft_global_state_finding": "NO_RELEVANT_GLOBAL_TOOL_REGISTRY_OR_ROUTED_NAME_CACHE_FOUND; tools are per Agent/invocation and FunctionInvocationLayer configuration is per client instance",
+  "tool_registry_collision_finding": "NONE; duplicate names within one Agent fail explicitly, repeated names across fresh Agents are not shared, and D5/D6 both completed 200/200",
+  "async_resource_finding": "ORIGINAL_DIAGNOSTICS_CONTAIN_NO_FD_TASK_MEMORY_CANCELLATION_OR_EVENT_LOOP_RECORDS; 1200 fresh semantic repetitions showed no framework exception, but they cannot distinguish transient host delay from cumulative full-runtime resource pressure",
+  "diagnostic_matrix_frozen": true,
+  "diagnostic_execution_source_commit": "9c3dcfc7ade746dccee157cef0f20fdcd5f7c18a",
+  "diagnostic_manifest_payload_sha256": "e5dfd16122b1931de12ff174ccc89c8ab987ee7b4720ecd415810965219b432d",
+  "diagnostic_manifest_file_sha256": "d814bd6f366e2baf086deb6c477e419f876afa66a98dbf099568c582d2b8d1de",
+  "diagnostic_identities": 1200,
+  "diagnostic_retries": 0,
+  "diagnostic_counts": {
+    "D1_T7_CLASS0_ADAPTER": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D2_T7_CLASS1_ADAPTER": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D3_ORDINARY_TOOL_ONLY": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D4_AGENT_AS_TOOL_ONLY": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D5_MIXED_UNIQUE_ROUTED_NAMES": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    },
+    "D6_MIXED_REPEATED_ROUTED_NAMES": {
+      "ALL_EXPECTED_OPERATIONS_EXECUTED": 200
+    }
+  },
+  "diagnostic_semantic_results_sha256": "c24da5ea11811f14041d64488e8a36a8a997fc888184332d7a0efeb20d27ee93",
+  "diagnostic_runner_log": {
+    "sha256": "8563096562316fca69833370edb6b2f7654c79941259d5da65b4c29a474ac32a",
+    "size_bytes": 78422,
+    "expected_child_client_capability_warnings": 800,
+    "error_or_resource_warning_lines": 0
+  },
+  "root_cause": "ROOT_CAUSE_UNRESOLVED",
+  "root_cause_basis": "The proximate fixed-session capacity and PIR-cutoff failures are established, and Microsoft semantic-path alternatives were mechanically ruled against. Original evidence is insufficient to determine why the first admitted result missed the fixed session deadline after 1203 prior sessions.",
+  "runtime_repair_required": "YES",
+  "runtime_repair_interpretation": "Reliability instrumentation/remediation and full requalification are required before any new sentinel; no repair is implemented in this phase.",
+  "framework_reliability_limitation": "NO",
+  "protected_classifier_training": 0,
+  "protected_auc_calculations": 0,
+  "p10_full": "NOT_RUN",
+  "p20_sentinel": "NOT_RUN",
+  "p25_sentinel": "NOT_RUN",
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "ready_for_new_sentinel": "NO_IN_THIS_ROOT_CAUSE_PHASE"
+}

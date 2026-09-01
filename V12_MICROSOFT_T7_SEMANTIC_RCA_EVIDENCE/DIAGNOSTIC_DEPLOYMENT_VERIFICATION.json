@@ -1,0 +1,11 @@
+{
+  "repository_commit": "9c3dcfc7ade746dccee157cef0f20fdcd5f7c18a",
+  "framework_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+  "framework_source_matches": {
+    "external_stage9/agent-framework/python/packages/core/agent_framework/_agents.py": true,
+    "external_stage9/agent-framework/python/packages/core/agent_framework/_clients.py": true,
+    "external_stage9/agent-framework/python/packages/core/agent_framework/_tools.py": true
+  },
+  "framework_import_path": "/root/autodl-tmp/v12_t7_rca_worktree_9c3dcfc/external_stage9/agent-framework/python/packages/core/agent_framework/__init__.py",
+  "status": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7SemanticRCAState/1",
+  "status": "COMPLETE",
+  "expected_identities": 1200,
+  "completed_identities": 1200,
+  "diagnostic_retries": 0,
+  "failed_immutable_identity_reexecuted": false,
+  "timing_features_collected": false,
+  "classifier_training": 0,
+  "auc_calculations": 0,
+  "last_record_sha256": "78aeee77727fb4c669983fe672fc236d351a606eb6551404e5409f2eea1d28a9",
+  "summary_sha256": "7470dd13935c948fc8838fb03254e2d57be97e5a1e448cdacfd736d57abb6c9d"
+}

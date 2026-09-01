@@ -1,0 +1,46 @@
+{
+  "schema": "AgentTool.V12MicrosoftT7SemanticRCATestReport/1",
+  "execution_source_commit": "9c3dcfc7ade746dccee157cef0f20fdcd5f7c18a",
+  "exact_linux_environment": {
+    "python": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+    "framework_commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+    "rca_tests": {
+      "command_scope": "tests/test_v12_microsoft_t7_rca.py",
+      "passed": 5,
+      "subtests_passed": 2,
+      "failed": 0
+    },
+    "microsoft_depth_and_configuration_tests": {
+      "command_scope": "tests/test_v12_microsoft_depth_contract.py -k microsoft",
+      "passed": 11,
+      "failed": 0,
+      "coverage": [
+        "ordinary Microsoft Tool invocation",
+        "exact operation-ID recovery",
+        "mixed ordinary Tool to Agent-as-Tool",
+        "public max_iterations and max_function_calls configuration",
+        "50-operation boundary and 51st-operation rejection"
+      ]
+    },
+    "upstream_framework_test_attempt": {
+      "status": "NOT_RUN_DEPENDENCY_MISSING",
+      "reason": "Pinned framework's test-only conftest requires opentelemetry.sdk, which is absent from the exact execution environment.",
+      "dependency_installed": false
+    }
+  },
+  "local_windows_environment": {
+    "rca_tests": {
+      "passed": 5,
+      "subtests_passed": 2,
+      "failed": 0
+    },
+    "legacy_canonical_full_scope_attempt": {
+      "status": "NON_DECISIVE_ENVIRONMENT_BLOCKED",
+      "reason": "project-local Windows Go toolchain is missing",
+      "product_root_cause_inference": "NONE"
+    }
+  },
+  "timing_workloads_run": 0,
+  "protected_classifier_training": 0,
+  "protected_auc_calculations": 0
+}
