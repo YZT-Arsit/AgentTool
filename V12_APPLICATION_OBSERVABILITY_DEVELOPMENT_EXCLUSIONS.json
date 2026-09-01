@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12ApplicationObservabilityDevelopmentExclusions/1",
+  "phase": "V12-APPLICATION-OBSERVABILITY-AND-DELTA-FUNCTIONAL-QUALIFICATION",
+  "identities": [
+    "DEV-AOFQ-P10-OA-DEPTH50-001",
+    "DEV-AOFQ-P10-MS-DEPTH50-001",
+    "DEV-AOFQ-P10-OA-K6-001",
+    "DEV-AOFQ-P10-MS-K6-001",
+    "DEV-AOFQ-P10-OA-AAT-001",
+    "DEV-AOFQ-P10-MS-AAT-001",
+    "DEV-AOFQ-P10-OA-CACHE-001",
+    "DEV-AOFQ-P10-MS-CACHE-001",
+    "DEV-AOFQ-P20-OA-DEPTH50-001",
+    "DEV-AOFQ-P20-MS-DEPTH50-001",
+    "DEV-AOFQ-P20-OA-K6-001",
+    "DEV-AOFQ-P20-MS-K6-001",
+    "DEV-AOFQ-P20-OA-AAT-001",
+    "DEV-AOFQ-P20-MS-AAT-001",
+    "DEV-AOFQ-P20-OA-CACHE-001",
+    "DEV-AOFQ-P20-MS-CACHE-001",
+    "DEV-AOFQ-P25-OA-DEPTH50-001",
+    "DEV-AOFQ-P25-MS-DEPTH50-001",
+    "DEV-AOFQ-P25-OA-K6-001",
+    "DEV-AOFQ-P25-MS-K6-001",
+    "DEV-AOFQ-P25-OA-AAT-001",
+    "DEV-AOFQ-P25-MS-AAT-001",
+    "DEV-AOFQ-P25-OA-CACHE-001",
+    "DEV-AOFQ-P25-MS-CACHE-001"
+  ],
+  "identity_count": 24,
+  "future_confirmatory_and_holdout_exclusion_required": true,
+  "does_not_construct_a_confirmatory_or_final_universe": true
+}
