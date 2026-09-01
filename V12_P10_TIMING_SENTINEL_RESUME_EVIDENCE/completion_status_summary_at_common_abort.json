@@ -1,0 +1,115 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumePartialCompletionSummary/1",
+  "campaign_status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "planned_sessions": 5040,
+  "executed_sessions": 2265,
+  "status_counts": {
+    "COMPLETE": 2258,
+    "FAILED": 7
+  },
+  "failure_category_counts": {
+    "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE": 6,
+    "COMMON_CAMPAIGN_INTEGRITY_FAILURE": 1
+  },
+  "failed_sessions": [
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B5037-C0",
+      "task_id": "T4",
+      "framework": "OpenAI Agents SDK",
+      "label": 0,
+      "planned_block": 37,
+      "partition": "SENTINEL_TRAIN",
+      "execution_ordinal": 600,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "OpenAI online workflow operation-ID execution mismatch: expected=['opTA1004OAS5037000', 'opTA1004OAS5037001', 'opTA1004OAS5037002', 'opTA1004OAS5037003', 'opTA1004OAS5037004', 'opTA1004OAS5037005', 'opTA1004OAS5037006', 'opTA1004OAS5037007', 'opTA1004OAS5037008', 'opTA1004OAS5037009'] executed=[]"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B5059-C0",
+      "task_id": "T9",
+      "framework": "OpenAI Agents SDK",
+      "label": 0,
+      "planned_block": 59,
+      "partition": "SENTINEL_TRAIN",
+      "execution_ordinal": 951,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "OpenAI online workflow operation-ID execution mismatch: expected=['opTA1009OAS5059000', 'opTA1009OAS5059001', 'opTA1009OAS5059002', 'opTA1009OAS5059003', 'opTA1009OAS5059004', 'opTA1009OAS5059005', 'opTA1009OAS5059006', 'opTA1009OAS5059007', 'opTA1009OAS5059008', 'opTA1009OAS5059009'] executed=[]"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B5069-C1",
+      "task_id": "T9",
+      "framework": "Microsoft Agent Framework",
+      "label": 1,
+      "planned_block": 69,
+      "partition": "SENTINEL_EVAL",
+      "execution_ordinal": 1117,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "Microsoft online workflow operation-ID execution mismatch: expected=['opTA1009MSS5069100', 'opTA1009MSS5069101', 'opTA1009MSS5069102', 'opTA1009MSS5069103', 'opTA1009MSS5069104', 'opTA1009MSS5069105', 'opTA1009MSS5069106', 'opTA1009MSS5069107', 'opTA1009MSS5069108', 'opTA1009MSS5069109'] executed=[]"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B5122-C1",
+      "task_id": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "label": 1,
+      "planned_block": 122,
+      "partition": "SENTINEL_TRAIN",
+      "execution_ordinal": 1956,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "Microsoft online workflow operation-ID execution mismatch: expected=['opTA1001MSS5122100', 'opTA1001MSS5122101', 'opTA1001MSS5122102', 'opTA1001MSS5122103', 'opTA1001MSS5122104', 'opTA1001MSS5122105'] executed=['opTA1001MSS5122100', 'opTA1001MSS5122101', 'opTA1001MSS5122102']"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B5122-C1",
+      "task_id": "T9",
+      "framework": "Microsoft Agent Framework",
+      "label": 1,
+      "planned_block": 122,
+      "partition": "SENTINEL_EVAL",
+      "execution_ordinal": 1967,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "Microsoft online workflow operation-ID execution mismatch: expected=['opTA1009MSS5122100', 'opTA1009MSS5122101', 'opTA1009MSS5122102', 'opTA1009MSS5122103', 'opTA1009MSS5122104', 'opTA1009MSS5122105', 'opTA1009MSS5122106', 'opTA1009MSS5122107', 'opTA1009MSS5122108', 'opTA1009MSS5122109'] executed=['opTA1009MSS5122100']"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B5128-C0",
+      "task_id": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "label": 0,
+      "planned_block": 128,
+      "partition": "SENTINEL_TRAIN",
+      "execution_ordinal": 2058,
+      "status": "FAILED",
+      "failure_category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+      "exception_class": "AssertionError",
+      "exception_string": "OpenAI online workflow operation-ID execution mismatch: expected=['opTA1001OAS5128000', 'opTA1001OAS5128001', 'opTA1001OAS5128002', 'opTA1001OAS5128003', 'opTA1001OAS5128004', 'opTA1001OAS5128005'] executed=[]"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B5141-C1",
+      "task_id": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "label": 1,
+      "planned_block": 141,
+      "partition": "SENTINEL_TRAIN",
+      "execution_ordinal": 2264,
+      "status": "FAILED",
+      "failure_category": "COMMON_CAMPAIGN_INTEGRITY_FAILURE",
+      "exception_class": "CommonIntegrityFailure",
+      "exception_string": "complete timing projection defect: Relay public slots do not match chronological one-session order"
+    }
+  ],
+  "retries": 0,
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "bootstrap_runs": 0,
+  "timing_analysis_performed": false,
+  "old_failed_identity_reexecuted": false,
+  "dataset_manifest_sha256": "5abd1d59401616d9266d322448f5d07adb0522800d07d049d44f7105cdb9cf45",
+  "execution_ledger_sha256": "6c8dac08d4e9a83f9c4e48e167ad0c03d0a67cc3ff651abe308ddea2a3415ed1"
+}

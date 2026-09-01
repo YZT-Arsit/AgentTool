@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumeCollection/1",
+  "manifest_sha256": "72f09e5d5266e488a3e6dc16603f8f5dba7afc509f1bdde90ee30aa56c404164",
+  "execution_source_commit": "217c8edcddef61f1d4e681fe5a2a05577fd5f140",
+  "expected_sessions": 5040,
+  "executed_sessions": 2265,
+  "complete_sessions": 2258,
+  "failed_sessions": 7,
+  "retries": 0,
+  "serial_same_host_execution": true,
+  "classifier_training_during_collection": 0,
+  "auc_calculations_during_collection": 0,
+  "bootstrap_runs_during_collection": 0,
+  "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "started_ns": 1788244024955928159,
+  "last_ledger_record_sha256": "68a3a4e1ff702a9bbee3c921b61eeb3886f7c481838fe2a28fae06133cbcaf82",
+  "ended_ns": 1788263447341363891,
+  "dataset_manifest_sha256": "5abd1d59401616d9266d322448f5d07adb0522800d07d049d44f7105cdb9cf45",
+  "dataset_inventory_sha256": "050646958f753926336b33289d2d9822260b0c2a2e4b265870ee299e1382d33a"
+}

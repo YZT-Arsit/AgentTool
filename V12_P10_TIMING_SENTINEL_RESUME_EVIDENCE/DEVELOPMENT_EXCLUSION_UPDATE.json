@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12TimingDevelopmentExclusionUpdate/1",
+  "phase": "V12-P10-TIMING-DISTINGUISHABILITY-SENTINEL-RESUME",
+  "identity_source": "V12_P10_TIMING_SENTINEL_RESUME_FREEZE.json.identity_manifest",
+  "identity_source_sha256": "72f09e5d5266e488a3e6dc16603f8f5dba7afc509f1bdde90ee30aa56c404164",
+  "planned_identity_count": 5040,
+  "planned_identity_inventory_sha256": "826560a587989a9891678e81cd4c9bf38a97e317e0faa1aefa61bb256c50fdbc",
+  "executed_identity_count": 2265,
+  "unexecuted_but_predeclared_identity_count": 2775,
+  "all_planned_identities_permanently_excluded": true,
+  "excluded_from": [
+    "P10_FULL_DEVELOPMENT",
+    "P20_P25_PROTECTED_DEVELOPMENT",
+    "TIMING_CONFIRMATION",
+    "FINAL_V12_HOLDOUT"
+  ],
+  "old_failed_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+  "old_failed_identity_reexecuted": false,
+  "prior_exclusions_preserved": true
+}

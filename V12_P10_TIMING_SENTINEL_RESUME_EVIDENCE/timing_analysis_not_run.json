@@ -1,0 +1,15 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumeAnalysisNotRun/1",
+  "P10_SENTINEL": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "P10_SENTINEL_TIMING": "NOT_EVALUABLE",
+  "reason": "Collection hard-stopped before all 5040 frozen identities executed because a complete-session Relay projection violated chronological one-session ordering.",
+  "selected_complete_train_blocks": 0,
+  "selected_complete_eval_blocks": 0,
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "bootstrap_runs": 0,
+  "randomization_runs": 0,
+  "observer_comparisons_not_run": 10,
+  "partial_timing_records_used": 0,
+  "privacy_interpretation": "INCONCLUSIVE"
+}

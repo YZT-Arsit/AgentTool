@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumeCommonAbort/1",
+  "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B5141-C1",
+  "execution_ordinal": 2264,
+  "executed_sessions": 2265,
+  "exception_class": "CommonIntegrityFailure",
+  "exception_string": "complete timing projection defect: Relay public slots do not match chronological one-session order",
+  "identity_consumed_no_retry": true,
+  "retries": 0,
+  "classifier_training_runs": 0,
+  "auc_calculations": 0
+}

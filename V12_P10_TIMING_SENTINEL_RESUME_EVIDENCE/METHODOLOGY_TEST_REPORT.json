@@ -1,0 +1,18 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumeTestReport/1",
+  "execution_source_commit": "217c8edcddef61f1d4e681fe5a2a05577fd5f140",
+  "local_tests": "42/42 PASS",
+  "execution_host_tests": "42/42 PASS",
+  "ruff": "PASS",
+  "compileall": "PASS",
+  "test_scope": [
+    "tests/test_v12_p10_timing_sentinel_resume.py",
+    "tests/test_v12_p10_timing_sentinel.py",
+    "tests/test_v12_timing_statistical_protocol_v2.py",
+    "tests/test_v12_timing_methodology_closure.py"
+  ],
+  "external_network_required_by_tests": false,
+  "protected_sessions_during_tests": 0,
+  "protected_classifier_training_during_tests": 0,
+  "protected_auc_during_tests": 0
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelResumeCompletionFailureReport/1",
+  "campaign_status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "planned_sessions": 5040,
+  "executed_sessions": 2265,
+  "complete_sessions": 2258,
+  "failed_sessions": 7,
+  "retries": 0,
+  "failure_categories": {
+    "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE": 6,
+    "COMMON_CAMPAIGN_INTEGRITY_FAILURE": 1
+  },
+  "paired_exact_diagnostic": "NOT_RUN_DUE_COMMON_ABORT",
+  "failure_channel_flags": "NOT_EVALUATED_DUE_COMMON_ABORT",
+  "operational_reliability_concern": "NOT_EVALUATED_DUE_COMMON_ABORT",
+  "note": "Descriptive partial counts are preserved in the closure JSON. They are outcome-truncated by the common-integrity stop and are not used for inference."
+}

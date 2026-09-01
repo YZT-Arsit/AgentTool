@@ -1,0 +1,11 @@
+task,framework,observer,status,selected_train_model,train_cv_raw_auc,train_score_orientation,eval_point_auc,eval_ci95_low,eval_ci95_high,eval_lcb99_5,randomization_p,early_timing_failure
+C1_REGISTRY_RESOLUTION_PATTERN,OpenAI Agents SDK,REGISTRY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+C1_REGISTRY_RESOLUTION_PATTERN,Microsoft Agent Framework,REGISTRY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T4,OpenAI Agents SDK,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T4,Microsoft Agent Framework,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T7,OpenAI Agents SDK,REGISTRY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T7,OpenAI Agents SDK,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T7,Microsoft Agent Framework,REGISTRY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T7,Microsoft Agent Framework,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T9,OpenAI Agents SDK,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
+T9,Microsoft Agent Framework,RELAY,NOT_RUN_DUE_COMMON_ABORT,,,,,,,,,NOT_EVALUATED
