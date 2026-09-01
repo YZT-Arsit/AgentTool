@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelPreflightRejection/1",
+  "phase": "V12-P10-TIMING-SENTINEL-DEVELOPMENT",
+  "protocol_base_sha": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "execution_source_commit": "cc34b472ac2eafeb25f9111f13a9aa794c01fd72",
+  "execution_host": "autodl-container-9el52ll8z4-d636ffb3",
+  "rejected_freeze_file_sha256": "d35e5afcb7f9ac5744ef262f77eaef4c6e10ef189d578fd6a04839b390408493",
+  "rejected_freeze_payload_sha256": "d80c7152b5439ef325bd965d3ad06d5f07753cd289d65938780ab8c141b1634d",
+  "deployment_gate": "FAIL_CLOSED_BEFORE_EXECUTION",
+  "reason": "analysis source hashes were calculated from checkout bytes and therefore encoded Windows CRLF conversion; the Linux checkout of the same committed Git blobs used LF bytes",
+  "remediation_scope": "methodology harness only: calculate freeze analysis hashes from committed Git blob bytes",
+  "protected_runtime_changed": false,
+  "identity_schedule_changed": false,
+  "protected_sentinel_sessions": 0,
+  "protected_full_sessions": 0,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "timing_confirmatory_sessions": 0,
+  "final_v12_cases_executed": 0
+}

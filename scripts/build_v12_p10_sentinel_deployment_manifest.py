@@ -21,6 +21,18 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def git_blob_sha256(relative: str, *, revision: str = "HEAD") -> str:
+    """Hash committed bytes rather than checkout-specific line endings."""
+
+    blob = subprocess.run(
+        ["git", "show", f"{revision}:{relative}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout
+    return hashlib.sha256(blob).hexdigest()
+
+
 def local_module_path(name: str) -> Path | None:
     candidate = ROOT / (name.replace(".", "/") + ".py")
     if candidate.is_file():
@@ -92,7 +104,7 @@ def main() -> int:
     if freeze["execution_source_commit"] != head:
         raise SystemExit("freeze execution-source commit differs from deployment source")
     for relative, expected in freeze["analysis_hashes"].items():
-        if sha256(ROOT / relative) != expected:
+        if git_blob_sha256(relative, revision=head) != expected:
             raise SystemExit(f"freeze analysis source hash mismatch: {relative}")
 
     files = python_closure(ENTRYPOINTS)

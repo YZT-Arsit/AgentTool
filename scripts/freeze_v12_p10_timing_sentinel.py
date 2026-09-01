@@ -23,8 +23,16 @@ HASHED_ANALYSIS_PATHS = (
 )
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def git_blob_sha256(relative: str, *, revision: str = "HEAD") -> str:
+    """Hash committed bytes so the freeze is independent of checkout EOL policy."""
+
+    blob = subprocess.run(
+        ["git", "show", f"{revision}:{relative}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout
+    return hashlib.sha256(blob).hexdigest()
 
 
 def main() -> int:
@@ -46,7 +54,7 @@ def main() -> int:
     ).returncode
     if lineage:
         raise SystemExit("execution source does not descend from the immutable protocol baseline")
-    hashes = {relative: sha256(ROOT / relative) for relative in HASHED_ANALYSIS_PATHS}
+    hashes = {relative: git_blob_sha256(relative, revision=head) for relative in HASHED_ANALYSIS_PATHS}
     manifest = build_freeze_manifest(execution_source_commit=head, analysis_hashes=hashes)
     args.output.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(
