@@ -1,0 +1,63 @@
+{
+  "schema": "AgentTool.V12LongRunFailureCounterfactualReplay/1",
+  "failed_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+  "failed_identity_reexecuted": false,
+  "mode": "OFFLINE_REPAIR_FAVOURABLE_UPPER_BOUND",
+  "fixed_parameters": {
+    "delta_ms": 10,
+    "provider_completion_bound_ms": 50,
+    "maximum_real_operations": 50,
+    "terminal_rounds": 1,
+    "pir_period_ms": 60,
+    "pir_epoch_ms": 6000,
+    "pir_q": 100,
+    "pir_k": 6,
+    "effective_clock": "E_1=D_1; E_i=max(D_i,S_(i-1)+Delta); C_i=E_i-L"
+  },
+  "repair_favourable_rule": "For H5000/H6000, grant the first already-committed READY result delivery in an added public slot. Do not move the recorded second private intent or descriptor attempt earlier.",
+  "profiles": {
+    "H4500": {
+      "R": 506,
+      "pir_real_resolution_cutoff_ms": 4089,
+      "first_action_admitted": true,
+      "first_result_publicly_deliverable": false,
+      "framework_receives_first_result_before_next_causal_action": false,
+      "second_intent_within_admission": false,
+      "second_descriptor_miss_allowed": false,
+      "second_action_admitted": false,
+      "both_operations_complete": false,
+      "completion": "0/2",
+      "basis": "observed immutable execution"
+    },
+    "H5000": {
+      "R": 556,
+      "pir_real_resolution_cutoff_ms": 4589,
+      "first_action_admitted": true,
+      "first_result_publicly_deliverable": "YES_REPAIR_FAVOURABLE_UPPER_BOUND",
+      "framework_receives_first_result_before_next_causal_action": "GRANTED_FOR_UPPER_BOUND",
+      "second_intent_within_admission": false,
+      "second_descriptor_miss_allowed": false,
+      "second_action_admitted": false,
+      "both_operations_complete": false,
+      "completion": "1/2",
+      "basis": "Even granting first-result rescue, the second intent is later than the fixed PIR cutoff."
+    },
+    "H6000": {
+      "R": 656,
+      "pir_real_resolution_cutoff_ms": 5589,
+      "first_action_admitted": true,
+      "first_result_publicly_deliverable": "YES_REPAIR_FAVOURABLE_UPPER_BOUND",
+      "framework_receives_first_result_before_next_causal_action": "GRANTED_FOR_UPPER_BOUND",
+      "second_intent_within_admission": false,
+      "second_descriptor_miss_allowed": false,
+      "second_action_admitted": false,
+      "both_operations_complete": false,
+      "completion": "1/2",
+      "basis": "Second intent is at least 6035.952708 ms after Go public T0 and strictly more than 6420.945812 ms after PIR origin, exceeding both H6000 admission and the 5589 ms PIR cutoff."
+    }
+  },
+  "original_horizon_ladder_insufficient": true,
+  "replay_eligible_reliability_h_ms": "NONE",
+  "stop_gate": "SECTION_7_TRIGGERED",
+  "live_workloads_authorized_after_replay": false
+}

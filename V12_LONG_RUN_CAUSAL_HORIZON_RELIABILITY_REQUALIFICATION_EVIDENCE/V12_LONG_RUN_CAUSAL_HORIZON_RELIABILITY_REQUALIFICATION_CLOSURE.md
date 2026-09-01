@@ -1,0 +1,107 @@
+# V12 long-run causal-horizon reliability requalification closure
+
+The predeclared H4500/H5000/H6000 ladder is insufficient for the immutable failed causal sequence. The phase stops at the mandatory counterfactual gate; no runtime file was changed and no workload was executed.
+
+```
+BASE_RCA_COMMIT:
+  53a62b42340b6e041b72e8be2be2a134f303a4de
+
+ORIGINAL_SENTINEL:
+  PERMANENTLY_ABORTED
+
+FAILED_IDENTITY_REEXECUTED:
+  NO
+
+FAILURE_BUDGET_DECOMPOSITION:
+  INSUFFICIENT_EVIDENCE
+
+MINIMUM_ADDITIONAL_ADMISSION_HORIZON_MS:
+  UNKNOWN
+  strict lower bound above H4500: >2331.945812 ms
+
+H4500_FAILURE_REPLAY:
+  0/2
+
+H5000_FAILURE_REPLAY:
+  1/2
+
+H6000_FAILURE_REPLAY:
+  1/2
+
+ORIGINAL_HORIZON_LADDER_INSUFFICIENT:
+  YES
+
+REPLAY_ELIGIBLE_RELIABILITY_H_MS:
+  NONE
+
+JOINT_CAUSAL_CAPACITY:
+  NOT_RUN
+
+JOINT_PIR_ACTION_CAPACITY:
+  NOT_RUN
+
+PRIVATE_RELIABILITY_INSTRUMENTATION:
+  NOT_RUN
+
+POST_CHANGE_PYTHON_SERIAL:
+  NOT_RUN
+
+POST_CHANGE_PYTHON_DEFAULT:
+  NOT_RUN
+
+POST_CHANGE_NATIVE_ROUTING:
+  NOT_RUN
+
+POST_CHANGE_GO:
+  NOT_RUN
+
+POST_CHANGE_SECURITY_NEGATIVES:
+  NOT_RUN
+
+TRANSITIVE_RUNTIME_HASH_MATCH:
+  NOT_RUN
+
+DELTA10_FUNCTIONAL:
+  NOT_RUN
+
+DELTA20_FUNCTIONAL:
+  NOT_RUN
+
+DELTA25_FUNCTIONAL:
+  NOT_RUN
+
+LONG_RUN_RELIABILITY_SESSIONS:
+  0
+
+LONG_RUN_RELIABILITY_RETRIES:
+  0
+
+LONG_RUN_RELIABILITY:
+  NOT_RUN
+
+PROTECTED_CLASSIFIER_TRAINING:
+  0
+
+PROTECTED_AUC_CALCULATIONS:
+  0
+
+NEW_SENTINEL_SESSIONS:
+  0
+
+TIMING_PRIVACY:
+  INCONCLUSIVE
+
+TIMING_GO:
+  NO
+
+READY_FOR_NEW_PROTECTED_SENTINEL:
+  NO
+
+READY_FOR_TIMING_CONFIRMATORY:
+  NO
+
+READY_FOR_FINAL_V12_HOLDOUT:
+  NO
+```
+
+H4500 remains the preserved prior short-run smallest capacity pass; it is not rewritten as a historical failure. Its long-run reliability remains unresolved. A horizon beyond H6000 or any distinct host-reliability reserve requires a separately frozen redesign phase.

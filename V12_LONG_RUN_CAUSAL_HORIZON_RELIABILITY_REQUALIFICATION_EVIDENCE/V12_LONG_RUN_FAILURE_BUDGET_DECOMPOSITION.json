@@ -1,0 +1,178 @@
+{
+  "schema": "AgentTool.V12LongRunFailureBudgetDecomposition/1",
+  "base_rca_commit": "53a62b42340b6e041b72e8be2be2a134f303a4de",
+  "protocol_baseline": "3dde92221b274148f4926de4d4df07d8a6c64cd5",
+  "original_abort_evidence": "f063d8bec6696f003020b1b6dab71e918e073aac",
+  "failed_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B0075-C1",
+  "failed_identity_reexecuted": false,
+  "observer_timing_distributions_inspected": false,
+  "evidence_scope": "PRIVATE_DIAGNOSTIC_AND_CONTROL_ONLY",
+  "source_artifact_hashes": {
+    "private_trajectory.json": "88afde0da20a7970f8a250a84389d4597d4c2f178ee1a7ee9d21919c31dcbaa5",
+    "trusted_control_events.jsonl": "9a140e6296d486d16b8b31909863157c38c91b2fa9eb3fdf2dd9c58eeae8762d",
+    "private_provider_evidence.json": "33301fef20689b8c53466f8e2ad048e11170c060a35b56ac2fc6d97e36e2d641",
+    "go_online_result.json": "7d2fb4459a7c3952950398f54624390f585b54e2f281ca81f6984150806e8a53",
+    "gateway_state/ready_results.json": "b6c381ec33316963f646e46368cc38b8587199ac8f7b142dcb933bd868fe8309",
+    "gateway_state/effect_recovery.json": "284ffb79dd04a7f4cdc0321ac5e985105f0e7b2368d0180d8bbe1d011a1136d3",
+    "pir/private_descriptor_cache_events.json": "4f92bddd85e40a3f7e0402e77577af3614aec56eae5d532174319c1dd24a1eb3",
+    "pir/online_query_summary.json": "cd8a59f4fab0b22e3024e986958c38dd05b7098b835621ca49b8f97fc27d17c0",
+    "trusted_online_startup_plan.json": "f70b5ccd9cbac248c644bb77249339bd713ad40a6e2c8589c327e78543915ad6"
+  },
+  "clock_domains": {
+    "python_lifecycle_monotonic": "absolute host CLOCK_MONOTONIC nanoseconds",
+    "go_process_monotonic": "nanoseconds since Go processClock",
+    "go_public_t0": "slot 1 nominal deadline at 528123939 ns since Go processClock",
+    "durable_ready_published_ns": "wall-clock Unix nanoseconds; not alignable to either monotonic domain from recorded evidence",
+    "warning": "Python SESSION_T0 is the framework SESSION_READY boundary and precedes the Go scheduled public slot-1 T0. They are not treated as the same instant.",
+    "maximum_public_t0_lead_after_t0_assigned_ms": 384.993104
+  },
+  "fields": {
+    "public_session_t0": {
+      "status": "OBSERVED",
+      "value": {
+        "go_public_slot_1_t0_process_relative_ns": 528123939,
+        "python_session_ready_boundary_monotonic_ns": 3615999428600250
+      }
+    },
+    "first_action_intent_submitted": {
+      "status": "OBSERVED",
+      "operation_id": "opTA1007MSS0075100",
+      "monotonic_ns": 3615999437586046,
+      "from_python_session_ready_ms": 8.985796
+    },
+    "first_descriptor_resolution_completion": {
+      "status": "OBSERVED",
+      "operation_id": "opTA1007MSS0075100",
+      "monotonic_ns": 3615999459517510,
+      "from_python_session_ready_ms": 30.917260,
+      "cache_hit": false
+    },
+    "first_action_submission_to_go": {
+      "status": "UNAVAILABLE",
+      "known_order": "after descriptor recovery and before ACTION_ACCEPTED"
+    },
+    "action_accepted": {
+      "status": "OBSERVED",
+      "operation_id": "opTA1007MSS0075100",
+      "round": 1,
+      "timestamp_status": "UNAVAILABLE"
+    },
+    "action_admitted": {
+      "status": "OBSERVED",
+      "operation_id": "opTA1007MSS0075100",
+      "round": 1,
+      "timestamp_status": "UNAVAILABLE"
+    },
+    "assigned_real_action_slot": {
+      "status": "OBSERVED",
+      "round": 1
+    },
+    "provider_worker_start": {
+      "status": "OBSERVED",
+      "stage": "PROVIDER_STARTED_DURABLE",
+      "timestamp_status": "UNAVAILABLE"
+    },
+    "provider_request_emission": {
+      "status": "OBSERVED",
+      "go_process_relative_ns": 4424074775,
+      "from_go_public_t0_ms": 3895.950836,
+      "python_handler_start_from_session_ready_ms": 4281.669517
+    },
+    "provider_completion": {
+      "status": "OBSERVED",
+      "go_process_relative_ns": 4426551275,
+      "from_go_public_t0_ms": 3898.427336,
+      "provider_transport_elapsed_ms": 2.648768,
+      "python_handler_logical_completion_from_session_ready_ms": 4281.910237
+    },
+    "result_ready": {
+      "status": "OBSERVED",
+      "stages": [
+        "RESULT_COMMITTED",
+        "READY_PUBLISHED"
+      ],
+      "durable_queue_state": "READY",
+      "timestamp_status": "UNAVAILABLE"
+    },
+    "result_slot_eligibility": {
+      "status": "UNAVAILABLE",
+      "reason": "READY_PUBLISHED has no monotonic timestamp and durable published_ns is in an unaligned wall-clock domain"
+    },
+    "last_public_result_capacity_slot": {
+      "status": "DERIVED",
+      "slot": 505,
+      "derivation": "450 admission + 5 completion + 50 result-capacity rounds",
+      "observed_effective_cutoff_from_go_public_t0_ms": 5083.102112,
+      "observed_effective_eligibility_from_go_public_t0_ms": 5084.102112,
+      "observed_dispatch_from_go_public_t0_ms": 5084.172694
+    },
+    "terminal_public_slot": {
+      "status": "OBSERVED",
+      "slot": 506,
+      "effective_cutoff_from_go_public_t0_ms": 5093.172694,
+      "effective_eligibility_from_go_public_t0_ms": 5094.172694,
+      "dispatch_from_go_public_t0_ms": 5094.241865
+    },
+    "public_session_complete": {
+      "status": "DERIVED",
+      "basis": "506/506 public cells emitted and terminal slot 506 dispatched",
+      "exact_session_complete_emission_time": "UNAVAILABLE",
+      "terminal_status": "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
+    },
+    "worker_completion_after_public_schedule": {
+      "status": "UNAVAILABLE",
+      "reason": "provider HTTP return is timestamped before the terminal slot, but worker completion and READY_PUBLISHED are not timestamped"
+    },
+    "second_agent_as_tool_intent": {
+      "status": "OBSERVED",
+      "operation_id": "opTA1007MSS0075101",
+      "monotonic_ns": 3616005849546062,
+      "from_python_session_ready_ms": 6420.945812
+    },
+    "second_descriptor_resolution_attempt": {
+      "status": "UNAVAILABLE",
+      "known_order": "strictly after second ACTION_INTENT_SUBMITTED",
+      "observed_outcome": "PIR_REAL_RESOLUTION_ADMISSION_CLOSED"
+    }
+  },
+  "requested_intervals": {
+    "t0_to_first_intent": {
+      "status": "UNAVAILABLE",
+      "reason": "first intent and Go public T0 are recorded in different unaligned monotonic origins",
+      "python_session_ready_to_first_intent_ms": 8.985796
+    },
+    "first_intent_to_admission": {
+      "status": "UNAVAILABLE",
+      "reason": "admission has a round but no timestamp"
+    },
+    "first_admission_to_result_ready": {
+      "status": "UNAVAILABLE",
+      "reason": "neither admission nor READY_PUBLISHED has a timestamp"
+    },
+    "result_ready_to_possible_public_delivery": {
+      "status": "UNAVAILABLE",
+      "reason": "result-ready monotonic time was not recorded"
+    },
+    "t0_to_framework_visible_failure": {
+      "status": "UNAVAILABLE",
+      "reason": "framework failure receipt was not timestamped"
+    },
+    "time_of_second_agent_as_tool_intent": {
+      "status": "OBSERVED",
+      "from_python_session_ready_ms": 6420.945812
+    }
+  },
+  "minimum_additional_admission_horizon_ms": "UNKNOWN",
+  "mechanical_lower_bound": {
+    "fact": "PIR cover origin precedes the recorded Python SESSION_T0 boundary",
+    "second_intent_elapsed_from_pir_origin_ms": ">6420.945812",
+    "second_intent_elapsed_from_go_public_t0_ms": ">=6035.952708",
+    "public_t0_derivation": "Go public T0 is 384.993104 ms after the recorded T0_ASSIGNED setup event; SESSION_READY and the Python lifecycle boundary occur later, so subtracting 384.993104 ms is a conservative lower bound.",
+    "required_formula": "H > second_descriptor_attempt_elapsed + 6*60 + 50 + 1",
+    "required_h_ms": ">6831.945812",
+    "additional_over_h4500_ms": ">2331.945812",
+    "minimum_integer_lower_bound_ms": 2332,
+    "qualification": "The exact second descriptor-attempt time is later than the recorded intent, so this is only a strict lower bound, not the exact required horizon."
+  },
+  "failure_budget_decomposition": "INSUFFICIENT_EVIDENCE"
+}
