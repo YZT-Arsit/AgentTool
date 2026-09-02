@@ -128,6 +128,14 @@ def main() -> int:
         "H_admission_horizon": contract["admission_horizon_contract"],
         "M_implies_causal_depth_50": False,
         "old_causal_depth_oracle": contract["old_causal_depth_oracle"],
+        "source_locations_verified": {
+            "M_and_round_capacity": "v12_timing/profile.py:122-140",
+            "online_M_count_limit": "common_action_gateway_v2/canonicalv9/online.go:399,428",
+            "online_admission_slot_window": "common_action_gateway_v2/canonicalv9/online.go:456-487",
+            "static_plan_M_guard": "common_action_gateway_v2/canonicalv9/runner.go:347-348",
+            "V4R7_R_formula": "common_action_gateway_v2/canonicalv9/runner.go:503",
+            "historical_unconditional_oracle": "scripts/run_v12_duplex_functional.py:244-284",
+        },
         "original_v4r7_functional_qualification": "FAIL_PRESERVED",
         "historical_causal_depth_50": contract["historical_causal_depth_50"],
         "v4r7_synthetic_reliability": (
