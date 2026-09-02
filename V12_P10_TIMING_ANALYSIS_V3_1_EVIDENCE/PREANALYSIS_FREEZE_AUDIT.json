@@ -1,0 +1,43 @@
+{
+  "schema": "AgentTool.V12P10TimingAnalysisV31PreanalysisAudit/1",
+  "status": "PASS",
+  "analysis_source_commit": "ce0e0f00acbff9b6e7b7fb29e98564bb293a75aa",
+  "base_closed_dataset_evidence": "d0536912a99907e0865c4ad2ecebfc73c5fa91ad",
+  "methodology_base": "63792088161deb6b1ccd3c4b4cb28babbf72f3ec",
+  "scikit_learn_version": "1.9.0",
+  "numpy_version": "2.5.2",
+  "synthetic_preanalysis_tests": {
+    "passed": 26,
+    "failed": 0,
+    "protected_data_used": false
+  },
+  "closed_dataset_verification": {
+    "identity_count": 5040,
+    "complete_sessions": 5025,
+    "failed_sessions": 15,
+    "all_session_record_hashes_match": true,
+    "dataset_manifest_sha256": "f695f666b4ceee0dccac4479c5272d6e8d7e575defbf1ddf7a5b6b0114ee1717",
+    "dataset_inventory_sha256": "2f88bfaa69c65c7bea0314bc0939fe8a776e3020df254155f9e7011b4df6837f",
+    "execution_ledger_sha256": "0eded604bf9af7c0e699361a81c4e01186b166ff5d37ee1898b95aa7713ac721"
+  },
+  "seed_domain": {
+    "conversion": "UINT64_MOD_2_POW_32",
+    "comparison_count": 10,
+    "model_fold_seed_count_per_comparison": 20,
+    "invalid_sklearn_random_states": 0,
+    "unintended_duplicate_normalized_seeds_within_comparison": 0
+  },
+  "analysis_input": {
+    "physical_coordinates": 8,
+    "selected_train_blocks_per_coordinate": 180,
+    "selected_eval_blocks_per_coordinate": 120,
+    "selected_identity_count": 4800,
+    "matches_frozen_selection": true
+  },
+  "seed_domain_manifest_sha256": "148ca3b2e342eb87895bba213f20ea623d6050056f507b5e46793e17640cd68b",
+  "analysis_input_manifest_sha256": "a4a28e20965eeea32d1377b8636c4cb5b35f71491760183858b9470569e5239b",
+  "protected_runtime_diff": "NONE",
+  "new_protected_sessions": 0,
+  "protected_dry_runs": 0,
+  "decisive_analysis_attempts_authorized": 1
+}

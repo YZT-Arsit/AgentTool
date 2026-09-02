@@ -1,0 +1,154 @@
+{
+  "schema": "AgentTool.V12P10TimingSentinelV31PaperPlanning/1",
+  "role": "DEVELOPMENT_SENTINEL_NOT_FINAL_PAPER_CONFIRMATORY_EVIDENCE",
+  "comparisons": [
+    {
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.7092901234567901,
+      "eval_auc": 0.7457638888888889,
+      "ci95_low": 0.6829861111111111,
+      "ci95_high": 0.8049322916666667,
+      "lcb99_5": 0.6631930555555555,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    },
+    {
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_distinguishability_auc": 0.5464969135802469,
+      "eval_auc": 0.5629166666666666,
+      "ci95_low": 0.49027777777777776,
+      "ci95_high": 0.6334045138888889,
+      "lcb99_5": 0.4661097222222222,
+      "randomization_p": 0.047495250474952504,
+      "early_timing_failure": false
+    },
+    {
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.5820987654320988,
+      "eval_auc": 0.4644444444444444,
+      "ci95_low": 0.3880520833333333,
+      "ci95_high": 0.5413888888888889,
+      "lcb99_5": 0.3649982638888889,
+      "randomization_p": 0.8213178682131786,
+      "early_timing_failure": false
+    },
+    {
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.5541975308641975,
+      "eval_auc": 0.48986111111111114,
+      "ci95_low": 0.4103472222222222,
+      "ci95_high": 0.567015625,
+      "lcb99_5": 0.38756770833333337,
+      "randomization_p": 0.5982401759824018,
+      "early_timing_failure": false
+    },
+    {
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_distinguishability_auc": 0.6778703703703703,
+      "eval_auc": 0.7232638888888889,
+      "ci95_low": 0.6588177083333333,
+      "ci95_high": 0.7850729166666667,
+      "lcb99_5": 0.6388152777777778,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    },
+    {
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.9508641975308643,
+      "eval_auc": 0.980763888888889,
+      "ci95_low": 0.9681232638888889,
+      "ci95_high": 0.9909739583333333,
+      "lcb99_5": 0.962221875,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    },
+    {
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_distinguishability_auc": 0.6010339506172839,
+      "eval_auc": 0.6391666666666667,
+      "ci95_low": 0.5716649305555556,
+      "ci95_high": 0.7040972222222223,
+      "lcb99_5": 0.549375,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": false
+    },
+    {
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.9679012345679012,
+      "eval_auc": 0.9693055555555555,
+      "ci95_low": 0.9468055555555556,
+      "ci95_high": 0.9875694444444445,
+      "lcb99_5": 0.9374996527777778,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    },
+    {
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.9778395061728395,
+      "eval_auc": 0.9779861111111111,
+      "ci95_low": 0.9579166666666666,
+      "ci95_high": 0.9930555555555556,
+      "lcb99_5": 0.9504163194444445,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    },
+    {
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_distinguishability_auc": 0.9860493827160495,
+      "eval_auc": 0.9902777777777778,
+      "ci95_low": 0.9809027777777778,
+      "ci95_high": 0.9969444444444444,
+      "lcb99_5": 0.9765277777777778,
+      "randomization_p": 9.999000099990002e-05,
+      "early_timing_failure": true
+    }
+  ],
+  "worst_by_task": {
+    "C1_REGISTRY_RESOLUTION_PATTERN": {
+      "worst_eval_auc": 0.7457638888888889,
+      "worst_lcb99_5": 0.6631930555555555
+    },
+    "T4": {
+      "worst_eval_auc": 0.48986111111111114,
+      "worst_lcb99_5": 0.38756770833333337
+    },
+    "T7": {
+      "worst_eval_auc": 0.980763888888889,
+      "worst_lcb99_5": 0.962221875
+    },
+    "T9": {
+      "worst_eval_auc": 0.9902777777777778,
+      "worst_lcb99_5": 0.9765277777777778
+    }
+  }
+}
