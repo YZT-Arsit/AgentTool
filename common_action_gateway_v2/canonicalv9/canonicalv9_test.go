@@ -80,7 +80,107 @@ func TestProviderDiagnosticClassification(t *testing.T) {
 			if (item.want == ProviderOK) != (attempt.status == gatewayv2.StatusOK) {
 				t.Fatalf("public result semantics changed for %s: status=%d", item.want, attempt.status)
 			}
+			if item.want == ProviderContextDeadlineExceeded && attempt.status != gatewayv2.StatusTimeout {
+				t.Fatalf("provider deadline status=%d want TIMEOUT=%d", attempt.status, gatewayv2.StatusTimeout)
+			}
+			if item.want != ProviderOK && item.want != ProviderContextDeadlineExceeded && attempt.status != gatewayv2.StatusError {
+				t.Fatalf("non-timeout provider failure status=%d want ERROR=%d", attempt.status, gatewayv2.StatusError)
+			}
 		})
+	}
+}
+
+func TestProviderCompletionBoundaryUsesCompleteHTTPExchange(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		delay, _ := time.ParseDuration(request.URL.Query().Get("delay"))
+		time.Sleep(delay)
+		writer.Header().Set("Content-Type", "application/json")
+		_, _ = writer.Write([]byte(`{"status":"OK","payload":"b2s="}`))
+	}))
+	defer server.Close()
+
+	before := providerDiagnosticEngine(&http.Client{Timeout: 200 * time.Millisecond}).callProvider(
+		RouteSpec{RouteHandle: "private-route", Endpoint: server.URL + "?delay=190ms"}, "before-bound", nil,
+	)
+	if before.status != gatewayv2.StatusOK || before.diagnostic.Class != ProviderOK {
+		t.Fatalf("response before B did not succeed: %+v", before)
+	}
+	after := providerDiagnosticEngine(&http.Client{Timeout: 80 * time.Millisecond}).callProvider(
+		RouteSpec{RouteHandle: "private-route", Endpoint: server.URL + "?delay=90ms"}, "after-bound", nil,
+	)
+	if after.status != gatewayv2.StatusTimeout || after.diagnostic.Class != ProviderContextDeadlineExceeded {
+		t.Fatalf("response after B was not TIMEOUT: %+v", after)
+	}
+}
+
+func TestProviderBodyReadDeadlineMapsToTimeout(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		writer.Header().Set("Content-Type", "application/json")
+		writer.Header().Set("Content-Length", "32")
+		writer.WriteHeader(http.StatusOK)
+		if flusher, ok := writer.(http.Flusher); ok {
+			flusher.Flush()
+		}
+		time.Sleep(90 * time.Millisecond)
+		_, _ = writer.Write([]byte(`{"status":"OK","payload":"b2s="}`))
+	}))
+	defer server.Close()
+	attempt := providerDiagnosticEngine(&http.Client{Timeout: 80 * time.Millisecond}).callProvider(
+		RouteSpec{RouteHandle: "private-route", Endpoint: server.URL}, "read-timeout", nil,
+	)
+	if attempt.status != gatewayv2.StatusTimeout || attempt.diagnostic.Class != ProviderContextDeadlineExceeded {
+		t.Fatalf("body-read deadline was not TIMEOUT: %+v", attempt)
+	}
+}
+
+func TestReadOnlyTimeoutJournalAndSubsequentOperation(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		var decoded providerRequest
+		if err := json.NewDecoder(request.Body).Decode(&decoded); err != nil {
+			t.Errorf("decode provider request: %v", err)
+			return
+		}
+		if decoded.OperationID == "timeout-operation" {
+			time.Sleep(90 * time.Millisecond)
+		}
+		writer.Header().Set("Content-Type", "application/json")
+		_, _ = writer.Write([]byte(`{"status":"OK","payload":"b2s="}`))
+	}))
+	defer server.Close()
+	plan := diagnosticPlan()
+	plan.ProviderCompletionBoundMS = 80
+	plan.MaximumRealOperations = 2
+	plan.StateDirectory = filepath.Join(t.TempDir(), "state")
+	plan.Routes = []RouteSpec{{RouteHandle: "private-route", ActionKind: "REAL_TOOL",
+		EffectSemantics: "READ_ONLY", Endpoint: server.URL, PolicyID: "private-policy"}}
+	current, err := newEngine(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	authorization, _ := json.Marshal(map[string]string{"effect_semantics": "READ_ONLY", "policy_id": "private-policy"})
+	action := func(operationID string) v7ohttp.PrivateActionMessage {
+		return v7ohttp.PrivateActionMessage{ProtocolVersion: 1, Kind: v7ohttp.ActionRealTool,
+			RouteHandle: []byte("private-route"), OperationID: []byte(operationID), Authorization: authorization}
+	}
+	if err := current.accept(action("timeout-operation"), 1); err != nil {
+		t.Fatal(err)
+	}
+	current.workers.Wait()
+	timedOut, err := current.ready.ReserveEligible(1, 2)
+	if err != nil || timedOut == nil || timedOut.Status != gatewayv2.StatusTimeout {
+		t.Fatalf("timeout result=%+v err=%v", timedOut, err)
+	}
+	decision, committed, err := current.journal.Begin("timeout-operation", gatewayv2.ReadOnly)
+	if err != nil || decision != v7.RecoveryReturnResult || committed.Status != gatewayv2.StatusTimeout {
+		t.Fatalf("timeout journal recovery decision=%v committed=%+v err=%v", decision, committed, err)
+	}
+	if err := current.accept(action("independent-operation"), 3); err != nil {
+		t.Fatal(err)
+	}
+	current.workers.Wait()
+	succeeded, err := current.ready.ReserveEligible(1, 4)
+	if err != nil || succeeded == nil || succeeded.Status != gatewayv2.StatusOK {
+		t.Fatalf("subsequent result=%+v err=%v", succeeded, err)
 	}
 }
 

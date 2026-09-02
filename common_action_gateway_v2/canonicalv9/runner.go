@@ -483,6 +483,31 @@ func validatePlan(plan Plan) error {
 			return errors.New("V12 duplex V4R6 public PIR schedule changed")
 		}
 	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4R7-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7" {
+			return errors.New("V12 duplex V4R7 profile ID and revision disagree")
+		}
+		if plan.ProviderCompletionBoundMS != 200 {
+			return errors.New("V12 duplex V4R7 public provider completion bound changed")
+		}
+		if plan.ResponsePublicLagMS != 30 || plan.ResponsePreparationLeadMS != 20 || plan.ResponsePreparationWorkers != 6 {
+			return errors.New("V12 duplex V4R7 response pipeline changed")
+		}
+		if plan.ResponsePublicLagMS <= plan.ResponsePreparationLeadMS {
+			return errors.New("V12 duplex V4R7 public response lag must exceed preparation lead")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex V4R7 public admission horizon disagrees with fixed slot count")
+		}
+		completionRounds := (plan.ProviderCompletionBoundMS + plan.RoundPeriodMS - 1) / plan.RoundPeriodMS
+		if plan.Rounds != plan.AdmissionRounds+completionRounds+plan.MaximumRealOperations+1 {
+			return errors.New("V12 duplex V4R7 fixed transcript capacity disagrees with public B")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex V4R7 public PIR schedule changed")
+		}
+	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
 		if slot < 0 || slot > plan.Rounds {
 			return errors.New("canonical fault slot is outside public rounds")
@@ -545,21 +570,21 @@ func (e *engine) callProvider(route RouteSpec, operationID string, protectedArgs
 		ContextDeadlineNS:       startNS + bound.Nanoseconds(),
 		JSONDecodeResult:        "NOT_ATTEMPTED",
 	}
-	finish := func() providerAttempt {
+	finish := func(status byte) providerAttempt {
 		diagnostic.ElapsedNS = time.Since(start).Nanoseconds()
-		return providerAttempt{status: gatewayv2.StatusError, diagnostic: diagnostic}
+		return providerAttempt{status: status, diagnostic: diagnostic}
 	}
 	body, err := json.Marshal(providerRequest{OperationID: operationID, Payload: protectedArgs})
 	if err != nil {
 		diagnostic.ErrorType = fmt.Sprintf("%T", err)
 		diagnostic.Error = err.Error()
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	request, err := http.NewRequestWithContext(context.Background(), http.MethodPost, route.Endpoint, bytes.NewReader(body))
 	if err != nil {
 		diagnostic.ErrorType = fmt.Sprintf("%T", err)
 		diagnostic.Error = err.Error()
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	request.Header.Set("Content-Type", "application/json")
 	response, err := e.httpClient.Do(request)
@@ -569,10 +594,11 @@ func (e *engine) callProvider(route RouteSpec, operationID string, protectedArgs
 		diagnostic.Error = err.Error()
 		if errors.Is(err, context.DeadlineExceeded) {
 			diagnostic.Class = ProviderContextDeadlineExceeded
+			return finish(gatewayv2.StatusTimeout)
 		} else {
 			diagnostic.Class = ProviderTransportError
 		}
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	defer response.Body.Close()
 	diagnostic.HTTPStatus = response.StatusCode
@@ -582,17 +608,22 @@ func (e *engine) callProvider(route RouteSpec, operationID string, protectedArgs
 	if readErr != nil {
 		diagnostic.ErrorType = fmt.Sprintf("%T", readErr)
 		diagnostic.Error = readErr.Error()
-		return finish()
+		if errors.Is(readErr, context.DeadlineExceeded) {
+			diagnostic.Class = ProviderContextDeadlineExceeded
+			return finish(gatewayv2.StatusTimeout)
+		}
+		diagnostic.Class = ProviderTransportError
+		return finish(gatewayv2.StatusError)
 	}
 	if int64(len(raw)) > responseLimit {
 		diagnostic.Class = ProviderResponseTooLarge
 		diagnostic.JSONDecodeResult = "SKIPPED_RESPONSE_TOO_LARGE"
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	if response.StatusCode/100 != 2 {
 		diagnostic.Class = ProviderHTTPNon2XX
 		diagnostic.JSONDecodeResult = "SKIPPED_HTTP_NON_2XX"
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	var decoded providerResponse
 	if err := json.NewDecoder(bytes.NewReader(raw)).Decode(&decoded); err != nil {
@@ -600,13 +631,13 @@ func (e *engine) callProvider(route RouteSpec, operationID string, protectedArgs
 		diagnostic.ErrorType = fmt.Sprintf("%T", err)
 		diagnostic.Error = err.Error()
 		diagnostic.JSONDecodeResult = "ERROR"
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	diagnostic.JSONDecodeResult = "OK"
 	diagnostic.DecodedProviderStatus = decoded.Status
 	if decoded.Status != "OK" {
 		diagnostic.Class = ProviderStatusError
-		return finish()
+		return finish(gatewayv2.StatusError)
 	}
 	diagnostic.Class = ProviderOK
 	diagnostic.ElapsedNS = time.Since(start).Nanoseconds()

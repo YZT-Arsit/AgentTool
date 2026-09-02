@@ -32,8 +32,11 @@ def exact_slots(rows: list[dict[str, object]], rounds: int) -> bool:
     )
 
 
-def run_one(runner: Path, output: Path, identity: str) -> dict[str, object]:
-    profile = duplex_response_closure_p10_profile()
+def run_one(
+    runner: Path, output: Path, identity: str, *, profile=None
+) -> dict[str, object]:
+    if profile is None:
+        profile = duplex_response_closure_p10_profile()
     session = output / identity
     session.mkdir(parents=True, exist_ok=False)
     plan = profile.go_plan_fields()

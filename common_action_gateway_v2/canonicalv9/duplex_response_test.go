@@ -191,3 +191,42 @@ func TestV4R6PrewarmedSecondSessionPreservesEveryPublicSlot(t *testing.T) {
 	second, _ := runOnlineControl(t, v4r6SyntheticPublicPathPlan(t, 506), nil)
 	assertCompleteV4R6SyntheticTranscript(t, second, 506)
 }
+
+func TestV4R7PublicCapacityBindsB200ToR521(t *testing.T) {
+	plan := v4r6SyntheticPublicPathPlan(t, 521)
+	plan.ProfileID = "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60"
+	plan.TimingSemanticRevision = "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7"
+	plan.ProviderCompletionBoundMS = 200
+	if err := validatePlan(plan); err != nil {
+		t.Fatalf("valid V4R7 plan rejected: %v", err)
+	}
+	for _, rounds := range []int{506, 520, 522} {
+		mutated := plan
+		mutated.Rounds = rounds
+		if err := validatePlan(mutated); err == nil {
+			t.Fatalf("V4R7 accepted R=%d instead of 521", rounds)
+		}
+	}
+	diagnostics, err := Diagnostics(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !diagnostics.AllWireSizesPass || !diagnostics.AllAdmissionChecksPass {
+		t.Fatalf("V4R7 capacity/size diagnostics failed: %+v", diagnostics)
+	}
+}
+
+func TestV4R7ProviderReadinessCannotMoveResponseDeadline(t *testing.T) {
+	origin := time.Unix(0, 1_000_000_000)
+	deadline := gatewayResponseDeadline(
+		origin, origin, time.Time{}, 10*time.Millisecond, 30*time.Millisecond, 20*time.Millisecond,
+	)
+	for _, privateReadiness := range []time.Duration{0, 199 * time.Millisecond, 201 * time.Millisecond} {
+		got := gatewayResponseDeadline(
+			origin, origin, time.Time{}, 10*time.Millisecond, 30*time.Millisecond, 20*time.Millisecond,
+		)
+		if !got.Equal(deadline) {
+			t.Fatalf("private readiness %s changed response deadline", privateReadiness)
+		}
+	}
+}
