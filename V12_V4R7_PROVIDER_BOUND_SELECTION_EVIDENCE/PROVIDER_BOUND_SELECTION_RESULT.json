@@ -1,0 +1,37 @@
+{
+  "schema": "AgentTool.V12V4R7ProviderBoundSelectionMeasurement/1",
+  "freeze_sha256": "dc5c2a50d46f3c79ed3e85980404f623dec927de4b0656bc368dbf265e988f85",
+  "measurement_only_timeout_ms": 2000,
+  "sessions": 200,
+  "attempts_per_session": 50,
+  "attempts": 10000,
+  "protected_workload_labels": 0,
+  "all_provider_status_ok": true,
+  "provider_end_to_end_ms": {
+    "p50": 30.955893,
+    "p90": 59.937179,
+    "p95": 66.298969,
+    "p99": 74.090418,
+    "p99_9": 79.736184,
+    "max": 83.676634
+  },
+  "provider_logical_work_ms": {
+    "p50": 0.183973,
+    "p90": 0.197691,
+    "p95": 0.20755,
+    "p99": 0.234851,
+    "p99_9": 0.38436,
+    "max": 0.573281
+  },
+  "required_bound_ms": 134,
+  "candidate_bounds_ms": [
+    100,
+    200,
+    500,
+    1000
+  ],
+  "selected_bound_ms": 200,
+  "selection_status": "PASS",
+  "raw_output_sha256": "eabcf308aaf9814686889e7f728b4975e40771048baa2a0c4c6a5bec199e14f6",
+  "private_evidence_sha256": "a31562c79f50ef0e3f2142c295feec1ed0804d76112c82419d1dc2698901b1c8"
+}
