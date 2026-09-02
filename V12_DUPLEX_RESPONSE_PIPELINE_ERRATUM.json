@@ -1,0 +1,44 @@
+{
+  "schema": "AgentTool.V12DuplexResponsePipelineErratum/1",
+  "status": "FROZEN_BEFORE_REQUALIFICATION_ATTEMPT_3",
+  "supersedes_response_clock_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
+  "new_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2",
+  "root_causes": [
+    "V4R1 response preparation and public release shared one serial goroutine",
+    "the shared lane made the next preparation wait for the previous public release",
+    "the frozen 25 ms lead was shorter than two observed cold first-slot preparation durations"
+  ],
+  "repair": {
+    "response_preparation_lead_ms": 50,
+    "response_preparation_workers": 6,
+    "commitment_lane_count": 1,
+    "release_lane_count": 1,
+    "pipeline": "serial public commitment -> fixed bounded preparation pool -> serial public release",
+    "release_after_commitment_work": [
+      "obtain already-prepared fixed-size frame",
+      "one public WriteHeader/Write path"
+    ],
+    "deadline_miss_rule": "fail closed without shifting release to wait for private preparation"
+  },
+  "mechanical_basis": {
+    "largest_observed_v4r1_cold_preparation_ns": 41102944,
+    "lead_ns": 50000000,
+    "minimum_p10_preparation_throughput_frames_per_second": 100,
+    "bounded_worker_capacity_assumption": "six fixed lanes; verified by deterministic and live functional gates before any protected campaign"
+  },
+  "unchanged": [
+    "H=4500",
+    "Delta candidates=10/20/25",
+    "R=506/279/233",
+    "M=50",
+    "provider completion bound=50 ms",
+    "request bytes=1079",
+    "response bytes=800",
+    "PIR period=60 ms",
+    "PIR epoch=6000 ms",
+    "Q=100",
+    "forward effective public clock"
+  ],
+  "protected_classifier_sessions": 0,
+  "auc_calculations": 0
+}

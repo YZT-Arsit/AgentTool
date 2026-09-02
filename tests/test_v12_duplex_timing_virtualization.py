@@ -8,7 +8,7 @@ import pytest
 
 from v11_online.session import duplex_pir_opportunity_times
 from v12_timing.profile import (
-    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1,
+    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2,
     duplex_timing_candidate_profiles,
 )
 from v12_timing.projection import (
@@ -53,9 +53,10 @@ def test_v4_profiles_preserve_public_dimensions() -> None:
     for profile in profiles:
         assert (
             profile.timing_semantic_revision
-            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1
+            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2
         )
-        assert profile.response_preparation_lead_ms == 25
+        assert profile.response_preparation_lead_ms == 50
+        assert profile.response_preparation_workers == 6
         assert profile.request_final_bytes == 1079
         assert profile.response_final_bytes == 800
         assert profile.pir_resolution_opportunities == 100
@@ -137,6 +138,26 @@ def test_open_loop_sender_does_not_read_private_completion_for_deadlines() -> No
     assert "descriptor" not in source
 
 
+def test_gateway_release_lane_only_uses_committed_frame_and_public_write() -> None:
+    source = (ROOT / "common_action_gateway_v2/canonicalv9/duplex_response.go").read_text()
+    release_body = source.split(
+        "func (v *gatewayResponseVirtualizer) releaseCommitted", 1
+    )[1].split("func (v *gatewayResponseVirtualizer) setEligibility", 1)[0]
+    assert "ReserveEligible" not in release_body
+    assert "EncodeKnownLength" not in release_body
+    assert "EncapsulateResponse" not in release_body
+    assert ".prepared.Send(" in release_body
+    assert "WriteHeader(http.StatusOK)" in release_body
+
+
+def test_gateway_commit_and_release_are_distinct_bounded_lanes() -> None:
+    source = (ROOT / "common_action_gateway_v2/canonicalv9/duplex_response.go").read_text()
+    assert "preparationJobs := make(chan gatewayResponsePreparationJob, v.rounds)" in source
+    assert "go v.releaseCommitted(releasePacer, committed, releaseDone)" in source
+    assert "for lane := 0; lane < v.workers; lane++" in source
+    assert "request.commit(commitment)" in source
+
+
 def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
     profiles = duplex_timing_candidate_profiles()
     assert {(p.request_final_bytes, p.response_final_bytes) for p in profiles} == {
@@ -145,9 +166,9 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
     assert {p.pir_resolution_opportunities for p in profiles} == {100}
 
 
-def test_duplex_functional_manifest_freezes_48_fresh_identities() -> None:
+def test_duplex_functional_manifest_freezes_48_fresh_v4r2_identities() -> None:
     freeze = json.loads(
-        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V2.json").read_text()
+        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V3.json").read_text()
     )
     assert freeze["frozen_before_functional_execution"] is True
     assert len(freeze["profiles"]) == 3
@@ -155,6 +176,8 @@ def test_duplex_functional_manifest_freezes_48_fresh_identities() -> None:
     assert len(freeze["workloads"]) == 8
     assert freeze["planned_identities"] == 48
     assert freeze["retry_count"] == freeze["replacement_count"] == 0
-    assert freeze["identity_suffix"] == "002"
+    assert freeze["identity_suffix"] == "003"
+    assert freeze["fixed"]["response_preparation_lead_ms"] == 50
+    assert freeze["fixed"]["response_preparation_workers"] == 6
     assert freeze["protected_classifier_campaign_authorized"] is False
     assert freeze["auc_authorized"] is False

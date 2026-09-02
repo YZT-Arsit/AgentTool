@@ -843,6 +843,7 @@ class CanonicalOnlineSession:
         elif timing_revision in {
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
+            "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2",
         }:
             self.runner_binary = DUPLEX_TIMING_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":

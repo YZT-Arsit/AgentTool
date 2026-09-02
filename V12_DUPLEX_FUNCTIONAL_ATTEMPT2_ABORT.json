@@ -1,0 +1,39 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalAttemptAbort/2",
+  "status": "ABORTED_COMMON_RESPONSE_CLOCK_INTEGRITY_FAILURE",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE_V2.json",
+  "remote_evidence_root": "/root/autodl-tmp/V12_DUPLEX_FUNCTIONAL_V4R1_DA0EC48",
+  "planned_identities": 48,
+  "started_identities": 19,
+  "completed_functional_verdicts": 18,
+  "harness_exception_records": 1,
+  "retries": 0,
+  "first_common_failure": {
+    "identity": "DEV-DTVR-V4R1-P10-OA-AGENT_AS_TOOL_TRANSITION-002",
+    "slot": 1,
+    "response_preparation_lead_ms": 25,
+    "preparation_duration_ns": 34882030,
+    "preparation_deadline_overrun_ns": 9882030
+  },
+  "second_observed_common_failure": {
+    "identity": "DEV-DTVR-V4R1-P10-MS-DESCRIPTOR_TRANSITIONS_K6-002",
+    "slot": 1,
+    "response_preparation_lead_ms": 25,
+    "preparation_duration_ns": 41102944,
+    "preparation_deadline_overrun_ns": 16102944
+  },
+  "additional_harness_exception": {
+    "identity": "DEV-DTVR-V4R1-P10-OA-DESCRIPTOR_TRANSITIONS_K6-002",
+    "exception_class": "AssertionError",
+    "finding": "first two expected operations did not successfully return through the framework path"
+  },
+  "mechanical_root_cause": [
+    "25 ms did not cover the observed cold first-slot response preparation path",
+    "the V4R1 single response goroutine could not prepare a later slot while waiting to release the preceding slot"
+  ],
+  "campaign_interpretation": "development functional attempt only; no timing privacy result",
+  "all_started_identities_permanent_development_exclusions": true,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "protected_timing_sessions": 0
+}

@@ -59,6 +59,7 @@ type Plan struct {
 	RequestFinalBytes          int          `json:"request_final_bytes"`
 	ResponseFinalBytes         int          `json:"response_final_bytes"`
 	ResponsePreparationLeadMS  int          `json:"response_preparation_lead_ms,omitempty"`
+	ResponsePreparationWorkers int          `json:"response_preparation_workers,omitempty"`
 	SchedulerToleranceMS       int          `json:"scheduler_tolerance_ms,omitempty"`
 	PreparationLeadMS          int          `json:"preparation_lead_ms,omitempty"`
 	PublicSessionLivenessCapMS int          `json:"public_session_liveness_cap_ms,omitempty"`
@@ -394,6 +395,24 @@ func validatePlan(plan Plan) error {
 			return errors.New("V12 duplex V4R1 public PIR schedule changed")
 		}
 	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4R2-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2" {
+			return errors.New("V12 duplex V4R2 profile ID and revision disagree")
+		}
+		if plan.ResponsePreparationLeadMS != 50 {
+			return errors.New("V12 duplex V4R2 response preparation lead changed")
+		}
+		if plan.ResponsePreparationWorkers != 6 {
+			return errors.New("V12 duplex V4R2 response preparation worker count changed")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex V4R2 public admission horizon disagrees with fixed slot count")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex V4R2 public PIR schedule changed")
+		}
+	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
 		if slot < 0 || slot > plan.Rounds {
 			return errors.New("canonical fault slot is outside public rounds")
@@ -647,8 +666,8 @@ func (e *engine) claimPublicSlot(request *http.Request) (v7ohttp.SlotID, error) 
 	return v7ohttp.SlotID{Session: 1, Slot: slot}, nil
 }
 
-func (e *engine) prepareGatewayResponse(slot v7ohttp.SlotID, responseContext v7ohttp.ServerContext,
-	cutoffNS int64) (v8.PreparedSlot, error) {
+func (e *engine) commitGatewayResponse(slot v7ohttp.SlotID, responseContext v7ohttp.ServerContext,
+	cutoffNS int64) (func() (v8.PreparedSlot, error), error) {
 	e.deliveryMu.Lock()
 	defer e.deliveryMu.Unlock()
 	var selected *gatewayv2.ResultRecord
@@ -659,28 +678,50 @@ func (e *engine) prepareGatewayResponse(slot v7ohttp.SlotID, responseContext v7o
 		selected, err = e.ready.ReserveEligible(1, slot.Slot)
 	}
 	if err != nil {
-		return v8.PreparedSlot{}, err
+		return nil, err
 	}
 	if selected != nil {
 		if err := e.memory.PublishDurable(*selected); err != nil {
-			return v8.PreparedSlot{}, err
+			return nil, err
 		}
 	}
-	preparedResult := e.memory.SnapshotEligible(1)
-	bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(privateResponse(preparedResult), e.plan.ResponseBHTTPBytes, slot)
+	committedResult := privateResponse(e.memory.SnapshotEligible(1))
+	operationID := ""
+	if committedResult.OperationID != "" {
+		operationID = committedResult.OperationID
+	}
+	return func() (v8.PreparedSlot, error) {
+		bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(
+			committedResult, e.plan.ResponseBHTTPBytes, slot,
+		)
+		if err != nil {
+			return v8.PreparedSlot{}, err
+		}
+		wire, err := e.gateway.EncapsulateResponse(responseContext, bhttpResponse)
+		if err != nil || len(wire) != e.plan.ResponseFinalBytes {
+			return v8.PreparedSlot{}, errors.New("OHTTP response failed")
+		}
+		ack := make(chan string, 1)
+		prepared := v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}
+		if prepared.OperationID != "" {
+			go func() {
+				<-prepared.Ack
+				_ = e.ready.MarkDelivered(prepared.OperationID)
+				_ = e.journal.MarkResultDelivered(prepared.OperationID)
+				e.record(PrivateEvent{OperationID: prepared.OperationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(slot.Slot)})
+			}()
+		}
+		return prepared, nil
+	}, nil
+}
+
+func (e *engine) prepareGatewayResponse(slot v7ohttp.SlotID, responseContext v7ohttp.ServerContext,
+	cutoffNS int64) (v8.PreparedSlot, error) {
+	prepare, err := e.commitGatewayResponse(slot, responseContext, cutoffNS)
 	if err != nil {
 		return v8.PreparedSlot{}, err
 	}
-	wire, err := e.gateway.EncapsulateResponse(responseContext, bhttpResponse)
-	if err != nil || len(wire) != e.plan.ResponseFinalBytes {
-		return v8.PreparedSlot{}, errors.New("OHTTP response failed")
-	}
-	ack := make(chan string, 1)
-	operationID := ""
-	if preparedResult != nil {
-		operationID = gatewayv2.OperationIDString(preparedResult.OperationID)
-	}
-	return v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}, nil
+	return prepare()
 }
 
 func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Request) {
@@ -713,17 +754,8 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 	writer.Header().Set("Content-Type", v8.OHTTPResponseContentType)
 	writer.Header().Set("Content-Length", fmt.Sprintf("%d", e.plan.ResponseFinalBytes))
 	if e.responseClock != nil {
-		err := e.responseClock.release(currentRound, requestArrival, func(cutoff time.Time) (v8.PreparedSlot, error) {
-			prepared, prepareErr := e.prepareGatewayResponse(slot, responseContext, cutoff.UnixNano())
-			if prepareErr == nil && prepared.OperationID != "" {
-				go func() {
-					<-prepared.Ack
-					_ = e.ready.MarkDelivered(prepared.OperationID)
-					_ = e.journal.MarkResultDelivered(prepared.OperationID)
-					e.record(PrivateEvent{OperationID: prepared.OperationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(currentRound)})
-				}()
-			}
-			return prepared, prepareErr
+		err := e.responseClock.release(currentRound, requestArrival, func(cutoff time.Time) (func() (v8.PreparedSlot, error), error) {
+			return e.commitGatewayResponse(slot, responseContext, cutoff.UnixNano())
 		}, writer)
 		if err != nil {
 			e.record(PrivateEvent{Stage: "DUPLEX_RESPONSE_RELEASE_FAILED", Status: err.Error(), Round: int(currentRound)})
@@ -750,14 +782,6 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 	writer.WriteHeader(http.StatusOK)
 	if err := prepared.Send(writer); err != nil {
 		return
-	}
-	if prepared.OperationID != "" {
-		go func() {
-			<-prepared.Ack
-			_ = e.ready.MarkDelivered(prepared.OperationID)
-			_ = e.journal.MarkResultDelivered(prepared.OperationID)
-			e.record(PrivateEvent{OperationID: prepared.OperationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(currentRound)})
-		}()
 	}
 }
 

@@ -297,11 +297,17 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	// SESSION_READY. It is fixed and independent of future action availability.
 	t0 := time.Now().Add(onlinePublicStartLeadPeriods * period)
 	duplexTiming := plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4" ||
-		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1"
+		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1" ||
+		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2"
 	if duplexTiming {
+		responsePreparationWorkers := plan.ResponsePreparationWorkers
+		if responsePreparationWorkers < 1 {
+			responsePreparationWorkers = 1
+		}
 		responseClock, clockErr := newGatewayResponseVirtualizer(
 			plan.Rounds, period,
 			time.Duration(plan.ResponsePreparationLeadMS)*time.Millisecond,
+			responsePreparationWorkers,
 			processClock,
 		)
 		if clockErr != nil {

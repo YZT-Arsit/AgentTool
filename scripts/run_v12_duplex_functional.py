@@ -41,7 +41,7 @@ def framework_code(framework: str) -> str:
 
 
 def identity(delta_ms: int, framework: str, workload: str, suffix: str) -> str:
-    return f"DEV-DTVR-V4R1-P{delta_ms}-{framework_code(framework)}-{workload}-{suffix}"
+    return f"DEV-DTVR-V4R2-P{delta_ms}-{framework_code(framework)}-{workload}-{suffix}"
 
 
 def build_workload(workload: str, framework: str, unit_identity: str):
@@ -346,18 +346,27 @@ def main() -> int:
                 json.dumps(record, indent=2) + "\n", encoding="utf-8", newline="\n"
             )
         records.append(record)
+        if not bool(record["common_integrity_pass"]):
+            break
     summary = {
         "schema": "AgentTool.V12DuplexFunctionalCompletion/1",
         "freeze_sha256": sha(args.freeze),
         "planned_identities": len(planned),
         "executed_identities": len(records),
         "retries": 0,
-        "passed": sum(bool(row["functional_pass"]) for row in records),
-        "failed": sum(not bool(row["functional_pass"]) for row in records),
+        "passed": sum(
+            bool(row["common_integrity_pass"] and row["functional_pass"])
+            for row in records
+        ),
+        "failed": sum(
+            not bool(row["common_integrity_pass"] and row["functional_pass"])
+            for row in records
+        ),
         "by_framework": {
             framework: {
                 "passed": sum(
-                    row["framework"] == framework and bool(row["functional_pass"])
+                    row["framework"] == framework
+                    and bool(row["common_integrity_pass"] and row["functional_pass"])
                     for row in records
                 ),
                 "total": sum(row["framework"] == framework for row in records),
@@ -367,7 +376,8 @@ def main() -> int:
         "by_delta": {
             str(delta): {
                 "passed": sum(
-                    int(row["delta_ms"]) == delta and bool(row["functional_pass"])
+                    int(row["delta_ms"]) == delta
+                    and bool(row["common_integrity_pass"] and row["functional_pass"])
                     for row in records
                 ),
                 "total": sum(int(row["delta_ms"]) == delta for row in records),
@@ -378,6 +388,9 @@ def main() -> int:
         "protected_classifier_training_runs": 0,
         "protected_auc_calculations": 0,
         "new_protected_timing_sessions": 0,
+        "common_integrity_abort": any(
+            not bool(row["common_integrity_pass"]) for row in records
+        ),
     }
     (args.output / "completion.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n"
