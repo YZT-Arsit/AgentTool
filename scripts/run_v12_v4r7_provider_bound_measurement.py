@@ -8,6 +8,7 @@ import os
 import subprocess
 import sys
 from dataclasses import replace
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 
@@ -15,11 +16,18 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+import v11_full_scope.canonical as canonical_provider
 from v11_full_scope.canonical import V11EvidenceProviders
 from v11_full_scope.fixtures import tool_case
 
 
 FREEZE = ROOT / "V12_V4R7_PROVIDER_BOUND_SELECTION_FREEZE.json"
+
+
+class MeasurementThreadingHTTPServer(ThreadingHTTPServer):
+    """Same loopback provider server with capacity for the frozen 50-way burst."""
+
+    request_queue_size = 128
 
 
 def sha256(path: Path) -> str:
@@ -68,6 +76,13 @@ def main() -> int:
         )
         for row in attempts
     }
+    # The production fixture inherits socketserver.TCPServer's backlog of five.
+    # That queue is not part of the trusted-Gateway/provider completion path and
+    # cannot admit the predeclared 50-way synthetic burst.  Raising only this
+    # measurement-listener capacity prevents a harness-connect bottleneck while
+    # retaining the same request handler, worker scheduling, response path, and
+    # trusted Gateway client under measurement.
+    canonical_provider.ThreadingHTTPServer = MeasurementThreadingHTTPServer
     with V11EvidenceProviders(cases, provider_evidence) as providers:
         environment = dict(os.environ)
         environment.update(

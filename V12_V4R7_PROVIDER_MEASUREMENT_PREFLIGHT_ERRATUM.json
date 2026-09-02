@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12V4R7ProviderMeasurementPreflightErratum/1",
+  "frozen_selection_commit": "fd750130ed9cfe1209a48891e116415ee8a89f00",
+  "failed_start_1": {
+    "stage": "GO_EXECUTABLE_LOOKUP",
+    "provider_attempts": 0,
+    "cause": "NONINTERACTIVE_PATH_OMITTED_INSTALLED_GO_TOOLCHAIN"
+  },
+  "failed_start_2": {
+    "stage": "FIRST_SYNTHETIC_50_WAY_BURST",
+    "complete_provider_handler_records": 45,
+    "qualifying_measurement_attempts": 0,
+    "cause": "MEASUREMENT_LISTENER_DEFAULT_BACKLOG_FIVE"
+  },
+  "correction": "MEASUREMENT_ONLY_LISTENER_BACKLOG_128",
+  "unchanged": [
+    "10000 identity and operation-ID manifest",
+    "200 sessions",
+    "50 attempts per session",
+    "50-way burst",
+    "2000 ms measurement-only timeout",
+    "trusted Gateway callProvider implementation",
+    "provider request handler and JSON work",
+    "candidate bounds",
+    "percentile and selection rule"
+  ],
+  "protected_runtime_changed": false,
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0,
+  "bound_selected_before_erratum": false
+}
