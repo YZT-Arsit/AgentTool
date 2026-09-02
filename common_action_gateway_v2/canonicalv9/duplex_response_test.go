@@ -170,7 +170,7 @@ func TestV4R6SyntheticStartupStressPreservesEveryPublicSlot(t *testing.T) {
 	}
 	for _, item := range cases {
 		t.Run(item.name, func(t *testing.T) {
-			plan := v4r6SyntheticPublicPathPlan(t, 8)
+			plan := v4r6SyntheticPublicPathPlan(t, 506)
 			plan.FaultSchedulerStallSlot = 1
 			plan.FaultSchedulerStallMS = item.schedulerStallMS
 			plan.FaultDelayResponseSlot = 1
@@ -186,8 +186,8 @@ func TestV4R6SyntheticStartupStressPreservesEveryPublicSlot(t *testing.T) {
 }
 
 func TestV4R6PrewarmedSecondSessionPreservesEveryPublicSlot(t *testing.T) {
-	first, _ := runOnlineControl(t, v4r6SyntheticPublicPathPlan(t, 8), nil)
-	assertCompleteV4R6SyntheticTranscript(t, first, 8)
-	second, _ := runOnlineControl(t, v4r6SyntheticPublicPathPlan(t, 8), nil)
-	assertCompleteV4R6SyntheticTranscript(t, second, 8)
+	first, _ := runOnlineControl(t, v4r6SyntheticPublicPathPlan(t, 506), nil)
+	assertCompleteV4R6SyntheticTranscript(t, first, 506)
+	second, _ := runOnlineControl(t, v4r6SyntheticPublicPathPlan(t, 506), nil)
+	assertCompleteV4R6SyntheticTranscript(t, second, 506)
 }
