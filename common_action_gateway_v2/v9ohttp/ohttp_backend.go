@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"sync"
 	"sync/atomic"
 
 	"common-action-gateway-v2/v7ohttp"
@@ -54,6 +55,11 @@ type RFC9458Client struct {
 type RFC9458Gateway struct {
 	gateway ohttp.Gateway
 	suite   PublicSuite
+	// The pinned ohttp-go Gateway mutates receiver-owned HPKE state while
+	// decapsulating. HTTP/2 handlers may arrive concurrently, so serialize only
+	// this private pre-commit operation. Per-request response contexts remain
+	// independent and response encoding stays off the public release path.
+	decapsulationMu sync.Mutex
 }
 
 func NewRFC9458Client(config ohttp.PublicConfig, suite PublicSuite) (*RFC9458Client, error) {
@@ -147,7 +153,9 @@ func (g *RFC9458Gateway) DecapsulateRequest(slot v7ohttp.SlotID, encapsulatedReq
 	if err != nil {
 		return nil, nil, err
 	}
+	g.decapsulationMu.Lock()
 	plaintext, context, err := g.gateway.DecapsulateRequest(request)
+	g.decapsulationMu.Unlock()
 	if err != nil {
 		return nil, nil, err
 	}
