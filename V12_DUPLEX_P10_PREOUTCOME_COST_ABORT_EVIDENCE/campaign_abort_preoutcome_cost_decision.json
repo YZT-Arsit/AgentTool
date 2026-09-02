@@ -1,0 +1,19 @@
+{
+  "schema": "AgentTool.V12DuplexP10PreoutcomeCostAbort/1",
+  "status": "ABORTED_PREOUTCOME_COST_DECISION",
+  "reason": "USER_DIRECTED_PREOUTCOME_DEVELOPMENT_COST_DECISION",
+  "planned_identities": 5040,
+  "attempted_consumed_identities": 56,
+  "complete_finalized_sessions": 55,
+  "failed_finalized_sessions": 0,
+  "interrupted_partial_sessions": 1,
+  "interrupted_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1",
+  "retries": 0,
+  "all_frozen_identities_permanent_development_exclusions": true,
+  "excluded_identity_count": 5040,
+  "excluded_identity_inventory_sha256": "6993d2ba4c80d8e952d1d650c80648e15b600c83ee609bd02c2bab4a29f7159b",
+  "classifier_training": 0,
+  "AUC_calculations": 0,
+  "class_conditioned_timing_statistics": 0,
+  "dataset_manifest_sha256": "afdfdef5821c3ccb110e5839dcff5f96b8c26ae37dec2e1d859c27db891aa8cc"
+}

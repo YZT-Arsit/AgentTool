@@ -1,0 +1,423 @@
+{
+  "schema": "AgentTool.V12DuplexP10PreoutcomeCostAbortDataset/1",
+  "status": "ABORTED_PREOUTCOME_COST_DECISION",
+  "collection_complete": false,
+  "frozen_manifest_sha256": "e425416c6490f9292373b4737893fb305063d3b0c1346dc9a4f16dba675c7693",
+  "planned_identity_count": 5040,
+  "attempted_identity_count": 56,
+  "finalized_session_record_count": 55,
+  "interrupted_partial_identity_count": 1,
+  "session_records": [
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0000_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "b98a6ee06c1178b2536cee6da9fc5497a4a26776ef39ecfefbda606fd9b87c52"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0001_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "a57c1f049db31e23f82148672af8683a5d288162bb2599ae507634a2d67cd17f"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0002_DEV-TAD-P10-T7-OA-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "cb3dccf01d337a1ebedab0029ab6fad6f78afd7adb39532b5c3bc4186877c88d"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0003_DEV-TAD-P10-T7-OA-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "30dc9f7a782cd9b3c22572ee0a7a7350ec529a7792197975d52411bebbffad99"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0004_DEV-TAD-P10-T9-OA-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "a80a3b3151a387637c32e287e196e2817cc4d308aaaf7b207e7a40b11598cc71"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0005_DEV-TAD-P10-T9-OA-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "e1bb90942a0fbc3c7e63289a85b66c239bbb7e4c2904d5798a953c57af5433eb"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0006_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "d9caede2d0d512dc337e4da023d306e0be77eb4bcf4ab59b04ea892d55c065af"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0007_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "7abe18cdd70c213626dce604d8714fdc7b1fe9bf07e1cb1de07d45ca66b09d87"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0008_DEV-TAD-P10-T4-OA-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "770fc337a6bb10cc033b6980825a45af83bc81f2d954e1628896222a7e048dc5"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0009_DEV-TAD-P10-T4-OA-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "0290a065363c8f36096fa3941ae61145e0edd09c94cf384402a5a9b08190e16a"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0010_DEV-TAD-P10-T7-MS-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "09076f8dfa2ae8668c5df4f4789a42a679b8d62fb648b6de318aa09937cbde4c"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0011_DEV-TAD-P10-T7-MS-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "626440821aeaecb42ba402a8c27762ad1653daa37bfc2004305c336064de9df9"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0012_DEV-TAD-P10-T9-MS-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "0d78951beff95a112d75747769a8da5d1e558ad7d2a293b3ed2171012eaaa20c"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0013_DEV-TAD-P10-T9-MS-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "98242e7de2fa743a60af30f29311902113792181f3045ce3029465aaace125bd"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20000-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0014_DEV-TAD-P10-T4-MS-SENTINEL-B20000-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "2e2d8bf60b9655d8472aa917d9374fab9e18c330dd103557c0147ccd264cf2b1"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20000-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0015_DEV-TAD-P10-T4-MS-SENTINEL-B20000-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "0e5b18be70eba78aea6fe02ba7d8be95a2862daf4979f38a67b478414f8eb4d5"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0016_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "b3aca086a1aedd557629130f0859743017978e05c8d5231ef03a3482e8e3ae49"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0017_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "4afd38d69c55f9fb7a45b5c0c351c926e8e7f5cdf3e77db36d1cf86aa7f51376"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0018_DEV-TAD-P10-T4-MS-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "03c8d11f7d8ffb8b5f242b2a17a464ed2c6b36ecd3324543c36c768dfb6d4a72"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0019_DEV-TAD-P10-T4-MS-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "cd9f8344b6bf86aac573839296ddb5bf3b779ff06c22f103437b3f24c3995c7c"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0020_DEV-TAD-P10-T4-OA-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "7be31c5a53c013dd75572c7e7977754105846105a801dce482421918b6c17479"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0021_DEV-TAD-P10-T4-OA-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "ebbb77c0102218ce756e91b834c4a8f04296c61f1c1c3c2a0e56583a7cf675f1"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0022_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "91d7bddc751db2a2e61bbcb9f31e0004be5853b378dea4ab9142412abe9e8856"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0023_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "a74d29d19d918415e7dcb0fe59fbf26a7d048ab7be30456b15a6a139532ccd28"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0024_DEV-TAD-P10-T9-MS-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "df5dda2cf1c681cefaab372489e27a205175fedeeab5b3289970cea63452e8a5"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0025_DEV-TAD-P10-T9-MS-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "bc102b95917355273a71f87c29c88af2e0858ad211a4e0b23adb6560eafbdd48"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0026_DEV-TAD-P10-T7-MS-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "b93757d70930440199d6c69884128bfbe5da96abc2dd82f07f6cee3c3a29c43d"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0027_DEV-TAD-P10-T7-MS-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "bb9abf7374d74796854b9fdfc637bc76fbcb6e37ae5384abbfc999c2aef72634"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0028_DEV-TAD-P10-T7-OA-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "1b4541095c9c05f526b1d900a3518b11c5c33bb44f13dcc18f068c3ec1eb2d79"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0029_DEV-TAD-P10-T7-OA-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "7ead432462f108e4b7542927430dbb9dde41a5272ef11daf58edfb57ac5a4cb2"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20001-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0030_DEV-TAD-P10-T9-OA-SENTINEL-B20001-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "5e3df08d0769b207ba3da5829234fce2922d9d5d3a3169904daa55835b109e37"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20001-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0031_DEV-TAD-P10-T9-OA-SENTINEL-B20001-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "830ae8a50d600807fb05632f5ac7223533bd9274dcc95efa1e5035557a5208e2"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0032_DEV-TAD-P10-T9-MS-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "65e211162b2b2733b457723c6fe03465f1a802a137f24576c0d075db9b67dea1"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0033_DEV-TAD-P10-T9-MS-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "1e7bea61b201e47062a9101d7ed17ca6a93f7b49f8489570cfc713857f8656a7"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0034_DEV-TAD-P10-T9-OA-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "c56311c1dc72d9ee759bdd91cc2935420d49dda27aff90a8f96f207e787f0177"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0035_DEV-TAD-P10-T9-OA-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "d782ea0a15aa8026019b178348394e1da16b872b8989cb92d189bee2d6676ec7"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0036_DEV-TAD-P10-T7-MS-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "3ed565356ace092bd1fe5a04e9d527dad7481091c5dccfca3562fba62194c85a"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0037_DEV-TAD-P10-T7-MS-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "f853963e1e055e31a7af303ce6e0c6f7a40f2232c8b80b69e5caf13bfd2c791c"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0038_DEV-TAD-P10-T4-MS-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "95c4d8ca288190ef4da11c02db686b5a13e29237e057ff40eced002b2ee00884"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0039_DEV-TAD-P10-T4-MS-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "aa76c0d82baeea3e9b1284525d45a055ec07bb3aa39614307563e72311fed6cf"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0040_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "538c16f95672d5b185f4a205861fe64132e2a54e3ca5a2a60a1a9332b5919c07"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0041_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "f8f6f5a123138b71a623785cbca3d99ced3cfbe30f0e3565e8930bd37c38a7cf"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0042_DEV-TAD-P10-T7-OA-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "0f659d4af2f5aba15f65b0ddc30a33a71f0fdddd45b1bd0398a9aec612bd33fd"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0043_DEV-TAD-P10-T7-OA-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "a2cad52abcdbf42c6fc73aa97775500a0a47a5029f3db22895b297c4dac54a24"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0044_DEV-TAD-P10-T4-OA-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "843afacd7aed7ac48802224784719101e1aa88394c84c6a4f7959dad8bc32cc0"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0045_DEV-TAD-P10-T4-OA-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "11e04ac110ee6b857677c5209fbc60752f27c839f9a0c20244e2278703e517a7"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20002-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0046_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20002-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "b07c9c331438c8a9a23c05810bda29536b81348d212f122f1dbc688fd04dcc86"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20002-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0047_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-MS-SENTINEL-B20002-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "d799311bcfe1256401484b48b8ac933fa7a6ca3a050f980c76e169134fdd16a7"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20003-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0048_DEV-TAD-P10-T4-OA-SENTINEL-B20003-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "71763a19bea31d0b9457d3db7d6725928afad8980f34e69be8c83f3e33e1adaa"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-OA-SENTINEL-B20003-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0049_DEV-TAD-P10-T4-OA-SENTINEL-B20003-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "bea080a297351cf45eed2b749d507a89aff7c86337ad54f08b1ee5e3902f1f42"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20003-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0050_DEV-TAD-P10-T4-MS-SENTINEL-B20003-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "a24c1184fd78c2daa87b27d3b24e9c04a4aab3095e992a243a22764810cd01fe"
+    },
+    {
+      "identity": "DEV-TAD-P10-T4-MS-SENTINEL-B20003-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0051_DEV-TAD-P10-T4-MS-SENTINEL-B20003-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "0d6f7373130cc86dda04191338ab0a6e3d328f9037b86789a15626e814ef9bb3"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20003-C1",
+      "status": "COMPLETE",
+      "path": "sessions/0052_DEV-TAD-P10-T9-OA-SENTINEL-B20003-C1/duplex_p10_sentinel_session_record.json",
+      "sha256": "830d3109a645745d4f35d255fbc45421812618cbaf8e00bbc156303109d51919"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B20003-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0053_DEV-TAD-P10-T9-OA-SENTINEL-B20003-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "caa22ff210d6c4eaeada98b540326ee388f45a4c5161854d3e56eaeaf017d237"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20003-C0",
+      "status": "COMPLETE",
+      "path": "sessions/0054_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C0/duplex_p10_sentinel_session_record.json",
+      "sha256": "f4ef48fa7d3fe8129b4f99e0061deebeee349f8b3086d0b148c0a252634bf361"
+    }
+  ],
+  "session_record_inventory_sha256": "bd9b9a5f93ebc1e99ed89627a39f64b0a3cc693e2c0cc8aee2313c25c5ad14c6",
+  "interrupted_identity": "DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1",
+  "interrupted_execution_ordinal": 55,
+  "interrupted_partial_files": [
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/gateway_state/effect_recovery.json",
+      "sha256": "b6e597a845780dd0b2cc0c0069d0c2a782b12bae4f16396fac13b46335171ea2",
+      "bytes": 1186
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/gateway_state/ready_results.json",
+      "sha256": "93c1358a115f21e698732b75836e381877c0a19a533b1e063571afc1f8beff49",
+      "bytes": 7389
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/go_online_result.json",
+      "sha256": "af3668922ee7182bb32d735afef3861a31213ff99c301f9b27de9fed1b2df363",
+      "bytes": 1428350
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/go_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/pir/client_private_trace.jsonl",
+      "sha256": "2b91ad07adce569712793beaa5be060ea590101d4d50da9706f4a7138fa272d2",
+      "bytes": 16174
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/pir/encrypted_agent_descriptor_v7_rows.bin",
+      "sha256": "8ed2fdc2d365a5afa203c1c8a19767e5404276230da9a01908878310dd034239",
+      "bytes": 1024000
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/pir/preprocessing_ready.json",
+      "sha256": "d312d64cd7f86aeb74e36796b12800815bc403d49c2ca99ae052c9d4a7ab157c",
+      "bytes": 182
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/pir/preprocessing_stdout.txt",
+      "sha256": "2ffcfa32a26d72fc4a4a5c1af50e22759b5cccecab78ce341f656bedd950d08a",
+      "bytes": 220
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/pir/server_visible_trace.jsonl",
+      "sha256": "55139cbd5481c71fadca555590f4d1565158d494faeb6240ce2dcfb9ca0dae9a",
+      "bytes": 38969
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/private_provider_evidence.json",
+      "sha256": "8164c88cc3e9d835245521675f3c359eb0342771702c879af10cb2e125836866",
+      "bytes": 1144
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/private_trajectory.json",
+      "sha256": "b8172b7e671cc8e3454f70a16e8dbfbb90d8b4bfb6504166a3c322ec30a4b2d5",
+      "bytes": 985
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/trusted_control_events.jsonl",
+      "sha256": "a83eebd28021ec6053bc85955b2a3e855d01ddd0b94cce78c4bcc998032d20ce",
+      "bytes": 813
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/trusted_delivery_ledger.json",
+      "sha256": "33b9a49056072c2379277956c75541e0bd77121dff43100de01e801255339115",
+      "bytes": 142
+    },
+    {
+      "path": "sessions/0055_DEV-TAD-P10-T7-MS-SENTINEL-B20003-C1/trusted_online_startup_plan.json",
+      "sha256": "4054b2ef8812e0990ab8012ae97c82d2098bf88d36ba9aa047823059af7f011a",
+      "bytes": 3499
+    }
+  ],
+  "interrupted_partial_inventory_sha256": "5806a0e400d64916032c8fede187e1b88a1fc02c0309e94452507655d101f2b7",
+  "execution_ledger_sha256": "d6825e7de87e09e191d602ed37954ff2a3bf5c2c02ed4ae1329d3fd504bed512",
+  "retries": 0,
+  "classifier_training": 0,
+  "AUC_calculations": 0,
+  "class_conditioned_timing_statistics": 0
+}
