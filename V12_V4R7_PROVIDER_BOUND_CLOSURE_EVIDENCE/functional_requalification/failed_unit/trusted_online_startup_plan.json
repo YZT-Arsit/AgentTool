@@ -1,0 +1,107 @@
+{
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+  "rounds": 521,
+  "admission_rounds": 450,
+  "maximum_real_operations": 50,
+  "round_period_ms": 10,
+  "provider_completion_bound_ms": 200,
+  "request_bhttp_bytes": 1024,
+  "response_bhttp_bytes": 768,
+  "request_final_bytes": 1079,
+  "response_final_bytes": 800,
+  "public_session_liveness_cap_ms": 60000,
+  "admission_horizon_ms": 4500,
+  "pir_resolution_period_ms": 60,
+  "pir_public_epoch_ms": 6000,
+  "pir_resolution_opportunities": 100,
+  "pir_initial_lead_ms": 25,
+  "timing_semantic_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7",
+  "response_initial_release_delay_ms": 0,
+  "response_public_lag_ms": 30,
+  "response_preparation_lead_ms": 20,
+  "response_preparation_workers": 6,
+  "state_directory": "/root/autodl-tmp/v12_v4r7_functional_16/DEV-DTVR-V4R7-P10-B200-OA-CAUSAL_DEPTH_50-001/gateway_state",
+  "routes": [
+    {
+      "route_handle": "route-tool-a",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:42909/execute",
+      "policy_id": "policy-tool-a"
+    },
+    {
+      "route_handle": "route-tool-b",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:44137/execute",
+      "policy_id": "policy-tool-b"
+    },
+    {
+      "route_handle": "route-tool-read",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:38519/execute",
+      "policy_id": "policy-tool-read"
+    },
+    {
+      "route_handle": "route-tool-idem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:36521/execute",
+      "policy_id": "policy-tool-idem"
+    },
+    {
+      "route_handle": "route-tool-nonidem",
+      "action_kind": "REAL_TOOL",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:42761/execute",
+      "policy_id": "policy-tool-nonidem"
+    },
+    {
+      "route_handle": "route-external-local",
+      "action_kind": "REAL_EXTERNAL_HTTP",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:32879/execute",
+      "policy_id": "policy-external-local"
+    },
+    {
+      "route_handle": "route-agent-c",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:34257/execute",
+      "policy_id": "policy-agent-c"
+    },
+    {
+      "route_handle": "route-agent-11",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:33713/execute",
+      "policy_id": "policy-agent-11"
+    },
+    {
+      "route_handle": "route-agent-12",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:34069/execute",
+      "policy_id": "policy-agent-12"
+    },
+    {
+      "route_handle": "route-agent-13",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "NON_IDEMPOTENT_EFFECT",
+      "endpoint": "http://127.0.0.1:42751/execute",
+      "policy_id": "policy-agent-13"
+    },
+    {
+      "route_handle": "route-agent-21",
+      "action_kind": "REAL_AGENT_SERVICE",
+      "effect_semantics": "READ_ONLY",
+      "endpoint": "http://127.0.0.1:45599/execute",
+      "policy_id": "policy-agent-21"
+    }
+  ],
+  "actions": [],
+  "scheduler_tolerance_ms": 3,
+  "preparation_lead_ms": 1
+}

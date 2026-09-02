@@ -1,0 +1,791 @@
+[
+  {
+    "stage": "SESSION_T0",
+    "operation_id": "",
+    "monotonic_ns": 3731544985975500
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opeadc73e16c54d011dc820b114b0b",
+    "monotonic_ns": 3731545059118617
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opeadc73e16c54d011dc820b114b0b",
+    "monotonic_ns": 3731545184661558,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opeadc73e16c54d011dc820b114b0b",
+    "monotonic_ns": 3731545393420022,
+    "result_round": 1
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opbb36edd51056cf312f16ac3c3a99",
+    "monotonic_ns": 3731545403544139
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opbb36edd51056cf312f16ac3c3a99",
+    "monotonic_ns": 3731545403603875,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opbb36edd51056cf312f16ac3c3a99",
+    "monotonic_ns": 3731545443209323,
+    "result_round": 6
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opc0b14eeff3f4080433283ec38779",
+    "monotonic_ns": 3731545452695905
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opc0b14eeff3f4080433283ec38779",
+    "monotonic_ns": 3731545452746636,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opc0b14eeff3f4080433283ec38779",
+    "monotonic_ns": 3731545493437979,
+    "result_round": 11
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op543f302395c5b92a0496cd906914",
+    "monotonic_ns": 3731545503102203
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op543f302395c5b92a0496cd906914",
+    "monotonic_ns": 3731545503148267,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op543f302395c5b92a0496cd906914",
+    "monotonic_ns": 3731545543336439,
+    "result_round": 16
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opd0590db7592e229f3d381acc6033",
+    "monotonic_ns": 3731545554402636
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opd0590db7592e229f3d381acc6033",
+    "monotonic_ns": 3731545554444070,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opd0590db7592e229f3d381acc6033",
+    "monotonic_ns": 3731545593937170,
+    "result_round": 21
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op5a4898364517ea9fdf29f20e8e17",
+    "monotonic_ns": 3731545604420731
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op5a4898364517ea9fdf29f20e8e17",
+    "monotonic_ns": 3731545604463923,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op5a4898364517ea9fdf29f20e8e17",
+    "monotonic_ns": 3731545644022233,
+    "result_round": 26
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opfb4c2b8f314d4f89d83808a617ca",
+    "monotonic_ns": 3731545655142172
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opfb4c2b8f314d4f89d83808a617ca",
+    "monotonic_ns": 3731545655182258,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opfb4c2b8f314d4f89d83808a617ca",
+    "monotonic_ns": 3731545694721443,
+    "result_round": 31
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opb88e31fdb2c80eea73bb7655179b",
+    "monotonic_ns": 3731545706196967
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opb88e31fdb2c80eea73bb7655179b",
+    "monotonic_ns": 3731545706245592,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opb88e31fdb2c80eea73bb7655179b",
+    "monotonic_ns": 3731545745315537,
+    "result_round": 36
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op9f84db5154613c00c513fbccef6f",
+    "monotonic_ns": 3731545757303884
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op9f84db5154613c00c513fbccef6f",
+    "monotonic_ns": 3731545757351964,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op9f84db5154613c00c513fbccef6f",
+    "monotonic_ns": 3731545795486791,
+    "result_round": 41
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op51ca5d297c10dbfdecd5ace7054f",
+    "monotonic_ns": 3731545807447824
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op51ca5d297c10dbfdecd5ace7054f",
+    "monotonic_ns": 3731545807491423,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op51ca5d297c10dbfdecd5ace7054f",
+    "monotonic_ns": 3731545846712325,
+    "result_round": 46
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op5ab1c807696a3adc6e88a7b798c6",
+    "monotonic_ns": 3731545858596280
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op5ab1c807696a3adc6e88a7b798c6",
+    "monotonic_ns": 3731545858638025,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op5ab1c807696a3adc6e88a7b798c6",
+    "monotonic_ns": 3731545896929879,
+    "result_round": 51
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op443759dd030225d21475c40cd3fc",
+    "monotonic_ns": 3731545909424541
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op443759dd030225d21475c40cd3fc",
+    "monotonic_ns": 3731545909476810,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op443759dd030225d21475c40cd3fc",
+    "monotonic_ns": 3731545946513282,
+    "result_round": 56
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opc0581a995224323afd4e51391ac9",
+    "monotonic_ns": 3731545959627706
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opc0581a995224323afd4e51391ac9",
+    "monotonic_ns": 3731545959676662,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opc0581a995224323afd4e51391ac9",
+    "monotonic_ns": 3731546127078584,
+    "result_round": 61
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op927797f96b88cfbc1473d781d494",
+    "monotonic_ns": 3731546135439992
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op927797f96b88cfbc1473d781d494",
+    "monotonic_ns": 3731546135496094,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op927797f96b88cfbc1473d781d494",
+    "monotonic_ns": 3731546268952502,
+    "result_round": 79
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op8ea209e868fab5a09ccbf4574e18",
+    "monotonic_ns": 3731546282571381
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op8ea209e868fab5a09ccbf4574e18",
+    "monotonic_ns": 3731546282628857,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op8ea209e868fab5a09ccbf4574e18",
+    "monotonic_ns": 3731546409231501,
+    "result_round": 93
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opf76485b6b1e2eac30bdd93008924",
+    "monotonic_ns": 3731546423761169
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opf76485b6b1e2eac30bdd93008924",
+    "monotonic_ns": 3731546423824400,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opf76485b6b1e2eac30bdd93008924",
+    "monotonic_ns": 3731546550557319,
+    "result_round": 107
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opd93dcc74368c8c66cf27cb76c01a",
+    "monotonic_ns": 3731546565025411
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opd93dcc74368c8c66cf27cb76c01a",
+    "monotonic_ns": 3731546565079861,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opd93dcc74368c8c66cf27cb76c01a",
+    "monotonic_ns": 3731546691543038,
+    "result_round": 121
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op9cf64e2342d0673a048fc266eafe",
+    "monotonic_ns": 3731546703862658
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op9cf64e2342d0673a048fc266eafe",
+    "monotonic_ns": 3731546703914537,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op9cf64e2342d0673a048fc266eafe",
+    "monotonic_ns": 3731546832390333,
+    "result_round": 135
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opedb12b17c514459f871ef7ccc26a",
+    "monotonic_ns": 3731546847780648
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opedb12b17c514459f871ef7ccc26a",
+    "monotonic_ns": 3731546847833388,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opedb12b17c514459f871ef7ccc26a",
+    "monotonic_ns": 3731546983872430,
+    "result_round": 150
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opab09a8995b6fcec4165e3a86348b",
+    "monotonic_ns": 3731546997091733
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opab09a8995b6fcec4165e3a86348b",
+    "monotonic_ns": 3731546997143883,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opab09a8995b6fcec4165e3a86348b",
+    "monotonic_ns": 3731547124613076,
+    "result_round": 164
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op340e8bdf86d3185f2c7c91f8b5d8",
+    "monotonic_ns": 3731547140821721
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op340e8bdf86d3185f2c7c91f8b5d8",
+    "monotonic_ns": 3731547140875519,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op340e8bdf86d3185f2c7c91f8b5d8",
+    "monotonic_ns": 3731547275728145,
+    "result_round": 179
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opd0c9de6f9eb72afac12234e87412",
+    "monotonic_ns": 3731547291768677
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opd0c9de6f9eb72afac12234e87412",
+    "monotonic_ns": 3731547291821213,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opd0c9de6f9eb72afac12234e87412",
+    "monotonic_ns": 3731547426652048,
+    "result_round": 194
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opb50e37fad8ade2dd63ba23c449c7",
+    "monotonic_ns": 3731547443989682
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opb50e37fad8ade2dd63ba23c449c7",
+    "monotonic_ns": 3731547444041315,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opb50e37fad8ade2dd63ba23c449c7",
+    "monotonic_ns": 3731547578097505,
+    "result_round": 209
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opb7d0345f0ab8ff381523eda1783a",
+    "monotonic_ns": 3731547595545019
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opb7d0345f0ab8ff381523eda1783a",
+    "monotonic_ns": 3731547595597434,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opb7d0345f0ab8ff381523eda1783a",
+    "monotonic_ns": 3731547728713873,
+    "result_round": 224
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "ope7dcddd27db640f243ede220b361",
+    "monotonic_ns": 3731547747461747
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "ope7dcddd27db640f243ede220b361",
+    "monotonic_ns": 3731547747513751,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "ope7dcddd27db640f243ede220b361",
+    "monotonic_ns": 3731547879985366,
+    "result_round": 239
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opc0487513724283f517432d7fa429",
+    "monotonic_ns": 3731547898909419
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opc0487513724283f517432d7fa429",
+    "monotonic_ns": 3731547898968775,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opc0487513724283f517432d7fa429",
+    "monotonic_ns": 3731548032015538,
+    "result_round": 254
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op31b12f90b6ca516663c10784c1f2",
+    "monotonic_ns": 3731548049043174
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op31b12f90b6ca516663c10784c1f2",
+    "monotonic_ns": 3731548049095036,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op31b12f90b6ca516663c10784c1f2",
+    "monotonic_ns": 3731548181960614,
+    "result_round": 269
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op2129607cb7bb395915b2354349b2",
+    "monotonic_ns": 3731548201381098
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op2129607cb7bb395915b2354349b2",
+    "monotonic_ns": 3731548201431998,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op2129607cb7bb395915b2354349b2",
+    "monotonic_ns": 3731548332977598,
+    "result_round": 284
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op62968d19855fefb7252314214296",
+    "monotonic_ns": 3731548352002287
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op62968d19855fefb7252314214296",
+    "monotonic_ns": 3731548352059809,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op62968d19855fefb7252314214296",
+    "monotonic_ns": 3731548483917492,
+    "result_round": 299
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op30468ea9b7d56935c644174d740a",
+    "monotonic_ns": 3731548502984545
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op30468ea9b7d56935c644174d740a",
+    "monotonic_ns": 3731548503034113,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op30468ea9b7d56935c644174d740a",
+    "monotonic_ns": 3731548635660885,
+    "result_round": 314
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op4f5dd4127f0ae6040f9047608aca",
+    "monotonic_ns": 3731548655011342
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op4f5dd4127f0ae6040f9047608aca",
+    "monotonic_ns": 3731548655068197,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op4f5dd4127f0ae6040f9047608aca",
+    "monotonic_ns": 3731548786909872,
+    "result_round": 329
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opa3e5ec8903c664bca4cbae6e1d18",
+    "monotonic_ns": 3731548805379501
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opa3e5ec8903c664bca4cbae6e1d18",
+    "monotonic_ns": 3731548805439971,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opa3e5ec8903c664bca4cbae6e1d18",
+    "monotonic_ns": 3731548937563390,
+    "result_round": 344
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op45a69c353165cf49a62e728258ca",
+    "monotonic_ns": 3731548957359998
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op45a69c353165cf49a62e728258ca",
+    "monotonic_ns": 3731548957415379,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op45a69c353165cf49a62e728258ca",
+    "monotonic_ns": 3731549088994526,
+    "result_round": 359
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op4f92732ebb0ca51e427fe90db218",
+    "monotonic_ns": 3731549108458342
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op4f92732ebb0ca51e427fe90db218",
+    "monotonic_ns": 3731549108516607,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op4f92732ebb0ca51e427fe90db218",
+    "monotonic_ns": 3731549239548367,
+    "result_round": 374
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op700e185f4f364be2a7bfc6c4dcc3",
+    "monotonic_ns": 3731549258615461
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op700e185f4f364be2a7bfc6c4dcc3",
+    "monotonic_ns": 3731549258674004,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op700e185f4f364be2a7bfc6c4dcc3",
+    "monotonic_ns": 3731549391066160,
+    "result_round": 389
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op2b7cf4ee97dafb4f9178996ae391",
+    "monotonic_ns": 3731549411292038
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op2b7cf4ee97dafb4f9178996ae391",
+    "monotonic_ns": 3731549411345537,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op2b7cf4ee97dafb4f9178996ae391",
+    "monotonic_ns": 3731549542059844,
+    "result_round": 404
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opa3bca907eacc8173637cab3579e4",
+    "monotonic_ns": 3731549562432953
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opa3bca907eacc8173637cab3579e4",
+    "monotonic_ns": 3731549562485072,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opa3bca907eacc8173637cab3579e4",
+    "monotonic_ns": 3731549692950623,
+    "result_round": 419
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op9bc61146a2a022694e5c3b36104f",
+    "monotonic_ns": 3731549713176638
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op9bc61146a2a022694e5c3b36104f",
+    "monotonic_ns": 3731549713235909,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op9bc61146a2a022694e5c3b36104f",
+    "monotonic_ns": 3731549844979343,
+    "result_round": 434
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op058070ae30f5abe7d99cd8085057",
+    "monotonic_ns": 3731549867931420
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op058070ae30f5abe7d99cd8085057",
+    "monotonic_ns": 3731549867985319,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "op058070ae30f5abe7d99cd8085057",
+    "monotonic_ns": 3731550005825659,
+    "result_round": 450
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opdbfcde64911498991564f224ab64",
+    "monotonic_ns": 3731550027471678
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opdbfcde64911498991564f224ab64",
+    "monotonic_ns": 3731550027524382,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opd376e919d183b15ce371d303f786",
+    "monotonic_ns": 3731550041590024
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opd376e919d183b15ce371d303f786",
+    "monotonic_ns": 3731550041627868,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opad9eff85de39f22f99134ac68c14",
+    "monotonic_ns": 3731550052886434
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opad9eff85de39f22f99134ac68c14",
+    "monotonic_ns": 3731550052932504,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op77a2f828dd8cd844cae556340b04",
+    "monotonic_ns": 3731550063242221
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op77a2f828dd8cd844cae556340b04",
+    "monotonic_ns": 3731550063279045,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op756882fa5063b99c46bd5f29d84c",
+    "monotonic_ns": 3731550073757796
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op756882fa5063b99c46bd5f29d84c",
+    "monotonic_ns": 3731550073788669,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op2168a88b42ca95be06f6d9fd260b",
+    "monotonic_ns": 3731550084400771
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op2168a88b42ca95be06f6d9fd260b",
+    "monotonic_ns": 3731550084432523,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op02b2410a4674d5e95d1b3cb10ced",
+    "monotonic_ns": 3731550095096148
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op02b2410a4674d5e95d1b3cb10ced",
+    "monotonic_ns": 3731550095123438,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op0ea57cc362c3ab37cd529d3791c1",
+    "monotonic_ns": 3731550106491877
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op0ea57cc362c3ab37cd529d3791c1",
+    "monotonic_ns": 3731550106551645,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op40a7d8c2b5b84e6531a82cbf275d",
+    "monotonic_ns": 3731550118431145
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op40a7d8c2b5b84e6531a82cbf275d",
+    "monotonic_ns": 3731550118478563,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "op0d1ae87c8320cf1b2703448e7a1d",
+    "monotonic_ns": 3731550129715161
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "op0d1ae87c8320cf1b2703448e7a1d",
+    "monotonic_ns": 3731550129748405,
+    "agent_id": 10
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opee3d259a0160f53c0fb46531099b",
+    "monotonic_ns": 3731550141154319
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opee3d259a0160f53c0fb46531099b",
+    "monotonic_ns": 3731550141186336,
+    "agent_id": 10
+  }
+]

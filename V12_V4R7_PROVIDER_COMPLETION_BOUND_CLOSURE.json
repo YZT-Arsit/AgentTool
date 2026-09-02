@@ -1,0 +1,69 @@
+{
+  "schema": "AgentTool.V12V4R7ProviderCompletionBoundClosure/1",
+  "base_semantic_audit": "7565186c3215284df714e56fb8a01adb6a86244e",
+  "base_v4r6_reliability_closure": "0ff3bde2b9e889a0677c7b1b38f2bb3854f2eb6d",
+  "v4r7_runtime_commit": "4c6507ad82b4dc2873ef7d536563b8bd0f1f0f0e",
+  "root_cause": "PROVIDER_COMPLETION_BOUND_TOO_TIGHT_FOR_DEPLOYMENT",
+  "current_b_ms": 50,
+  "synthetic_provider_attempts": 10000,
+  "provider_end_to_end_ms": {
+    "p50": 30.955893,
+    "p90": 59.937179,
+    "p95": 66.298969,
+    "p99": 74.090418,
+    "p99_9": 79.736184,
+    "max": 83.676634
+  },
+  "provider_logical_work_ms": {
+    "p50": 0.183973,
+    "p90": 0.197691,
+    "p95": 0.20755,
+    "p99": 0.234851,
+    "p99_9": 0.38436,
+    "max": 0.573281
+  },
+  "b_candidates_ms": [
+    100,
+    200,
+    500,
+    1000
+  ],
+  "required_bound_ms": 134,
+  "selected_b_ms": 200,
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "v4r7_r": 521,
+  "v4r7_scheduled_lifetime_ms": 5210,
+  "timeout_status_mapping": "PASS",
+  "v4r7_synthetic_reliability": {
+    "passed": 200,
+    "planned": 200,
+    "executed": 200,
+    "failed": 0,
+    "retries": 0,
+    "missing_relay_slots": 0,
+    "deadline_misses": 0,
+    "maximum_release_slip_ns": 4486398,
+    "status": "PASS"
+  },
+  "p10_v4r7_functional": {
+    "passed": 6,
+    "planned": 16,
+    "executed": 7,
+    "failed": 1,
+    "retries": 0,
+    "status": "FAIL"
+  },
+  "microsoft_cache_reuse_30": "NOT_RUN_DUE_PRIOR_FIRST_FAILURE",
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0,
+  "p20": "NOT_RUN",
+  "p25": "NOT_RUN",
+  "ready_for_duplex_repair_smoke": false,
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "evidence_hashes": {
+    "freeze": "d323c6d85d693aba2af6be34cefe34e33e39ebe1c33b14a7bfd3510a822f2e99",
+    "reliability_summary": "af4f986ee1877eb7a0ccde873206cb87f7f3ef9dae4e00d5660e6de324cb3f0e",
+    "functional_summary": "fa613ec49c4295fca16dc65bf7608e85e0be1e3e6804df7a12b23fc9d865114e"
+  }
+}

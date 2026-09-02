@@ -1,0 +1,42 @@
+{
+  "schema": "AgentTool.V12V4R7ExecutionIntegrity/1",
+  "runtime_source_commit": "4c6507ad82b4dc2873ef7d536563b8bd0f1f0f0e",
+  "execution_host": "controlled Linux research host",
+  "source_hash_matches": {
+    "common_action_gateway_v2/canonicalv9/online.go": "085876ee02f11b5790e62eb985f1da9a6fe143a7cc4c3f68981f445a7ade2188",
+    "common_action_gateway_v2/canonicalv9/runner.go": "d911a4a7c4674c7a1f9d13704d26dc071c0fcbe726d341d0db01c66e15800851",
+    "v12_timing/profile.py": "5a7830c857688b5604ec0679713b45fbcf29dd8aa7551d1c2ad9fc3aadfcf13c",
+    "v11_online/session.py": "fb8aec445075fc2dcf0368eff2d017b8edda098c4ee933e786a31ccea1b29a03",
+    "scripts/run_v12_duplex_response_reliability.py": "982bd6b4105c9bf0f94293c4541e30386ef8e5b8e80f519dc31664143047bf8b",
+    "scripts/run_v12_v4r7_reliability.py": "fb4800be9c894dce422e08db302aefc403497fd5e870ecc338670f0fee33545e",
+    "scripts/run_v12_v4r7_functional.py": "b019acef250ba96819dbd2846d571134fa6bc74da1b139d9c27ce756f650192d",
+    "V12_V4R7_PROVIDER_BOUND_CLOSURE_FREEZE.json": "d323c6d85d693aba2af6be34cefe34e33e39ebe1c33b14a7bfd3510a822f2e99"
+  },
+  "actual_imported_modules": {
+    "v12_timing.profile": {
+      "path": "/root/autodl-tmp/v12_v4r7_provider_measure/v12_timing/profile.py",
+      "sha256": "5a7830c857688b5604ec0679713b45fbcf29dd8aa7551d1c2ad9fc3aadfcf13c"
+    },
+    "v11_online.session": {
+      "path": "/root/autodl-tmp/v12_v4r7_provider_measure/v11_online/session.py",
+      "sha256": "fb8aec445075fc2dcf0368eff2d017b8edda098c4ee933e786a31ccea1b29a03"
+    }
+  },
+  "binaries": {
+    "canonical_v12_duplex_timing_runner_sha256": "c031307e7ea1c2745e8be48bf794e61a30bfbb3de03f9986e1bf26b7b1962892",
+    "simplepir_v12_timing_sha256": "743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c"
+  },
+  "tests": {
+    "targeted_python": "25/25 PASS",
+    "v4r7_runner_selection_python": "5/5 PASS",
+    "go_all_affected_packages": "PASS",
+    "go_canonicalv9_elapsed": "39.294s",
+    "v4r7_last_admissible_near_bound_capacity": "PASS (190 ms provider delay, B=200 ms, fixed R=521)",
+    "broad_local_repository_suite": "411 PASS, 62 FAIL, 15 SKIP",
+    "broad_suite_failure_class": "PREEXISTING_OR_ENVIRONMENTAL_MISSING_HISTORICAL_ARTIFACTS_BINARIES_AND_PINNED_FRAMEWORK_ENVS"
+  },
+  "persistent_execution": "NOHUP_WITH_VERIFIED_SURVIVING_WORKER",
+  "source_and_binary_match": true,
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0
+}

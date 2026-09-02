@@ -184,6 +184,57 @@ func TestReadOnlyTimeoutJournalAndSubsequentOperation(t *testing.T) {
 	}
 }
 
+func TestV4R7LastAdmissibleNearBoundCompletionFitsPublicCapacity(t *testing.T) {
+	provider := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		time.Sleep(190 * time.Millisecond)
+		writer.Header().Set("Content-Type", "application/json")
+		_, _ = writer.Write([]byte(`{"status":"OK","payload":"b2s="}`))
+	}))
+	defer provider.Close()
+	plan := diagnosticPlan()
+	plan.ProfileID = "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60"
+	plan.ProfileClass = TimingIndistinguishabilityProfile
+	plan.TimingSemanticRevision = "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7"
+	plan.Rounds = 521
+	plan.AdmissionRounds = 450
+	plan.AdmissionHorizonMS = 4500
+	plan.MaximumRealOperations = 50
+	plan.RoundPeriodMS = 10
+	plan.ProviderCompletionBoundMS = 200
+	plan.PublicSessionLivenessCapMS = TimingPublicSessionLivenessCapMS
+	plan.PIRResolutionPeriodMS = 60
+	plan.PIRPublicEpochMS = 6000
+	plan.PIRResolutionOpportunities = 100
+	plan.PIRInitialLeadMS = 25
+	plan.ResponsePublicLagMS = 30
+	plan.ResponsePreparationLeadMS = 20
+	plan.ResponsePreparationWorkers = 6
+	plan.StateDirectory = filepath.Join(t.TempDir(), "state")
+	plan.Routes = []RouteSpec{{RouteHandle: "private-route", ActionKind: "REAL_TOOL",
+		EffectSemantics: "READ_ONLY", Endpoint: provider.URL, PolicyID: "private-policy"}}
+	current, err := newEngine(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	authorization, _ := json.Marshal(map[string]string{"effect_semantics": "READ_ONLY", "policy_id": "private-policy"})
+	action := v7ohttp.PrivateActionMessage{ProtocolVersion: 1, Kind: v7ohttp.ActionRealTool,
+		RouteHandle: []byte("private-route"), OperationID: []byte("last-admissible-operation"), Authorization: authorization}
+	if err := current.accept(action, 450); err != nil {
+		t.Fatal(err)
+	}
+	current.workers.Wait()
+	result, err := current.ready.ReserveEligible(1, 521)
+	if err != nil || result == nil || result.Status != gatewayv2.StatusOK {
+		t.Fatalf("near-B completion did not fit fixed capacity: result=%+v err=%v", result, err)
+	}
+	if err := current.ready.MarkDelivered("last-admissible-operation"); err != nil {
+		t.Fatalf("near-B completion delivery acknowledgement failed: %v", err)
+	}
+	if current.ready.Pending() != 0 {
+		t.Fatalf("near-B completion left a silent pending result")
+	}
+}
+
 func runOnlineControl(t *testing.T, plan Plan, actions []ActionSpec) (RunResult, []OnlineControlEvent) {
 	t.Helper()
 	controlReader, controlWriter := io.Pipe()

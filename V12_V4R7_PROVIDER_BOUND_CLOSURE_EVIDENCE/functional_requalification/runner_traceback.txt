@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/scripts/run_v12_v4r7_functional.py", line 83, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/scripts/run_v12_v4r7_functional.py", line 41, in main
+    unit = run_one(
+           ^^^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/scripts/run_v12_duplex_functional.py", line 100, in run_one
+    canonical = run_online_framework_workflow(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/v11_online/frameworks.py", line 369, in run_online_framework_workflow
+    return asyncio.run(coroutine)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/v11_online/frameworks.py", line 213, in _run_openai
+    ordered_outcomes = _ordered_outcomes(
+                       ^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_provider_measure/v11_online/frameworks.py", line 41, in _ordered_outcomes
+    raise AssertionError(
+AssertionError: OpenAI online workflow operation-ID execution mismatch: expected=['opeadc73e16c54d011dc820b114b0b', 'opbb36edd51056cf312f16ac3c3a99', 'opc0b14eeff3f4080433283ec38779', 'op543f302395c5b92a0496cd906914', 'opd0590db7592e229f3d381acc6033', 'op5a4898364517ea9fdf29f20e8e17', 'opfb4c2b8f314d4f89d83808a617ca', 'opb88e31fdb2c80eea73bb7655179b', 'op9f84db5154613c00c513fbccef6f', 'op51ca5d297c10dbfdecd5ace7054f', 'op5ab1c807696a3adc6e88a7b798c6', 'op443759dd030225d21475c40cd3fc', 'opc0581a995224323afd4e51391ac9', 'op927797f96b88cfbc1473d781d494', 'op8ea209e868fab5a09ccbf4574e18', 'opf76485b6b1e2eac30bdd93008924', 'opd93dcc74368c8c66cf27cb76c01a', 'op9cf64e2342d0673a048fc266eafe', 'opedb12b17c514459f871ef7ccc26a', 'opab09a8995b6fcec4165e3a86348b', 'op340e8bdf86d3185f2c7c91f8b5d8', 'opd0c9de6f9eb72afac12234e87412', 'opb50e37fad8ade2dd63ba23c449c7', 'opb7d0345f0ab8ff381523eda1783a', 'ope7dcddd27db640f243ede220b361', 'opc0487513724283f517432d7fa429', 'op31b12f90b6ca516663c10784c1f2', 'op2129607cb7bb395915b2354349b2', 'op62968d19855fefb7252314214296', 'op30468ea9b7d56935c644174d740a', 'op4f5dd4127f0ae6040f9047608aca', 'opa3e5ec8903c664bca4cbae6e1d18', 'op45a69c353165cf49a62e728258ca', 'op4f92732ebb0ca51e427fe90db218', 'op700e185f4f364be2a7bfc6c4dcc3', 'op2b7cf4ee97dafb4f9178996ae391', 'opa3bca907eacc8173637cab3579e4', 'op9bc61146a2a022694e5c3b36104f', 'op058070ae30f5abe7d99cd8085057', 'opdbfcde64911498991564f224ab64', 'opd376e919d183b15ce371d303f786', 'opad9eff85de39f22f99134ac68c14', 'op77a2f828dd8cd844cae556340b04', 'op756882fa5063b99c46bd5f29d84c', 'op2168a88b42ca95be06f6d9fd260b', 'op02b2410a4674d5e95d1b3cb10ced', 'op0ea57cc362c3ab37cd529d3791c1', 'op40a7d8c2b5b84e6531a82cbf275d', 'op0d1ae87c8320cf1b2703448e7a1d', 'opee3d259a0160f53c0fb46531099b'] executed=['opeadc73e16c54d011dc820b114b0b', 'opbb36edd51056cf312f16ac3c3a99', 'opc0b14eeff3f4080433283ec38779', 'op543f302395c5b92a0496cd906914', 'opd0590db7592e229f3d381acc6033', 'op5a4898364517ea9fdf29f20e8e17', 'opfb4c2b8f314d4f89d83808a617ca', 'opb88e31fdb2c80eea73bb7655179b', 'op9f84db5154613c00c513fbccef6f', 'op51ca5d297c10dbfdecd5ace7054f', 'op5ab1c807696a3adc6e88a7b798c6', 'op443759dd030225d21475c40cd3fc', 'opc0581a995224323afd4e51391ac9', 'op927797f96b88cfbc1473d781d494', 'op8ea209e868fab5a09ccbf4574e18', 'opf76485b6b1e2eac30bdd93008924', 'opd93dcc74368c8c66cf27cb76c01a', 'op9cf64e2342d0673a048fc266eafe', 'opedb12b17c514459f871ef7ccc26a', 'opab09a8995b6fcec4165e3a86348b', 'op340e8bdf86d3185f2c7c91f8b5d8', 'opd0c9de6f9eb72afac12234e87412', 'opb50e37fad8ade2dd63ba23c449c7', 'opb7d0345f0ab8ff381523eda1783a', 'ope7dcddd27db640f243ede220b361', 'opc0487513724283f517432d7fa429', 'op31b12f90b6ca516663c10784c1f2', 'op2129607cb7bb395915b2354349b2', 'op62968d19855fefb7252314214296', 'op30468ea9b7d56935c644174d740a', 'op4f5dd4127f0ae6040f9047608aca', 'opa3e5ec8903c664bca4cbae6e1d18', 'op45a69c353165cf49a62e728258ca', 'op4f92732ebb0ca51e427fe90db218', 'op700e185f4f364be2a7bfc6c4dcc3', 'op2b7cf4ee97dafb4f9178996ae391', 'opa3bca907eacc8173637cab3579e4', 'op9bc61146a2a022694e5c3b36104f', 'op058070ae30f5abe7d99cd8085057']
