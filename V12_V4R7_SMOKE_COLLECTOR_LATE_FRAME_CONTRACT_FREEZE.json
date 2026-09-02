@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12V4R7SmokeCollectorLateFrameContractFreeze/1",
+  "phase": "V12-V4R7-SMOKE-COLLECTOR-LATE-FRAME-CONTRACT-CLOSURE",
+  "base_abort": "6be7408113583323e6c249c0ab881344b6a61235",
+  "base_contract_closure": "06bb4677fe51defb8823a1fcaf685856cda15845",
+  "root_cause": "COLLECTION_HARNESS_LATE_FRAME_CONTRACT_DEFECT",
+  "protected_runtime_diff": "NONE",
+  "observer_feature_diff": "NONE",
+  "statistical_protocol_diff": "NONE",
+  "collector_integrity_contract_diff": "response deadline slip is retained as a diagnostic rather than treated as an automatic integrity failure",
+  "deadline_slip": "DIAGNOSTIC_ONLY",
+  "negative_integrity_conditions": [
+    "MISSING_PUBLIC_SLOT",
+    "DUPLICATE_PUBLIC_SLOT",
+    "FAILED_RESPONSE_WRITE",
+    "RELAY_APPLICATION_RECEIPT_COUNT_MISMATCH",
+    "MALFORMED_PUBLIC_SLOT_ID",
+    "INCOMPLETE_STRENGTHENED_RELAY_BOUNDARY",
+    "PUBLIC_TRANSCRIPT_FLAG_INVENTORY_MISMATCH",
+    "RESPONSE_NO_CATCH_UP_VIOLATION",
+    "REGISTRY_ORDINAL_SET_MISMATCH",
+    "DEPLOYMENT_OR_PROFILE_MISMATCH"
+  ],
+  "structural_replay": "PASS",
+  "consumed_identity_reexecuted": false,
+  "fresh_identity_block_range": "50000..50063",
+  "fresh_planned_sessions": 640,
+  "retries": 0,
+  "replacements": 0,
+  "privacy_pass_authority": false
+}

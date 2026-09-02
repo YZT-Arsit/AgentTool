@@ -1,0 +1,68 @@
+{
+  "schema": "AgentTool.V12V4R7LateFrameCollectorStructuralReplay/1",
+  "source_evidence_commit": "6be7408113583323e6c249c0ab881344b6a61235",
+  "use": "UNLABELED_STRUCTURAL_VALIDATION_ONLY",
+  "protected_class_accessed": false,
+  "statistical_analysis": false,
+  "input_hashes": {
+    "go_online_result.json": "7c1f3d0c0b9fa2a8be0abd4da42e1ba918efde2e51476027c792f4cf7433dffe",
+    "pir/server_visible_trace.jsonl": "5f4db2317b0bda337c4186e02b56b8b837e913a901efc412819c5f6ce48a5ad5",
+    "pir/private_pir_cover_schedule.json": "a303bb094ff379621860a0630ee5b3b38c5c3738791caa160cd64993e37cb9a8"
+  },
+  "checks": {
+    "runtime_session_complete": true,
+    "public_transcript_complete": true,
+    "response_release_opportunities_exact": true,
+    "response_release_attempts_exact": true,
+    "successful_response_writes_exact": true,
+    "relay_application_receipts_exact": true,
+    "relay_event_count_exact": true,
+    "relay_slot_set_exact": true,
+    "relay_slot_ids_unique": true,
+    "gateway_release_count_exact": true,
+    "gateway_release_slot_set_exact": true,
+    "gateway_release_slot_ids_unique": true,
+    "every_release_attempted": true,
+    "every_response_write_completed": true,
+    "no_response_write_error": true,
+    "fixed_request_size": true,
+    "fixed_response_size": true,
+    "complete_duplex_relay_boundaries": true,
+    "response_no_catch_up_contract": true,
+    "registry_count_exact": true,
+    "registry_ordinal_set_exact": true,
+    "registry_ordinals_unique": true,
+    "registry_fixed_public_shape": true,
+    "registry_application_timestamps_complete": true,
+    "cover_schedule_exact": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "diagnostics": {
+    "response_deadline_miss_count": 2,
+    "maximum_response_release_slip_ns": 108815320,
+    "deadline_slip_is_integrity_failure": false
+  },
+  "relay_projection_view": "DUPLEX_TIMING_ONLY_VIEW",
+  "registry_projection_view": "TIMING_ONLY_VIEW",
+  "relay_raw_widths": [
+    521,
+    520,
+    521,
+    520,
+    521,
+    520,
+    521,
+    520,
+    521,
+    521,
+    521
+  ],
+  "registry_raw_widths": [
+    100,
+    99,
+    100,
+    100
+  ],
+  "structural_replay": "PASS",
+  "identity_reexecuted": false
+}

@@ -301,6 +301,20 @@ def _platform_diagnostics(records: list[dict[str, Any]]) -> dict[str, Any]:
         bool(record["platform_diagnostics"]["infrastructure_liveness_failure"])
         for record in complete
     )
+    response_slips = [
+        int(value)
+        for record in complete
+        for value in record["platform_diagnostics"].get(
+            "response_release_slip_ns", []
+        )
+    ]
+    result["response_deadline_miss_count"] = sum(
+        int(record["platform_diagnostics"].get("response_deadline_miss_count", 0))
+        for record in complete
+    )
+    result["response_release_slip_ns"] = distribution(response_slips)
+    result["maximum_response_release_slip_ns"] = max(response_slips, default=0)
+    result["response_deadline_miss_is_diagnostic_only"] = True
     result["outlier_removal"] = "NONE"
     result["winsorization"] = "NONE"
     result["role"] = "PLATFORM_DIAGNOSTIC_NOT_CLASSIFIER_FEATURE"

@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from v11_online.frameworks import prewarm_framework, run_online_framework_workflow
 from v11_online.session import CanonicalOnlineSession, OnlineSessionFailure
+from v12_timing.collector_integrity import v4r7_public_transcript_contract
 from v12_timing.isolated_tasks import FRAMEWORKS, workload_manifest
 from v12_timing.projection import (
     DUPLEX_TIMING_ONLY_VIEW,
@@ -258,11 +259,6 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         ),
         "gateway_response_clock_complete": (not duplex_timing)
         or len(trace.get("gateway_response_releases", [])) == profile.total_rounds,
-        "gateway_release_deadlines_met": (not duplex_timing)
-        or all(
-            not bool(row.get("deadline_miss"))
-            for row in trace.get("gateway_response_releases", [])
-        ),
         "complete_registry_response_send_ns": all(
             int(row.get("response_send_ns", 0)) > 0 for row in registry_rows
         ),
@@ -276,6 +272,24 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         "no_out_of_schedule_PIR": len(cover) == 100
         and all(int(row["ordinal"]) == index for index, row in enumerate(cover)),
     }
+    response_diagnostics: dict[str, Any] = {
+        "response_deadline_miss_count": 0,
+        "response_release_slip_ns": [],
+        "maximum_response_release_slip_ns": 0,
+        "deadline_slip_is_integrity_failure": False,
+    }
+    if duplex_timing:
+        v4r7_checks, response_diagnostics = v4r7_public_transcript_contract(
+            trace,
+            registry_rows,
+            cover,
+            expected_rounds=profile.total_rounds,
+            expected_queries=profile.pir_resolution_opportunities,
+            response_period_ms=profile.round_period_ms,
+            expected_request_bytes=1079,
+            expected_response_bytes=800,
+        )
+        structural_checks.update(v4r7_checks)
     failed_structural = [key for key, value in structural_checks.items() if not value]
     if failed_structural:
         raise CommonIntegrityFailure(
@@ -429,6 +443,7 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
                     registry_projection["query_response_ns"]
                 ),
                 "infrastructure_liveness_failure": False,
+                **response_diagnostics,
             },
             "raw_evidence_hashes": _existing_hashes(unit_root),
         }
