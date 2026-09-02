@@ -703,6 +703,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	}
 	<-schedulerDone
 	engine.workers.Wait()
+	engine.responseAcks.Wait()
 	close(done)
 	sort.Slice(results, func(i, j int) bool { return results[i].Round < results[j].Round })
 	delivered := make(map[string]bool, len(results))

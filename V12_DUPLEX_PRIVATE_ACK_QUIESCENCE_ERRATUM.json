@@ -1,0 +1,12 @@
+{
+  "schema": "AgentTool.V12DuplexPrivateAckQuiescenceErratum/1",
+  "status": "FROZEN_BEFORE_ANY_V4R5_FUNCTIONAL_IDENTITY",
+  "discovery_gate": "go test -race ./canonicalv9",
+  "finding": "asynchronous private delivery acknowledgement could append a private event while RunOnline copied the private event log",
+  "repair": "track every private acknowledgement goroutine and wait for private acknowledgement quiescence after all public response releases and before evidence snapshot",
+  "public_release_effect": "NONE; the wait occurs only after the fixed public response clock completes",
+  "observer_projection_effect": "NONE; the affected log is private diagnostic evidence",
+  "protected_timing_sessions_before_repair": 0,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0
+}

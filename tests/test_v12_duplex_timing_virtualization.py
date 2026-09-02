@@ -194,7 +194,7 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
 
 def test_duplex_functional_manifest_freezes_48_fresh_v4r5_identities() -> None:
     freeze = json.loads(
-        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V6.json").read_text()
+        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V7.json").read_text()
     )
     assert freeze["frozen_before_functional_execution"] is True
     assert len(freeze["profiles"]) == 3
@@ -202,7 +202,7 @@ def test_duplex_functional_manifest_freezes_48_fresh_v4r5_identities() -> None:
     assert len(freeze["workloads"]) == 8
     assert freeze["planned_identities"] == 48
     assert freeze["retry_count"] == freeze["replacement_count"] == 0
-    assert freeze["identity_suffix"] == "006"
+    assert freeze["identity_suffix"] == "007"
     assert freeze["fixed"]["response_initial_release_delay_ms"] == 50
     assert freeze["fixed"]["response_preparation_lead_ms"] == 20
     assert freeze["fixed"]["response_preparation_workers"] == 6

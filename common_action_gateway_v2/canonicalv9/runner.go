@@ -265,6 +265,7 @@ type engine struct {
 	httpClient       *http.Client
 	providerCalls    atomic.Int64
 	eventsMu         sync.Mutex
+	responseAcks     sync.WaitGroup
 	events           []PrivateEvent
 	workers          sync.WaitGroup
 	slotsMu          sync.Mutex
@@ -750,7 +751,9 @@ func (e *engine) commitGatewayResponse(slot v7ohttp.SlotID, responseContext v7oh
 		ack := make(chan string, 1)
 		prepared := v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}
 		if prepared.OperationID != "" {
+			e.responseAcks.Add(1)
 			go func() {
+				defer e.responseAcks.Done()
 				<-prepared.Ack
 				_ = e.ready.MarkDelivered(prepared.OperationID)
 				_ = e.journal.MarkResultDelivered(prepared.OperationID)
@@ -1090,6 +1093,7 @@ func Run(plan Plan) (RunResult, error) {
 		}
 	}
 	engine.workers.Wait()
+	engine.responseAcks.Wait()
 	sort.Slice(results, func(i, j int) bool { return results[i].Round < results[j].Round })
 	delivered := make(map[string]bool, len(results))
 	for _, result := range results {
