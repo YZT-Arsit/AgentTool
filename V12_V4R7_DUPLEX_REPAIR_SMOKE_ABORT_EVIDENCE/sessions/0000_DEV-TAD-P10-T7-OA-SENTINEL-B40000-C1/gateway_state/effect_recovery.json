@@ -1,0 +1,6 @@
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000100","semantics":"READ_ONLY","stage":"PROVIDER_STARTED"}}
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000100","semantics":"READ_ONLY","stage":"RESULT_COMMITTED","status":1,"payload_base64":"VjExX1JFU1VMVDoxMGIwNTM1OTNjOWQ5MjEzZGMyMTkzMmE="}}
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000100","semantics":"READ_ONLY","stage":"RESULT_DELIVERED","status":1,"payload_base64":"VjExX1JFU1VMVDoxMGIwNTM1OTNjOWQ5MjEzZGMyMTkzMmE="}}
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000101","semantics":"READ_ONLY","stage":"PROVIDER_STARTED"}}
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000101","semantics":"READ_ONLY","stage":"RESULT_COMMITTED","status":1,"payload_base64":"VjExX1JFU1VMVDoxZTA4ZGM0NDQ5NTBjYjc1YWUwMWUwY2E="}}
+{"schema":"gateway-v7-effect-recovery-wal-v1","entry":{"operation_id":"opTA1007OAS40000101","semantics":"READ_ONLY","stage":"RESULT_DELIVERED","status":1,"payload_base64":"VjExX1JFU1VMVDoxZTA4ZGM0NDQ5NTBjYjc1YWUwMWUwY2E="}}

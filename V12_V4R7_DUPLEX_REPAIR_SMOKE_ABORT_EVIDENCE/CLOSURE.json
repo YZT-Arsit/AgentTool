@@ -1,0 +1,82 @@
+{
+  "schema": "AgentTool.V12V4R7DuplexRepairSmokeAbortClosure/1",
+  "phase": "V12-V4R7-DUPLEX-REPAIR-SMOKE-SENTINEL",
+  "base_contract_closure": "06bb4677fe51defb8823a1fcaf685856cda15845",
+  "execution_source_commit": "cbeef543400cd4b9f35c1b7bac6d8a167234c75f",
+  "runtime_profile": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "protected_runtime_diff": "NONE",
+  "preexecution": {
+    "deployment_integrity": "PASS",
+    "deterministic_tests": "32/32 PASS",
+    "frozen_identity_count": 640,
+    "prior_development_identity_count_checked": 35115,
+    "identity_overlap": 0,
+    "freeze_payload_sha256": "032d1801007a2a3cb9d2058ff3417b06af6b0e9e41870ea8d444114daa4ac77b",
+    "freeze_file_sha256": "b87e4bd19f19ca345b9bafdf7d4f1010cc095162bf7f084e98c13f94ddb9d6df",
+    "go_runner_sha256": "c031307e7ea1c2745e8be48bf794e61a30bfbb3de03f9986e1bf26b7b1962892",
+    "simplepir_runner_sha256": "743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c"
+  },
+  "collection": {
+    "planned_sessions": 640,
+    "executed_sessions": 1,
+    "collector_complete_sessions": 0,
+    "collector_failed_sessions": 1,
+    "retries": 0,
+    "replacements": 0,
+    "status": "ABORTED_PRESTATISTICAL_COLLECTION_HARNESS_CONTRACT_DEFECT",
+    "dataset_closed": true,
+    "dataset_manifest_sha256": "b57fcc590f2dc1e5697dc9de8bbb5a26fb0fb6b44af7fa485017e66a7c75e21f",
+    "dataset_inventory_sha256": "f7f1963b27028e7d8e5c1308b17a666523baff19ae82c9438112f02104588082",
+    "execution_ledger_sha256": "aab4bf278e8b69060e32eb559f9016f88233fc4fef11e4f633372de463e728db"
+  },
+  "abort": {
+    "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B40000-C1",
+    "identity_reexecuted": false,
+    "frozen_collector_verdict": "ABORTED_COMMON_INTEGRITY_FAILURE",
+    "frozen_collector_reason": "gateway_release_deadlines_met",
+    "root_cause": "COLLECTION_HARNESS_LATE_FRAME_CONTRACT_DEFECT",
+    "explanation": "The collector inherited a zero-deadline-miss gate even though the frozen V4R7 late-frame contract permits secret-independent release slip when the committed frame is still written and the public transcript remains complete.",
+    "runtime_session_status": "COMPLETE",
+    "public_transcript_complete": true,
+    "response_release_opportunities": 521,
+    "response_release_attempts": 521,
+    "successful_response_writes": 521,
+    "relay_application_received_cells": 521,
+    "relay_unique_slot_set": "EXACT_1_THROUGH_521",
+    "response_deadline_misses": 2,
+    "infrastructure_liveness_failure": false,
+    "runtime_failure": false
+  },
+  "statistical_exposure": {
+    "classifier_training_runs": 0,
+    "auc_calculations": 0,
+    "bootstrap_runs": 0,
+    "randomization_runs": 0,
+    "class_conditioned_timing_summaries": 0,
+    "selected_train_blocks": 0,
+    "selected_eval_blocks": 0
+  },
+  "observer_comparisons": [
+    {"task": "C1_REGISTRY_RESOLUTION_PATTERN", "framework": "OpenAI Agents SDK", "observer": "REGISTRY", "status": "NOT_RUN"},
+    {"task": "T7_TOOL_VERSUS_AGENT_AS_TOOL", "framework": "OpenAI Agents SDK", "observer": "REGISTRY", "status": "NOT_RUN"},
+    {"task": "T7_TOOL_VERSUS_AGENT_AS_TOOL", "framework": "OpenAI Agents SDK", "observer": "RELAY", "status": "NOT_RUN"},
+    {"task": "T7_TOOL_VERSUS_AGENT_AS_TOOL", "framework": "Microsoft Agent Framework", "observer": "REGISTRY", "status": "NOT_RUN"},
+    {"task": "T7_TOOL_VERSUS_AGENT_AS_TOOL", "framework": "Microsoft Agent Framework", "observer": "RELAY", "status": "NOT_RUN"},
+    {"task": "T9_PROVIDER_READINESS", "framework": "OpenAI Agents SDK", "observer": "RELAY", "status": "NOT_RUN"},
+    {"task": "T9_PROVIDER_READINESS", "framework": "Microsoft Agent Framework", "observer": "RELAY", "status": "NOT_RUN"}
+  ],
+  "development_exclusions": {
+    "all_frozen_smoke_identities_excluded": true,
+    "excluded_identity_count": 640,
+    "future_reuse_allowed": false
+  },
+  "duplex_repair_smoke": "NOT_EVALUABLE",
+  "ready_for_full_duplex_sentinel": false,
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "P10_full": "NOT_RUN",
+  "P20": "NOT_RUN",
+  "P25": "NOT_RUN",
+  "confirmatory": "NOT_RUN",
+  "final_holdout": "NOT_RUN"
+}

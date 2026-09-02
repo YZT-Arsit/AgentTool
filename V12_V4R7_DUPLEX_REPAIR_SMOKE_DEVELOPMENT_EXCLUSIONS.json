@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12V4R7DuplexRepairSmokeDevelopmentExclusions/1",
+  "phase": "V12-V4R7-DUPLEX-REPAIR-SMOKE-SENTINEL",
+  "freeze_manifest": "V12_V4R7_DUPLEX_REPAIR_SMOKE_FREEZE.json",
+  "freeze_file_sha256": "b87e4bd19f19ca345b9bafdf7d4f1010cc095162bf7f084e98c13f94ddb9d6df",
+  "frozen_identity_count": 640,
+  "executed_identity_count": 1,
+  "unexecuted_identity_count": 639,
+  "all_frozen_identities_permanently_excluded": true,
+  "identity_reuse_allowed": false,
+  "retries": 0,
+  "replacements": 0
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "AgentTool.V12V4R7DuplexRepairSmokeSession/1",
+  "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B40000-C1",
+  "task_id": "T7",
+  "framework": "OpenAI Agents SDK",
+  "label": 1,
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "planned_block": 0,
+  "workload_block": 40000,
+  "pair_id": "9800b40bb82e9ccfa375d8ab",
+  "partition": "SENTINEL_TRAIN",
+  "selection_priority": 26,
+  "execution_ordinal": 0,
+  "claim_observers": [
+    "REGISTRY",
+    "RELAY"
+  ],
+  "classifier_feature_exclusions": [
+    "identity",
+    "task_id",
+    "framework",
+    "label",
+    "status",
+    "failure_category",
+    "planned_block",
+    "workload_block",
+    "pair_id",
+    "partition",
+    "selection_priority",
+    "execution_ordinal",
+    "absolute_wall_clock",
+    "platform_diagnostics"
+  ],
+  "status": "FAILED",
+  "failure_category": "COMMON_CAMPAIGN_INTEGRITY_FAILURE",
+  "exception_class": "CommonIntegrityFailure",
+  "exception_string": "broken public-profile/instrumentation contract: gateway_release_deadlines_met",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/v12_v4r7_smoke_exec/scripts/collect_v12_p10_timing_sentinel_resume.py\", line 507, in main\n    record = _collect_one(unit_root, expected, profile=profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_v4r7_smoke_exec/scripts/collect_v12_p10_timing_sentinel_resume.py\", line 281, in _collect_one\n    raise CommonIntegrityFailure(\ncollect_v12_p10_timing_sentinel_resume.CommonIntegrityFailure: broken public-profile/instrumentation contract: gateway_release_deadlines_met\n",
+  "observer_projections": {},
+  "timing_classifier_eligible": false,
+  "raw_evidence_hashes": {
+    "go_online_result.json": "7c1f3d0c0b9fa2a8be0abd4da42e1ba918efde2e51476027c792f4cf7433dffe",
+    "pir/online_query_summary.json": "b13b195033a53659dd8f9a3f14b0139412e3450fbf8d68f72cc081344c19283d",
+    "pir/server_visible_trace.jsonl": "5f4db2317b0bda337c4186e02b56b8b837e913a901efc412819c5f6ce48a5ad5",
+    "pir/private_pir_cover_schedule.json": "a303bb094ff379621860a0630ee5b3b38c5c3738791caa160cd64993e37cb9a8"
+  }
+}

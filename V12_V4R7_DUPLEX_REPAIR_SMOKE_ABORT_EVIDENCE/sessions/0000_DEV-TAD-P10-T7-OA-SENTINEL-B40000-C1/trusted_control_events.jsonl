@@ -1,0 +1,8 @@
+{"type": "SESSION_READY"}
+{"operation_id": "opTA1007OAS40000100", "round": 1, "type": "ACTION_ACCEPTED"}
+{"operation_id": "opTA1007OAS40000100", "round": 1, "type": "ACTION_ADMITTED"}
+{"operation_id": "opTA1007OAS40000100", "result": {"operation_id": "opTA1007OAS40000100", "payload": "VjExX1JFU1VMVDoxMGIwNTM1OTNjOWQ5MjEzZGMyMTkzMmE=", "round": 15, "status": 2}, "round": 15, "type": "RESULT_AVAILABLE"}
+{"operation_id": "opTA1007OAS40000101", "round": 49, "type": "ACTION_ACCEPTED"}
+{"operation_id": "opTA1007OAS40000101", "round": 49, "type": "ACTION_ADMITTED"}
+{"operation_id": "opTA1007OAS40000101", "result": {"operation_id": "opTA1007OAS40000101", "payload": "VjExX1JFU1VMVDoxZTA4ZGM0NDQ5NTBjYjc1YWUwMWUwY2E=", "round": 70, "status": 2}, "round": 70, "type": "RESULT_AVAILABLE"}
+{"type": "SESSION_COMPLETE"}

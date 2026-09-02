@@ -1,0 +1,18 @@
+{
+  "schema": "AgentTool.V12V4R7DuplexRepairSmokeDataset/1",
+  "collection_closed": true,
+  "common_integrity_abort": true,
+  "frozen_manifest_sha256": "b87e4bd19f19ca345b9bafdf7d4f1010cc095162bf7f084e98c13f94ddb9d6df",
+  "session_records": [
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B40000-C1",
+      "status": "FAILED",
+      "failure_category": "COMMON_CAMPAIGN_INTEGRITY_FAILURE",
+      "path": "sessions/0000_DEV-TAD-P10-T7-OA-SENTINEL-B40000-C1/v4r7_duplex_repair_smoke_session.json",
+      "sha256": "0cef4948834694cc27dfffcaca2fdd680073a13814802ee8e03985b28847ccd6"
+    }
+  ],
+  "session_record_count": 1,
+  "execution_ledger_sha256": "aab4bf278e8b69060e32eb559f9016f88233fc4fef11e4f633372de463e728db",
+  "dataset_inventory_sha256": "f7f1963b27028e7d8e5c1308b17a666523baff19ae82c9438112f02104588082"
+}

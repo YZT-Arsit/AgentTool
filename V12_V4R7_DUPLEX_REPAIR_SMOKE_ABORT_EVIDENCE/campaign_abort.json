@@ -1,0 +1,13 @@
+{
+  "schema": "AgentTool.V12V4R7DuplexRepairSmokeCommonAbort/1",
+  "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B40000-C1",
+  "execution_ordinal": 0,
+  "executed_sessions": 1,
+  "exception_class": "CommonIntegrityFailure",
+  "exception_string": "broken public-profile/instrumentation contract: gateway_release_deadlines_met",
+  "identity_consumed_no_retry": true,
+  "retries": 0,
+  "classifier_training_runs": 0,
+  "auc_calculations": 0
+}

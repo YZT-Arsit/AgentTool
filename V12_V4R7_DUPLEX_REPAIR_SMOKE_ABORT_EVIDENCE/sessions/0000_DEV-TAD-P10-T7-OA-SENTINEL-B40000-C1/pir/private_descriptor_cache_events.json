@@ -1,0 +1,14 @@
+[
+  {
+    "operation_id": "opTA1007OAS40000100",
+    "agent_id": 10,
+    "catalog_epoch": 20260829,
+    "cache_hit": false
+  },
+  {
+    "operation_id": "opTA1007OAS40000101",
+    "agent_id": 11,
+    "catalog_epoch": 20260829,
+    "cache_hit": false
+  }
+]

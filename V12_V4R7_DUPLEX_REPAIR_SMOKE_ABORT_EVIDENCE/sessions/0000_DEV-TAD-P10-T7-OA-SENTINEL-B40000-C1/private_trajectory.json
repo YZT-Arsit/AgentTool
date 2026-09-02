@@ -1,0 +1,41 @@
+[
+  {
+    "stage": "SESSION_T0",
+    "operation_id": "",
+    "monotonic_ns": 3736833312165255
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opTA1007OAS40000100",
+    "monotonic_ns": 3736833364304005
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opTA1007OAS40000100",
+    "monotonic_ns": 3736833447581949,
+    "agent_id": 10
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opTA1007OAS40000100",
+    "monotonic_ns": 3736834083674251,
+    "result_round": 15
+  },
+  {
+    "stage": "ACTION_INTENT_SUBMITTED",
+    "operation_id": "opTA1007OAS40000101",
+    "monotonic_ns": 3736834094284925
+  },
+  {
+    "stage": "DYNAMIC_PIR_DESCRIPTOR_RECOVERED",
+    "operation_id": "opTA1007OAS40000101",
+    "monotonic_ns": 3736834168032470,
+    "agent_id": 11
+  },
+  {
+    "stage": "FRAMEWORK_RESULT_DELIVERED",
+    "operation_id": "opTA1007OAS40000101",
+    "monotonic_ns": 3736834726536867,
+    "result_round": 70
+  }
+]

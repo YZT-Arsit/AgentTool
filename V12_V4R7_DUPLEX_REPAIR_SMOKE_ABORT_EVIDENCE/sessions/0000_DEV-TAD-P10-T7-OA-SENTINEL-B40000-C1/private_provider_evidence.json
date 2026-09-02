@@ -1,0 +1,32 @@
+[
+  {
+    "route_handle": "route-tool-read",
+    "handler_start_monotonic_ns": 3736833777317888,
+    "request_received": true,
+    "request_decoded_successfully": true,
+    "handler_logical_completion_monotonic_ns": 3736833777546427,
+    "http_response_status_emitted": 200,
+    "encoded_response_bytes": 79,
+    "response_write_success": true,
+    "response_write_error_class": "",
+    "request_received_monotonic_ns": 3736833777331781,
+    "operation_id": "opTA1007OAS40000100",
+    "request_decoded_monotonic_ns": 3736833777413071,
+    "handler_elapsed_ns": 463288
+  },
+  {
+    "route_handle": "route-agent-11",
+    "handler_start_monotonic_ns": 3736834371172263,
+    "request_received": true,
+    "request_decoded_successfully": true,
+    "handler_logical_completion_monotonic_ns": 3736834371424519,
+    "http_response_status_emitted": 200,
+    "encoded_response_bytes": 79,
+    "response_write_success": true,
+    "response_write_error_class": "",
+    "request_received_monotonic_ns": 3736834371186432,
+    "operation_id": "opTA1007OAS40000101",
+    "request_decoded_monotonic_ns": 3736834371300004,
+    "handler_elapsed_ns": 483607
+  }
+]
