@@ -1,0 +1,71 @@
+{
+  "schema": "AgentTool.V12DuplexTimingVirtualizationClosure/1",
+  "phase": "V12-DUPLEX-TIMING-VIRTUALIZATION-REDESIGN",
+  "base_attribution_evidence": "d22519ca1d8cce0c7fba5a9c3fa950a11bc8824b",
+  "base_decisive_p10_result": "558c97bd5ca8bb9123382800cb73eb410cab6342",
+  "redesign": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION",
+  "implementation_commit": "076bdbe18ffdd982462cd502b30f7b14a46eb520",
+  "gateway_response_clock": "IMPLEMENTED",
+  "gateway_response_commitment": "IMPLEMENTED",
+  "relay_response_independent_of_gateway_secret_work": "YES_MECHANICALLY",
+  "strengthened_relay_observer": [
+    "client_to_relay_receive_ns",
+    "relay_to_gateway_send_ns",
+    "gateway_to_relay_receive_ns",
+    "relay_to_client_send_ns",
+    "session",
+    "public_slot",
+    "fixed_request_size",
+    "fixed_response_size",
+    "public_profile"
+  ],
+  "registry_open_loop_query_clock": "IMPLEMENTED",
+  "registry_query_send_independent_of_prior_private_completion": "YES_MECHANICALLY",
+  "registry_response_shaping": "IMPLEMENTED",
+  "fixed_request_bytes": 1079,
+  "fixed_response_bytes": 800,
+  "fixed_relay_cell_count": {"Delta10": 506, "Delta20": 279, "Delta25": 233},
+  "fixed_registry_query_count": 100,
+  "synthetic_differentials": {
+    "T7_response": "PASS",
+    "T9_response": "PASS",
+    "Registry_real_count": "PASS"
+  },
+  "functional_qualification": {
+    "status": "FAIL",
+    "planned": 48,
+    "executed": 32,
+    "passed": 31,
+    "failed": 1,
+    "retries": 0,
+    "OpenAI": "16/16 executed PASS",
+    "Microsoft": "15/16 executed PASS; P20 CACHE_REUSE_30 stopped after 13/30 returned operations",
+    "P10": "16/16 PASS",
+    "P20": "FAIL at 16th unit; 15/16 passed before abort",
+    "P25": "NOT_RUN"
+  },
+  "post_change_tests": {
+    "local_python_methodology": "29 passed, 1 skipped (Linux binary unavailable on Windows)",
+    "remote_python_methodology": "29 passed, 1 skipped (alternate expected binary name unavailable)",
+    "gateway_go_packages": "canonicalv9 PASS; v9ohttp PASS",
+    "gateway_race_gate": "PASS",
+    "simplepir_bridge_go_package": "PASS",
+    "named_synthetic_differentials": "4/4 PASS"
+  },
+  "transitive_runtime_integrity": {
+    "status": "PASS",
+    "repository_commit": "076bdbe18ffdd982462cd502b30f7b14a46eb520",
+    "files": "108/108",
+    "module_probes": "9/9",
+    "binaries": "2/2",
+    "manifest_sha256": "b7731467b3fcacc5d2aa1f12b8a00200781113689487577553425795332f590f"
+  },
+  "new_protected_timing_sessions": 0,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "p20_sentinel": "NOT_RUN",
+  "p25_sentinel": "NOT_RUN",
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "ready_for_fresh_duplex_sentinel": "NO_FUNCTIONAL_GATE_FAILED"
+}

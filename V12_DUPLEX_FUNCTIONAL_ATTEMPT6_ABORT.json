@@ -1,0 +1,38 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalAttemptAbort/6",
+  "status": "ABORTED_FUNCTIONAL_QUALIFICATION_FAILURE",
+  "implementation_commit": "076bdbe18ffdd982462cd502b30f7b14a46eb520",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE_V7.json",
+  "remote_evidence_root": "/root/autodl-tmp/V12_DUPLEX_FUNCTIONAL_V4R5_076BDBE_RUN",
+  "planned_identities": 48,
+  "executed_identities": 32,
+  "passing_identities": 31,
+  "failed_identities": 1,
+  "retries": 0,
+  "by_delta": {
+    "P10": "16/16 PASS",
+    "P20": "15/16 before abort",
+    "P25": "0/16 NOT_RUN"
+  },
+  "by_framework": {
+    "OpenAI Agents SDK": "16/16 executed PASS",
+    "Microsoft Agent Framework": "15/16 executed PASS"
+  },
+  "failed_identity": "DEV-DTVR-V4R5-P20-MS-CACHE_REUSE_30-007",
+  "failed_coordinate": {
+    "profile": "V12-TIMING-INDIST-V4R5-H50-H4500-P20-PIR60",
+    "framework": "Microsoft Agent Framework",
+    "workload": "CACHE_REUSE_30",
+    "expected_operations": 30,
+    "framework_returned_operations": 13
+  },
+  "failure_stage": "MICROSOFT_ONLINE_WORKFLOW_OPERATION_ID_RECONCILIATION",
+  "root_cause": "NOT_ESTABLISHED_IN_THIS_PHASE",
+  "raw_completion_sha256": "f7337cd623d11020312aed4cbfbf0d63a29aa58766e400c547d5bdfc88ec4b01",
+  "raw_failure_sha256": "845c9291db3cd671c30a182f9c7dc5c44d929e5acb291b7137585bf7a09c7dc3",
+  "all_48_frozen_identities_permanent_development_exclusions": true,
+  "remaining_units_not_executed": true,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "new_protected_timing_sessions": 0
+}

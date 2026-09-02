@@ -1,0 +1,11 @@
+{
+  "schema": "AgentTool.V12DuplexDevelopmentExclusions/1",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE_V7.json",
+  "identity_template": "DEV-DTVR-V4R5-P{10|20|25}-{OA|MS}-{workload}-007",
+  "frozen_identity_count": 48,
+  "executed_identity_count": 32,
+  "unexecuted_identity_count": 16,
+  "all_frozen_identities_excluded_from_future_protected_timing_and_holdout": true,
+  "retry_count": 0,
+  "replacement_count": 0
+}
