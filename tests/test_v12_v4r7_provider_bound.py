@@ -70,3 +70,9 @@ def test_v4r7_preserves_duplex_release_parameters() -> None:
     assert profile.registry_answer_release_delay_ms == 50
     assert profile.registry_worker_lanes == 1
     assert profile.registry_max_inflight == 100
+
+
+def test_v4r7_uses_existing_duplex_runner_without_adapter_change() -> None:
+    source = (ROOT / "v11_online" / "session.py").read_text(encoding="utf-8")
+    assert '"DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7"' in source
+    assert "self.runner_binary = DUPLEX_TIMING_RUNNER" in source
