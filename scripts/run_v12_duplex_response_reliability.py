@@ -130,8 +130,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--runner", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--freeze", type=Path, default=FREEZE)
     args = parser.parse_args()
-    freeze = json.loads(FREEZE.read_text(encoding="utf-8"))
+    freeze = json.loads(args.freeze.read_text(encoding="utf-8"))
     identities = list(freeze["synthetic_reliability_identities"])
     if len(identities) != 200 or len(set(identities)) != 200:
         raise RuntimeError("reliability identity freeze is malformed")
