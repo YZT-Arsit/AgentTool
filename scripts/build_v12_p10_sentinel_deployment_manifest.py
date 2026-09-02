@@ -24,6 +24,10 @@ PROTOCOL_ARTIFACTS = (
 )
 EXTRA_PROBES: dict[str, str] = {}
 DEPLOYMENT_SCHEMA = "AgentTool.V12P10TimingSentinelDeploymentManifest/1"
+BINARIES = (
+    Path("common_action_gateway_v2/bin/canonical-v12-delta-functional-runner"),
+    Path("pir_integration/simplepir_bridge/acv-simplepir-v12-timing"),
+)
 
 
 def sha256(path: Path) -> str:
@@ -146,10 +150,7 @@ def main() -> int:
         }
         for path in sorted(files)
     ]
-    binaries = (
-        Path("common_action_gateway_v2/bin/canonical-v12-delta-functional-runner"),
-        Path("pir_integration/simplepir_bridge/acv-simplepir-v12-timing"),
-    )
+    binaries = BINARIES
     for path in binaries:
         if not (ROOT / path).is_file():
             raise FileNotFoundError(f"required frozen runtime binary unavailable: {path}")

@@ -1,0 +1,101 @@
+{
+  "schema": "AgentTool.V12DuplexP10SentinelProtocolFreeze/1",
+  "phase": "V12-DUPLEX-P10-CANDIDATE-ELIGIBILITY-AND-SENTINEL",
+  "base_duplex_evidence": "bf499d5e56507eb069d4998a2851cfaa23ec7fc6",
+  "base_attribution_evidence": "d22519ca1d8cce0c7fba5a9c3fa950a11bc8824b",
+  "historical_one_sided_result": "558c97bd5ca8bb9123382800cb73eb410cab6342",
+  "candidate_specific_eligibility": {
+    "P10": "AUDIT_REQUIRED_BEFORE_EXECUTION",
+    "P20": "FAIL_UNRESOLVED",
+    "P25": "NOT_TESTED",
+    "P20_failed_identity": "DEV-DTVR-V4R5-P20-MS-CACHE_REUSE_30-007",
+    "P20_expected_operations": 30,
+    "P20_framework_returned_operations": 13,
+    "P20_root_cause": "NOT_ESTABLISHED"
+  },
+  "profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R5-H50-H4500-P10-PIR60",
+    "H_ms": 4500,
+    "Delta_ms": 10,
+    "R": 506,
+    "M": 50,
+    "PIR_period_ms": 60,
+    "PIR_epoch_ms": 6000,
+    "PIR_Q": 100,
+    "request_bytes": 1079,
+    "response_bytes": 800
+  },
+  "tasks": [
+    "C1_REGISTRY_RESOLUTION_PATTERN",
+    "T4_REPEATED_TARGET_PATTERN",
+    "T7_TOOL_VERSUS_AGENT_AS_TOOL",
+    "T9_PROVIDER_READINESS"
+  ],
+  "frameworks": [
+    "OpenAI Agents SDK",
+    "Microsoft Agent Framework"
+  ],
+  "physical_coordinates": 8,
+  "observer_comparisons": 10,
+  "planned_blocks_per_coordinate": 315,
+  "planned_train_blocks_per_coordinate": 189,
+  "planned_eval_blocks_per_coordinate": 126,
+  "selected_complete_train_blocks": 180,
+  "selected_complete_eval_blocks": 120,
+  "sessions_per_coordinate": 630,
+  "planned_identities": 5040,
+  "retry_count": 0,
+  "collection_first": true,
+  "analysis_during_collection": {
+    "classifier_training": 0,
+    "AUC": 0,
+    "bootstrap": 0,
+    "randomization": 0
+  },
+  "relay_observer_fields": [
+    "client_to_relay_receive_ns",
+    "relay_to_gateway_send_ns",
+    "gateway_to_relay_receive_ns",
+    "relay_to_client_send_ns",
+    "session",
+    "public_slot",
+    "fixed_request_bytes",
+    "fixed_response_bytes",
+    "public_profile"
+  ],
+  "feature_contract": {
+    "Relay_view": "DUPLEX_TIMING_ONLY_VIEW",
+    "Relay_feature_width": 5695,
+    "Registry_view": "TIMING_ONLY_VIEW",
+    "Registry_feature_width": 448,
+    "fixed_before_collection": true,
+    "private_fields": false
+  },
+  "statistics": {
+    "protocol": "V3.1_DUPLEX_FEATURE_CONTRACT",
+    "models": [
+      "LOGISTIC_REGRESSION",
+      "EXTRA_TREES",
+      "HIST_GRADIENT_BOOSTING",
+      "RBF_SVM"
+    ],
+    "train_cv_folds": 5,
+    "model_selection": "TRAIN_ONLY",
+    "score_orientation": "TRAIN_ONLY",
+    "sklearn_seed_conversion": "UINT64_MOD_2_POW_32",
+    "decisive_eval_model_count": 1,
+    "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+    "bootstrap_resamples": 10000,
+    "sentinel_early_fail": "LCB99.5 > 0.55",
+    "sentinel_privacy_pass_authority": false
+  },
+  "failure_channel": {
+    "flag_rule": "absolute failure-rate difference > 0.01 AND paired exact two-sided p < 0.05/8",
+    "operational_reliability_concern": "either class failure rate > 0.02"
+  },
+  "authorized_execution": "P10_DUPLEX_SENTINEL_ONLY",
+  "P10_full": "NOT_AUTHORIZED",
+  "P20_P25": "NOT_AUTHORIZED",
+  "confirmatory": "NOT_AUTHORIZED",
+  "final_holdout": "NOT_AUTHORIZED"
+}

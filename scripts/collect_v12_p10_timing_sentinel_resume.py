@@ -19,6 +19,7 @@ from v11_online.frameworks import prewarm_framework, run_online_framework_workfl
 from v11_online.session import CanonicalOnlineSession, OnlineSessionFailure
 from v12_timing.isolated_tasks import FRAMEWORKS, workload_manifest
 from v12_timing.projection import (
+    DUPLEX_TIMING_ONLY_VIEW,
     TIMING_ONLY_VIEW,
     load_registry_server_trace,
     registry_timing_projection,
@@ -227,6 +228,9 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
     registry_rows = load_registry_server_trace(registry_path)
     cover = json.loads(cover_path.read_text(encoding="utf-8"))
     relay_events = list(trace.get("public_relay_events", []))
+    duplex_timing = str(profile.timing_semantic_revision).startswith(
+        "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_"
+    )
 
     structural_checks = {
         "profile_id_exact": str(trace.get("profile_id")) == profile.profile_id,
@@ -236,6 +240,26 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         "exact_Q_queries": int(summary.get("query_count", -1)) == 100 == len(registry_rows),
         "complete_relay_response_send_ns": all(
             int(row.get("response_send_ns", 0)) > 0 for row in relay_events
+        ),
+        "complete_duplex_relay_boundaries": (not duplex_timing)
+        or all(
+            all(
+                int(row.get(field, 0)) > 0
+                for field in (
+                    "client_to_relay_receive_ns",
+                    "relay_to_gateway_send_ns",
+                    "gateway_to_relay_receive_ns",
+                    "relay_to_client_send_ns",
+                )
+            )
+            for row in relay_events
+        ),
+        "gateway_response_clock_complete": (not duplex_timing)
+        or len(trace.get("gateway_response_releases", [])) == 506,
+        "gateway_release_deadlines_met": (not duplex_timing)
+        or all(
+            not bool(row.get("deadline_miss"))
+            for row in trace.get("gateway_response_releases", [])
         ),
         "complete_registry_response_send_ns": all(
             int(row.get("response_send_ns", 0)) > 0 for row in registry_rows
@@ -261,6 +285,7 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
             require_complete_application_timing=True,
             expected_request_bytes=1079,
             expected_response_bytes=800,
+            require_duplex_application_timing=duplex_timing,
         )
         registry_projection = registry_timing_projection(
             registry_rows,
@@ -271,11 +296,25 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         )
     except Exception as error:
         raise CommonIntegrityFailure(f"complete timing projection defect: {error}") from error
-    if relay_projection["view"] != TIMING_ONLY_VIEW or registry_projection["view"] != TIMING_ONLY_VIEW:
+    expected_relay_view = DUPLEX_TIMING_ONLY_VIEW if duplex_timing else TIMING_ONLY_VIEW
+    if relay_projection["view"] != expected_relay_view or registry_projection["view"] != TIMING_ONLY_VIEW:
         raise CommonIntegrityFailure("completed session projection did not use TIMING_ONLY_VIEW")
-    relay_widths = tuple(
-        len(relay_projection[key])
-        for key in (
+    relay_keys = (
+        (
+            "slot_indexed_session_relative_client_to_relay_receive_ns",
+            "chronological_client_to_relay_receive_inter_arrival_ns",
+            "slot_indexed_session_relative_relay_to_gateway_send_ns",
+            "chronological_relay_to_gateway_send_inter_arrival_ns",
+            "slot_indexed_session_relative_gateway_to_relay_receive_ns",
+            "chronological_gateway_to_relay_receive_inter_arrival_ns",
+            "slot_indexed_session_relative_relay_to_client_send_ns",
+            "chronological_relay_to_client_send_inter_arrival_ns",
+            "slot_paired_client_relay_to_gateway_ns",
+            "slot_paired_gateway_roundtrip_ns",
+            "slot_paired_relay_response_forward_ns",
+        )
+        if duplex_timing
+        else (
             "slot_indexed_session_relative_request_ns",
             "chronological_request_inter_arrival_ns",
             "slot_indexed_session_relative_response_send_ns",
@@ -283,8 +322,14 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
             "slot_paired_request_response_ns",
         )
     )
-    if relay_widths != (506, 505, 506, 505, 506):
-        raise CommonIntegrityFailure("completed Relay V3 raw feature widths drifted")
+    relay_widths = tuple(len(relay_projection[key]) for key in relay_keys)
+    expected_relay_widths = (
+        (506, 505, 506, 505, 506, 505, 506, 505, 506, 506, 506)
+        if duplex_timing
+        else (506, 505, 506, 505, 506)
+    )
+    if relay_widths != expected_relay_widths:
+        raise CommonIntegrityFailure("completed Relay raw feature widths drifted")
 
     expected_ids = [case.operation_id for case in cases]
     external_ids = [case.operation_id for case in cases if case.placement != "TRUSTED_MODULE_LOCAL"]
