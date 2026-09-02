@@ -1,0 +1,208 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-MS-CACHE_REUSE_30-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "Microsoft Agent Framework",
+  "workload": "CACHE_REUSE_30",
+  "operation_count": 30,
+  "strict_causal_order_required": true,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opea049784870b360f0957af56e1c0",
+        "child": "op370fe766968ba1ac25b7f95185da",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op370fe766968ba1ac25b7f95185da",
+        "child": "op83233772cb4299f466490eb90a28",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op83233772cb4299f466490eb90a28",
+        "child": "op278f217acd6d8dba54b1a1f4c160",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op278f217acd6d8dba54b1a1f4c160",
+        "child": "op7f40e3ee5f5f6753470a0261db94",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op7f40e3ee5f5f6753470a0261db94",
+        "child": "op65bb2cdcd26003876673c625d8d4",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op65bb2cdcd26003876673c625d8d4",
+        "child": "op33ff086d2815aa6a3d7b1673f95a",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op33ff086d2815aa6a3d7b1673f95a",
+        "child": "opa7a6d293cbc357eb01750e6b42a3",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opa7a6d293cbc357eb01750e6b42a3",
+        "child": "op2bb41dfb775fa779f3898ec5d4e9",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op2bb41dfb775fa779f3898ec5d4e9",
+        "child": "opf9db3f5c18d490931cb1cdc9727c",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf9db3f5c18d490931cb1cdc9727c",
+        "child": "op2ad39d181e66a999b8aef51d19b5",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op2ad39d181e66a999b8aef51d19b5",
+        "child": "op2c29abe58760de5ecb5d02568cd2",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op2c29abe58760de5ecb5d02568cd2",
+        "child": "op0ccc6fe2cab9b9fb93191089fa04",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op0ccc6fe2cab9b9fb93191089fa04",
+        "child": "opba2e1980ba595e3c2aa610dfc68b",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opba2e1980ba595e3c2aa610dfc68b",
+        "child": "opc228b89e6074b95ee97b44a7e5a4",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opc228b89e6074b95ee97b44a7e5a4",
+        "child": "ope8148d9da153b727c3253b182f8c",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "ope8148d9da153b727c3253b182f8c",
+        "child": "ope3578829fb45bd1709aac333a515",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "ope3578829fb45bd1709aac333a515",
+        "child": "op626699a4d3a346f85c1366e0f6cc",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op626699a4d3a346f85c1366e0f6cc",
+        "child": "op49937f6138ab044a0fd4a5c3bc1b",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op49937f6138ab044a0fd4a5c3bc1b",
+        "child": "op552f78562e88ed7accc7dc2921f6",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op552f78562e88ed7accc7dc2921f6",
+        "child": "opef528db3fe07cd55a962ae066961",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opef528db3fe07cd55a962ae066961",
+        "child": "op0faac0e5fbd55bb9269a8b139756",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op0faac0e5fbd55bb9269a8b139756",
+        "child": "opf22b8068aa3f929f39dda7518d34",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf22b8068aa3f929f39dda7518d34",
+        "child": "opb980a92eafdab7a9177ffb7079ff",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opb980a92eafdab7a9177ffb7079ff",
+        "child": "opb73b0c9ba428074f133d1daf7afc",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opb73b0c9ba428074f133d1daf7afc",
+        "child": "opf41fad4251bbd7c53dc4e2865951",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf41fad4251bbd7c53dc4e2865951",
+        "child": "op5061e615ab702b7feec1b1dba63a",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op5061e615ab702b7feec1b1dba63a",
+        "child": "op07145e772bfc34404d62874f8d47",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op07145e772bfc34404d62874f8d47",
+        "child": "op3d883d80d278deae39d330626f8b",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op3d883d80d278deae39d330626f8b",
+        "child": "op7e6a72809b17331e0a4965545b67",
+        "child_submitted_after_parent_delivery": true
+      }
+    ],
+    "passed": true
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}

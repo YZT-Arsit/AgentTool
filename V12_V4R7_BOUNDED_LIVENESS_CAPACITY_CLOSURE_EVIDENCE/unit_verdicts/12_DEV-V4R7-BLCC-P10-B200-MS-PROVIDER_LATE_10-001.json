@@ -1,0 +1,108 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-MS-PROVIDER_LATE_10-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "Microsoft Agent Framework",
+  "workload": "PROVIDER_LATE_10",
+  "operation_count": 10,
+  "strict_causal_order_required": true,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opc254f11059e1f13ffa6eae05ae62",
+        "child": "op7e359314e408a190b5084ac9dc8c",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op7e359314e408a190b5084ac9dc8c",
+        "child": "op3045a5014ac90877952df7b5ff11",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op3045a5014ac90877952df7b5ff11",
+        "child": "opb5a21d946eced2277cc176ee93d7",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opb5a21d946eced2277cc176ee93d7",
+        "child": "op026a44fd86ea4867afebbfd6250f",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op026a44fd86ea4867afebbfd6250f",
+        "child": "op15636a2d419846c9739db0fa70b5",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op15636a2d419846c9739db0fa70b5",
+        "child": "opbb0db8027ec140f0e3ceb5a6b9e9",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opbb0db8027ec140f0e3ceb5a6b9e9",
+        "child": "opf452f930b1d84f992f0c942587ec",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf452f930b1d84f992f0c942587ec",
+        "child": "oped9ebb3a98663a9357619c690ebb",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "oped9ebb3a98663a9357619c690ebb",
+        "child": "op2d70b330e0862b94444e24c96b12",
+        "child_submitted_after_parent_delivery": true
+      }
+    ],
+    "passed": true
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}

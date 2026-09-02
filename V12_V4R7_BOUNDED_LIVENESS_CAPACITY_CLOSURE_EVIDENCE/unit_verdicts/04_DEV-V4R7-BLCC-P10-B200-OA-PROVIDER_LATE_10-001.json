@@ -1,0 +1,108 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-OA-PROVIDER_LATE_10-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "OpenAI Agents SDK",
+  "workload": "PROVIDER_LATE_10",
+  "operation_count": 10,
+  "strict_causal_order_required": true,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opff695b506ad07d654dde03108f1b",
+        "child": "opf0728aef40aa3212f662784a6832",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf0728aef40aa3212f662784a6832",
+        "child": "op205b170d469cf3c9d342cdf64ddf",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op205b170d469cf3c9d342cdf64ddf",
+        "child": "op447ac2cd48ef237556b1b3ce2075",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op447ac2cd48ef237556b1b3ce2075",
+        "child": "op8ee05c11179f5356c1259f0839ca",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op8ee05c11179f5356c1259f0839ca",
+        "child": "ope56e4c6d3a1890c09f2361fc5694",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "ope56e4c6d3a1890c09f2361fc5694",
+        "child": "op35c366f103a80eedf1e2fd25c858",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op35c366f103a80eedf1e2fd25c858",
+        "child": "op51cce0a321ec2cc6d7846adf1c48",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op51cce0a321ec2cc6d7846adf1c48",
+        "child": "opa8d8898b4b332cabb238a7851058",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opa8d8898b4b332cabb238a7851058",
+        "child": "op6bbb69a352d1e13cf3ceec0d4a22",
+        "child_submitted_after_parent_delivery": true
+      }
+    ],
+    "passed": true
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}

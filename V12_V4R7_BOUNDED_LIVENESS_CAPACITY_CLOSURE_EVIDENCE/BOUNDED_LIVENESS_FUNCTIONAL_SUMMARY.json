@@ -1,0 +1,2168 @@
+{
+  "schema": "AgentTool.V12V4R7BoundedLivenessFunctionalClosure/1",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "planned_units": 16,
+  "executed_units": 16,
+  "passed_units": 16,
+  "failed_units": 0,
+  "retries": 0,
+  "common_integrity_abort": false,
+  "smoke_scope_functional_mechanisms": "PASS",
+  "full_fixed_h_functional_correctness": "PASS",
+  "operation_capacity_m50": "PASS",
+  "microsoft_cache_reuse_30": "PASS",
+  "causal_depth_50_stress": [
+    {
+      "schema": "AgentTool.V12V4R7BoundedHorizonStress/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "intended_causal_depth": 50,
+      "admitted_within_public_window": 50,
+      "post_window_not_admitted": 0,
+      "first_operation_outside_window_index_one_based": null,
+      "first_operation_outside_window_id": null,
+      "semantic_failures": [],
+      "silent_losses": 0,
+      "framework_exact_count_exception": "",
+      "common_checks": {
+        "profile_exact": true,
+        "relay_R": true,
+        "registry_Q": true,
+        "relay_projection_complete": true,
+        "registry_projection_complete": true,
+        "fixed_request_bytes": true,
+        "fixed_response_bytes": true,
+        "gateway_release_inventory": true,
+        "public_transcript_complete": true,
+        "session_complete": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "bounded_contract_checks": {
+        "all_50_intents_observed": true,
+        "all_50_descriptors_resolved": true,
+        "accepted_prefix": true,
+        "post_window_rejected_suffix": true,
+        "inventory_reconciles": true,
+        "accepted_results_exact": true,
+        "accepted_provider_success": true,
+        "accepted_delivery_order": true,
+        "semantic_failures_zero": true,
+        "pending_zero": true,
+        "silent_loss_zero": true,
+        "profile_overflow_zero": true,
+        "fixed_registry_schedule": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "guaranteed_causal_depth_50": "NOT_CLAIMED",
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357162625105391,
+      "ended_ns": 1788357171652552406
+    },
+    {
+      "schema": "AgentTool.V12V4R7BoundedHorizonStress/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "intended_causal_depth": 50,
+      "admitted_within_public_window": 50,
+      "post_window_not_admitted": 0,
+      "first_operation_outside_window_index_one_based": null,
+      "first_operation_outside_window_id": null,
+      "semantic_failures": [],
+      "silent_losses": 0,
+      "framework_exact_count_exception": "",
+      "common_checks": {
+        "profile_exact": true,
+        "relay_R": true,
+        "registry_Q": true,
+        "relay_projection_complete": true,
+        "registry_projection_complete": true,
+        "fixed_request_bytes": true,
+        "fixed_response_bytes": true,
+        "gateway_release_inventory": true,
+        "public_transcript_complete": true,
+        "session_complete": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "bounded_contract_checks": {
+        "all_50_intents_observed": true,
+        "all_50_descriptors_resolved": true,
+        "accepted_prefix": true,
+        "post_window_rejected_suffix": true,
+        "inventory_reconciles": true,
+        "accepted_results_exact": true,
+        "accepted_provider_success": true,
+        "accepted_delivery_order": true,
+        "semantic_failures_zero": true,
+        "pending_zero": true,
+        "silent_loss_zero": true,
+        "profile_overflow_zero": true,
+        "fixed_registry_schedule": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "guaranteed_causal_depth_50": "NOT_CLAIMED",
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357233189642869,
+      "ended_ns": 1788357242042369264
+    }
+  ],
+  "guaranteed_causal_depth_50": "NOT_CLAIMED",
+  "ready_for_development_duplex_repair_smoke": true,
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0,
+  "results": [
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-ORDINARY_TOOL-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "operation_count": 1,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357098400212082,
+      "ended_ns": 1788357109281395581
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-AGENT_AS_TOOL_TRANSITION-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "operation_count": 2,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "op35de1750513d42ca5dd09bf89b4f",
+            "child": "op052c1aa5e73c96a69e3e21f68364",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357109281725640,
+      "ended_ns": 1788357118008685544
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-PROVIDER_EARLY_10-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "PROVIDER_EARLY_10",
+      "operation_count": 10,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "op34a08be6cdae80752bf4e860194a",
+            "child": "opd75bfd9fb71d65241a44f7fa7f4b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opd75bfd9fb71d65241a44f7fa7f4b",
+            "child": "op7a1ad0656679a09d8561f0adf2c8",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7a1ad0656679a09d8561f0adf2c8",
+            "child": "opc9f65d2ca3293285f818e61c7807",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opc9f65d2ca3293285f818e61c7807",
+            "child": "op4b05f7b7b3fe0769e8e48d03f40d",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op4b05f7b7b3fe0769e8e48d03f40d",
+            "child": "opf0ea315810dbb262d789e743a8f3",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf0ea315810dbb262d789e743a8f3",
+            "child": "op2341b47c5d925137fbc6b2c8a9bf",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op2341b47c5d925137fbc6b2c8a9bf",
+            "child": "opa64f60cb6b8c10dc2c0e67319e11",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opa64f60cb6b8c10dc2c0e67319e11",
+            "child": "op8fdb417e3aef6510302b14aab6c5",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op8fdb417e3aef6510302b14aab6c5",
+            "child": "op4768fd1af1a25da19255343ed455",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357118008995318,
+      "ended_ns": 1788357126870684393
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-PROVIDER_LATE_10-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "PROVIDER_LATE_10",
+      "operation_count": 10,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opff695b506ad07d654dde03108f1b",
+            "child": "opf0728aef40aa3212f662784a6832",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf0728aef40aa3212f662784a6832",
+            "child": "op205b170d469cf3c9d342cdf64ddf",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op205b170d469cf3c9d342cdf64ddf",
+            "child": "op447ac2cd48ef237556b1b3ce2075",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op447ac2cd48ef237556b1b3ce2075",
+            "child": "op8ee05c11179f5356c1259f0839ca",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op8ee05c11179f5356c1259f0839ca",
+            "child": "ope56e4c6d3a1890c09f2361fc5694",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "ope56e4c6d3a1890c09f2361fc5694",
+            "child": "op35c366f103a80eedf1e2fd25c858",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op35c366f103a80eedf1e2fd25c858",
+            "child": "op51cce0a321ec2cc6d7846adf1c48",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op51cce0a321ec2cc6d7846adf1c48",
+            "child": "opa8d8898b4b332cabb238a7851058",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opa8d8898b4b332cabb238a7851058",
+            "child": "op6bbb69a352d1e13cf3ceec0d4a22",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357126870950986,
+      "ended_ns": 1788357135705238468
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-DESCRIPTOR_TRANSITIONS_K6-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "DESCRIPTOR_TRANSITIONS_K6",
+      "operation_count": 6,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "op3e1f8b88b2b60c188a27a41b0c4f",
+            "child": "op82f57df7153547442e43e3920804",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op82f57df7153547442e43e3920804",
+            "child": "op1cff1e5d44f3ba05c05e095137b9",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op1cff1e5d44f3ba05c05e095137b9",
+            "child": "opaa26c14c0ed3551efa303545bfef",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opaa26c14c0ed3551efa303545bfef",
+            "child": "opf6dc1ea163dfa1c89365e666e817",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf6dc1ea163dfa1c89365e666e817",
+            "child": "op2a9e52db8462976f067b9a629783",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357135705400650,
+      "ended_ns": 1788357144489536699
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CACHE_REUSE_30-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "operation_count": 30,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opf19759ba7ac824a7f1ab8ae0badf",
+            "child": "op87f5c55b936344fdf60998a61f11",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op87f5c55b936344fdf60998a61f11",
+            "child": "opb3617e1e12aba7dc16f221b8e761",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opb3617e1e12aba7dc16f221b8e761",
+            "child": "opa75f651ee8e789f6582a1bd37a72",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opa75f651ee8e789f6582a1bd37a72",
+            "child": "op57dc3a52984dce04b027abfbf910",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op57dc3a52984dce04b027abfbf910",
+            "child": "ope4611feee437d0f10b89f8ff7fa8",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "ope4611feee437d0f10b89f8ff7fa8",
+            "child": "opd968e8e2840c8199243e3cb03366",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opd968e8e2840c8199243e3cb03366",
+            "child": "op27ded7e335614968129c1b92e812",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op27ded7e335614968129c1b92e812",
+            "child": "opc853890654d04ed8661894630325",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opc853890654d04ed8661894630325",
+            "child": "ope12156bef3f6314abf5cc227b405",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "ope12156bef3f6314abf5cc227b405",
+            "child": "op855106a1989acfd7c89c63233d8b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op855106a1989acfd7c89c63233d8b",
+            "child": "op4cffe09f8ebb6f2443cbe051d803",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op4cffe09f8ebb6f2443cbe051d803",
+            "child": "op6fe86648ac3b000dcb0f37542fc8",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op6fe86648ac3b000dcb0f37542fc8",
+            "child": "op74d3bb6af3d54405321516627feb",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op74d3bb6af3d54405321516627feb",
+            "child": "op137cdec98c161c23acfce34c13a0",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op137cdec98c161c23acfce34c13a0",
+            "child": "opf1cf2a02b575df232873c1b7038d",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf1cf2a02b575df232873c1b7038d",
+            "child": "op5372f8285499410f94db59e9c183",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op5372f8285499410f94db59e9c183",
+            "child": "op1ff91374811aa52cd08710a5d6b0",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op1ff91374811aa52cd08710a5d6b0",
+            "child": "opd32a2895c85a09065359863788bd",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opd32a2895c85a09065359863788bd",
+            "child": "op21a6e22deed149e2f32b2d57cb90",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op21a6e22deed149e2f32b2d57cb90",
+            "child": "op7ddb72c22975d315038f85dfa49e",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7ddb72c22975d315038f85dfa49e",
+            "child": "opfe192ef1ed688cb356175a230dc5",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opfe192ef1ed688cb356175a230dc5",
+            "child": "opc5bb8ea8faec6883839f82573c96",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opc5bb8ea8faec6883839f82573c96",
+            "child": "opcc8596b1382699a86ebaddc44543",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opcc8596b1382699a86ebaddc44543",
+            "child": "op56c064718b0afab51580a81b7c76",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op56c064718b0afab51580a81b7c76",
+            "child": "opb655a945d45f35a1ce9868bc9f2c",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opb655a945d45f35a1ce9868bc9f2c",
+            "child": "op0b427efabd561b82c8c543a19cf8",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op0b427efabd561b82c8c543a19cf8",
+            "child": "opc32a8d7851bbcc201a2766be92b3",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opc32a8d7851bbcc201a2766be92b3",
+            "child": "op705f5d22f710dd93b2541b7eda91",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op705f5d22f710dd93b2541b7eda91",
+            "child": "op9c020201415f07cc3929a361f677",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357144489687141,
+      "ended_ns": 1788357153478545879
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CAPACITY_50-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "operation_count": 50,
+      "strict_causal_order_required": false,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opad1533ffb102e80e4f93ded92cec",
+            "child": "opc4a3de00263c39f7ca99f896d9d1",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opc4a3de00263c39f7ca99f896d9d1",
+            "child": "op115e53306f08fd2f0c190bc56927",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op115e53306f08fd2f0c190bc56927",
+            "child": "opd13211a7889d5aca539ffeaf28bf",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opd13211a7889d5aca539ffeaf28bf",
+            "child": "op14a6aee0295bdd92ccc046e72b83",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op14a6aee0295bdd92ccc046e72b83",
+            "child": "opab0261f217e31e2a2a2ce9b7ba3d",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opab0261f217e31e2a2a2ce9b7ba3d",
+            "child": "op495af0ed396b6976caa12afee521",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op495af0ed396b6976caa12afee521",
+            "child": "op0e410ddc138115261853e2897457",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op0e410ddc138115261853e2897457",
+            "child": "op8b4d877696e9de20ad5f045e2dee",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8b4d877696e9de20ad5f045e2dee",
+            "child": "op3a4b63e36ac885ddc27e0086801e",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op3a4b63e36ac885ddc27e0086801e",
+            "child": "op8efdd48eb523a582344795bdc1f8",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8efdd48eb523a582344795bdc1f8",
+            "child": "op5d88ca8638ff687f4eacb4a23bbd",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op5d88ca8638ff687f4eacb4a23bbd",
+            "child": "oped8ac4c92486d7b7f6973dc225b8",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "oped8ac4c92486d7b7f6973dc225b8",
+            "child": "op621be8d15f65104ecd019a848e36",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op621be8d15f65104ecd019a848e36",
+            "child": "op7e5119da71dbad34df3c3088ecd9",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op7e5119da71dbad34df3c3088ecd9",
+            "child": "op069416f414be3ce0313eca33fa1a",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op069416f414be3ce0313eca33fa1a",
+            "child": "op3f8ccef7295dc7e1f5b652287409",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op3f8ccef7295dc7e1f5b652287409",
+            "child": "op3a602ce0d5e59167a233ebec30bd",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op3a602ce0d5e59167a233ebec30bd",
+            "child": "op6e9d49e0630bb6042d559100a2c2",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op6e9d49e0630bb6042d559100a2c2",
+            "child": "op0070728fcca5ba32b0b9f5f30ae9",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op0070728fcca5ba32b0b9f5f30ae9",
+            "child": "op96be5dcf636a84a5836290e3cc29",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op96be5dcf636a84a5836290e3cc29",
+            "child": "opfb42ddb4fa22e64b4cfa9e48a93c",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opfb42ddb4fa22e64b4cfa9e48a93c",
+            "child": "oped9b690d4cd6ca351d1c49cb32da",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "oped9b690d4cd6ca351d1c49cb32da",
+            "child": "ope5f3c568b1a5ecedd82ffb9c806f",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "ope5f3c568b1a5ecedd82ffb9c806f",
+            "child": "opf7b5ce9bb51960c6655fc68a79d9",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf7b5ce9bb51960c6655fc68a79d9",
+            "child": "opa7fcf9fad986fdde0610af1b0c13",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opa7fcf9fad986fdde0610af1b0c13",
+            "child": "ope3a2d40f32d800bd8958488daea5",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "ope3a2d40f32d800bd8958488daea5",
+            "child": "opef5e835ca39386d566528a512bde",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opef5e835ca39386d566528a512bde",
+            "child": "opdccb10d8a6d7d6153470bb51cc74",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opdccb10d8a6d7d6153470bb51cc74",
+            "child": "opc7964c6f48c1cb02acf1bfb8f106",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opc7964c6f48c1cb02acf1bfb8f106",
+            "child": "opd9245899d958fac6c0b703f2fc28",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opd9245899d958fac6c0b703f2fc28",
+            "child": "op2ae8f76f7fdcc56dae0dbbbc5345",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op2ae8f76f7fdcc56dae0dbbbc5345",
+            "child": "opf7d43d16e7f8b75d6f431eaba697",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf7d43d16e7f8b75d6f431eaba697",
+            "child": "op9a3c11d74b6a8f1569cd7560a56f",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op9a3c11d74b6a8f1569cd7560a56f",
+            "child": "opa560b9e3659c112b7a428bb30504",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opa560b9e3659c112b7a428bb30504",
+            "child": "op9097017d4b7bf8c4d789367f74ac",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op9097017d4b7bf8c4d789367f74ac",
+            "child": "op5e8ffc896f9f48e1d12464665bed",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op5e8ffc896f9f48e1d12464665bed",
+            "child": "op89bc5562e4044f8b66bf676cd340",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op89bc5562e4044f8b66bf676cd340",
+            "child": "op30b05b1e29d230c0123ac492d67d",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op30b05b1e29d230c0123ac492d67d",
+            "child": "op5a9baff3cdcadb489fc3c14c3347",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op5a9baff3cdcadb489fc3c14c3347",
+            "child": "opf4a3c4b27714db93c49fb6c8d977",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf4a3c4b27714db93c49fb6c8d977",
+            "child": "opb2482d45f7ef4bda4b1656cc4d5b",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opb2482d45f7ef4bda4b1656cc4d5b",
+            "child": "opcfab62231fa82e3e1d3178496828",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opcfab62231fa82e3e1d3178496828",
+            "child": "opcc045cb77f5d617d047627c60a4a",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opcc045cb77f5d617d047627c60a4a",
+            "child": "opcc33fe2d13274839c61b8e8f4293",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opcc33fe2d13274839c61b8e8f4293",
+            "child": "op9fd44b57c81e8a5ac87ce6654b56",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op9fd44b57c81e8a5ac87ce6654b56",
+            "child": "opd95a0157bf581a6c15b4972a04c8",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opd95a0157bf581a6c15b4972a04c8",
+            "child": "ope228f15446bc2262a29c29ca51fa",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "ope228f15446bc2262a29c29ca51fa",
+            "child": "op5915df6c6f262bcc5ccaafbe2051",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op5915df6c6f262bcc5ccaafbe2051",
+            "child": "op0f2796f4affd7ee2308f57bc6b49",
+            "child_submitted_after_parent_delivery": false
+          }
+        ],
+        "passed": false
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357153478901921,
+      "ended_ns": 1788357162624890211
+    },
+    {
+      "schema": "AgentTool.V12V4R7BoundedHorizonStress/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "intended_causal_depth": 50,
+      "admitted_within_public_window": 50,
+      "post_window_not_admitted": 0,
+      "first_operation_outside_window_index_one_based": null,
+      "first_operation_outside_window_id": null,
+      "semantic_failures": [],
+      "silent_losses": 0,
+      "framework_exact_count_exception": "",
+      "common_checks": {
+        "profile_exact": true,
+        "relay_R": true,
+        "registry_Q": true,
+        "relay_projection_complete": true,
+        "registry_projection_complete": true,
+        "fixed_request_bytes": true,
+        "fixed_response_bytes": true,
+        "gateway_release_inventory": true,
+        "public_transcript_complete": true,
+        "session_complete": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "bounded_contract_checks": {
+        "all_50_intents_observed": true,
+        "all_50_descriptors_resolved": true,
+        "accepted_prefix": true,
+        "post_window_rejected_suffix": true,
+        "inventory_reconciles": true,
+        "accepted_results_exact": true,
+        "accepted_provider_success": true,
+        "accepted_delivery_order": true,
+        "semantic_failures_zero": true,
+        "pending_zero": true,
+        "silent_loss_zero": true,
+        "profile_overflow_zero": true,
+        "fixed_registry_schedule": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "guaranteed_causal_depth_50": "NOT_CLAIMED",
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357162625105391,
+      "ended_ns": 1788357171652552406
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-ORDINARY_TOOL-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "operation_count": 1,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357171652772857,
+      "ended_ns": 1788357180499206736
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-AGENT_AS_TOOL_TRANSITION-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "operation_count": 2,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "op376793a6049c1c484ac7545afb38",
+            "child": "op391b7519e0a1732748b26b8eb666",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357180499432001,
+      "ended_ns": 1788357189213486650
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-PROVIDER_EARLY_10-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "PROVIDER_EARLY_10",
+      "operation_count": 10,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opf0831d8f5d7e81eebe6f9331b48a",
+            "child": "op3a053a36daee3567e8cb0fc25443",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op3a053a36daee3567e8cb0fc25443",
+            "child": "op30992ebbfaff96af925c5c7b708b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op30992ebbfaff96af925c5c7b708b",
+            "child": "op8cd89a479b339478a65b9deb969d",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op8cd89a479b339478a65b9deb969d",
+            "child": "op7894df7ac776d7440ef12be32887",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7894df7ac776d7440ef12be32887",
+            "child": "op9f02a4a78f6608401602d007bd7b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op9f02a4a78f6608401602d007bd7b",
+            "child": "op7801d3321988d4bfa0bd64c9bd56",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7801d3321988d4bfa0bd64c9bd56",
+            "child": "opbb70fd1ad2c7bf2661331515e637",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opbb70fd1ad2c7bf2661331515e637",
+            "child": "op8871fcc24d8574019818ef3f9b83",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op8871fcc24d8574019818ef3f9b83",
+            "child": "opa9826ae4bc1c9dc00484b0ab921d",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357189213748553,
+      "ended_ns": 1788357197990765938
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-PROVIDER_LATE_10-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "PROVIDER_LATE_10",
+      "operation_count": 10,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opc254f11059e1f13ffa6eae05ae62",
+            "child": "op7e359314e408a190b5084ac9dc8c",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7e359314e408a190b5084ac9dc8c",
+            "child": "op3045a5014ac90877952df7b5ff11",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op3045a5014ac90877952df7b5ff11",
+            "child": "opb5a21d946eced2277cc176ee93d7",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opb5a21d946eced2277cc176ee93d7",
+            "child": "op026a44fd86ea4867afebbfd6250f",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op026a44fd86ea4867afebbfd6250f",
+            "child": "op15636a2d419846c9739db0fa70b5",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op15636a2d419846c9739db0fa70b5",
+            "child": "opbb0db8027ec140f0e3ceb5a6b9e9",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opbb0db8027ec140f0e3ceb5a6b9e9",
+            "child": "opf452f930b1d84f992f0c942587ec",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf452f930b1d84f992f0c942587ec",
+            "child": "oped9ebb3a98663a9357619c690ebb",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "oped9ebb3a98663a9357619c690ebb",
+            "child": "op2d70b330e0862b94444e24c96b12",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357197991009344,
+      "ended_ns": 1788357206754603131
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-DESCRIPTOR_TRANSITIONS_K6-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "DESCRIPTOR_TRANSITIONS_K6",
+      "operation_count": 6,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opa9ce708134b3fdf5e1c2b88e297e",
+            "child": "op4529a5e3ee5bbf4b767356bf115c",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op4529a5e3ee5bbf4b767356bf115c",
+            "child": "opdc2b7fa542ebd946267395fdea5e",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opdc2b7fa542ebd946267395fdea5e",
+            "child": "op22cb0b6daa9e1af05d617077e8bc",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op22cb0b6daa9e1af05d617077e8bc",
+            "child": "op144fbe90af80375f475bb73b60ed",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op144fbe90af80375f475bb73b60ed",
+            "child": "opcc22f7b786d0771dfe2d52082593",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357206754858438,
+      "ended_ns": 1788357215587876681
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CACHE_REUSE_30-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "operation_count": 30,
+      "strict_causal_order_required": true,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opea049784870b360f0957af56e1c0",
+            "child": "op370fe766968ba1ac25b7f95185da",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op370fe766968ba1ac25b7f95185da",
+            "child": "op83233772cb4299f466490eb90a28",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op83233772cb4299f466490eb90a28",
+            "child": "op278f217acd6d8dba54b1a1f4c160",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op278f217acd6d8dba54b1a1f4c160",
+            "child": "op7f40e3ee5f5f6753470a0261db94",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op7f40e3ee5f5f6753470a0261db94",
+            "child": "op65bb2cdcd26003876673c625d8d4",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op65bb2cdcd26003876673c625d8d4",
+            "child": "op33ff086d2815aa6a3d7b1673f95a",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op33ff086d2815aa6a3d7b1673f95a",
+            "child": "opa7a6d293cbc357eb01750e6b42a3",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opa7a6d293cbc357eb01750e6b42a3",
+            "child": "op2bb41dfb775fa779f3898ec5d4e9",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op2bb41dfb775fa779f3898ec5d4e9",
+            "child": "opf9db3f5c18d490931cb1cdc9727c",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf9db3f5c18d490931cb1cdc9727c",
+            "child": "op2ad39d181e66a999b8aef51d19b5",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op2ad39d181e66a999b8aef51d19b5",
+            "child": "op2c29abe58760de5ecb5d02568cd2",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op2c29abe58760de5ecb5d02568cd2",
+            "child": "op0ccc6fe2cab9b9fb93191089fa04",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op0ccc6fe2cab9b9fb93191089fa04",
+            "child": "opba2e1980ba595e3c2aa610dfc68b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opba2e1980ba595e3c2aa610dfc68b",
+            "child": "opc228b89e6074b95ee97b44a7e5a4",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opc228b89e6074b95ee97b44a7e5a4",
+            "child": "ope8148d9da153b727c3253b182f8c",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "ope8148d9da153b727c3253b182f8c",
+            "child": "ope3578829fb45bd1709aac333a515",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "ope3578829fb45bd1709aac333a515",
+            "child": "op626699a4d3a346f85c1366e0f6cc",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op626699a4d3a346f85c1366e0f6cc",
+            "child": "op49937f6138ab044a0fd4a5c3bc1b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op49937f6138ab044a0fd4a5c3bc1b",
+            "child": "op552f78562e88ed7accc7dc2921f6",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op552f78562e88ed7accc7dc2921f6",
+            "child": "opef528db3fe07cd55a962ae066961",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opef528db3fe07cd55a962ae066961",
+            "child": "op0faac0e5fbd55bb9269a8b139756",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op0faac0e5fbd55bb9269a8b139756",
+            "child": "opf22b8068aa3f929f39dda7518d34",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf22b8068aa3f929f39dda7518d34",
+            "child": "opb980a92eafdab7a9177ffb7079ff",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opb980a92eafdab7a9177ffb7079ff",
+            "child": "opb73b0c9ba428074f133d1daf7afc",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opb73b0c9ba428074f133d1daf7afc",
+            "child": "opf41fad4251bbd7c53dc4e2865951",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "opf41fad4251bbd7c53dc4e2865951",
+            "child": "op5061e615ab702b7feec1b1dba63a",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op5061e615ab702b7feec1b1dba63a",
+            "child": "op07145e772bfc34404d62874f8d47",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op07145e772bfc34404d62874f8d47",
+            "child": "op3d883d80d278deae39d330626f8b",
+            "child_submitted_after_parent_delivery": true
+          },
+          {
+            "parent": "op3d883d80d278deae39d330626f8b",
+            "child": "op7e6a72809b17331e0a4965545b67",
+            "child_submitted_after_parent_delivery": true
+          }
+        ],
+        "passed": true
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357215588056230,
+      "ended_ns": 1788357224318825785
+    },
+    {
+      "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAPACITY_50-001",
+      "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+      "delta_ms": 10,
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "operation_count": 50,
+      "strict_causal_order_required": false,
+      "causal_proof_observed": {
+        "startup_action_count": 0,
+        "pre_t0_action_queue_count": 0,
+        "checks": [
+          {
+            "parent": "opfe4c758835c79c6b9c68808a7f95",
+            "child": "ope7371ce424b5dc0797e8e6a9b8f0",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "ope7371ce424b5dc0797e8e6a9b8f0",
+            "child": "opb67d8c65325521d43ff18813924a",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opb67d8c65325521d43ff18813924a",
+            "child": "op6b7b2077ebb52d438b69e79e8e60",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op6b7b2077ebb52d438b69e79e8e60",
+            "child": "op0429498f27098106b32398ec7a54",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op0429498f27098106b32398ec7a54",
+            "child": "op2c40317ddce0aeb128a8742ab323",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op2c40317ddce0aeb128a8742ab323",
+            "child": "op8c1b4dbe1cc7057b769a3c2e48bb",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8c1b4dbe1cc7057b769a3c2e48bb",
+            "child": "op907a296ef2e8f9ef6151e60757d3",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op907a296ef2e8f9ef6151e60757d3",
+            "child": "opd4454a78588f6a8fdbfa4429c5a2",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opd4454a78588f6a8fdbfa4429c5a2",
+            "child": "opf7390590cc245b08ebff50081b2d",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf7390590cc245b08ebff50081b2d",
+            "child": "opa99188d5ac287fbe3a8f7751fedc",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opa99188d5ac287fbe3a8f7751fedc",
+            "child": "op8bd40857ea0120089d6621ed3f18",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8bd40857ea0120089d6621ed3f18",
+            "child": "op63afd223c03b3be9d0d1a09f51ee",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op63afd223c03b3be9d0d1a09f51ee",
+            "child": "op2ae635d3ab018516065b81bd2120",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op2ae635d3ab018516065b81bd2120",
+            "child": "op8fa6ea5efa7e7248a281fa275c19",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8fa6ea5efa7e7248a281fa275c19",
+            "child": "opfd9d1d53e390bd55dfbdefd25ca7",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opfd9d1d53e390bd55dfbdefd25ca7",
+            "child": "opf6f5c6749218e07821cb1bd96170",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf6f5c6749218e07821cb1bd96170",
+            "child": "ope9d47bb0bac75494935dd58e2b5b",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "ope9d47bb0bac75494935dd58e2b5b",
+            "child": "op8bb1b76c45f9c84ad1ca808a6f34",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8bb1b76c45f9c84ad1ca808a6f34",
+            "child": "op9a7cbe6af7d10279138b71e2bee1",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op9a7cbe6af7d10279138b71e2bee1",
+            "child": "opdeeae160891d9fab8d6fad2619c1",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opdeeae160891d9fab8d6fad2619c1",
+            "child": "op4a4613c91e4fa8f829546d2c0ea3",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op4a4613c91e4fa8f829546d2c0ea3",
+            "child": "op47f64cd8186221e747e722b9fcd7",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op47f64cd8186221e747e722b9fcd7",
+            "child": "opef4c96908477536291415c5337b8",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opef4c96908477536291415c5337b8",
+            "child": "op2f2bf7a99296a3f548fdf5700cab",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op2f2bf7a99296a3f548fdf5700cab",
+            "child": "op96684bc055953bf7a5a8dbe9ce21",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op96684bc055953bf7a5a8dbe9ce21",
+            "child": "op47871015f04513b4680eafda5561",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op47871015f04513b4680eafda5561",
+            "child": "op7d54a2ad1d5cbcc497e9da0084c7",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op7d54a2ad1d5cbcc497e9da0084c7",
+            "child": "op7bde6baa209f5e22e08d585a8c4c",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op7bde6baa209f5e22e08d585a8c4c",
+            "child": "op544c576d49c6296e9544092c29d0",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op544c576d49c6296e9544092c29d0",
+            "child": "opde573081db32a3cfe9adf1ddd6c6",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opde573081db32a3cfe9adf1ddd6c6",
+            "child": "op8ba839cdff4d1ffdce145e57c281",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8ba839cdff4d1ffdce145e57c281",
+            "child": "opb4c37df1d26fb74d1c69c02d7921",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opb4c37df1d26fb74d1c69c02d7921",
+            "child": "opf57206b8af46275047c465343053",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opf57206b8af46275047c465343053",
+            "child": "op023050a0e4b99062f912b25ce289",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op023050a0e4b99062f912b25ce289",
+            "child": "op91eefce4e0f41eae99bf9a108d39",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op91eefce4e0f41eae99bf9a108d39",
+            "child": "op36a76ddf36b59e33ad3f7c8b2709",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op36a76ddf36b59e33ad3f7c8b2709",
+            "child": "op70f143b62d3388cc5f52138605ab",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op70f143b62d3388cc5f52138605ab",
+            "child": "op84afca9312ab47ace82f88677727",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op84afca9312ab47ace82f88677727",
+            "child": "opbc083a8e921050fb350451da1c58",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opbc083a8e921050fb350451da1c58",
+            "child": "op5b8e50d05f1aaea0290c9c4668ab",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op5b8e50d05f1aaea0290c9c4668ab",
+            "child": "op1fb81b4e03f15fb352c171a7e518",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op1fb81b4e03f15fb352c171a7e518",
+            "child": "opa3984fdb9912138c36df4a4b8b90",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opa3984fdb9912138c36df4a4b8b90",
+            "child": "opd1784f53de81ccf6d60b947732e0",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opd1784f53de81ccf6d60b947732e0",
+            "child": "op8c6944a9aca6761d2c33eaa7151a",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op8c6944a9aca6761d2c33eaa7151a",
+            "child": "op465ca8d3c644ef1162510bb92581",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op465ca8d3c644ef1162510bb92581",
+            "child": "op9688210609e2caa354d895480c07",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op9688210609e2caa354d895480c07",
+            "child": "opc72264444a0dd139fa8ab43aa452",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "opc72264444a0dd139fa8ab43aa452",
+            "child": "op79396b4f16a73135ec96c14ec3b8",
+            "child_submitted_after_parent_delivery": false
+          },
+          {
+            "parent": "op79396b4f16a73135ec96c14ec3b8",
+            "child": "opeba2d29e6fd3daed0e2debdb44d3",
+            "child_submitted_after_parent_delivery": false
+          }
+        ],
+        "passed": false
+      },
+      "common_checks": {
+        "duplex_profile_exact": true,
+        "complete_relay_transcript": true,
+        "complete_registry_transcript": true,
+        "relay_duplex_projection": true,
+        "registry_complete_projection": true,
+        "four_relay_application_boundaries": true,
+        "gateway_release_clock_complete": true,
+        "gateway_release_deadlines_met": true,
+        "fixed_relay_request_bytes": true,
+        "fixed_relay_response_bytes": true,
+        "fixed_registry_query_shape": true,
+        "fixed_registry_answer_bytes": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "functional_checks": {
+        "exact_native_operations": true,
+        "exact_canonical_operations": true,
+        "level_a_semantics": true,
+        "exact_operation_ids_recovered": true,
+        "exact_causal_delivery_order": true,
+        "session_complete": true,
+        "public_transcript_complete": true,
+        "exact_external_accepted_ids": true,
+        "exact_external_results": true,
+        "expected_real_registry_resolutions": true,
+        "expected_descriptor_cache_hits": true,
+        "exact_Q": true,
+        "query_sender_open_loop": true,
+        "zero_resolved_not_admitted": true,
+        "zero_silent_loss": true,
+        "zero_profile_overflow": true,
+        "zero_dummy_provider_work": true,
+        "causal_proof": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "registry_query_bytes": [
+        2020
+      ],
+      "registry_answer_bytes": [
+        6592
+      ],
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357224319089497,
+      "ended_ns": 1788357233189379034
+    },
+    {
+      "schema": "AgentTool.V12V4R7BoundedHorizonStress/1",
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "intended_causal_depth": 50,
+      "admitted_within_public_window": 50,
+      "post_window_not_admitted": 0,
+      "first_operation_outside_window_index_one_based": null,
+      "first_operation_outside_window_id": null,
+      "semantic_failures": [],
+      "silent_losses": 0,
+      "framework_exact_count_exception": "",
+      "common_checks": {
+        "profile_exact": true,
+        "relay_R": true,
+        "registry_Q": true,
+        "relay_projection_complete": true,
+        "registry_projection_complete": true,
+        "fixed_request_bytes": true,
+        "fixed_response_bytes": true,
+        "gateway_release_inventory": true,
+        "public_transcript_complete": true,
+        "session_complete": true,
+        "no_infrastructure_liveness_failure": true
+      },
+      "bounded_contract_checks": {
+        "all_50_intents_observed": true,
+        "all_50_descriptors_resolved": true,
+        "accepted_prefix": true,
+        "post_window_rejected_suffix": true,
+        "inventory_reconciles": true,
+        "accepted_results_exact": true,
+        "accepted_provider_success": true,
+        "accepted_delivery_order": true,
+        "semantic_failures_zero": true,
+        "pending_zero": true,
+        "silent_loss_zero": true,
+        "profile_overflow_zero": true,
+        "fixed_registry_schedule": true
+      },
+      "common_integrity_pass": true,
+      "functional_pass": true,
+      "guaranteed_causal_depth_50": "NOT_CLAIMED",
+      "classifier_training_runs": 0,
+      "auc_calculations": 0,
+      "retries": 0,
+      "pass": true,
+      "started_ns": 1788357233189642869,
+      "ended_ns": 1788357242042369264
+    }
+  ]
+}

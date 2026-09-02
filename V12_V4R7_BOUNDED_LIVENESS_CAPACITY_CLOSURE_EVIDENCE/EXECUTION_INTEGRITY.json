@@ -1,0 +1,21 @@
+{
+  "schema": "AgentTool.V12V4R7BoundedLivenessExecutionIntegrity/1",
+  "execution_host": "controlled Linux research host",
+  "source_hashes": {
+    "scripts/run_v12_duplex_functional.py": "dc5ea0aad7e0b04496ffb6c4a61f25c7bc17b9b9d21316e14caa2da1f4ed0e56",
+    "scripts/run_v12_v4r7_bounded_liveness_functional.py": "3e43e732471f9461bb0c6ff3b73962018d8feec206d1275aab96ee79bbae5c54",
+    "v12_timing/profile.py": "5a7830c857688b5604ec0679713b45fbcf29dd8aa7551d1c2ad9fc3aadfcf13c",
+    "v11_online/session.py": "fb8aec445075fc2dcf0368eff2d017b8edda098c4ee933e786a31ccea1b29a03"
+  },
+  "binary_hashes": {
+    "canonical_v12_duplex_timing_runner": "c031307e7ea1c2745e8be48bf794e61a30bfbb3de03f9986e1bf26b7b1962892",
+    "simplepir_v12_timing": "743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c"
+  },
+  "tests": "46 PASS, 2 SKIP (Linux runner unavailable on Windows)",
+  "v4r7_reliability_rerun_sessions": 0,
+  "functional_identities": "16/16 exact frozen inventory",
+  "functional_retries": 0,
+  "protected_runtime_diff": "NONE",
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0
+}

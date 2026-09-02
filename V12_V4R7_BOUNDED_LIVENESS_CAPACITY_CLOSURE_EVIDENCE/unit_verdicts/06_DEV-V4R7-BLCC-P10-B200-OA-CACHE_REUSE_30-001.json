@@ -1,0 +1,208 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-OA-CACHE_REUSE_30-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "OpenAI Agents SDK",
+  "workload": "CACHE_REUSE_30",
+  "operation_count": 30,
+  "strict_causal_order_required": true,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opf19759ba7ac824a7f1ab8ae0badf",
+        "child": "op87f5c55b936344fdf60998a61f11",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op87f5c55b936344fdf60998a61f11",
+        "child": "opb3617e1e12aba7dc16f221b8e761",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opb3617e1e12aba7dc16f221b8e761",
+        "child": "opa75f651ee8e789f6582a1bd37a72",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opa75f651ee8e789f6582a1bd37a72",
+        "child": "op57dc3a52984dce04b027abfbf910",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op57dc3a52984dce04b027abfbf910",
+        "child": "ope4611feee437d0f10b89f8ff7fa8",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "ope4611feee437d0f10b89f8ff7fa8",
+        "child": "opd968e8e2840c8199243e3cb03366",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opd968e8e2840c8199243e3cb03366",
+        "child": "op27ded7e335614968129c1b92e812",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op27ded7e335614968129c1b92e812",
+        "child": "opc853890654d04ed8661894630325",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opc853890654d04ed8661894630325",
+        "child": "ope12156bef3f6314abf5cc227b405",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "ope12156bef3f6314abf5cc227b405",
+        "child": "op855106a1989acfd7c89c63233d8b",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op855106a1989acfd7c89c63233d8b",
+        "child": "op4cffe09f8ebb6f2443cbe051d803",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op4cffe09f8ebb6f2443cbe051d803",
+        "child": "op6fe86648ac3b000dcb0f37542fc8",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op6fe86648ac3b000dcb0f37542fc8",
+        "child": "op74d3bb6af3d54405321516627feb",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op74d3bb6af3d54405321516627feb",
+        "child": "op137cdec98c161c23acfce34c13a0",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op137cdec98c161c23acfce34c13a0",
+        "child": "opf1cf2a02b575df232873c1b7038d",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opf1cf2a02b575df232873c1b7038d",
+        "child": "op5372f8285499410f94db59e9c183",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op5372f8285499410f94db59e9c183",
+        "child": "op1ff91374811aa52cd08710a5d6b0",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op1ff91374811aa52cd08710a5d6b0",
+        "child": "opd32a2895c85a09065359863788bd",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opd32a2895c85a09065359863788bd",
+        "child": "op21a6e22deed149e2f32b2d57cb90",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op21a6e22deed149e2f32b2d57cb90",
+        "child": "op7ddb72c22975d315038f85dfa49e",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op7ddb72c22975d315038f85dfa49e",
+        "child": "opfe192ef1ed688cb356175a230dc5",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opfe192ef1ed688cb356175a230dc5",
+        "child": "opc5bb8ea8faec6883839f82573c96",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opc5bb8ea8faec6883839f82573c96",
+        "child": "opcc8596b1382699a86ebaddc44543",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opcc8596b1382699a86ebaddc44543",
+        "child": "op56c064718b0afab51580a81b7c76",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op56c064718b0afab51580a81b7c76",
+        "child": "opb655a945d45f35a1ce9868bc9f2c",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opb655a945d45f35a1ce9868bc9f2c",
+        "child": "op0b427efabd561b82c8c543a19cf8",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op0b427efabd561b82c8c543a19cf8",
+        "child": "opc32a8d7851bbcc201a2766be92b3",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opc32a8d7851bbcc201a2766be92b3",
+        "child": "op705f5d22f710dd93b2541b7eda91",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op705f5d22f710dd93b2541b7eda91",
+        "child": "op9c020201415f07cc3929a361f677",
+        "child_submitted_after_parent_delivery": true
+      }
+    ],
+    "passed": true
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}

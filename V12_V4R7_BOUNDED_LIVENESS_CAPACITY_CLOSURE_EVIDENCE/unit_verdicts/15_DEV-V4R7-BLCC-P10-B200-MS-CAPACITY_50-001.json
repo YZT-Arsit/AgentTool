@@ -1,0 +1,308 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAPACITY_50-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "Microsoft Agent Framework",
+  "workload": "CAPACITY_50",
+  "operation_count": 50,
+  "strict_causal_order_required": false,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opfe4c758835c79c6b9c68808a7f95",
+        "child": "ope7371ce424b5dc0797e8e6a9b8f0",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "ope7371ce424b5dc0797e8e6a9b8f0",
+        "child": "opb67d8c65325521d43ff18813924a",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opb67d8c65325521d43ff18813924a",
+        "child": "op6b7b2077ebb52d438b69e79e8e60",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op6b7b2077ebb52d438b69e79e8e60",
+        "child": "op0429498f27098106b32398ec7a54",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op0429498f27098106b32398ec7a54",
+        "child": "op2c40317ddce0aeb128a8742ab323",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op2c40317ddce0aeb128a8742ab323",
+        "child": "op8c1b4dbe1cc7057b769a3c2e48bb",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8c1b4dbe1cc7057b769a3c2e48bb",
+        "child": "op907a296ef2e8f9ef6151e60757d3",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op907a296ef2e8f9ef6151e60757d3",
+        "child": "opd4454a78588f6a8fdbfa4429c5a2",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opd4454a78588f6a8fdbfa4429c5a2",
+        "child": "opf7390590cc245b08ebff50081b2d",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opf7390590cc245b08ebff50081b2d",
+        "child": "opa99188d5ac287fbe3a8f7751fedc",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opa99188d5ac287fbe3a8f7751fedc",
+        "child": "op8bd40857ea0120089d6621ed3f18",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8bd40857ea0120089d6621ed3f18",
+        "child": "op63afd223c03b3be9d0d1a09f51ee",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op63afd223c03b3be9d0d1a09f51ee",
+        "child": "op2ae635d3ab018516065b81bd2120",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op2ae635d3ab018516065b81bd2120",
+        "child": "op8fa6ea5efa7e7248a281fa275c19",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8fa6ea5efa7e7248a281fa275c19",
+        "child": "opfd9d1d53e390bd55dfbdefd25ca7",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opfd9d1d53e390bd55dfbdefd25ca7",
+        "child": "opf6f5c6749218e07821cb1bd96170",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opf6f5c6749218e07821cb1bd96170",
+        "child": "ope9d47bb0bac75494935dd58e2b5b",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "ope9d47bb0bac75494935dd58e2b5b",
+        "child": "op8bb1b76c45f9c84ad1ca808a6f34",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8bb1b76c45f9c84ad1ca808a6f34",
+        "child": "op9a7cbe6af7d10279138b71e2bee1",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op9a7cbe6af7d10279138b71e2bee1",
+        "child": "opdeeae160891d9fab8d6fad2619c1",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opdeeae160891d9fab8d6fad2619c1",
+        "child": "op4a4613c91e4fa8f829546d2c0ea3",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op4a4613c91e4fa8f829546d2c0ea3",
+        "child": "op47f64cd8186221e747e722b9fcd7",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op47f64cd8186221e747e722b9fcd7",
+        "child": "opef4c96908477536291415c5337b8",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opef4c96908477536291415c5337b8",
+        "child": "op2f2bf7a99296a3f548fdf5700cab",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op2f2bf7a99296a3f548fdf5700cab",
+        "child": "op96684bc055953bf7a5a8dbe9ce21",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op96684bc055953bf7a5a8dbe9ce21",
+        "child": "op47871015f04513b4680eafda5561",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op47871015f04513b4680eafda5561",
+        "child": "op7d54a2ad1d5cbcc497e9da0084c7",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op7d54a2ad1d5cbcc497e9da0084c7",
+        "child": "op7bde6baa209f5e22e08d585a8c4c",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op7bde6baa209f5e22e08d585a8c4c",
+        "child": "op544c576d49c6296e9544092c29d0",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op544c576d49c6296e9544092c29d0",
+        "child": "opde573081db32a3cfe9adf1ddd6c6",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opde573081db32a3cfe9adf1ddd6c6",
+        "child": "op8ba839cdff4d1ffdce145e57c281",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8ba839cdff4d1ffdce145e57c281",
+        "child": "opb4c37df1d26fb74d1c69c02d7921",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opb4c37df1d26fb74d1c69c02d7921",
+        "child": "opf57206b8af46275047c465343053",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opf57206b8af46275047c465343053",
+        "child": "op023050a0e4b99062f912b25ce289",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op023050a0e4b99062f912b25ce289",
+        "child": "op91eefce4e0f41eae99bf9a108d39",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op91eefce4e0f41eae99bf9a108d39",
+        "child": "op36a76ddf36b59e33ad3f7c8b2709",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op36a76ddf36b59e33ad3f7c8b2709",
+        "child": "op70f143b62d3388cc5f52138605ab",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op70f143b62d3388cc5f52138605ab",
+        "child": "op84afca9312ab47ace82f88677727",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op84afca9312ab47ace82f88677727",
+        "child": "opbc083a8e921050fb350451da1c58",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opbc083a8e921050fb350451da1c58",
+        "child": "op5b8e50d05f1aaea0290c9c4668ab",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op5b8e50d05f1aaea0290c9c4668ab",
+        "child": "op1fb81b4e03f15fb352c171a7e518",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op1fb81b4e03f15fb352c171a7e518",
+        "child": "opa3984fdb9912138c36df4a4b8b90",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opa3984fdb9912138c36df4a4b8b90",
+        "child": "opd1784f53de81ccf6d60b947732e0",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opd1784f53de81ccf6d60b947732e0",
+        "child": "op8c6944a9aca6761d2c33eaa7151a",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op8c6944a9aca6761d2c33eaa7151a",
+        "child": "op465ca8d3c644ef1162510bb92581",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op465ca8d3c644ef1162510bb92581",
+        "child": "op9688210609e2caa354d895480c07",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op9688210609e2caa354d895480c07",
+        "child": "opc72264444a0dd139fa8ab43aa452",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "opc72264444a0dd139fa8ab43aa452",
+        "child": "op79396b4f16a73135ec96c14ec3b8",
+        "child_submitted_after_parent_delivery": false
+      },
+      {
+        "parent": "op79396b4f16a73135ec96c14ec3b8",
+        "child": "opeba2d29e6fd3daed0e2debdb44d3",
+        "child_submitted_after_parent_delivery": false
+      }
+    ],
+    "passed": false
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}

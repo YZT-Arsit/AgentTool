@@ -1,0 +1,88 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalUnit/1",
+  "identity": "DEV-V4R7-BLCC-P10-B200-MS-DESCRIPTOR_TRANSITIONS_K6-001",
+  "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+  "delta_ms": 10,
+  "framework": "Microsoft Agent Framework",
+  "workload": "DESCRIPTOR_TRANSITIONS_K6",
+  "operation_count": 6,
+  "strict_causal_order_required": true,
+  "causal_proof_observed": {
+    "startup_action_count": 0,
+    "pre_t0_action_queue_count": 0,
+    "checks": [
+      {
+        "parent": "opa9ce708134b3fdf5e1c2b88e297e",
+        "child": "op4529a5e3ee5bbf4b767356bf115c",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op4529a5e3ee5bbf4b767356bf115c",
+        "child": "opdc2b7fa542ebd946267395fdea5e",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "opdc2b7fa542ebd946267395fdea5e",
+        "child": "op22cb0b6daa9e1af05d617077e8bc",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op22cb0b6daa9e1af05d617077e8bc",
+        "child": "op144fbe90af80375f475bb73b60ed",
+        "child_submitted_after_parent_delivery": true
+      },
+      {
+        "parent": "op144fbe90af80375f475bb73b60ed",
+        "child": "opcc22f7b786d0771dfe2d52082593",
+        "child_submitted_after_parent_delivery": true
+      }
+    ],
+    "passed": true
+  },
+  "common_checks": {
+    "duplex_profile_exact": true,
+    "complete_relay_transcript": true,
+    "complete_registry_transcript": true,
+    "relay_duplex_projection": true,
+    "registry_complete_projection": true,
+    "four_relay_application_boundaries": true,
+    "gateway_release_clock_complete": true,
+    "gateway_release_deadlines_met": true,
+    "fixed_relay_request_bytes": true,
+    "fixed_relay_response_bytes": true,
+    "fixed_registry_query_shape": true,
+    "fixed_registry_answer_bytes": true,
+    "no_infrastructure_liveness_failure": true
+  },
+  "functional_checks": {
+    "exact_native_operations": true,
+    "exact_canonical_operations": true,
+    "level_a_semantics": true,
+    "exact_operation_ids_recovered": true,
+    "exact_causal_delivery_order": true,
+    "session_complete": true,
+    "public_transcript_complete": true,
+    "exact_external_accepted_ids": true,
+    "exact_external_results": true,
+    "expected_real_registry_resolutions": true,
+    "expected_descriptor_cache_hits": true,
+    "exact_Q": true,
+    "query_sender_open_loop": true,
+    "zero_resolved_not_admitted": true,
+    "zero_silent_loss": true,
+    "zero_profile_overflow": true,
+    "zero_dummy_provider_work": true,
+    "causal_proof": true
+  },
+  "common_integrity_pass": true,
+  "functional_pass": true,
+  "registry_query_bytes": [
+    2020
+  ],
+  "registry_answer_bytes": [
+    6592
+  ],
+  "classifier_training_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0
+}
