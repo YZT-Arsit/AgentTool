@@ -33,6 +33,16 @@ def main() -> int:
     profile = duplex_provider_bound_p10_profile()
     for ordinal, identity in enumerate(identities, start=1):
         record = run_one(args.runner, args.output, identity, profile=profile)
+        runtime = json.loads(
+            (args.output / identity / "go_online_result.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        record["checks"]["zero_semantic_provider_timeouts"] = all(
+            row.get("class") != "PROVIDER_CONTEXT_DEADLINE_EXCEEDED"
+            for row in runtime.get("provider_diagnostics", [])
+        )
+        record["pass"] = all(record["checks"].values())
         record["ordinal"] = ordinal
         with ledger.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(record, sort_keys=True) + "\n")
