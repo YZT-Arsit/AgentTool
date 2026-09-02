@@ -1,0 +1,186 @@
+{
+  "schema": "AgentTool.V12V4R7BoundedLivenessFunctionalFreeze/1",
+  "base_v4r7": "1ba1fe6a3bd49b38df2af1393b2b1dd1106f1968",
+  "contract_sha256": "02af80c88947e8f51ad3e597ded1bce3663bf17b2808912c1518db7cd1e839f9",
+  "frozen_before_execution": true,
+  "profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "R": 521,
+    "Q": 100,
+    "response_rho_ms": 30,
+    "response_preparation_lead_ms": 20
+  },
+  "workloads": [
+    "ORDINARY_TOOL",
+    "AGENT_AS_TOOL_TRANSITION",
+    "PROVIDER_EARLY_10",
+    "PROVIDER_LATE_10",
+    "DESCRIPTOR_TRANSITIONS_K6",
+    "CACHE_REUSE_30",
+    "CAPACITY_50",
+    "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS"
+  ],
+  "frameworks": [
+    "OpenAI Agents SDK",
+    "Microsoft Agent Framework"
+  ],
+  "planned_units": 16,
+  "identities": [
+    {
+      "ordinal": 1,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-ORDINARY_TOOL-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 2,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-AGENT_AS_TOOL_TRANSITION-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 3,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-PROVIDER_EARLY_10-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "PROVIDER_EARLY_10",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 4,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-PROVIDER_LATE_10-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "PROVIDER_LATE_10",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 5,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-DESCRIPTOR_TRANSITIONS_K6-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "DESCRIPTOR_TRANSITIONS_K6",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 6,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CACHE_REUSE_30-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 7,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CAPACITY_50-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 8,
+      "identity": "DEV-V4R7-BLCC-P10-B200-OA-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 9,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-ORDINARY_TOOL-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 10,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-AGENT_AS_TOOL_TRANSITION-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 11,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-PROVIDER_EARLY_10-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "PROVIDER_EARLY_10",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 12,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-PROVIDER_LATE_10-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "PROVIDER_LATE_10",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 13,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-DESCRIPTOR_TRANSITIONS_K6-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "DESCRIPTOR_TRANSITIONS_K6",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 14,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CACHE_REUSE_30-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 15,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAPACITY_50-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "execution_count": 1,
+      "retries": 0
+    },
+    {
+      "ordinal": 16,
+      "identity": "DEV-V4R7-BLCC-P10-B200-MS-CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS-001",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAUSAL_DEPTH_50_BOUNDED_HORIZON_STRESS",
+      "execution_count": 1,
+      "retries": 0
+    }
+  ],
+  "execution_policy": {
+    "execute_each_identity_once": true,
+    "retries": 0,
+    "replacements": 0,
+    "continue_after_isolated_functional_failure": true,
+    "stop_on_common_integrity_failure": true
+  },
+  "capacity_50_contract": {
+    "workflow": "PARALLEL_ACTIONS",
+    "all_50_intents_available_in_one_framework_turn": true,
+    "strict_sequential_causality": false,
+    "required_admitted": 50,
+    "required_results": 50
+  },
+  "causal_depth_stress_contract": {
+    "workflow": "DYNAMIC_SEQUENCE",
+    "intended_depth": 50,
+    "require_every_pre_window_intent": true,
+    "require_explicit_post_window_rejection": true,
+    "guaranteed_depth": "NOT_CLAIMED"
+  },
+  "reuse_v4r7_reliability": "200/200 PASS_PRESERVED_NO_RERUN",
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "AgentTool.V12V4R7BoundedLivenessCapacityContract/1",
+  "base_v4r7": "1ba1fe6a3bd49b38df2af1393b2b1dd1106f1968",
+  "profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R7-H50-H4500-P10-B200-PIR60",
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "R": 521,
+    "Q": 100,
+    "response_rho_ms": 30,
+    "response_preparation_lead_ms": 20
+  },
+  "operation_capacity_contract": "At most M real operations can be admitted when their trusted intents become admission-eligible before the fixed public admission window closes.",
+  "admission_horizon_contract": "H fixes the public admission window represented by admission slots 1..ceil(H/Delta); an intent is in scope only while a future admission slot remains commit-eligible.",
+  "m_does_not_imply_causal_depth_guarantee": true,
+  "outside_window_contract": "Every resolved intent outside the fixed admission window is recorded as resolved_not_admitted/PROFILE_ADMISSION_CLOSED and never silently dropped.",
+  "old_causal_depth_oracle": "OVERSTATED_BOUNDED_LIVENESS_CONTRACT",
+  "historical_qualification_status": "FAIL_PRESERVED",
+  "historical_causal_depth_50": {
+    "identity": "DEV-DTVR-V4R7-P10-B200-OA-CAUSAL_DEPTH_50-001",
+    "intended": 50,
+    "admitted_before_public_admission_window_closed": 39,
+    "resolved_after_window_not_admitted": 11,
+    "silently_lost": 0,
+    "other_failure": 0,
+    "first_not_admitted_index_one_based": 40,
+    "first_not_admitted_operation_id": "opdbfcde64911498991564f224ab64",
+    "all_intents_explicitly_accounted": true,
+    "admitted_provider_success": "39/39",
+    "admitted_results_delivered": "39/39",
+    "admitted_semantic_results_equal": true,
+    "admitted_causal_order_equal": true,
+    "public_transcript_complete": true,
+    "relay_cells": 521
+  },
+  "corrected_claims": {
+    "operation_capacity": "M=50 provides fixed-profile capacity for up to 50 real operations whose intents are admission-eligible within H.",
+    "bounded_causal_liveness": "Arbitrary 50-step sequential causal progress is not guaranteed; post-window intents are explicitly not admitted.",
+    "guaranteed_causal_depth_50": "NOT_CLAIMED"
+  },
+  "source_locations": {
+    "profile_round_formula": "v12_timing/profile.py:122-140",
+    "online_count_limit": "common_action_gateway_v2/canonicalv9/online.go:399-437",
+    "online_admission_window": "common_action_gateway_v2/canonicalv9/online.go:448-486",
+    "static_plan_count_guard": "common_action_gateway_v2/canonicalv9/runner.go:347-348",
+    "v4r7_capacity_formula": "common_action_gateway_v2/canonicalv9/runner.go:487-504",
+    "old_unconditional_oracle": "scripts/run_v12_duplex_functional.py:207-270"
+  },
+  "runtime_immutability": {
+    "H_changed": false,
+    "B_changed": false,
+    "Delta_changed": false,
+    "M_changed": false,
+    "R_changed": false,
+    "Q_changed": false,
+    "duplex_timing_design_changed": false
+  },
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0
+}
