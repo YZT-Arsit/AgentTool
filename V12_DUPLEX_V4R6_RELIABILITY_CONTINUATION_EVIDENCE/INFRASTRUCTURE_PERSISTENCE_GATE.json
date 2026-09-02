@@ -1,0 +1,15 @@
+{
+  "schema": "AgentTool.V12ExecutionInfrastructurePersistenceGate/1",
+  "mechanism": "nohup worker detached from interactive SSH control shell",
+  "harmless_worker_pid": 70451,
+  "started_marker": "gate-5157e217",
+  "started_mtime": "2026-09-02 18:43:52.677477016 +0800",
+  "control_ssh_disconnected": true,
+  "reconnected_with_new_ssh_session": true,
+  "completed_marker": "gate-5157e217",
+  "completed_mtime": "2026-09-02 18:44:12.681554139 +0800",
+  "formal_worker_pid": 70838,
+  "formal_worker_ppid_after_reconnect": 1,
+  "formal_worker_exit_code": 0,
+  "status": "PASS"
+}

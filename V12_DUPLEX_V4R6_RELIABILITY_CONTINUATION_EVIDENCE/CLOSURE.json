@@ -1,0 +1,49 @@
+{
+  "schema": "AgentTool.V12DuplexV4R6ReliabilityContinuationClosure/1",
+  "base_closure": "ff17b72330dec8ae2ba1d9746e5d511d8fb7a84e",
+  "runtime_commit": "bc3ba150e21873817c4ff2372bd80a29b968257c",
+  "v4r6_runtime_changed": false,
+  "infrastructure_persistence_gate": "PASS",
+  "historical_synthetic_support": "28 / 28 PASS",
+  "new_synthetic_planned": 200,
+  "new_synthetic_executed": 200,
+  "new_synthetic_retries": 0,
+  "new_synthetic_complete_pass": "200 / 200",
+  "missing_relay_slots": 0,
+  "deadline_misses": 0,
+  "max_release_slip_ns": 8229070,
+  "v4r6_synthetic_reliability": "PASS",
+  "p10_functional_requalification": {
+    "status": "FAIL",
+    "planned_units": 16,
+    "executed_units": 14,
+    "passed_units": 13,
+    "failed_units": 1,
+    "retries": 0,
+    "openai": "8 / 8 PASS",
+    "microsoft": "5 / 6 executed PASS",
+    "failed_identity": "DEV-DTVR-V4R6-P10-CONT-MS-CACHE_REUSE_30-002",
+    "failed_workload": "CACHE_REUSE_30",
+    "failed_framework": "Microsoft Agent Framework",
+    "failed_checks": [
+      "level_a_semantics"
+    ],
+    "not_run_identities": [
+      "DEV-DTVR-V4R6-P10-CONT-MS-CAUSAL_DEPTH_50-002",
+      "DEV-DTVR-V4R6-P10-CONT-MS-DESCRIPTOR_TRANSITIONS_K6-002"
+    ]
+  },
+  "p10_v4r6_functional": "FAIL",
+  "protected_classifier_runs": 0,
+  "protected_auc": 0,
+  "p20": "NOT_RUN",
+  "p25": "NOT_RUN",
+  "ready_for_duplex_repair_smoke": "NO",
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "archive_sha256": {
+    "synthetic_reliability_records.tar.gz": "3e08b40ac8776374ef5a3b2ee671ed73d01cac1e826a4bdc2f4a34e61dda6a8d",
+    "p10_functional_requalification_records.tar.gz": "83c045269889173de61648b108211242fa5ea8f57a52037853ebb9f1e3da2485"
+  },
+  "raw_records_preserved": true
+}

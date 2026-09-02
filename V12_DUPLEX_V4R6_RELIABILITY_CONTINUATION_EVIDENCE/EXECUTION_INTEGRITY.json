@@ -1,0 +1,24 @@
+{
+  "schema": "AgentTool.V12DuplexV4R6ExecutionIntegrity/1",
+  "execution_source_commit": "5157e21756d0ada9c6c7c8052d142e5bfe0d0e34",
+  "base_closure": "ff17b72330dec8ae2ba1d9746e5d511d8fb7a84e",
+  "runtime_commit": "bc3ba150e21873817c4ff2372bd80a29b968257c",
+  "runtime_commit_is_ancestor": true,
+  "protected_runtime_diff_from_runtime_commit": [],
+  "profile_id": "V12-TIMING-INDIST-V4R6-H50-H4500-P10-PIR60",
+  "profile_rounds": 506,
+  "pir_opportunities": 100,
+  "response_public_lag_ms": 30,
+  "response_preparation_lead_ms": 20,
+  "go_runner_sha256": "ec2befb4e83eac13b70dfef971362a2c758b40f5491e0364e3ddfc4f5149a548",
+  "simplepir_runner_sha256": "743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c",
+  "freeze_sha256": "68515a40e468aa44fb9451d341708cc8aca3dba87d7d6fc0264aa65e937052d3",
+  "reliability_runner_sha256": "409452b50a6e70b3e319b7dfaeee9627588be90a912bf45a235c75f19920735a",
+  "functional_runner_sha256": "d9af2b5b1aa86bc69bf7cf40e658a1ecf8e2d7f6f7d9e3e2a533534311aa9648",
+  "module_probe_paths": [
+    "/root/autodl-tmp/v12_v4r6_reliability_5157e217/v12_timing/profile.py",
+    "/root/autodl-tmp/v12_v4r6_reliability_5157e217/v11_online/session.py",
+    "/root/autodl-tmp/v12_v4r6_reliability_5157e217/v11_online/frameworks.py"
+  ],
+  "status": "PASS"
+}
