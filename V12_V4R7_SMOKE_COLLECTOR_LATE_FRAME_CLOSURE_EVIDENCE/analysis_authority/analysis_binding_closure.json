@@ -1,0 +1,18 @@
+{
+  "schema": "AgentTool.V12V4R7SmokeAnalysisBindingClosure/1",
+  "status": "PASS",
+  "failure_stage": "PRE_MODEL_FIT_COMPLETE_BLOCK_SELECTION",
+  "completed_classifier_fits_before_repair": 0,
+  "protected_auc_calculations_before_repair": 0,
+  "collection_manifest_sha256": "ab7d8089b2da567187ada2648ce1cd0e757ae88eab53c0a6271a1a49c2babb00",
+  "collection_source_commit": "7bf3ef70295c39e19c45b95fbde61055ca3d6d5a",
+  "analysis_source_commit": "8921c34ee6a5db1929a8a5bb653dfbc5fa0b6067",
+  "changed_source": "v12_timing/sentinel_smoke.py",
+  "original_source_sha256": "590b879f258c96e90333170cfbf65ebf2afc740130b66d253193de8d4cde2e51",
+  "bound_source_sha256": "f2d58decae497c4cae4de757234b7e110114396e26642a20936096e4d98aaf1e",
+  "repair": "BIND_SHARED_COMPLETION_SELECTION_TO_FROZEN_64_30_30",
+  "observer_feature_diff": "NONE",
+  "statistical_protocol_diff": "NONE",
+  "dataset_diff": "NONE",
+  "block_priority_diff": "NONE"
+}

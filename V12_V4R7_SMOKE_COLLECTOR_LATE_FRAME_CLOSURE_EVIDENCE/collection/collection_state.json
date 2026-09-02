@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12V4R7LateFrameCollectorSmokeCollection/1",
+  "manifest_sha256": "ab7d8089b2da567187ada2648ce1cd0e757ae88eab53c0a6271a1a49c2babb00",
+  "execution_source_commit": "7bf3ef70295c39e19c45b95fbde61055ca3d6d5a",
+  "expected_sessions": 640,
+  "executed_sessions": 640,
+  "complete_sessions": 640,
+  "failed_sessions": 0,
+  "retries": 0,
+  "serial_same_host_execution": true,
+  "classifier_training_during_collection": 0,
+  "auc_calculations_during_collection": 0,
+  "bootstrap_runs_during_collection": 0,
+  "status": "COLLECTION_CLOSED_COMPLETE",
+  "started_ns": 1788364292220258278,
+  "last_ledger_record_sha256": "ccd92ede10f67800e60ed83df59bf986d3acb0363de44ee0e973af406fb437d6",
+  "ended_ns": 1788369888648239910,
+  "dataset_manifest_sha256": "7b1ca4f2810943fbd98bf5831ff4f604a05c77da5e6f27811cc3a7f1b84459f7",
+  "dataset_inventory_sha256": "1f94bedb5d1922f403c5ec2686b44e728e2688ac90c10c0aaf0427805e9405e4"
+}
