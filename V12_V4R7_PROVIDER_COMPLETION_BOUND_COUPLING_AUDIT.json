@@ -1,0 +1,23 @@
+{
+  "schema": "AgentTool.V12V4R7ProviderCompletionBoundCouplingAudit/1",
+  "base_semantic_audit": "7565186c3215284df714e56fb8a01adb6a86244e",
+  "base_v4r6_reliability_closure": "0ff3bde2b9e889a0677c7b1b38f2bb3854f2eb6d",
+  "root_cause": "PROVIDER_COMPLETION_BOUND_TOO_TIGHT_FOR_DEPLOYMENT",
+  "current_bound_ms": 50,
+  "failed_observation": {
+    "provider_logical_work_ns": 364006,
+    "trusted_gateway_http_completion_ns": 50856110,
+    "diagnostic": "PROVIDER_CONTEXT_DEADLINE_EXCEEDED"
+  },
+  "semantic_completion_boundary": "TRUSTED_GATEWAY_VALID_PROVIDER_RESPONSE_RECEIVED_AND_READ",
+  "couplings": {
+    "trusted_gateway_http_timeout": true,
+    "provider_diagnostic_context_deadline_ns": true,
+    "profile_completion_rounds": "ceil(B / Delta)",
+    "fixed_transcript_rounds": "ceil(H / Delta) + ceil(B / Delta) + M + T"
+  },
+  "current_timeout_status_mapping": "GENERIC_ERROR",
+  "required_timeout_status_mapping": "TIMEOUT",
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0
+}
