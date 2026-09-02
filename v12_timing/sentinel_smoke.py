@@ -273,11 +273,12 @@ def build_freeze_manifest(
                         "identity": identity,
                     }
                 )
+    public_r = profile.total_rounds
     relay_widths = expected_raw_timing_widths(
-        "RELAY", public_r=506, public_q=100, has_relay_duplex=True
+        "RELAY", public_r=public_r, public_q=100, has_relay_duplex=True
     )
     registry_widths = expected_raw_timing_widths(
-        "REGISTRY", public_r=506, public_q=100, has_registry_send=True
+        "REGISTRY", public_r=public_r, public_q=100, has_registry_send=True
     )
     manifest: dict[str, Any] = {
         "schema": "AgentTool.V12DuplexRepairSmokeSentinelFreeze/1",
@@ -384,9 +385,20 @@ def validate_freeze_manifest(
         raise ValueError("smoke schedule is not identity-complete")
     if set(identities) & {str(value) for value in excluded_identities}:
         raise ValueError("smoke identity reuses development evidence")
-    if int(manifest["feature_contract"]["RELAY_feature_width"]) != 5695:
+    public_r = int(manifest["profile"]["total_rounds"])
+    relay_widths = expected_raw_timing_widths(
+        "RELAY", public_r=public_r, public_q=100, has_relay_duplex=True
+    )
+    registry_widths = expected_raw_timing_widths(
+        "REGISTRY", public_r=public_r, public_q=100, has_registry_send=True
+    )
+    if int(manifest["feature_contract"]["RELAY_feature_width"]) != (
+        sum(relay_widths) + 12 * len(relay_widths) + 1
+    ):
         raise ValueError("smoke Relay feature width drifted")
-    if int(manifest["feature_contract"]["REGISTRY_feature_width"]) != 448:
+    if int(manifest["feature_contract"]["REGISTRY_feature_width"]) != (
+        sum(registry_widths) + 12 * len(registry_widths) + 1
+    ):
         raise ValueError("smoke Registry feature width drifted")
     if len(manifest["pairs"]) != 5 * PLANNED_BLOCKS:
         raise ValueError("smoke pair denominator drifted")

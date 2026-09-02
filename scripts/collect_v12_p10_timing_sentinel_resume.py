@@ -236,7 +236,9 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         "profile_id_exact": str(trace.get("profile_id")) == profile.profile_id,
         "session_complete": trace.get("session_status") == "COMPLETE",
         "public_transcript_complete": trace.get("public_transcript_complete") is True,
-        "exact_R_cells": int(trace.get("emitted_cells", -1)) == 506 == len(relay_events),
+        "exact_R_cells": int(trace.get("emitted_cells", -1))
+        == profile.total_rounds
+        == len(relay_events),
         "exact_Q_queries": int(summary.get("query_count", -1)) == 100 == len(registry_rows),
         "complete_relay_response_send_ns": all(
             int(row.get("response_send_ns", 0)) > 0 for row in relay_events
@@ -255,7 +257,7 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
             for row in relay_events
         ),
         "gateway_response_clock_complete": (not duplex_timing)
-        or len(trace.get("gateway_response_releases", [])) == 506,
+        or len(trace.get("gateway_response_releases", [])) == profile.total_rounds,
         "gateway_release_deadlines_met": (not duplex_timing)
         or all(
             not bool(row.get("deadline_miss"))
@@ -266,8 +268,9 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         ),
         "fixed_request_size": all(int(row["request_length"]) == 1079 for row in relay_events),
         "fixed_response_size": all(int(row["response_length"]) == 800 for row in relay_events),
-        "complete_unique_relay_slot_set": len(relay_events) == 506
-        and sorted(int(row["round"]) for row in relay_events) == list(range(1, 507)),
+        "complete_unique_relay_slot_set": len(relay_events) == profile.total_rounds
+        and sorted(int(row["round"]) for row in relay_events)
+        == list(range(1, profile.total_rounds + 1)),
         "fixed_registry_query_order": [int(row["ordinal"]) for row in registry_rows]
         == list(range(100)),
         "no_out_of_schedule_PIR": len(cover) == 100
@@ -323,10 +326,23 @@ def _collect_one(unit_root: Path, expected: Mapping[str, Any], *, profile: Any) 
         )
     )
     relay_widths = tuple(len(relay_projection[key]) for key in relay_keys)
+    public_r = profile.total_rounds
     expected_relay_widths = (
-        (506, 505, 506, 505, 506, 505, 506, 505, 506, 506, 506)
+        (
+            public_r,
+            public_r - 1,
+            public_r,
+            public_r - 1,
+            public_r,
+            public_r - 1,
+            public_r,
+            public_r - 1,
+            public_r,
+            public_r,
+            public_r,
+        )
         if duplex_timing
-        else (506, 505, 506, 505, 506)
+        else (public_r, public_r - 1, public_r, public_r - 1, public_r)
     )
     if relay_widths != expected_relay_widths:
         raise CommonIntegrityFailure("completed Relay raw feature widths drifted")

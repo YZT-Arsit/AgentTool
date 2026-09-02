@@ -174,8 +174,11 @@ def main() -> int:
     if insufficient:
         verdict = "NOT_EVALUABLE_INSUFFICIENT_COMPLETE_BLOCKS"
         ready = False
-    elif timing_failure or failure_channel or operational:
-        verdict = "FAIL"
+    elif timing_failure:
+        verdict = "FAIL_SUBSTANTIAL_RESIDUAL_DISTINGUISHABILITY"
+        ready = False
+    elif failure_channel or operational:
+        verdict = "NOT_EVALUABLE"
         ready = False
     else:
         verdict = "PASS_TO_FULL_SENTINEL"
@@ -191,6 +194,8 @@ def main() -> int:
                     "observer": key[2],
                     "historical_one_sided_P10_AUC": HISTORICAL_RELAY_AUCS[key],
                     "duplex_repair_smoke_AUC": row["eval_point_auc"],
+                    "AUC_reduction": HISTORICAL_RELAY_AUCS[key]
+                    - row["eval_point_auc"],
                     "datasets_combined": False,
                     "role": "DEVELOPMENT_ABLATION_ONLY",
                 }
