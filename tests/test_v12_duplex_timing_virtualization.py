@@ -6,9 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from v11_online.session import duplex_pir_opportunity_times
+from v11_online.session import OnlineSimplePIRResolver, duplex_pir_opportunity_times
 from v12_timing.profile import (
-    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2,
+    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3,
     duplex_timing_candidate_profiles,
 )
 from v12_timing.projection import (
@@ -53,10 +53,11 @@ def test_v4_profiles_preserve_public_dimensions() -> None:
     for profile in profiles:
         assert (
             profile.timing_semantic_revision
-            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2
+            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3
         )
         assert profile.response_preparation_lead_ms == 50
         assert profile.response_preparation_workers == 6
+        assert profile.pir_commitment_lead_ms == 20
         assert profile.request_final_bytes == 1079
         assert profile.response_final_bytes == 800
         assert profile.pir_resolution_opportunities == 100
@@ -138,6 +139,21 @@ def test_open_loop_sender_does_not_read_private_completion_for_deadlines() -> No
     assert "descriptor" not in source
 
 
+def test_expired_real_pir_preparation_is_deferred_not_failed(tmp_path: Path) -> None:
+    resolver = OnlineSimplePIRResolver(tmp_path / "pir")
+    response = json.dumps(
+        {"type": "PIR_DEFERRED", "operation_id": "op-real", "padding": "x"}
+    )
+    with pytest.raises(RuntimeError, match="expired public opportunity"):
+        resolver._decode_query_response("op-real", 10, response)
+
+
+def test_late_pending_pir_cannot_retroactively_fill_expired_cutoff() -> None:
+    source = inspect.getsource(OnlineSimplePIRResolver._run_duplex_cover_schedule)
+    assert "self.cover_pending[0].enqueued_ns <= cutoff_ns" in source
+    assert '"expired_opportunity_retrofilled": False' in source
+
+
 def test_gateway_release_lane_only_uses_committed_frame_and_public_write() -> None:
     source = (ROOT / "common_action_gateway_v2/canonicalv9/duplex_response.go").read_text()
     release_body = source.split(
@@ -166,9 +182,9 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
     assert {p.pir_resolution_opportunities for p in profiles} == {100}
 
 
-def test_duplex_functional_manifest_freezes_48_fresh_v4r2_identities() -> None:
+def test_duplex_functional_manifest_freezes_48_fresh_v4r3_identities() -> None:
     freeze = json.loads(
-        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V3.json").read_text()
+        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V4.json").read_text()
     )
     assert freeze["frozen_before_functional_execution"] is True
     assert len(freeze["profiles"]) == 3
@@ -176,8 +192,9 @@ def test_duplex_functional_manifest_freezes_48_fresh_v4r2_identities() -> None:
     assert len(freeze["workloads"]) == 8
     assert freeze["planned_identities"] == 48
     assert freeze["retry_count"] == freeze["replacement_count"] == 0
-    assert freeze["identity_suffix"] == "003"
+    assert freeze["identity_suffix"] == "004"
     assert freeze["fixed"]["response_preparation_lead_ms"] == 50
     assert freeze["fixed"]["response_preparation_workers"] == 6
+    assert freeze["fixed"]["pir_commitment_lead_ms"] == 20
     assert freeze["protected_classifier_campaign_authorized"] is False
     assert freeze["auc_authorized"] is False

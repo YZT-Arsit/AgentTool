@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalAttemptAbort/3",
+  "status": "ABORTED_FUNCTIONAL_REGISTRY_PREPARATION_FAILURE",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE_V3.json",
+  "remote_evidence_root": "/root/autodl-tmp/V12_DUPLEX_FUNCTIONAL_V4R2_B071E03",
+  "planned_identities": 48,
+  "started_identities": 6,
+  "complete_passing_verdicts": 5,
+  "failure_records": 1,
+  "retries": 0,
+  "failed_identity": "DEV-DTVR-V4R2-P10-OA-CAUSAL_DEPTH_50-003",
+  "semantic_result": {
+    "expected_operations": 50,
+    "successfully_returned_operations": 46,
+    "accepted_operations": 46,
+    "resolved_not_admitted": 2,
+    "missing_initial_operations": 2,
+    "relay_cells": 506,
+    "registry_queries": 100,
+    "gateway_response_deadline_misses": 0,
+    "public_transcript_complete": true
+  },
+  "mechanical_root_cause": [
+    "the Python cover scheduler submitted a selected real PIR job only after the 5 ms commitment cutoff",
+    "the bridge correctly emitted a prebuilt dummy when the real query was not prepared at public release",
+    "the private completion path treated that expired-opportunity cover result as a permanent semantic error instead of keeping the real resolution queued for a later opportunity"
+  ],
+  "campaign_interpretation": "development functional attempt only; no timing privacy result",
+  "all_started_identities_permanent_development_exclusions": true,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "protected_timing_sessions": 0
+}

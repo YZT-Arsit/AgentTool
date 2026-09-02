@@ -41,7 +41,7 @@ def framework_code(framework: str) -> str:
 
 
 def identity(delta_ms: int, framework: str, workload: str, suffix: str) -> str:
-    return f"DEV-DTVR-V4R2-P{delta_ms}-{framework_code(framework)}-{workload}-{suffix}"
+    return f"DEV-DTVR-V4R3-P{delta_ms}-{framework_code(framework)}-{workload}-{suffix}"
 
 
 def build_workload(workload: str, framework: str, unit_identity: str):

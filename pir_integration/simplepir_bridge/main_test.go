@@ -37,6 +37,7 @@ func TestApplicationResponseSendBoundaryIsContentIndependent(t *testing.T) {
 		{Type: "PIR_RESULT", OperationID: "real", Record: "AA==", Correct: true},
 		{Type: "PIR_RESULT", OperationID: "noop", Record: "VV==", Correct: true},
 		{Type: "PIR_RESULT", OperationID: "wait", Record: "//==", Correct: true},
+		{Type: "PIR_DEFERRED", OperationID: "deferred", Error: "expired public opportunity"},
 	}
 	for _, response := range responses {
 		var output bytes.Buffer

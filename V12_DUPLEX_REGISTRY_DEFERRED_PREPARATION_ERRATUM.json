@@ -1,0 +1,36 @@
+{
+  "schema": "AgentTool.V12DuplexRegistryDeferredPreparationErratum/1",
+  "status": "FROZEN_BEFORE_REQUALIFICATION_ATTEMPT_4",
+  "supersedes_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2",
+  "new_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3",
+  "root_cause": "EXPIRED_REAL_PIR_PREPARATION_WAS_NOT_CARRIED_TO_A_LATER_PUBLIC_OPPORTUNITY",
+  "repair": {
+    "pir_commitment_lead_ms": 20,
+    "public_period_ms": 60,
+    "initial_lead_ms": 25,
+    "expired_opportunity": "always emits the prebuilt fixed-shape cover query",
+    "pending_real_resolution": "remains privately queued and may be selected only by a later unexpired public cutoff",
+    "retroactive_fill": false,
+    "late_arrival_filter": "pending enqueue time must be no later than the frozen public cutoff",
+    "private_control_result": "PIR_DEFERRED; fixed-size control frame"
+  },
+  "mechanical_basis": {
+    "observed_query_generation_ms_range": [1.075, 5.559],
+    "observed_cutoff_dispatch_overrun_ms_range_for_failed_real_attempts": [6.721068, 8.742134],
+    "frozen_lead_ms": 20
+  },
+  "unchanged": [
+    "H=4500",
+    "Delta candidates=10/20/25",
+    "R=506/279/233",
+    "Q=100",
+    "PIR period=60 ms",
+    "PIR epoch=6000 ms",
+    "Registry answer release delay=50 ms",
+    "request bytes=1079",
+    "response bytes=800",
+    "Gateway V4R2 response pipeline"
+  ],
+  "protected_classifier_sessions": 0,
+  "auc_calculations": 0
+}

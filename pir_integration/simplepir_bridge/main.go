@@ -116,6 +116,7 @@ type interactivePrepared struct {
 type interactiveServerJob struct {
 	prepared  interactivePrepared
 	arrivalNS int64
+	deferred  bool
 }
 
 type metrics struct {
@@ -443,7 +444,16 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 	go func() {
 		defer workers.Done()
 		for job := range serverJobs {
-			job.prepared.completed <- answerInteractive(pi, db, raw, shared, hint, params, job)
+			completed := answerInteractive(pi, db, raw, shared, hint, params, job)
+			if job.deferred {
+				completed.response.Type = "PIR_DEFERRED"
+				completed.response.Record = ""
+				completed.response.Correct = false
+				completed.response.Error = "real PIR preparation deferred after public cutoff"
+				completed.client.Class = "PRIVATE_REAL_PREPARATION_DEFERRED"
+				completed.client.Correct = false
+			}
+			job.prepared.completed <- completed
 		}
 	}()
 	go func() {
@@ -483,6 +493,7 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 				job.request.QueryReleaseNS, previousQueryReleaseNS, job.request.PublicPeriodNS,
 			)
 			var prepared interactivePrepared
+			deferred := false
 			if queryDeadline == 0 {
 				prepared = <-job.prepared
 			} else {
@@ -490,6 +501,7 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 				select {
 				case prepared = <-job.prepared:
 				default:
+					deferred = job.request.Index != recordCount-1
 					prepared = fallbackQueries[job.request.Ordinal%len(fallbackQueries)]
 					prepared.request = job.request
 					prepared.request.Index = recordCount - 1
@@ -505,7 +517,9 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 						ScheduledNs: queryDeadline, ArrivalNs: arrivalNS},
 				}
 			}
-			serverJob := interactiveServerJob{prepared: prepared, arrivalNS: arrivalNS}
+			serverJob := interactiveServerJob{
+				prepared: prepared, arrivalNS: arrivalNS, deferred: deferred,
+			}
 			if prepared.err == nil {
 				serverJobs <- serverJob
 			}

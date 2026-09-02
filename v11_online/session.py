@@ -76,10 +76,15 @@ class OnlineSessionFailure(RuntimeError):
     pass
 
 
+class _PIRPreparationDeferred(RuntimeError):
+    pass
+
+
 @dataclass
 class _PendingPIRResolution:
     operation_id: str
     index: int
+    enqueued_ns: int = field(default_factory=time.monotonic_ns)
     ready: threading.Event = field(default_factory=threading.Event)
     result: AgentDescriptorV7 | None = None
     error: BaseException | None = None
@@ -330,6 +335,16 @@ class OnlineSimplePIRResolver:
             raise response_item
         response = json.loads(response_item)
         if (
+            response.get("type") == "PIR_DEFERRED"
+            and response.get("operation_id") == operation_id
+        ):
+            self.query_count += 1
+            if response.get("query_sha256"):
+                self.query_hashes.append(str(response["query_sha256"]))
+            raise _PIRPreparationDeferred(
+                "real PIR preparation missed an expired public opportunity"
+            )
+        if (
             response.get("type") != "PIR_RESULT"
             or response.get("operation_id") != operation_id
             or not response.get("correct")
@@ -482,7 +497,7 @@ class OnlineSimplePIRResolver:
             (commitment_lead_ms, answer_release_delay_ms, worker_lanes, max_inflight)
         )
         if duplex and (
-            commitment_lead_ms != 5
+            commitment_lead_ms not in (5, 20)
             or answer_release_delay_ms != 50
             or worker_lanes != 1
             or max_inflight != opportunities
@@ -521,6 +536,22 @@ class OnlineSimplePIRResolver:
                     )
                     if submitted.pending is not None:
                         submitted.pending.result = result
+                        self.real_query_count += 1
+                    else:
+                        self.dummy_query_count += 1
+                except _PIRPreparationDeferred:
+                    submitted.event["private_preparation_deferred"] = True
+                    self.dummy_query_count += 1
+                    if submitted.pending is not None:
+                        with self.cover_condition:
+                            if self.cover_complete:
+                                submitted.pending.error = RuntimeError(
+                                    "PIR cover opportunities exhausted"
+                                )
+                                submitted.pending.ready.set()
+                            else:
+                                self.cover_pending.appendleft(submitted.pending)
+                                self.cover_condition.notify_all()
                 except BaseException as exc:
                     if self.cover_error is None:
                         self.cover_error = exc
@@ -530,7 +561,10 @@ class OnlineSimplePIRResolver:
                     submitted.event["complete_ns"] = (
                         time.monotonic_ns() - self.cover_origin_ns
                     )
-                    if submitted.pending is not None:
+                    if (
+                        submitted.pending is not None
+                        and not submitted.event.get("private_preparation_deferred")
+                    ):
                         submitted.pending.ready.set()
             finally:
                 self.completion_queue.task_done()
@@ -559,9 +593,12 @@ class OnlineSimplePIRResolver:
                 if remaining_ns > 0:
                     time.sleep(remaining_ns / 1_000_000_000)
                 with self.cover_condition:
-                    pending = (
-                        self.cover_pending.popleft() if self.cover_pending else None
-                    )
+                    pending = None
+                    if (
+                        self.cover_pending
+                        and self.cover_pending[0].enqueued_ns <= cutoff_ns
+                    ):
+                        pending = self.cover_pending.popleft()
                 committed_ns = time.monotonic_ns()
                 real = pending is not None
                 operation_id = (
@@ -614,10 +651,6 @@ class OnlineSimplePIRResolver:
                     if pending is not None:
                         pending.error = exc
                         pending.ready.set()
-                if real:
-                    self.real_query_count += 1
-                else:
-                    self.dummy_query_count += 1
             assert self.completion_queue is not None
             self.completion_queue.join()
             self.completion_queue.put(None)
@@ -712,7 +745,7 @@ class OnlineSimplePIRResolver:
     def query(self, operation_id: str, index: int) -> AgentDescriptorV7:
         if self.cover_thread is None:
             return self._execute_query(operation_id, index)
-        pending = _PendingPIRResolution(operation_id, index)
+        pending = _PendingPIRResolution(operation_id, index, time.monotonic_ns())
         with self.cover_condition:
             if self.cover_complete:
                 raise RuntimeError("PIR cover opportunities exhausted")
@@ -844,6 +877,7 @@ class CanonicalOnlineSession:
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2",
+            "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3",
         }:
             self.runner_binary = DUPLEX_TIMING_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":
