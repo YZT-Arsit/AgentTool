@@ -1,0 +1,92 @@
+{
+  "schema": "AgentTool.V12DuplexTimingVirtualizationDesign/1",
+  "base_attribution_evidence": "d22519ca1d8cce0c7fba5a9c3fa950a11bc8824b",
+  "redesign": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION",
+  "timing_semantic_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
+  "profiles": [
+    {
+      "profile_id": "V12-TIMING-INDIST-V4-H50-H4500-P10-PIR60",
+      "delta_ms": 10,
+      "relay_cells": 506
+    },
+    {
+      "profile_id": "V12-TIMING-INDIST-V4-H50-H4500-P20-PIR60",
+      "delta_ms": 20,
+      "relay_cells": 279
+    },
+    {
+      "profile_id": "V12-TIMING-INDIST-V4-H50-H4500-P25-PIR60",
+      "delta_ms": 25,
+      "relay_cells": 233
+    }
+  ],
+  "fixed_public_parameters": {
+    "causal_horizon_ms": 4500,
+    "maximum_real_operations": 50,
+    "provider_completion_bound_ms": 50,
+    "terminal_rounds": 1,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "response_preparation_lead_ms": 5,
+    "pir_public_epoch_ms": 6000,
+    "pir_period_ms": 60,
+    "pir_opportunities": 100,
+    "pir_commitment_lead_ms": 5,
+    "registry_answer_release_delay_ms": 50,
+    "registry_worker_lanes": 1,
+    "registry_max_inflight": 100
+  },
+  "forward_request_clock": {
+    "recurrence": "E_1=D_1; E_i=max(D_i,S_(i-1)+Delta)",
+    "commitment": "C_i=E_i-L_request",
+    "changed": false
+  },
+  "gateway_response_clock": {
+    "nominal": "N_i=E_i+L_response",
+    "recurrence": "F_1=max(N_1,A_1+L_response); F_i=max(N_i,A_i+L_response,T_(i-1)+Delta)",
+    "commitment": "G_i=F_i-L_response",
+    "inputs": {
+      "E_i": "public effective request eligibility",
+      "A_i": "Gateway application receive timestamp for public slot i",
+      "T_(i-1)": "previous actual public response release",
+      "Delta": "public response period"
+    },
+    "late_private_result": "remains queued for a later eligible response slot",
+    "missed_preparation": "fixed-size WAIT/error and functional failure; public deadline does not move"
+  },
+  "registry_query_clock": {
+    "nominal": "O+(j-1)*60ms",
+    "recurrence": "P_1=nominal_1; P_j=max(nominal_j,U_(j-1)+60ms)",
+    "commitment": "K_j=P_j-5ms",
+    "expired_opportunity": "cannot be filled retroactively",
+    "completion_dependency": "none"
+  },
+  "registry_answer_clock": {
+    "recurrence": "A_1=P_1+50ms; A_j=max(P_j+50ms,V_(j-1)+60ms)",
+    "private_readiness_input": false,
+    "late_compute": "fixed public deadline retained and functional failure recorded"
+  },
+  "strengthened_relay_observer": [
+    "client_to_relay_receive_ns",
+    "relay_to_gateway_send_ns",
+    "gateway_to_relay_receive_ns",
+    "relay_to_client_send_ns",
+    "session",
+    "public_slot",
+    "fixed_request_size",
+    "fixed_response_size",
+    "public_profile"
+  ],
+  "hidden_from_relay_observer": [
+    "OHTTP_plaintext",
+    "Agent_identity",
+    "Tool_identity",
+    "private_route",
+    "REAL_WAIT_RESULT_semantics",
+    "trusted_Gateway_state"
+  ],
+  "statistical_method_changed": false,
+  "protected_campaign_authorized": false,
+  "P20_sentinel": "NOT_RUN",
+  "P25_sentinel": "NOT_RUN"
+}
