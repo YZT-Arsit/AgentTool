@@ -41,8 +41,45 @@ RANDOMIZATION_RESAMPLES = 10_000
 FAILURE_EXACT_ALPHA = _sentinel_resume.FAILURE_EXACT_ALPHA
 FAILURE_RATE_DIFFERENCE_MARGIN = _sentinel_resume.FAILURE_RATE_DIFFERENCE_MARGIN
 OPERATIONAL_FAILURE_RATE_MARGIN = _sentinel_resume.OPERATIONAL_FAILURE_RATE_MARGIN
-completion_channel = _sentinel_resume.completion_channel
-select_complete_blocks = _sentinel_resume.select_complete_blocks
+
+
+def _with_smoke_denominator(function: Any, *args: Any, **kwargs: Any) -> Any:
+    """Run shared completion logic with this smoke's frozen denominator."""
+
+    names = (
+        "PLANNED_BLOCKS",
+        "TARGET_TRAIN_COMPLETE_BLOCKS",
+        "TARGET_EVAL_COMPLETE_BLOCKS",
+    )
+    values = (
+        PLANNED_BLOCKS,
+        TARGET_TRAIN_COMPLETE_BLOCKS,
+        TARGET_EVAL_COMPLETE_BLOCKS,
+    )
+    previous = {name: getattr(_sentinel_resume, name) for name in names}
+    try:
+        for name, value in zip(names, values, strict=True):
+            setattr(_sentinel_resume, name, value)
+        return function(*args, **kwargs)
+    finally:
+        for name, value in previous.items():
+            setattr(_sentinel_resume, name, value)
+
+
+def completion_channel(
+    manifest: Mapping[str, Any], status_by_identity: Mapping[str, str]
+) -> list[dict[str, Any]]:
+    return _with_smoke_denominator(
+        _sentinel_resume.completion_channel, manifest, status_by_identity
+    )
+
+
+def select_complete_blocks(
+    manifest: Mapping[str, Any], status_by_identity: Mapping[str, str]
+) -> dict[str, dict[str, Any]]:
+    return _with_smoke_denominator(
+        _sentinel_resume.select_complete_blocks, manifest, status_by_identity
+    )
 
 
 def physical_coordinates() -> tuple[SentinelCoordinate, ...]:
