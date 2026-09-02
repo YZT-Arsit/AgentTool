@@ -39,6 +39,9 @@ EFFECTIVE_PROFILE_V4R3_ID = re.compile(
 EFFECTIVE_PROFILE_V4R4_ID = re.compile(
     r"^V12-TIMING-INDIST-V4R4-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
 )
+EFFECTIVE_PROFILE_V4R5_ID = re.compile(
+    r"^V12-TIMING-INDIST-V4R5-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
+)
 NOMINAL_COMMITMENT_V1 = "NOMINAL_COMMITMENT_V1"
 EFFECTIVE_PUBLIC_CLOCK_V2 = "EFFECTIVE_PUBLIC_CLOCK_V2"
 EFFECTIVE_PUBLIC_CLOCK_V3 = "EFFECTIVE_PUBLIC_CLOCK_V3"
@@ -54,6 +57,9 @@ DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3 = (
 )
 DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4 = (
     "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4"
+)
+DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5 = (
+    "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5"
 )
 
 
@@ -90,6 +96,7 @@ class TimingIndistinguishabilityProfile:
     dummy_descriptor_row: int = DUMMY_DESCRIPTOR_ROW
     pir_initial_lead_ms: int = PIR_INITIAL_LEAD_MS
     timing_semantic_revision: str = NOMINAL_COMMITMENT_V1
+    response_initial_release_delay_ms: int = 0
     response_preparation_lead_ms: int = 0
     response_preparation_workers: int = 0
     pir_commitment_lead_ms: int = 0
@@ -149,6 +156,7 @@ class TimingIndistinguishabilityProfile:
             DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2: EFFECTIVE_PROFILE_V4R2_ID,
             DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3: EFFECTIVE_PROFILE_V4R3_ID,
             DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4: EFFECTIVE_PROFILE_V4R4_ID,
+            DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5: EFFECTIVE_PROFILE_V4R5_ID,
         }.get(self.timing_semantic_revision)
         if grammar is None:
             raise ValueError("unknown V12 timing semantic revision")
@@ -292,6 +300,33 @@ class TimingIndistinguishabilityProfile:
                 raise ValueError("V12 duplex Registry answer release delay changed")
             if self.registry_worker_lanes != 1 or self.registry_max_inflight != 100:
                 raise ValueError("V12 duplex Registry bounded worker design changed")
+        elif (
+            self.timing_semantic_revision
+            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5
+        ):
+            if self.admission_horizon_ms != 4500:
+                raise ValueError("V12 duplex V4R5 revision freezes H4500")
+            if (
+                self.round_period_ms not in (10, 20, 25)
+                or self.pir_resolution_period_ms != 60
+            ):
+                raise ValueError("V12 duplex V4R5 freezes Delta10/20/25 and PIR60")
+            if self.response_initial_release_delay_ms != 50:
+                raise ValueError(
+                    "V12 duplex V4R5 initial response release delay changed"
+                )
+            if self.response_preparation_lead_ms != 20:
+                raise ValueError(
+                    "V12 duplex V4R5 steady response preparation lead changed"
+                )
+            if self.response_preparation_workers != 6:
+                raise ValueError("V12 duplex V4R5 response preparation workers changed")
+            if self.pir_commitment_lead_ms != 20:
+                raise ValueError("V12 duplex V4R5 PIR commitment lead changed")
+            if self.registry_answer_release_delay_ms != 50:
+                raise ValueError("V12 duplex Registry answer release delay changed")
+            if self.registry_worker_lanes != 1 or self.registry_max_inflight != 100:
+                raise ValueError("V12 duplex Registry bounded worker design changed")
         else:
             raise ValueError("unknown V12 timing semantic revision")
         if self.provider_completion_bound_ms != 50 or self.terminal_rounds != 1:
@@ -351,6 +386,7 @@ class TimingIndistinguishabilityProfile:
             "pir_resolution_opportunities": self.pir_resolution_opportunities,
             "pir_initial_lead_ms": self.pir_initial_lead_ms,
             "timing_semantic_revision": self.timing_semantic_revision,
+            "response_initial_release_delay_ms": self.response_initial_release_delay_ms,
             "response_preparation_lead_ms": self.response_preparation_lead_ms,
             "response_preparation_workers": self.response_preparation_workers,
         }
@@ -368,6 +404,7 @@ class TimingIndistinguishabilityProfile:
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2,
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3,
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4,
+                        DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5,
                     }
                     else (
                         "AgentTool.V12TimingIndistinguishabilityProfile/3"
@@ -402,6 +439,7 @@ class TimingIndistinguishabilityProfile:
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2,
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3,
                         DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4,
+                        DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5,
                     }
                     else "D_i_MINUS_L_NOMINAL"
                 ),
@@ -458,12 +496,13 @@ def delta_functional_candidate_profiles() -> tuple[
 def duplex_timing_candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
     return tuple(
         TimingIndistinguishabilityProfile(
-            profile_id=f"V12-TIMING-INDIST-V4R4-H50-H4500-P{period}-PIR60",
+            profile_id=f"V12-TIMING-INDIST-V4R5-H50-H4500-P{period}-PIR60",
             round_period_ms=period,
             pir_resolution_period_ms=60,
             admission_horizon_ms=4500,
-            timing_semantic_revision=DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4,
-            response_preparation_lead_ms=50,
+            timing_semantic_revision=DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5,
+            response_initial_release_delay_ms=50,
+            response_preparation_lead_ms=20,
             response_preparation_workers=6,
             pir_commitment_lead_ms=20,
             registry_answer_release_delay_ms=50,

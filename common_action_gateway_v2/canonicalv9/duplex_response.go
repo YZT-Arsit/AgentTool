@@ -58,6 +58,7 @@ type gatewayResponsePreparationJob struct {
 type gatewayResponseVirtualizer struct {
 	rounds       int
 	period       time.Duration
+	initialLead  time.Duration
 	lead         time.Duration
 	workers      int
 	processClock time.Time
@@ -67,13 +68,14 @@ type gatewayResponseVirtualizer struct {
 	complete     chan struct{}
 }
 
-func newGatewayResponseVirtualizer(rounds int, period, lead time.Duration, workers int,
+func newGatewayResponseVirtualizer(rounds int, period, initialLead, lead time.Duration, workers int,
 	processClock time.Time) (*gatewayResponseVirtualizer, error) {
-	if rounds < 1 || period <= 0 || lead <= 0 || workers < 1 {
+	if rounds < 1 || period <= 0 || initialLead <= 0 || lead <= 0 || workers < 1 {
 		return nil, errors.New("invalid duplex Gateway response clock")
 	}
 	value := &gatewayResponseVirtualizer{
-		rounds: rounds, period: period, lead: lead, workers: workers, processClock: processClock,
+		rounds: rounds, period: period, initialLead: initialLead, lead: lead,
+		workers: workers, processClock: processClock,
 		eligibility: make(chan responseEligibility, rounds),
 		requests:    make(chan gatewayResponseRequest, rounds),
 		releases:    make(chan gatewayResponseRelease, rounds),
@@ -104,6 +106,15 @@ func gatewayResponseDeadline(eligible, requestArrival, previousRelease time.Time
 		release = maxPublicTime(release, previousRelease.Add(period))
 	}
 	return release
+}
+
+func gatewayResponsePreparationLead(
+	slot uint32, initialLead, steadyLead time.Duration,
+) time.Duration {
+	if slot == 1 {
+		return initialLead
+	}
+	return steadyLead
 }
 
 func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
@@ -161,10 +172,11 @@ func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
 			}
 		}
 		request := requests[slot]
+		preparationLead := gatewayResponsePreparationLead(slot, v.initialLead, v.lead)
 		plannedRelease := gatewayResponseDeadline(
-			eligibilities[slot], request.requestArrival, previousPlannedRelease, v.period, v.lead,
+			eligibilities[slot], request.requestArrival, previousPlannedRelease, v.period, preparationLead,
 		)
-		commitment := plannedRelease.Add(-v.lead)
+		commitment := plannedRelease.Add(-preparationLead)
 		if err := commitmentPacer.WaitUntil(commitment); err != nil {
 			request.done <- err
 			return

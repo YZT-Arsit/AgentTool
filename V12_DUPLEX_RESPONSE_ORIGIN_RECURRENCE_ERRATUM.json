@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12DuplexResponseOriginRecurrenceErratum/1",
+  "status": "FROZEN_BEFORE_FUNCTIONAL_ATTEMPT_6",
+  "supersedes_runtime_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4",
+  "runtime_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5",
+  "reason": "separate the first-slot cold response-origin reserve from the steady response preparation lead",
+  "public_recurrence": {
+    "slot_1": "F_1 = max(E_1 + 50ms, gateway_arrival_1 + 50ms)",
+    "slot_i_for_i_gt_1": "F_i = max(E_i + 20ms, gateway_arrival_i + 20ms, F_(i-1) + Delta)",
+    "commitment": "G_1 = F_1 - 50ms; G_i = F_i - 20ms for i > 1",
+    "release_period": "Delta"
+  },
+  "fixed": {
+    "initial_response_release_delay_ms": 50,
+    "steady_response_preparation_lead_ms": 20,
+    "response_preparation_workers": 6,
+    "response_commitment_lanes": 1,
+    "response_release_lanes": 1
+  },
+  "unchanged": [
+    "H=4500",
+    "Delta candidates 10/20/25",
+    "R=506/279/233",
+    "Q=100",
+    "request bytes=1079",
+    "response bytes=800",
+    "forward action clock",
+    "PIR60/EPOCH6000",
+    "classifier/statistical methodology"
+  ],
+  "protected_classifier_campaign_authorized": false,
+  "protected_auc_authorized": false
+}

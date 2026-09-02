@@ -39,6 +39,19 @@ func TestGatewayResponseDeadlineUsesOnlyPublicRecurrence(t *testing.T) {
 	}
 }
 
+func TestGatewayResponsePreparationLeadSeparatesColdOriginFromSteadySlots(t *testing.T) {
+	initial := 50 * time.Millisecond
+	steady := 20 * time.Millisecond
+	if got := gatewayResponsePreparationLead(1, initial, steady); got != initial {
+		t.Fatalf("slot 1 lead = %s, want %s", got, initial)
+	}
+	for _, slot := range []uint32{2, 3, 506} {
+		if got := gatewayResponsePreparationLead(slot, initial, steady); got != steady {
+			t.Fatalf("slot %d lead = %s, want %s", slot, got, steady)
+		}
+	}
+}
+
 func TestSyntheticT7ResponseDifferential(t *testing.T) {
 	origin := time.Unix(0, 1_000_000_000)
 	ordinaryTool := gatewayResponseDeadline(origin, origin, time.Time{}, 10*time.Millisecond, 50*time.Millisecond)

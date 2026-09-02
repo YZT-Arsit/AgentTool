@@ -46,35 +46,36 @@ type ActionSpec struct {
 }
 
 type Plan struct {
-	ProfileID                  string       `json:"profile_id"`
-	ProfileClass               string       `json:"profile_class,omitempty"`
-	StateDirectory             string       `json:"state_directory"`
-	Rounds                     int          `json:"rounds"`
-	AdmissionRounds            int          `json:"admission_rounds"`
-	MaximumRealOperations      int          `json:"maximum_real_operations"`
-	RoundPeriodMS              int          `json:"round_period_ms"`
-	ProviderCompletionBoundMS  int          `json:"provider_completion_bound_ms"`
-	RequestBHTTPBytes          int          `json:"request_bhttp_bytes"`
-	ResponseBHTTPBytes         int          `json:"response_bhttp_bytes"`
-	RequestFinalBytes          int          `json:"request_final_bytes"`
-	ResponseFinalBytes         int          `json:"response_final_bytes"`
-	ResponsePreparationLeadMS  int          `json:"response_preparation_lead_ms,omitempty"`
-	ResponsePreparationWorkers int          `json:"response_preparation_workers,omitempty"`
-	SchedulerToleranceMS       int          `json:"scheduler_tolerance_ms,omitempty"`
-	PreparationLeadMS          int          `json:"preparation_lead_ms,omitempty"`
-	PublicSessionLivenessCapMS int          `json:"public_session_liveness_cap_ms,omitempty"`
-	AdmissionHorizonMS         int          `json:"admission_horizon_ms,omitempty"`
-	PIRResolutionPeriodMS      int          `json:"pir_resolution_period_ms,omitempty"`
-	PIRPublicEpochMS           int          `json:"pir_public_epoch_ms,omitempty"`
-	PIRResolutionOpportunities int          `json:"pir_resolution_opportunities,omitempty"`
-	PIRInitialLeadMS           int          `json:"pir_initial_lead_ms,omitempty"`
-	TimingSemanticRevision     string       `json:"timing_semantic_revision,omitempty"`
-	FaultDelayResponseSlot     int          `json:"fault_delay_response_slot,omitempty"`
-	FaultDelayResponseMS       int          `json:"fault_delay_response_ms,omitempty"`
-	FaultSchedulerStallSlot    int          `json:"fault_scheduler_stall_slot,omitempty"`
-	FaultSchedulerStallMS      int          `json:"fault_scheduler_stall_ms,omitempty"`
-	Routes                     []RouteSpec  `json:"routes"`
-	Actions                    []ActionSpec `json:"actions"`
+	ProfileID                     string       `json:"profile_id"`
+	ProfileClass                  string       `json:"profile_class,omitempty"`
+	StateDirectory                string       `json:"state_directory"`
+	Rounds                        int          `json:"rounds"`
+	AdmissionRounds               int          `json:"admission_rounds"`
+	MaximumRealOperations         int          `json:"maximum_real_operations"`
+	RoundPeriodMS                 int          `json:"round_period_ms"`
+	ProviderCompletionBoundMS     int          `json:"provider_completion_bound_ms"`
+	RequestBHTTPBytes             int          `json:"request_bhttp_bytes"`
+	ResponseBHTTPBytes            int          `json:"response_bhttp_bytes"`
+	RequestFinalBytes             int          `json:"request_final_bytes"`
+	ResponseFinalBytes            int          `json:"response_final_bytes"`
+	ResponsePreparationLeadMS     int          `json:"response_preparation_lead_ms,omitempty"`
+	ResponseInitialReleaseDelayMS int          `json:"response_initial_release_delay_ms,omitempty"`
+	ResponsePreparationWorkers    int          `json:"response_preparation_workers,omitempty"`
+	SchedulerToleranceMS          int          `json:"scheduler_tolerance_ms,omitempty"`
+	PreparationLeadMS             int          `json:"preparation_lead_ms,omitempty"`
+	PublicSessionLivenessCapMS    int          `json:"public_session_liveness_cap_ms,omitempty"`
+	AdmissionHorizonMS            int          `json:"admission_horizon_ms,omitempty"`
+	PIRResolutionPeriodMS         int          `json:"pir_resolution_period_ms,omitempty"`
+	PIRPublicEpochMS              int          `json:"pir_public_epoch_ms,omitempty"`
+	PIRResolutionOpportunities    int          `json:"pir_resolution_opportunities,omitempty"`
+	PIRInitialLeadMS              int          `json:"pir_initial_lead_ms,omitempty"`
+	TimingSemanticRevision        string       `json:"timing_semantic_revision,omitempty"`
+	FaultDelayResponseSlot        int          `json:"fault_delay_response_slot,omitempty"`
+	FaultDelayResponseMS          int          `json:"fault_delay_response_ms,omitempty"`
+	FaultSchedulerStallSlot       int          `json:"fault_scheduler_stall_slot,omitempty"`
+	FaultSchedulerStallMS         int          `json:"fault_scheduler_stall_ms,omitempty"`
+	Routes                        []RouteSpec  `json:"routes"`
+	Actions                       []ActionSpec `json:"actions"`
 }
 
 type PrivateEvent struct {
@@ -441,6 +442,21 @@ func validatePlan(plan Plan) error {
 		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
 			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
 			return errors.New("V12 duplex V4R4 public PIR schedule changed")
+		}
+	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4R5-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5" {
+			return errors.New("V12 duplex V4R5 profile ID and revision disagree")
+		}
+		if plan.ResponseInitialReleaseDelayMS != 50 || plan.ResponsePreparationLeadMS != 20 || plan.ResponsePreparationWorkers != 6 {
+			return errors.New("V12 duplex V4R5 response pipeline changed")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex V4R5 public admission horizon disagrees with fixed slot count")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex V4R5 public PIR schedule changed")
 		}
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {

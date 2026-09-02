@@ -8,7 +8,7 @@ import pytest
 
 from v11_online.session import OnlineSimplePIRResolver, duplex_pir_opportunity_times
 from v12_timing.profile import (
-    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4,
+    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5,
     duplex_timing_candidate_profiles,
 )
 from v12_timing.projection import (
@@ -53,9 +53,10 @@ def test_v4_profiles_preserve_public_dimensions() -> None:
     for profile in profiles:
         assert (
             profile.timing_semantic_revision
-            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4
+            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5
         )
-        assert profile.response_preparation_lead_ms == 50
+        assert profile.response_initial_release_delay_ms == 50
+        assert profile.response_preparation_lead_ms == 20
         assert profile.response_preparation_workers == 6
         assert profile.pir_commitment_lead_ms == 20
         assert profile.request_final_bytes == 1079
@@ -63,6 +64,9 @@ def test_v4_profiles_preserve_public_dimensions() -> None:
         assert profile.pir_resolution_opportunities == 100
         assert profile.registry_worker_lanes == 1
         assert profile.registry_max_inflight == 100
+        plan = profile.go_plan_fields()
+        assert plan["response_initial_release_delay_ms"] == 50
+        assert plan["response_preparation_lead_ms"] == 20
 
 
 def test_strengthened_relay_projection_is_allowlisted_and_fixed_width() -> None:
@@ -188,9 +192,9 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
     assert {p.pir_resolution_opportunities for p in profiles} == {100}
 
 
-def test_duplex_functional_manifest_freezes_48_fresh_v4r4_identities() -> None:
+def test_duplex_functional_manifest_freezes_48_fresh_v4r5_identities() -> None:
     freeze = json.loads(
-        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V5.json").read_text()
+        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V6.json").read_text()
     )
     assert freeze["frozen_before_functional_execution"] is True
     assert len(freeze["profiles"]) == 3
@@ -198,8 +202,9 @@ def test_duplex_functional_manifest_freezes_48_fresh_v4r4_identities() -> None:
     assert len(freeze["workloads"]) == 8
     assert freeze["planned_identities"] == 48
     assert freeze["retry_count"] == freeze["replacement_count"] == 0
-    assert freeze["identity_suffix"] == "005"
-    assert freeze["fixed"]["response_preparation_lead_ms"] == 50
+    assert freeze["identity_suffix"] == "006"
+    assert freeze["fixed"]["response_initial_release_delay_ms"] == 50
+    assert freeze["fixed"]["response_preparation_lead_ms"] == 20
     assert freeze["fixed"]["response_preparation_workers"] == 6
     assert freeze["fixed"]["pir_commitment_lead_ms"] == 20
     assert freeze["protected_classifier_campaign_authorized"] is False

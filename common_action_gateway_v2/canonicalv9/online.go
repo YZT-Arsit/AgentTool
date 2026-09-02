@@ -301,13 +301,19 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4"
+	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5"
 	if duplexTiming {
 		responsePreparationWorkers := plan.ResponsePreparationWorkers
 		if responsePreparationWorkers < 1 {
 			responsePreparationWorkers = 1
 		}
+		responseInitialReleaseDelay := plan.ResponseInitialReleaseDelayMS
+		if responseInitialReleaseDelay < 1 {
+			responseInitialReleaseDelay = plan.ResponsePreparationLeadMS
+		}
 		responseClock, clockErr := newGatewayResponseVirtualizer(
 			plan.Rounds, period,
+			time.Duration(responseInitialReleaseDelay)*time.Millisecond,
 			time.Duration(plan.ResponsePreparationLeadMS)*time.Millisecond,
 			responsePreparationWorkers,
 			processClock,
