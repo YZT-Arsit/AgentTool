@@ -78,7 +78,7 @@ func TestSyntheticT9ResponseDifferential(t *testing.T) {
 
 func TestGatewayResponseLatePreparationWritesCommittedSlot(t *testing.T) {
 	clock, err := newGatewayResponseVirtualizer(
-		1, 10*time.Millisecond, 30*time.Millisecond, 20*time.Millisecond, 1, time.Now(),
+		1, 10*time.Millisecond, 30*time.Millisecond, 20*time.Millisecond, 1, false, time.Now(),
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -227,6 +227,125 @@ func TestV4R7ProviderReadinessCannotMoveResponseDeadline(t *testing.T) {
 		)
 		if !got.Equal(deadline) {
 			t.Fatalf("private readiness %s changed response deadline", privateReadiness)
+		}
+	}
+}
+
+func TestV4R8GatewayArrivalCannotMovePlannedResponseDeadline(t *testing.T) {
+	origin := time.Unix(0, 1_000_000_000)
+	eligible := origin.Add(100 * time.Millisecond)
+	previous := origin.Add(110 * time.Millisecond)
+	want := origin.Add(130 * time.Millisecond)
+	for _, arrival := range []time.Time{
+		origin.Add(80 * time.Millisecond),
+		origin.Add(115 * time.Millisecond),
+		origin.Add(500 * time.Millisecond),
+	} {
+		got := gatewayResponseDeadlineV4R8(
+			eligible, previous, 10*time.Millisecond, 30*time.Millisecond,
+		)
+		if !got.Equal(want) {
+			t.Fatalf("arrival %s moved V4R8 F_i: got %s want %s", arrival, got, want)
+		}
+	}
+}
+
+func TestV4R8PrivateResponseCasesCannotMovePlannedDeadline(t *testing.T) {
+	origin := time.Unix(0, 1_000_000_000)
+	eligible := origin.Add(20 * time.Millisecond)
+	want := origin.Add(50 * time.Millisecond)
+	for _, privateCase := range []string{
+		"NOOP", "REAL", "WAIT", "RESULT", "PROVIDER_EARLY", "PROVIDER_LATE",
+	} {
+		got := gatewayResponseDeadlineV4R8(
+			eligible, time.Time{}, 10*time.Millisecond, 30*time.Millisecond,
+		)
+		if !got.Equal(want) {
+			t.Fatalf("private case %s moved V4R8 F_i: got %s want %s", privateCase, got, want)
+		}
+	}
+}
+
+func TestV4R8PlannedRecurrenceDoesNotPropagateArrivalPerturbation(t *testing.T) {
+	origin := time.Unix(0, 1_000_000_000)
+	previous := time.Time{}
+	for slot := 0; slot < 12; slot++ {
+		eligible := origin.Add(time.Duration(slot) * 10 * time.Millisecond)
+		got := gatewayResponseDeadlineV4R8(
+			eligible, previous, 10*time.Millisecond, 30*time.Millisecond,
+		)
+		want := eligible.Add(30 * time.Millisecond)
+		if !got.Equal(want) {
+			t.Fatalf("slot %d F_i = %s, want %s", slot+1, got, want)
+		}
+		previous = got
+	}
+}
+
+func TestV4R8LateArrivalPreservesOriginalCutoffAndLateFrame(t *testing.T) {
+	processClock := time.Now()
+	clock, err := newGatewayResponseVirtualizer(
+		1, 10*time.Millisecond, 30*time.Millisecond, 20*time.Millisecond, 1, true, processClock,
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	eligible := time.Now().Add(20 * time.Millisecond)
+	plannedRelease := eligible.Add(30 * time.Millisecond)
+	wantCutoff := eligible.Add(10 * time.Millisecond)
+	clock.setEligibility(1, eligible)
+	// The request is deliberately made physically available after F_1. The
+	// recorded request-arrival timestamp is also after the original G_1.
+	time.Sleep(time.Until(plannedRelease.Add(5 * time.Millisecond)))
+	writer := httptest.NewRecorder()
+	readyBetweenCutoffAndArrival := wantCutoff.Add(5 * time.Millisecond)
+	var gotCutoff time.Time
+	err = clock.release(1, plannedRelease.Add(2*time.Millisecond), func(cutoff time.Time) (func() (v8.PreparedSlot, error), error) {
+		gotCutoff = cutoff
+		frame := "WAIT"
+		if !readyBetweenCutoffAndArrival.After(cutoff) {
+			frame = "RESULT"
+		}
+		return func() (v8.PreparedSlot, error) {
+			return v8.PreparedSlot{Frame: []byte(frame)}, nil
+		}, nil
+	}, writer)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !gotCutoff.Equal(wantCutoff) {
+		t.Fatalf("late request redefined G_1: got %s want %s", gotCutoff, wantCutoff)
+	}
+	if got := writer.Body.String(); got != "WAIT" {
+		t.Fatalf("post-cutoff result retroactively entered slot: %q", got)
+	}
+	releases := clock.wait()
+	if len(releases) != 1 || !releases[0].DeadlineMiss || releases[0].ReleaseSlipNS <= 0 {
+		t.Fatalf("late-frame accounting = %+v", releases)
+	}
+	wantReleaseNS := plannedRelease.Sub(processClock).Nanoseconds()
+	if releases[0].ReleaseNS != wantReleaseNS {
+		t.Fatalf("recorded planned F_1 = %d, want %d", releases[0].ReleaseNS, wantReleaseNS)
+	}
+}
+
+func TestV4R8PublicProfilePreservesV4R7CapacityAndSizes(t *testing.T) {
+	plan := v4r6SyntheticPublicPathPlan(t, 521)
+	plan.ProfileID = "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60"
+	plan.TimingSemanticRevision = "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8"
+	plan.ProviderCompletionBoundMS = 200
+	if err := validatePlan(plan); err != nil {
+		t.Fatalf("valid V4R8 plan rejected: %v", err)
+	}
+	if plan.Rounds != 521 || plan.PIRResolutionOpportunities != 100 ||
+		plan.RequestFinalBytes != 1079 || plan.ResponseFinalBytes != 800 {
+		t.Fatalf("V4R8 public shape changed: %+v", plan)
+	}
+	for _, rounds := range []int{520, 522} {
+		mutated := plan
+		mutated.Rounds = rounds
+		if err := validatePlan(mutated); err == nil {
+			t.Fatalf("V4R8 accepted R=%d", rounds)
 		}
 	}
 }

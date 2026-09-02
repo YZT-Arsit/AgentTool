@@ -1,0 +1,48 @@
+{
+  "schema": "AgentTool.V12V4R8ResponseAnchorDesignFreeze/1",
+  "phase": "V12-V4R8-RESPONSE-PUBLIC-ANCHOR-REPAIR",
+  "base_attribution": "eedc1cfb55973ec8885a971129353c9211111aea",
+  "base_v4r7_smoke": "f66649590f1159a5bce280baaea2cfdc3218435c",
+  "base_utility_closure": "06bb4677fe51defb8823a1fcaf685856cda15845",
+  "runtime_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8",
+  "targeted_change": "REMOVE_GATEWAY_REQUEST_ARRIVAL_FROM_PLANNED_RESPONSE_CLOCK",
+  "old_response_clock": "F_i=max(E_i+rho,gateway_request_arrival_i+L_response,F_(i-1)+Delta)",
+  "new_response_clock": {
+    "slot_1": "F_1=E_1+rho",
+    "recurrence": "F_i=max(E_i+rho,F_(i-1)+Delta)",
+    "commitment": "G_i=F_i-L_response",
+    "physical_release": "S_i=max(F_i,S_(i-1)+Delta)",
+    "gateway_arrival_in_F_i": false,
+    "gateway_arrival_role": "DIAGNOSTIC_AND_EXISTING_OBSERVER_FIELD_ONLY"
+  },
+  "fixed_public_parameters": {
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "R": 521,
+    "Q": 100,
+    "rho_ms": 30,
+    "response_preparation_lead_ms": 20,
+    "response_preparation_workers": 6,
+    "request_bytes": 1079,
+    "response_bytes": 800
+  },
+  "unchanged": [
+    "forward effective public request clock",
+    "Gateway result commitment semantics",
+    "late-frame emission rule",
+    "physical no-catch-up rule",
+    "Registry open-loop query clock",
+    "Registry response shaping",
+    "strengthened Relay observer",
+    "OHTTP/BHTTP formats and sizes",
+    "provider timeout semantics",
+    "framework adapters",
+    "utility semantics",
+    "statistical protocol"
+  ],
+  "closed_utility_campaigns_to_rerun": 0,
+  "protected_classifier_runs_before_freeze": 0,
+  "protected_auc_calculations_before_freeze": 0
+}

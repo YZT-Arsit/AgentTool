@@ -327,6 +327,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R6"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R7"
+	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8"
 	if duplexTiming {
 		responsePreparationWorkers := plan.ResponsePreparationWorkers
 		if responsePreparationWorkers < 1 {
@@ -344,6 +345,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			time.Duration(responsePublicLag)*time.Millisecond,
 			time.Duration(plan.ResponsePreparationLeadMS)*time.Millisecond,
 			responsePreparationWorkers,
+			plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8",
 			processClock,
 		)
 		if clockErr != nil {

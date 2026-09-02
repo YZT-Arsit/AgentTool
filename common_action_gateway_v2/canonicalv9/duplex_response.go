@@ -67,26 +67,29 @@ func responseWriteError(err error) string {
 // commitment/preparation lane and a distinct fixed release lane run as a
 // pipeline. The release lane never consults private readiness.
 type gatewayResponseVirtualizer struct {
-	rounds       int
-	period       time.Duration
-	publicLag    time.Duration
-	lead         time.Duration
-	workers      int
-	processClock time.Time
-	eligibility  chan responseEligibility
-	requests     chan gatewayResponseRequest
-	releases     chan gatewayResponseRelease
-	complete     chan struct{}
+	rounds    int
+	period    time.Duration
+	publicLag time.Duration
+	lead      time.Duration
+	workers   int
+	// eligibilityAnchored freezes V4R8 planned releases to the effective
+	// public request clock. requestArrival remains diagnostic only.
+	eligibilityAnchored bool
+	processClock        time.Time
+	eligibility         chan responseEligibility
+	requests            chan gatewayResponseRequest
+	releases            chan gatewayResponseRelease
+	complete            chan struct{}
 }
 
 func newGatewayResponseVirtualizer(rounds int, period, publicLag, lead time.Duration, workers int,
-	processClock time.Time) (*gatewayResponseVirtualizer, error) {
+	eligibilityAnchored bool, processClock time.Time) (*gatewayResponseVirtualizer, error) {
 	if rounds < 1 || period <= 0 || publicLag <= lead || lead <= 0 || workers < 1 {
 		return nil, errors.New("invalid duplex Gateway response clock")
 	}
 	value := &gatewayResponseVirtualizer{
 		rounds: rounds, period: period, publicLag: publicLag, lead: lead,
-		workers: workers, processClock: processClock,
+		workers: workers, eligibilityAnchored: eligibilityAnchored, processClock: processClock,
 		eligibility: make(chan responseEligibility, rounds),
 		requests:    make(chan gatewayResponseRequest, rounds),
 		releases:    make(chan gatewayResponseRelease, rounds),
@@ -116,6 +119,18 @@ func gatewayResponseDeadline(eligible, requestArrival, previousRelease time.Time
 	// A delayed public request can move its own response only enough to preserve
 	// the public preparation lead; no private response state participates.
 	release := maxPublicTime(eligible.Add(publicLag), requestArrival.Add(preparationLead))
+	if !previousRelease.IsZero() {
+		release = maxPublicTime(release, previousRelease.Add(period))
+	}
+	return release
+}
+
+func gatewayResponseDeadlineV4R8(eligible, previousRelease time.Time,
+	period, publicLag time.Duration) time.Time {
+	// V4R8 planned response time is derived only from effective public request
+	// eligibility and the preceding planned response. Gateway arrival is kept
+	// as an observer/diagnostic timestamp but cannot re-anchor this clock.
+	release := eligible.Add(publicLag)
 	if !previousRelease.IsZero() {
 		release = maxPublicTime(release, previousRelease.Add(period))
 	}
@@ -188,6 +203,11 @@ func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
 			eligibilities[slot], request.requestArrival, previousPlannedRelease,
 			v.period, v.publicLag, v.lead,
 		)
+		if v.eligibilityAnchored {
+			plannedRelease = gatewayResponseDeadlineV4R8(
+				eligibilities[slot], previousPlannedRelease, v.period, v.publicLag,
+			)
+		}
 		commitment := plannedRelease.Add(-v.lead)
 		if err := commitmentPacer.WaitUntil(commitment); err != nil {
 			request.done <- err

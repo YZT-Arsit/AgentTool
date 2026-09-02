@@ -508,6 +508,31 @@ func validatePlan(plan Plan) error {
 			return errors.New("V12 duplex V4R7 public PIR schedule changed")
 		}
 	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4R8-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8" {
+			return errors.New("V12 duplex V4R8 profile ID and revision disagree")
+		}
+		if plan.ProviderCompletionBoundMS != 200 {
+			return errors.New("V12 duplex V4R8 public provider completion bound changed")
+		}
+		if plan.ResponsePublicLagMS != 30 || plan.ResponsePreparationLeadMS != 20 || plan.ResponsePreparationWorkers != 6 {
+			return errors.New("V12 duplex V4R8 response pipeline changed")
+		}
+		if plan.ResponsePublicLagMS <= plan.ResponsePreparationLeadMS {
+			return errors.New("V12 duplex V4R8 public response lag must exceed preparation lead")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex V4R8 public admission horizon disagrees with fixed slot count")
+		}
+		completionRounds := (plan.ProviderCompletionBoundMS + plan.RoundPeriodMS - 1) / plan.RoundPeriodMS
+		if plan.Rounds != plan.AdmissionRounds+completionRounds+plan.MaximumRealOperations+1 {
+			return errors.New("V12 duplex V4R8 fixed transcript capacity disagrees with public B")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex V4R8 public PIR schedule changed")
+		}
+	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
 		if slot < 0 || slot > plan.Rounds {
 			return errors.New("canonical fault slot is outside public rounds")
