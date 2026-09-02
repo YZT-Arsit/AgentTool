@@ -1,0 +1,83 @@
+{
+  "schema": "AgentTool.V12V4R7ResidualTimingSourceAttributionClosure/1",
+  "phase": "V12-V4R7-RESIDUAL-TIMING-SOURCE-ATTRIBUTION",
+  "status": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "base_smoke": "f66649590f1159a5bce280baaea2cfdc3218435c",
+  "dataset": {
+    "identity_count": 640,
+    "new_sessions": 0,
+    "selected_train_blocks_per_coordinate": 30,
+    "selected_eval_blocks_per_coordinate": 30,
+    "dataset_inventory_sha256": "1f94bedb5d1922f403c5ec2686b44e728e2688ac90c10c0aaf04277805e9405e4",
+    "analysis_input_manifest_sha256": "2cad15f5be2c0d5c4cb672351eb245be3892d01238bcf0eeb82a0e28041c5c01"
+  },
+  "immutability": {
+    "runtime_changes": 0,
+    "auc_based_privacy_claims": 0,
+    "paper_changes": 0,
+    "deadline_miss_in_attacker_features": false
+  },
+  "feature_family_results": {
+    "file": "feature_family_results.csv",
+    "rows": 40,
+    "sha256": "6f1b34a8eeb2adc5c6aae2519c8ec624557b805eecd041f866e819c16ddb2087"
+  },
+  "slot_level_class_medians": {
+    "file": "slot_level_boundary_medians.csv",
+    "rows": 1042,
+    "sha256": "3fc42930083a69fee235cb61a0964386ba36d06da044b8ce809976aae4373d1d"
+  },
+  "private_deadline_misses": {
+    "file": "deadline_miss_events.csv",
+    "rows": 13,
+    "sha256": "bc039bbe0af760b453284515e497ae3554ee572460ebc542585fe5314d026058",
+    "count_by_coordinate_and_class": {
+      "C1/OpenAI/class0": 1,
+      "C1/OpenAI/class1": 0,
+      "T7/OpenAI/class0": 0,
+      "T7/OpenAI/class1": 2,
+      "T7/Microsoft/class0": 2,
+      "T7/Microsoft/class1": 1,
+      "T9/OpenAI/class0": 0,
+      "T9/OpenAI/class1": 2,
+      "T9/Microsoft/class0": 5,
+      "T9/Microsoft/class1": 0
+    },
+    "affected_public_slots": [1, 19, 25, 28, 97],
+    "slip_ns": {
+      "count": 13,
+      "p50": 69194294,
+      "p95": 138354688,
+      "max": 139089337
+    },
+    "mechanical_alignment": "NO_COMMON_ALIGNMENT_WITH_THE_TWO_RESIDUAL_SIGNALS"
+  },
+  "residual_classifications": [
+    {
+      "comparison": "T7/Microsoft/Relay",
+      "classification": "RESPONSE_SIDE",
+      "basis": "A=0.5333 and B=0.5211 were near chance; C=0.7067 and D=0.6811 retained the strongest boundary-local signal. CD=0.5267 shows that the Relay response-forward latency itself was not the source."
+    },
+    {
+      "comparison": "T9/OpenAI/Relay",
+      "classification": "CROSS_BOUNDARY_CORRELATION",
+      "basis": "BC=0.6611 and ALL=0.6844 were strongest; no single boundary family isolated the full signal, and the slot-level response timeline difference accumulated near slots 509-521."
+    }
+  ],
+  "negative_controls": {
+    "T7/OpenAI/Relay_ALL_AUC": 0.4855555555555555,
+    "T9/Microsoft/Relay_ALL_AUC": 0.4688888888888889
+  },
+  "deadline_miss_alignment_interpretation": "The two T9/OpenAI class-1 EVAL misses cannot explain both residuals: T7/OpenAI also had class-1 misses without an ALL signal, while T9/Microsoft had five class-0 misses without an ALL signal. Residual slot-median peaks did not coincide with the miss-slot inventory.",
+  "next_step_recommendation": "ONE_TARGETED_RUNTIME_REPAIR_THEN_REPEAT_640_SMOKE",
+  "recommended_target": "Gateway-to-Relay response-release timeline and its cross-boundary anchoring; preserve all frozen statistical machinery and use fresh identities after a separately frozen repair.",
+  "analysis_execution": {
+    "models_and_bootstraps_completed_once": true,
+    "all_rows_reproduced_original_smoke_result": true,
+    "post_analysis_serialization_error": "CSV field inventory omitted reproduces_original_smoke_result",
+    "statistical_analysis_rerun": false,
+    "recovery": "The already-written complete JSON was retained; CSV rows were materialized from that JSON and slot medians were deterministically re-materialized without model fitting or AUC/bootstrap recomputation."
+  },
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO"
+}
