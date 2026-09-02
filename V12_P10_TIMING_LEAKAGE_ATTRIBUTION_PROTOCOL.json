@@ -1,0 +1,79 @@
+{
+  "schema": "AgentTool.V12P10TimingLeakageAttributionProtocol/1",
+  "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "base_p10_result": "558c97bd5ca8bb9123382800cb73eb410cab6342",
+  "methodology_base": "63792088161deb6b1ccd3c4b4cb28babbf72f3ec",
+  "statistical_protocol": "V3.1_UNCHANGED",
+  "original_p10_sentinel": "EARLY_TIMING_DISTINGUISHABILITY",
+  "original_early_failures": "6 / 10",
+  "original_result_is_immutable": true,
+  "new_privacy_claim_authorized": false,
+  "new_protected_sessions": 0,
+  "closed_dataset": {
+    "identity_count": 5040,
+    "complete_sessions": 5025,
+    "failed_sessions": 15,
+    "train_blocks_per_physical_coordinate": 180,
+    "eval_blocks_per_physical_coordinate": 120,
+    "analysis_input_manifest": "V12_P10_V3_1_ANALYSIS_INPUT_MANIFEST.json"
+  },
+  "feature_families": {
+    "RELAY_REQUEST_ONLY": ["R1", "R2"],
+    "RELAY_RESPONSE_ONLY": ["R3", "R4"],
+    "RELAY_SLOT_LATENCY_ONLY": ["R5"],
+    "RELAY_REQUEST_PLUS_RESPONSE": ["R1", "R2", "R3", "R4"],
+    "RELAY_ALL": ["R1", "R2", "R3", "R4", "R5", "R6"],
+    "REGISTRY_REQUEST_ONLY": ["query_arrival", "inter_query_gap"],
+    "REGISTRY_RESPONSE_ONLY": ["response_send"],
+    "REGISTRY_QUERY_RESPONSE_ONLY": ["query_response_latency"],
+    "REGISTRY_REQUEST_PLUS_RESPONSE": [
+      "query_arrival",
+      "inter_query_gap",
+      "response_send"
+    ],
+    "REGISTRY_ALL": [
+      "query_arrival",
+      "inter_query_gap",
+      "response_send",
+      "query_response_latency",
+      "total_session_span"
+    ]
+  },
+  "analysis": {
+    "model_families": [
+      "LOGISTIC_REGRESSION",
+      "EXTRA_TREES",
+      "HIST_GRADIENT_BOOSTING",
+      "RBF_SVM"
+    ],
+    "train_cv_folds": 5,
+    "selection": "TRAIN_ONLY",
+    "orientation": "TRAIN_ONLY",
+    "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+    "bootstrap_resamples": 10000,
+    "diagnostic_boundary": "reuse frozen LCB99.5 > 0.55 boundary descriptively",
+    "all_family_result": "reuse immutable original V3.1 result without refitting"
+  },
+  "ordering": {
+    "observer_only_attribution_first": true,
+    "private_mechanism_correlation_after_observer_attribution": true
+  },
+  "analysis_source_hashes": {
+    "v12_timing/attribution.py": "f1f78ee1dfcd5ec52a3bb59bb0944873ac6136d2ed467c9d9638270c385940c2",
+    "scripts/analyze_v12_p10_timing_leakage_attribution.py": "6e60be4311cd2b737eeebcb6634e9d321e57b9e872a4a71401faa4e812e755e9",
+    "v12_timing/classifier.py": "79358e163a72ace92bc6191b6394a74dd8f286ee41d9640c2d77db3af6afc156",
+    "v12_timing/statistics.py": "c2664e0163492b48467c35e8dd584e6b6aa94d9e256484ab538658dc6e8c132d",
+    "v12_timing/projection.py": "260ad086ced9a53bb4581eabd6fc48d8d16a5d8d0f15e04b6566588c3cd1d24b"
+  },
+  "analysis_input_manifest_sha256": "a4a28e20965eeea32d1377b8636c4cb5b35f71491760183858b9470569e5239b",
+  "original_result_sha256": "3f66cce6abc9e1f7732106556d9a2ac9abae6464d0fafffd6840e7545b790929",
+  "freeze_manifest_sha256": "89a4e8ba52a88fa6cac4b94f61c47eb32b7aa1f028be3b9c436613a966dc96c9",
+  "protected_runtime_diff": "NONE",
+  "prohibitions": {
+    "new_sessions": true,
+    "runtime_modification": true,
+    "feature_search": true,
+    "official_verdict_reinterpretation": true,
+    "P20_or_P25_execution": true
+  }
+}
