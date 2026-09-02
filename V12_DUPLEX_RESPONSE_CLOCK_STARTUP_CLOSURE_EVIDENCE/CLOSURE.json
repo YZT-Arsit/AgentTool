@@ -1,0 +1,63 @@
+{
+  "schema": "AgentTool.V12DuplexResponseClockStartupEmissionClosure/1",
+  "base_abort": "710bd711a03a5e1727d55429f067ffcdae11efa2",
+  "base_duplex_redesign": "bf499d5e56507eb069d4998a2851cfaa23ec7fc6",
+  "implementation_commit": "bc3ba150e21873817c4ff2372bd80a29b968257c",
+  "failed_slot": 1,
+  "failed_identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0",
+  "failed_identity_reexecuted": false,
+  "root_cause": "MULTIPLE",
+  "root_cause_components": [
+    "RESPONSE_CLOCK_STARTUP_BUDGET_DEFECT",
+    "HOST_SCHEDULING_OR_FIXED_PREPARATION_RELEASE_MISS",
+    "RESPONSE_RELEASE_ACCOUNTING_DEFECT"
+  ],
+  "current_F1_definition_at_abort": "F_1 = max(E_1 + 50ms, gateway_arrival_1 + 50ms)",
+  "corrected_response_clock": {
+    "runtime_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R6",
+    "formula": "F_i = max(E_i + rho, gateway_arrival_i + L_response, F_(i-1) + Delta)",
+    "rho_ms": 30,
+    "rho_derivation": "L_response(20ms) + Delta10(10ms)",
+    "commitment": "G_i = F_i - L_response",
+    "all_slots_share_same_public_lag": true,
+    "private_fields_in_deadline": [],
+    "late_committed_frame_rule": "emit late and record slip; do not drop; no catch-up burst"
+  },
+  "failed_slot_last_observed_stage": "FIXED_RESPONSE_FRAME_PREPARATION_COMPLETE_AT_687776432_NS; LATER_UNTIMESTAMPED_RELAY_502_PROPAGATION_OBSERVED",
+  "release_opportunities_semantics": "one response-clock record for each public slot processed by the fixed release lane",
+  "successful_writes_semantics": "PreparedSlot.Send returned nil after the application WriteHeader path for the fixed-size frame",
+  "public_transcript_complete_contract": "successful_response_writes == R AND Relay application-visible event inventory is exactly one occurrence of every slot 1..R",
+  "deterministic_tests": {
+    "synthetic_startup_cases": "5/5 PASS",
+    "cases": [
+      "cold process start",
+      "prewarmed process",
+      "secret-independent scheduler stall before slot 1",
+      "secret-independent preparation stall immediately before F_1",
+      "delayed Gateway request arrival within public bound"
+    ],
+    "python_methodology_and_contract": "65/65 PASS",
+    "go_affected_packages": "2/2 PASS",
+    "go_test_functions_in_affected_packages": "49/49 PASS"
+  },
+  "synthetic_reliability": {
+    "result": "28/200 COMPLETE PASS; IDENTITY 29 INTERRUPTED; QUALIFICATION FAIL",
+    "retries": 0,
+    "status": "FAIL_INFRASTRUCTURE_INTERRUPTION"
+  },
+  "p10_functional_requalification": "NOT_RUN_DUE_SYNTHETIC_RELIABILITY_GATE_FAILURE",
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0,
+  "ready_for_new_duplex_smoke": false,
+  "p20": "NOT_RUN",
+  "p25": "NOT_RUN",
+  "timing_privacy": "INCONCLUSIVE",
+  "runtime_source_sha256": {
+    "common_action_gateway_v2/canonicalv9/duplex_response.go": "394999ac4269a4ad047740197883043b08d9aba993c69b7aaa6f4c06c79cfd0f",
+    "common_action_gateway_v2/canonicalv9/online.go": "dff43239b04e114bc7a28476c6dd85e627d2d3c5e06f5548ef875c4264d13894",
+    "common_action_gateway_v2/canonicalv9/runner.go": "a99022a1dada7058b0d23a196232231f841f0f657fc47cb8e97bc45107d00511",
+    "v11_online/session.py": "1f88a99ed06048fdadad2217a245faaaf741735b673af91f18d3361e0c388c52",
+    "v12_timing/profile.py": "51db554f4608b5b4f98215a0925652fb3894e5d4ccd400cf15df49def43bec30"
+  },
+  "runner_binary_sha256": "ec2befb4e83eac13b70dfef971362a2c758b40f5491e0364e3ddfc4f5149a548"
+}

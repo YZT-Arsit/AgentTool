@@ -1,0 +1,49 @@
+{
+  "schema": "AgentTool.V12DuplexResponseStartupReliabilityAbort/1",
+  "runtime_commit": "bc3ba150e21873817c4ff2372bd80a29b968257c",
+  "profile_id": "V12-TIMING-INDIST-V4R6-H50-H4500-P10-PIR60",
+  "planned_sessions": 200,
+  "completed_sessions": 28,
+  "passed_complete_sessions": 28,
+  "failed_complete_sessions": 0,
+  "interrupted_identity": "DEV-DTVR-V4R6-P10-PUBLIC-PATH-R029",
+  "interrupted_identity_reexecuted": false,
+  "interrupted_identity_result_file_exists": false,
+  "remaining_identities_executed": 0,
+  "retries": 0,
+  "replacement_sessions": 0,
+  "status": "FAIL_INFRASTRUCTURE_INTERRUPTION",
+  "stop_rule": "any reliability/session failure stops the phase",
+  "completed_session_checks": {
+    "exact_R_relay_events": "28/28",
+    "exact_unique_slot_set_1_through_506": "28/28",
+    "exact_506_release_opportunities": "28/28",
+    "exact_506_release_attempts": "28/28",
+    "exact_506_successful_writes": "28/28",
+    "exact_506_relay_received_cells": "28/28",
+    "runtime_transcript_relay_inventory_consistency": "28/28",
+    "deadline_misses_total": 0,
+    "maximum_release_slip_ns": 3748509
+  },
+  "interruption": {
+    "type": "SSH_FOREGROUND_EXECUTION_SESSION_DISCONNECTED",
+    "process_alive_after_disconnect": false,
+    "partial_identity_files": [
+      "gateway_state/",
+      "trusted_online_startup_plan.json"
+    ],
+    "go_online_result_present": false
+  },
+  "archive": {
+    "path": "V12_DUPLEX_RESPONSE_CLOCK_STARTUP_CLOSURE_EVIDENCE/synthetic_reliability_partial.tar.gz",
+    "sha256": "5a2b54478a061a6f7264b5afca852eec28d549b3df9e4951e5069e9c9d63130b",
+    "bytes": 3066782,
+    "contains_all_28_complete_records_and_partial_identity_29": true
+  },
+  "protected_workload_classes": 0,
+  "protected_classifier_runs": 0,
+  "protected_auc_calculations": 0,
+  "functional_requalification": "NOT_RUN_DUE_RELIABILITY_GATE_FAILURE",
+  "p20": "NOT_RUN",
+  "p25": "NOT_RUN"
+}
