@@ -60,7 +60,9 @@ def quantile(values: Iterable[int], probability: float) -> int:
     ordered = sorted(int(value) for value in values)
     if not ordered:
         return 0
-    return ordered[min(len(ordered) - 1, max(0, math.ceil(probability * len(ordered)) - 1))]
+    return ordered[
+        min(len(ordered) - 1, max(0, math.ceil(probability * len(ordered)) - 1))
+    ]
 
 
 def distribution(values: Iterable[int]) -> dict[str, int]:
@@ -77,19 +79,29 @@ def distribution(values: Iterable[int]) -> dict[str, int]:
 def _verify_closed_dataset(
     campaign_root: Path, manifest: Mapping[str, Any]
 ) -> tuple[list[dict[str, Any]], Mapping[str, Any]]:
-    completion = json.loads((campaign_root / "campaign_completion.json").read_text(encoding="utf-8"))
-    dataset = json.loads((campaign_root / "dataset_manifest.json").read_text(encoding="utf-8"))
+    completion = json.loads(
+        (campaign_root / "campaign_completion.json").read_text(encoding="utf-8")
+    )
+    dataset = json.loads(
+        (campaign_root / "dataset_manifest.json").read_text(encoding="utf-8")
+    )
     if completion.get("status") != "COLLECTION_CLOSED_COMPLETE":
-        raise RuntimeError("resume sentinel analysis requires a closed complete collection")
+        raise RuntimeError(
+            "resume sentinel analysis requires a closed complete collection"
+        )
     if int(completion.get("executed_sessions", -1)) != TOTAL_SESSIONS:
         raise RuntimeError("resume sentinel collection denominator failed")
     if int(completion.get("retries", -1)) != 0:
         raise RuntimeError("resume sentinel collection violated zero-retry policy")
-    if dataset.get("collection_closed") is not True or dataset.get("common_integrity_abort"):
+    if dataset.get("collection_closed") is not True or dataset.get(
+        "common_integrity_abort"
+    ):
         raise RuntimeError("resume sentinel dataset is not validly closed")
     if int(dataset.get("session_record_count", -1)) != TOTAL_SESSIONS:
         raise RuntimeError("resume sentinel dataset manifest is incomplete")
-    if dataset.get("frozen_manifest_sha256") != sha256(campaign_root / "frozen_manifest.json"):
+    if dataset.get("frozen_manifest_sha256") != sha256(
+        campaign_root / "frozen_manifest.json"
+    ):
         raise RuntimeError("resume sentinel frozen manifest hash drifted")
     records: list[dict[str, Any]] = []
     for row in dataset["session_records"]:
@@ -101,7 +113,10 @@ def _verify_closed_dataset(
             raise RuntimeError("resume sentinel status inventory drifted")
         records.append(record)
     identities = {str(row["identity"]) for row in records}
-    if identities != set(manifest["identity_manifest"]) or len(identities) != TOTAL_SESSIONS:
+    if (
+        identities != set(manifest["identity_manifest"])
+        or len(identities) != TOTAL_SESSIONS
+    ):
         raise RuntimeError("resume sentinel closed dataset identity inventory drifted")
     return records, dataset
 
@@ -117,7 +132,10 @@ def _analysis_rows(
     for coordinate in manifest["physical_coordinates"]:
         coordinate_id = str(coordinate["coordinate_id"])
         chosen = selection[coordinate_id]
-        if not all(chosen[partition]["sufficient"] for partition in ("SENTINEL_TRAIN", "SENTINEL_EVAL")):
+        if not all(
+            chosen[partition]["sufficient"]
+            for partition in ("SENTINEL_TRAIN", "SENTINEL_EVAL")
+        ):
             for observer in coordinate["observers"]:
                 results.append(
                     {
@@ -145,8 +163,13 @@ def _analysis_rows(
         )
         train_blocks = set(chosen["SENTINEL_TRAIN"]["selected_planned_blocks"])
         eval_blocks = set(chosen["SENTINEL_EVAL"]["selected_planned_blocks"])
-        if len(train_blocks) != TARGET_TRAIN_COMPLETE_BLOCKS or len(eval_blocks) != TARGET_EVAL_COMPLETE_BLOCKS:
-            raise RuntimeError("resume sentinel selected complete-block denominator drifted")
+        if (
+            len(train_blocks) != TARGET_TRAIN_COMPLETE_BLOCKS
+            or len(eval_blocks) != TARGET_EVAL_COMPLETE_BLOCKS
+        ):
+            raise RuntimeError(
+                "resume sentinel selected complete-block denominator drifted"
+            )
         if train_blocks & eval_blocks:
             raise RuntimeError("resume sentinel selected TRAIN/EVAL blocks overlap")
         for observer_index, observer in enumerate(coordinate["observers"]):
@@ -157,10 +180,17 @@ def _analysis_rows(
             for identity in coordinate_identities:
                 frozen = identities[identity]
                 record = record_by_identity[identity]
-                if record["status"] != "COMPLETE" or not record["timing_classifier_eligible"]:
-                    raise RuntimeError("selected timing block contains an incomplete session")
+                if (
+                    record["status"] != "COMPLETE"
+                    or not record["timing_classifier_eligible"]
+                ):
+                    raise RuntimeError(
+                        "selected timing block contains an incomplete session"
+                    )
                 if record.get("failure_category") is not None:
-                    raise RuntimeError("failure status entered the timing classifier dataset")
+                    raise RuntimeError(
+                        "failure status entered the timing classifier dataset"
+                    )
                 labels.append(int(frozen["label"]))
                 blocks.append(int(frozen["planned_block"]))
                 vectors.append(
@@ -169,7 +199,9 @@ def _analysis_rows(
                     )
                 )
             validate_matched_blocks(labels, blocks)
-            split = BlockSplit(tuple(sorted(train_blocks)), tuple(sorted(eval_blocks))).validate()
+            split = BlockSplit(
+                tuple(sorted(train_blocks)), tuple(sorted(eval_blocks))
+            ).validate()
             selected = select_on_train_fit_predict_eval(
                 vectors,
                 labels,
@@ -235,8 +267,12 @@ def _analysis_rows(
                     },
                 }
             )
-    if len(results) != 10:
-        raise RuntimeError("resume sentinel analysis did not produce ten observer comparisons")
+    expected_comparisons = int(manifest.get("observer_comparison_count", 10))
+    if len(results) != expected_comparisons:
+        raise RuntimeError(
+            "sentinel analysis observer-comparison count drifted: "
+            f"{len(results)} != {expected_comparisons}"
+        )
     return results
 
 
@@ -259,8 +295,7 @@ def _platform_diagnostics(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
     result["complete_session_count"] = len(complete)
     result["nominal_late_cell_count"] = sum(
-        int(record["platform_diagnostics"]["nominal_late_cells"])
-        for record in complete
+        int(record["platform_diagnostics"]["nominal_late_cells"]) for record in complete
     )
     result["liveness_failures_among_complete"] = sum(
         bool(record["platform_diagnostics"]["infrastructure_liveness_failure"])
@@ -273,7 +308,9 @@ def _platform_diagnostics(records: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def _combined_verdict(
-    completion: list[dict[str, Any]], selection: Mapping[str, Any], results: list[dict[str, Any]]
+    completion: list[dict[str, Any]],
+    selection: Mapping[str, Any],
+    results: list[dict[str, Any]],
 ) -> tuple[str, str, bool]:
     insufficient = any(
         not partition["sufficient"]
@@ -281,11 +318,15 @@ def _combined_verdict(
         for partition in coordinate.values()
     )
     failure_concern = any(row["failure_channel_flag"] for row in completion)
-    operational_concern = any(row["operational_reliability_concern"] for row in completion)
+    operational_concern = any(
+        row["operational_reliability_concern"] for row in completion
+    )
     evaluated = [row for row in results if row["status"] == "EVALUATED"]
     if insufficient:
         return "INSUFFICIENT_COMPLETE_BLOCKS", "NOT_EVALUABLE", False
-    timing = "EARLY_FAIL" if any(row["early_fail"] for row in evaluated) else "PASS_TO_FULL"
+    timing = (
+        "EARLY_FAIL" if any(row["early_fail"] for row in evaluated) else "PASS_TO_FULL"
+    )
     if failure_concern:
         return "FAILURE_CHANNEL_CONCERN", timing, False
     if operational_concern:
@@ -296,20 +337,30 @@ def _combined_verdict(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Analyze one closed fresh P10 resume sentinel.")
+    parser = argparse.ArgumentParser(
+        description="Analyze one closed fresh P10 resume sentinel."
+    )
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
-        raise SystemExit(f"refusing to overwrite resume sentinel analysis: {args.output}")
+        raise SystemExit(
+            f"refusing to overwrite resume sentinel analysis: {args.output}"
+        )
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     validate_freeze_manifest(manifest)
     head = subprocess.run(
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
     ).stdout.strip()
     if head != manifest["execution_source_commit"]:
-        raise RuntimeError("analysis repository commit differs from frozen execution source")
+        raise RuntimeError(
+            "analysis repository commit differs from frozen execution source"
+        )
     for relative, expected in manifest["analysis_hashes"].items():
         if sha256(ROOT / relative) != expected:
             raise RuntimeError(f"analysis source hash mismatch: {relative}")

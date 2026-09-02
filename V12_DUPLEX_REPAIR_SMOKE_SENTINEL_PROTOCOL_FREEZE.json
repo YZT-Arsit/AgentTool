@@ -1,0 +1,81 @@
+{
+  "schema": "AgentTool.V12DuplexRepairSmokeProtocolFreeze/1",
+  "phase": "V12-DUPLEX-REPAIR-SMOKE-SENTINEL",
+  "purpose": "Detect substantial residual timing distinguishability after duplex virtualization without claiming privacy",
+  "preoutcome_cost_abort": {
+    "status": "ABORTED_PREOUTCOME_COST_DECISION",
+    "planned_identity_exclusions": 5040,
+    "reuse_allowed": false
+  },
+  "profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R5-H50-H4500-P10-PIR60",
+    "H_ms": 4500,
+    "Delta_ms": 10,
+    "R": 506,
+    "PIR_Q": 100,
+    "request_bytes": 1079,
+    "response_bytes": 800
+  },
+  "physical_coordinates": [
+    ["C1_REGISTRY_RESOLUTION_PATTERN", "OpenAI Agents SDK"],
+    ["T7_TOOL_VERSUS_AGENT_AS_TOOL", "OpenAI Agents SDK"],
+    ["T7_TOOL_VERSUS_AGENT_AS_TOOL", "Microsoft Agent Framework"],
+    ["T9_PROVIDER_READINESS", "OpenAI Agents SDK"],
+    ["T9_PROVIDER_READINESS", "Microsoft Agent Framework"]
+  ],
+  "observer_comparisons": 7,
+  "planned_train_blocks_per_coordinate": 32,
+  "planned_eval_blocks_per_coordinate": 32,
+  "selected_complete_train_blocks": 30,
+  "selected_complete_eval_blocks": 30,
+  "planned_sessions": 640,
+  "selected_complete_sessions_target": 600,
+  "retry_count": 0,
+  "replacement_count": 0,
+  "identity_search": false,
+  "seed_search": false,
+  "collection_first": true,
+  "analysis_during_collection": {
+    "classifier_training": 0,
+    "AUC": 0,
+    "bootstrap": 0
+  },
+  "features": {
+    "Relay_view": "DUPLEX_TIMING_ONLY_VIEW",
+    "Relay_width": 5695,
+    "Registry_view": "TIMING_ONLY_VIEW",
+    "Registry_width": 448,
+    "private_fields": false
+  },
+  "statistics": {
+    "protocol": "V3.1_DUPLEX_REPAIR_SMOKE",
+    "model_family": [
+      "LOGISTIC_REGRESSION",
+      "EXTRA_TREES",
+      "HIST_GRADIENT_BOOSTING",
+      "RBF_SVM"
+    ],
+    "train_cv_folds": 5,
+    "model_selection": "TRAIN_ONLY",
+    "score_orientation": "TRAIN_ONLY",
+    "sklearn_random_state": "UINT64_MOD_2_POW_32",
+    "bootstrap_resamples": 10000,
+    "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+    "smoke_failure_rule": "ANY comparison one-sided LCB95 > 0.65",
+    "privacy_threshold_used": false,
+    "privacy_pass_authority": false
+  },
+  "historical_comparison": {
+    "datasets_combined": false,
+    "role": "DEVELOPMENT_ABLATION_ONLY",
+    "T7_OA_Relay_old_AUC": 0.980763888888889,
+    "T7_MS_Relay_old_AUC": 0.9693055555555555,
+    "T9_OA_Relay_old_AUC": 0.9779861111111111,
+    "T9_MS_Relay_old_AUC": 0.9902777777777778
+  },
+  "P10_full": "NOT_AUTHORIZED",
+  "P20": "NOT_AUTHORIZED",
+  "P25": "NOT_AUTHORIZED",
+  "confirmatory": "NOT_AUTHORIZED",
+  "final_holdout": "NOT_AUTHORIZED"
+}
