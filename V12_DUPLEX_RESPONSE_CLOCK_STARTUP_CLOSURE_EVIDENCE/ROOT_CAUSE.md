@@ -1,0 +1,11 @@
+# V12 duplex response-clock startup and emission root cause
+
+This is local system-correctness evidence. The immutable identity `DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0` was not reexecuted, and no classifier or AUC was run.
+
+Slot 1 reached client dispatch at 525,543,023 ns, HTTP submission at 525,739,666 ns, and Gateway request receipt at 526,802,292 ns. The old V4R5 rule fixed `F_1 = max(E_1 + 50 ms, gateway_arrival_1 + 50 ms)`, producing a release at 576,802,292 ns. The already committed fixed frame did not finish preparation until 687,776,432 ns. The release lane converted this 110,974,140 ns overrun into an error before invoking `WriteHeader` or `PreparedSlot.Send`; the Relay converted the resulting invalid/truncated Gateway response path to a local 502 and correctly persisted no successful slot-1 application event.
+
+The latest exactly timestamped stage was fixed-frame preparation completion. OHTTP-decapsulation completion, the failed Gateway write boundary, and the Relay error-send boundary were not separately timestamped and remain unavailable. The 502 propagation is observed but has no preserved boundary timestamp.
+
+The root cause is `MULTIPLE`: the fixed preparation workers had no constructor readiness barrier and the slot-1 startup allowance did not absorb the observed public-path scheduling/preparation delay; a late immutable frame was dropped instead of emitted late; and `emitted_cells`/`public_transcript_complete` counted submitted client requests rather than successful application-visible response slots. The Relay did not lose a successful response record—no successful slot-1 response write occurred.
+
+The repair revision V4R6 freezes a single public lag for every P10 slot: `rho = L_response + Delta = 20 ms + 10 ms = 30 ms`, `F_i = max(E_i + rho, gateway_arrival_i + L_response, F_(i-1) + Delta)`, and `G_i = F_i - L_response`. All fixed preparation workers must be ready before the response clock constructor returns. If fixed-frame preparation is late, the immutable frame is emitted late, the slip is recorded, and the next release remains at least one Delta after the prior actual release. A successful transcript now requires successful writes and an exact Relay application-visible slot inventory `1..R`.

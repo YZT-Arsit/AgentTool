@@ -60,6 +60,7 @@ type Plan struct {
 	ResponseFinalBytes            int          `json:"response_final_bytes"`
 	ResponsePreparationLeadMS     int          `json:"response_preparation_lead_ms,omitempty"`
 	ResponseInitialReleaseDelayMS int          `json:"response_initial_release_delay_ms,omitempty"`
+	ResponsePublicLagMS           int          `json:"response_public_lag_ms,omitempty"`
 	ResponsePreparationWorkers    int          `json:"response_preparation_workers,omitempty"`
 	SchedulerToleranceMS          int          `json:"scheduler_tolerance_ms,omitempty"`
 	PreparationLeadMS             int          `json:"preparation_lead_ms,omitempty"`
@@ -241,6 +242,10 @@ type RunResult struct {
 	SchedulerIncidents            []SchedulerIncident      `json:"scheduler_incidents,omitempty"`
 	SchedulerConfiguration        SchedulerConfiguration   `json:"scheduler_configuration"`
 	GatewayResponseReleases       []gatewayResponseRelease `json:"gateway_response_releases,omitempty"`
+	ResponseReleaseOpportunities  int                      `json:"response_release_opportunities,omitempty"`
+	ResponseReleaseAttempts       int                      `json:"response_release_attempts,omitempty"`
+	SuccessfulResponseWrites      int                      `json:"successful_response_writes,omitempty"`
+	RelayApplicationReceivedCells int                      `json:"relay_application_received_cells,omitempty"`
 }
 
 type providerRequest struct {
@@ -458,6 +463,24 @@ func validatePlan(plan Plan) error {
 		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
 			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
 			return errors.New("V12 duplex V4R5 public PIR schedule changed")
+		}
+	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4R6-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R6" {
+			return errors.New("V12 duplex V4R6 profile ID and revision disagree")
+		}
+		if plan.ResponsePublicLagMS != 30 || plan.ResponsePreparationLeadMS != 20 || plan.ResponsePreparationWorkers != 6 {
+			return errors.New("V12 duplex V4R6 response pipeline changed")
+		}
+		if plan.ResponsePublicLagMS <= plan.ResponsePreparationLeadMS {
+			return errors.New("V12 duplex V4R6 public response lag must exceed preparation lead")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex V4R6 public admission horizon disagrees with fixed slot count")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex V4R6 public PIR schedule changed")
 		}
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
@@ -738,6 +761,11 @@ func (e *engine) commitGatewayResponse(slot v7ohttp.SlotID, responseContext v7oh
 		operationID = committedResult.OperationID
 	}
 	return func() (v8.PreparedSlot, error) {
+		if e.plan.FaultDelayResponseSlot == int(slot.Slot) && e.plan.FaultDelayResponseMS > 0 {
+			// Development-only, secret-independent fault injection for the fixed
+			// public response preparation path.
+			time.Sleep(time.Duration(e.plan.FaultDelayResponseMS) * time.Millisecond)
+		}
 		bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(
 			committedResult, e.plan.ResponseBHTTPBytes, slot,
 		)
@@ -824,9 +852,6 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 	if err != nil {
 		http.Error(writer, "response preparation failed", http.StatusInternalServerError)
 		return
-	}
-	if e.plan.FaultDelayResponseSlot == int(currentRound) && e.plan.FaultDelayResponseMS > 0 {
-		time.Sleep(time.Duration(e.plan.FaultDelayResponseMS) * time.Millisecond)
 	}
 	writer.WriteHeader(http.StatusOK)
 	if err := prepared.Send(writer); err != nil {

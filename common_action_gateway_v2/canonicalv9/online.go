@@ -40,6 +40,29 @@ type onlineEmitter struct {
 	encoder *json.Encoder
 }
 
+func exactRelayPublicSlotInventory(events []v8.RelayPublicEvent, rounds int) bool {
+	if len(events) != rounds || rounds < 1 {
+		return false
+	}
+	seen := make([]bool, rounds)
+	for _, event := range events {
+		if event.Session != 1 || event.Round < 1 || int(event.Round) > rounds {
+			return false
+		}
+		index := int(event.Round) - 1
+		if seen[index] {
+			return false
+		}
+		seen[index] = true
+	}
+	for _, present := range seen {
+		if !present {
+			return false
+		}
+	}
+	return true
+}
+
 func (e *onlineEmitter) emit(value OnlineControlEvent) {
 	e.mu.Lock()
 	defer e.mu.Unlock()
@@ -302,18 +325,22 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R5"
+	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R6"
 	if duplexTiming {
 		responsePreparationWorkers := plan.ResponsePreparationWorkers
 		if responsePreparationWorkers < 1 {
 			responsePreparationWorkers = 1
 		}
-		responseInitialReleaseDelay := plan.ResponseInitialReleaseDelayMS
-		if responseInitialReleaseDelay < 1 {
-			responseInitialReleaseDelay = plan.ResponsePreparationLeadMS
+		responsePublicLag := plan.ResponsePublicLagMS
+		if responsePublicLag < 1 {
+			responsePublicLag = plan.ResponseInitialReleaseDelayMS
+		}
+		if responsePublicLag < 1 {
+			responsePublicLag = plan.ResponsePreparationLeadMS
 		}
 		responseClock, clockErr := newGatewayResponseVirtualizer(
 			plan.Rounds, period,
-			time.Duration(responseInitialReleaseDelay)*time.Millisecond,
+			time.Duration(responsePublicLag)*time.Millisecond,
 			time.Duration(plan.ResponsePreparationLeadMS)*time.Millisecond,
 			responsePreparationWorkers,
 			processClock,
@@ -726,12 +753,32 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 			scheduleMisses++
 		}
 	}
+	relayEvents := relay.Events()
+	releaseOpportunities := len(gatewayResponseReleases)
+	releaseAttempts := 0
+	successfulWrites := 0
+	if engine.responseClock != nil {
+		for _, release := range gatewayResponseReleases {
+			if release.ReleaseAttempted {
+				releaseAttempts++
+			}
+			if release.WriteCompleted {
+				successfulWrites++
+			}
+		}
+	} else {
+		releaseOpportunities = submitted
+		releaseAttempts = submitted
+		successfulWrites = len(relayEvents)
+	}
+	transcriptComplete := successfulWrites == plan.Rounds &&
+		exactRelayPublicSlotInventory(relayEvents, plan.Rounds)
 	status := "COMPLETE"
 	if infrastructureLivenessFailure {
 		status = "INFRASTRUCTURE_LIVENESS_FAILURE"
 	} else if scheduleMisses > 0 && !timingIndistinguishability {
 		status = "SESSION_SCHEDULE_FAILURE"
-	} else if transportFailure || submitted != plan.Rounds {
+	} else if transportFailure || submitted != plan.Rounds || !transcriptComplete {
 		status = "SESSION_TRANSPORT_FAILURE"
 	} else if len(pending) > 0 {
 		status = "SESSION_BUDGET_EXHAUSTED_WITH_PENDING_RESULT"
@@ -739,18 +786,21 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	result := RunResult{ProfileID: plan.ProfileID, ProfileClass: plan.ProfileClass, Rounds: plan.Rounds, Admitted: len(acceptedCopy),
 		ProviderInvocations: engine.providerCalls.Load(), DummyProviderOperations: 0,
 		Results: results, PrivateEvents: append([]PrivateEvent(nil), engine.events...),
-		PublicRelayEvents: relay.Events(), AfterCutoffOperations: []string{"atomic slot snapshot", "PreparedSlot.Send", "one fixed-size writer.Write", "byte-count validation"},
+		PublicRelayEvents: relayEvents, AfterCutoffOperations: []string{"atomic slot snapshot", "PreparedSlot.Send", "one fixed-size writer.Write", "byte-count validation"},
 		RequestFinalBytes: plan.RequestFinalBytes, ResponseFinalBytes: plan.ResponseFinalBytes,
 		SessionStatus: status, PublicSetupEvents: setupEvents, SlotLaunches: launches,
-		ScheduleMisses: scheduleMisses, NominalLateCells: scheduleMisses, EmittedCells: submitted,
-		PublicTranscriptComplete: submitted == plan.Rounds, InfrastructureLivenessFailure: infrastructureLivenessFailure,
+		ScheduleMisses: scheduleMisses, NominalLateCells: scheduleMisses, EmittedCells: successfulWrites,
+		PublicTranscriptComplete: transcriptComplete, InfrastructureLivenessFailure: infrastructureLivenessFailure,
 		PendingOperationIDs: pending, SilentCommittedLosses: 0,
 		ClientRelayHTTPVersion: preconnectProto, RelayGatewayHTTPVersion: "HTTP/2.0",
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
 		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),
 		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics(),
 		SchedulerIncidents: schedulerIncidents, SchedulerConfiguration: schedulerConfiguration,
-		GatewayResponseReleases: gatewayResponseReleases}
+		GatewayResponseReleases:      gatewayResponseReleases,
+		ResponseReleaseOpportunities: releaseOpportunities,
+		ResponseReleaseAttempts:      releaseAttempts, SuccessfulResponseWrites: successfulWrites,
+		RelayApplicationReceivedCells: len(relayEvents)}
 	if status == "COMPLETE" {
 		emitter.emit(OnlineControlEvent{Type: "SESSION_COMPLETE"})
 	} else {

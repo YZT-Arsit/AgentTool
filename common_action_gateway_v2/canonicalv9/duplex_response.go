@@ -30,7 +30,11 @@ type gatewayResponseRelease struct {
 	ReleaseNS        int64  `json:"release_ns"`
 	ActualReleaseNS  int64  `json:"actual_release_ns"`
 	PreparationEndNS int64  `json:"preparation_end_ns"`
+	ReleaseSlipNS    int64  `json:"release_slip_ns"`
 	DeadlineMiss     bool   `json:"deadline_miss"`
+	ReleaseAttempted bool   `json:"release_attempted"`
+	WriteCompleted   bool   `json:"response_write_completed"`
+	WriteError       string `json:"response_write_error,omitempty"`
 }
 
 type committedGatewayResponse struct {
@@ -52,13 +56,20 @@ type gatewayResponsePreparationJob struct {
 	result  chan<- preparedGatewayResponse
 }
 
+func responseWriteError(err error) string {
+	if err == nil {
+		return ""
+	}
+	return err.Error()
+}
+
 // gatewayResponseVirtualizer is the trusted reverse public clock. A fixed
 // commitment/preparation lane and a distinct fixed release lane run as a
 // pipeline. The release lane never consults private readiness.
 type gatewayResponseVirtualizer struct {
 	rounds       int
 	period       time.Duration
-	initialLead  time.Duration
+	publicLag    time.Duration
 	lead         time.Duration
 	workers      int
 	processClock time.Time
@@ -68,13 +79,13 @@ type gatewayResponseVirtualizer struct {
 	complete     chan struct{}
 }
 
-func newGatewayResponseVirtualizer(rounds int, period, initialLead, lead time.Duration, workers int,
+func newGatewayResponseVirtualizer(rounds int, period, publicLag, lead time.Duration, workers int,
 	processClock time.Time) (*gatewayResponseVirtualizer, error) {
-	if rounds < 1 || period <= 0 || initialLead <= 0 || lead <= 0 || workers < 1 {
+	if rounds < 1 || period <= 0 || publicLag <= lead || lead <= 0 || workers < 1 {
 		return nil, errors.New("invalid duplex Gateway response clock")
 	}
 	value := &gatewayResponseVirtualizer{
-		rounds: rounds, period: period, initialLead: initialLead, lead: lead,
+		rounds: rounds, period: period, publicLag: publicLag, lead: lead,
 		workers: workers, processClock: processClock,
 		eligibility: make(chan responseEligibility, rounds),
 		requests:    make(chan gatewayResponseRequest, rounds),
@@ -100,21 +111,15 @@ func maxPublicTime(values ...time.Time) time.Time {
 }
 
 func gatewayResponseDeadline(eligible, requestArrival, previousRelease time.Time,
-	period, lead time.Duration) time.Time {
-	release := maxPublicTime(eligible.Add(lead), requestArrival.Add(lead))
+	period, publicLag, preparationLead time.Duration) time.Time {
+	// The public response clock uses one fixed request-clock lag for every slot.
+	// A delayed public request can move its own response only enough to preserve
+	// the public preparation lead; no private response state participates.
+	release := maxPublicTime(eligible.Add(publicLag), requestArrival.Add(preparationLead))
 	if !previousRelease.IsZero() {
 		release = maxPublicTime(release, previousRelease.Add(period))
 	}
 	return release
-}
-
-func gatewayResponsePreparationLead(
-	slot uint32, initialLead, steadyLead time.Duration,
-) time.Duration {
-	if slot == 1 {
-		return initialLead
-	}
-	return steadyLead
 }
 
 func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
@@ -131,14 +136,15 @@ func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
 		close(v.complete)
 		return
 	}
-	ready <- nil
 	committed := make(chan committedGatewayResponse, v.rounds)
 	preparationJobs := make(chan gatewayResponsePreparationJob, v.rounds)
 	var preparationWorkers sync.WaitGroup
+	workersReady := make(chan struct{}, v.workers)
 	for lane := 0; lane < v.workers; lane++ {
 		preparationWorkers.Add(1)
 		go func() {
 			defer preparationWorkers.Done()
+			workersReady <- struct{}{}
 			for job := range preparationJobs {
 				prepared, prepareErr := job.prepare()
 				job.result <- preparedGatewayResponse{
@@ -148,8 +154,14 @@ func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
 			}
 		}()
 	}
+	for lane := 0; lane < v.workers; lane++ {
+		<-workersReady
+	}
 	releaseDone := make(chan struct{})
 	go v.releaseCommitted(releasePacer, committed, releaseDone)
+	// Constructor readiness means all fixed preparation lanes and the release
+	// lane exist. Slot 1 cannot race worker-pool startup.
+	ready <- nil
 	defer func() {
 		close(preparationJobs)
 		preparationWorkers.Wait()
@@ -172,11 +184,11 @@ func (v *gatewayResponseVirtualizer) run(ready chan<- error) {
 			}
 		}
 		request := requests[slot]
-		preparationLead := gatewayResponsePreparationLead(slot, v.initialLead, v.lead)
 		plannedRelease := gatewayResponseDeadline(
-			eligibilities[slot], request.requestArrival, previousPlannedRelease, v.period, preparationLead,
+			eligibilities[slot], request.requestArrival, previousPlannedRelease,
+			v.period, v.publicLag, v.lead,
 		)
-		commitment := plannedRelease.Add(-preparationLead)
+		commitment := plannedRelease.Add(-v.lead)
 		if err := commitmentPacer.WaitUntil(commitment); err != nil {
 			request.done <- err
 			return
@@ -211,27 +223,32 @@ func (v *gatewayResponseVirtualizer) releaseCommitted(pacer publicPacer,
 		}
 		releaseErr := pacer.WaitUntil(release)
 		preparedResult := preparedGatewayResponse{}
+		deadlineMiss := false
 		if releaseErr == nil {
 			select {
 			case preparedResult = <-item.prepared:
-				releaseErr = preparedResult.err
 			default:
-				preparedResult.preparationEnd = time.Now()
-				releaseErr = errors.New("duplex Gateway response preparation missed public release")
+				// A secret-independent scheduling/preparation slip is retained and
+				// the already committed frame is emitted late. The public slot is
+				// never silently dropped and later releases cannot catch up.
+				deadlineMiss = true
+				preparedResult = <-item.prepared
 			}
+			releaseErr = preparedResult.err
 		}
-		deadlineMiss := preparedResult.preparationEnd.After(release)
-		if deadlineMiss && releaseErr == nil {
-			releaseErr = errors.New("duplex Gateway response preparation missed public release")
-		}
+		deadlineMiss = deadlineMiss || preparedResult.preparationEnd.After(release)
 		actualRelease := time.Now()
+		writeAttempted := false
+		writeCompleted := false
 		if releaseErr == nil {
 			// Capture the application-emission boundary immediately before the
 			// fixed public write. Sending the bytes must not redefine the
 			// observer timestamp as a post-write completion timestamp.
 			actualRelease = time.Now()
+			writeAttempted = true
 			item.request.writer.WriteHeader(http.StatusOK)
 			releaseErr = preparedResult.prepared.Send(item.request.writer)
+			writeCompleted = releaseErr == nil
 		}
 		previousActualRelease = actualRelease
 		v.releases <- gatewayResponseRelease{
@@ -242,7 +259,11 @@ func (v *gatewayResponseVirtualizer) releaseCommitted(pacer publicPacer,
 			ReleaseNS:        release.Sub(v.processClock).Nanoseconds(),
 			ActualReleaseNS:  actualRelease.Sub(v.processClock).Nanoseconds(),
 			PreparationEndNS: preparedResult.preparationEnd.Sub(v.processClock).Nanoseconds(),
+			ReleaseSlipNS:    actualRelease.Sub(release).Nanoseconds(),
 			DeadlineMiss:     deadlineMiss,
+			ReleaseAttempted: writeAttempted,
+			WriteCompleted:   writeCompleted,
+			WriteError:       responseWriteError(releaseErr),
 		}
 		item.request.done <- releaseErr
 	}

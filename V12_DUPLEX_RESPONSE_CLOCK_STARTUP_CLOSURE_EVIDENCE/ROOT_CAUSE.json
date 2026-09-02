@@ -1,0 +1,123 @@
+{
+  "schema": "AgentTool.V12DuplexResponseClockStartupRootCause/1",
+  "base_abort": "710bd711a03a5e1727d55429f067ffcdae11efa2",
+  "base_duplex_redesign": "bf499d5e56507eb069d4998a2851cfaa23ec7fc6",
+  "immutable_failed_identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0",
+  "failed_identity_reexecuted": false,
+  "prior_campaign": {
+    "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+    "executed_identities": 14,
+    "retries": 0,
+    "classifier_runs": 0,
+    "auc_calculations": 0,
+    "all_640_identities_permanent_development_exclusions": true
+  },
+  "failed_slot": 1,
+  "stage_reconstruction": [
+    {
+      "stage": "request client dispatch",
+      "status": "OBSERVED",
+      "monotonic_ns": 525543023,
+      "evidence": "slot_launches[0].scheduler_dispatch_ns"
+    },
+    {
+      "stage": "client HTTP submission",
+      "status": "OBSERVED",
+      "monotonic_ns": 525739666,
+      "evidence": "slot_launches[0].http_submission_ns"
+    },
+    {
+      "stage": "Relay request receive",
+      "status": "UNAVAILABLE",
+      "reason": "the pre-repair Relay persisted its event only after a valid Gateway response write"
+    },
+    {
+      "stage": "Relay to Gateway send",
+      "status": "UNAVAILABLE",
+      "reason": "the pre-repair Relay persisted its event only after a valid Gateway response write"
+    },
+    {
+      "stage": "Gateway request receive",
+      "status": "OBSERVED",
+      "monotonic_ns": 526802292,
+      "evidence": "gateway_response_releases[0].request_arrival_ns"
+    },
+    {
+      "stage": "OHTTP decapsulation complete",
+      "status": "UNAVAILABLE",
+      "reason": "no boundary timestamp was recorded"
+    },
+    {
+      "stage": "response commitment cutoff",
+      "status": "OBSERVED",
+      "monotonic_ns": 526802292,
+      "evidence": "gateway_response_releases[0].commitment_ns"
+    },
+    {
+      "stage": "response content commitment",
+      "status": "DERIVED",
+      "monotonic_ns": 526802292,
+      "reason": "the immutable slot snapshot is taken by commitGatewayResponse at the recorded commitment boundary; completion was not separately timestamped"
+    },
+    {
+      "stage": "scheduled response release F_1",
+      "status": "OBSERVED",
+      "monotonic_ns": 576802292,
+      "evidence": "gateway_response_releases[0].release_ns"
+    },
+    {
+      "stage": "fixed response frame preparation complete",
+      "status": "OBSERVED",
+      "monotonic_ns": 687776432,
+      "evidence": "gateway_response_releases[0].preparation_end_ns"
+    },
+    {
+      "stage": "actual response release decision",
+      "status": "OBSERVED",
+      "monotonic_ns": 687777364,
+      "evidence": "gateway_response_releases[0].actual_release_ns"
+    },
+    {
+      "stage": "Gateway writer invocation",
+      "status": "UNAVAILABLE",
+      "reason": "mechanical control flow proves it was not invoked: a deadline miss was converted to an error before WriteHeader/PreparedSlot.Send"
+    },
+    {
+      "stage": "Relay Gateway-facing receive",
+      "status": "OBSERVED",
+      "evidence": "the Relay converted the Gateway-side invalid/truncated response path into its local Bad Gateway response; the Gateway-facing boundary timestamp and exact received body length were not persisted",
+      "timestamp": "UNAVAILABLE"
+    },
+    {
+      "stage": "Relay client-facing send",
+      "status": "OBSERVED",
+      "evidence": "client transport diagnostic records Relay HTTP 502 with 36 bytes",
+      "timestamp": "UNAVAILABLE"
+    }
+  ],
+  "current_F1_definition": "F_1 = max(E_1 + 50ms, gateway_request_arrival_1 + 50ms)",
+  "observed_F1_ns": 576802292,
+  "observed_preparation_end_ns": 687776432,
+  "observed_preparation_overrun_ns": 110974140,
+  "failed_slot_last_exact_timestamped_stage": "FIXED_RESPONSE_FRAME_PREPARATION_COMPLETE",
+  "failed_slot_last_control_flow_stage": "RELAY_HTTP_502_PROPAGATED_AFTER_GATEWAY_RELEASE_FAILURE",
+  "root_cause": "MULTIPLE",
+  "root_cause_components": [
+    "RESPONSE_CLOCK_STARTUP_BUDGET_DEFECT",
+    "HOST_SCHEDULING_OR_FIXED_PREPARATION_RELEASE_MISS",
+    "RESPONSE_RELEASE_ACCOUNTING_DEFECT"
+  ],
+  "mechanical_findings": {
+    "worker_readiness_barrier_absent": true,
+    "late_committed_frame_dropped": true,
+    "gateway_writer_invoked_for_slot_1": false,
+    "relay_record_for_slot_1": false,
+    "runtime_emitted_cells_semantics": "HTTP requests submitted to Relay, not successful public response writes",
+    "runtime_public_transcript_complete_semantics": "submitted == R, not exact successful application-visible slots 1..R",
+    "actual_transcript_corruption": true,
+    "relay_logging_defect": false
+  },
+  "privacy_statistics_inspected": false,
+  "classifier_runs": 0,
+  "auc_calculations": 0
+}

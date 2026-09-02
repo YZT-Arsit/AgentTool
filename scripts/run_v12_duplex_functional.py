@@ -90,6 +90,8 @@ def run_one(
     framework: str,
     workload: str,
     unit_identity: str,
+    *,
+    allow_successful_late_releases: bool = False,
 ) -> dict[str, Any]:
     workflow, cases = build_workload(workload, framework, unit_identity)
     prewarm_framework(framework)
@@ -166,6 +168,12 @@ def run_one(
         "gateway_release_clock_complete": len(releases) == profile.total_rounds,
         "gateway_release_deadlines_met": all(
             not bool(row.get("deadline_miss")) for row in releases
+        )
+        if not allow_successful_late_releases
+        else all(
+            bool(row.get("release_attempted"))
+            and bool(row.get("response_write_completed"))
+            for row in releases
         ),
         "fixed_relay_request_bytes": all(
             int(row["request_length"]) == 1079 for row in relay_events
