@@ -4,7 +4,6 @@ import math
 import re
 from dataclasses import asdict, dataclass
 
-
 PROFILE_CLASS = "TIMING_INDISTINGUISHABILITY_PROFILE"
 PUBLIC_PERIOD_CANDIDATES_MS = (10, 20, 25)
 CAUSAL_HORIZON_CANDIDATES_MS = (4500, 5000, 6000)
@@ -25,9 +24,13 @@ EFFECTIVE_PROFILE_ID = re.compile(
 EFFECTIVE_PROFILE_V3_ID = re.compile(
     r"^V12-TIMING-INDIST-V3-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
 )
+EFFECTIVE_PROFILE_V4_ID = re.compile(
+    r"^V12-TIMING-INDIST-V4-H(?P<maximum>[1-9][0-9]*)-H(?P<horizon>[1-9][0-9]*)-P(?P<period>[1-9][0-9]*)-PIR(?P<pir>[1-9][0-9]*)$"
+)
 NOMINAL_COMMITMENT_V1 = "NOMINAL_COMMITMENT_V1"
 EFFECTIVE_PUBLIC_CLOCK_V2 = "EFFECTIVE_PUBLIC_CLOCK_V2"
 EFFECTIVE_PUBLIC_CLOCK_V3 = "EFFECTIVE_PUBLIC_CLOCK_V3"
+DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4 = "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4"
 
 
 @dataclass(frozen=True)
@@ -51,7 +54,9 @@ class TimingIndistinguishabilityProfile:
     config_epoch: int = 3
     relay_endpoint_class: str = "LOCAL_RELAY"
     gateway_endpoint_class: str = "LOCAL_GATEWAY"
-    connection_policy: str = "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION"
+    connection_policy: str = (
+        "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION"
+    )
     scheduled_start_policy: str = "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0"
     profile_class: str = PROFILE_CLASS
     public_session_liveness_cap_ms: int = PUBLIC_SESSION_LIVENESS_CAP_MS
@@ -61,6 +66,11 @@ class TimingIndistinguishabilityProfile:
     dummy_descriptor_row: int = DUMMY_DESCRIPTOR_ROW
     pir_initial_lead_ms: int = PIR_INITIAL_LEAD_MS
     timing_semantic_revision: str = NOMINAL_COMMITMENT_V1
+    response_preparation_lead_ms: int = 0
+    pir_commitment_lead_ms: int = 0
+    registry_answer_release_delay_ms: int = 0
+    registry_worker_lanes: int = 0
+    registry_max_inflight: int = 0
 
     @property
     def admission_rounds(self) -> int:
@@ -76,7 +86,12 @@ class TimingIndistinguishabilityProfile:
 
     @property
     def total_rounds(self) -> int:
-        return self.admission_rounds + self.completion_rounds + self.result_capacity_rounds + self.terminal_rounds
+        return (
+            self.admission_rounds
+            + self.completion_rounds
+            + self.result_capacity_rounds
+            + self.terminal_rounds
+        )
 
     @property
     def scheduled_lifetime_ms(self) -> int:
@@ -104,13 +119,18 @@ class TimingIndistinguishabilityProfile:
             NOMINAL_COMMITMENT_V1: PROFILE_ID,
             EFFECTIVE_PUBLIC_CLOCK_V2: EFFECTIVE_PROFILE_ID,
             EFFECTIVE_PUBLIC_CLOCK_V3: EFFECTIVE_PROFILE_V3_ID,
+            DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4: EFFECTIVE_PROFILE_V4_ID,
         }.get(self.timing_semantic_revision)
         if grammar is None:
             raise ValueError("unknown V12 timing semantic revision")
         match = grammar.fullmatch(self.profile_id)
         if match is None:
-            raise ValueError("V12 timing profile ID violates the distinct public grammar")
-        encoded = tuple(int(match.group(name)) for name in ("maximum", "horizon", "period", "pir"))
+            raise ValueError(
+                "V12 timing profile ID violates the distinct public grammar"
+            )
+        encoded = tuple(
+            int(match.group(name)) for name in ("maximum", "horizon", "period", "pir")
+        )
         expected = (
             self.maximum_real_operations,
             self.admission_horizon_ms,
@@ -132,14 +152,35 @@ class TimingIndistinguishabilityProfile:
                 raise ValueError("historical V12 timing horizon changed")
         elif self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2:
             if self.admission_horizon_ms not in CAUSAL_HORIZON_CANDIDATES_MS:
-                raise ValueError("V12 causal horizon is outside the predeclared candidates")
+                raise ValueError(
+                    "V12 causal horizon is outside the predeclared candidates"
+                )
             if self.round_period_ms != 10 or self.pir_resolution_period_ms != 60:
                 raise ValueError("V12 causal-horizon phase freezes Delta10/PIR60")
         elif self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V3:
             if self.admission_horizon_ms != 4500:
                 raise ValueError("V12 functional Delta qualification freezes H4500")
-            if self.round_period_ms not in (10, 20, 25) or self.pir_resolution_period_ms != 60:
+            if (
+                self.round_period_ms not in (10, 20, 25)
+                or self.pir_resolution_period_ms != 60
+            ):
                 raise ValueError("V12 V3 freezes Delta10/20/25 and PIR60")
+        elif self.timing_semantic_revision == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4:
+            if self.admission_horizon_ms != 4500:
+                raise ValueError("V12 duplex revision freezes H4500")
+            if (
+                self.round_period_ms not in (10, 20, 25)
+                or self.pir_resolution_period_ms != 60
+            ):
+                raise ValueError("V12 duplex revision freezes Delta10/20/25 and PIR60")
+            if self.response_preparation_lead_ms != 5:
+                raise ValueError("V12 duplex response preparation lead changed")
+            if self.pir_commitment_lead_ms != 5:
+                raise ValueError("V12 duplex PIR commitment lead changed")
+            if self.registry_answer_release_delay_ms != 50:
+                raise ValueError("V12 duplex Registry answer release delay changed")
+            if self.registry_worker_lanes != 1 or self.registry_max_inflight != 100:
+                raise ValueError("V12 duplex Registry bounded worker design changed")
         else:
             raise ValueError("unknown V12 timing semantic revision")
         if self.provider_completion_bound_ms != 50 or self.terminal_rounds != 1:
@@ -147,18 +188,34 @@ class TimingIndistinguishabilityProfile:
         if self.public_session_liveness_cap_ms != 60_000:
             raise ValueError("V12 timing liveness cap changed")
         if self.pir_public_epoch_ms not in PIR_PUBLIC_EPOCH_CANDIDATES_MS:
-            raise ValueError("PIR public epoch is outside the predeclared development candidates")
+            raise ValueError(
+                "PIR public epoch is outside the predeclared development candidates"
+            )
         if self.pir_public_epoch_ms % self.pir_resolution_period_ms:
-            raise ValueError("PIR public epoch must contain an integral fixed opportunity count")
-        if self.pir_query_completion_bound_ms != 50 or self.maximum_real_agent_resolutions != 6:
+            raise ValueError(
+                "PIR public epoch must contain an integral fixed opportunity count"
+            )
+        if (
+            self.pir_query_completion_bound_ms != 50
+            or self.maximum_real_agent_resolutions != 6
+        ):
             raise ValueError("V12 causal PIR capacity contract changed")
-        if self.pir_resolution_opportunities <= self.maximum_real_agent_resolutions or self.dummy_descriptor_row != 999:
+        if (
+            self.pir_resolution_opportunities <= self.maximum_real_agent_resolutions
+            or self.dummy_descriptor_row != 999
+        ):
             raise ValueError("V12 fixed PIR schedule changed")
         if self.pir_initial_lead_ms != 25:
             raise ValueError("V12 fixed PIR initial lead changed")
         if self.request_final_bytes != 1079 or self.response_final_bytes != 800:
             raise ValueError("V12 fixed public cell sizes changed")
-        if (self.ohttp_key_id, self.kem_id, self.kdf_id, self.aead_id, self.config_epoch) != (7, 32, 1, 1, 3):
+        if (
+            self.ohttp_key_id,
+            self.kem_id,
+            self.kdf_id,
+            self.aead_id,
+            self.config_epoch,
+        ) != (7, 32, 1, 1, 3):
             raise ValueError("V12 public OHTTP suite changed")
         return self
 
@@ -183,6 +240,7 @@ class TimingIndistinguishabilityProfile:
             "pir_resolution_opportunities": self.pir_resolution_opportunities,
             "pir_initial_lead_ms": self.pir_initial_lead_ms,
             "timing_semantic_revision": self.timing_semantic_revision,
+            "response_preparation_lead_ms": self.response_preparation_lead_ms,
         }
 
     def public_schema(self) -> dict[str, object]:
@@ -190,11 +248,19 @@ class TimingIndistinguishabilityProfile:
         value.update(
             {
                 "schema": (
-                    "AgentTool.V12TimingIndistinguishabilityProfile/3"
-                    if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V3
-                    else ("AgentTool.V12TimingIndistinguishabilityProfile/2"
-                          if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V2
-                          else "AgentTool.V12TimingIndistinguishabilityProfile/1")
+                    "AgentTool.V12TimingIndistinguishabilityProfile/4"
+                    if self.timing_semantic_revision
+                    == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4
+                    else (
+                        "AgentTool.V12TimingIndistinguishabilityProfile/3"
+                        if self.timing_semantic_revision == EFFECTIVE_PUBLIC_CLOCK_V3
+                        else (
+                            "AgentTool.V12TimingIndistinguishabilityProfile/2"
+                            if self.timing_semantic_revision
+                            == EFFECTIVE_PUBLIC_CLOCK_V2
+                            else "AgentTool.V12TimingIndistinguishabilityProfile/1"
+                        )
+                    )
                 ),
                 "admission_rounds": self.admission_rounds,
                 "completion_rounds": self.completion_rounds,
@@ -209,7 +275,12 @@ class TimingIndistinguishabilityProfile:
                 "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
                 "slot_commitment_clock": (
                     "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE"
-                    if self.timing_semantic_revision in {EFFECTIVE_PUBLIC_CLOCK_V2, EFFECTIVE_PUBLIC_CLOCK_V3}
+                    if self.timing_semantic_revision
+                    in {
+                        EFFECTIVE_PUBLIC_CLOCK_V2,
+                        EFFECTIVE_PUBLIC_CLOCK_V3,
+                        DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4,
+                    }
                     else "D_i_MINUS_L_NOMINAL"
                 ),
                 "timing_privacy": "OPEN / NOT TESTED",
@@ -232,7 +303,9 @@ def candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
     )
 
 
-def causal_horizon_candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
+def causal_horizon_candidate_profiles() -> tuple[
+    TimingIndistinguishabilityProfile, ...
+]:
     return tuple(
         TimingIndistinguishabilityProfile(
             profile_id=f"V12-TIMING-INDIST-V2-H50-H{horizon}-P10-PIR60",
@@ -245,7 +318,9 @@ def causal_horizon_candidate_profiles() -> tuple[TimingIndistinguishabilityProfi
     )
 
 
-def delta_functional_candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
+def delta_functional_candidate_profiles() -> tuple[
+    TimingIndistinguishabilityProfile, ...
+]:
     return tuple(
         TimingIndistinguishabilityProfile(
             profile_id=f"V12-TIMING-INDIST-V3-H50-H4500-P{period}-PIR60",
@@ -253,6 +328,24 @@ def delta_functional_candidate_profiles() -> tuple[TimingIndistinguishabilityPro
             pir_resolution_period_ms=60,
             admission_horizon_ms=4500,
             timing_semantic_revision=EFFECTIVE_PUBLIC_CLOCK_V3,
+        ).validate()
+        for period in (10, 20, 25)
+    )
+
+
+def duplex_timing_candidate_profiles() -> tuple[TimingIndistinguishabilityProfile, ...]:
+    return tuple(
+        TimingIndistinguishabilityProfile(
+            profile_id=f"V12-TIMING-INDIST-V4-H50-H4500-P{period}-PIR60",
+            round_period_ms=period,
+            pir_resolution_period_ms=60,
+            admission_horizon_ms=4500,
+            timing_semantic_revision=DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4,
+            response_preparation_lead_ms=5,
+            pir_commitment_lead_ms=5,
+            registry_answer_release_delay_ms=50,
+            registry_worker_lanes=1,
+            registry_max_inflight=100,
         ).validate()
         for period in (10, 20, 25)
     )

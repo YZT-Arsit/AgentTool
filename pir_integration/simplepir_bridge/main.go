@@ -14,16 +14,19 @@ import (
 	"os"
 	"runtime"
 	"strconv"
+	"strings"
+	"sync"
 	"time"
 
 	sp "github.com/ahenzinger/simplepir/pir"
 )
 
 const (
-	recordBytes = uint64(1024)
-	recordBits  = recordBytes * 8
-	secParam    = uint64(1 << 10)
-	logQ        = uint64(32)
+	recordBytes                   = uint64(1024)
+	recordBits                    = recordBytes * 8
+	secParam                      = uint64(1 << 10)
+	logQ                          = uint64(32)
+	interactiveResponseFrameBytes = 2048
 )
 
 type request struct {
@@ -66,8 +69,12 @@ type recoveredTrace struct {
 }
 
 type interactiveRequest struct {
-	OperationID string `json:"operation_id"`
-	Index       uint64 `json:"index"`
+	OperationID     string `json:"operation_id"`
+	Index           uint64 `json:"index"`
+	Ordinal         int    `json:"ordinal,omitempty"`
+	QueryReleaseNS  int64  `json:"query_release_ns,omitempty"`
+	ResponseDelayNS int64  `json:"response_delay_ns,omitempty"`
+	PublicPeriodNS  int64  `json:"public_period_ns,omitempty"`
 }
 
 type interactiveResponse struct {
@@ -79,6 +86,36 @@ type interactiveResponse struct {
 	AnswerBytes uint64 `json:"answer_bytes,omitempty"`
 	Correct     bool   `json:"correct,omitempty"`
 	Error       string `json:"error,omitempty"`
+	Padding     string `json:"padding"`
+}
+
+type interactiveCompleted struct {
+	response interactiveResponse
+	client   clientTrace
+	server   serverTrace
+}
+
+type interactiveJob struct {
+	request  interactiveRequest
+	prepared chan interactivePrepared
+}
+
+type interactivePrepared struct {
+	request     interactiveRequest
+	clientState sp.State
+	query       sp.Msg
+	queryBytes  uint64
+	queryRows   uint64
+	queryCols   uint64
+	queryHash   string
+	queryMs     float64
+	err         error
+	completed   chan interactiveCompleted
+}
+
+type interactiveServerJob struct {
+	prepared  interactivePrepared
+	arrivalNS int64
 }
 
 type metrics struct {
@@ -267,7 +304,18 @@ func writeJSON(writer *bufio.Writer, value any) {
 
 func emitInteractiveResponse(encoder *json.Encoder, response interactiveResponse) (int64, error) {
 	// This helper is deliberately content-agnostic: all successful Registry
-	// responses cross the same application emission boundary.
+	// responses cross the same application emission boundary and fixed frame.
+	response.Padding = ""
+	encoded, err := json.Marshal(response)
+	if err != nil {
+		return 0, err
+	}
+	// Encoder appends one public newline delimiter.
+	paddingBytes := interactiveResponseFrameBytes - 1 - len(encoded)
+	if paddingBytes < 0 {
+		return 0, fmt.Errorf("interactive response exceeds fixed frame")
+	}
+	response.Padding = strings.Repeat("0", paddingBytes)
 	responseSendNS := time.Now().UnixNano()
 	return responseSendNS, encoder.Encode(response)
 }
@@ -287,6 +335,62 @@ func waitUntil(deadline int64) int64 {
 	}
 }
 
+func maxInt64(left, right int64) int64 {
+	if right > left {
+		return right
+	}
+	return left
+}
+
+func registryResponseDeadline(publicDeadlineNS, previousActualReleaseNS, publicPeriodNS int64) int64 {
+	if publicDeadlineNS <= 0 || previousActualReleaseNS <= 0 {
+		return publicDeadlineNS
+	}
+	return maxInt64(publicDeadlineNS, previousActualReleaseNS+publicPeriodNS)
+}
+
+func prepareInteractive(pi sp.SimplePIR, shared sp.State, params sp.Params,
+	dbInfo sp.DBinfo, job *interactiveJob) interactivePrepared {
+	req := job.request
+	started := time.Now()
+	clientState, query := pi.Query(req.Index, shared, params, dbInfo)
+	queryMs := float64(time.Since(started).Microseconds()) / 1000.0
+	serializedQuery := msgBytes(query)
+	hash := sha256.Sum256(serializedQuery)
+	return interactivePrepared{
+		request: req, clientState: clientState, query: query,
+		queryBytes: uint64(len(serializedQuery)), queryRows: query.Data[0].Rows,
+		queryCols: query.Data[0].Cols, queryHash: hex.EncodeToString(hash[:]), queryMs: queryMs,
+		completed: make(chan interactiveCompleted, 1),
+	}
+}
+
+func answerInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.State, hint sp.Msg,
+	params sp.Params, job interactiveServerJob) interactiveCompleted {
+	prepared := job.prepared
+	req := prepared.request
+	started := time.Now()
+	answer := answerUnpacked(db, prepared.query, params)
+	answerMs := float64(time.Since(started).Microseconds()) / 1000.0
+	started = time.Now()
+	record := recoverRecord(req.Index, hint, prepared.query, answer, shared, prepared.clientState, params, db.Info)
+	recoveryMs := float64(time.Since(started).Microseconds()) / 1000.0
+	expected := raw[req.Index*recordBytes : (req.Index+1)*recordBytes]
+	correct := string(record) == string(expected)
+	readyNS := time.Now().UnixNano()
+	return interactiveCompleted{
+		response: interactiveResponse{
+			Type: "PIR_RESULT", OperationID: req.OperationID,
+			Record: base64.StdEncoding.EncodeToString(record), QuerySHA256: prepared.queryHash,
+			QueryBytes: prepared.queryBytes, AnswerBytes: answer.Size() * 4, Correct: correct,
+		},
+		client: clientTrace{req.OperationID, req.Ordinal, req.Index, "PRIVATE_AGENT_SELECTION", prepared.queryMs, recoveryMs, correct},
+		server: serverTrace{req.Ordinal, prepared.queryBytes, prepared.queryRows,
+			prepared.queryCols, prepared.queryHash, answer.Size() * 4, answerMs,
+			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, job.arrivalNS, readyNS, 0},
+	}
+}
+
 func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.State, hint sp.Msg,
 	params sp.Params, recordCount uint64, clientPath, serverPath string) {
 	clientFile, clientWriter := createJSONL(clientPath)
@@ -296,58 +400,165 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 	defer serverFile.Close()
 	defer serverWriter.Flush()
 
+	// A public fixed pool of dummy queries is prepared before the session. If a
+	// committed real/dummy query is not ready by its public release deadline, a
+	// cover query occupies the opportunity rather than shifting it. The client
+	// will fail the affected semantic operation, but Q and the public cadence do
+	// not change.
+	fallbackQueries := make([]interactivePrepared, 100)
+	for ordinal := range fallbackQueries {
+		fallbackJob := &interactiveJob{
+			request:  interactiveRequest{OperationID: "pir-cover-fallback", Index: recordCount - 1, Ordinal: ordinal},
+			prepared: make(chan interactivePrepared, 1),
+		}
+		fallbackQueries[ordinal] = prepareInteractive(pi, shared, params, db.Info, fallbackJob)
+	}
+	coverTemplate := answerInteractive(
+		pi, db, raw, shared, hint, params,
+		interactiveServerJob{prepared: fallbackQueries[0], arrivalNS: 0},
+	)
+
 	encoder := json.NewEncoder(os.Stdout)
 	_ = encoder.Encode(map[string]any{
 		"type": "PIR_READY", "records": recordCount,
-		"future_indices_received": 0,
+		"future_indices_received":       0,
+		"prebuilt_public_cover_queries": len(fallbackQueries),
 	})
 	reader := bufio.NewScanner(os.Stdin)
 	// Requests are tiny fixed-schema control messages, but leave enough room for
 	// future protocol metadata without permitting unbounded input.
 	reader.Buffer(make([]byte, 4096), 64*1024)
-	ordinal := 0
-	for reader.Scan() {
-		arrivalNS := time.Now().UnixNano()
-		var req interactiveRequest
-		if err := json.Unmarshal(reader.Bytes(), &req); err != nil || req.OperationID == "" || req.Index >= recordCount {
-			_ = encoder.Encode(interactiveResponse{Type: "PIR_ERROR", Error: "invalid interactive PIR request"})
-			continue
+	preparationJobs := make(chan *interactiveJob, 100)
+	releaseJobs := make(chan *interactiveJob, 100)
+	serverJobs := make(chan interactiveServerJob, 100)
+	responseJobs := make(chan interactiveServerJob, 100)
+	var workers sync.WaitGroup
+	workers.Add(2)
+	go func() {
+		defer workers.Done()
+		for job := range preparationJobs {
+			job.prepared <- prepareInteractive(pi, shared, params, db.Info, job)
 		}
-		started := time.Now()
-		clientState, query := pi.Query(req.Index, shared, params, db.Info)
-		queryMs := float64(time.Since(started).Microseconds()) / 1000.0
-		serializedQuery := msgBytes(query)
-		hash := sha256.Sum256(serializedQuery)
-		started = time.Now()
-		answer := answerUnpacked(db, query, params)
-		answerMs := float64(time.Since(started).Microseconds()) / 1000.0
-		started = time.Now()
-		record := recoverRecord(req.Index, hint, query, answer, shared, clientState, params, db.Info)
-		recoveryMs := float64(time.Since(started).Microseconds()) / 1000.0
-		expected := raw[req.Index*recordBytes : (req.Index+1)*recordBytes]
-		correct := string(record) == string(expected)
-		queryHash := hex.EncodeToString(hash[:])
-		readyNS := time.Now().UnixNano()
-		observerResponse := interactiveResponse{
-			Type: "PIR_RESULT", OperationID: req.OperationID,
-			Record: base64.StdEncoding.EncodeToString(record), QuerySHA256: queryHash,
-			QueryBytes: uint64(len(serializedQuery)), AnswerBytes: answer.Size() * 4, Correct: correct,
+	}()
+	go func() {
+		defer workers.Done()
+		for job := range serverJobs {
+			job.prepared.completed <- answerInteractive(pi, db, raw, shared, hint, params, job)
 		}
-		// Capture immediately at the application response-emission boundary.
-		// Observer trace persistence happens only after the actual encode/write so
-		// measurement logging cannot sit between this timestamp and emission.
-		responseSendNS, err := emitInteractiveResponse(encoder, observerResponse)
+	}()
+	go func() {
+		defer close(preparationJobs)
+		defer close(releaseJobs)
+		ordinal := 0
+		for reader.Scan() {
+			var req interactiveRequest
+			if err := json.Unmarshal(reader.Bytes(), &req); err != nil || req.OperationID == "" || req.Index >= recordCount {
+				job := &interactiveJob{request: interactiveRequest{OperationID: "invalid"}, prepared: make(chan interactivePrepared, 1)}
+				job.prepared <- interactivePrepared{request: job.request, err: fmt.Errorf("invalid interactive PIR request"), completed: make(chan interactiveCompleted, 1)}
+				releaseJobs <- job
+				continue
+			}
+			if req.QueryReleaseNS > 0 {
+				if req.Ordinal != ordinal || req.PublicPeriodNS <= 0 || req.ResponseDelayNS <= 0 {
+					job := &interactiveJob{request: req, prepared: make(chan interactivePrepared, 1)}
+					job.prepared <- interactivePrepared{request: req, err: fmt.Errorf("invalid duplex public ordinal"), completed: make(chan interactiveCompleted, 1)}
+					releaseJobs <- job
+					continue
+				}
+			} else {
+				req.Ordinal = ordinal
+			}
+			job := &interactiveJob{request: req, prepared: make(chan interactivePrepared, 1)}
+			preparationJobs <- job
+			releaseJobs <- job
+			ordinal++
+		}
+	}()
+	go func() {
+		defer close(serverJobs)
+		defer close(responseJobs)
+		previousQueryReleaseNS := int64(0)
+		for job := range releaseJobs {
+			queryDeadline := registryResponseDeadline(
+				job.request.QueryReleaseNS, previousQueryReleaseNS, job.request.PublicPeriodNS,
+			)
+			var prepared interactivePrepared
+			if queryDeadline == 0 {
+				prepared = <-job.prepared
+			} else {
+				waitUntil(queryDeadline)
+				select {
+				case prepared = <-job.prepared:
+				default:
+					prepared = fallbackQueries[job.request.Ordinal%len(fallbackQueries)]
+					prepared.request = job.request
+					prepared.request.Index = recordCount - 1
+					prepared.completed = make(chan interactiveCompleted, 1)
+				}
+			}
+			arrivalNS := time.Now().UnixNano()
+			previousQueryReleaseNS = arrivalNS
+			if prepared.err != nil {
+				prepared.completed <- interactiveCompleted{
+					response: interactiveResponse{Type: "PIR_ERROR", OperationID: job.request.OperationID, Error: prepared.err.Error()},
+					server: serverTrace{Ordinal: job.request.Ordinal, Executor: "SimplePIRServer", RequestKind: "ONLINE_PIR_QUERY",
+						ScheduledNs: queryDeadline, ArrivalNs: arrivalNS},
+				}
+			}
+			serverJob := interactiveServerJob{prepared: prepared, arrivalNS: arrivalNS}
+			if prepared.err == nil {
+				serverJobs <- serverJob
+			}
+			responseJobs <- serverJob
+		}
+	}()
+	previousReleaseNS := int64(0)
+	for job := range responseJobs {
+		var completed interactiveCompleted
+		deadline := int64(0)
+		if job.prepared.request.QueryReleaseNS > 0 {
+			deadline = registryResponseDeadline(
+				job.arrivalNS+job.prepared.request.ResponseDelayNS,
+				previousReleaseNS,
+				job.prepared.request.PublicPeriodNS,
+			)
+		}
+		if deadline == 0 {
+			completed = <-job.prepared.completed
+		} else {
+			waitUntil(deadline)
+			select {
+			case completed = <-job.prepared.completed:
+			default:
+				completed = interactiveCompleted{
+					response: interactiveResponse{
+						Type: "PIR_RESULT", OperationID: job.prepared.request.OperationID,
+						Record: coverTemplate.response.Record, QuerySHA256: job.prepared.queryHash,
+						QueryBytes: job.prepared.queryBytes, AnswerBytes: coverTemplate.response.AnswerBytes,
+						Correct: false,
+					},
+					client: clientTrace{job.prepared.request.OperationID, job.prepared.request.Ordinal,
+						recordCount - 1, "PRIVATE_COVER_ON_ANSWER_DEADLINE_MISS", job.prepared.queryMs, 0, false},
+					server: serverTrace{job.prepared.request.Ordinal, job.prepared.queryBytes,
+						job.prepared.queryRows, job.prepared.queryCols, job.prepared.queryHash,
+						coverTemplate.response.AnswerBytes, 0, "SimplePIRServer", "ONLINE_PIR_QUERY",
+						deadline, job.arrivalNS, 0, 0},
+				}
+			}
+		}
+		completed.server.ScheduledNs = deadline
+		responseSendNS, err := emitInteractiveResponse(encoder, completed.response)
 		if err != nil {
 			return
 		}
-		writeJSON(clientWriter, clientTrace{req.OperationID, ordinal, req.Index, "PRIVATE_AGENT_SELECTION", queryMs, recoveryMs, correct})
-		writeJSON(serverWriter, serverTrace{ordinal, uint64(len(serializedQuery)), query.Data[0].Rows,
-			query.Data[0].Cols, queryHash, answer.Size() * 4, answerMs,
-			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, arrivalNS, readyNS, responseSendNS})
+		previousReleaseNS = responseSendNS
+		completed.server.SendNs = responseSendNS
+		writeJSON(clientWriter, completed.client)
+		writeJSON(serverWriter, completed.server)
 		clientWriter.Flush()
 		serverWriter.Flush()
-		ordinal++
 	}
+	workers.Wait()
 	if err := reader.Err(); err != nil {
 		_ = encoder.Encode(interactiveResponse{Type: "PIR_ERROR", Error: "interactive control channel failed"})
 	}

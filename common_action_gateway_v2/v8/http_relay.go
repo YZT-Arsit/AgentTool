@@ -38,6 +38,10 @@ type RelayPublicEvent struct {
 	RequestObservedNS        int64  `json:"request_observed_ns"`
 	ResponseObservedNS       int64  `json:"response_observed_ns"`
 	ResponseSendNS           int64  `json:"response_send_ns"`
+	ClientToRelayReceiveNS   int64  `json:"client_to_relay_receive_ns"`
+	RelayToGatewaySendNS     int64  `json:"relay_to_gateway_send_ns"`
+	GatewayToRelayReceiveNS  int64  `json:"gateway_to_relay_receive_ns"`
+	RelayToClientSendNS      int64  `json:"relay_to_client_send_ns"`
 	ClientHTTPVersion        string `json:"client_http_version,omitempty"`
 	GatewayHTTPVersion       string `json:"gateway_http_version,omitempty"`
 }
@@ -180,6 +184,7 @@ func (r *FreshRequestRelay) ServeHTTP(writer http.ResponseWriter, inbound *http.
 	outbound.Header.Set("X-AgentTool-Public-Slot", strconv.FormatUint(uint64(round), 10))
 	outbound.Header["User-Agent"] = []string{}
 	outbound.ContentLength = int64(len(body))
+	relayToGatewaySend := time.Now().UnixNano()
 	response, err := r.Client.Do(outbound)
 	if err != nil {
 		http.Error(writer, "local Gateway unavailable", http.StatusBadGateway)
@@ -209,7 +214,8 @@ func (r *FreshRequestRelay) ServeHTTP(writer http.ResponseWriter, inbound *http.
 		KDFID: r.Profile.OHTTPSuite.KDFID, AEADID: r.Profile.OHTTPSuite.AEADID,
 		ConfigEpoch: r.Profile.OHTTPSuite.ConfigEpoch, RequestObservedNS: observed,
 		ResponseObservedNS: responseObserved, ClientHTTPVersion: inbound.Proto,
-		GatewayHTTPVersion: response.Proto,
+		GatewayHTTPVersion: response.Proto, ClientToRelayReceiveNS: observed,
+		RelayToGatewaySendNS: relayToGatewaySend, GatewayToRelayReceiveNS: responseObserved,
 	}
 	writer.Header().Set("Content-Type", OHTTPResponseContentType)
 	writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(responseBody)))
@@ -217,6 +223,7 @@ func (r *FreshRequestRelay) ServeHTTP(writer http.ResponseWriter, inbound *http.
 	// Event persistence is deliberately after the write and is independent of
 	// the opaque REAL/NOOP/WAIT contents.
 	event.ResponseSendNS = time.Now().UnixNano()
+	event.RelayToClientSendNS = event.ResponseSendNS
 	writer.WriteHeader(http.StatusOK)
 	_, _ = writer.Write(responseBody)
 	r.record(event)

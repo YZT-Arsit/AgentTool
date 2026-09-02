@@ -123,8 +123,11 @@ def test_fixed_pir_scheduler_uses_one_protocol_function_for_real_and_dummy(monke
 def test_pir_query_has_no_direct_process_write_outside_protocol_executor() -> None:
     query_source = inspect.getsource(OnlineSimplePIRResolver.query)
     executor_source = inspect.getsource(OnlineSimplePIRResolver._execute_query)
+    submit_source = inspect.getsource(OnlineSimplePIRResolver._submit_query)
     assert ".stdin.write" not in query_source
-    assert ".stdin.write" in executor_source
+    assert "_submit_query" in executor_source
+    assert "_await_response" in executor_source
+    assert ".stdin.write" in submit_source
 
 
 @pytest.mark.skipif(not (Path(__file__).resolve().parents[1] / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner").is_file(), reason="Linux timing development binary unavailable")

@@ -4,7 +4,6 @@ import base64
 import json
 import os
 import queue
-import shutil
 import subprocess
 import threading
 import time
@@ -17,24 +16,26 @@ from action_privacy_v8 import (
     AgentDescriptorV7,
     AgentDescriptorV7Codec,
     DeliveryLedger,
-    PrivacyProfile,
     PlacementClass,
+    PrivacyProfile,
     ProtectedActionIntent,
     TrustedActionRouter,
 )
 from action_privacy_v8.descriptor import AGENT_DESCRIPTOR_V7_BYTES
 from canonical_v9.runner import (
     EPOCH,
-    ROUTES,
+    CanonicalSessionSpec,
     descriptor,
-    go_kind,
     resolve_session,
     route_specs,
-    CanonicalSessionSpec,
 )
-from canonical_v9_1.projection import strict_size_projection, strict_structural_projection
+from canonical_v9_1.projection import (
+    strict_size_projection,
+    strict_structural_projection,
+)
 from cryptographic_closure.pir_backend import SIMPLEPIR_COMMIT
 from v10_holdout.harness import load_v10_profile
+from v11_3.profile import OnlinePublicProfile
 from v11_full_scope.action_model import protected_payload
 from v11_full_scope.canonical import (
     LocalTrustedBackendV11,
@@ -43,20 +44,30 @@ from v11_full_scope.canonical import (
     internal_descriptor,
 )
 from v11_full_scope.models import V11ActionCase, V11ActionOutcome
-from v11_3.profile import OnlinePublicProfile
-
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v11_2-runner"
-TIMING_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner"
-CAUSAL_HORIZON_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-causal-horizon-runner"
-DELTA_FUNCTIONAL_RUNNER = ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-delta-functional-runner"
-TIMING_PIR_BRIDGE = ROOT / "pir_integration" / "simplepir_bridge" / "acv-simplepir-v12-timing"
+TIMING_RUNNER = (
+    ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-timing-runner"
+)
+CAUSAL_HORIZON_RUNNER = (
+    ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-causal-horizon-runner"
+)
+DELTA_FUNCTIONAL_RUNNER = (
+    ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-delta-functional-runner"
+)
+DUPLEX_TIMING_RUNNER = (
+    ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-duplex-timing-runner"
+)
+TIMING_PIR_BRIDGE = (
+    ROOT / "pir_integration" / "simplepir_bridge" / "acv-simplepir-v12-timing"
+)
 if os.name == "nt":
     DEFAULT_RUNNER = DEFAULT_RUNNER.with_suffix(".exe")
     TIMING_RUNNER = TIMING_RUNNER.with_suffix(".exe")
     CAUSAL_HORIZON_RUNNER = CAUSAL_HORIZON_RUNNER.with_suffix(".exe")
     DELTA_FUNCTIONAL_RUNNER = DELTA_FUNCTIONAL_RUNNER.with_suffix(".exe")
+    DUPLEX_TIMING_RUNNER = DUPLEX_TIMING_RUNNER.with_suffix(".exe")
     TIMING_PIR_BRIDGE = TIMING_PIR_BRIDGE.with_suffix(".exe")
 
 
@@ -73,15 +84,55 @@ class _PendingPIRResolution:
     error: BaseException | None = None
 
 
+@dataclass
+class _SubmittedPIRQuery:
+    operation_id: str
+    index: int
+    pending: _PendingPIRResolution | None
+    event: dict[str, Any]
+    send_monotonic_ns: int
+
+
+def duplex_pir_opportunity_times(
+    *,
+    origin_ns: int,
+    ordinal: int,
+    period_ns: int,
+    initial_lead_ns: int,
+    commitment_lead_ns: int,
+    previous_public_send_ns: int,
+) -> tuple[int, int, int]:
+    """Return nominal, eligible, and commitment times from public state only."""
+
+    if ordinal < 0 or period_ns <= 0 or not 0 < commitment_lead_ns < period_ns:
+        raise ValueError("invalid duplex PIR public-clock inputs")
+    nominal_ns = origin_ns + initial_lead_ns + ordinal * period_ns
+    eligible_ns = max(
+        nominal_ns,
+        previous_public_send_ns + period_ns if ordinal else nominal_ns,
+    )
+    return nominal_ns, eligible_ns, eligible_ns - commitment_lead_ns
+
+
 class OnlineSimplePIRResolver:
     """Persistent official SimplePIR setup with indices supplied only online."""
 
-    def __init__(self, output: Path, *, record_count: int = 1000, bridge_binary: Path | None = None):
+    def __init__(
+        self,
+        output: Path,
+        *,
+        record_count: int = 1000,
+        bridge_binary: Path | None = None,
+    ):
         self.output = output.resolve()
         if record_count < 64:
-            raise ValueError("online SimplePIR development catalog must contain at least 64 rows")
+            raise ValueError(
+                "online SimplePIR development catalog must contain at least 64 rows"
+            )
         self.record_count = record_count
-        self.bridge_binary = bridge_binary.resolve() if bridge_binary is not None else None
+        self.bridge_binary = (
+            bridge_binary.resolve() if bridge_binary is not None else None
+        )
         self.process: subprocess.Popen[str] | None = None
         self.codec: AgentDescriptorV7Codec | None = None
         self.stderr_lines: list[str] = []
@@ -112,6 +163,12 @@ class OnlineSimplePIRResolver:
         self.descriptor_cache_misses = 0
         self.descriptor_cache_events: list[dict[str, Any]] = []
         self.cover_events: list[dict[str, Any]] = []
+        self.pir_commitment_lead_ms = 0
+        self.registry_answer_release_delay_ms = 0
+        self.registry_worker_lanes = 0
+        self.registry_max_inflight = 0
+        self.completion_queue: queue.Queue[_SubmittedPIRQuery | None] | None = None
+        self.completion_thread: threading.Thread | None = None
 
     @staticmethod
     def _dummy_descriptor(agent_id: int) -> AgentDescriptorV7:
@@ -139,7 +196,11 @@ class OnlineSimplePIRResolver:
                 if agent_id == self.cover_dummy_index:
                     value = self._dummy_descriptor(agent_id)
                 else:
-                    value = internal_descriptor(agent_id) if agent_id == 20 else descriptor(agent_id)
+                    value = (
+                        internal_descriptor(agent_id)
+                        if agent_id == 20
+                        else descriptor(agent_id)
+                    )
                 handle.write(self.codec.encode(value))
         if registry.stat().st_size != self.record_count * AGENT_DESCRIPTOR_V7_BYTES:
             raise AssertionError("online SimplePIR registry size mismatch")
@@ -161,8 +222,16 @@ class OnlineSimplePIRResolver:
             go = ROOT / ".toolchains" / "go" / "Go" / "bin" / "go.exe"
             gcc_dir = ROOT / ".toolchains" / "winlibs" / "mingw64" / "bin"
             if not go.is_file() or not (gcc_dir / "gcc.exe").is_file():
-                raise FileNotFoundError("online SimplePIR prebuilt bridge is unavailable")
-            env["PATH"] = str(go.parent) + os.pathsep + str(gcc_dir) + os.pathsep + env.get("PATH", "")
+                raise FileNotFoundError(
+                    "online SimplePIR prebuilt bridge is unavailable"
+                )
+            env["PATH"] = (
+                str(go.parent)
+                + os.pathsep
+                + str(gcc_dir)
+                + os.pathsep
+                + env.get("PATH", "")
+            )
             env["CC"] = str(gcc_dir / "gcc.exe")
             env["CGO_ENABLED"] = "1"
             command = [str(go), "run", ".", "--interactive"]
@@ -170,15 +239,28 @@ class OnlineSimplePIRResolver:
             raise FileNotFoundError(
                 "online SimplePIR requires the frozen prebuilt bridge; source fallback is disabled"
             )
-        command.extend([
-            "--database", str(registry), "--records", str(self.record_count),
-            "--client-trace", str(self.output / "client_private_trace.jsonl"),
-            "--server-trace", str(self.output / "server_visible_trace.jsonl"),
-            "--commit", SIMPLEPIR_COMMIT,
-        ])
+        command.extend(
+            [
+                "--database",
+                str(registry),
+                "--records",
+                str(self.record_count),
+                "--client-trace",
+                str(self.output / "client_private_trace.jsonl"),
+                "--server-trace",
+                str(self.output / "server_visible_trace.jsonl"),
+                "--commit",
+                SIMPLEPIR_COMMIT,
+            ]
+        )
         self.process = subprocess.Popen(
-            command, cwd=bridge, env=env, text=True,
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            command,
+            cwd=bridge,
+            env=env,
+            text=True,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
             bufsize=1,
         )
         assert self.process.stdout is not None and self.process.stderr is not None
@@ -194,13 +276,23 @@ class OnlineSimplePIRResolver:
                 ready = candidate
                 break
         if ready is None:
-            raise RuntimeError("online SimplePIR exited before PIR_READY: " + self.process.stderr.read())
-        if ready != {
+            raise RuntimeError(
+                "online SimplePIR exited before PIR_READY: "
+                + self.process.stderr.read()
+            )
+        expected_ready = {
             "future_indices_received": 0,
             "records": self.record_count,
             "type": "PIR_READY",
-        }:
-            raise AssertionError(f"unexpected online SimplePIR readiness record: {ready}")
+        }
+        if (
+            any(ready.get(key) != value for key, value in expected_ready.items())
+            or ready.get("prebuilt_public_cover_queries") not in (None, 100)
+            or set(ready) - {*expected_ready, "prebuilt_public_cover_queries"}
+        ):
+            raise AssertionError(
+                f"unexpected online SimplePIR readiness record: {ready}"
+            )
         self.stdout_thread = threading.Thread(target=self._drain_stdout, daemon=True)
         self.stdout_thread.start()
         self.stderr_thread = threading.Thread(target=self._drain_stderr, daemon=True)
@@ -209,7 +301,9 @@ class OnlineSimplePIRResolver:
             json.dumps({**ready, "official_commit": SIMPLEPIR_COMMIT}, indent=2) + "\n",
             encoding="utf-8",
         )
-        (self.output / "preprocessing_stdout.txt").write_text("".join(startup_lines), encoding="utf-8")
+        (self.output / "preprocessing_stdout.txt").write_text(
+            "".join(startup_lines), encoding="utf-8"
+        )
         return self
 
     def _drain_stderr(self) -> None:
@@ -224,29 +318,23 @@ class OnlineSimplePIRResolver:
         except BaseException as exc:
             self.response_queue.put(exc)
         finally:
-            self.response_queue.put(RuntimeError("online SimplePIR response stream closed"))
+            self.response_queue.put(
+                RuntimeError("online SimplePIR response stream closed")
+            )
 
-    def _execute_query(self, operation_id: str, index: int) -> AgentDescriptorV7:
-        with self.query_lock:
-            if self.process is None or self.codec is None or self.process.stdin is None or self.process.stdout is None:
-                raise RuntimeError("online SimplePIR is not active")
-            self.process.stdin.write(json.dumps({"operation_id": operation_id, "index": index}) + "\n")
-            self.process.stdin.flush()
-            try:
-                if self.query_completion_bound_ms:
-                    response_item = self.response_queue.get(timeout=self.query_completion_bound_ms / 1000)
-                else:
-                    response_item = self.response_queue.get()
-            except queue.Empty as exc:
-                raise TimeoutError(
-                    f"online SimplePIR query exceeded {self.query_completion_bound_ms} ms completion bound"
-                ) from exc
-            if isinstance(response_item, BaseException):
-                raise response_item
-            line = response_item
-            response = json.loads(line)
-        if response.get("type") != "PIR_RESULT" or response.get("operation_id") != operation_id or not response.get("correct"):
+    def _decode_query_response(
+        self, operation_id: str, index: int, response_item: str | BaseException
+    ) -> AgentDescriptorV7:
+        if isinstance(response_item, BaseException):
+            raise response_item
+        response = json.loads(response_item)
+        if (
+            response.get("type") != "PIR_RESULT"
+            or response.get("operation_id") != operation_id
+            or not response.get("correct")
+        ):
             raise RuntimeError(f"online SimplePIR query failed: {response}")
+        assert self.codec is not None
         row = base64.b64decode(response["record_base64"])
         recovered = self.codec.decode(row, expected_agent_id=index)
         if index == self.cover_dummy_index:
@@ -258,6 +346,62 @@ class OnlineSimplePIRResolver:
         self.query_count += 1
         self.query_hashes.append(str(response["query_sha256"]))
         return recovered
+
+    def _await_response(
+        self,
+        operation_id: str,
+        index: int,
+        send_ns: int,
+        *,
+        timeout_ms: int | None = None,
+    ) -> AgentDescriptorV7:
+        try:
+            effective_timeout_ms = (
+                self.query_completion_bound_ms if timeout_ms is None else timeout_ms
+            )
+            if effective_timeout_ms:
+                elapsed = max(0, time.monotonic_ns() - send_ns)
+                remaining = effective_timeout_ms / 1000 - elapsed / 1_000_000_000
+                if remaining <= 0:
+                    raise queue.Empty
+                response_item = self.response_queue.get(timeout=remaining)
+            else:
+                response_item = self.response_queue.get()
+        except queue.Empty as exc:
+            raise TimeoutError(
+                f"online SimplePIR query exceeded {self.query_completion_bound_ms} ms completion bound"
+            ) from exc
+        return self._decode_query_response(operation_id, index, response_item)
+
+    def _submit_query(
+        self,
+        operation_id: str,
+        index: int,
+        *,
+        ordinal: int | None = None,
+        query_release_ns: int | None = None,
+        response_delay_ns: int | None = None,
+    ) -> int:
+        with self.query_lock:
+            if self.process is None or self.codec is None or self.process.stdin is None:
+                raise RuntimeError("online SimplePIR is not active")
+            request: dict[str, Any] = {"operation_id": operation_id, "index": index}
+            if ordinal is not None:
+                request.update(
+                    {
+                        "ordinal": ordinal,
+                        "query_release_ns": int(query_release_ns or 0),
+                        "response_delay_ns": int(response_delay_ns or 0),
+                        "public_period_ns": self.cover_period_ms * 1_000_000,
+                    }
+                )
+            self.process.stdin.write(json.dumps(request, separators=(",", ":")) + "\n")
+            self.process.stdin.flush()
+            return time.monotonic_ns()
+
+    def _execute_query(self, operation_id: str, index: int) -> AgentDescriptorV7:
+        send_ns = self._submit_query(operation_id, index)
+        return self._await_response(operation_id, index, send_ns)
 
     def has_cached_descriptor(self, index: int) -> bool:
         return (EPOCH, index) in self.descriptor_cache
@@ -273,7 +417,12 @@ class OnlineSimplePIRResolver:
             if cached is not None:
                 self.descriptor_cache_hits += 1
                 self.descriptor_cache_events.append(
-                    {"operation_id": operation_id, "agent_id": index, "catalog_epoch": EPOCH, "cache_hit": True}
+                    {
+                        "operation_id": operation_id,
+                        "agent_id": index,
+                        "catalog_epoch": EPOCH,
+                        "cache_hit": True,
+                    }
                 )
                 return cached
             if not allow_cache_miss:
@@ -282,7 +431,12 @@ class OnlineSimplePIRResolver:
             value = self.query(operation_id, index)
             self.descriptor_cache[key] = value
             self.descriptor_cache_events.append(
-                {"operation_id": operation_id, "agent_id": index, "catalog_epoch": EPOCH, "cache_hit": False}
+                {
+                    "operation_id": operation_id,
+                    "agent_id": index,
+                    "catalog_epoch": EPOCH,
+                    "cache_hit": False,
+                }
             )
             return value
 
@@ -296,32 +450,192 @@ class OnlineSimplePIRResolver:
         epoch_ms: int = 6000,
         query_completion_bound_ms: int = 50,
         liveness_cap_ms: int = 60_000,
+        commitment_lead_ms: int = 0,
+        answer_release_delay_ms: int = 0,
+        worker_lanes: int = 0,
+        max_inflight: int = 0,
     ) -> None:
         if self.cover_thread is not None:
             raise RuntimeError("PIR cover schedule already started")
         if epoch_ms not in (6000, 8000, 10000):
-            raise ValueError("PIR public epoch is outside the predeclared development candidates")
+            raise ValueError(
+                "PIR public epoch is outside the predeclared development candidates"
+            )
         if period_ms not in (60, 75, 100):
             raise ValueError("PIR period is outside the predeclared candidates")
         if epoch_ms % period_ms or opportunities != epoch_ms // period_ms:
-            raise ValueError("fixed PIR opportunities must be derived from public epoch / period")
+            raise ValueError(
+                "fixed PIR opportunities must be derived from public epoch / period"
+            )
         if dummy_index != 999 or dummy_index >= self.record_count:
             raise ValueError("invalid frozen dummy PIR descriptor row")
         if initial_lead_ms != 25:
-            raise ValueError("V12 timing profile requires the frozen 25 ms PIR initial lead")
+            raise ValueError(
+                "V12 timing profile requires the frozen 25 ms PIR initial lead"
+            )
         if query_completion_bound_ms != 50:
             raise ValueError("V12 timing PIR query completion bound changed")
         if liveness_cap_ms != 60_000:
             raise ValueError("PIR cover liveness cap changed")
+        duplex = any(
+            (commitment_lead_ms, answer_release_delay_ms, worker_lanes, max_inflight)
+        )
+        if duplex and (
+            commitment_lead_ms != 5
+            or answer_release_delay_ms != 50
+            or worker_lanes != 1
+            or max_inflight != opportunities
+        ):
+            raise ValueError("V12 duplex Registry clock parameters changed")
         self.cover_opportunities = opportunities
         self.cover_period_ms = period_ms
         self.cover_dummy_index = dummy_index
         self.cover_initial_lead_ms = initial_lead_ms
         self.query_completion_bound_ms = query_completion_bound_ms
         self.cover_liveness_cap_ms = liveness_cap_ms
+        self.pir_commitment_lead_ms = commitment_lead_ms
+        self.registry_answer_release_delay_ms = answer_release_delay_ms
+        self.registry_worker_lanes = worker_lanes
+        self.registry_max_inflight = max_inflight
         self.cover_origin_ns = time.monotonic_ns()
-        self.cover_thread = threading.Thread(target=self._run_cover_schedule, daemon=True)
+        target = self._run_duplex_cover_schedule if duplex else self._run_cover_schedule
+        self.cover_thread = threading.Thread(target=target, daemon=True)
         self.cover_thread.start()
+
+    def _run_completion_loop(self) -> None:
+        assert self.completion_queue is not None
+        while True:
+            submitted = self.completion_queue.get()
+            try:
+                if submitted is None:
+                    return
+                try:
+                    result = self._await_response(
+                        submitted.operation_id,
+                        submitted.index,
+                        submitted.send_monotonic_ns,
+                        timeout_ms=(
+                            self.registry_answer_release_delay_ms + self.cover_period_ms
+                        ),
+                    )
+                    if submitted.pending is not None:
+                        submitted.pending.result = result
+                except BaseException as exc:
+                    if self.cover_error is None:
+                        self.cover_error = exc
+                    if submitted.pending is not None:
+                        submitted.pending.error = exc
+                finally:
+                    submitted.event["complete_ns"] = (
+                        time.monotonic_ns() - self.cover_origin_ns
+                    )
+                    if submitted.pending is not None:
+                        submitted.pending.ready.set()
+            finally:
+                self.completion_queue.task_done()
+
+    def _run_duplex_cover_schedule(self) -> None:
+        start_ns = self.cover_origin_ns or time.monotonic_ns()
+        period_ns = self.cover_period_ms * 1_000_000
+        lead_ns = self.pir_commitment_lead_ms * 1_000_000
+        previous_send_ns = 0
+        self.completion_queue = queue.Queue(maxsize=self.registry_max_inflight)
+        self.completion_thread = threading.Thread(
+            target=self._run_completion_loop, daemon=True
+        )
+        self.completion_thread.start()
+        try:
+            for ordinal in range(self.cover_opportunities):
+                nominal_ns, eligible_ns, cutoff_ns = duplex_pir_opportunity_times(
+                    origin_ns=start_ns,
+                    ordinal=ordinal,
+                    period_ns=period_ns,
+                    initial_lead_ns=self.cover_initial_lead_ms * 1_000_000,
+                    commitment_lead_ns=lead_ns,
+                    previous_public_send_ns=previous_send_ns,
+                )
+                remaining_ns = cutoff_ns - time.monotonic_ns()
+                if remaining_ns > 0:
+                    time.sleep(remaining_ns / 1_000_000_000)
+                with self.cover_condition:
+                    pending = (
+                        self.cover_pending.popleft() if self.cover_pending else None
+                    )
+                committed_ns = time.monotonic_ns()
+                real = pending is not None
+                operation_id = (
+                    pending.operation_id if pending else f"pir-cover-{ordinal + 1:06d}"
+                )
+                index = pending.index if pending else self.cover_dummy_index
+                event: dict[str, Any] = {
+                    "ordinal": ordinal,
+                    "nominal_ns": nominal_ns - start_ns,
+                    "eligible_ns": eligible_ns - start_ns,
+                    "commitment_cutoff_ns": cutoff_ns - start_ns,
+                    "committed_ns": committed_ns - start_ns,
+                    "real": real,
+                    "expired_opportunity_retrofilled": False,
+                }
+                self.cover_events.append(event)
+                now_monotonic_ns = time.monotonic_ns()
+                query_release_wall_ns = time.time_ns() + max(
+                    0, eligible_ns - now_monotonic_ns
+                )
+                try:
+                    send_ns = self._submit_query(
+                        operation_id,
+                        index,
+                        ordinal=ordinal,
+                        query_release_ns=query_release_wall_ns,
+                        response_delay_ns=(
+                            self.registry_answer_release_delay_ms * 1_000_000
+                        ),
+                    )
+                    event["private_preparation_enqueue_ns"] = send_ns - start_ns
+                    event["query_release_ns"] = query_release_wall_ns
+                    event["response_delay_ns"] = (
+                        self.registry_answer_release_delay_ms * 1_000_000
+                    )
+                    assert self.completion_queue is not None
+                    self.completion_queue.put(
+                        _SubmittedPIRQuery(
+                            operation_id,
+                            index,
+                            pending,
+                            event,
+                            send_ns,
+                        )
+                    )
+                except BaseException as exc:
+                    if self.cover_error is None:
+                        self.cover_error = exc
+                    event["complete_ns"] = time.monotonic_ns() - start_ns
+                    if pending is not None:
+                        pending.error = exc
+                        pending.ready.set()
+                if real:
+                    self.real_query_count += 1
+                else:
+                    self.dummy_query_count += 1
+            assert self.completion_queue is not None
+            self.completion_queue.join()
+            self.completion_queue.put(None)
+            self.completion_queue.join()
+            if self.completion_thread is not None:
+                self.completion_thread.join(timeout=2)
+        except BaseException as exc:
+            if self.cover_error is None:
+                self.cover_error = exc
+        finally:
+            with self.cover_condition:
+                self.cover_complete = True
+                while self.cover_pending:
+                    pending = self.cover_pending.popleft()
+                    pending.error = self.cover_error or RuntimeError(
+                        "PIR cover opportunities exhausted"
+                    )
+                    pending.ready.set()
+                self.cover_condition.notify_all()
 
     def _run_cover_schedule(self) -> None:
         start_ns = self.cover_origin_ns or time.monotonic_ns()
@@ -329,7 +643,11 @@ class OnlineSimplePIRResolver:
         previous_send_ns = 0
         try:
             for ordinal in range(self.cover_opportunities):
-                nominal_ns = start_ns + self.cover_initial_lead_ms * 1_000_000 + ordinal * period_ns
+                nominal_ns = (
+                    start_ns
+                    + self.cover_initial_lead_ms * 1_000_000
+                    + ordinal * period_ns
+                )
                 eligible_ns = nominal_ns
                 if ordinal and previous_send_ns + period_ns > eligible_ns:
                     eligible_ns = previous_send_ns + period_ns
@@ -338,11 +656,17 @@ class OnlineSimplePIRResolver:
                     time.sleep(remaining_ns / 1_000_000_000)
                 send_ns = time.monotonic_ns()
                 if send_ns - start_ns > self.cover_liveness_cap_ms * 1_000_000:
-                    raise TimeoutError("PIR cover schedule exceeded public liveness cap")
+                    raise TimeoutError(
+                        "PIR cover schedule exceeded public liveness cap"
+                    )
                 with self.cover_condition:
-                    pending = self.cover_pending.popleft() if self.cover_pending else None
+                    pending = (
+                        self.cover_pending.popleft() if self.cover_pending else None
+                    )
                 real = pending is not None
-                operation_id = pending.operation_id if pending else f"pir-cover-{ordinal + 1:06d}"
+                operation_id = (
+                    pending.operation_id if pending else f"pir-cover-{ordinal + 1:06d}"
+                )
                 index = pending.index if pending else self.cover_dummy_index
                 try:
                     result = self._execute_query(operation_id, index)
@@ -378,7 +702,9 @@ class OnlineSimplePIRResolver:
                 self.cover_complete = True
                 while self.cover_pending:
                     pending = self.cover_pending.popleft()
-                    pending.error = self.cover_error or RuntimeError("PIR cover opportunities exhausted")
+                    pending.error = self.cover_error or RuntimeError(
+                        "PIR cover opportunities exhausted"
+                    )
                     pending.ready.set()
                 self.cover_condition.notify_all()
 
@@ -407,7 +733,9 @@ class OnlineSimplePIRResolver:
             if self.cover_thread is not None:
                 self.cover_thread.join(timeout=self.cover_liveness_cap_ms / 1000 + 5)
                 if self.cover_thread.is_alive():
-                    cover_failure = TimeoutError("PIR cover scheduler did not terminate")
+                    cover_failure = TimeoutError(
+                        "PIR cover scheduler did not terminate"
+                    )
                 elif self.cover_error is not None:
                     cover_failure = self.cover_error
             if self.process.stdin is not None and not self.process.stdin.closed:
@@ -425,7 +753,9 @@ class OnlineSimplePIRResolver:
                 self.stderr_thread.join(timeout=2)
             if self.stdout_thread is not None:
                 self.stdout_thread.join(timeout=2)
-            (self.output / "bridge_stderr.txt").write_text("".join(self.stderr_lines), encoding="utf-8")
+            (self.output / "bridge_stderr.txt").write_text(
+                "".join(self.stderr_lines), encoding="utf-8"
+            )
             (self.output / "online_query_summary.json").write_text(
                 json.dumps(
                     {
@@ -438,10 +768,18 @@ class OnlineSimplePIRResolver:
                         "cover_period_ms": self.cover_period_ms,
                         "cover_initial_lead_ms": self.cover_initial_lead_ms,
                         "query_completion_bound_ms": self.query_completion_bound_ms,
+                        "pir_commitment_lead_ms": self.pir_commitment_lead_ms,
+                        "registry_answer_release_delay_ms": self.registry_answer_release_delay_ms,
+                        "registry_worker_lanes": self.registry_worker_lanes,
+                        "registry_max_inflight": self.registry_max_inflight,
+                        "query_sender_waits_for_prior_completion": False
+                        if self.pir_commitment_lead_ms
+                        else True,
                         "descriptor_cache_hits": self.descriptor_cache_hits,
                         "descriptor_cache_misses": self.descriptor_cache_misses,
                         "cached_descriptor_count": len(self.descriptor_cache),
-                        "fresh_query_hashes": len(self.query_hashes) == len(set(self.query_hashes)),
+                        "fresh_query_hashes": len(self.query_hashes)
+                        == len(set(self.query_hashes)),
                         "future_indices_in_startup": 0,
                         "prebuilt_bridge_binary": self.prebuilt_bridge_used,
                         "record_count": self.record_count,
@@ -456,7 +794,8 @@ class OnlineSimplePIRResolver:
                     json.dumps(self.cover_events, indent=2) + "\n", encoding="utf-8"
                 )
                 (self.output / "private_descriptor_cache_events.json").write_text(
-                    json.dumps(self.descriptor_cache_events, indent=2) + "\n", encoding="utf-8"
+                    json.dumps(self.descriptor_cache_events, indent=2) + "\n",
+                    encoding="utf-8",
                 )
             if cover_failure is not None:
                 raise cover_failure
@@ -464,7 +803,11 @@ class OnlineSimplePIRResolver:
             # Popen does not close PIPE file objects merely because the child
             # exited.  Release every descriptor even when shutdown or evidence
             # serialization fails.
-            for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
+            for stream in (
+                self.process.stdin,
+                self.process.stdout,
+                self.process.stderr,
+            ):
                 if stream is not None and not stream.closed:
                     stream.close()
             self.process = None
@@ -489,10 +832,15 @@ class CanonicalOnlineSession:
         self.cases = {case.operation_id: case for case in cases}
         if len(self.cases) != len(cases):
             raise ValueError("online trajectory operation IDs must be unique")
-        timing_profile = getattr(public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE"
+        timing_profile = (
+            getattr(public_profile, "profile_class", "")
+            == "TIMING_INDISTINGUISHABILITY_PROFILE"
+        )
         timing_revision = getattr(public_profile, "timing_semantic_revision", "")
         if runner_binary is not None:
             self.runner_binary = runner_binary
+        elif timing_revision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4":
+            self.runner_binary = DUPLEX_TIMING_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":
             self.runner_binary = DELTA_FUNCTIONAL_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V2":
@@ -527,10 +875,14 @@ class CanonicalOnlineSession:
 
     def __enter__(self) -> "CanonicalOnlineSession":
         if self.output.exists():
-            raise FileExistsError(f"refusing to overwrite online evidence: {self.output}")
+            raise FileExistsError(
+                f"refusing to overwrite online evidence: {self.output}"
+            )
         self.output.mkdir(parents=True)
         if not self.runner_binary.is_file():
-            raise FileNotFoundError(f"V11.2 online runner is missing: {self.runner_binary}")
+            raise FileNotFoundError(
+                f"V11.2 online runner is missing: {self.runner_binary}"
+            )
         self.providers = V11EvidenceProviders(
             self.cases, self.output / "private_provider_evidence.json"
         )
@@ -539,7 +891,8 @@ class CanonicalOnlineSession:
             record_count=self.pir_record_count,
             bridge_binary=(
                 TIMING_PIR_BRIDGE
-                if getattr(self.public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE"
+                if getattr(self.public_profile, "profile_class", "")
+                == "TIMING_INDISTINGUISHABILITY_PROFILE"
                 else None
             ),
         )
@@ -574,7 +927,9 @@ class CanonicalOnlineSession:
             }
             unknown = set(self.plan_overrides) - allowed
             if unknown:
-                raise ValueError(f"unsupported online development override: {sorted(unknown)}")
+                raise ValueError(
+                    f"unsupported online development override: {sorted(unknown)}"
+                )
             plan.update(self.plan_overrides)
             (self.output / "trusted_online_startup_plan.json").write_text(
                 json.dumps(plan, indent=2) + "\n", encoding="utf-8"
@@ -602,16 +957,34 @@ class CanonicalOnlineSession:
             self._ledger = DeliveryLedger(self.output / "trusted_delivery_ledger.json")
             self.reader_thread = threading.Thread(target=self._read_events, daemon=True)
             self.reader_thread.start()
-            self._wait(lambda: any(event.get("type") == "SESSION_READY" for event in self.events), timeout=10)
-            if getattr(profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE":
+            self._wait(
+                lambda: any(
+                    event.get("type") == "SESSION_READY" for event in self.events
+                ),
+                timeout=10,
+            )
+            if (
+                getattr(profile, "profile_class", "")
+                == "TIMING_INDISTINGUISHABILITY_PROFILE"
+            ):
                 self.pir.start_cover_schedule(
                     opportunities=int(profile.pir_resolution_opportunities),
                     period_ms=int(profile.pir_resolution_period_ms),
                     dummy_index=int(profile.dummy_descriptor_row),
                     initial_lead_ms=int(profile.pir_initial_lead_ms),
                     epoch_ms=int(profile.pir_public_epoch_ms),
-                    query_completion_bound_ms=int(profile.pir_query_completion_bound_ms),
+                    query_completion_bound_ms=int(
+                        profile.pir_query_completion_bound_ms
+                    ),
                     liveness_cap_ms=int(profile.public_session_liveness_cap_ms),
+                    commitment_lead_ms=int(
+                        getattr(profile, "pir_commitment_lead_ms", 0)
+                    ),
+                    answer_release_delay_ms=int(
+                        getattr(profile, "registry_answer_release_delay_ms", 0)
+                    ),
+                    worker_lanes=int(getattr(profile, "registry_worker_lanes", 0)),
+                    max_inflight=int(getattr(profile, "registry_max_inflight", 0)),
                 )
             self._record("SESSION_T0")
             return self
@@ -628,7 +1001,9 @@ class CanonicalOnlineSession:
                 if event.get("type") == "RESULT_AVAILABLE":
                     self.results[str(event["operation_id"])] = event
                 elif event.get("type") == "ACTION_REJECTED":
-                    self.failures[str(event.get("operation_id", ""))] = str(event.get("reason", "ACTION_REJECTED"))
+                    self.failures[str(event.get("operation_id", ""))] = str(
+                        event.get("reason", "ACTION_REJECTED")
+                    )
                 elif event.get("type") == "SESSION_FAILURE":
                     self.session_failure = str(event.get("reason", "SESSION_FAILURE"))
                 elif event.get("type") == "SESSION_COMPLETE":
@@ -658,12 +1033,16 @@ class CanonicalOnlineSession:
             }
         )
 
-    def submit(self, case: V11ActionCase, arguments: dict[str, Any]) -> V11ActionOutcome:
+    def submit(
+        self, case: V11ActionCase, arguments: dict[str, Any]
+    ) -> V11ActionOutcome:
         case.validate()
         if arguments != case.argument_schema.validate_values(case.arguments):
             raise AssertionError("framework changed online structured arguments")
         if case.operation_id not in self.cases:
-            raise ValueError("case was not registered with the online development session")
+            raise ValueError(
+                "case was not registered with the online development session"
+            )
         if self.decision_delay_ms and any(
             item["stage"] == "FRAMEWORK_RESULT_DELIVERED" for item in self.lifecycle
         ):
@@ -674,14 +1053,19 @@ class CanonicalOnlineSession:
         if self.pir_delay_ms:
             time.sleep(self.pir_delay_ms / 1000)
         allow_cache_miss = True
-        if getattr(self.public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE":
+        if (
+            getattr(self.public_profile, "profile_class", "")
+            == "TIMING_INDISTINGUISHABILITY_PROFILE"
+        ):
             elapsed_ms = (time.monotonic_ns() - self.pir.cover_origin_ns) / 1_000_000
             cutoff_ms = int(self.public_profile.pir_real_resolution_arrival_cutoff_ms)
             allow_cache_miss = elapsed_ms < cutoff_ms
         selected = self.pir.resolve_descriptor(
             case.operation_id, agent_id, allow_cache_miss=allow_cache_miss
         )
-        self._record("DYNAMIC_PIR_DESCRIPTOR_RECOVERED", case.operation_id, agent_id=agent_id)
+        self._record(
+            "DYNAMIC_PIR_DESCRIPTOR_RECOVERED", case.operation_id, agent_id=agent_id
+        )
         protected = ProtectedActionIntent(
             capability,
             protected_payload(case),
@@ -690,33 +1074,51 @@ class CanonicalOnlineSession:
             kind,
         )
         if case.placement == "TRUSTED_MODULE_LOCAL":
-            resolved = TrustedActionRouter({}).resolve(protected, selected, PrivacyProfile.STRICT)
+            resolved = TrustedActionRouter({}).resolve(
+                protected, selected, PrivacyProfile.STRICT
+            )
             if resolved.placement.value != "TRUSTED_MODULE_LOCAL":
-                raise AssertionError("dynamic internal Agent resolved outside trusted module")
-            self._record("ACTION_ADMITTED", case.operation_id, placement="TRUSTED_MODULE_LOCAL")
+                raise AssertionError(
+                    "dynamic internal Agent resolved outside trusted module"
+                )
+            self._record(
+                "ACTION_ADMITTED", case.operation_id, placement="TRUSTED_MODULE_LOCAL"
+            )
             outcome = LocalTrustedBackendV11().execute_internal(case)
             assert self._ledger is not None
             with self._delivery_lock:
                 self._ledger.record_received(case.operation_id)
                 self._ledger.mark_decapsulated(case.operation_id)
                 sink: list[str] = []
-                self._ledger.deliver(case.operation_id, lambda: sink.append(outcome.result))
-            self._record("FRAMEWORK_RESULT_DELIVERED", case.operation_id, placement="TRUSTED_MODULE_LOCAL")
+                self._ledger.deliver(
+                    case.operation_id, lambda: sink.append(outcome.result)
+                )
+            self._record(
+                "FRAMEWORK_RESULT_DELIVERED",
+                case.operation_id,
+                placement="TRUSTED_MODULE_LOCAL",
+            )
             return outcome
 
-        session = CanonicalSessionSpec(case.case_id, agent_capability, agent_id, (protected,))
+        session = CanonicalSessionSpec(
+            case.case_id, agent_capability, agent_id, (protected,)
+        )
         resolved_actions = resolve_session(session, selected)
         action = resolved_actions[0]
         if action["effect_semantics"] != case.effect_semantics:
             raise AssertionError("dynamic trusted route changed effect semantics")
         assert self.process is not None and self.process.stdin is not None
         try:
-            self.process.stdin.write(json.dumps({"type": "SUBMIT_RESOLVED_ACTION", "action": action}) + "\n")
+            self.process.stdin.write(
+                json.dumps({"type": "SUBMIT_RESOLVED_ACTION", "action": action}) + "\n"
+            )
             self.process.stdin.flush()
         except (BrokenPipeError, OSError) as exc:
             raise OnlineSessionFailure("PROFILE_ADMISSION_CLOSED") from exc
         self._wait(
-            lambda: case.operation_id in self.results or case.operation_id in self.failures,
+            lambda: (
+                case.operation_id in self.results or case.operation_id in self.failures
+            ),
             timeout=10,
         )
         if case.operation_id in self.failures:
@@ -724,11 +1126,16 @@ class CanonicalOnlineSession:
         event = self.results[case.operation_id]
         item = event["result"]
         status = int(item["status"])
-        payload = base64.b64decode(item.get("payload") or "").decode("utf-8", errors="replace")
+        payload = base64.b64decode(item.get("payload") or "").decode(
+            "utf-8", errors="replace"
+        )
         if case.scenario == "SUCCESS" and status == 2:
             semantics = f"{case.effect_semantics}:SUCCESS"
             result = payload
-        elif case.scenario in {"BOUNDED_TIMEOUT", "AMBIGUOUS_RESTART"} and case.effect_semantics == "NON_IDEMPOTENT_EFFECT":
+        elif (
+            case.scenario in {"BOUNDED_TIMEOUT", "AMBIGUOUS_RESTART"}
+            and case.effect_semantics == "NON_IDEMPOTENT_EFFECT"
+        ):
             semantics, result = "NON_IDEMPOTENT_EFFECT:EFFECT_OUTCOME_UNKNOWN", ""
         elif case.scenario == "BOUNDED_TIMEOUT":
             semantics, result = f"{case.effect_semantics}:BOUNDED_TIMEOUT", ""
@@ -741,7 +1148,11 @@ class CanonicalOnlineSession:
             sink: list[str] = []
             self._ledger.deliver(case.operation_id, lambda: sink.append(result))
         observation = self.providers.observed(case.operation_id)
-        self._record("FRAMEWORK_RESULT_DELIVERED", case.operation_id, result_round=int(event.get("round", 0)))
+        self._record(
+            "FRAMEWORK_RESULT_DELIVERED",
+            case.operation_id,
+            result_round=int(event.get("round", 0)),
+        )
         return V11ActionOutcome(
             result,
             int(case.operation_id in self.providers.effects),
@@ -766,14 +1177,21 @@ class CanonicalOnlineSession:
         if self.process.stdin is not None and not self.process.stdin.closed:
             self.process.stdin.close()
         close_timeout = 15
-        if getattr(self.public_profile, "profile_class", "") == "TIMING_INDISTINGUISHABILITY_PROFILE":
-            close_timeout = int(self.public_profile.public_session_liveness_cap_ms / 1000) + 5
+        if (
+            getattr(self.public_profile, "profile_class", "")
+            == "TIMING_INDISTINGUISHABILITY_PROFILE"
+        ):
+            close_timeout = (
+                int(self.public_profile.public_session_liveness_cap_ms / 1000) + 5
+            )
         try:
             return_code = self.process.wait(timeout=close_timeout)
         except subprocess.TimeoutExpired as exc:
             self.process.kill()
             self.process.wait(timeout=5)
-            raise OnlineSessionFailure("online runner did not stop at public session end") from exc
+            raise OnlineSessionFailure(
+                "online runner did not stop at public session end"
+            ) from exc
         if self.reader_thread is not None:
             self.reader_thread.join(timeout=2)
         stderr = self.process.stderr.read() if self.process.stderr is not None else ""
@@ -790,7 +1208,9 @@ class CanonicalOnlineSession:
         )
         if return_code != 0:
             raise OnlineSessionFailure(f"online runner failed: {stderr}")
-        self.trace = json.loads((self.output / "go_online_result.json").read_text(encoding="utf-8"))
+        self.trace = json.loads(
+            (self.output / "go_online_result.json").read_text(encoding="utf-8")
+        )
         return self.trace
 
     def _release_resources(self, *, suppress_errors: bool) -> None:
@@ -802,7 +1222,11 @@ class CanonicalOnlineSession:
             except BaseException as value:
                 errors.append(value)
             finally:
-                for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
+                for stream in (
+                    self.process.stdin,
+                    self.process.stdout,
+                    self.process.stderr,
+                ):
                     if stream is not None and not stream.closed:
                         stream.close()
                 if self.process.poll() is None:
@@ -835,11 +1259,21 @@ class CanonicalOnlineSession:
         if self.trace is None:
             raise RuntimeError("online session has not completed")
         profile = self.public_profile or load_v10_profile()
-        return strict_structural_projection(self.trace, profile), strict_size_projection(self.trace, profile)
+        return strict_structural_projection(
+            self.trace, profile
+        ), strict_size_projection(self.trace, profile)
 
     def causal_proof(self) -> dict[str, Any]:
-        submitted = {item["operation_id"]: item["monotonic_ns"] for item in self.lifecycle if item["stage"] == "ACTION_INTENT_SUBMITTED"}
-        delivered = {item["operation_id"]: item["monotonic_ns"] for item in self.lifecycle if item["stage"] == "FRAMEWORK_RESULT_DELIVERED"}
+        submitted = {
+            item["operation_id"]: item["monotonic_ns"]
+            for item in self.lifecycle
+            if item["stage"] == "ACTION_INTENT_SUBMITTED"
+        }
+        delivered = {
+            item["operation_id"]: item["monotonic_ns"]
+            for item in self.lifecycle
+            if item["stage"] == "FRAMEWORK_RESULT_DELIVERED"
+        }
         ids = [case.operation_id for case in self.cases.values()]
         checks = []
         for parent, child in zip(ids, ids[1:]):
@@ -847,12 +1281,15 @@ class CanonicalOnlineSession:
                 {
                     "parent": parent,
                     "child": child,
-                    "child_submitted_after_parent_delivery": submitted.get(child, 0) > delivered.get(parent, 2**63),
+                    "child_submitted_after_parent_delivery": submitted.get(child, 0)
+                    > delivered.get(parent, 2**63),
                 }
             )
         return {
             "startup_action_count": 0,
             "pre_t0_action_queue_count": 0,
             "checks": checks,
-            "passed": all(item["child_submitted_after_parent_delivery"] for item in checks),
+            "passed": all(
+                item["child_submitted_after_parent_delivery"] for item in checks
+            ),
         }

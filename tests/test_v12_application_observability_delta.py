@@ -111,7 +111,7 @@ def test_relay_response_sequence_is_chronological_when_slots_complete_out_of_ord
 
 def test_registry_trace_persistence_follows_actual_response_emission() -> None:
     source = (ROOT / "pir_integration/simplepir_bridge/main.go").read_text(encoding="utf-8")
-    call = source.index("emitInteractiveResponse(encoder, observerResponse)")
+    call = source.index("emitInteractiveResponse(encoder, completed.response)")
     trace = source.index("writeJSON(serverWriter", call)
     assert call < trace
 

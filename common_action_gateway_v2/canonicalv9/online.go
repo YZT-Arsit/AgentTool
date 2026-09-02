@@ -296,6 +296,18 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	// A public start lead gives the trusted framework time to receive
 	// SESSION_READY. It is fixed and independent of future action availability.
 	t0 := time.Now().Add(onlinePublicStartLeadPeriods * period)
+	duplexTiming := plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4"
+	if duplexTiming {
+		responseClock, clockErr := newGatewayResponseVirtualizer(
+			plan.Rounds, period,
+			time.Duration(plan.ResponsePreparationLeadMS)*time.Millisecond,
+			processClock,
+		)
+		if clockErr != nil {
+			return RunResult{}, clockErr
+		}
+		engine.responseClock = responseClock
+	}
 	slots := make([]*onlineSlotState, plan.Rounds)
 	for index := range slots {
 		slotID := v7ohttp.SlotID{Session: 1, Slot: uint32(index + 1)}
@@ -319,6 +331,9 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		}
 		if timingIndistinguishability {
 			engine.setDeliveryCutoff(uint32(index+1), eligible.Add(-lead).UnixNano())
+		}
+		if engine.responseClock != nil {
+			engine.responseClock.setEligibility(uint32(index+1), eligible)
 		}
 	}
 	if timingIndistinguishability {
@@ -667,6 +682,10 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	for index := range launches {
 		launches[index].HTTPSubmissionNS = httpSubmissions[launches[index].Slot]
 	}
+	gatewayResponseReleases := []gatewayResponseRelease(nil)
+	if engine.responseClock != nil {
+		gatewayResponseReleases = engine.responseClock.wait()
+	}
 	<-schedulerDone
 	engine.workers.Wait()
 	close(done)
@@ -714,7 +733,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		OnlineMode: true, StartupActionCount: 0, AcceptedOperationIDs: acceptedCopy,
 		ResolvedNotAdmittedIDs: notAdmittedCopy, FrameworkWaiterIDs: append([]string(nil), pending...),
 		TransportDiagnostics: transportDiagnostics, ProviderDiagnostics: engine.providerDiagnostics(),
-		SchedulerIncidents: schedulerIncidents, SchedulerConfiguration: schedulerConfiguration}
+		SchedulerIncidents: schedulerIncidents, SchedulerConfiguration: schedulerConfiguration,
+		GatewayResponseReleases: gatewayResponseReleases}
 	if status == "COMPLETE" {
 		emitter.emit(OnlineControlEvent{Type: "SESSION_COMPLETE"})
 	} else {

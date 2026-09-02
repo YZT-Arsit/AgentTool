@@ -58,6 +58,7 @@ type Plan struct {
 	ResponseBHTTPBytes         int          `json:"response_bhttp_bytes"`
 	RequestFinalBytes          int          `json:"request_final_bytes"`
 	ResponseFinalBytes         int          `json:"response_final_bytes"`
+	ResponsePreparationLeadMS  int          `json:"response_preparation_lead_ms,omitempty"`
 	SchedulerToleranceMS       int          `json:"scheduler_tolerance_ms,omitempty"`
 	PreparationLeadMS          int          `json:"preparation_lead_ms,omitempty"`
 	PublicSessionLivenessCapMS int          `json:"public_session_liveness_cap_ms,omitempty"`
@@ -202,41 +203,42 @@ const (
 )
 
 type RunResult struct {
-	ProfileID                     string                 `json:"profile_id"`
-	ProfileClass                  string                 `json:"profile_class,omitempty"`
-	Rounds                        int                    `json:"rounds"`
-	Admitted                      int                    `json:"admitted"`
-	ProviderInvocations           int64                  `json:"provider_invocations"`
-	DummyProviderOperations       int64                  `json:"dummy_provider_operations"`
-	ProfileOverflowEvents         int                    `json:"profile_overflow_events"`
-	Results                       []ClientResult         `json:"results"`
-	PrivateEvents                 []PrivateEvent         `json:"private_events"`
-	PublicRelayEvents             []v8.RelayPublicEvent  `json:"public_relay_events"`
-	AfterCutoffOperations         []string               `json:"after_cutoff_operations"`
-	RequestFinalBytes             int                    `json:"request_final_bytes"`
-	ResponseFinalBytes            int                    `json:"response_final_bytes"`
-	SessionStatus                 string                 `json:"session_status"`
-	PublicSetupEvents             []PublicSetupEvent     `json:"public_setup_events"`
-	SlotLaunches                  []SlotLaunch           `json:"slot_launches"`
-	ScheduleMisses                int                    `json:"schedule_misses"`
-	NominalLateCells              int                    `json:"nominal_late_cells,omitempty"`
-	EmittedCells                  int                    `json:"emitted_cells,omitempty"`
-	PublicTranscriptComplete      bool                   `json:"public_transcript_complete"`
-	InfrastructureLivenessFailure bool                   `json:"infrastructure_liveness_failure"`
-	PendingOperationIDs           []string               `json:"pending_operation_ids"`
-	SilentCommittedLosses         int                    `json:"silent_committed_result_losses"`
-	ClientRelayHTTPVersion        string                 `json:"client_relay_http_version"`
-	RelayGatewayHTTPVersion       string                 `json:"relay_gateway_http_version"`
-	OnlineMode                    bool                   `json:"online_mode,omitempty"`
-	StartupActionCount            int                    `json:"startup_action_count"`
-	AcceptedOperationIDs          []string               `json:"accepted_operation_ids,omitempty"`
-	ResolvedNotAdmittedIDs        []string               `json:"resolved_not_admitted_ids,omitempty"`
-	UnresolvedOperationIDs        []string               `json:"unresolved_operation_ids,omitempty"`
-	FrameworkWaiterIDs            []string               `json:"framework_waiter_ids,omitempty"`
-	TransportDiagnostics          []TransportDiagnostic  `json:"transport_diagnostics,omitempty"`
-	ProviderDiagnostics           []ProviderDiagnostic   `json:"provider_diagnostics,omitempty"`
-	SchedulerIncidents            []SchedulerIncident    `json:"scheduler_incidents,omitempty"`
-	SchedulerConfiguration        SchedulerConfiguration `json:"scheduler_configuration"`
+	ProfileID                     string                   `json:"profile_id"`
+	ProfileClass                  string                   `json:"profile_class,omitempty"`
+	Rounds                        int                      `json:"rounds"`
+	Admitted                      int                      `json:"admitted"`
+	ProviderInvocations           int64                    `json:"provider_invocations"`
+	DummyProviderOperations       int64                    `json:"dummy_provider_operations"`
+	ProfileOverflowEvents         int                      `json:"profile_overflow_events"`
+	Results                       []ClientResult           `json:"results"`
+	PrivateEvents                 []PrivateEvent           `json:"private_events"`
+	PublicRelayEvents             []v8.RelayPublicEvent    `json:"public_relay_events"`
+	AfterCutoffOperations         []string                 `json:"after_cutoff_operations"`
+	RequestFinalBytes             int                      `json:"request_final_bytes"`
+	ResponseFinalBytes            int                      `json:"response_final_bytes"`
+	SessionStatus                 string                   `json:"session_status"`
+	PublicSetupEvents             []PublicSetupEvent       `json:"public_setup_events"`
+	SlotLaunches                  []SlotLaunch             `json:"slot_launches"`
+	ScheduleMisses                int                      `json:"schedule_misses"`
+	NominalLateCells              int                      `json:"nominal_late_cells,omitempty"`
+	EmittedCells                  int                      `json:"emitted_cells,omitempty"`
+	PublicTranscriptComplete      bool                     `json:"public_transcript_complete"`
+	InfrastructureLivenessFailure bool                     `json:"infrastructure_liveness_failure"`
+	PendingOperationIDs           []string                 `json:"pending_operation_ids"`
+	SilentCommittedLosses         int                      `json:"silent_committed_result_losses"`
+	ClientRelayHTTPVersion        string                   `json:"client_relay_http_version"`
+	RelayGatewayHTTPVersion       string                   `json:"relay_gateway_http_version"`
+	OnlineMode                    bool                     `json:"online_mode,omitempty"`
+	StartupActionCount            int                      `json:"startup_action_count"`
+	AcceptedOperationIDs          []string                 `json:"accepted_operation_ids,omitempty"`
+	ResolvedNotAdmittedIDs        []string                 `json:"resolved_not_admitted_ids,omitempty"`
+	UnresolvedOperationIDs        []string                 `json:"unresolved_operation_ids,omitempty"`
+	FrameworkWaiterIDs            []string                 `json:"framework_waiter_ids,omitempty"`
+	TransportDiagnostics          []TransportDiagnostic    `json:"transport_diagnostics,omitempty"`
+	ProviderDiagnostics           []ProviderDiagnostic     `json:"provider_diagnostics,omitempty"`
+	SchedulerIncidents            []SchedulerIncident      `json:"scheduler_incidents,omitempty"`
+	SchedulerConfiguration        SchedulerConfiguration   `json:"scheduler_configuration"`
+	GatewayResponseReleases       []gatewayResponseRelease `json:"gateway_response_releases,omitempty"`
 }
 
 type providerRequest struct {
@@ -271,6 +273,7 @@ type engine struct {
 	providerMu       sync.Mutex
 	providerDiags    []ProviderDiagnostic
 	started          time.Time
+	responseClock    *gatewayResponseVirtualizer
 }
 
 func (e *engine) setDeliveryCutoff(slot uint32, cutoffNS int64) {
@@ -359,6 +362,21 @@ func validatePlan(plan Plan) error {
 		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
 			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
 			return errors.New("V12 V2 public PIR schedule changed")
+		}
+	}
+	if strings.HasPrefix(plan.ProfileID, "V12-TIMING-INDIST-V4-") {
+		if plan.TimingSemanticRevision != "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4" {
+			return errors.New("V12 duplex profile ID and revision disagree")
+		}
+		if plan.ResponsePreparationLeadMS != 5 || plan.ResponsePreparationLeadMS >= plan.RoundPeriodMS {
+			return errors.New("V12 duplex response preparation lead changed")
+		}
+		if plan.AdmissionHorizonMS != plan.AdmissionRounds*plan.RoundPeriodMS {
+			return errors.New("V12 duplex public admission horizon disagrees with fixed slot count")
+		}
+		if plan.PIRResolutionPeriodMS != 60 || plan.PIRPublicEpochMS != 6000 ||
+			plan.PIRResolutionOpportunities != 100 || plan.PIRInitialLeadMS != 25 {
+			return errors.New("V12 duplex public PIR schedule changed")
 		}
 	}
 	for _, slot := range []int{plan.FaultDelayResponseSlot, plan.FaultSchedulerStallSlot} {
@@ -614,7 +632,44 @@ func (e *engine) claimPublicSlot(request *http.Request) (v7ohttp.SlotID, error) 
 	return v7ohttp.SlotID{Session: 1, Slot: slot}, nil
 }
 
+func (e *engine) prepareGatewayResponse(slot v7ohttp.SlotID, responseContext v7ohttp.ServerContext,
+	cutoffNS int64) (v8.PreparedSlot, error) {
+	e.deliveryMu.Lock()
+	defer e.deliveryMu.Unlock()
+	var selected *gatewayv2.ResultRecord
+	var err error
+	if cutoffNS > 0 {
+		selected, err = e.ready.ReserveEligibleBefore(1, slot.Slot, cutoffNS)
+	} else {
+		selected, err = e.ready.ReserveEligible(1, slot.Slot)
+	}
+	if err != nil {
+		return v8.PreparedSlot{}, err
+	}
+	if selected != nil {
+		if err := e.memory.PublishDurable(*selected); err != nil {
+			return v8.PreparedSlot{}, err
+		}
+	}
+	preparedResult := e.memory.SnapshotEligible(1)
+	bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(privateResponse(preparedResult), e.plan.ResponseBHTTPBytes, slot)
+	if err != nil {
+		return v8.PreparedSlot{}, err
+	}
+	wire, err := e.gateway.EncapsulateResponse(responseContext, bhttpResponse)
+	if err != nil || len(wire) != e.plan.ResponseFinalBytes {
+		return v8.PreparedSlot{}, errors.New("OHTTP response failed")
+	}
+	ack := make(chan string, 1)
+	operationID := ""
+	if preparedResult != nil {
+		operationID = gatewayv2.OperationIDString(preparedResult.OperationID)
+	}
+	return v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}, nil
+}
+
 func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Request) {
+	requestArrival := time.Now()
 	slot, err := e.claimPublicSlot(request)
 	if err != nil {
 		http.Error(writer, "public slot rejected", http.StatusBadRequest)
@@ -640,69 +695,53 @@ func (e *engine) gatewayHandler(writer http.ResponseWriter, request *http.Reques
 		http.Error(writer, "private action rejected", http.StatusBadRequest)
 		return
 	}
-	e.deliveryMu.Lock()
-	var selected *gatewayv2.ResultRecord
+	writer.Header().Set("Content-Type", v8.OHTTPResponseContentType)
+	writer.Header().Set("Content-Length", fmt.Sprintf("%d", e.plan.ResponseFinalBytes))
+	if e.responseClock != nil {
+		err := e.responseClock.release(currentRound, requestArrival, func(cutoff time.Time) (v8.PreparedSlot, error) {
+			prepared, prepareErr := e.prepareGatewayResponse(slot, responseContext, cutoff.UnixNano())
+			if prepareErr == nil && prepared.OperationID != "" {
+				go func() {
+					<-prepared.Ack
+					_ = e.ready.MarkDelivered(prepared.OperationID)
+					_ = e.journal.MarkResultDelivered(prepared.OperationID)
+					e.record(PrivateEvent{OperationID: prepared.OperationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(currentRound)})
+				}()
+			}
+			return prepared, prepareErr
+		}, writer)
+		if err != nil {
+			e.record(PrivateEvent{Stage: "DUPLEX_RESPONSE_RELEASE_FAILED", Status: err.Error(), Round: int(currentRound)})
+		}
+		return
+	}
+	cutoffNS := int64(0)
 	if e.plan.ProfileClass == TimingIndistinguishabilityProfile {
-		cutoffNS, ok := e.deliveryCutoff(currentRound)
+		var ok bool
+		cutoffNS, ok = e.deliveryCutoff(currentRound)
 		if !ok {
-			e.deliveryMu.Unlock()
 			http.Error(writer, "effective result cutoff unavailable", http.StatusInternalServerError)
 			return
 		}
-		selected, err = e.ready.ReserveEligibleBefore(1, currentRound, cutoffNS)
-	} else {
-		selected, err = e.ready.ReserveEligible(1, currentRound)
 	}
+	prepared, err := e.prepareGatewayResponse(slot, responseContext, cutoffNS)
 	if err != nil {
-		e.deliveryMu.Unlock()
-		http.Error(writer, "ready-result selection failed", http.StatusInternalServerError)
+		http.Error(writer, "response preparation failed", http.StatusInternalServerError)
 		return
 	}
-	// All durable queue work is complete before the in-memory preparation
-	// boundary.  The public preparation path snapshots only the bounded V8
-	// memory queue, then encodes one immutable response.
-	if selected != nil {
-		if err := e.memory.PublishDurable(*selected); err != nil {
-			e.deliveryMu.Unlock()
-			http.Error(writer, "bounded ready-result publication failed", http.StatusInternalServerError)
-			return
-		}
-	}
-	preparedResult := e.memory.SnapshotEligible(1)
-	bhttpResponse, err := e.codec.EncodeKnownLengthResponseBound(privateResponse(preparedResult), e.plan.ResponseBHTTPBytes, slot)
-	if err != nil {
-		e.deliveryMu.Unlock()
-		http.Error(writer, "BHTTP response failed", http.StatusInternalServerError)
-		return
-	}
-	wire, err := e.gateway.EncapsulateResponse(responseContext, bhttpResponse)
-	if err != nil || len(wire) != e.plan.ResponseFinalBytes {
-		e.deliveryMu.Unlock()
-		http.Error(writer, "OHTTP response failed", http.StatusInternalServerError)
-		return
-	}
-	ack := make(chan string, 1)
-	operationID := ""
-	if preparedResult != nil {
-		operationID = gatewayv2.OperationIDString(preparedResult.OperationID)
-	}
-	prepared := v8.PreparedSlot{Frame: wire, OperationID: operationID, Ack: ack}
-	e.deliveryMu.Unlock()
 	if e.plan.FaultDelayResponseSlot == int(currentRound) && e.plan.FaultDelayResponseMS > 0 {
 		time.Sleep(time.Duration(e.plan.FaultDelayResponseMS) * time.Millisecond)
 	}
-	writer.Header().Set("Content-Type", v8.OHTTPResponseContentType)
-	writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(wire)))
 	writer.WriteHeader(http.StatusOK)
 	if err := prepared.Send(writer); err != nil {
 		return
 	}
-	if operationID != "" {
+	if prepared.OperationID != "" {
 		go func() {
-			<-ack
-			_ = e.ready.MarkDelivered(operationID)
-			_ = e.journal.MarkResultDelivered(operationID)
-			e.record(PrivateEvent{OperationID: operationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(currentRound)})
+			<-prepared.Ack
+			_ = e.ready.MarkDelivered(prepared.OperationID)
+			_ = e.journal.MarkResultDelivered(prepared.OperationID)
+			e.record(PrivateEvent{OperationID: prepared.OperationID, Stage: "GATEWAY_DELIVERY_ACK_DURABLE", Round: int(currentRound)})
 		}()
 	}
 }

@@ -114,16 +114,24 @@ def test_registry_strict_order_has_a_single_sequential_request_response_path() -
     bridge = (ROOT / "pir_integration/simplepir_bridge/main.go").read_text(encoding="utf-8")
     query_lock = session.index("with self.query_lock:")
     request_write = session.index("self.process.stdin.write", query_lock)
-    response_read = session.index("self.response_queue.get", request_write)
+    execute_start = session.index("def _execute_query")
+    execute_end = session.index("def ", execute_start + 4)
+    execute_source = session[execute_start:execute_end]
     ordinal_loop = session.index("for ordinal in range(self.cover_opportunities):")
     execute = session.index("self._execute_query(operation_id, index)", ordinal_loop)
-    assert query_lock < request_write < response_read
+    assert query_lock < request_write
+    assert "_submit_query" in execute_source
+    assert "_await_response" in execute_source
     assert ordinal_loop < execute
     bridge_loop = bridge.index("for reader.Scan()")
-    arrival = bridge.index("arrivalNS := time.Now().UnixNano()", bridge_loop)
-    emit = bridge.index("emitInteractiveResponse(encoder, observerResponse)", arrival)
-    increment = bridge.index("ordinal++", emit)
-    assert bridge_loop < arrival < emit < increment
+    prepare = bridge.index("preparationJobs <- job", bridge_loop)
+    enqueue = bridge.index("releaseJobs <- job", prepare)
+    release_loop = bridge.index("for job := range releaseJobs", enqueue)
+    prepared = bridge.index("prepared = <-job.prepared", release_loop)
+    arrival = bridge.index("arrivalNS := time.Now().UnixNano()", prepared)
+    response_loop = bridge.index("for job := range responseJobs", arrival)
+    emit = bridge.index("emitInteractiveResponse(encoder, completed.response)", response_loop)
+    assert bridge_loop < prepare < enqueue < release_loop < prepared < arrival < response_loop < emit
 
 
 def test_statistical_protocol_v3_only_revises_relay_projection_semantics() -> None:

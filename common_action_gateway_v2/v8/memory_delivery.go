@@ -65,7 +65,7 @@ func (q *MemoryDeliveryQueue) SnapshotEligible(publicSession uint32) *gatewayv2.
 type PreparedSlot struct {
 	Frame       []byte
 	OperationID string
-	Ack         chan<- string
+	Ack         chan string
 }
 
 func (p PreparedSlot) Send(writer io.Writer) error {
