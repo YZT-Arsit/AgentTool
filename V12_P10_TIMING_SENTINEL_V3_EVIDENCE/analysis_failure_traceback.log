@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/v12_p10_sentinel_v3_71b45fc8/scripts/analyze_v12_p10_timing_sentinel_v3.py", line 82, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/autodl-tmp/v12_p10_sentinel_v3_71b45fc8/scripts/analyze_v12_p10_timing_sentinel_v3.py", line 75, in main
+    result = implementation.main()
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_p10_sentinel_v3_71b45fc8/scripts/analyze_v12_p10_timing_sentinel_resume.py", line 323, in main
+    results = _analysis_rows(records, manifest, selection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_p10_sentinel_v3_71b45fc8/scripts/analyze_v12_p10_timing_sentinel_resume.py", line 173, in _analysis_rows
+    selected = select_on_train_fit_predict_eval(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_p10_sentinel_v3_71b45fc8/v12_timing/classifier.py", line 146, in select_on_train_fit_predict_eval
+    model.fit(matrix[train[fitting]], target[train[fitting]])
+  File "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages/sklearn/pipeline.py", line 649, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages/sklearn/base.py", line 1393, in wrapper
+    estimator._validate_params()
+  File "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages/sklearn/base.py", line 554, in _validate_params
+    validate_parameter_constraints(
+  File "/root/autodl-tmp/mediation_trace_validation/.venv-linux/lib/python3.12/site-packages/sklearn/utils/_param_validation.py", line 98, in validate_parameter_constraints
+    raise InvalidParameterError(
+sklearn.utils._param_validation.InvalidParameterError: The 'random_state' parameter of LogisticRegression must be an int in the range [0, 4294967295], an instance of 'numpy.random.mtrand.RandomState' or None. Got 14552047685264201170 instead.
