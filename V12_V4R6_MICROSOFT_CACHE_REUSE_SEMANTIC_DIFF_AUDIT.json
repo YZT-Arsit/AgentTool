@@ -1,0 +1,268 @@
+{
+  "schema": "AgentTool.V12V4R6MicrosoftCacheReuseSemanticDiffAudit/1",
+  "status": "POST_EXECUTION_EXISTING_EVIDENCE_ONLY_AUDIT",
+  "base_closure": "0ff3bde2b9e889a0677c7b1b38f2bb3854f2eb6d",
+  "failed_identity": "DEV-DTVR-V4R6-P10-CONT-MS-CACHE_REUSE_30-002",
+  "failed_identity_reexecuted": false,
+  "new_sessions": 0,
+  "classifier_runs": 0,
+  "auc_calculations": 0,
+  "runtime_modified": false,
+  "source_evidence": {
+    "archive": "V12_DUPLEX_V4R6_RELIABILITY_CONTINUATION_EVIDENCE/p10_functional_requalification_records.tar.gz",
+    "archive_sha256": "83c045269889173de61648b108211242fa5ea8f57a52037853ebb9f1e3da2485",
+    "functional_summary": "V12_DUPLEX_V4R6_RELIABILITY_CONTINUATION_EVIDENCE/FUNCTIONAL_REQUALIFICATION_SUMMARY.json",
+    "failed_unit_files": [
+      "duplex_functional_verdict.json",
+      "go_online_result.json",
+      "private_provider_evidence.json",
+      "private_trajectory.json",
+      "trusted_delivery_ledger.json",
+      "trusted_online_startup_plan.json",
+      "v4r6_functional_unit.json"
+    ],
+    "native_trajectory_serialized_in_failed_unit": false,
+    "native_values_recovered_from": "frozen deterministic native_local_outcome contract plus the frozen case builder and immutable operation IDs",
+    "canonical_values_recovered_from": "go_online_result, provider evidence, lifecycle, delivery ledger, and the frozen CanonicalOnlineSession status mapping"
+  },
+  "first_differing_operation": {
+    "index_zero_based": 12,
+    "ordinal_one_based": 13,
+    "operation_id": "opa380c470dbaf99c973ea69cbb967"
+  },
+  "first_differing_field": "operation_outcome_semantics",
+  "native_value": "READ_ONLY:SUCCESS",
+  "canonical_value": "READ_ONLY:ERROR",
+  "field_by_field_semantic_diff_at_first_operation": [
+    {
+      "field": "operation_id",
+      "native_value": "opa380c470dbaf99c973ea69cbb967",
+      "canonical_value": "opa380c470dbaf99c973ea69cbb967",
+      "equal": true
+    },
+    {
+      "field": "logical_action_name",
+      "native_value": "repeated_same_agent_cache_tool",
+      "canonical_value": "repeated_same_agent_cache_tool",
+      "equal": true
+    },
+    {
+      "field": "arguments",
+      "native_value": {
+        "city": "Paris"
+      },
+      "canonical_value": {
+        "city": "Paris"
+      },
+      "equal": true
+    },
+    {
+      "field": "causal_parent",
+      "native_value": "ope7de65c400a475e2cfb223e1292d",
+      "canonical_value": "ope7de65c400a475e2cfb223e1292d",
+      "equal": true
+    },
+    {
+      "field": "provider_visible_logical_request",
+      "native_value": {
+        "operation_id": "opa380c470dbaf99c973ea69cbb967",
+        "action_family": "TOOL",
+        "agent_service_subtype": null,
+        "arguments": {
+          "city": "Paris"
+        }
+      },
+      "canonical_value": {
+        "operation_id": "opa380c470dbaf99c973ea69cbb967",
+        "action_family": "TOOL",
+        "agent_service_subtype": null,
+        "arguments": {
+          "city": "Paris"
+        }
+      },
+      "equal": true
+    },
+    {
+      "field": "effect_count",
+      "native_value": 0,
+      "canonical_value": 0,
+      "equal": true
+    },
+    {
+      "field": "operation_outcome_semantics",
+      "native_value": "READ_ONLY:SUCCESS",
+      "canonical_value": "READ_ONLY:ERROR",
+      "equal": false
+    },
+    {
+      "field": "result",
+      "native_value": "V11_RESULT:d5e99e72df9116e2d1d48a58",
+      "canonical_value": "",
+      "equal": false
+    },
+    {
+      "field": "framework_visible_intermediate_result",
+      "native_value": "V11_RESULT:d5e99e72df9116e2d1d48a58",
+      "canonical_value": "",
+      "equal": false
+    },
+    {
+      "field": "final_framework_state",
+      "native_value": "framework-completed:DYNAMIC_SEQUENCE",
+      "canonical_value": "framework-completed:DYNAMIC_SEQUENCE",
+      "equal": true
+    }
+  ],
+  "operation_id_inventory": {
+    "expected_count": 30,
+    "canonical_result_count": 30,
+    "framework_delivery_count": 30,
+    "exact_sets_equal": true,
+    "exact_causal_order_equal": true,
+    "ids": [
+      "op36adf356bc52a93e84dd2210b6cb",
+      "op0b62bbc3c39b4bdc6988cb55a864",
+      "opa57f0f089d7aaa0533c682187f0c",
+      "op2a93cca0130098c0b8ad0d93f01a",
+      "op4418fc2c32ba48e32febe116f773",
+      "opd6dcf4e82c226376d07af486c668",
+      "op3d87e29c5134e65a53c6ed5321c1",
+      "op04fec887ee2107be5718fcd62b7b",
+      "op6a9f73a41d72799a8c97fa6cea03",
+      "op1056d7b8a9f10966ce12336856d9",
+      "op2c6f1345d3e783bb3861de827599",
+      "ope7de65c400a475e2cfb223e1292d",
+      "opa380c470dbaf99c973ea69cbb967",
+      "ope36969cc0da16123897ba1a5ac9a",
+      "op132b19d7a8070556841478c0373c",
+      "op3af669bad5d87ae4e5c1b0089af6",
+      "op1b574d87b0abe0a5ca8f5f524dbb",
+      "op14e5a301db7c5aaf76d9259db3a1",
+      "opaf336f3b90e01cc8923179302c82",
+      "op2cf28bdc39bd0929d4c17661e181",
+      "op3ce5ef99c6614e50b272ede9334e",
+      "opff77175ee3ca7d150f89aaa283c8",
+      "opdc252252c742caed97659cde603b",
+      "op2340098120c62de23c4936b9c058",
+      "op40112ad62b8e40ac797da710ee18",
+      "op5e3188935e95aa6b469be3f405ee",
+      "op182d7fbb32621c42ad099d8adfc3",
+      "op6617161ff8230c087f229d148940",
+      "op5d1256c794ed2921f75d407851b9",
+      "op96e14885192f4c03a624ceb420ae"
+    ]
+  },
+  "per_operation_difference_summary": {
+    "operations_compared": 30,
+    "equal_operations": 29,
+    "differing_operations": 1,
+    "differing_indices_zero_based": [
+      12
+    ],
+    "differing_fields_at_index_12": [
+      "operation_outcome_semantics",
+      "result",
+      "framework_visible_intermediate_result"
+    ]
+  },
+  "mechanical_failure_chain": {
+    "provider_request_received": true,
+    "provider_request_decoded": true,
+    "provider_logical_completion_observed": true,
+    "provider_handler_elapsed_ns": 364006,
+    "go_provider_class": "PROVIDER_CONTEXT_DEADLINE_EXCEEDED",
+    "go_provider_elapsed_ns": 50856110,
+    "go_provider_error": "Post http://127.0.0.1:42269/execute: context deadline exceeded (Client.Timeout exceeded while awaiting headers)",
+    "provider_response_write_success": false,
+    "provider_response_write_error_class": "BrokenPipeError",
+    "go_result_status": 3,
+    "go_result_payload": null,
+    "canonical_status_mapping": "READ_ONLY:ERROR with empty result",
+    "framework_delivery_recorded": true
+  },
+  "effect_counts_equal": true,
+  "provider_requests_equal": true,
+  "results_equal": false,
+  "causal_order_equal": true,
+  "final_framework_state_equal": true,
+  "classification": "SEMANTIC_RUNTIME_DEFECT",
+  "classification_basis": "The canonical runtime converted a shared provider-path context deadline into ERROR/empty result for one SUCCESS case. The native deterministic oracle remained SUCCESS. This is neither an oracle comparison error nor merely a presentation difference.",
+  "common_runtime_defect_identified": true,
+  "smoke_scope_functional_coverage": [
+    {
+      "coordinate": "C1/OpenAI/Registry",
+      "mechanisms": [
+        "one-descriptor cache reuse",
+        "six distinct descriptor transitions",
+        "Registry resolution accounting",
+        "exact semantic results",
+        "complete duplex transcript"
+      ],
+      "evidence_identities": [
+        "DEV-DTVR-V4R6-P10-CONT-OA-CACHE_REUSE_30-002",
+        "DEV-DTVR-V4R6-P10-CONT-OA-DESCRIPTOR_TRANSITIONS_K6-002"
+      ],
+      "status": "PASS"
+    },
+    {
+      "coordinate": "T7/OpenAI/Registry+strengthened Relay",
+      "mechanisms": [
+        "Agent-as-Tool transition",
+        "Registry resolution behavior",
+        "exact semantic results",
+        "complete duplex transcript"
+      ],
+      "evidence_identities": [
+        "DEV-DTVR-V4R6-P10-CONT-OA-AGENT_AS_TOOL_TRANSITION-002"
+      ],
+      "status": "PASS"
+    },
+    {
+      "coordinate": "T7/Microsoft/Registry+strengthened Relay",
+      "mechanisms": [
+        "Agent-as-Tool transition",
+        "Registry resolution behavior",
+        "exact semantic results",
+        "complete duplex transcript"
+      ],
+      "evidence_identities": [
+        "DEV-DTVR-V4R6-P10-CONT-MS-AGENT_AS_TOOL_TRANSITION-002"
+      ],
+      "status": "PASS"
+    },
+    {
+      "coordinate": "T9/OpenAI/strengthened Relay",
+      "mechanisms": [
+        "provider early readiness",
+        "provider late readiness",
+        "exact semantic results",
+        "complete duplex transcript"
+      ],
+      "evidence_identities": [
+        "DEV-DTVR-V4R6-P10-CONT-OA-PROVIDER_EARLY_10-002",
+        "DEV-DTVR-V4R6-P10-CONT-OA-PROVIDER_LATE_10-002"
+      ],
+      "status": "PASS"
+    },
+    {
+      "coordinate": "T9/Microsoft/strengthened Relay",
+      "mechanisms": [
+        "provider early readiness",
+        "provider late readiness",
+        "exact semantic results",
+        "complete duplex transcript"
+      ],
+      "evidence_identities": [
+        "DEV-DTVR-V4R6-P10-CONT-MS-PROVIDER_EARLY_10-002",
+        "DEV-DTVR-V4R6-P10-CONT-MS-PROVIDER_LATE_10-002"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "smoke_scope_functional_eligibility": "PASS",
+  "full_p10_functional_eligibility": "FAIL",
+  "ready_for_development_duplex_repair_smoke": "NO",
+  "ready_for_development_duplex_repair_smoke_reason": "Smoke-specific mechanisms have passing coverage, but the audit identifies a semantic defect in the shared provider execution path, so the no-common-runtime-defect condition is not satisfied.",
+  "ready_for_full_p10_sentinel": "NO",
+  "ready_for_confirmatory": "NO"
+}
