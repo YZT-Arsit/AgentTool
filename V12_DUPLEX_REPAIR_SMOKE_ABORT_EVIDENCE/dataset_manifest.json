@@ -1,0 +1,109 @@
+{
+  "schema": "AgentTool.V12DuplexRepairSmokeDataset/1",
+  "collection_closed": true,
+  "common_integrity_abort": true,
+  "frozen_manifest_sha256": "28cda9b65cc60e4136dacf9f79b68cd00d16ba47b1c147e01378fc878ee7f6bf",
+  "session_records": [
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B30000-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0000_DEV-TAD-P10-T9-MS-SENTINEL-B30000-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "439ca21cd8829f0d7445723e96ca14ce6f087d1c7f32521a64fcf7277f9ee5a0"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-MS-SENTINEL-B30000-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0001_DEV-TAD-P10-T9-MS-SENTINEL-B30000-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "2d5d4dd813e02d9a275eabf954ed68cd3f4381a1d9d2436b9e23ecee451f142f"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B30000-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0002_DEV-TAD-P10-T7-MS-SENTINEL-B30000-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "be7131fba971a5006e7235ef652844904acb957229a7247e40a32a9b1368da80"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-MS-SENTINEL-B30000-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0003_DEV-TAD-P10-T7-MS-SENTINEL-B30000-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "3a77f5fefbbf45ae530a2b9641f5b21a6be24e9a5d1c506c335cd7a64f06008d"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B30000-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0004_DEV-TAD-P10-T9-OA-SENTINEL-B30000-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "d80977034b12deb95c3a84f1e61d1098bf2fdb3a52883d5e5526afd9ab264164"
+    },
+    {
+      "identity": "DEV-TAD-P10-T9-OA-SENTINEL-B30000-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0005_DEV-TAD-P10-T9-OA-SENTINEL-B30000-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "d8b4ea73a6f109fd1332b1f1516aba1c637fe29279a7a6ba590807110d2f4616"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30000-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0006_DEV-TAD-P10-T7-OA-SENTINEL-B30000-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "f5a5dd4ec4bffc4b7fd91f2f1520a1039314eba4828776118262ca9bf2e828af"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30000-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0007_DEV-TAD-P10-T7-OA-SENTINEL-B30000-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "e6e2fa92419a7806e5a2822600a546ff285be3b07e74b97b593036e6fefe57bc"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30000-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0008_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30000-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "2c810a0e4742289a9849d80ae1a7a93fe00b53e743969423985e662d3cec24b0"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30000-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0009_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30000-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "38fb78cd95020dca81f5ac30f996e32dd15848f5ce08ac0590193e8da4d1388a"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30001-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0010_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30001-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "041c2a5412bc856a405e25e9c247d4381fae7124337fbf027786c97aec2dbc63"
+    },
+    {
+      "identity": "DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30001-C0",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0011_DEV-TAD-P10-C1_REGISTRY_RESOLUTION_PATTERN-OA-SENTINEL-B30001-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "5b69ca0892e1f5cda2f5024ca6b86ed9da47562d6c157b98523c18851833e7c4"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30001-C1",
+      "status": "COMPLETE",
+      "failure_category": null,
+      "path": "sessions/0012_DEV-TAD-P10-T7-OA-SENTINEL-B30001-C1/duplex_repair_smoke_session_record.json",
+      "sha256": "fb6cf05819da2d6b3c57fe0e81ddd0da45747af44111333156622f280e390a67"
+    },
+    {
+      "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0",
+      "status": "FAILED",
+      "failure_category": "COMMON_CAMPAIGN_INTEGRITY_FAILURE",
+      "path": "sessions/0013_DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0/duplex_repair_smoke_session_record.json",
+      "sha256": "043a33056cdc24afae7729d589610572355dedb3bf81d6c59b010d2c488345c0"
+    }
+  ],
+  "session_record_count": 14,
+  "execution_ledger_sha256": "96a4c959fd3ab92069cb2a193adba7c823f822debf5f025f8f8bc5ae5a1b2504",
+  "dataset_inventory_sha256": "be69b20b28c1b292b2aff7eaa2d3c209bee7ebcbec510f9b436b381aadb4ca93"
+}

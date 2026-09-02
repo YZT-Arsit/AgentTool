@@ -1,0 +1,47 @@
+{
+  "schema": "AgentTool.V12DuplexRepairSmokeSession/1",
+  "identity": "DEV-TAD-P10-T7-OA-SENTINEL-B30001-C0",
+  "task_id": "T7",
+  "framework": "OpenAI Agents SDK",
+  "label": 0,
+  "profile_id": "V12-TIMING-INDIST-V4R5-H50-H4500-P10-PIR60",
+  "planned_block": 1,
+  "workload_block": 30001,
+  "pair_id": "5e1b00794c3f08701a0c6b64",
+  "partition": "SENTINEL_EVAL",
+  "selection_priority": 4,
+  "execution_ordinal": 13,
+  "claim_observers": [
+    "REGISTRY",
+    "RELAY"
+  ],
+  "classifier_feature_exclusions": [
+    "identity",
+    "task_id",
+    "framework",
+    "label",
+    "status",
+    "failure_category",
+    "planned_block",
+    "workload_block",
+    "pair_id",
+    "partition",
+    "selection_priority",
+    "execution_ordinal",
+    "absolute_wall_clock",
+    "platform_diagnostics"
+  ],
+  "status": "FAILED",
+  "failure_category": "COMMON_CAMPAIGN_INTEGRITY_FAILURE",
+  "exception_class": "CommonIntegrityFailure",
+  "exception_string": "broken public-profile/instrumentation contract: session_complete,exact_R_cells,gateway_release_deadlines_met,complete_unique_relay_slot_set",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/v12_duplex_p10_sentinel_7881f626/scripts/collect_v12_p10_timing_sentinel_resume.py\", line 491, in main\n    record = _collect_one(unit_root, expected, profile=profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/v12_duplex_p10_sentinel_7881f626/scripts/collect_v12_p10_timing_sentinel_resume.py\", line 278, in _collect_one\n    raise CommonIntegrityFailure(\ncollect_v12_p10_timing_sentinel_resume.CommonIntegrityFailure: broken public-profile/instrumentation contract: session_complete,exact_R_cells,gateway_release_deadlines_met,complete_unique_relay_slot_set\n",
+  "observer_projections": {},
+  "timing_classifier_eligible": false,
+  "raw_evidence_hashes": {
+    "go_online_result.json": "213c41cb482477e220b929ede2e383d73ff6dd434914c8c2cc5fbfec6700e4ca",
+    "pir/online_query_summary.json": "1e5f65b1db8611879f1625c8122584eb943d8bd8fedd5a38f9c8a5ede6021db2",
+    "pir/server_visible_trace.jsonl": "3d2475fede21da632bf36fc98e4ac1046c493dccdbe5f2e0c59964e4a012707d",
+    "pir/private_pir_cover_schedule.json": "9188e175cd14f2c5c006ca5c3bab21d680163e5703f0e5c09e4ccd91a6e28869"
+  }
+}

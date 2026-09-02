@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12DuplexRepairSmokeCollection/1",
+  "manifest_sha256": "28cda9b65cc60e4136dacf9f79b68cd00d16ba47b1c147e01378fc878ee7f6bf",
+  "execution_source_commit": "02f0ebc129381f453258ccc70418a24f41257f4f",
+  "expected_sessions": 640,
+  "executed_sessions": 14,
+  "complete_sessions": 13,
+  "failed_sessions": 1,
+  "retries": 0,
+  "serial_same_host_execution": true,
+  "classifier_training_during_collection": 0,
+  "auc_calculations_during_collection": 0,
+  "bootstrap_runs_during_collection": 0,
+  "status": "ABORTED_COMMON_INTEGRITY_FAILURE",
+  "started_ns": 1788335442609422071,
+  "last_ledger_record_sha256": "8bea72485357cedf934a4daec763ce85b65fa22c024e32eef576476817f26e14",
+  "ended_ns": 1788335566555914687,
+  "dataset_manifest_sha256": "5b38540f676bf2c80535b9a093281790581788c242288249650b73211d10cd85",
+  "dataset_inventory_sha256": "be69b20b28c1b292b2aff7eaa2d3c209bee7ebcbec510f9b436b381aadb4ca93"
+}
