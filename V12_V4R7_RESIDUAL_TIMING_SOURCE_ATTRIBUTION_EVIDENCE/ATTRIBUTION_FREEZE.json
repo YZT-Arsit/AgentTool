@@ -1,0 +1,87 @@
+{
+  "schema": "AgentTool.V12V4R7ResidualTimingSourceAttributionFreeze/1",
+  "phase": "V12-V4R7-RESIDUAL-TIMING-SOURCE-ATTRIBUTION",
+  "status": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "base_smoke": "f66649590f1159a5bce280baaea2cfdc3218435c",
+  "new_sessions": 0,
+  "runtime_changes": 0,
+  "auc_based_privacy_claims": 0,
+  "dataset": {
+    "identity_count": 640,
+    "complete_sessions": 640,
+    "failed_sessions": 0,
+    "session_records_archive_sha256": "22ebaabfdf966dc5de1b032f959435fde04eea4f92f0fdd15757bbca3cddb693",
+    "analysis_input_manifest_sha256": "2cad15f5be2c0d5c4cb672351eb245be3892d01238bcf0eeb82a0e28041c5c01",
+    "selected_train_blocks": 30,
+    "selected_eval_blocks": 30
+  },
+  "focus": [
+    "T7 / Microsoft Agent Framework / Relay",
+    "T9 / OpenAI Agents SDK / Relay"
+  ],
+  "negative_controls": [
+    "T7 / OpenAI Agents SDK / Relay",
+    "T9 / Microsoft Agent Framework / Relay"
+  ],
+  "feature_family_order": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "AB",
+    "BC",
+    "CD",
+    "REQUEST_SIDE",
+    "RESPONSE_SIDE",
+    "ALL"
+  ],
+  "feature_contract": {
+    "A": "client_to_relay_receive slot-indexed relative timing plus chronological gaps and their frozen summaries",
+    "B": "relay_to_gateway_send slot-indexed relative timing plus chronological gaps and their frozen summaries",
+    "C": "gateway_to_relay_receive slot-indexed relative timing plus chronological gaps and their frozen summaries",
+    "D": "relay_to_client_send slot-indexed relative timing plus chronological gaps and their frozen summaries",
+    "AB": "frozen slot-paired Relay request-forward latency plus its frozen summaries",
+    "BC": "frozen slot-paired Gateway round-trip latency plus its frozen summaries",
+    "CD": "frozen slot-paired Relay response-forward latency plus its frozen summaries",
+    "REQUEST_SIDE": "A + B + AB",
+    "RESPONSE_SIDE": "C + D + CD",
+    "ALL": "exact original frozen 5860-dimensional Relay observer vector"
+  },
+  "subset_global_session_span": "EXCLUDED_BECAUSE_IT_IS_NOT_BOUNDARY_LOCAL",
+  "all_global_session_span": "INCLUDED_EXACTLY_AS_IN_THE_ORIGINAL_VECTOR",
+  "feature_search": false,
+  "slot_search": false,
+  "model_search_beyond_frozen_family": false,
+  "hyperparameter_search": false,
+  "window_search": false,
+  "lag_search": false,
+  "model_family": [
+    "LOGISTIC_REGRESSION",
+    "EXTRA_TREES",
+    "HIST_GRADIENT_BOOSTING",
+    "RBF_SVM"
+  ],
+  "model_selection": "TRAIN_ONLY_GROUPED_5_FOLD",
+  "score_orientation": "TRAIN_ONLY",
+  "bootstrap": "10000_COMPLETE_MATCHED_EVAL_BLOCK_RESAMPLES",
+  "confidence_interval": "TWO_SIDED_95_PERCENTILE",
+  "model_seed": "UNCHANGED_ORIGINAL_COORDINATE_RELAY_SEED_FOR_EVERY_FEATURE_FAMILY",
+  "bootstrap_seed": "UNCHANGED_ORIGINAL_COORDINATE_RELAY_SEED_FOR_EVERY_FEATURE_FAMILY",
+  "slot_medians": "SELECTED_EVAL_BLOCKS_ONLY_NO_SLOT_SELECTED_CLASSIFIER",
+  "private_deadline_diagnostics": {
+    "role": "PRIVATE_DEVELOPMENT_DIAGNOSTIC_ONLY",
+    "entered_attacker_features": false,
+    "fields": [
+      "coordinate",
+      "protected_class",
+      "public_slot",
+      "release_slip_ns",
+      "preparation_lateness_ns"
+    ]
+  },
+  "source_hashes": {
+    "v12_timing/residual_attribution.py": "88bb1376915be0bbc7ac9830640d61e196f5fb6dec8d4dba4526f6a5b55bd29c",
+    "scripts/analyze_v12_v4r7_residual_timing_attribution.py": "19f653e5aad741f015105213f7302bbc5bfd2dbe781d77f3f911f2a8b57461ca",
+    "tests/test_v12_v4r7_residual_attribution.py": "12668f58ab7cdeb0810e5a1baff9e2d80b2ccbe5bd69faddef8384a6aa704757"
+  }
+}
