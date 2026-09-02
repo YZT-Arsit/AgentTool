@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalAttemptAbort/4",
+  "status": "ABORTED_PRIVATE_REGISTRY_COMPLETION_TIMEOUT",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE_V4.json",
+  "remote_evidence_root": "/root/autodl-tmp/V12_DUPLEX_FUNCTIONAL_V4R3_A5EE011",
+  "planned_identities": 48,
+  "started_identities": 14,
+  "complete_passing_verdicts": 13,
+  "failure_records": 1,
+  "retries": 0,
+  "passing_scope": {
+    "OpenAI Agents SDK": "8/8",
+    "Microsoft Agent Framework": "5/8 before stop"
+  },
+  "failed_identity": "DEV-DTVR-V4R3-P10-MS-CAUSAL_DEPTH_50-004",
+  "mechanical_evidence": {
+    "registry_public_queries": 100,
+    "registry_public_responses": 100,
+    "relay_cells": 506,
+    "gateway_response_releases": 506,
+    "gateway_response_deadline_misses": 0,
+    "public_session_status": "COMPLETE",
+    "private_completion_timeout_at_ordinal": 92,
+    "private_wait_from_enqueue_ms": 149.560,
+    "old_private_timeout_ms": 110
+  },
+  "root_cause": "PRIVATE_COMPLETION_WAIT_REUSED_NOMINAL_PERIOD_AS_A_RESPONSE_EXISTENCE_TIMEOUT",
+  "campaign_interpretation": "development functional attempt only; no timing privacy result",
+  "all_started_identities_permanent_development_exclusions": true,
+  "protected_classifier_training_runs": 0,
+  "protected_auc_calculations": 0,
+  "protected_timing_sessions": 0
+}

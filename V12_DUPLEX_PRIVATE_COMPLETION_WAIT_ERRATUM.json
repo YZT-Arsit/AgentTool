@@ -1,0 +1,29 @@
+{
+  "schema": "AgentTool.V12DuplexPrivateCompletionWaitErratum/1",
+  "status": "FROZEN_BEFORE_REQUALIFICATION_ATTEMPT_5",
+  "supersedes_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3",
+  "new_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4",
+  "root_cause": "PRIVATE_COMPLETION_WAIT_REUSED_NOMINAL_PERIOD_AS_A_RESPONSE_EXISTENCE_TIMEOUT",
+  "repair": {
+    "old_private_wait_ms": 110,
+    "new_private_wait_ms": 60000,
+    "basis": "existing public session liveness cap",
+    "public_query_sender_dependency": "NONE",
+    "public_response_release_dependency": "NONE",
+    "retry": false
+  },
+  "mechanical_basis": {
+    "failed_identity_public_registry_queries": 100,
+    "failed_identity_public_registry_responses": 100,
+    "observed_private_control_wait_ms": 149.560,
+    "public_schedule_corruption": false
+  },
+  "unchanged": [
+    "all V4R3 public profile fields",
+    "PIR commitment cutoff and deferred preparation rules",
+    "Gateway response commitment/preparation/release pipeline",
+    "fixed transcript sizes and counts"
+  ],
+  "protected_classifier_sessions": 0,
+  "auc_calculations": 0
+}

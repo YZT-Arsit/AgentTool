@@ -300,6 +300,7 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1" ||
 		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2"
 	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3"
+	duplexTiming = duplexTiming || plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4"
 	if duplexTiming {
 		responsePreparationWorkers := plan.ResponsePreparationWorkers
 		if responsePreparationWorkers < 1 {

@@ -530,9 +530,11 @@ class OnlineSimplePIRResolver:
                         submitted.operation_id,
                         submitted.index,
                         submitted.send_monotonic_ns,
-                        timeout_ms=(
-                            self.registry_answer_release_delay_ms + self.cover_period_ms
-                        ),
+                        # Public query/answer release is already bounded by its
+                        # own open-loop clocks. The private consumer must not
+                        # reinterpret ordinary host scheduling jitter as a
+                        # missing public response or perturb the sender.
+                        timeout_ms=self.cover_liveness_cap_ms,
                     )
                     if submitted.pending is not None:
                         submitted.pending.result = result
@@ -878,6 +880,7 @@ class CanonicalOnlineSession:
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R2",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R3",
+            "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R4",
         }:
             self.runner_binary = DUPLEX_TIMING_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":
