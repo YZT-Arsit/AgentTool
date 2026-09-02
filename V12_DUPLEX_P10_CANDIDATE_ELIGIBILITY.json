@@ -1,0 +1,21 @@
+{
+  "schema": "AgentTool.V12DuplexP10CandidateEligibility/1",
+  "base_duplex_evidence": "bf499d5e56507eb069d4998a2851cfaa23ec7fc6",
+  "functional_execution_commit": "076bdbe18ffdd982462cd502b30f7b14a46eb520",
+  "P10_duplex_functional_eligibility": "PASS",
+  "P10_functional_records": "16/16",
+  "P10_profile": "V12-TIMING-INDIST-V4R5-H50-H4500-P10-PIR60",
+  "P10_to_P20_runtime_diff": "NONE",
+  "runtime_identity_basis": "one frozen process, repository commit, source manifest, module probes, and binaries covered all 32 executed units",
+  "P20_functional_eligibility": "FAIL_UNRESOLVED",
+  "P25_functional_eligibility": "NOT_TESTED",
+  "P20_failed_identity": "DEV-DTVR-V4R5-P20-MS-CACHE_REUSE_30-007",
+  "P20_expected_operations": 30,
+  "P20_framework_returned_operations": 13,
+  "P20_root_cause": "NOT_ESTABLISHED",
+  "audited_identity_count": 16,
+  "failed_check_count": 0,
+  "completion_sha256": "f7337cd623d11020312aed4cbfbf0d63a29aa58766e400c547d5bdfc88ec4b01",
+  "deployment_manifest_sha256": "b7731467b3fcacc5d2aa1f12b8a00200781113689487577553425795332f590f",
+  "new_sessions": 0
+}
