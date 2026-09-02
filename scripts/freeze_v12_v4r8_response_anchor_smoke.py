@@ -9,6 +9,7 @@ implementation.HASHED_PATHS = (
     "common_action_gateway_v2/canonicalv9/duplex_response.go",
     "common_action_gateway_v2/canonicalv9/online.go",
     "common_action_gateway_v2/canonicalv9/runner.go",
+    "v11_online/session.py",
     "v12_timing/profile.py",
     "v12_timing/classifier.py",
     "v12_timing/projection.py",
@@ -30,4 +31,3 @@ implementation.HASHED_PATHS = (
 
 if __name__ == "__main__":
     raise SystemExit(implementation.main())
-

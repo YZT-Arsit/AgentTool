@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from v11_online.session import V4R8_TIMING_RUNNER, CanonicalOnlineSession
 from v12_timing.profile import (
     DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8,
     duplex_provider_bound_p10_profile,
@@ -45,3 +46,12 @@ def test_v4r8_strengthened_observer_feature_contract_is_unchanged() -> None:
         "RELAY", public_r=521, public_q=100, has_relay_duplex=True
     ) == tuple(widths)
     assert sum(widths) + 12 * len(widths) + 1 == 5860
+
+
+def test_v4r8_session_selects_distinct_frozen_runner(tmp_path: Path) -> None:
+    session = CanonicalOnlineSession(
+        tmp_path,
+        [],
+        public_profile=duplex_response_anchor_p10_profile(),
+    )
+    assert session.runner_binary == V4R8_TIMING_RUNNER

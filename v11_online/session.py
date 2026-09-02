@@ -60,6 +60,9 @@ DELTA_FUNCTIONAL_RUNNER = (
 DUPLEX_TIMING_RUNNER = (
     ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-duplex-timing-runner"
 )
+V4R8_TIMING_RUNNER = (
+    ROOT / "common_action_gateway_v2" / "bin" / "canonical-v12-v4r8-timing-runner"
+)
 TIMING_PIR_BRIDGE = (
     ROOT / "pir_integration" / "simplepir_bridge" / "acv-simplepir-v12-timing"
 )
@@ -69,6 +72,7 @@ if os.name == "nt":
     CAUSAL_HORIZON_RUNNER = CAUSAL_HORIZON_RUNNER.with_suffix(".exe")
     DELTA_FUNCTIONAL_RUNNER = DELTA_FUNCTIONAL_RUNNER.with_suffix(".exe")
     DUPLEX_TIMING_RUNNER = DUPLEX_TIMING_RUNNER.with_suffix(".exe")
+    V4R8_TIMING_RUNNER = V4R8_TIMING_RUNNER.with_suffix(".exe")
     TIMING_PIR_BRIDGE = TIMING_PIR_BRIDGE.with_suffix(".exe")
 
 
@@ -875,6 +879,8 @@ class CanonicalOnlineSession:
         timing_revision = getattr(public_profile, "timing_semantic_revision", "")
         if runner_binary is not None:
             self.runner_binary = runner_binary
+        elif timing_revision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8":
+            self.runner_binary = V4R8_TIMING_RUNNER
         elif timing_revision in {
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
             "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
