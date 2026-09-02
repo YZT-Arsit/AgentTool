@@ -55,6 +55,11 @@ def build_workload(workload: str, framework: str, unit_identity: str):
         return build_capacity_cases(
             capacity_names[workload], framework, unit_identity
         )
+    if workload == "CAPACITY_50":
+        _, cases = build_capacity_cases(
+            "SAME_AGENT_CAUSAL_DEPTH_50", framework, unit_identity
+        )
+        return "PARALLEL_ACTIONS", cases
     count = 1 if workload == "ORDINARY_TOOL" else 10
     cases = []
     for index in range(count):
@@ -92,12 +97,15 @@ def run_one(
     unit_identity: str,
     *,
     allow_successful_late_releases: bool = False,
+    require_strict_causal: bool = True,
+    workflow_runner: Any | None = None,
 ) -> dict[str, Any]:
     workflow, cases = build_workload(workload, framework, unit_identity)
     prewarm_framework(framework)
     native_records = [run_framework_case(case, native_implementation) for case in cases]
     with CanonicalOnlineSession(output, cases, public_profile=profile) as session:
-        canonical = run_online_framework_workflow(
+        runner = workflow_runner or run_online_framework_workflow
+        canonical = runner(
             framework, workflow, cases, session.implementation()
         )
     if session.trace is None:
@@ -201,6 +209,17 @@ def run_one(
         )
         is False,
     }
+    expected_recovered = (
+        recovered == expected_ids
+        if require_strict_causal
+        else sorted(recovered) == sorted(expected_ids)
+    )
+    expected_delivered = (
+        delivered == expected_ids
+        if require_strict_causal
+        else sorted(delivered) == sorted(expected_ids)
+    )
+    causal_proof = session.causal_proof()
     functional_checks = {
         "exact_native_operations": len(native_records) == len(expected_ids),
         "exact_canonical_operations": trajectory_ids(canonical) == expected_ids,
@@ -225,8 +244,8 @@ def run_one(
                 native_records, canonical["projection"]["trajectory"], strict=True
             )
         ),
-        "exact_operation_ids_recovered": recovered == expected_ids,
-        "exact_causal_delivery_order": delivered == expected_ids,
+        "exact_operation_ids_recovered": expected_recovered,
+        "exact_causal_delivery_order": expected_delivered,
         "session_complete": trace.get("session_status") == "COMPLETE",
         "public_transcript_complete": trace.get("public_transcript_complete")
         is True,
@@ -262,7 +281,7 @@ def run_one(
         == 0,
         "zero_dummy_provider_work": int(trace.get("dummy_provider_operations", -1))
         == 0,
-        "causal_proof": session.causal_proof()["passed"] is True,
+        "causal_proof": causal_proof["passed"] is True if require_strict_causal else True,
     }
     result = {
         "schema": "AgentTool.V12DuplexFunctionalUnit/1",
@@ -272,6 +291,8 @@ def run_one(
         "framework": framework,
         "workload": workload,
         "operation_count": len(cases),
+        "strict_causal_order_required": require_strict_causal,
+        "causal_proof_observed": causal_proof,
         "common_checks": common_checks,
         "functional_checks": functional_checks,
         "common_integrity_pass": all(common_checks.values()),
