@@ -8,7 +8,7 @@ import pytest
 
 from v11_online.session import duplex_pir_opportunity_times
 from v12_timing.profile import (
-    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4,
+    DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1,
     duplex_timing_candidate_profiles,
 )
 from v12_timing.projection import (
@@ -51,7 +51,11 @@ def test_v4_profiles_preserve_public_dimensions() -> None:
     assert [profile.round_period_ms for profile in profiles] == [10, 20, 25]
     assert [profile.total_rounds for profile in profiles] == [506, 279, 233]
     for profile in profiles:
-        assert profile.timing_semantic_revision == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4
+        assert (
+            profile.timing_semantic_revision
+            == DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1
+        )
+        assert profile.response_preparation_lead_ms == 25
         assert profile.request_final_bytes == 1079
         assert profile.response_final_bytes == 800
         assert profile.pir_resolution_opportunities == 100
@@ -142,12 +146,15 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
 
 
 def test_duplex_functional_manifest_freezes_48_fresh_identities() -> None:
-    freeze = json.loads((ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE.json").read_text())
+    freeze = json.loads(
+        (ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE_V2.json").read_text()
+    )
     assert freeze["frozen_before_functional_execution"] is True
     assert len(freeze["profiles"]) == 3
     assert len(freeze["frameworks"]) == 2
     assert len(freeze["workloads"]) == 8
     assert freeze["planned_identities"] == 48
     assert freeze["retry_count"] == freeze["replacement_count"] == 0
+    assert freeze["identity_suffix"] == "002"
     assert freeze["protected_classifier_campaign_authorized"] is False
     assert freeze["auc_authorized"] is False

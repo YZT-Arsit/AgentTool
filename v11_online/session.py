@@ -8,9 +8,10 @@ import subprocess
 import threading
 import time
 from collections import deque
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 from action_privacy_v8 import (
     AgentDescriptorV7,
@@ -184,7 +185,7 @@ class OnlineSimplePIRResolver:
             catalog_epoch=EPOCH,
         ).validated()
 
-    def __enter__(self) -> "OnlineSimplePIRResolver":
+    def __enter__(self) -> OnlineSimplePIRResolver:
         self.output.mkdir(parents=True, exist_ok=False)
         key = os.urandom(32)
         self.codec = AgentDescriptorV7Codec(key, EPOCH)
@@ -839,7 +840,10 @@ class CanonicalOnlineSession:
         timing_revision = getattr(public_profile, "timing_semantic_revision", "")
         if runner_binary is not None:
             self.runner_binary = runner_binary
-        elif timing_revision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4":
+        elif timing_revision in {
+            "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
+            "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
+        }:
             self.runner_binary = DUPLEX_TIMING_RUNNER
         elif timing_revision == "EFFECTIVE_PUBLIC_CLOCK_V3":
             self.runner_binary = DELTA_FUNCTIONAL_RUNNER
@@ -873,7 +877,7 @@ class CanonicalOnlineSession:
         self._delivery_lock = threading.Lock()
         self._started_ns = 0
 
-    def __enter__(self) -> "CanonicalOnlineSession":
+    def __enter__(self) -> CanonicalOnlineSession:
         if self.output.exists():
             raise FileExistsError(
                 f"refusing to overwrite online evidence: {self.output}"

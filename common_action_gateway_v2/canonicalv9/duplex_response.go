@@ -47,7 +47,7 @@ type gatewayResponseVirtualizer struct {
 }
 
 func newGatewayResponseVirtualizer(rounds int, period, lead time.Duration, processClock time.Time) (*gatewayResponseVirtualizer, error) {
-	if rounds < 1 || period <= 0 || lead <= 0 || lead >= period {
+	if rounds < 1 || period <= 0 || lead <= 0 {
 		return nil, errors.New("invalid duplex Gateway response clock")
 	}
 	value := &gatewayResponseVirtualizer{

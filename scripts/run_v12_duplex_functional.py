@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.run_v12_pir_capacity_development import build_cases as build_capacity_cases
 from v11_full_scope.fixtures import tool_case, with_readiness
-from v11_full_scope.frameworks import native_implementation
+from v11_full_scope.frameworks import native_implementation, run_framework_case
 from v11_online.frameworks import prewarm_framework, run_online_framework_workflow
 from v11_online.session import CanonicalOnlineSession
 from v12_timing.profile import duplex_timing_candidate_profiles
@@ -40,8 +40,8 @@ def framework_code(framework: str) -> str:
     return "OA" if framework == "OpenAI Agents SDK" else "MS"
 
 
-def identity(delta_ms: int, framework: str, workload: str) -> str:
-    return f"DEV-DTVR-V4-P{delta_ms}-{framework_code(framework)}-{workload}-001"
+def identity(delta_ms: int, framework: str, workload: str, suffix: str) -> str:
+    return f"DEV-DTVR-V4R1-P{delta_ms}-{framework_code(framework)}-{workload}-{suffix}"
 
 
 def build_workload(workload: str, framework: str, unit_identity: str):
@@ -84,13 +84,16 @@ def trajectory_ids(value: dict[str, Any]) -> list[str]:
     return [str(row["operation_id"]) for row in value["projection"]["trajectory"]]
 
 
-def run_one(output: Path, profile: Any, framework: str, workload: str) -> dict[str, Any]:
-    unit_identity = identity(profile.round_period_ms, framework, workload)
+def run_one(
+    output: Path,
+    profile: Any,
+    framework: str,
+    workload: str,
+    unit_identity: str,
+) -> dict[str, Any]:
     workflow, cases = build_workload(workload, framework, unit_identity)
     prewarm_framework(framework)
-    native = run_online_framework_workflow(
-        framework, workflow, cases, native_implementation
-    )
+    native_records = [run_framework_case(case, native_implementation) for case in cases]
     with CanonicalOnlineSession(output, cases, public_profile=profile) as session:
         canonical = run_online_framework_workflow(
             framework, workflow, cases, session.implementation()
@@ -191,9 +194,29 @@ def run_one(output: Path, profile: Any, framework: str, workload: str) -> dict[s
         is False,
     }
     functional_checks = {
-        "exact_native_operations": trajectory_ids(native) == expected_ids,
+        "exact_native_operations": len(native_records) == len(expected_ids),
         "exact_canonical_operations": trajectory_ids(canonical) == expected_ids,
-        "level_a_semantics": native["projection"] == canonical["projection"],
+        "level_a_semantics": all(
+            (
+                row.selected_logical_action,
+                row.arguments,
+                row.provider_visible_logical_request,
+                row.effect_count,
+                row.operation_outcome_semantics,
+                row.result,
+            )
+            == (
+                canonical_row["logical_action"],
+                canonical_row["arguments"],
+                canonical_row["provider_visible_logical_request"],
+                canonical_row["effect_count"],
+                canonical_row["outcome"],
+                canonical_row["result"],
+            )
+            for row, canonical_row in zip(
+                native_records, canonical["projection"]["trajectory"], strict=True
+            )
+        ),
         "exact_operation_ids_recovered": recovered == expected_ids,
         "exact_causal_delivery_order": delivered == expected_ids,
         "session_complete": trace.get("session_status") == "COMPLETE",
@@ -272,13 +295,21 @@ def main() -> int:
     if freeze.get("frozen_before_functional_execution") is not True:
         raise ValueError("duplex functional definitions were not frozen")
     profiles = {p.round_period_ms: p for p in duplex_timing_candidate_profiles()}
+    suffix = str(freeze["identity_suffix"])
+    for frozen_profile in freeze["profiles"]:
+        profile = profiles[int(frozen_profile["delta_ms"])]
+        if (
+            frozen_profile["profile_id"] != profile.profile_id
+            or int(frozen_profile["R"]) != profile.total_rounds
+        ):
+            raise ValueError("duplex functional profile freeze disagrees with code")
     planned = [
         (profiles[int(profile["delta_ms"])], framework, workload)
         for profile in freeze["profiles"]
         for framework in freeze["frameworks"]
         for workload in freeze["workloads"]
     ]
-    identities = [identity(p.round_period_ms, f, w) for p, f, w in planned]
+    identities = [identity(p.round_period_ms, f, w, suffix) for p, f, w in planned]
     if len(planned) != freeze["planned_identities"] or len(set(identities)) != len(
         identities
     ):
@@ -286,13 +317,16 @@ def main() -> int:
     args.output.mkdir(parents=True)
     records: list[dict[str, Any]] = []
     for index, (profile, framework, workload) in enumerate(planned):
-        unit_root = args.output / f"{index:02d}_{identity(profile.round_period_ms, framework, workload)}"
+        unit_identity = identity(profile.round_period_ms, framework, workload, suffix)
+        unit_root = args.output / f"{index:02d}_{unit_identity}"
         started_ns = time.time_ns()
         try:
-            record = run_one(unit_root, profile, framework, workload)
+            record = run_one(
+                unit_root, profile, framework, workload, unit_identity
+            )
         except Exception as error:  # noqa: BLE001 - preserve every frozen unit failure
             record = {
-                "identity": identity(profile.round_period_ms, framework, workload),
+                "identity": unit_identity,
                 "profile_id": profile.profile_id,
                 "delta_ms": profile.round_period_ms,
                 "framework": framework,

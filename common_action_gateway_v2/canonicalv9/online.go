@@ -296,7 +296,8 @@ func RunOnline(plan Plan, controlIn io.Reader, controlOut io.Writer) (RunResult,
 	// A public start lead gives the trusted framework time to receive
 	// SESSION_READY. It is fixed and independent of future action availability.
 	t0 := time.Now().Add(onlinePublicStartLeadPeriods * period)
-	duplexTiming := plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4"
+	duplexTiming := plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4" ||
+		plan.TimingSemanticRevision == "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1"
 	if duplexTiming {
 		responseClock, clockErr := newGatewayResponseVirtualizer(
 			plan.Rounds, period,

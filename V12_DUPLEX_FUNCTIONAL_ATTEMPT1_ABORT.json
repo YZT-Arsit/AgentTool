@@ -1,0 +1,25 @@
+{
+  "schema": "AgentTool.V12DuplexFunctionalAttemptAbort/1",
+  "status": "ABORTED_COMMON_DETERMINISTIC_GATE",
+  "freeze": "V12_DUPLEX_FUNCTIONAL_FREEZE.json",
+  "remote_evidence_root": "/root/autodl-tmp/V12_DUPLEX_FUNCTIONAL_4480410",
+  "planned_identities": 48,
+  "started_identities": 24,
+  "completed_canonical_verdicts": 21,
+  "precanonical_framework_failures": 3,
+  "retries": 0,
+  "common_gate_failure": {
+    "identity": "DEV-DTVR-V4-P10-OA-PROVIDER_EARLY_10-001",
+    "slot": 1,
+    "check": "gateway_release_deadlines_met",
+    "preparation_deadline_overrun_ns": 5709499
+  },
+  "precanonical_failures": [
+    "DEV-DTVR-V4-P10-OA-PROVIDER_LATE_10-001",
+    "DEV-DTVR-V4-P20-OA-AGENT_AS_TOOL_TRANSITION-001",
+    "DEV-DTVR-V4-P20-OA-PROVIDER_EARLY_10-001"
+  ],
+  "failed_identities_retried": false,
+  "protected_classifier_sessions": 0,
+  "auc_calculations": 0
+}

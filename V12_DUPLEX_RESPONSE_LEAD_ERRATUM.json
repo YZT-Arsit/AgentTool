@@ -1,0 +1,33 @@
+{
+  "schema": "AgentTool.V12DuplexResponseLeadErratum/1",
+  "status": "FROZEN_BEFORE_REQUALIFICATION_ATTEMPT_2",
+  "supersedes_response_lead_only": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4",
+  "new_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R1",
+  "root_cause": "RESPONSE_PREPARATION_LEAD_MECHANICALLY_INSUFFICIENT",
+  "attempt_1_observation": {
+    "identity": "DEV-DTVR-V4-P10-OA-PROVIDER_EARLY_10-001",
+    "slot": 1,
+    "response_preparation_lead_ms": 5,
+    "preparation_deadline_overrun_ns": 5709499,
+    "protected_timing_result": false
+  },
+  "repair": {
+    "response_preparation_lead_ms": 25,
+    "reason": "public lead exceeds the observed 10.709499 ms bounded preparation path with more than 2x development margin",
+    "commitment_semantics": "G_i remains max(E_i, gateway application arrival); only F_i moves later",
+    "private_inputs": []
+  },
+  "unchanged": [
+    "H=4500",
+    "Delta candidates 10/20/25",
+    "R=506/279/233",
+    "request bytes=1079",
+    "response bytes=800",
+    "PIR period=60",
+    "PIR epoch=6000",
+    "Q=100",
+    "forward effective public clock"
+  ],
+  "protected_classifier_sessions": 0,
+  "auc_calculations": 0
+}
