@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import inspect
+import json
 from pathlib import Path
 
 import pytest
@@ -16,7 +17,6 @@ from v12_timing.projection import (
     relay_timing_projection,
     timing_feature_vector,
 )
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -139,3 +139,15 @@ def test_protected_runtime_sizes_and_counts_are_unchanged_in_source() -> None:
         (1079, 800)
     }
     assert {p.pir_resolution_opportunities for p in profiles} == {100}
+
+
+def test_duplex_functional_manifest_freezes_48_fresh_identities() -> None:
+    freeze = json.loads((ROOT / "V12_DUPLEX_FUNCTIONAL_FREEZE.json").read_text())
+    assert freeze["frozen_before_functional_execution"] is True
+    assert len(freeze["profiles"]) == 3
+    assert len(freeze["frameworks"]) == 2
+    assert len(freeze["workloads"]) == 8
+    assert freeze["planned_identities"] == 48
+    assert freeze["retry_count"] == freeze["replacement_count"] == 0
+    assert freeze["protected_classifier_campaign_authorized"] is False
+    assert freeze["auc_authorized"] is False
