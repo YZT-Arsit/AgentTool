@@ -27,6 +27,8 @@ def fixture_manifest() -> dict[str, object]:
 
 
 def test_analysis_authority_changes_only_binding_source_and_commit() -> None:
+    assert len(ORIGINAL_SENTINEL_SMOKE_SHA256) == 64
+    assert len(BOUND_SENTINEL_SMOKE_SHA256) == 64
     original = fixture_manifest()
     preserved = copy.deepcopy(original)
     authority = build_analysis_authority(original, analysis_source_commit="a" * 40)
