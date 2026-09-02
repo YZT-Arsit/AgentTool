@@ -127,3 +127,23 @@ def test_all_frozen_families_fit_synthetic_timing_shaped_fixture() -> None:
         probabilities = model.predict_proba(vectors)
         assert probabilities.shape == (40, 2)
         assert np.all(np.isfinite(probabilities))
+
+
+def test_frozen_v3_1_manifests_cover_all_seeds_blocks_and_identities() -> None:
+    seeds = json.loads(
+        (ROOT / "V12_P10_V3_1_SEED_DOMAIN_MANIFEST.json").read_text(encoding="utf-8")
+    )
+    inputs = json.loads(
+        (ROOT / "V12_P10_V3_1_ANALYSIS_INPUT_MANIFEST.json").read_text(encoding="utf-8")
+    )
+    assert seeds["conversion_rule"] == "UINT64_MOD_2_POW_32"
+    assert seeds["invalid_sklearn_random_states"] == 0
+    assert seeds["unintended_duplicate_fold_seed_comparisons"] == []
+    assert len(seeds["comparisons"]) == 10
+    assert all(len(row["train_cv_folds"]) == 20 for row in seeds["comparisons"])
+    assert len(inputs["coordinates"]) == 8
+    for row in inputs["coordinates"]:
+        assert len(row["train_block_ids"]) == 180
+        assert len(row["train_identity_ids"]) == 360
+        assert len(row["eval_block_ids"]) == 120
+        assert len(row["eval_identity_ids"]) == 240

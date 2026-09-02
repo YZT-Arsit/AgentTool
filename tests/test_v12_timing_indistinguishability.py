@@ -51,7 +51,8 @@ def test_relay_attack_projection_rejects_private_fields() -> None:
     events = [_relay_event(1, 1_000, 1_300), _relay_event(2, 2_000, 2_400)]
     projection = relay_timing_projection({"public_relay_events": events})
     assert projection["authenticated_slot_order"] == [1, 2]
-    assert projection["request_inter_arrival_ns"] == [1_000]
+    assert projection["slot_indexed_session_relative_request_ns"] == [0, 1_000]
+    assert projection["chronological_request_inter_arrival_ns"] == [1_000]
     assert "operation_id" not in str(projection)
     assert len(timing_feature_vector(projection)) > 0
 
