@@ -1,0 +1,46 @@
+{
+  "schema": "AgentTool.V12TimingResponsePathSourceAudit/1",
+  "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "relay": {
+    "response_independently_paced": false,
+    "source_locations": [
+      {
+        "path": "common_action_gateway_v2/v8/http_relay.go",
+        "lines": "183-203",
+        "finding": "Relay synchronously waits for and fully reads the Gateway response before the application response boundary."
+      },
+      {
+        "path": "common_action_gateway_v2/v8/http_relay.go",
+        "lines": "214-222",
+        "finding": "response_send_ns is captured immediately before WriteHeader/Write; there is no independent response pacer."
+      },
+      {
+        "path": "common_action_gateway_v2/canonicalv9/runner.go",
+        "lines": "526-579",
+        "finding": "NOOP returns immediately, while REAL validates the route and authorization, performs journal work, records state, and launches provider execution."
+      },
+      {
+        "path": "common_action_gateway_v2/canonicalv9/runner.go",
+        "lines": "617-699",
+        "finding": "Gateway synchronously decapsulates, accepts, reserves a result, snapshots WAIT/RESULT state, encodes and encapsulates, then writes the response without response shaping."
+      }
+    ]
+  },
+  "registry": {
+    "response_independently_paced": false,
+    "source_locations": [
+      {
+        "path": "v11_online/session.py",
+        "lines": "326-373",
+        "finding": "The fixed cover schedule paces query sends, but each iteration synchronously waits for query completion before advancing."
+      },
+      {
+        "path": "pir_integration/simplepir_bridge/main.go",
+        "lines": "310-339",
+        "finding": "SimplePIR performs query, answer and recovery work, then captures response_send_ns and immediately encodes the response; response emission is not independently paced."
+      }
+    ],
+    "mechanical_scope": "The bridge uses the same computation path for valid real and dummy indices; the audit does not by itself prove index-dependent compute time."
+  },
+  "protected_runtime_modified": false
+}

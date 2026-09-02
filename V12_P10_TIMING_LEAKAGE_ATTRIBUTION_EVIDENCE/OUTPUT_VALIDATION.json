@@ -1,0 +1,42 @@
+{
+  "schema": "AgentTool.V12P10TimingLeakageAttributionOutputValidation/1",
+  "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "analysis_source_commit": "941a89b8825f5580740d171b8b4da6e572dc9bf4",
+  "remote_archive_sha256": "25b684f0b1140512c956d25126bb691b3b62b9eef408ff873a625109af3b55d5",
+  "dataset": {
+    "identity_count": 5040,
+    "complete_sessions": 5025,
+    "failed_sessions": 15,
+    "physical_coordinates": 8,
+    "selected_train_blocks_each": 180,
+    "selected_eval_blocks_each": 120
+  },
+  "observer_family_results": {
+    "json_rows": 50,
+    "csv_rows": 50,
+    "observer_comparisons": 10,
+    "missing_required_values": 0,
+    "json_sha256": "fcde8ebb8cd391b0c59e2429f06d3621df3ff48055dce90ef4c88868affd20d81",
+    "csv_sha256": "7129f0d5207c367b33134311e6c60a788e27dcfa21b0bb7020d4a7616dedcfc7"
+  },
+  "relay_slot_table": {
+    "rows": 2024,
+    "coordinates": 4,
+    "rows_per_coordinate": 506,
+    "public_slot_set_each": "1..506",
+    "missing_values": 0,
+    "sha256": "b9a8455c17053ecb1bee9139dd9a91ab0303e9f0ae0a30b3a7528782571494d20"
+  },
+  "private_correlation": {
+    "performed_after_observer_only_attribution": true,
+    "relay_coordinates": 4,
+    "registry_coordinates": 4,
+    "sha256": "020b31fbf42092131a92fc49aeec5c3fbdb58eeb0a4b916753f9c97bc0d11e147"
+  },
+  "summary_sha256": "bf0ab4c20cb655e7b6e3e9673700dc330ce53837ccebbd3fb25c54a00ee7b1a02",
+  "top_slot_differences_sha256": "7cf68119d5dbcd906ea2eb049aea31c1be1db72bf7e121146aa3089b8bf83dffd",
+  "analysis_log_sha256": "44fb3f618d848a2706aab33c266f34ec6d26dc04c0b681203c1ecf5188048ccb",
+  "protected_runtime_diff": "NONE",
+  "new_protected_sessions": 0,
+  "validation": "PASS"
+}

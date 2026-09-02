@@ -1,0 +1,994 @@
+{
+  "P10-T7-OA": {
+    "request_relative_ns": [
+      {
+        "public_slot": 416,
+        "class1_minus_class0_ns": 548693.5
+      },
+      {
+        "public_slot": 411,
+        "class1_minus_class0_ns": 420529.0
+      },
+      {
+        "public_slot": 419,
+        "class1_minus_class0_ns": 405007.0
+      },
+      {
+        "public_slot": 397,
+        "class1_minus_class0_ns": 393252.0
+      },
+      {
+        "public_slot": 396,
+        "class1_minus_class0_ns": 386704.0
+      },
+      {
+        "public_slot": 415,
+        "class1_minus_class0_ns": 369695.5
+      },
+      {
+        "public_slot": 418,
+        "class1_minus_class0_ns": 363282.0
+      },
+      {
+        "public_slot": 480,
+        "class1_minus_class0_ns": 361029.5
+      },
+      {
+        "public_slot": 398,
+        "class1_minus_class0_ns": 360695.0
+      },
+      {
+        "public_slot": 498,
+        "class1_minus_class0_ns": 355606.5
+      },
+      {
+        "public_slot": 414,
+        "class1_minus_class0_ns": 343517.5
+      },
+      {
+        "public_slot": 405,
+        "class1_minus_class0_ns": 342461.5
+      },
+      {
+        "public_slot": 417,
+        "class1_minus_class0_ns": 337796.5
+      },
+      {
+        "public_slot": 421,
+        "class1_minus_class0_ns": 336636.0
+      },
+      {
+        "public_slot": 399,
+        "class1_minus_class0_ns": 334381.0
+      },
+      {
+        "public_slot": 465,
+        "class1_minus_class0_ns": 326816.0
+      },
+      {
+        "public_slot": 496,
+        "class1_minus_class0_ns": 325950.5
+      },
+      {
+        "public_slot": 505,
+        "class1_minus_class0_ns": 318479.5
+      },
+      {
+        "public_slot": 451,
+        "class1_minus_class0_ns": 316952.5
+      },
+      {
+        "public_slot": 491,
+        "class1_minus_class0_ns": 316028.5
+      }
+    ],
+    "response_send_relative_ns": [
+      {
+        "public_slot": 4,
+        "class1_minus_class0_ns": -484535.5
+      },
+      {
+        "public_slot": 506,
+        "class1_minus_class0_ns": 461041.5
+      },
+      {
+        "public_slot": 421,
+        "class1_minus_class0_ns": 421262.5
+      },
+      {
+        "public_slot": 414,
+        "class1_minus_class0_ns": 414734.5
+      },
+      {
+        "public_slot": 475,
+        "class1_minus_class0_ns": 408055.0
+      },
+      {
+        "public_slot": 498,
+        "class1_minus_class0_ns": 397894.5
+      },
+      {
+        "public_slot": 447,
+        "class1_minus_class0_ns": 375391.5
+      },
+      {
+        "public_slot": 397,
+        "class1_minus_class0_ns": 374526.5
+      },
+      {
+        "public_slot": 419,
+        "class1_minus_class0_ns": 366544.0
+      },
+      {
+        "public_slot": 491,
+        "class1_minus_class0_ns": 365217.0
+      },
+      {
+        "public_slot": 505,
+        "class1_minus_class0_ns": 364197.0
+      },
+      {
+        "public_slot": 406,
+        "class1_minus_class0_ns": 359333.5
+      },
+      {
+        "public_slot": 476,
+        "class1_minus_class0_ns": 350793.5
+      },
+      {
+        "public_slot": 448,
+        "class1_minus_class0_ns": 349527.5
+      },
+      {
+        "public_slot": 411,
+        "class1_minus_class0_ns": 342604.5
+      },
+      {
+        "public_slot": 368,
+        "class1_minus_class0_ns": 339517.0
+      },
+      {
+        "public_slot": 465,
+        "class1_minus_class0_ns": 338734.5
+      },
+      {
+        "public_slot": 479,
+        "class1_minus_class0_ns": 335674.0
+      },
+      {
+        "public_slot": 450,
+        "class1_minus_class0_ns": 329100.0
+      },
+      {
+        "public_slot": 502,
+        "class1_minus_class0_ns": 328740.0
+      }
+    ],
+    "request_response_latency_ns": [
+      {
+        "public_slot": 4,
+        "class1_minus_class0_ns": -493757.0
+      },
+      {
+        "public_slot": 9,
+        "class1_minus_class0_ns": 290266.5
+      },
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -142680.5
+      },
+      {
+        "public_slot": 1,
+        "class1_minus_class0_ns": 104617.0
+      },
+      {
+        "public_slot": 8,
+        "class1_minus_class0_ns": 90329.0
+      },
+      {
+        "public_slot": 6,
+        "class1_minus_class0_ns": -75779.5
+      },
+      {
+        "public_slot": 368,
+        "class1_minus_class0_ns": 66862.5
+      },
+      {
+        "public_slot": 307,
+        "class1_minus_class0_ns": 57766.0
+      },
+      {
+        "public_slot": 374,
+        "class1_minus_class0_ns": 56503.0
+      },
+      {
+        "public_slot": 313,
+        "class1_minus_class0_ns": 51304.5
+      },
+      {
+        "public_slot": 459,
+        "class1_minus_class0_ns": -50483.5
+      },
+      {
+        "public_slot": 68,
+        "class1_minus_class0_ns": 50070.5
+      },
+      {
+        "public_slot": 451,
+        "class1_minus_class0_ns": -46966.5
+      },
+      {
+        "public_slot": 30,
+        "class1_minus_class0_ns": -45064.0
+      },
+      {
+        "public_slot": 315,
+        "class1_minus_class0_ns": 44241.0
+      },
+      {
+        "public_slot": 484,
+        "class1_minus_class0_ns": -42860.0
+      },
+      {
+        "public_slot": 17,
+        "class1_minus_class0_ns": -41694.0
+      },
+      {
+        "public_slot": 168,
+        "class1_minus_class0_ns": 41412.0
+      },
+      {
+        "public_slot": 452,
+        "class1_minus_class0_ns": -41224.5
+      },
+      {
+        "public_slot": 432,
+        "class1_minus_class0_ns": -41017.0
+      }
+    ]
+  },
+  "P10-T7-MS": {
+    "request_relative_ns": [
+      {
+        "public_slot": 117,
+        "class1_minus_class0_ns": 823670.5
+      },
+      {
+        "public_slot": 321,
+        "class1_minus_class0_ns": 413414.5
+      },
+      {
+        "public_slot": 323,
+        "class1_minus_class0_ns": 339862.5
+      },
+      {
+        "public_slot": 493,
+        "class1_minus_class0_ns": -338913.0
+      },
+      {
+        "public_slot": 308,
+        "class1_minus_class0_ns": 336244.0
+      },
+      {
+        "public_slot": 305,
+        "class1_minus_class0_ns": 329585.5
+      },
+      {
+        "public_slot": 235,
+        "class1_minus_class0_ns": 328563.5
+      },
+      {
+        "public_slot": 306,
+        "class1_minus_class0_ns": 327455.5
+      },
+      {
+        "public_slot": 383,
+        "class1_minus_class0_ns": 323866.5
+      },
+      {
+        "public_slot": 503,
+        "class1_minus_class0_ns": -323041.0
+      },
+      {
+        "public_slot": 402,
+        "class1_minus_class0_ns": 317351.0
+      },
+      {
+        "public_slot": 506,
+        "class1_minus_class0_ns": -313851.0
+      },
+      {
+        "public_slot": 324,
+        "class1_minus_class0_ns": 309302.0
+      },
+      {
+        "public_slot": 221,
+        "class1_minus_class0_ns": 309023.0
+      },
+      {
+        "public_slot": 390,
+        "class1_minus_class0_ns": 305893.5
+      },
+      {
+        "public_slot": 245,
+        "class1_minus_class0_ns": 298525.5
+      },
+      {
+        "public_slot": 317,
+        "class1_minus_class0_ns": 297759.5
+      },
+      {
+        "public_slot": 378,
+        "class1_minus_class0_ns": 294852.0
+      },
+      {
+        "public_slot": 394,
+        "class1_minus_class0_ns": 293197.0
+      },
+      {
+        "public_slot": 233,
+        "class1_minus_class0_ns": 291936.5
+      }
+    ],
+    "response_send_relative_ns": [
+      {
+        "public_slot": 117,
+        "class1_minus_class0_ns": 662229.5
+      },
+      {
+        "public_slot": 503,
+        "class1_minus_class0_ns": -474819.5
+      },
+      {
+        "public_slot": 321,
+        "class1_minus_class0_ns": 454468.5
+      },
+      {
+        "public_slot": 493,
+        "class1_minus_class0_ns": -441847.0
+      },
+      {
+        "public_slot": 490,
+        "class1_minus_class0_ns": -434177.0
+      },
+      {
+        "public_slot": 305,
+        "class1_minus_class0_ns": 418852.5
+      },
+      {
+        "public_slot": 311,
+        "class1_minus_class0_ns": 416392.5
+      },
+      {
+        "public_slot": 386,
+        "class1_minus_class0_ns": 405622.0
+      },
+      {
+        "public_slot": 221,
+        "class1_minus_class0_ns": 393367.0
+      },
+      {
+        "public_slot": 402,
+        "class1_minus_class0_ns": 390911.0
+      },
+      {
+        "public_slot": 450,
+        "class1_minus_class0_ns": 374274.0
+      },
+      {
+        "public_slot": 308,
+        "class1_minus_class0_ns": 369580.5
+      },
+      {
+        "public_slot": 396,
+        "class1_minus_class0_ns": 367284.5
+      },
+      {
+        "public_slot": 327,
+        "class1_minus_class0_ns": 365394.0
+      },
+      {
+        "public_slot": 360,
+        "class1_minus_class0_ns": 365044.5
+      },
+      {
+        "public_slot": 338,
+        "class1_minus_class0_ns": 358923.5
+      },
+      {
+        "public_slot": 345,
+        "class1_minus_class0_ns": 354661.0
+      },
+      {
+        "public_slot": 394,
+        "class1_minus_class0_ns": 347388.0
+      },
+      {
+        "public_slot": 350,
+        "class1_minus_class0_ns": 345349.5
+      },
+      {
+        "public_slot": 483,
+        "class1_minus_class0_ns": -339118.5
+      }
+    ],
+    "request_response_latency_ns": [
+      {
+        "public_slot": 9,
+        "class1_minus_class0_ns": 285013.5
+      },
+      {
+        "public_slot": 4,
+        "class1_minus_class0_ns": -186271.0
+      },
+      {
+        "public_slot": 3,
+        "class1_minus_class0_ns": -142393.5
+      },
+      {
+        "public_slot": 8,
+        "class1_minus_class0_ns": 108856.0
+      },
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -106386.0
+      },
+      {
+        "public_slot": 7,
+        "class1_minus_class0_ns": 56301.5
+      },
+      {
+        "public_slot": 406,
+        "class1_minus_class0_ns": -54679.5
+      },
+      {
+        "public_slot": 29,
+        "class1_minus_class0_ns": -53062.0
+      },
+      {
+        "public_slot": 144,
+        "class1_minus_class0_ns": -44251.0
+      },
+      {
+        "public_slot": 143,
+        "class1_minus_class0_ns": 43109.0
+      },
+      {
+        "public_slot": 472,
+        "class1_minus_class0_ns": -41542.5
+      },
+      {
+        "public_slot": 227,
+        "class1_minus_class0_ns": 40742.0
+      },
+      {
+        "public_slot": 437,
+        "class1_minus_class0_ns": -40723.0
+      },
+      {
+        "public_slot": 491,
+        "class1_minus_class0_ns": -39490.0
+      },
+      {
+        "public_slot": 392,
+        "class1_minus_class0_ns": -39345.5
+      },
+      {
+        "public_slot": 439,
+        "class1_minus_class0_ns": -39028.5
+      },
+      {
+        "public_slot": 424,
+        "class1_minus_class0_ns": 38920.0
+      },
+      {
+        "public_slot": 369,
+        "class1_minus_class0_ns": -38355.5
+      },
+      {
+        "public_slot": 52,
+        "class1_minus_class0_ns": 37931.0
+      },
+      {
+        "public_slot": 6,
+        "class1_minus_class0_ns": -37886.0
+      }
+    ]
+  },
+  "P10-T9-OA": {
+    "request_relative_ns": [
+      {
+        "public_slot": 118,
+        "class1_minus_class0_ns": -559342.0
+      },
+      {
+        "public_slot": 441,
+        "class1_minus_class0_ns": -366364.0
+      },
+      {
+        "public_slot": 450,
+        "class1_minus_class0_ns": -344278.0
+      },
+      {
+        "public_slot": 444,
+        "class1_minus_class0_ns": -339172.5
+      },
+      {
+        "public_slot": 443,
+        "class1_minus_class0_ns": -308415.5
+      },
+      {
+        "public_slot": 445,
+        "class1_minus_class0_ns": -295763.0
+      },
+      {
+        "public_slot": 413,
+        "class1_minus_class0_ns": -278516.5
+      },
+      {
+        "public_slot": 407,
+        "class1_minus_class0_ns": -269588.0
+      },
+      {
+        "public_slot": 447,
+        "class1_minus_class0_ns": -259257.0
+      },
+      {
+        "public_slot": 455,
+        "class1_minus_class0_ns": -247980.0
+      },
+      {
+        "public_slot": 463,
+        "class1_minus_class0_ns": -247834.0
+      },
+      {
+        "public_slot": 496,
+        "class1_minus_class0_ns": 247210.5
+      },
+      {
+        "public_slot": 202,
+        "class1_minus_class0_ns": -242388.0
+      },
+      {
+        "public_slot": 442,
+        "class1_minus_class0_ns": -234269.5
+      },
+      {
+        "public_slot": 424,
+        "class1_minus_class0_ns": -227974.0
+      },
+      {
+        "public_slot": 440,
+        "class1_minus_class0_ns": -227032.5
+      },
+      {
+        "public_slot": 199,
+        "class1_minus_class0_ns": -225952.5
+      },
+      {
+        "public_slot": 449,
+        "class1_minus_class0_ns": -222964.0
+      },
+      {
+        "public_slot": 460,
+        "class1_minus_class0_ns": -221794.0
+      },
+      {
+        "public_slot": 201,
+        "class1_minus_class0_ns": -219290.0
+      }
+    ],
+    "response_send_relative_ns": [
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -878219.5
+      },
+      {
+        "public_slot": 118,
+        "class1_minus_class0_ns": -431201.0
+      },
+      {
+        "public_slot": 447,
+        "class1_minus_class0_ns": -409881.0
+      },
+      {
+        "public_slot": 463,
+        "class1_minus_class0_ns": -355993.0
+      },
+      {
+        "public_slot": 420,
+        "class1_minus_class0_ns": -316674.0
+      },
+      {
+        "public_slot": 450,
+        "class1_minus_class0_ns": -289809.5
+      },
+      {
+        "public_slot": 207,
+        "class1_minus_class0_ns": -264115.5
+      },
+      {
+        "public_slot": 460,
+        "class1_minus_class0_ns": -261352.5
+      },
+      {
+        "public_slot": 336,
+        "class1_minus_class0_ns": -257980.0
+      },
+      {
+        "public_slot": 387,
+        "class1_minus_class0_ns": -257752.5
+      },
+      {
+        "public_slot": 444,
+        "class1_minus_class0_ns": -254711.5
+      },
+      {
+        "public_slot": 202,
+        "class1_minus_class0_ns": -253432.0
+      },
+      {
+        "public_slot": 503,
+        "class1_minus_class0_ns": 251407.0
+      },
+      {
+        "public_slot": 491,
+        "class1_minus_class0_ns": 250314.5
+      },
+      {
+        "public_slot": 495,
+        "class1_minus_class0_ns": 248818.5
+      },
+      {
+        "public_slot": 500,
+        "class1_minus_class0_ns": 248498.0
+      },
+      {
+        "public_slot": 333,
+        "class1_minus_class0_ns": -244576.5
+      },
+      {
+        "public_slot": 191,
+        "class1_minus_class0_ns": -241551.5
+      },
+      {
+        "public_slot": 441,
+        "class1_minus_class0_ns": -239802.0
+      },
+      {
+        "public_slot": 204,
+        "class1_minus_class0_ns": -237021.5
+      }
+    ],
+    "request_response_latency_ns": [
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -909072.0
+      },
+      {
+        "public_slot": 8,
+        "class1_minus_class0_ns": -204212.0
+      },
+      {
+        "public_slot": 7,
+        "class1_minus_class0_ns": 165747.0
+      },
+      {
+        "public_slot": 16,
+        "class1_minus_class0_ns": -155245.5
+      },
+      {
+        "public_slot": 49,
+        "class1_minus_class0_ns": 149987.5
+      },
+      {
+        "public_slot": 10,
+        "class1_minus_class0_ns": -143562.0
+      },
+      {
+        "public_slot": 12,
+        "class1_minus_class0_ns": -121931.0
+      },
+      {
+        "public_slot": 11,
+        "class1_minus_class0_ns": -118749.5
+      },
+      {
+        "public_slot": 2,
+        "class1_minus_class0_ns": -101109.5
+      },
+      {
+        "public_slot": 22,
+        "class1_minus_class0_ns": -94020.0
+      },
+      {
+        "public_slot": 55,
+        "class1_minus_class0_ns": 93387.0
+      },
+      {
+        "public_slot": 13,
+        "class1_minus_class0_ns": 91863.0
+      },
+      {
+        "public_slot": 4,
+        "class1_minus_class0_ns": -90347.5
+      },
+      {
+        "public_slot": 28,
+        "class1_minus_class0_ns": -90140.0
+      },
+      {
+        "public_slot": 37,
+        "class1_minus_class0_ns": 87155.0
+      },
+      {
+        "public_slot": 56,
+        "class1_minus_class0_ns": 76220.5
+      },
+      {
+        "public_slot": 43,
+        "class1_minus_class0_ns": 72839.5
+      },
+      {
+        "public_slot": 17,
+        "class1_minus_class0_ns": -68609.5
+      },
+      {
+        "public_slot": 27,
+        "class1_minus_class0_ns": -68016.0
+      },
+      {
+        "public_slot": 23,
+        "class1_minus_class0_ns": -65160.0
+      }
+    ]
+  },
+  "P10-T9-MS": {
+    "request_relative_ns": [
+      {
+        "public_slot": 119,
+        "class1_minus_class0_ns": 860762.0
+      },
+      {
+        "public_slot": 118,
+        "class1_minus_class0_ns": 811344.5
+      },
+      {
+        "public_slot": 393,
+        "class1_minus_class0_ns": 631209.5
+      },
+      {
+        "public_slot": 395,
+        "class1_minus_class0_ns": 600183.5
+      },
+      {
+        "public_slot": 396,
+        "class1_minus_class0_ns": 585259.0
+      },
+      {
+        "public_slot": 406,
+        "class1_minus_class0_ns": 573800.5
+      },
+      {
+        "public_slot": 362,
+        "class1_minus_class0_ns": 572596.0
+      },
+      {
+        "public_slot": 392,
+        "class1_minus_class0_ns": 570883.5
+      },
+      {
+        "public_slot": 372,
+        "class1_minus_class0_ns": 564969.5
+      },
+      {
+        "public_slot": 388,
+        "class1_minus_class0_ns": 560014.0
+      },
+      {
+        "public_slot": 405,
+        "class1_minus_class0_ns": 549722.0
+      },
+      {
+        "public_slot": 417,
+        "class1_minus_class0_ns": 543758.0
+      },
+      {
+        "public_slot": 379,
+        "class1_minus_class0_ns": 540515.0
+      },
+      {
+        "public_slot": 400,
+        "class1_minus_class0_ns": 538924.0
+      },
+      {
+        "public_slot": 411,
+        "class1_minus_class0_ns": 537391.5
+      },
+      {
+        "public_slot": 374,
+        "class1_minus_class0_ns": 536920.5
+      },
+      {
+        "public_slot": 419,
+        "class1_minus_class0_ns": 525982.0
+      },
+      {
+        "public_slot": 368,
+        "class1_minus_class0_ns": 523225.0
+      },
+      {
+        "public_slot": 397,
+        "class1_minus_class0_ns": 520470.5
+      },
+      {
+        "public_slot": 429,
+        "class1_minus_class0_ns": 520279.5
+      }
+    ],
+    "response_send_relative_ns": [
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -912712.0
+      },
+      {
+        "public_slot": 119,
+        "class1_minus_class0_ns": 810239.0
+      },
+      {
+        "public_slot": 386,
+        "class1_minus_class0_ns": 746723.0
+      },
+      {
+        "public_slot": 398,
+        "class1_minus_class0_ns": 645977.0
+      },
+      {
+        "public_slot": 118,
+        "class1_minus_class0_ns": 643505.0
+      },
+      {
+        "public_slot": 391,
+        "class1_minus_class0_ns": 612591.0
+      },
+      {
+        "public_slot": 395,
+        "class1_minus_class0_ns": 602349.0
+      },
+      {
+        "public_slot": 502,
+        "class1_minus_class0_ns": 595690.5
+      },
+      {
+        "public_slot": 406,
+        "class1_minus_class0_ns": 589433.5
+      },
+      {
+        "public_slot": 372,
+        "class1_minus_class0_ns": 586638.0
+      },
+      {
+        "public_slot": 387,
+        "class1_minus_class0_ns": 582568.0
+      },
+      {
+        "public_slot": 417,
+        "class1_minus_class0_ns": 571486.5
+      },
+      {
+        "public_slot": 455,
+        "class1_minus_class0_ns": 542557.0
+      },
+      {
+        "public_slot": 392,
+        "class1_minus_class0_ns": 540680.0
+      },
+      {
+        "public_slot": 377,
+        "class1_minus_class0_ns": 539405.0
+      },
+      {
+        "public_slot": 405,
+        "class1_minus_class0_ns": 535585.0
+      },
+      {
+        "public_slot": 388,
+        "class1_minus_class0_ns": 529763.5
+      },
+      {
+        "public_slot": 422,
+        "class1_minus_class0_ns": 526780.5
+      },
+      {
+        "public_slot": 416,
+        "class1_minus_class0_ns": 517163.0
+      },
+      {
+        "public_slot": 397,
+        "class1_minus_class0_ns": 511257.5
+      }
+    ],
+    "request_response_latency_ns": [
+      {
+        "public_slot": 5,
+        "class1_minus_class0_ns": -961522.0
+      },
+      {
+        "public_slot": 8,
+        "class1_minus_class0_ns": -555879.5
+      },
+      {
+        "public_slot": 11,
+        "class1_minus_class0_ns": -297607.5
+      },
+      {
+        "public_slot": 26,
+        "class1_minus_class0_ns": 224160.5
+      },
+      {
+        "public_slot": 1,
+        "class1_minus_class0_ns": 183061.0
+      },
+      {
+        "public_slot": 17,
+        "class1_minus_class0_ns": -153032.0
+      },
+      {
+        "public_slot": 15,
+        "class1_minus_class0_ns": -148364.0
+      },
+      {
+        "public_slot": 9,
+        "class1_minus_class0_ns": -134821.0
+      },
+      {
+        "public_slot": 18,
+        "class1_minus_class0_ns": -132291.5
+      },
+      {
+        "public_slot": 44,
+        "class1_minus_class0_ns": 107162.5
+      },
+      {
+        "public_slot": 32,
+        "class1_minus_class0_ns": 105585.5
+      },
+      {
+        "public_slot": 31,
+        "class1_minus_class0_ns": 104215.0
+      },
+      {
+        "public_slot": 38,
+        "class1_minus_class0_ns": 103378.5
+      },
+      {
+        "public_slot": 3,
+        "class1_minus_class0_ns": -101413.5
+      },
+      {
+        "public_slot": 46,
+        "class1_minus_class0_ns": 97817.0
+      },
+      {
+        "public_slot": 2,
+        "class1_minus_class0_ns": -94446.5
+      },
+      {
+        "public_slot": 12,
+        "class1_minus_class0_ns": -93693.0
+      },
+      {
+        "public_slot": 7,
+        "class1_minus_class0_ns": 90231.5
+      },
+      {
+        "public_slot": 41,
+        "class1_minus_class0_ns": 89798.0
+      },
+      {
+        "public_slot": 36,
+        "class1_minus_class0_ns": 86712.0
+      }
+    ]
+  }
+}

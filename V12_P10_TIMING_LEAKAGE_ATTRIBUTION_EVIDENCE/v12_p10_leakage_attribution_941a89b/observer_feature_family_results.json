@@ -1,0 +1,2256 @@
+{
+  "schema": "AgentTool.V12P10TimingLeakageAttributionObserverFamilies/1",
+  "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "rows": [
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_REQUEST_ONLY",
+      "feature_width": 223,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.7002777777777779,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.7002777777777779,
+      "eval_auc": 0.6730555555555555,
+      "eval_ci95_low": 0.6051388888888889,
+      "eval_ci95_high": 0.7369461805555555,
+      "eval_lcb99_5": 0.5851371527777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6319753086419754,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6319753086419754
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6807407407407406,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6807407407407406
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.7002777777777779,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7002777777777779
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6279783950617285,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6279783950617285
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6573456790123456,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6573456790123456,
+      "eval_auc": 0.7556250000000001,
+      "eval_ci95_low": 0.6836805555555555,
+      "eval_ci95_high": 0.8210434027777778,
+      "eval_lcb99_5": 0.6625666666666666,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6357716049382717,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6357716049382717
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6573456790123456,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6573456790123456
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6320370370370371,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6320370370370371
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6364197530864198,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6364197530864198
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_QUERY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_cv_raw_auc": 0.5733024691358024,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5733024691358024,
+      "eval_auc": 0.5135416666666667,
+      "eval_ci95_low": 0.44006770833333336,
+      "eval_ci95_high": 0.5867378472222222,
+      "eval_lcb99_5": 0.41604027777777774,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5733024691358024,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5733024691358024
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5674382716049382,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5674382716049382
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5275308641975308,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5275308641975308
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.43638888888888894,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5636111111111111
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 335,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.6969135802469136,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6969135802469136,
+      "eval_auc": 0.6929861111111111,
+      "eval_ci95_low": 0.6252760416666667,
+      "eval_ci95_high": 0.7572222222222222,
+      "eval_lcb99_5": 0.602290625,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6217592592592591,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6217592592592591
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6965277777777776,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6965277777777776
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6969135802469136,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6969135802469136
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6316512345679012,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6316512345679012
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_ALL",
+      "feature_width": 448,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.7092901234567901,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.7092901234567901,
+      "eval_auc": 0.7457638888888889,
+      "eval_ci95_low": 0.6829861111111111,
+      "eval_ci95_high": 0.8049322916666667,
+      "eval_lcb99_5": 0.6631930555555555,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6147839506172839,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6147839506172839
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6774691358024693,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6774691358024693
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.7092901234567901,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7092901234567901
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6487499999999999,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6487499999999999
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-MS",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_REQUEST_ONLY",
+      "feature_width": 223,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5422839506172838,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5422839506172838,
+      "eval_auc": 0.6006250000000001,
+      "eval_ci95_low": 0.52909375,
+      "eval_ci95_high": 0.6713211805555556,
+      "eval_lcb99_5": 0.5056920138888888,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4804938271604938,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5195061728395062
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5422839506172838,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5422839506172838
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.49003086419753084,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5099691358024692
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4837037037037037,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5162962962962963
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-MS",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5474382716049383,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5474382716049383,
+      "eval_auc": 0.5093055555555556,
+      "eval_ci95_low": 0.4355520833333333,
+      "eval_ci95_high": 0.5805555555555556,
+      "eval_lcb99_5": 0.41124930555555556,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5470679012345678,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5470679012345678
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5474382716049383,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5474382716049383
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.47425925925925927,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5257407407407407
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.48641975308641977,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5135802469135802
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-MS",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_QUERY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.4662654320987655,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5337345679012345,
+      "eval_auc": 0.49291666666666667,
+      "eval_ci95_low": 0.4191666666666667,
+      "eval_ci95_high": 0.5657656249999999,
+      "eval_lcb99_5": 0.3985413194444445,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5049382716049382,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5049382716049382
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4694753086419754,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5305246913580246
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4662654320987655,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5337345679012345
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.49864197530864196,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.501358024691358
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-MS",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 335,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5570679012345678,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5570679012345678,
+      "eval_auc": 0.6070833333333333,
+      "eval_ci95_low": 0.5322222222222223,
+      "eval_ci95_high": 0.6765295138888888,
+      "eval_lcb99_5": 0.5092354166666667,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.46969135802469136,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5303086419753087
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5570679012345678,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5570679012345678
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4663888888888889,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.533611111111111
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.47645061728395066,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5235493827160493
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-MS",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_ALL",
+      "feature_width": 448,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5464969135802469,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5464969135802469,
+      "eval_auc": 0.5629166666666666,
+      "eval_ci95_low": 0.49027777777777776,
+      "eval_ci95_high": 0.6334045138888889,
+      "eval_lcb99_5": 0.4661097222222222,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.48552469135802473,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5144753086419753
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5464969135802469,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5464969135802469
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4851851851851852,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5148148148148148
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4887962962962963,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5112037037037037
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-OA",
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_cv_raw_auc": 0.5566975308641975,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5566975308641975,
+      "eval_auc": 0.474375,
+      "eval_ci95_low": 0.3993732638888889,
+      "eval_ci95_high": 0.5471545138888889,
+      "eval_lcb99_5": 0.37631805555555553,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5566975308641975,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5566975308641975
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4978703703703704,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5021296296296296
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5347222222222222,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5347222222222222
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.48194444444444445,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5180555555555555
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-OA",
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.5487037037037037,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5487037037037037,
+      "eval_auc": 0.5089583333333333,
+      "eval_ci95_low": 0.4347899305555556,
+      "eval_ci95_high": 0.5841006944444445,
+      "eval_lcb99_5": 0.41173611111111114,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5483641975308642,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5483641975308642
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.49364197530864196,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.506358024691358
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5487037037037037,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5487037037037037
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.46904320987654324,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5309567901234568
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-OA",
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "RBF_SVM",
+      "train_cv_raw_auc": 0.42149691358024693,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5785030864197531,
+      "eval_auc": 0.501875,
+      "eval_ci95_low": 0.4520121527777778,
+      "eval_ci95_high": 0.5513194444444445,
+      "eval_lcb99_5": 0.4372560763888889,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5506790123456791,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5506790123456791
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5235185185185185,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5235185185185185
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5392283950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5392283950617284
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.42149691358024693,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5785030864197531
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-OA",
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.5645679012345679,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5645679012345679,
+      "eval_auc": 0.4871527777777778,
+      "eval_ci95_low": 0.41770833333333335,
+      "eval_ci95_high": 0.5575694444444445,
+      "eval_lcb99_5": 0.3990267361111111,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.557283950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.557283950617284
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4939969135802469,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5060030864197531
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5645679012345679,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5645679012345679
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.46594135802469133,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5340586419753086
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-OA",
+      "task": "T4",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.5820987654320988,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5820987654320988,
+      "eval_auc": 0.4644444444444444,
+      "eval_ci95_low": 0.3880520833333333,
+      "eval_ci95_high": 0.5413888888888889,
+      "eval_lcb99_5": 0.3649982638888889,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5650925925925926,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5650925925925926
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5143827160493827,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5143827160493827
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5820987654320988,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5820987654320988
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4676388888888888,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5323611111111112
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-MS",
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "RBF_SVM",
+      "train_cv_raw_auc": 0.5390123456790124,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5390123456790124,
+      "eval_auc": 0.545138888888889,
+      "eval_ci95_low": 0.48194444444444445,
+      "eval_ci95_high": 0.6077795138888888,
+      "eval_lcb99_5": 0.4630196180555555,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4908024691358025,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5091975308641975
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.48802469135802473,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5119753086419753
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5040123456790123,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5040123456790123
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5390123456790124,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5390123456790124
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-MS",
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_cv_raw_auc": 0.5447530864197532,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5447530864197532,
+      "eval_auc": 0.4749305555555555,
+      "eval_ci95_low": 0.40027430555555554,
+      "eval_ci95_high": 0.5497222222222222,
+      "eval_lcb99_5": 0.37874652777777773,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5447530864197532,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5447530864197532
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.497391975308642,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.502608024691358
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4871604938271605,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5128395061728395
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5379783950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5379783950617284
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-MS",
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_cv_raw_auc": 0.5422067901234568,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5422067901234568,
+      "eval_auc": 0.5509027777777777,
+      "eval_ci95_low": 0.47368055555555555,
+      "eval_ci95_high": 0.6259756944444445,
+      "eval_lcb99_5": 0.44944270833333333,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5422067901234568,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5422067901234568
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5333796296296296,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5333796296296296
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5106481481481481,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5106481481481481
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4872530864197531,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5127469135802469
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-MS",
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.45598765432098765,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5440123456790124,
+      "eval_auc": 0.43777777777777777,
+      "eval_ci95_low": 0.36520659722222226,
+      "eval_ci95_high": 0.5108333333333334,
+      "eval_lcb99_5": 0.34444444444444444,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5023765432098765,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5023765432098765
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5083796296296297,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5083796296296297
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.45598765432098765,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5440123456790124
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5389197530864197,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5389197530864197
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T4-MS",
+      "task": "T4",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": false,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.44580246913580246,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5541975308641975,
+      "eval_auc": 0.48986111111111114,
+      "eval_ci95_low": 0.4103472222222222,
+      "eval_ci95_high": 0.567015625,
+      "eval_lcb99_5": 0.38756770833333337,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5162962962962963,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5162962962962963
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5077777777777778,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5077777777777778
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.44580246913580246,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5541975308641975
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5376851851851852,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5376851851851852
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_REQUEST_ONLY",
+      "feature_width": 223,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.668425925925926,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.668425925925926,
+      "eval_auc": 0.6779861111111112,
+      "eval_ci95_low": 0.6108333333333333,
+      "eval_ci95_high": 0.741876736111111,
+      "eval_lcb99_5": 0.5904854166666668,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6276851851851852,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6276851851851852
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.668425925925926,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.668425925925926
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6510802469135802,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6510802469135802
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6676697530864198,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6676697530864198
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6626234567901235,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6626234567901235,
+      "eval_auc": 0.7030555555555557,
+      "eval_ci95_low": 0.6338888888888888,
+      "eval_ci95_high": 0.7688211805555556,
+      "eval_lcb99_5": 0.6104854166666667,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5621296296296296,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5621296296296296
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6626234567901235,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6626234567901235
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6420679012345679,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6420679012345679
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6458024691358025,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6458024691358025
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_QUERY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.5354320987654321,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5354320987654321,
+      "eval_auc": 0.49916666666666665,
+      "eval_ci95_low": 0.4288888888888889,
+      "eval_ci95_high": 0.570421875,
+      "eval_lcb99_5": 0.4049979166666667,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.46938271604938264,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5306172839506174
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.49842592592592594,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5015740740740741
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5354320987654321,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5354320987654321
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.47262345679012346,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5273765432098765
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 335,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6755246913580246,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6755246913580246,
+      "eval_auc": 0.7084027777777778,
+      "eval_ci95_low": 0.6429791666666667,
+      "eval_ci95_high": 0.770625,
+      "eval_lcb99_5": 0.6235399305555556,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5704320987654321,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5704320987654321
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6755246913580246,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6755246913580246
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6471604938271605,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6471604938271605
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6663734567901235,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6663734567901235
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "original_early_failure": true,
+      "feature_family": "REGISTRY_ALL",
+      "feature_width": 448,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6778703703703703,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6778703703703703,
+      "eval_auc": 0.7232638888888889,
+      "eval_ci95_low": 0.6588177083333333,
+      "eval_ci95_high": 0.7850729166666667,
+      "eval_lcb99_5": 0.6388152777777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.547283950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.547283950617284
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6778703703703703,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6778703703703703
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6665432098765433,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6665432098765433
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.660679012345679,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.660679012345679
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.4419753086419753,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5580246913580247,
+      "eval_auc": 0.4645138888888889,
+      "eval_ci95_low": 0.385625,
+      "eval_ci95_high": 0.5447916666666667,
+      "eval_lcb99_5": 0.36006909722222225,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.44595679012345674,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5540432098765433
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4509722222222222,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5490277777777778
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4419753086419753,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5580246913580247
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5408333333333333,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5408333333333333
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9468827160493827,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9468827160493827,
+      "eval_auc": 0.9619444444444444,
+      "eval_ci95_low": 0.9386805555555555,
+      "eval_ci95_high": 0.9811805555555555,
+      "eval_lcb99_5": 0.9300690972222222,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6412345679012346,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6412345679012346
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8108950617283951,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8108950617283951
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9468827160493827,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9468827160493827
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.492716049382716,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5072839506172839
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9609567901234568,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9609567901234568,
+      "eval_auc": 0.9752083333333333,
+      "eval_ci95_low": 0.9600677083333333,
+      "eval_ci95_high": 0.9875694444444445,
+      "eval_lcb99_5": 0.9538881944444445,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.7334876543209876,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7334876543209876
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8600308641975309,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8600308641975309
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9609567901234568,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9609567901234568
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.637962962962963,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.637962962962963
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9433641975308642,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9433641975308642,
+      "eval_auc": 0.9661111111111111,
+      "eval_ci95_low": 0.9459027777777778,
+      "eval_ci95_high": 0.983265625,
+      "eval_lcb99_5": 0.939096875,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5638271604938272,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5638271604938272
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.7180246913580247,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7180246913580247
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9433641975308642,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9433641975308642
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5094135802469136,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5094135802469136
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9508641975308643,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9508641975308643,
+      "eval_auc": 0.980763888888889,
+      "eval_ci95_low": 0.9681232638888889,
+      "eval_ci95_high": 0.9909739583333333,
+      "eval_lcb99_5": 0.962221875,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6171604938271604,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6171604938271604
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8220679012345679,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8220679012345679
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9508641975308643,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9508641975308643
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.47179012345679006,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5282098765432099
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_REQUEST_ONLY",
+      "feature_width": 223,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6303703703703702,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6303703703703702,
+      "eval_auc": 0.6158333333333333,
+      "eval_ci95_low": 0.5488177083333333,
+      "eval_ci95_high": 0.6806267361111111,
+      "eval_lcb99_5": 0.5270833333333333,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.524783950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.524783950617284
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6303703703703702,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6303703703703702
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6075617283950617,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6075617283950617
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5484722222222222,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5484722222222222
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5941666666666666,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5941666666666666,
+      "eval_auc": 0.640625,
+      "eval_ci95_low": 0.565484375,
+      "eval_ci95_high": 0.7130572916666666,
+      "eval_lcb99_5": 0.5377774305555556,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5193827160493827,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5193827160493827
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5941666666666666,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5941666666666666
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.554320987654321,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.554320987654321
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4817438271604939,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5182561728395061
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_QUERY_RESPONSE_ONLY",
+      "feature_width": 112,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.538858024691358,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.538858024691358,
+      "eval_auc": 0.5197916666666667,
+      "eval_ci95_low": 0.44472222222222224,
+      "eval_ci95_high": 0.5952100694444444,
+      "eval_lcb99_5": 0.4213871527777778,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4760802469135803,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5239197530864197
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.48620370370370364,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5137962962962963
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.538858024691358,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.538858024691358
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.48108024691358015,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5189197530864198
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 335,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6351543209876543,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6351543209876543,
+      "eval_auc": 0.6152083333333334,
+      "eval_ci95_low": 0.5436111111111112,
+      "eval_ci95_high": 0.6852795138888889,
+      "eval_lcb99_5": 0.5179850694444444,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5176851851851851,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5176851851851851
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6351543209876543,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6351543209876543
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5971604938271605,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5971604938271605
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5466666666666667,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5466666666666667
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "original_early_failure": false,
+      "feature_family": "REGISTRY_ALL",
+      "feature_width": 448,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.6010339506172839,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6010339506172839,
+      "eval_auc": 0.6391666666666667,
+      "eval_ci95_low": 0.5716649305555556,
+      "eval_ci95_high": 0.7040972222222223,
+      "eval_lcb99_5": 0.549375,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4926851851851852,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5073148148148148
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6010339506172839,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6010339506172839
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6004938271604938,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6004938271604938
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.532283950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.532283950617284
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.5244135802469136,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5244135802469136,
+      "eval_auc": 0.5633333333333334,
+      "eval_ci95_low": 0.4897222222222222,
+      "eval_ci95_high": 0.6361163194444444,
+      "eval_lcb99_5": 0.4688170138888889,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4896604938271605,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5103395061728395
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.48324074074074075,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5167592592592593
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.5244135802469136,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5244135802469136
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.49587962962962967,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5041203703703703
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9648456790123457,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9648456790123457,
+      "eval_auc": 0.9615972222222223,
+      "eval_ci95_low": 0.9352083333333333,
+      "eval_ci95_high": 0.9830555555555556,
+      "eval_lcb99_5": 0.9252777777777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6546604938271604,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6546604938271604
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8190277777777778,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8190277777777778
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9648456790123457,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9648456790123457
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5329320987654321,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5329320987654321
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9705246913580247,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9705246913580247,
+      "eval_auc": 0.9781249999999999,
+      "eval_ci95_low": 0.9563888888888888,
+      "eval_ci95_high": 0.9942361111111111,
+      "eval_lcb99_5": 0.9479166666666666,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6887345679012346,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6887345679012346
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8613271604938272,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8613271604938272
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9705246913580247,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9705246913580247
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6403703703703705,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6403703703703705
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9649691358024692,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9649691358024692,
+      "eval_auc": 0.961875,
+      "eval_ci95_low": 0.9330538194444444,
+      "eval_ci95_high": 0.9845138888888889,
+      "eval_lcb99_5": 0.9226385416666667,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5974691358024692,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5974691358024692
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.7296604938271605,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7296604938271605
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9649691358024692,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9649691358024692
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.45609567901234566,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5439043209876544
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9679012345679012,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9679012345679012,
+      "eval_auc": 0.9693055555555555,
+      "eval_ci95_low": 0.9468055555555556,
+      "eval_ci95_high": 0.9875694444444445,
+      "eval_lcb99_5": 0.9374996527777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.641141975308642,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.641141975308642
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8220987654320988,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8220987654320988
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9679012345679012,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9679012345679012
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4711111111111111,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.528888888888889
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "LOGISTIC_REGRESSION",
+      "train_cv_raw_auc": 0.4738888888888889,
+      "train_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5261111111111111,
+      "eval_auc": 0.5492361111111111,
+      "eval_ci95_low": 0.47965104166666667,
+      "eval_ci95_high": 0.6175694444444444,
+      "eval_lcb99_5": 0.4534003472222222,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4738888888888889,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5261111111111111
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4963425925925926,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5036574074074074
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4784567901234568,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5215432098765431
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4819444444444445,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5180555555555555
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.979783950617284,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.979783950617284,
+      "eval_auc": 0.9786805555555556,
+      "eval_ci95_low": 0.9621510416666667,
+      "eval_ci95_high": 0.9919444444444444,
+      "eval_lcb99_5": 0.9556246527777777,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.7325925925925926,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7325925925925926
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9586111111111111,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9586111111111111
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.979783950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.979783950617284
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.642962962962963,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.642962962962963
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9817283950617284,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9817283950617284,
+      "eval_auc": 0.9700000000000001,
+      "eval_ci95_low": 0.9459027777777778,
+      "eval_ci95_high": 0.9894444444444445,
+      "eval_lcb99_5": 0.9370135416666667,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.8277623456790123,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8277623456790123
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9779629629629629,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9779629629629629
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9817283950617284,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9817283950617284
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.7933179012345679,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7933179012345679
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9753395061728395,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9753395061728395,
+      "eval_auc": 0.9775694444444446,
+      "eval_ci95_low": 0.9579166666666666,
+      "eval_ci95_high": 0.9925,
+      "eval_lcb99_5": 0.9502777777777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6614814814814814,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6614814814814814
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8904938271604937,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8904938271604937
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9753395061728395,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9753395061728395
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.4697839506172839,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5302160493827162
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9778395061728395,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9778395061728395,
+      "eval_auc": 0.9779861111111111,
+      "eval_ci95_low": 0.9579166666666666,
+      "eval_ci95_high": 0.9930555555555556,
+      "eval_lcb99_5": 0.9504163194444445,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.7380246913580247,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7380246913580247
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9575308641975309,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9575308641975309
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9778395061728395,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9778395061728395
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5923765432098765,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5923765432098765
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.5781790123456789,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.5781790123456789,
+      "eval_auc": 0.5211805555555555,
+      "eval_ci95_low": 0.4477083333333333,
+      "eval_ci95_high": 0.5918758680555556,
+      "eval_lcb99_5": 0.42659722222222224,
+      "frozen_boundary_exceeded": false,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.4383641975308642,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5616358024691358
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5781790123456789,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5781790123456789
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4975308641975309,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5024691358024691
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.45246913580246917,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5475308641975308
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_RESPONSE_ONLY",
+      "feature_width": 1035,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9839197530864197,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9839197530864197,
+      "eval_auc": 0.9925694444444445,
+      "eval_ci95_low": 0.9849982638888889,
+      "eval_ci95_high": 0.9977795138888889,
+      "eval_lcb99_5": 0.9818052083333334,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.7170370370370371,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7170370370370371
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9356327160493827,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9356327160493827
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9839197530864197,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9839197530864197
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6825617283950618,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6825617283950618
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_SLOT_LATENCY_ONLY",
+      "feature_width": 518,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.9839197530864197,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9839197530864197,
+      "eval_auc": 0.9779166666666667,
+      "eval_ci95_low": 0.9605555555555556,
+      "eval_ci95_high": 0.9909027777777778,
+      "eval_lcb99_5": 0.9520135416666667,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.8508950617283951,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8508950617283951
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9839197530864197,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9839197530864197
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9837654320987654,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9837654320987654
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.8019753086419754,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8019753086419754
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_REQUEST_PLUS_RESPONSE",
+      "feature_width": 2070,
+      "result_origin": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9808641975308642,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9808641975308642,
+      "eval_auc": 0.9917361111111112,
+      "eval_ci95_low": 0.9834027777777777,
+      "eval_ci95_high": 0.9975,
+      "eval_lcb99_5": 0.9796527777777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6440123456790123,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6440123456790123
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.8792901234567901,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8792901234567901
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9808641975308642,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9808641975308642
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5230246913580248,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5230246913580248
+        }
+      }
+    },
+    {
+      "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "original_early_failure": true,
+      "feature_family": "RELAY_ALL",
+      "feature_width": 2589,
+      "result_origin": "IMMUTABLE_ORIGINAL_V3_1_RESULT_REUSED",
+      "selected_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.9860493827160495,
+      "train_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.9860493827160495,
+      "eval_auc": 0.9902777777777778,
+      "eval_ci95_low": 0.9809027777777778,
+      "eval_ci95_high": 0.9969444444444444,
+      "eval_lcb99_5": 0.9765277777777778,
+      "frozen_boundary_exceeded": true,
+      "train_blocks": 180,
+      "eval_blocks": 120,
+      "bootstrap_resamples": 10000,
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.7460185185185185,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.7460185185185185
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.9440123456790123,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9440123456790123
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.9860493827160495,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.9860493827160495
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.6246604938271605,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6246604938271605
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "AgentTool.V12P10TimingLeakageSourceAttribution/1",
+  "role": "POST_OUTCOME_DEVELOPMENT_DIAGNOSTIC",
+  "base_p10_result": "558c97bd5ca8bb9123382800cb73eb410cab6342",
+  "methodology_base": "63792088161deb6b1ccd3c4b4cb28babbf72f3ec",
+  "analysis_source_commit": "941a89b8825f5580740d171b8b4da6e572dc9bf4",
+  "original_P10_sentinel": "EARLY_TIMING_DISTINGUISHABILITY",
+  "original_early_failures": "6 / 10",
+  "original_result_preserved": true,
+  "new_protected_sessions": 0,
+  "dataset_identity_count": 5040,
+  "complete_sessions": 5025,
+  "failed_sessions": 15,
+  "selected_train_blocks_per_coordinate": 180,
+  "selected_eval_blocks_per_coordinate": 120,
+  "observer_feature_family_result_count": 50,
+  "dominant_timing_sources": {
+    "C1_REGISTRY_RESOLUTION_PATTERN|OpenAI Agents SDK|REGISTRY": "BOTH",
+    "T7|OpenAI Agents SDK|REGISTRY": "BOTH",
+    "T7|OpenAI Agents SDK|RELAY": "RESPONSE_SIDE",
+    "T7|Microsoft Agent Framework|RELAY": "RESPONSE_SIDE",
+    "T9|OpenAI Agents SDK|RELAY": "RESPONSE_SIDE",
+    "T9|Microsoft Agent Framework|RELAY": "RESPONSE_SIDE"
+  },
+  "dominant_source_categories_observed": [
+    "BOTH",
+    "RESPONSE_SIDE"
+  ],
+  "relay_response_independently_paced": false,
+  "registry_response_independently_paced": false,
+  "next_step_recommendation": "MIXED_REDESIGN_REQUIRED",
+  "P20_sentinel": "NOT_RUN",
+  "P25_sentinel": "NOT_RUN",
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "protected_runtime_diff": "NONE",
+  "private_mechanism_correlation_file": "private_mechanism_correlation.json",
+  "observer_family_results_file": "observer_feature_family_results.json",
+  "relay_slot_table_file": "relay_slot_class_medians.csv"
+}
