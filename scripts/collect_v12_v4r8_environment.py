@@ -71,6 +71,14 @@ def git_source(path: Path) -> dict[str, Any]:
     }
 
 
+def optional_text(path: Path) -> str:
+    return (
+        path.read_text(encoding="utf-8", errors="replace").strip()
+        if path.is_file()
+        else "NOT_AVAILABLE"
+    )
+
+
 def main() -> int:
     import argparse
 
@@ -106,6 +114,12 @@ def main() -> int:
     release_path = Path("/etc/os-release")
     if release_path.is_file():
         os_release = release_path.read_text(encoding="utf-8", errors="replace")
+    cpu_max = optional_text(Path("/sys/fs/cgroup/cpu.max"))
+    cpu_quota_logical: float | str = "NOT_AVAILABLE"
+    if cpu_max != "NOT_AVAILABLE" and cpu_max.split()[0] != "max":
+        quota, period = (int(value) for value in cpu_max.split())
+        cpu_quota_logical = quota / period
+    memory_limit = optional_text(Path("/sys/fs/cgroup/memory.max"))
     binaries = {
         name: {
             "path": str(path),
@@ -114,6 +128,12 @@ def main() -> int:
         }
         for name, path in BINARIES.items()
     }
+    go_binary = ROOT.parent / "go1.26.5" / "bin" / "go"
+    go_version = (
+        command(str(go_binary), "version")
+        if go_binary.is_file()
+        else command("go", "version")
+    )
     repo = {
         "path": str(ROOT),
         "branch": command("git", "branch", "--show-current"),
@@ -129,8 +149,14 @@ def main() -> int:
             "virtualization": command("systemd-detect-virt"),
             "container_cgroup": command("sh", "-c", "cat /proc/1/cgroup"),
             "cpu_model": cpu_model,
-            "logical_cpu_count": os.cpu_count(),
-            "ram_total_kib": mem_total_kib,
+            "host_visible_logical_cpu_count": os.cpu_count(),
+            "cgroup_cpuset_effective": optional_text(
+                Path("/sys/fs/cgroup/cpuset.cpus.effective")
+            ),
+            "cgroup_cpu_max": cpu_max,
+            "cgroup_cpu_quota_logical": cpu_quota_logical,
+            "host_visible_ram_total_kib": mem_total_kib,
+            "cgroup_memory_max_bytes": memory_limit,
             "filesystem_root": command("df", "-hT", "/root"),
             "filesystem_experiment_source": command("df", "-hT", str(ROOT)),
         },
@@ -143,7 +169,10 @@ def main() -> int:
         "languages": {
             "python": sys.version,
             "python_executable": sys.executable,
-            "go": command("go", "version"),
+            "go": go_version,
+            "go_executable": str(go_binary)
+            if go_binary.is_file()
+            else "PATH_RESOLUTION",
         },
         "python_packages": {
             "numpy": package_version("numpy"),
@@ -184,8 +213,10 @@ def main() -> int:
         f"hostname: {snapshot['host']['hostname']}",
         f"virtualization: {snapshot['host']['virtualization']}",
         f"cpu: {cpu_model}",
-        f"logical CPUs: {os.cpu_count()}",
-        f"RAM KiB: {mem_total_kib}",
+        f"host-visible logical CPUs: {os.cpu_count()}",
+        f"cgroup CPU quota: {cpu_quota_logical} logical CPUs ({cpu_max})",
+        f"host-visible RAM KiB: {mem_total_kib}",
+        f"cgroup memory limit bytes: {memory_limit}",
         f"platform: {snapshot['os']['platform']}",
         f"kernel: {snapshot['os']['kernel']}",
         f"Python: {sys.version}",

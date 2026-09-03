@@ -1,0 +1,21 @@
+{
+  "schema": "AgentTool.V12V4R8FinalUtilityDeploymentGate/1",
+  "runtime_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "checks": {
+    "git_head_runtime_source": true,
+    "profile_id": true,
+    "R": true,
+    "Q": true,
+    "H": true,
+    "B": true,
+    "Delta": true,
+    "M": true,
+    "runner_sha256": true,
+    "simplepir_sha256": true,
+    "benchmark_runner_sha256": true
+  },
+  "pass": true,
+  "protected_runtime_diff": "NONE",
+  "classifier_runs": 0,
+  "auc_calculations": 0
+}

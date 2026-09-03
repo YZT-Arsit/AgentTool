@@ -1,0 +1,17 @@
+V12 V4R8 final execution environment
+hostname: autodl-container-9el52ll8z4-d636ffb3
+virtualization: docker
+cpu: Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz
+host-visible logical CPUs: 128
+cgroup CPU quota: 12.0 logical CPUs (1200000 100000)
+host-visible RAM KiB: 527992020
+cgroup memory limit bytes: 66571993088
+platform: Linux-5.15.0-25-generic-x86_64-with-glibc2.35
+kernel: 5.15.0-25-generic
+Python: 3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]
+Go: go version go1.26.5 linux/amd64
+execution repository HEAD: 63319014f560f46e2a46dd140f53551e43c27e0d
+V4R8 runtime source: 63319014f560f46e2a46dd140f53551e43c27e0d
+canonical runner SHA256: 84fc61e363ed587ba5c200be12ebb66c9a71c69daad39950f1b50e66cd363437
+SimplePIR runner SHA256: 743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c
+Environment variable values were not recorded.

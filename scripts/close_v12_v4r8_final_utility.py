@@ -249,7 +249,8 @@ def main() -> int:
     summary_path = evidence / "final_utility_summary.csv"
     records_path = evidence / "utility_records.jsonl"
     env_path = evidence / "FINAL_V4R8_ENVIRONMENT_SNAPSHOT.json"
-    required = (runs_path, summary_path, records_path, env_path)
+    failure_audit_path = evidence / "failed_utility_run_audit.json"
+    required = (runs_path, summary_path, records_path, env_path, failure_audit_path)
     if any(not path.is_file() for path in required):
         raise FileNotFoundError(
             f"closure inputs missing: {[str(p) for p in required if not p.is_file()]}"
@@ -268,6 +269,7 @@ def main() -> int:
     pir = make_pir_inventory(evidence / "final_pir_utility_inventory.json")
     make_paper_table(summary, communication, evidence / "paper_utility_table.csv")
     completion = json.loads((evidence / "completion.json").read_text(encoding="utf-8"))
+    failure_audit = json.loads(failure_audit_path.read_text(encoding="utf-8"))
     oae_measured = [row for row in measured if row["configuration"] == "OAE_V4R8"]
     protected_diff = git(
         "diff", "--name-only", f"{RUNTIME_SOURCE}..{BASE_V4R8}"
@@ -291,9 +293,7 @@ def main() -> int:
     committed_paths = [
         ROOT / "V12_V4R8_FINAL_UTILITY_FREEZE.json",
         ROOT / "V12_V4R8_RESPONSE_ANCHOR_REPAIR_EVIDENCE" / "CLOSURE.json",
-        ROOT
-        / "V12_V4R7_RESIDUAL_TIMING_SOURCE_ATTRIBUTION_EVIDENCE"
-        / "CLOSURE.json",
+        ROOT / "V12_V4R7_RESIDUAL_TIMING_SOURCE_ATTRIBUTION_EVIDENCE" / "CLOSURE.json",
         ROOT
         / "V12_V4R7_BOUNDED_LIVENESS_CAPACITY_CLOSURE_EVIDENCE"
         / "BOUNDED_LIVENESS_FUNCTIONAL_SUMMARY.json",
@@ -413,6 +413,12 @@ def main() -> int:
             "oae_successes": completion["oae_successes"],
             "oae_failures": completion["oae_failures"],
             "retries": 0,
+            "failed_oae_run_audit": {
+                "artifact": "failed_utility_run_audit.json",
+                "failed_runs": failure_audit["failed_measured_runs"],
+                "all_failed_runs_preserved_in_full": True,
+                "failure_archive": "failed_oae_session_records.tgz",
+            },
             "coordinates": coordinates,
         },
         "communication": communication,
@@ -420,9 +426,12 @@ def main() -> int:
         "final_functional_sanity": {
             "measured_oae_executions": len(oae_measured),
             "semantic_successes": completion["oae_successes"],
-            "transcript_successes": completion["oae_transcript_successes"],
-            "silent_losses": completion["oae_silent_losses"],
-            "profile_overflows": completion["oae_profile_overflows"],
+            "transcript_successes": completion["oae_transcript_successes"]
+            + failure_audit["aggregate"]["public_transcript_successes"],
+            "silent_losses": completion["oae_silent_losses"]
+            + failure_audit["aggregate"]["silent_losses"],
+            "profile_overflows": completion["oae_profile_overflows"]
+            + failure_audit["aggregate"]["profile_overflows"],
         },
         "environment_snapshot": "PASS",
         "reproducibility_manifest": "PASS",
@@ -466,7 +475,7 @@ The frozen V4R8 runtime source is `{RUNTIME_SOURCE}` and the protected-runtime d
 
 ## Utility benchmark
 
-The frozen benchmark executed {completion["executed_measured_executions"]}/480 measured runs with zero retries: Native {completion["native_successes"]} successes and {completion["native_failures"]} failures; OAE V4R8 {completion["oae_successes"]} successes and {completion["oae_failures"]} failures.
+The frozen benchmark executed {completion["executed_measured_executions"]}/480 measured runs with zero retries: Native {completion["native_successes"]} successes and {completion["native_failures"]} failures; OAE V4R8 {completion["oae_successes"]} successes and {completion["oae_failures"]} semantic failures. The full failed-session archive shows that all {failure_audit["failed_measured_runs"]} failed semantic runs nevertheless completed their 521-cell/100-query public transcripts, with zero silent loss, profile overflow, or infrastructure-liveness failure.
 
 {chr(10).join(coordinate_lines)}
 

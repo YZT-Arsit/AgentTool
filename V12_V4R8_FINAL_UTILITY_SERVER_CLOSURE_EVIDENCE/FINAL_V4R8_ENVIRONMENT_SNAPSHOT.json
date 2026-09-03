@@ -1,0 +1,169 @@
+{
+  "schema": "AgentTool.V12V4R8EnvironmentSnapshot/1",
+  "host": {
+    "hostname": "autodl-container-9el52ll8z4-d636ffb3",
+    "virtualization": "docker",
+    "container_cgroup": "0::/",
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+    "host_visible_logical_cpu_count": 128,
+    "cgroup_cpuset_effective": "0-127",
+    "cgroup_cpu_max": "1200000 100000",
+    "cgroup_cpu_quota_logical": 12.0,
+    "host_visible_ram_total_kib": 527992020,
+    "cgroup_memory_max_bytes": "66571993088",
+    "filesystem_root": "Filesystem     Type     Size  Used Avail Use% Mounted on\noverlay        overlay   30G  5.2G   25G  18% /",
+    "filesystem_experiment_source": "Filesystem     Type  Size  Used Avail Use% Mounted on\n/dev/md0       xfs    50G   49G  2.0G  97% /root/autodl-tmp"
+  },
+  "os": {
+    "platform": "Linux-5.15.0-25-generic-x86_64-with-glibc2.35",
+    "distribution": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+    "kernel": "5.15.0-25-generic",
+    "uname": "Linux autodl-container-9el52ll8z4-d636ffb3 5.15.0-25-generic #25-Ubuntu SMP Wed Mar 30 15:54:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "languages": {
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+    "python_executable": "/root/autodl-tmp/mediation_trace_validation/.venv-linux/bin/python",
+    "go": "go version go1.26.5 linux/amd64",
+    "go_executable": "/root/autodl-tmp/go1.26.5/bin/go"
+  },
+  "python_packages": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "pandas": "NOT_AVAILABLE",
+    "scikit_learn": "1.9.0"
+  },
+  "frameworks": {
+    "OpenAI Agents SDK": {
+      "installed_version": "0.22.0",
+      "source": {
+        "path": "/root/autodl-tmp/mediation_trace_validation/external_stage10/openai-agents-python",
+        "commit": "a40ae9803e6b7a79faa246293f56adb100d5868b",
+        "status": ""
+      }
+    },
+    "Microsoft Agent Framework": {
+      "installed_version": "1.15.0",
+      "source": {
+        "path": "/root/autodl-tmp/mediation_trace_validation/external_stage9/agent-framework",
+        "commit": "af461de51da16f5cb800ff7febc0f8f96355607a",
+        "status": ""
+      }
+    }
+  },
+  "pir": {
+    "simplepir_protocol_commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+    "bridge_source": {
+      "path": "/root/autodl-tmp/v12_v4r7_smoke_exec/pir_integration/simplepir_bridge",
+      "commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+      "status": "?? ../../V12_V4R8_FINAL_UTILITY_FREEZE.json\n?? ../../scripts/collect_v12_v4r8_environment.py\n?? ../../scripts/run_v12_v4r8_final_utility.py"
+    }
+  },
+  "repository": {
+    "path": "/root/autodl-tmp/v12_v4r7_smoke_exec",
+    "branch": "",
+    "head": "63319014f560f46e2a46dd140f53551e43c27e0d",
+    "runtime_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+    "status": "?? V12_V4R8_FINAL_UTILITY_FREEZE.json\n?? scripts/collect_v12_v4r8_environment.py\n?? scripts/run_v12_v4r8_final_utility.py",
+    "remote_origin": "https://github.com/YZT-Arsit/AgentTool.git"
+  },
+  "binaries": {
+    "canonical_v4r8_runner": {
+      "path": "/root/autodl-tmp/v12_v4r7_smoke_exec/common_action_gateway_v2/bin/canonical-v12-v4r8-timing-runner",
+      "byte_size": 11600579,
+      "sha256": "84fc61e363ed587ba5c200be12ebb66c9a71c69daad39950f1b50e66cd363437"
+    },
+    "simplepir_v12_timing": {
+      "path": "/root/autodl-tmp/v12_v4r7_smoke_exec/pir_integration/simplepir_bridge/acv-simplepir-v12-timing",
+      "byte_size": 3808904,
+      "sha256": "743684a35afcee942ff76810a091925ce9ca8eb21e33519c3748c694ef1c6f8c"
+    }
+  },
+  "public_profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+    "round_period_ms": 10,
+    "pir_resolution_period_ms": 60,
+    "maximum_real_operations": 50,
+    "admission_horizon_ms": 4500,
+    "provider_completion_bound_ms": 200,
+    "terminal_rounds": 1,
+    "session_count": 1,
+    "request_bhttp_bytes": 1024,
+    "response_bhttp_bytes": 768,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "ohttp_key_id": 7,
+    "kem_id": 32,
+    "kdf_id": 1,
+    "aead_id": 1,
+    "config_epoch": 3,
+    "relay_endpoint_class": "LOCAL_RELAY",
+    "gateway_endpoint_class": "LOCAL_GATEWAY",
+    "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+    "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+    "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+    "public_session_liveness_cap_ms": 60000,
+    "pir_public_epoch_ms": 6000,
+    "pir_query_completion_bound_ms": 50,
+    "maximum_real_agent_resolutions": 6,
+    "dummy_descriptor_row": 999,
+    "pir_initial_lead_ms": 25,
+    "timing_semantic_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8",
+    "response_initial_release_delay_ms": 0,
+    "response_public_lag_ms": 30,
+    "response_preparation_lead_ms": 20,
+    "response_preparation_workers": 6,
+    "pir_commitment_lead_ms": 20,
+    "registry_answer_release_delay_ms": 50,
+    "registry_worker_lanes": 1,
+    "registry_max_inflight": 100,
+    "schema": "AgentTool.V12TimingIndistinguishabilityProfile/4",
+    "admission_rounds": 450,
+    "completion_rounds": 20,
+    "result_drain_rounds": 50,
+    "total_rounds": 521,
+    "nominal_lifetime_ms": 5210,
+    "nominal_lifetime_ns": 5210000000,
+    "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+    "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+    "pir_resolution_opportunities": 100,
+    "pir_real_resolution_arrival_cutoff_ms": 4089,
+    "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
+    "slot_commitment_clock": "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE",
+    "timing_privacy": "OPEN / NOT TESTED",
+    "packet_level_timing": "OPEN / NOT TESTED",
+    "hardware_tee": "NOT_TESTED"
+  },
+  "environment_variable_names_only": [
+    "AgentHost",
+    "AutoDLContainerMonitorSetting",
+    "AutoDLContainerUUID",
+    "AutoDLDataCenter",
+    "AutoDLRegion",
+    "AutoDLService6006URL",
+    "AutoDLService6008URL",
+    "AutoDLServiceURL",
+    "AutodlAutoPanelToken",
+    "HOME",
+    "LC_CTYPE",
+    "LOGNAME",
+    "LS_COLORS",
+    "MKL_NUM_THREADS",
+    "MOTD_SHOWN",
+    "OLDPWD",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PWD",
+    "REQUESTS_CA_BUNDLE",
+    "SHELL",
+    "SHLVL",
+    "SSH_CLIENT",
+    "SSH_CONNECTION",
+    "SSH_TTY",
+    "TERM",
+    "TZ",
+    "USER",
+    "_"
+  ],
+  "environment_variable_values_recorded": false,
+  "secret_values_recorded": false
+}

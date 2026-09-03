@@ -1,0 +1,10 @@
+{
+  "planned_total": 512,
+  "executed_total": 512,
+  "warmups_executed": 32,
+  "measured_executed": 480,
+  "last_identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M030",
+  "last_success": true,
+  "classifier_runs": 0,
+  "auc_calculations": 0
+}
