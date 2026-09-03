@@ -1,0 +1,76 @@
+{
+  "schema": "AgentTool.V12FinalPIRUtilityInventory/1",
+  "interpretation": "The 100,000-record scale run and the 16,000-query repeated-observation run are distinct immutable experiments; no artifact is represented as simultaneously containing both denominators.",
+  "simplepir_commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "record_scale_evidence": {
+    "source_artifact": "results_crypto_closure/scale_100000/run4/metrics.json",
+    "records": 100000,
+    "real_queries": 10,
+    "correct_queries": 10,
+    "query_generation": {
+      "sample_count": 10,
+      "median_ms": 6.7620000000000005,
+      "p95_ms": 7.30045,
+      "mean_ms": 6.6434
+    },
+    "server_answer": {
+      "sample_count": 10,
+      "median_ms": 14.167,
+      "p95_ms": 17.965449999999997,
+      "mean_ms": 14.0462
+    },
+    "decode_reconstruction": {
+      "sample_count": 10,
+      "median_ms": 2.341,
+      "p95_ms": 5.392099999999999,
+      "mean_ms": 2.9499
+    },
+    "online_round_trip_end_to_end": "NOT_AVAILABLE",
+    "database_read_ms": 32.075,
+    "database_construction_ms": 1377.154,
+    "shared_state_generation_ms": 506.416,
+    "full_preprocessing_setup_ms": 23506.85,
+    "server_storage_bytes": 102401024,
+    "client_hint_bytes": 38072320,
+    "persistent_client_state_bytes": 75309056,
+    "upload_bytes_per_query": 36388,
+    "download_bytes_per_query": 37180
+  },
+  "repeated_query_evidence": {
+    "source_artifact": "results_crypto_closure/multiround_final/pir/metrics.json",
+    "records": 1000,
+    "real_queries": 16000,
+    "correct_queries": 16000,
+    "query_generation": {
+      "sample_count": 16000,
+      "median_ms": 0.501,
+      "p95_ms": 1.004,
+      "mean_ms": 0.3805079375
+    },
+    "server_answer_trace": {
+      "sample_count": 16000,
+      "median_ms": 0.0,
+      "p95_ms": 0.516,
+      "mean_ms": 0.06539125,
+      "precision_note": "Per-query trace serialized sub-millisecond values at integer-ms precision; metrics.json retains mean_server_answer_ms.",
+      "high_precision_mean_ms_from_metrics": 0.06539124999999998
+    },
+    "decode_reconstruction": {
+      "sample_count": 16000,
+      "median_ms": 0.0,
+      "p95_ms": 1.0,
+      "mean_ms": 0.177442875
+    },
+    "online_round_trip_end_to_end": "NOT_AVAILABLE",
+    "database_read_ms": 0.514,
+    "database_construction_ms": 14.71,
+    "shared_state_generation_ms": 28.885,
+    "full_preprocessing_setup_ms": 46.163,
+    "server_storage_bytes": 1024000,
+    "client_hint_bytes": 6750208,
+    "persistent_client_state_bytes": 8798208,
+    "upload_bytes_per_query": 2020,
+    "download_bytes_per_query": 6592
+  },
+  "new_pir_queries_executed": 0
+}

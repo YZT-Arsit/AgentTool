@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import math
 import statistics
@@ -44,6 +45,16 @@ def git(*args: str) -> str:
     return subprocess.check_output(
         ["git", *args], cwd=ROOT, text=True, encoding="utf-8"
     ).strip()
+
+
+def write_once_or_verify(path: Path, content: str) -> None:
+    if path.exists():
+        existing = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+        expected = content.replace("\r\n", "\n")
+        if existing != expected:
+            raise RuntimeError(f"existing closure artifact disagrees: {path}")
+        return
+    path.write_text(content, encoding="utf-8", newline="\n")
 
 
 def make_pir_inventory(output: Path) -> dict[str, Any]:
@@ -124,9 +135,7 @@ def make_pir_inventory(output: Path) -> dict[str, Any]:
         },
         "new_pir_queries_executed": 0,
     }
-    output.write_text(
-        json.dumps(inventory, indent=2) + "\n", encoding="utf-8", newline="\n"
-    )
+    write_once_or_verify(output, json.dumps(inventory, indent=2) + "\n")
     return inventory
 
 
@@ -171,9 +180,7 @@ def make_communication(records: list[dict[str, Any]], output: Path) -> dict[str,
             "to obtain session wall time."
         ),
     }
-    output.write_text(
-        json.dumps(value, indent=2) + "\n", encoding="utf-8", newline="\n"
-    )
+    write_once_or_verify(output, json.dumps(value, indent=2) + "\n")
     return value
 
 
@@ -230,10 +237,11 @@ def make_paper_table(
                     ],
                 }
             )
-    with output.open("x", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(rows)
+    handle = io.StringIO(newline="")
+    writer = csv.DictWriter(handle, fieldnames=fields)
+    writer.writeheader()
+    writer.writerows(rows)
+    write_once_or_verify(output, handle.getvalue())
 
 
 def main() -> int:
@@ -244,7 +252,7 @@ def main() -> int:
     parser.add_argument("--worktree-status", required=True)
     parser.add_argument("--running-processes", required=True)
     args = parser.parse_args()
-    evidence = args.evidence
+    evidence = args.evidence.resolve()
     runs_path = evidence / "final_utility_runs.csv"
     summary_path = evidence / "final_utility_summary.csv"
     records_path = evidence / "utility_records.jsonl"
@@ -299,7 +307,11 @@ def main() -> int:
         / "BOUNDED_LIVENESS_FUNCTIONAL_SUMMARY.json",
         ROOT / "results_crypto_closure" / "scale_100000" / "run4" / "metrics.json",
         ROOT / "results_crypto_closure" / "multiround_final" / "pir" / "metrics.json",
+        ROOT / "scripts" / "freeze_v12_v4r8_final_utility.py",
         ROOT / "scripts" / "run_v12_v4r8_final_utility.py",
+        ROOT / "scripts" / "collect_v12_v4r8_environment.py",
+        ROOT / "scripts" / "audit_v12_v4r8_utility_failures.py",
+        ROOT / "scripts" / "close_v12_v4r8_final_utility.py",
     ]
     evidence_paths = [
         path
@@ -394,14 +406,23 @@ def main() -> int:
         and args.local_head == args.remote_head
         and args.worktree_status == "CLEAN"
     )
+    existing_inventory = json.loads(
+        (ROOT / "V12_V4R8_FINAL_UTILITY_FREEZE.json").read_text(encoding="utf-8")
+    )["existing_final_v4r8_utility_evidence"]
+    existing_inventory["existing_v4r8_functional"]["path"] = (
+        "V12_V4R7_BOUNDED_LIVENESS_CAPACITY_CLOSURE_EVIDENCE/"
+        "BOUNDED_LIVENESS_FUNCTIONAL_SUMMARY.json"
+    )
+    existing_inventory["freeze_inventory_path_erratum"] = (
+        "The pre-execution freeze used a shortened nonexistent directory name for "
+        "the one-run functional evidence; this closure records the actual immutable path."
+    )
     closure = {
         "schema": "AgentTool.V12V4R8FinalUtilityServerClosure/1",
         "base_v4r8_evidence": BASE_V4R8,
         "final_v4r8_runtime_source": RUNTIME_SOURCE,
         "protected_runtime_diff": "NONE",
-        "existing_final_v4r8_utility_evidence": json.loads(
-            (ROOT / "V12_V4R8_FINAL_UTILITY_FREEZE.json").read_text(encoding="utf-8")
-        )["existing_final_v4r8_utility_evidence"],
+        "existing_final_v4r8_utility_evidence": existing_inventory,
         "new_timing_security_experiments": 0,
         "classifier_runs": 0,
         "auc_calculations": 0,

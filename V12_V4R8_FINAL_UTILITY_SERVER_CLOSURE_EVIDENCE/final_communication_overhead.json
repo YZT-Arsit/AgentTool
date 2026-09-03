@@ -1,0 +1,17 @@
+{
+  "schema": "AgentTool.V12V4R8FinalCommunicationOverhead/1",
+  "derivation": "frozen public constants verified against all successful measured OAE records",
+  "R": 521,
+  "Q": 100,
+  "relay_request_bytes": 1079,
+  "relay_response_bytes": 800,
+  "registry_query_bytes": 2020,
+  "registry_answer_bytes": 6592,
+  "relay_bytes_per_session": 978959,
+  "registry_bytes_per_session": 861200,
+  "total_normalized_bytes_per_session": 1840159,
+  "total_normalized_MiB_per_session": 1.7549123764038086,
+  "nominal_relay_transcript_duration_ms": 5210,
+  "registry_public_epoch_ms": 6000,
+  "schedule_overlap_note": "Relay and Registry schedules overlap; their nominal durations are not added to obtain session wall time."
+}

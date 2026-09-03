@@ -1,0 +1,14 @@
+{
+  "schema": "AgentTool.V12V4R8FinalUtilityClosurePackagingAttempt/1",
+  "attempt": 2,
+  "status": "FAILED_BEFORE_MANIFEST_AND_CLOSURE",
+  "failure_stage": "CROSS_PLATFORM_CSV_NEWLINE_VERIFICATION",
+  "exception_class": "RuntimeError",
+  "root_cause": "Byte-equivalence verification compared the existing Windows CSV newline normalization with an in-memory CRLF representation without canonicalizing line endings.",
+  "experimental_execution_impact": "NONE",
+  "new_workloads": 0,
+  "classifier_runs": 0,
+  "auc_calculations": 0,
+  "raw_utility_evidence_changed": false,
+  "repair": "Canonicalize CRLF and LF solely for content comparison while preserving the existing artifact bytes."
+}

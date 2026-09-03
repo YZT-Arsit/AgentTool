@@ -1,0 +1,14 @@
+{
+  "schema": "AgentTool.V12V4R8FinalUtilityClosurePackagingAttempt/1",
+  "attempt": 1,
+  "status": "FAILED_BEFORE_MANIFEST_AND_CLOSURE",
+  "failure_stage": "RELATIVE_EVIDENCE_PATH_NORMALIZATION",
+  "exception_class": "ValueError",
+  "root_cause": "The packaging script attempted Path.relative_to(ROOT) on an unresolved relative evidence path.",
+  "experimental_execution_impact": "NONE",
+  "new_workloads": 0,
+  "classifier_runs": 0,
+  "auc_calculations": 0,
+  "raw_utility_evidence_changed": false,
+  "repair": "Resolve the evidence directory before manifest path normalization and verify any already materialized deterministic outputs byte-for-byte."
+}
