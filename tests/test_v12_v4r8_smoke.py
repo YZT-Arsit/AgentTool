@@ -50,3 +50,11 @@ def test_v4r8_profile_is_fixed_p10_b200() -> None:
     assert profile.profile_id == "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60"
     assert profile.total_rounds == 521
     assert profile.scheduled_lifetime_ms == 5210
+
+
+def test_v4r8_analysis_entrypoint_delegates_to_runnable_layer() -> None:
+    source = (
+        ROOT / "scripts" / "analyze_v12_v4r8_response_anchor_smoke.py"
+    ).read_text(encoding="utf-8")
+    assert "status = implementation.implementation.main()" in source
+    assert "status = implementation.main()" not in source

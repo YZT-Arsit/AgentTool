@@ -93,8 +93,7 @@ def _add_v4r8_ablation(output: Path) -> None:
 
 if __name__ == "__main__":
     output = _output_from_arguments()
-    status = implementation.main()
+    status = implementation.implementation.main()
     if status == 0:
         _add_v4r8_ablation(output)
     raise SystemExit(status)
-
