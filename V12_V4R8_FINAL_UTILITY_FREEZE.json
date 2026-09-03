@@ -1,0 +1,5237 @@
+{
+  "schema": "AgentTool.V12V4R8FinalUtilityFreeze/1",
+  "phase": "V12-V4R8-FINAL-UTILITY-OVERHEAD-AND-SERVER-TERMINATION-CLOSURE",
+  "base_v4r8_evidence": "7a188ae2ebfcc42313eca0dbf92c62dfc66ff3fb",
+  "runtime_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "branch": "v12-duplex-timing-virtualization-redesign",
+  "frozen_before_execution": true,
+  "privacy_experiment": false,
+  "classifier_runs": 0,
+  "auc_calculations": 0,
+  "retries": 0,
+  "replacements": 0,
+  "existing_final_v4r8_utility_evidence": {
+    "adequate_final_v4r8_utility_measurement": false,
+    "reason": "No final-V4R8 artifact contains at least 30 NATIVE and 30 OAE_V4R8 measurements for every one of the eight required framework/workload coordinates.",
+    "existing_v4r8_smoke": {
+      "path": "V12_V4R8_RESPONSE_ANCHOR_REPAIR_EVIDENCE/CLOSURE.json",
+      "sessions": 640,
+      "role": "timing-repair development smoke, not utility benchmark"
+    },
+    "existing_v4r8_functional": {
+      "path": "V12_V4R7_BOUNDED_LIVENESS_CLOSURE_EVIDENCE/BOUNDED_LIVENESS_FUNCTIONAL_SUMMARY.json",
+      "role": "single-run functional qualification inherited unchanged by V4R8",
+      "minimum_repetitions_per_required_configuration": 1
+    },
+    "historical_v4r6_v4r7_latency_reused": false
+  },
+  "profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+    "round_period_ms": 10,
+    "pir_resolution_period_ms": 60,
+    "maximum_real_operations": 50,
+    "admission_horizon_ms": 4500,
+    "provider_completion_bound_ms": 200,
+    "terminal_rounds": 1,
+    "session_count": 1,
+    "request_bhttp_bytes": 1024,
+    "response_bhttp_bytes": 768,
+    "request_final_bytes": 1079,
+    "response_final_bytes": 800,
+    "ohttp_key_id": 7,
+    "kem_id": 32,
+    "kdf_id": 1,
+    "aead_id": 1,
+    "config_epoch": 3,
+    "relay_endpoint_class": "LOCAL_RELAY",
+    "gateway_endpoint_class": "LOCAL_GATEWAY",
+    "connection_policy": "ONE_PERSISTENT_HTTP2_CONNECTION_PER_HOP_PER_PUBLIC_SESSION",
+    "scheduled_start_policy": "PUBLIC_SESSION_ACCEPT_MONOTONIC_T0",
+    "profile_class": "TIMING_INDISTINGUISHABILITY_PROFILE",
+    "public_session_liveness_cap_ms": 60000,
+    "pir_public_epoch_ms": 6000,
+    "pir_query_completion_bound_ms": 50,
+    "maximum_real_agent_resolutions": 6,
+    "dummy_descriptor_row": 999,
+    "pir_initial_lead_ms": 25,
+    "timing_semantic_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8",
+    "response_initial_release_delay_ms": 0,
+    "response_public_lag_ms": 30,
+    "response_preparation_lead_ms": 20,
+    "response_preparation_workers": 6,
+    "pir_commitment_lead_ms": 20,
+    "registry_answer_release_delay_ms": 50,
+    "registry_worker_lanes": 1,
+    "registry_max_inflight": 100,
+    "schema": "AgentTool.V12TimingIndistinguishabilityProfile/4",
+    "admission_rounds": 450,
+    "completion_rounds": 20,
+    "result_drain_rounds": 50,
+    "total_rounds": 521,
+    "nominal_lifetime_ms": 5210,
+    "nominal_lifetime_ns": 5210000000,
+    "capacity_formula": "R = ceil(H / Delta) + ceil(B / Delta) + M + T",
+    "pir_capacity_formula": "Q = pir_public_epoch_ms / pir_resolution_period_ms",
+    "pir_resolution_opportunities": 100,
+    "pir_real_resolution_arrival_cutoff_ms": 4089,
+    "late_cell_rule": "NO_DROP_NO_BURST_PUBLIC_RECURRENCE",
+    "slot_commitment_clock": "E_i_MINUS_L_FROM_PUBLIC_RECURRENCE",
+    "timing_privacy": "OPEN / NOT TESTED",
+    "packet_level_timing": "OPEN / NOT TESTED",
+    "hardware_tee": "NOT_TESTED"
+  },
+  "frameworks": [
+    "OpenAI Agents SDK",
+    "Microsoft Agent Framework"
+  ],
+  "workloads": [
+    "ORDINARY_TOOL",
+    "AGENT_AS_TOOL_TRANSITION",
+    "CACHE_REUSE_30",
+    "CAPACITY_50"
+  ],
+  "configurations": [
+    "NATIVE",
+    "OAE_V4R8"
+  ],
+  "warmups_per_coordinate_configuration": 2,
+  "measured_repetitions_per_coordinate_configuration": 30,
+  "planned_warmups": 32,
+  "planned_measured_executions": 480,
+  "execution_order": "round-robin framework/workload coordinates; odd repetitions NATIVE then OAE_V4R8; even repetitions OAE_V4R8 then NATIVE",
+  "latency_boundaries": {
+    "semantic_completion_ms": "immediately before pinned framework workflow invocation through return of the final expected framework-visible semantic result",
+    "public_session_wall_ms": "CanonicalOnlineSession SESSION_T0 monotonic record through completion of the fixed Relay and Registry obligations and session resource close"
+  },
+  "schedule": [
+    {
+      "ordinal": 1,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-W001"
+    },
+    {
+      "ordinal": 2,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 3,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 4,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-W002"
+    },
+    {
+      "ordinal": 5,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-W001"
+    },
+    {
+      "ordinal": 6,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 7,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 8,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-W002"
+    },
+    {
+      "ordinal": 9,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-W001"
+    },
+    {
+      "ordinal": 10,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 11,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 12,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-W002"
+    },
+    {
+      "ordinal": 13,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-W001"
+    },
+    {
+      "ordinal": 14,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 15,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 16,
+      "kind": "WARMUP",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-W002"
+    },
+    {
+      "ordinal": 17,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-W001"
+    },
+    {
+      "ordinal": 18,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 19,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 20,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-W002"
+    },
+    {
+      "ordinal": 21,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-W001"
+    },
+    {
+      "ordinal": 22,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 23,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 24,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-W002"
+    },
+    {
+      "ordinal": 25,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-W001"
+    },
+    {
+      "ordinal": 26,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 27,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 28,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-W002"
+    },
+    {
+      "ordinal": 29,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-W001"
+    },
+    {
+      "ordinal": 30,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-W001"
+    },
+    {
+      "ordinal": 31,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-W002"
+    },
+    {
+      "ordinal": 32,
+      "kind": "WARMUP",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-W002"
+    },
+    {
+      "ordinal": 33,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M001"
+    },
+    {
+      "ordinal": 34,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 35,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M001"
+    },
+    {
+      "ordinal": 36,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 37,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M001"
+    },
+    {
+      "ordinal": 38,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 39,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M001"
+    },
+    {
+      "ordinal": 40,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 41,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M001"
+    },
+    {
+      "ordinal": 42,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 43,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M001"
+    },
+    {
+      "ordinal": 44,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 45,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M001"
+    },
+    {
+      "ordinal": 46,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 47,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M001"
+    },
+    {
+      "ordinal": 48,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 1,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M001"
+    },
+    {
+      "ordinal": 49,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 50,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M002"
+    },
+    {
+      "ordinal": 51,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 52,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M002"
+    },
+    {
+      "ordinal": 53,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 54,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M002"
+    },
+    {
+      "ordinal": 55,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 56,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M002"
+    },
+    {
+      "ordinal": 57,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 58,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M002"
+    },
+    {
+      "ordinal": 59,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 60,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M002"
+    },
+    {
+      "ordinal": 61,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 62,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M002"
+    },
+    {
+      "ordinal": 63,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M002"
+    },
+    {
+      "ordinal": 64,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 2,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M002"
+    },
+    {
+      "ordinal": 65,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M003"
+    },
+    {
+      "ordinal": 66,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 67,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M003"
+    },
+    {
+      "ordinal": 68,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 69,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M003"
+    },
+    {
+      "ordinal": 70,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 71,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M003"
+    },
+    {
+      "ordinal": 72,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 73,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M003"
+    },
+    {
+      "ordinal": 74,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 75,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M003"
+    },
+    {
+      "ordinal": 76,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 77,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M003"
+    },
+    {
+      "ordinal": 78,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 79,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M003"
+    },
+    {
+      "ordinal": 80,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 3,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M003"
+    },
+    {
+      "ordinal": 81,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 82,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M004"
+    },
+    {
+      "ordinal": 83,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 84,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M004"
+    },
+    {
+      "ordinal": 85,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 86,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M004"
+    },
+    {
+      "ordinal": 87,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 88,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M004"
+    },
+    {
+      "ordinal": 89,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 90,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M004"
+    },
+    {
+      "ordinal": 91,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 92,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M004"
+    },
+    {
+      "ordinal": 93,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 94,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M004"
+    },
+    {
+      "ordinal": 95,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M004"
+    },
+    {
+      "ordinal": 96,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 4,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M004"
+    },
+    {
+      "ordinal": 97,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M005"
+    },
+    {
+      "ordinal": 98,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 99,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M005"
+    },
+    {
+      "ordinal": 100,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 101,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M005"
+    },
+    {
+      "ordinal": 102,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 103,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M005"
+    },
+    {
+      "ordinal": 104,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 105,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M005"
+    },
+    {
+      "ordinal": 106,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 107,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M005"
+    },
+    {
+      "ordinal": 108,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 109,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M005"
+    },
+    {
+      "ordinal": 110,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 111,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M005"
+    },
+    {
+      "ordinal": 112,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 5,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M005"
+    },
+    {
+      "ordinal": 113,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 114,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M006"
+    },
+    {
+      "ordinal": 115,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 116,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M006"
+    },
+    {
+      "ordinal": 117,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 118,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M006"
+    },
+    {
+      "ordinal": 119,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 120,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M006"
+    },
+    {
+      "ordinal": 121,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 122,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M006"
+    },
+    {
+      "ordinal": 123,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 124,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M006"
+    },
+    {
+      "ordinal": 125,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 126,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M006"
+    },
+    {
+      "ordinal": 127,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M006"
+    },
+    {
+      "ordinal": 128,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 6,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M006"
+    },
+    {
+      "ordinal": 129,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M007"
+    },
+    {
+      "ordinal": 130,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 131,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M007"
+    },
+    {
+      "ordinal": 132,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 133,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M007"
+    },
+    {
+      "ordinal": 134,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 135,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M007"
+    },
+    {
+      "ordinal": 136,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 137,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M007"
+    },
+    {
+      "ordinal": 138,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 139,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M007"
+    },
+    {
+      "ordinal": 140,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 141,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M007"
+    },
+    {
+      "ordinal": 142,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 143,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M007"
+    },
+    {
+      "ordinal": 144,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 7,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M007"
+    },
+    {
+      "ordinal": 145,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 146,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M008"
+    },
+    {
+      "ordinal": 147,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 148,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M008"
+    },
+    {
+      "ordinal": 149,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 150,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M008"
+    },
+    {
+      "ordinal": 151,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 152,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M008"
+    },
+    {
+      "ordinal": 153,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 154,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M008"
+    },
+    {
+      "ordinal": 155,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 156,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M008"
+    },
+    {
+      "ordinal": 157,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 158,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M008"
+    },
+    {
+      "ordinal": 159,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M008"
+    },
+    {
+      "ordinal": 160,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 8,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M008"
+    },
+    {
+      "ordinal": 161,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M009"
+    },
+    {
+      "ordinal": 162,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 163,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M009"
+    },
+    {
+      "ordinal": 164,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 165,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M009"
+    },
+    {
+      "ordinal": 166,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 167,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M009"
+    },
+    {
+      "ordinal": 168,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 169,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M009"
+    },
+    {
+      "ordinal": 170,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 171,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M009"
+    },
+    {
+      "ordinal": 172,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 173,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M009"
+    },
+    {
+      "ordinal": 174,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 175,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M009"
+    },
+    {
+      "ordinal": 176,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 9,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M009"
+    },
+    {
+      "ordinal": 177,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 178,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M010"
+    },
+    {
+      "ordinal": 179,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 180,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M010"
+    },
+    {
+      "ordinal": 181,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 182,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M010"
+    },
+    {
+      "ordinal": 183,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 184,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M010"
+    },
+    {
+      "ordinal": 185,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 186,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M010"
+    },
+    {
+      "ordinal": 187,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 188,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M010"
+    },
+    {
+      "ordinal": 189,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 190,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M010"
+    },
+    {
+      "ordinal": 191,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M010"
+    },
+    {
+      "ordinal": 192,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 10,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M010"
+    },
+    {
+      "ordinal": 193,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M011"
+    },
+    {
+      "ordinal": 194,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 195,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M011"
+    },
+    {
+      "ordinal": 196,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 197,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M011"
+    },
+    {
+      "ordinal": 198,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 199,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M011"
+    },
+    {
+      "ordinal": 200,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 201,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M011"
+    },
+    {
+      "ordinal": 202,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 203,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M011"
+    },
+    {
+      "ordinal": 204,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 205,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M011"
+    },
+    {
+      "ordinal": 206,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 207,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M011"
+    },
+    {
+      "ordinal": 208,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 11,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M011"
+    },
+    {
+      "ordinal": 209,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 210,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M012"
+    },
+    {
+      "ordinal": 211,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 212,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M012"
+    },
+    {
+      "ordinal": 213,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 214,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M012"
+    },
+    {
+      "ordinal": 215,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 216,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M012"
+    },
+    {
+      "ordinal": 217,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 218,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M012"
+    },
+    {
+      "ordinal": 219,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 220,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M012"
+    },
+    {
+      "ordinal": 221,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 222,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M012"
+    },
+    {
+      "ordinal": 223,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M012"
+    },
+    {
+      "ordinal": 224,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 12,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M012"
+    },
+    {
+      "ordinal": 225,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M013"
+    },
+    {
+      "ordinal": 226,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 227,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M013"
+    },
+    {
+      "ordinal": 228,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 229,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M013"
+    },
+    {
+      "ordinal": 230,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 231,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M013"
+    },
+    {
+      "ordinal": 232,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 233,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M013"
+    },
+    {
+      "ordinal": 234,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 235,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M013"
+    },
+    {
+      "ordinal": 236,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 237,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M013"
+    },
+    {
+      "ordinal": 238,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 239,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M013"
+    },
+    {
+      "ordinal": 240,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 13,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M013"
+    },
+    {
+      "ordinal": 241,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 242,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M014"
+    },
+    {
+      "ordinal": 243,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 244,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M014"
+    },
+    {
+      "ordinal": 245,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 246,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M014"
+    },
+    {
+      "ordinal": 247,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 248,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M014"
+    },
+    {
+      "ordinal": 249,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 250,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M014"
+    },
+    {
+      "ordinal": 251,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 252,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M014"
+    },
+    {
+      "ordinal": 253,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 254,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M014"
+    },
+    {
+      "ordinal": 255,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M014"
+    },
+    {
+      "ordinal": 256,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 14,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M014"
+    },
+    {
+      "ordinal": 257,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M015"
+    },
+    {
+      "ordinal": 258,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 259,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M015"
+    },
+    {
+      "ordinal": 260,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 261,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M015"
+    },
+    {
+      "ordinal": 262,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 263,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M015"
+    },
+    {
+      "ordinal": 264,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 265,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M015"
+    },
+    {
+      "ordinal": 266,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 267,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M015"
+    },
+    {
+      "ordinal": 268,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 269,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M015"
+    },
+    {
+      "ordinal": 270,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 271,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M015"
+    },
+    {
+      "ordinal": 272,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 15,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M015"
+    },
+    {
+      "ordinal": 273,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 274,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M016"
+    },
+    {
+      "ordinal": 275,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 276,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M016"
+    },
+    {
+      "ordinal": 277,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 278,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M016"
+    },
+    {
+      "ordinal": 279,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 280,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M016"
+    },
+    {
+      "ordinal": 281,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 282,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M016"
+    },
+    {
+      "ordinal": 283,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 284,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M016"
+    },
+    {
+      "ordinal": 285,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 286,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M016"
+    },
+    {
+      "ordinal": 287,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M016"
+    },
+    {
+      "ordinal": 288,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 16,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M016"
+    },
+    {
+      "ordinal": 289,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M017"
+    },
+    {
+      "ordinal": 290,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 291,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M017"
+    },
+    {
+      "ordinal": 292,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 293,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M017"
+    },
+    {
+      "ordinal": 294,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 295,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M017"
+    },
+    {
+      "ordinal": 296,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 297,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M017"
+    },
+    {
+      "ordinal": 298,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 299,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M017"
+    },
+    {
+      "ordinal": 300,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 301,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M017"
+    },
+    {
+      "ordinal": 302,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 303,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M017"
+    },
+    {
+      "ordinal": 304,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 17,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M017"
+    },
+    {
+      "ordinal": 305,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 306,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M018"
+    },
+    {
+      "ordinal": 307,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 308,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M018"
+    },
+    {
+      "ordinal": 309,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 310,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M018"
+    },
+    {
+      "ordinal": 311,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 312,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M018"
+    },
+    {
+      "ordinal": 313,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 314,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M018"
+    },
+    {
+      "ordinal": 315,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 316,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M018"
+    },
+    {
+      "ordinal": 317,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 318,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M018"
+    },
+    {
+      "ordinal": 319,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M018"
+    },
+    {
+      "ordinal": 320,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 18,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M018"
+    },
+    {
+      "ordinal": 321,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M019"
+    },
+    {
+      "ordinal": 322,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 323,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M019"
+    },
+    {
+      "ordinal": 324,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 325,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M019"
+    },
+    {
+      "ordinal": 326,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 327,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M019"
+    },
+    {
+      "ordinal": 328,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 329,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M019"
+    },
+    {
+      "ordinal": 330,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 331,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M019"
+    },
+    {
+      "ordinal": 332,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 333,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M019"
+    },
+    {
+      "ordinal": 334,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 335,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M019"
+    },
+    {
+      "ordinal": 336,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 19,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M019"
+    },
+    {
+      "ordinal": 337,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 338,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M020"
+    },
+    {
+      "ordinal": 339,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 340,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M020"
+    },
+    {
+      "ordinal": 341,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 342,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M020"
+    },
+    {
+      "ordinal": 343,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 344,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M020"
+    },
+    {
+      "ordinal": 345,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 346,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M020"
+    },
+    {
+      "ordinal": 347,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 348,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M020"
+    },
+    {
+      "ordinal": 349,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 350,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M020"
+    },
+    {
+      "ordinal": 351,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M020"
+    },
+    {
+      "ordinal": 352,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 20,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M020"
+    },
+    {
+      "ordinal": 353,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M021"
+    },
+    {
+      "ordinal": 354,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 355,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M021"
+    },
+    {
+      "ordinal": 356,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 357,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M021"
+    },
+    {
+      "ordinal": 358,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 359,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M021"
+    },
+    {
+      "ordinal": 360,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 361,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M021"
+    },
+    {
+      "ordinal": 362,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 363,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M021"
+    },
+    {
+      "ordinal": 364,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 365,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M021"
+    },
+    {
+      "ordinal": 366,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 367,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M021"
+    },
+    {
+      "ordinal": 368,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 21,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M021"
+    },
+    {
+      "ordinal": 369,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 370,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M022"
+    },
+    {
+      "ordinal": 371,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 372,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M022"
+    },
+    {
+      "ordinal": 373,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 374,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M022"
+    },
+    {
+      "ordinal": 375,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 376,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M022"
+    },
+    {
+      "ordinal": 377,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 378,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M022"
+    },
+    {
+      "ordinal": 379,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 380,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M022"
+    },
+    {
+      "ordinal": 381,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 382,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M022"
+    },
+    {
+      "ordinal": 383,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M022"
+    },
+    {
+      "ordinal": 384,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 22,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M022"
+    },
+    {
+      "ordinal": 385,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M023"
+    },
+    {
+      "ordinal": 386,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 387,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M023"
+    },
+    {
+      "ordinal": 388,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 389,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M023"
+    },
+    {
+      "ordinal": 390,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 391,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M023"
+    },
+    {
+      "ordinal": 392,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 393,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M023"
+    },
+    {
+      "ordinal": 394,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 395,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M023"
+    },
+    {
+      "ordinal": 396,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 397,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M023"
+    },
+    {
+      "ordinal": 398,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 399,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M023"
+    },
+    {
+      "ordinal": 400,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 23,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M023"
+    },
+    {
+      "ordinal": 401,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 402,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M024"
+    },
+    {
+      "ordinal": 403,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 404,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M024"
+    },
+    {
+      "ordinal": 405,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 406,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M024"
+    },
+    {
+      "ordinal": 407,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 408,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M024"
+    },
+    {
+      "ordinal": 409,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 410,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M024"
+    },
+    {
+      "ordinal": 411,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 412,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M024"
+    },
+    {
+      "ordinal": 413,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 414,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M024"
+    },
+    {
+      "ordinal": 415,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M024"
+    },
+    {
+      "ordinal": 416,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 24,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M024"
+    },
+    {
+      "ordinal": 417,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M025"
+    },
+    {
+      "ordinal": 418,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 419,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M025"
+    },
+    {
+      "ordinal": 420,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 421,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M025"
+    },
+    {
+      "ordinal": 422,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 423,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M025"
+    },
+    {
+      "ordinal": 424,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 425,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M025"
+    },
+    {
+      "ordinal": 426,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 427,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M025"
+    },
+    {
+      "ordinal": 428,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 429,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M025"
+    },
+    {
+      "ordinal": 430,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 431,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M025"
+    },
+    {
+      "ordinal": 432,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 25,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M025"
+    },
+    {
+      "ordinal": 433,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 434,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M026"
+    },
+    {
+      "ordinal": 435,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 436,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M026"
+    },
+    {
+      "ordinal": 437,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 438,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M026"
+    },
+    {
+      "ordinal": 439,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 440,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M026"
+    },
+    {
+      "ordinal": 441,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 442,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M026"
+    },
+    {
+      "ordinal": 443,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 444,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M026"
+    },
+    {
+      "ordinal": 445,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 446,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M026"
+    },
+    {
+      "ordinal": 447,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M026"
+    },
+    {
+      "ordinal": 448,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 26,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M026"
+    },
+    {
+      "ordinal": 449,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M027"
+    },
+    {
+      "ordinal": 450,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 451,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M027"
+    },
+    {
+      "ordinal": 452,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 453,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M027"
+    },
+    {
+      "ordinal": 454,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 455,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M027"
+    },
+    {
+      "ordinal": 456,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 457,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M027"
+    },
+    {
+      "ordinal": 458,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 459,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M027"
+    },
+    {
+      "ordinal": 460,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 461,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M027"
+    },
+    {
+      "ordinal": 462,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 463,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M027"
+    },
+    {
+      "ordinal": 464,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 27,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M027"
+    },
+    {
+      "ordinal": 465,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 466,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M028"
+    },
+    {
+      "ordinal": 467,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 468,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M028"
+    },
+    {
+      "ordinal": 469,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 470,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M028"
+    },
+    {
+      "ordinal": 471,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 472,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M028"
+    },
+    {
+      "ordinal": 473,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 474,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M028"
+    },
+    {
+      "ordinal": 475,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 476,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M028"
+    },
+    {
+      "ordinal": 477,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 478,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M028"
+    },
+    {
+      "ordinal": 479,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M028"
+    },
+    {
+      "ordinal": 480,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 28,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M028"
+    },
+    {
+      "ordinal": 481,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M029"
+    },
+    {
+      "ordinal": 482,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 483,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M029"
+    },
+    {
+      "ordinal": 484,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 485,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M029"
+    },
+    {
+      "ordinal": 486,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 487,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M029"
+    },
+    {
+      "ordinal": 488,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 489,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M029"
+    },
+    {
+      "ordinal": 490,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 491,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M029"
+    },
+    {
+      "ordinal": 492,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 493,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M029"
+    },
+    {
+      "ordinal": 494,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 495,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M029"
+    },
+    {
+      "ordinal": 496,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 29,
+      "pair_order": "NATIVE_THEN_OAE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M029"
+    },
+    {
+      "ordinal": 497,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 498,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-ORDINARY_TOOL-NATIVE-M030"
+    },
+    {
+      "ordinal": 499,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 500,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-AGENT_AS_TOOL_TRANSITION-NATIVE-M030"
+    },
+    {
+      "ordinal": 501,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 502,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CACHE_REUSE_30-NATIVE-M030"
+    },
+    {
+      "ordinal": 503,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 504,
+      "kind": "MEASURED",
+      "framework": "OpenAI Agents SDK",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-OA-CAPACITY_50-NATIVE-M030"
+    },
+    {
+      "ordinal": 505,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 506,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "ORDINARY_TOOL",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-ORDINARY_TOOL-NATIVE-M030"
+    },
+    {
+      "ordinal": 507,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 508,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "AGENT_AS_TOOL_TRANSITION",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-AGENT_AS_TOOL_TRANSITION-NATIVE-M030"
+    },
+    {
+      "ordinal": 509,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 510,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CACHE_REUSE_30",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CACHE_REUSE_30-NATIVE-M030"
+    },
+    {
+      "ordinal": 511,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "OAE_V4R8",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-OAE_V4R8-M030"
+    },
+    {
+      "ordinal": 512,
+      "kind": "MEASURED",
+      "framework": "Microsoft Agent Framework",
+      "workload": "CAPACITY_50",
+      "configuration": "NATIVE",
+      "repetition": 30,
+      "pair_order": "OAE_THEN_NATIVE",
+      "identity": "DEV-V4R8-FINAL-UTILITY-MS-CAPACITY_50-NATIVE-M030"
+    }
+  ],
+  "protected_runtime_diff_from_runtime_source": [],
+  "source_hashes_before_freeze": {
+    "v4r8_profile": "5734457eecc10ff8e305b25eac5f603ad91ce361b527a90af3287cbe5ccda5ca",
+    "online_session": "0d07818facbe4ef22818906c3c9e5bfe79b6a8f6a542a9043ad6286e373ac467",
+    "frameworks": "4132223a43d99fa165dd381f798479a6ceb795aa42afa943377bae6652eb62e8",
+    "workload_builder": "dc5ea0aad7e0b04496ffb6c4a61f25c7bc17b9b9d21316e14caa2da1f4ed0e56",
+    "bounded_capacity_runner": "3e43e732471f9461bb0c6ff3b73962018d8feec206d1275aab96ee79bbae5c54",
+    "benchmark_runner": "b784bc6e1305e26a0ce0695dfb40d83737a61e510502b5614252308840aa8928"
+  }
+}
