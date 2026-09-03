@@ -1,0 +1,31 @@
+{
+  "schema": "AgentTool.V12V4R8SmokeAnalysisEntrypointErratum/1",
+  "phase": "V12-V4R8-RESPONSE-PUBLIC-ANCHOR-REPAIR",
+  "classification": "PRE_OUTCOME_ANALYSIS_ENTRYPOINT_DELEGATION_DEFECT",
+  "failed_attempt": {
+    "stage": "ANALYSIS_WRAPPER_ENTRY_BEFORE_MODEL_FIT",
+    "exception": "AttributeError: module 'analyze_v12_v4r7_late_frame_smoke' has no attribute 'main'",
+    "completed_classifier_fits": 0,
+    "auc_calculations": 0,
+    "bootstrap_runs": 0,
+    "randomization_runs": 0,
+    "preserved_log": "analysis_attempt1.log"
+  },
+  "repair": {
+    "file": "scripts/analyze_v12_v4r8_response_anchor_smoke.py",
+    "old_committed_sha256": "6c8b9d8115c734aae7888a28c5616f2058721191f7c60a856ebc5cb2cca59d05",
+    "new_committed_sha256": "3e635d68ff0e44da437182a9f51c577857e17dd9d91372f0b6a31ca06140f78f",
+    "old_call": "implementation.main()",
+    "new_call": "implementation.implementation.main()",
+    "repair_commit": "0310486c3ff3b1f2587cf946fa84f3f38c20fcce"
+  },
+  "dataset_diff": "NONE",
+  "selected_block_diff": "NONE",
+  "observer_feature_diff": "NONE",
+  "model_family_diff": "NONE",
+  "hyperparameter_diff": "NONE",
+  "seed_mapping_diff": "NONE",
+  "bootstrap_diff": "NONE",
+  "randomization_diff": "NONE",
+  "statistical_protocol_diff": "NONE"
+}
