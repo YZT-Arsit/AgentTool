@@ -1,0 +1,650 @@
+{
+  "schema": "AgentTool.V12V4R8ResponseAnchorSmokeAnalysis/1",
+  "phase": "V12-V4R8-RESPONSE-PUBLIC-ANCHOR-REPAIR",
+  "historical_result_commit": "558c97bd5ca8bb9123382800cb73eb410cab6342",
+  "execution_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "planned_sessions": 640,
+  "executed_sessions": 640,
+  "complete_sessions": 638,
+  "failed_sessions": 2,
+  "retries": 0,
+  "completion_channel": [
+    {
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "class0_total": 64,
+      "class1_total": 64,
+      "class0_failures": 0,
+      "class1_failures": 0,
+      "complete_matched_blocks": 64,
+      "class0_failed_class1_complete": 0,
+      "class0_complete_class1_failed": 0,
+      "both_failed_blocks": 0,
+      "paired_exact_two_sided_p": 1.0,
+      "failure_channel_flag": false,
+      "operational_reliability_concern": false,
+      "class0_failure_rate": 0.0,
+      "class1_failure_rate": 0.0,
+      "absolute_failure_rate_difference": 0.0,
+      "asymmetric_incomplete_blocks": 0
+    },
+    {
+      "coordinate_id": "P10-T7-OA",
+      "class0_total": 64,
+      "class1_total": 64,
+      "class0_failures": 0,
+      "class1_failures": 0,
+      "complete_matched_blocks": 64,
+      "class0_failed_class1_complete": 0,
+      "class0_complete_class1_failed": 0,
+      "both_failed_blocks": 0,
+      "paired_exact_two_sided_p": 1.0,
+      "failure_channel_flag": false,
+      "operational_reliability_concern": false,
+      "class0_failure_rate": 0.0,
+      "class1_failure_rate": 0.0,
+      "absolute_failure_rate_difference": 0.0,
+      "asymmetric_incomplete_blocks": 0
+    },
+    {
+      "coordinate_id": "P10-T7-MS",
+      "class0_total": 64,
+      "class1_total": 64,
+      "class0_failures": 0,
+      "class1_failures": 0,
+      "complete_matched_blocks": 64,
+      "class0_failed_class1_complete": 0,
+      "class0_complete_class1_failed": 0,
+      "both_failed_blocks": 0,
+      "paired_exact_two_sided_p": 1.0,
+      "failure_channel_flag": false,
+      "operational_reliability_concern": false,
+      "class0_failure_rate": 0.0,
+      "class1_failure_rate": 0.0,
+      "absolute_failure_rate_difference": 0.0,
+      "asymmetric_incomplete_blocks": 0
+    },
+    {
+      "coordinate_id": "P10-T9-OA",
+      "class0_total": 64,
+      "class1_total": 64,
+      "class0_failures": 0,
+      "class1_failures": 2,
+      "complete_matched_blocks": 62,
+      "class0_failed_class1_complete": 0,
+      "class0_complete_class1_failed": 2,
+      "both_failed_blocks": 0,
+      "paired_exact_two_sided_p": 0.5,
+      "failure_channel_flag": false,
+      "operational_reliability_concern": true,
+      "class0_failure_rate": 0.0,
+      "class1_failure_rate": 0.03125,
+      "absolute_failure_rate_difference": 0.03125,
+      "asymmetric_incomplete_blocks": 2
+    },
+    {
+      "coordinate_id": "P10-T9-MS",
+      "class0_total": 64,
+      "class1_total": 64,
+      "class0_failures": 0,
+      "class1_failures": 0,
+      "complete_matched_blocks": 64,
+      "class0_failed_class1_complete": 0,
+      "class0_complete_class1_failed": 0,
+      "both_failed_blocks": 0,
+      "paired_exact_two_sided_p": 1.0,
+      "failure_channel_flag": false,
+      "operational_reliability_concern": false,
+      "class0_failure_rate": 0.0,
+      "class1_failure_rate": 0.0,
+      "absolute_failure_rate_difference": 0.0,
+      "asymmetric_incomplete_blocks": 0
+    }
+  ],
+  "observer_comparisons": [
+    {
+      "task_id": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "status": "EVALUATED",
+      "selected_train_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.6222222222222222,
+      "train_score_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6222222222222222,
+      "eval_point_auc": 0.5555555555555556,
+      "eval_ci95_two_sided_low": 0.4121944444444445,
+      "eval_ci95_two_sided_high": 0.6955555555555556,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.5555555555555556,
+        "one_sided_randomization_p": 0.21797820217978203,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.48444444444444446,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5155555555555555
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5111111111111111,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5111111111111111
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6222222222222222,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6222222222222222
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5333333333333333,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5333333333333333
+        }
+      },
+      "raw_protocol_seed64": 5550131751429183107,
+      "sklearn_final_seed32": 210605699,
+      "eval_lcb95_one_sided": 0.43666666666666665,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.21797820217978203
+    },
+    {
+      "task_id": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "status": "EVALUATED",
+      "selected_train_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.6133333333333333,
+      "train_score_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.6133333333333333,
+      "eval_point_auc": 0.5688888888888889,
+      "eval_ci95_two_sided_low": 0.4111111111111111,
+      "eval_ci95_two_sided_high": 0.7222222222222222,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.5688888888888889,
+        "one_sided_randomization_p": 0.1865813418658134,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5522222222222223,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5522222222222223
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.3888888888888889,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.6111111111111112
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.6133333333333333,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6133333333333333
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.528888888888889,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.528888888888889
+        }
+      },
+      "raw_protocol_seed64": 5979902632685259450,
+      "sklearn_final_seed32": 4104178362,
+      "eval_lcb95_one_sided": 0.43777777777777777,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.1865813418658134
+    },
+    {
+      "task_id": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "status": "EVALUATED",
+      "selected_train_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.4177777777777778,
+      "train_score_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5822222222222222,
+      "eval_point_auc": 0.4555555555555555,
+      "eval_ci95_two_sided_low": 0.29777777777777775,
+      "eval_ci95_two_sided_high": 0.6211111111111111,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.4555555555555555,
+        "one_sided_randomization_p": 0.7101289871012899,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5433333333333333,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5433333333333333
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.4672222222222222,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5327777777777778
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4177777777777778,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5822222222222222
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5361111111111112,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5361111111111112
+        }
+      },
+      "raw_protocol_seed64": 5979902632685259451,
+      "sklearn_final_seed32": 4104178363,
+      "eval_lcb95_one_sided": 0.3211111111111111,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.7101289871012899
+    },
+    {
+      "task_id": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "status": "EVALUATED",
+      "selected_train_model": "RBF_SVM",
+      "train_cv_raw_auc": 0.35444444444444445,
+      "train_score_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.6455555555555555,
+      "eval_point_auc": 0.5566666666666666,
+      "eval_ci95_two_sided_low": 0.42444444444444446,
+      "eval_ci95_two_sided_high": 0.6933333333333334,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.5566666666666666,
+        "one_sided_randomization_p": 0.20507949205079493,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.3811111111111111,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.6188888888888888
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.46777777777777785,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5322222222222222
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.53,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.53
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.35444444444444445,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.6455555555555555
+        }
+      },
+      "raw_protocol_seed64": 9236021451694762358,
+      "sklearn_final_seed32": 1713858934,
+      "eval_lcb95_one_sided": 0.4444444444444444,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.20507949205079493
+    },
+    {
+      "task_id": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "status": "EVALUATED",
+      "selected_train_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.3288888888888889,
+      "train_score_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.6711111111111111,
+      "eval_point_auc": 0.4266666666666667,
+      "eval_ci95_two_sided_low": 0.27666666666666667,
+      "eval_ci95_two_sided_high": 0.5766666666666667,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.4266666666666667,
+        "one_sided_randomization_p": 0.8394160583941606,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.63,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.63
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.6066666666666667,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6066666666666667
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.3288888888888889,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.6711111111111111
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.52,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.52
+        }
+      },
+      "raw_protocol_seed64": 9236021451694762359,
+      "sklearn_final_seed32": 1713858935,
+      "eval_lcb95_one_sided": 0.3011111111111111,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.8394160583941606
+    },
+    {
+      "task_id": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "status": "EVALUATED",
+      "selected_train_model": "HIST_GRADIENT_BOOSTING",
+      "train_cv_raw_auc": 0.8388888888888889,
+      "train_score_orientation": "NORMAL",
+      "train_distinguishability_auc": 0.8388888888888889,
+      "eval_point_auc": 0.8244444444444445,
+      "eval_ci95_two_sided_low": 0.6711111111111111,
+      "eval_ci95_two_sided_high": 0.9511111111111111,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.8244444444444445,
+        "one_sided_randomization_p": 0.00039996000399960006,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.6066666666666666,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.6066666666666666
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.5366666666666666,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5366666666666666
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.8388888888888889,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.8388888888888889
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.46555555555555556,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5344444444444445
+        }
+      },
+      "raw_protocol_seed64": 10057149797537735674,
+      "sklearn_final_seed32": 2938168314,
+      "eval_lcb95_one_sided": 0.6988888888888889,
+      "repair_smoke_failure": true,
+      "randomization_p": 0.00039996000399960006
+    },
+    {
+      "task_id": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "status": "EVALUATED",
+      "selected_train_model": "EXTRA_TREES",
+      "train_cv_raw_auc": 0.41,
+      "train_score_orientation": "INVERTED",
+      "train_distinguishability_auc": 0.5900000000000001,
+      "eval_point_auc": 0.44666666666666666,
+      "eval_ci95_two_sided_low": 0.32222222222222224,
+      "eval_ci95_two_sided_high": 0.5744444444444444,
+      "train_blocks": 30,
+      "eval_blocks": 30,
+      "train_sessions": 60,
+      "eval_sessions": 60,
+      "decisive_eval_model_count": 1,
+      "bootstrap_resamples": 10000,
+      "bootstrap_unit": "COMPLETE_MATCHED_EVAL_BLOCK",
+      "model_refit_inside_bootstrap": false,
+      "orientation_reselected_inside_bootstrap": false,
+      "randomization": {
+        "observed_auc": 0.44666666666666666,
+        "one_sided_randomization_p": 0.7887211278872113,
+        "randomization_resamples": 10000,
+        "randomization_unit": "WITHIN_COMPLETE_MATCHED_BLOCK_LABEL_SWAP",
+        "role": "SECONDARY_NULL_CONSISTENCY_DIAGNOSTIC"
+      },
+      "all_train_model_diagnostics": {
+        "LOGISTIC_REGRESSION": {
+          "raw_train_cv_auc": 0.5277777777777778,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5277777777777778
+        },
+        "EXTRA_TREES": {
+          "raw_train_cv_auc": 0.41,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5900000000000001
+        },
+        "HIST_GRADIENT_BOOSTING": {
+          "raw_train_cv_auc": 0.4344444444444444,
+          "orientation": "INVERTED",
+          "train_distinguishability_auc": 0.5655555555555556
+        },
+        "RBF_SVM": {
+          "raw_train_cv_auc": 0.5244444444444445,
+          "orientation": "NORMAL",
+          "train_distinguishability_auc": 0.5244444444444445
+        }
+      },
+      "raw_protocol_seed64": 9162884633290565191,
+      "sklearn_final_seed32": 3844826695,
+      "eval_lcb95_one_sided": 0.3411111111111111,
+      "repair_smoke_failure": false,
+      "randomization_p": 0.7887211278872113
+    }
+  ],
+  "smoke_failure_rule": "ANY one-sided LCB95 > 0.65",
+  "duplex_repair_smoke": "FAIL_SUBSTANTIAL_RESIDUAL_DISTINGUISHABILITY",
+  "ready_for_full_duplex_sentinel": false,
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "P10_full": "NOT_RUN",
+  "P20": "NOT_RUN",
+  "P25": "NOT_RUN",
+  "confirmatory": "NOT_RUN",
+  "final_holdout": "NOT_RUN",
+  "dataset_manifest_sha256": "fd31ba579c6b474718b2cc781a5ba554a5fd1e7def257567782c0cc90affe3cf",
+  "dataset_inventory_sha256": "2cf684c4688c8abeca8920e4b4d8d0009ff6663b904d1b465bd45579e2c5d9a4",
+  "seed_domain_manifest_sha256": "e79d1871d50349c4baee666abb35dc42cccf7fc7e4d65f9a9ec4898d096b879a",
+  "analysis_input_manifest_sha256": "34c930beb13f1a12b1b0f63fb4caba02ce3dd0d2e0a61738a359856c7a848b3c",
+  "historical_one_sided_vs_duplex_smoke": [
+    {
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "historical_one_sided_P10_AUC": 0.980763888888889,
+      "duplex_repair_smoke_AUC": 0.4555555555555555,
+      "AUC_reduction": 0.5252083333333335,
+      "datasets_combined": false,
+      "role": "DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "historical_one_sided_P10_AUC": 0.9693055555555555,
+      "duplex_repair_smoke_AUC": 0.4266666666666667,
+      "AUC_reduction": 0.5426388888888889,
+      "datasets_combined": false,
+      "role": "DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "historical_one_sided_P10_AUC": 0.9779861111111111,
+      "duplex_repair_smoke_AUC": 0.8244444444444445,
+      "AUC_reduction": 0.15354166666666658,
+      "datasets_combined": false,
+      "role": "DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "historical_one_sided_P10_AUC": 0.9902777777777778,
+      "duplex_repair_smoke_AUC": 0.44666666666666666,
+      "AUC_reduction": 0.5436111111111112,
+      "datasets_combined": false,
+      "role": "DEVELOPMENT_ABLATION_ONLY"
+    }
+  ],
+  "platform_diagnostics": {
+    "launch_slip_ns": {
+      "count": 332398,
+      "p50": 20211421,
+      "p95": 44300567,
+      "p99": 49227458,
+      "max": 66031863
+    },
+    "relay_request_gap_ns": {
+      "count": 331760,
+      "p50": 10072528,
+      "p95": 10392239,
+      "p99": 10697946,
+      "max": 20668354
+    },
+    "relay_response_send_gap_ns": {
+      "count": 331760,
+      "p50": 10076467,
+      "p95": 10310580,
+      "p99": 10502912,
+      "max": 87577909
+    },
+    "registry_query_gap_ns": {
+      "count": 63162,
+      "p50": 60002280,
+      "p95": 60007377,
+      "p99": 60014300,
+      "max": 181339190
+    },
+    "registry_request_response_ns": {
+      "count": 63800,
+      "p50": 51856910,
+      "p95": 53387063,
+      "p99": 53806515,
+      "max": 77457964
+    },
+    "complete_session_count": 638,
+    "nominal_late_cell_count": 249217,
+    "liveness_failures_among_complete": 0,
+    "response_deadline_miss_count": 21,
+    "response_release_slip_ns": {
+      "count": 332398,
+      "p50": 70397,
+      "p95": 161129,
+      "p99": 284512,
+      "max": 208439290
+    },
+    "maximum_response_release_slip_ns": 208439290,
+    "response_deadline_miss_is_diagnostic_only": true,
+    "outlier_removal": "NONE",
+    "winsorization": "NONE",
+    "role": "PLATFORM_DIAGNOSTIC_NOT_CLASSIFIER_FEATURE"
+  },
+  "runtime_revision": "DUPLEX_PUBLIC_TIMING_VIRTUALIZATION_V4R8",
+  "targeted_change": "REMOVE_GATEWAY_REQUEST_ARRIVAL_FROM_PLANNED_RESPONSE_CLOCK",
+  "development_ablation": [
+    {
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "historical_one_sided_AUC": 0.980763888888889,
+      "V4R7_AUC": 0.4855555555555555,
+      "V4R8_AUC": 0.4555555555555555,
+      "datasets_combined": false,
+      "role": "POST_OUTCOME_DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "historical_one_sided_AUC": 0.9693055555555555,
+      "V4R7_AUC": 0.6711111111111111,
+      "V4R8_AUC": 0.4266666666666667,
+      "datasets_combined": false,
+      "role": "POST_OUTCOME_DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "historical_one_sided_AUC": 0.9779861111111111,
+      "V4R7_AUC": 0.6844444444444444,
+      "V4R8_AUC": 0.8244444444444445,
+      "datasets_combined": false,
+      "role": "POST_OUTCOME_DEVELOPMENT_ABLATION_ONLY"
+    },
+    {
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "historical_one_sided_AUC": 0.9902777777777778,
+      "V4R7_AUC": 0.4688888888888889,
+      "V4R8_AUC": 0.44666666666666666,
+      "datasets_combined": false,
+      "role": "POST_OUTCOME_DEVELOPMENT_ABLATION_ONLY"
+    }
+  ]
+}

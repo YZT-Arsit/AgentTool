@@ -1,0 +1,20 @@
+{
+  "schema": "AgentTool.V12V4R8ResponseAnchorSmokeCollection/1",
+  "manifest_sha256": "45edab697e6f4d4cfc3bfd49c87662a75379b716d5bb742a6552e2a89f7e900e",
+  "execution_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "expected_sessions": 640,
+  "executed_sessions": 640,
+  "complete_sessions": 638,
+  "failed_sessions": 2,
+  "retries": 0,
+  "serial_same_host_execution": true,
+  "classifier_training_during_collection": 0,
+  "auc_calculations_during_collection": 0,
+  "bootstrap_runs_during_collection": 0,
+  "status": "COLLECTION_CLOSED_COMPLETE",
+  "started_ns": 1788394343173505171,
+  "last_ledger_record_sha256": "005f83e03f49075a0b992da3b67b563d4f4a88c3893e94caff290e839686e300",
+  "ended_ns": 1788399832982981830,
+  "dataset_manifest_sha256": "fd31ba579c6b474718b2cc781a5ba554a5fd1e7def257567782c0cc90affe3cf",
+  "dataset_inventory_sha256": "2cf684c4688c8abeca8920e4b4d8d0009ff6663b904d1b465bd45579e2c5d9a4"
+}

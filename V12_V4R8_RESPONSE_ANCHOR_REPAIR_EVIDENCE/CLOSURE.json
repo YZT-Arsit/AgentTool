@@ -1,0 +1,104 @@
+{
+  "schema": "AgentTool.V12V4R8ResponseAnchorRepairClosure/1",
+  "phase": "V12-V4R8-RESPONSE-PUBLIC-ANCHOR-REPAIR",
+  "base_attribution": "eedc1cfb55973ec8885a971129353c9211111aea",
+  "base_v4r7_smoke": "f66649590f1159a5bce280baaea2cfdc3218435c",
+  "base_v4r7_functional_utility_closure": "06bb4677fe51defb8823a1fcaf685856cda15845",
+  "runtime_revision": "V4R8",
+  "targeted_change": "REMOVE_GATEWAY_REQUEST_ARRIVAL_FROM_PLANNED_RESPONSE_CLOCK",
+  "old_response_clock": "F_i=max(E_i+rho,gateway_request_arrival_i+L_response,F_(i-1)+Delta)",
+  "new_response_clock": "F_1=E_1+rho; F_i=max(E_i+rho,F_(i-1)+Delta)",
+  "gateway_arrival_in_F_i": false,
+  "physical_release_clock": "S_i=max(F_i,S_(i-1)+Delta)",
+  "commitment_cutoff": "G_i=F_i-L_response",
+  "public_profile": {
+    "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "rho_ms": 30,
+    "response_preparation_lead_ms": 20,
+    "R": 521,
+    "Q": 100,
+    "request_bytes": 1079,
+    "response_bytes": 800
+  },
+  "utility_parameter_diff": "NONE",
+  "observer_feature_diff": "NONE",
+  "statistical_protocol_diff": "NONE",
+  "deterministic_tests": {
+    "v4r8_specific_go": "5/5 PASS",
+    "canonicalv9_go_package": "49/49 PASS",
+    "v4r8_python": "6/6 PASS",
+    "preexisting_relevant_regression": "32/32 PASS",
+    "ruff_changed_analysis_and_v4r8_files": "PASS"
+  },
+  "deployment_integrity": {
+    "execution_source_commit": "63319014f560f46e2a46dd140f53551e43c27e0d",
+    "files": "326/326",
+    "module_probes": "11/11",
+    "binaries": "2/2",
+    "status": "PASS"
+  },
+  "planned_smoke_sessions": 640,
+  "executed_smoke_sessions": 640,
+  "complete_sessions": 638,
+  "failed_sessions": 2,
+  "retries": 0,
+  "collection_status": "COLLECTION_CLOSED_COMPLETE",
+  "collection_statistics_during_collection": {
+    "classifier_training": 0,
+    "auc": 0,
+    "bootstrap": 0,
+    "randomization": 0
+  },
+  "isolated_failures": {
+    "category": "FRAMEWORK_SEMANTIC_COMPLETION_FAILURE",
+    "coordinate": "T9/OpenAI/class1",
+    "count": 2,
+    "failed_identities_retried": 0,
+    "complete_matched_blocks_remaining": 62
+  },
+  "platform_diagnostics": {
+    "response_deadline_misses": 21,
+    "maximum_response_release_slip_ns": 208439290,
+    "deadline_miss_role": "DIAGNOSTIC_ONLY",
+    "outlier_removal": "NONE",
+    "winsorization": "NONE"
+  },
+  "analysis_attempt_audit": {
+    "attempt_1": "PREFIT_WRAPPER_ENTRYPOINT_FAILURE",
+    "attempt_2": "PREFIT_EXECUTION_SOURCE_BINDING_FAILURE",
+    "attempt_3": "SSH_INFRASTRUCTURE_INTERRUPTION_AFTER_TRAIN_FITS_BEFORE_ANY_RESULT_FILE_OR_AUC_EXPOSURE",
+    "attempt_4": "PERSISTENT_FROZEN_ANALYSIS_COMPLETE",
+    "dataset_changed_between_attempts": false,
+    "selected_blocks_changed_between_attempts": false,
+    "seed_manifest_changed_between_attempts": false,
+    "statistical_protocol_changed_between_attempts": false
+  },
+  "observer_comparisons": [
+    {"task":"C1_REGISTRY_RESOLUTION_PATTERN","framework":"OpenAI Agents SDK","observer":"REGISTRY","selected_model":"HIST_GRADIENT_BOOSTING","train_distinguishability_auc":0.6222222222222222,"eval_auc":0.5555555555555556,"ci95":[0.4121944444444445,0.6955555555555556],"lcb95":0.43666666666666665,"randomization_p":0.21797820217978203,"repair_smoke_failure":false},
+    {"task":"T7","framework":"OpenAI Agents SDK","observer":"REGISTRY","selected_model":"HIST_GRADIENT_BOOSTING","train_distinguishability_auc":0.6133333333333333,"eval_auc":0.5688888888888889,"ci95":[0.4111111111111111,0.7222222222222222],"lcb95":0.43777777777777777,"randomization_p":0.1865813418658134,"repair_smoke_failure":false},
+    {"task":"T7","framework":"OpenAI Agents SDK","observer":"RELAY","selected_model":"HIST_GRADIENT_BOOSTING","train_distinguishability_auc":0.5822222222222222,"eval_auc":0.4555555555555555,"ci95":[0.29777777777777775,0.6211111111111111],"lcb95":0.3211111111111111,"randomization_p":0.7101289871012899,"repair_smoke_failure":false},
+    {"task":"T7","framework":"Microsoft Agent Framework","observer":"REGISTRY","selected_model":"RBF_SVM","train_distinguishability_auc":0.6455555555555555,"eval_auc":0.5566666666666666,"ci95":[0.42444444444444446,0.6933333333333334],"lcb95":0.4444444444444444,"randomization_p":0.20507949205079493,"repair_smoke_failure":false},
+    {"task":"T7","framework":"Microsoft Agent Framework","observer":"RELAY","selected_model":"HIST_GRADIENT_BOOSTING","train_distinguishability_auc":0.6711111111111111,"eval_auc":0.4266666666666667,"ci95":[0.27666666666666667,0.5766666666666667],"lcb95":0.3011111111111111,"randomization_p":0.8394160583941606,"repair_smoke_failure":false},
+    {"task":"T9","framework":"OpenAI Agents SDK","observer":"RELAY","selected_model":"HIST_GRADIENT_BOOSTING","train_distinguishability_auc":0.8388888888888889,"eval_auc":0.8244444444444445,"ci95":[0.6711111111111111,0.9511111111111111],"lcb95":0.6988888888888889,"randomization_p":0.00039996000399960006,"repair_smoke_failure":true},
+    {"task":"T9","framework":"Microsoft Agent Framework","observer":"RELAY","selected_model":"EXTRA_TREES","train_distinguishability_auc":0.5900000000000001,"eval_auc":0.44666666666666666,"ci95":[0.32222222222222224,0.5744444444444444],"lcb95":0.3411111111111111,"randomization_p":0.7887211278872113,"repair_smoke_failure":false}
+  ],
+  "relay_development_ablation": [
+    {"task":"T7","framework":"OpenAI Agents SDK","historical_one_sided_auc":0.980763888888889,"v4r7_auc":0.4855555555555555,"v4r8_auc":0.4555555555555555},
+    {"task":"T7","framework":"Microsoft Agent Framework","historical_one_sided_auc":0.9693055555555555,"v4r7_auc":0.6711111111111111,"v4r8_auc":0.4266666666666667},
+    {"task":"T9","framework":"OpenAI Agents SDK","historical_one_sided_auc":0.9779861111111111,"v4r7_auc":0.6844444444444444,"v4r8_auc":0.8244444444444445},
+    {"task":"T9","framework":"Microsoft Agent Framework","historical_one_sided_auc":0.9902777777777778,"v4r7_auc":0.4688888888888889,"v4r8_auc":0.44666666666666666}
+  ],
+  "v4r8_duplex_repair_smoke": "FAIL_SUBSTANTIAL_RESIDUAL_DISTINGUISHABILITY",
+  "ready_for_full_duplex_sentinel": false,
+  "timing_privacy": "INCONCLUSIVE",
+  "timing_go": "NO",
+  "P10_full": "NOT_RUN",
+  "P20": "NOT_RUN",
+  "P25": "NOT_RUN",
+  "confirmatory": "NOT_RUN",
+  "final_holdout": "NOT_RUN"
+}

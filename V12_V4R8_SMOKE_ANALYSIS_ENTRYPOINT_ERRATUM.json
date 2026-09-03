@@ -14,7 +14,7 @@
   "repair": {
     "file": "scripts/analyze_v12_v4r8_response_anchor_smoke.py",
     "old_committed_sha256": "6c8b9d8115c734aae7888a28c5616f2058721191f7c60a856ebc5cb2cca59d05",
-    "new_committed_sha256": "3e635d68ff0e44da437182a9f51c577857e17dd9d91372f0b6a31ca06140f78f",
+    "new_committed_sha256": "5ead29fdc4f1dc009102e0efaa8e38ab927b7654bdd28b4399d9efe56ae1245a",
     "old_call": "implementation.main()",
     "new_call": "implementation.implementation.main()",
     "repair_commit": "0310486c3ff3b1f2587cf946fa84f3f38c20fcce"

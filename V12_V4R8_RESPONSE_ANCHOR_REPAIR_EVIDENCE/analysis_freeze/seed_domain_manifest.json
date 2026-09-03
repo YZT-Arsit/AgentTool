@@ -1,0 +1,925 @@
+{
+  "schema": "AgentTool.V12DuplexRepairSmokeSeedManifest/1",
+  "conversion_rule": "UINT64_MOD_2_POW_32",
+  "invalid_sklearn_random_states": 0,
+  "unintended_duplicate_fold_seed_comparisons": [],
+  "comparisons": [
+    {
+      "coordinate_id": "P10-C1_REGISTRY_RESOLUTION_PATTERN-OA",
+      "task": "C1_REGISTRY_RESOLUTION_PATTERN",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "observer_index": 0,
+      "raw_coordinate_seed64": 5550131751429183107,
+      "sklearn_final_seed32": 210605699,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5550131751429193107,
+          "sklearn_fold_seed32": 210615699
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5550131751429193108,
+          "sklearn_fold_seed32": 210615700
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5550131751429193109,
+          "sklearn_fold_seed32": 210615701
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5550131751429193110,
+          "sklearn_fold_seed32": 210615702
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5550131751429193111,
+          "sklearn_fold_seed32": 210615703
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5550131751429203107,
+          "sklearn_fold_seed32": 210625699
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5550131751429203108,
+          "sklearn_fold_seed32": 210625700
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5550131751429203109,
+          "sklearn_fold_seed32": 210625701
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5550131751429203110,
+          "sklearn_fold_seed32": 210625702
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5550131751429203111,
+          "sklearn_fold_seed32": 210625703
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5550131751429213107,
+          "sklearn_fold_seed32": 210635699
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5550131751429213108,
+          "sklearn_fold_seed32": 210635700
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5550131751429213109,
+          "sklearn_fold_seed32": 210635701
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5550131751429213110,
+          "sklearn_fold_seed32": 210635702
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5550131751429213111,
+          "sklearn_fold_seed32": 210635703
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5550131751429223107,
+          "sklearn_fold_seed32": 210645699
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5550131751429223108,
+          "sklearn_fold_seed32": 210645700
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5550131751429223109,
+          "sklearn_fold_seed32": 210645701
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5550131751429223110,
+          "sklearn_fold_seed32": 210645702
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5550131751429223111,
+          "sklearn_fold_seed32": 210645703
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "REGISTRY",
+      "observer_index": 0,
+      "raw_coordinate_seed64": 5979902632685259450,
+      "sklearn_final_seed32": 4104178362,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685269450,
+          "sklearn_fold_seed32": 4104188362
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685269451,
+          "sklearn_fold_seed32": 4104188363
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685269452,
+          "sklearn_fold_seed32": 4104188364
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685269453,
+          "sklearn_fold_seed32": 4104188365
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685269454,
+          "sklearn_fold_seed32": 4104188366
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685279450,
+          "sklearn_fold_seed32": 4104198362
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685279451,
+          "sklearn_fold_seed32": 4104198363
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685279452,
+          "sklearn_fold_seed32": 4104198364
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685279453,
+          "sklearn_fold_seed32": 4104198365
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685279454,
+          "sklearn_fold_seed32": 4104198366
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685289450,
+          "sklearn_fold_seed32": 4104208362
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685289451,
+          "sklearn_fold_seed32": 4104208363
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685289452,
+          "sklearn_fold_seed32": 4104208364
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685289453,
+          "sklearn_fold_seed32": 4104208365
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685289454,
+          "sklearn_fold_seed32": 4104208366
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685299450,
+          "sklearn_fold_seed32": 4104218362
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685299451,
+          "sklearn_fold_seed32": 4104218363
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685299452,
+          "sklearn_fold_seed32": 4104218364
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685299453,
+          "sklearn_fold_seed32": 4104218365
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685299454,
+          "sklearn_fold_seed32": 4104218366
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T7-OA",
+      "task": "T7",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "observer_index": 1,
+      "raw_coordinate_seed64": 5979902632685259451,
+      "sklearn_final_seed32": 4104178363,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685269451,
+          "sklearn_fold_seed32": 4104188363
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685269452,
+          "sklearn_fold_seed32": 4104188364
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685269453,
+          "sklearn_fold_seed32": 4104188365
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685269454,
+          "sklearn_fold_seed32": 4104188366
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685269455,
+          "sklearn_fold_seed32": 4104188367
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685279451,
+          "sklearn_fold_seed32": 4104198363
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685279452,
+          "sklearn_fold_seed32": 4104198364
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685279453,
+          "sklearn_fold_seed32": 4104198365
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685279454,
+          "sklearn_fold_seed32": 4104198366
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685279455,
+          "sklearn_fold_seed32": 4104198367
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685289451,
+          "sklearn_fold_seed32": 4104208363
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685289452,
+          "sklearn_fold_seed32": 4104208364
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685289453,
+          "sklearn_fold_seed32": 4104208365
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685289454,
+          "sklearn_fold_seed32": 4104208366
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685289455,
+          "sklearn_fold_seed32": 4104208367
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 5979902632685299451,
+          "sklearn_fold_seed32": 4104218363
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 5979902632685299452,
+          "sklearn_fold_seed32": 4104218364
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 5979902632685299453,
+          "sklearn_fold_seed32": 4104218365
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 5979902632685299454,
+          "sklearn_fold_seed32": 4104218366
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 5979902632685299455,
+          "sklearn_fold_seed32": 4104218367
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "REGISTRY",
+      "observer_index": 0,
+      "raw_coordinate_seed64": 9236021451694762358,
+      "sklearn_final_seed32": 1713858934,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694772358,
+          "sklearn_fold_seed32": 1713868934
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694772359,
+          "sklearn_fold_seed32": 1713868935
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694772360,
+          "sklearn_fold_seed32": 1713868936
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694772361,
+          "sklearn_fold_seed32": 1713868937
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694772362,
+          "sklearn_fold_seed32": 1713868938
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694782358,
+          "sklearn_fold_seed32": 1713878934
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694782359,
+          "sklearn_fold_seed32": 1713878935
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694782360,
+          "sklearn_fold_seed32": 1713878936
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694782361,
+          "sklearn_fold_seed32": 1713878937
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694782362,
+          "sklearn_fold_seed32": 1713878938
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694792358,
+          "sklearn_fold_seed32": 1713888934
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694792359,
+          "sklearn_fold_seed32": 1713888935
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694792360,
+          "sklearn_fold_seed32": 1713888936
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694792361,
+          "sklearn_fold_seed32": 1713888937
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694792362,
+          "sklearn_fold_seed32": 1713888938
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694802358,
+          "sklearn_fold_seed32": 1713898934
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694802359,
+          "sklearn_fold_seed32": 1713898935
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694802360,
+          "sklearn_fold_seed32": 1713898936
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694802361,
+          "sklearn_fold_seed32": 1713898937
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694802362,
+          "sklearn_fold_seed32": 1713898938
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T7-MS",
+      "task": "T7",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "observer_index": 1,
+      "raw_coordinate_seed64": 9236021451694762359,
+      "sklearn_final_seed32": 1713858935,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694772359,
+          "sklearn_fold_seed32": 1713868935
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694772360,
+          "sklearn_fold_seed32": 1713868936
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694772361,
+          "sklearn_fold_seed32": 1713868937
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694772362,
+          "sklearn_fold_seed32": 1713868938
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694772363,
+          "sklearn_fold_seed32": 1713868939
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694782359,
+          "sklearn_fold_seed32": 1713878935
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694782360,
+          "sklearn_fold_seed32": 1713878936
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694782361,
+          "sklearn_fold_seed32": 1713878937
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694782362,
+          "sklearn_fold_seed32": 1713878938
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694782363,
+          "sklearn_fold_seed32": 1713878939
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694792359,
+          "sklearn_fold_seed32": 1713888935
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694792360,
+          "sklearn_fold_seed32": 1713888936
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694792361,
+          "sklearn_fold_seed32": 1713888937
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694792362,
+          "sklearn_fold_seed32": 1713888938
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694792363,
+          "sklearn_fold_seed32": 1713888939
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9236021451694802359,
+          "sklearn_fold_seed32": 1713898935
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9236021451694802360,
+          "sklearn_fold_seed32": 1713898936
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9236021451694802361,
+          "sklearn_fold_seed32": 1713898937
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9236021451694802362,
+          "sklearn_fold_seed32": 1713898938
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9236021451694802363,
+          "sklearn_fold_seed32": 1713898939
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T9-OA",
+      "task": "T9",
+      "framework": "OpenAI Agents SDK",
+      "observer": "RELAY",
+      "observer_index": 0,
+      "raw_coordinate_seed64": 10057149797537735674,
+      "sklearn_final_seed32": 2938168314,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 10057149797537745674,
+          "sklearn_fold_seed32": 2938178314
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 10057149797537745675,
+          "sklearn_fold_seed32": 2938178315
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 10057149797537745676,
+          "sklearn_fold_seed32": 2938178316
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 10057149797537745677,
+          "sklearn_fold_seed32": 2938178317
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 10057149797537745678,
+          "sklearn_fold_seed32": 2938178318
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 10057149797537755674,
+          "sklearn_fold_seed32": 2938188314
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 10057149797537755675,
+          "sklearn_fold_seed32": 2938188315
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 10057149797537755676,
+          "sklearn_fold_seed32": 2938188316
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 10057149797537755677,
+          "sklearn_fold_seed32": 2938188317
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 10057149797537755678,
+          "sklearn_fold_seed32": 2938188318
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 10057149797537765674,
+          "sklearn_fold_seed32": 2938198314
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 10057149797537765675,
+          "sklearn_fold_seed32": 2938198315
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 10057149797537765676,
+          "sklearn_fold_seed32": 2938198316
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 10057149797537765677,
+          "sklearn_fold_seed32": 2938198317
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 10057149797537765678,
+          "sklearn_fold_seed32": 2938198318
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 10057149797537775674,
+          "sklearn_fold_seed32": 2938208314
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 10057149797537775675,
+          "sklearn_fold_seed32": 2938208315
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 10057149797537775676,
+          "sklearn_fold_seed32": 2938208316
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 10057149797537775677,
+          "sklearn_fold_seed32": 2938208317
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 10057149797537775678,
+          "sklearn_fold_seed32": 2938208318
+        }
+      ]
+    },
+    {
+      "coordinate_id": "P10-T9-MS",
+      "task": "T9",
+      "framework": "Microsoft Agent Framework",
+      "observer": "RELAY",
+      "observer_index": 0,
+      "raw_coordinate_seed64": 9162884633290565191,
+      "sklearn_final_seed32": 3844826695,
+      "train_cv_folds": [
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9162884633290575191,
+          "sklearn_fold_seed32": 3844836695
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9162884633290575192,
+          "sklearn_fold_seed32": 3844836696
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9162884633290575193,
+          "sklearn_fold_seed32": 3844836697
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9162884633290575194,
+          "sklearn_fold_seed32": 3844836698
+        },
+        {
+          "model": "LOGISTIC_REGRESSION",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9162884633290575195,
+          "sklearn_fold_seed32": 3844836699
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9162884633290585191,
+          "sklearn_fold_seed32": 3844846695
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9162884633290585192,
+          "sklearn_fold_seed32": 3844846696
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9162884633290585193,
+          "sklearn_fold_seed32": 3844846697
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9162884633290585194,
+          "sklearn_fold_seed32": 3844846698
+        },
+        {
+          "model": "EXTRA_TREES",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9162884633290585195,
+          "sklearn_fold_seed32": 3844846699
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9162884633290595191,
+          "sklearn_fold_seed32": 3844856695
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9162884633290595192,
+          "sklearn_fold_seed32": 3844856696
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9162884633290595193,
+          "sklearn_fold_seed32": 3844856697
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9162884633290595194,
+          "sklearn_fold_seed32": 3844856698
+        },
+        {
+          "model": "HIST_GRADIENT_BOOSTING",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9162884633290595195,
+          "sklearn_fold_seed32": 3844856699
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 0,
+          "raw_fold_seed64": 9162884633290605191,
+          "sklearn_fold_seed32": 3844866695
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 1,
+          "raw_fold_seed64": 9162884633290605192,
+          "sklearn_fold_seed32": 3844866696
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 2,
+          "raw_fold_seed64": 9162884633290605193,
+          "sklearn_fold_seed32": 3844866697
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 3,
+          "raw_fold_seed64": 9162884633290605194,
+          "sklearn_fold_seed32": 3844866698
+        },
+        {
+          "model": "RBF_SVM",
+          "train_cv_fold": 4,
+          "raw_fold_seed64": 9162884633290605195,
+          "sklearn_fold_seed32": 3844866699
+        }
+      ]
+    }
+  ]
+}
