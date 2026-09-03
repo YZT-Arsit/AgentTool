@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/v12_v4r7_smoke_exec/scripts/analyze_v12_v4r8_response_anchor_smoke.py", line 96, in <module>
+    status = implementation.implementation.main()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/v12_v4r7_smoke_exec/scripts/analyze_v12_duplex_repair_smoke.py", line 133, in main
+    raise RuntimeError("smoke analysis commit differs from frozen execution source")
+RuntimeError: smoke analysis commit differs from frozen execution source

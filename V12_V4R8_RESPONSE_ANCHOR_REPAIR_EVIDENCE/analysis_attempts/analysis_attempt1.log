@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/v12_v4r7_smoke_exec/scripts/analyze_v12_v4r8_response_anchor_smoke.py", line 96, in <module>
+    status = implementation.main()
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'analyze_v12_v4r7_late_frame_smoke' has no attribute 'main'
