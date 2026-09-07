@@ -1,0 +1,52 @@
+{
+  "schema": "AgentTool.V13TwoTierPrivateAgentResolutionClosure/1",
+  "BASE_RUNTIME": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "BASE_EVIDENCE_HEAD": "b515542981d82e0225c37b4474f8ce9e657547de",
+  "DESIGN": "TWO_TIER_PRIVATE_AGENT_RESOLUTION",
+  "PSI_COMPONENT": "INTERFACE_FIXED_PROFILE_SCHEDULING_PADDING_DIRECTORY_AND_MOCK_INTEGRATION_IMPLEMENTED",
+  "PSI_CRYPTO_BACKEND": "NOT_CRYPTOGRAPHICALLY_INSTANTIATED",
+  "PSI_BACKEND_AUDIT": {
+    "vetted_repository_backend_found": false,
+    "vetted_environment_backend_found": false,
+    "mock_backend": "DETERMINISTIC_MOCK_PSI_FUNCTIONAL_ONLY",
+    "deployment_authorized": false
+  },
+  "ENTERPRISE_DIRECTORY": "IMPLEMENTED",
+  "CANONICAL_IDENTIFIER": "AgentDescriptorV7.agent_id non-negative integer",
+  "CANDIDATE_BATCH_K": 8,
+  "ENTERPRISE_CARDINALITY_POLICY": "PADDED",
+  "ENTERPRISE_CARDINALITY_PUBLIC_BOUND": 1024,
+  "MULTIPLE_MATCH_SELECTION_POLICY": "FIRST_PLANNER_ORDER_MATCH_ELSE_FIRST_CANDIDATE",
+  "FIXED_PSI_SCHEDULE": "PASS",
+  "FIXED_PIR_FALLBACK_SCHEDULE": "PASS",
+  "LOCAL_HIT_PIR_BEHAVIOR": "PADDING_QUERY",
+  "LIBRARY_MISS_PIR_BEHAVIOR": "REAL_QUERY",
+  "LOCAL_VS_LIBRARY_PUBLIC_STRUCTURE": "INDISTINGUISHABLE_BY_CONSTRUCTION",
+  "PUBLIC_STRUCTURE_SCOPE": "one fixed PSI slot, one existing fixed-schedule PIR slot, identical public profile and common Gateway handoff; cryptographic PSI privacy and realized timing indistinguishability are not claimed",
+  "GATEWAY_COMMON_PATH": "PASS",
+  "PSI_ERROR_SEMANTICS": "FAIL_CLOSED_AFTER_FIXED_PADDING_PIR_SLOT",
+  "SAME_TRUST_DOMAIN_STATUS": "PSI_NOT_REQUIRED_FOR_THIS_DEPLOYMENT_MODE",
+  "CORRECTNESS_TESTS": {
+    "v13": "21/21 PASS",
+    "targeted_regression": "55 PASS / 0 FAIL / 1 PLATFORM SKIP"
+  },
+  "NEW_SECURITY_ATTACK_EXPERIMENTS": 0,
+  "CLASSIFIER_RUNS": 0,
+  "AUC_CALCULATIONS": 0,
+  "PSI_MICROBENCHMARK": {
+    "status": "NOT_RUN",
+    "reason": "NO_CRYPTOGRAPHIC_BACKEND"
+  },
+  "EXISTING_TIMING_RUNTIME_CHANGED": "NO",
+  "EXISTING_GATEWAY_PROFILE_CHANGED": "NO",
+  "V4R8_PROFILE": {
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "R": 521,
+    "Q": 100
+  },
+  "PAPER_FILES_MODIFIED": "NO",
+  "SECURITY_BOUNDARY": "structural privacy is the positive construction; realized application-level timing privacy remains unclaimed"
+}

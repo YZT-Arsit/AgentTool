@@ -1,0 +1,16 @@
+flowchart TD
+    U[User Task] --> P[Planner LLM]
+    P --> T[Protected Runtime]
+    T -->|fixed PSI slot; K=8| E[Enterprise Agent Directory]
+    E -->|private availability result| T
+    T -->|fixed PIR slot; real or padding row| L[External / Global Agent Library]
+    L -->|private fallback descriptor or padding result| T
+    T --> G[Trusted Gateway]
+    G --> EA[Enterprise-deployed Agent]
+    G --> XA[External Agent]
+    G --> TL[Tool / LLM / Local App]
+
+    C[Public Agent-resolution profile] -.-> T
+    C --- S1[Exactly one PSI slot]
+    C --- S2[Exactly one PIR slot]
+    C --- S3[Fixed candidate and enterprise size classes]

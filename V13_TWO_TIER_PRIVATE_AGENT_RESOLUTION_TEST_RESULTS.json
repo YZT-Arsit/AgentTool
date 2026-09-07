@@ -1,0 +1,37 @@
+{
+  "schema": "AgentTool.V13TwoTierPrivateAgentResolutionTestResults/1",
+  "base_head": "b515542981d82e0225c37b4474f8ce9e657547de",
+  "new_security_attack_experiments": 0,
+  "psi_microbenchmark": {
+    "status": "NOT_RUN",
+    "reason": "NO_CRYPTOGRAPHIC_BACKEND"
+  },
+  "v13_correctness": {
+    "command": "python -m pytest tests/test_v13_two_tier_private_agent_resolution.py -q",
+    "passed": 21,
+    "failed": 0
+  },
+  "targeted_regression": {
+    "command": "python -m pytest tests/test_v13_two_tier_private_agent_resolution.py tests/test_v12_v4r8_response_anchor.py tests/test_v12_v4r8_smoke.py tests/test_v12_duplex_timing_virtualization.py tests/test_v12_timing_indistinguishability.py tests/test_v5_confidential.py -q",
+    "passed": 55,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "frozen Linux timing-development binary is unavailable in this Windows checkout"
+  },
+  "compile_check": {
+    "command": "python -m compileall -q v13_private_resolution",
+    "status": "PASS"
+  },
+  "full_repository_regression_context": {
+    "passed": 460,
+    "failed": 62,
+    "skipped": 14,
+    "status": "NOT_A_V13_GATE_IN_THIS_CHECKOUT",
+    "failure_causes": [
+      "missing frozen Linux/Go runner binaries",
+      "missing historical archived result directories and Stage-9 virtual environment",
+      "pre-existing historical freeze hash mismatches in the Windows checkout"
+    ],
+    "v13_targeted_regression_remained_clean": true
+  }
+}

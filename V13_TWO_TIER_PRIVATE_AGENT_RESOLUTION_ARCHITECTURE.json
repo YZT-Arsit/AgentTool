@@ -1,0 +1,54 @@
+{
+  "schema": "AgentTool.V13TwoTierPrivateAgentResolutionArchitecture/1",
+  "design": "TWO_TIER_PRIVATE_AGENT_RESOLUTION",
+  "canonical_identifier": "AgentDescriptorV7.agent_id",
+  "planner_candidate_semantics": {
+    "singleton": true,
+    "bounded_batch": true,
+    "fuzzy_matching_inside_psi": false,
+    "selection_policy": "FIRST_PLANNER_ORDER_MATCH_ELSE_FIRST_CANDIDATE"
+  },
+  "agent_resolution_profile": {
+    "profile_identifier": "TWO-TIER-PRIVATE-AGENT-RESOLUTION-K8-E1024",
+    "candidate_batch_k": 8,
+    "candidate_padding": "RESERVED_RANDOM_DUMMY_IDENTIFIERS",
+    "enterprise_cardinality_policy": "PADDED",
+    "enterprise_cardinality_bound": 1024,
+    "psi_request_message_size_class": "PSI-REQUEST-K8-E1024",
+    "psi_response_message_size_class": "PSI-RESPONSE-K8-E1024",
+    "psi_slots_per_resolution": 1,
+    "pir_slots_per_resolution": 1
+  },
+  "branches": {
+    "enterprise_local_hit": {
+      "psi": "EXECUTE",
+      "pir": "PADDING_QUERY",
+      "gateway": "COMMON_TRUSTED_HANDOFF"
+    },
+    "library_fallback": {
+      "psi": "EXECUTE",
+      "pir": "REAL_QUERY",
+      "gateway": "COMMON_TRUSTED_HANDOFF"
+    }
+  },
+  "trusted": [
+    "protected runtime / TEE",
+    "trusted Gateway"
+  ],
+  "honest_but_curious_privacy_protected": [
+    "Enterprise Agent Directory PSI endpoint",
+    "external Agent Library PIR server",
+    "Relay under the existing observer model"
+  ],
+  "psi_backend": "NOT_CRYPTOGRAPHICALLY_INSTANTIATED",
+  "same_trusted_runtime_inventory": "PSI_NOT_REQUIRED_FOR_THIS_DEPLOYMENT_MODE",
+  "existing_gateway_profile": {
+    "changed": false,
+    "R": 521
+  },
+  "existing_registry_profile": {
+    "changed": false,
+    "Q": 100
+  },
+  "diagram": "V13_TWO_TIER_PRIVATE_AGENT_RESOLUTION_ARCHITECTURE.mmd"
+}

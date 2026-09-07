@@ -1,0 +1,55 @@
+{
+  "schema": "AgentTool.V13CurrentAgentResolutionAudit/1",
+  "runtime_source": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "CURRENT_AGENT_RESOLUTION_FLOW": {
+    "entry_point": "v11_online/session.py:1087-1115",
+    "input": "validated V11ActionCase; no explicit planner candidate-set interface",
+    "canonical_identifier": "non-negative integer AgentDescriptorV7.agent_id"
+  },
+  "CURRENT_PIR_ENTRY_POINT": {
+    "cache_and_resolve": "v11_online/session.py:429-461",
+    "fixed_scheduler": "v11_online/session.py:578-678",
+    "queue_entry": "v11_online/session.py:751-766"
+  },
+  "CURRENT_AGENT_DESCRIPTOR_FORMAT": {
+    "model": "action_privacy_v8.models.AgentDescriptorV7",
+    "codec": "action_privacy_v8/descriptor.py:27-129",
+    "fixed_row_bytes": 1024,
+    "fields": [
+      "agent_id",
+      "capability_ids",
+      "publisher_key_id",
+      "agent_version",
+      "placement",
+      "agent_service",
+      "allowed_tool_capabilities",
+      "trust_class",
+      "catalog_epoch"
+    ]
+  },
+  "CURRENT_PRIVATE_SELECTION_STATE": [
+    "agent_id",
+    "descriptor cache key",
+    "real/dummy PIR selection",
+    "recovered descriptor",
+    "route handle",
+    "operation_id"
+  ],
+  "CURRENT_FIXED_PIR_SCHEDULE": {
+    "Q": 100,
+    "period_ms": 60,
+    "epoch_ms": 6000,
+    "dummy_row": 999,
+    "implementation": "v11_online/session.py:578-678"
+  },
+  "CURRENT_GATEWAY_HANDOFF": {
+    "protected_intent_and_route": "v11_online/session.py:1120-1158",
+    "common_action_submit": "v11_online/session.py:1161-1168"
+  },
+  "PSI_BACKEND_AUDIT": {
+    "repository_vetted_backend": false,
+    "environment_vetted_backend": false,
+    "existing_reference": "confidential_v5.membership.IdealPrivateMembershipReference",
+    "existing_reference_status": "NON_CRYPTOGRAPHIC_TEST_DOUBLE"
+  }
+}

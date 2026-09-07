@@ -1,0 +1,40 @@
+{
+  "schema": "AgentTool.V13TwoTierPrivateAgentResolutionSecurityArgument/1",
+  "definitions": {
+    "C_t": "planner-selected canonical Agent candidate set",
+    "E": "enterprise deployed-Agent set",
+    "I_t": "C_t intersection E",
+    "b_t": "1[I_t is nonempty]"
+  },
+  "fixed_public_structure": {
+    "psi_slots": 1,
+    "pir_slots": 1,
+    "candidate_batch_k": 8,
+    "enterprise_cardinality_policy": "PADDED",
+    "enterprise_cardinality_bound": 1024,
+    "enterprise_hit_pir_behavior": "PADDING_QUERY",
+    "library_fallback_pir_behavior": "REAL_QUERY",
+    "gateway_path": "COMMON_TRUSTED_HANDOFF"
+  },
+  "public_exclusions": [
+    "planner candidate IDs",
+    "enterprise deployed-Agent IDs",
+    "private intersection",
+    "enterprise_hit",
+    "real-versus-padding PIR choice",
+    "private execution handle"
+  ],
+  "assumptions": [
+    "vetted PSI privacy after backend integration",
+    "existing PIR query privacy",
+    "trusted-runtime secrecy",
+    "fixed PSI/PIR scheduling and size classes"
+  ],
+  "realized_status": {
+    "psi_crypto_backend": "NOT_CRYPTOGRAPHICALLY_INSTANTIATED",
+    "mock_backend_role": "FUNCTIONAL_TESTING_ONLY",
+    "structural_branch_equivalence": "PASS_AT_INTERFACE_CONTRACT",
+    "application_timing_privacy": "NOT_CLAIMED",
+    "new_security_attack_experiments": 0
+  }
+}
