@@ -1,0 +1,49 @@
+{
+  "schema": "AgentTool.V13BTwoTierResolutionArchitecture/1",
+  "name": "TWO_TIER_PRIVATE_AGENT_RESOLUTION",
+  "public_view": ["Q_PSI", "Q_PIR", "M"],
+  "private_flow": [
+    "Employee task",
+    "Planner",
+    "TEE / Protected Runtime",
+    "receiver-only PSI against Enterprise Agent Directory",
+    "existing scheduled PIR against Global Agent Library",
+    "private ResolvedAgentTarget",
+    "existing Trusted Gateway submission ingress",
+    "private downstream target"
+  ],
+  "fixed_resolution_profile": {
+    "candidate_k": 8,
+    "enterprise_padded_bound": 1024,
+    "psi_slots_per_resolution": 1,
+    "pir_slots_per_resolution": 1,
+    "enterprise_hit_pir": "PADDING",
+    "library_fallback_pir": "REAL"
+  },
+  "resolved_target_private_fields": [
+    "canonical_agent_id",
+    "private_execution_handle",
+    "source_class",
+    "descriptor"
+  ],
+  "common_gateway": {
+    "ingress": "V4R8_COMMON_TRUSTED_GATEWAY",
+    "private_control_message": "SUBMIT_RESOLVED_ACTION",
+    "direct_tee_to_agent_connections": 0,
+    "public_source_specific_rpc_methods": 0,
+    "public_source_specific_endpoints": 0,
+    "public_source_specific_ports": 0
+  },
+  "existing_profiles": {
+    "H_ms": 4500,
+    "B_ms": 200,
+    "Delta_ms": 10,
+    "M": 50,
+    "R": 521,
+    "Q": 100,
+    "rho_ms": 30,
+    "response_preparation_lead_ms": 20,
+    "changed": false
+  },
+  "diagram": "V13B_TWO_TIER_RESOLUTION_ARCHITECTURE.mmd"
+}

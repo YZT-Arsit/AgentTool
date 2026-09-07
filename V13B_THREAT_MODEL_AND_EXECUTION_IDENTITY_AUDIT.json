@@ -1,0 +1,53 @@
+{
+  "schema": "AgentTool.V13BThreatModelAndExecutionIdentityAudit/1",
+  "base_v13": "046dd5e87ed9bc3bb40be6304d062417a73e2549",
+  "base_v4r8_runtime": "63319014f560f46e2a46dd140f53551e43c27e0d",
+  "deployment": {
+    "primary_adversary": "UNTRUSTED_AGENT_CLOUD_PROVIDER",
+    "enterprise_directory_location": "OUTSIDE_PROTECTED_RUNTIME_TEE",
+    "enterprise_agent_location": "ENTERPRISE_DEPLOYED_IN_CLOUD_INFRASTRUCTURE",
+    "global_library_location": "CLOUD_HOSTED_THIRD_PARTY_AGENT_LIBRARY",
+    "cross_provider_collusion": "OUT_OF_SCOPE"
+  },
+  "public_view": {
+    "notation": "V=(Q_PSI,Q_PIR,M)",
+    "Q_PSI": "public receiver-only PSI transcript and profile",
+    "Q_PIR": "public global Agent Library SimplePIR transcript",
+    "M": "existing common Gateway communication metadata",
+    "includes_application_visible_timestamps": true,
+    "realized_timing_indistinguishability_claimed": false
+  },
+  "protected_values": [
+    "planner candidate set C_t",
+    "enterprise inventory E beyond its public padded bound",
+    "intersection C_t intersect E",
+    "selected Agent identity i_t",
+    "enterprise-hit versus library-fallback bit b_t",
+    "private execution handle",
+    "source class"
+  ],
+  "receiver_only_psi": {
+    "variant_required": "RECEIVER_ONLY_PSI_OR_PRIVATE_SET_MEMBERSHIP",
+    "output_recipient": "TRUSTED_RUNTIME_ONLY",
+    "enterprise_directory_learns_candidate_set": false,
+    "enterprise_directory_learns_intersection": false,
+    "enterprise_directory_learns_selected_agent": false,
+    "enterprise_directory_learns_branch_bit": false,
+    "crypto_backend": "NOT_CRYPTOGRAPHICALLY_INSTANTIATED"
+  },
+  "gateway_audit": {
+    "existing_control_ingress": "SUBMIT_RESOLVED_ACTION",
+    "existing_control_ingress_source": "v11_online/session.py:1161-1168 and common_action_gateway_v2/canonicalv9/online.go:415",
+    "common_public_ingress": "V4R8_COMMON_TRUSTED_GATEWAY",
+    "new_composition_network_clients": 0,
+    "direct_tee_to_enterprise_agent_connections": 0,
+    "private_route_resolution": "inside trusted Gateway control state",
+    "downstream_http_execution_source": "common_action_gateway_v2/canonicalv9/runner.go:586-608"
+  },
+  "execution_identity": {
+    "classification": "OUTSIDE_FROZEN_OBSERVER_AFTER_COMMON_GATEWAY",
+    "frozen_basis": "CANONICAL_THREAT_MODEL_V3.md:41-46 and CURRENT_SECURITY_ASSUMPTIONS.md:19-20 exclude independently observed downstream provider traffic from O_agentcloud",
+    "mandatory_caveat": "If the same cloud operator can observe the Gateway's downstream endpoint, connection, process, container, or route identity, the frozen observer assumption is violated and enterprise Agent execution identity is exposed; this V13B closure does not cover that deployment."
+  },
+  "design_closure_under_frozen_observer": "PASS"
+}

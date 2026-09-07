@@ -1,0 +1,21 @@
+flowchart TD
+    U[Employee task] --> P[Planner]
+    P --> T[TEE / Protected Runtime]
+    T <-->|fixed receiver-only PSI slot| E[Enterprise Agent Directory]
+    T <-->|fixed scheduled PIR slot| A[Global Agent Library]
+    T --> R[Private ResolvedAgentTarget]
+    R --> G[Existing Trusted Gateway ingress]
+    G --> EA[Enterprise-deployed Agent]
+    G --> GA[Global-library Agent]
+    G --> LLM[Remote LLM]
+    G --> API[External Tool / API]
+    G --> APP[Local application]
+
+    F[Fixed Agent-resolution profile] -.-> T
+    F --- P1[One PSI slot: padded K=8 / E=1024]
+    F --- P2[One PIR slot: real or padding row]
+    F --- P3[Hit / fallback structurally identical]
+
+    PSI[PSI hides enterprise availability query] -.-> E
+    PIR[PIR hides global-library index] -.-> A
+    GW[Gateway is the common observer-visible boundary] -.-> G

@@ -1,0 +1,45 @@
+{
+  "schema": "AgentTool.V13BTwoTierResolutionTestResults/1",
+  "base_v13": "046dd5e87ed9bc3bb40be6304d062417a73e2549",
+  "integration_matrix": {
+    "executions": 8,
+    "retries": 0,
+    "OpenAI Agents SDK": {
+      "ENTERPRISE_HIT_SINGLETON": "PASS",
+      "ENTERPRISE_HIT_MULTI_CANDIDATE": "PASS",
+      "LIBRARY_FALLBACK_SINGLETON": "PASS",
+      "LIBRARY_FALLBACK_MULTI_CANDIDATE": "PASS"
+    },
+    "Microsoft Agent Framework": {
+      "ENTERPRISE_HIT_SINGLETON": "PASS",
+      "ENTERPRISE_HIT_MULTI_CANDIDATE": "PASS",
+      "LIBRARY_FALLBACK_SINGLETON": "PASS",
+      "LIBRARY_FALLBACK_MULTI_CANDIDATE": "PASS"
+    }
+  },
+  "v13b_correctness": {
+    "command": "python -m pytest tests/test_v13b_two_tier_resolution_e2e.py -q",
+    "passed": 14,
+    "failed": 0,
+    "coverage": [
+      "eight framework/source/candidate-shape integration cases",
+      "OpenAI hit/fallback byte-equal structural projection",
+      "Microsoft hit/fallback byte-equal structural projection",
+      "receiver-only PSI contract and non-cryptographic mock status",
+      "execution-identity boundary audit",
+      "no direct network client in the composition layer",
+      "composition public constants match frozen V4R8 profile and communication evidence"
+    ]
+  },
+  "targeted_regression": {
+    "command": "python -m pytest tests/test_v13_two_tier_private_agent_resolution.py tests/test_v13b_two_tier_resolution_e2e.py tests/test_v12_v4r8_response_anchor.py tests/test_v12_v4r8_smoke.py tests/test_v12_duplex_timing_virtualization.py tests/test_v12_timing_indistinguishability.py tests/test_v5_confidential.py -q",
+    "passed": 69,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "frozen Linux timing-development binary unavailable in this Windows checkout"
+  },
+  "new_privacy_attack_experiments": 0,
+  "classifier_runs": 0,
+  "auc_calculations": 0,
+  "psi_microbenchmark": "NOT_RUN"
+}

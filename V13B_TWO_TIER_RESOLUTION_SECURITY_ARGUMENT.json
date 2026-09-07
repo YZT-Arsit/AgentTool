@@ -1,0 +1,36 @@
+{
+  "schema": "AgentTool.V13BTwoTierResolutionSecurityArgument/1",
+  "definitions": {
+    "C_t": "planner candidate set",
+    "E": "enterprise-deployed Agent inventory",
+    "b_t": "1[C_t intersect E is nonempty]",
+    "View_str": "allowlisted structural projection of (Q_PSI,Q_PIR,M)"
+  },
+  "branch_b_t_1": [
+    "real receiver-only PSI(C_t,E)",
+    "padding SimplePIR query",
+    "common Trusted Gateway ingress"
+  ],
+  "branch_b_t_0": [
+    "real receiver-only PSI(C_t,E)",
+    "real SimplePIR query",
+    "common Trusted Gateway ingress"
+  ],
+  "assumptions": [
+    "receiver-only PSI privacy from a future vetted backend",
+    "existing SimplePIR query privacy",
+    "protected TEE state",
+    "fixed one-PSI-plus-one-PIR resolution profile",
+    "common Trusted Gateway ingress",
+    "post-Gateway downstream target observation excluded from O_agentcloud"
+  ],
+  "structural_composition_statement": "View_str(b_t=0) computationally indistinguishable from View_str(b_t=1)",
+  "deterministic_contract_check": "byte-identical allowlisted structural projections",
+  "excluded_claims": [
+    "realized timing indistinguishability",
+    "cryptographic privacy from the deterministic mock",
+    "post-Gateway destination privacy for a cloud operator observing downstream egress",
+    "cross-provider collusion resistance"
+  ],
+  "crypto_backend_status": "NOT_CRYPTOGRAPHICALLY_INSTANTIATED"
+}
