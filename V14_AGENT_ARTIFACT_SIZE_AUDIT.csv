@@ -1,0 +1,13 @@
+agent_id,framework,name,plaintext_serialized_bytes,protected_serialized_bytes,payload_capacity_bytes,headroom_bytes
+101,OPENAI_AGENTS_SDK,OAE-oai-provisioned-ordinary-101,825,1024,984,159
+102,OPENAI_AGENTS_SDK,OAE-oai-provisioned-nested-102,824,1024,984,160
+103,OPENAI_AGENTS_SDK,OAE-oai-provisioned-child-103,819,1024,984,165
+1000101,OPENAI_AGENTS_SDK,OAE-oai-unprovisioned-ordinary-1000101,841,1024,984,143
+1000102,OPENAI_AGENTS_SDK,OAE-oai-unprovisioned-nested-1000102,844,1024,984,140
+1000103,OPENAI_AGENTS_SDK,OAE-oai-unprovisioned-child-1000103,835,1024,984,149
+201,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-provisioned-ordinary-201,833,1024,984,151
+202,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-provisioned-nested-202,832,1024,984,152
+203,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-provisioned-child-203,827,1024,984,157
+1000201,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-unprovisioned-ordinary-1000201,849,1024,984,135
+1000202,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-unprovisioned-nested-1000202,852,1024,984,132
+1000203,MICROSOFT_AGENT_FRAMEWORK,OAE-maf-unprovisioned-child-1000203,843,1024,984,141

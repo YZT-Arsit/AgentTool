@@ -1,0 +1,37 @@
+{
+  "builder_binary_sha256": "bd28d1a26290dbd12c78c37098e6d704e98007b9a730e49a6c7b2889f7f29bb4",
+  "commit": "548745efdb37b1d7d948c761a772488747ca16ab",
+  "branch_or_tag": "v0.13.1",
+  "license": "MIT",
+  "license_sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0",
+  "source_worktree_clean": true,
+  "microsoft_seal_version": "4.4.0",
+  "vcpkg_builtin_baseline": "b9db60d8be5cd434b195da8cffc2ee82e227fac4",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "cmake": "3.31.10",
+  "build_options": {
+    "build_type": "Release",
+    "APSI_BUILD_TESTS": false,
+    "APSI_BUILD_CLI": true,
+    "APSI_USE_ZMQ": true,
+    "cxx_standard": 17
+  },
+  "params_sha256": "99f6404ea705fea595abe065481d54e23bd3fe62aacb4e03535febb16de5cd3c",
+  "receiver_binary_sha256": "fd088edc9a12760b8ba0a7fe86fe31db91f5714c3da8a0bbe74096e6767481e0",
+  "repository": "https://github.com/microsoft/APSI",
+  "sender_binary_sha256": "65f7796c3b4292e7874812c24d4a25c0654dedb6608e7049f30cb341a13e3372",
+  "sender_db_preprocessing": {
+    "apsi_label_nonce_bytes": 16,
+    "item_bytes": 16,
+    "label_bytes": 32,
+    "preprocessing_ns": 2505064822,
+    "real_cryptographic_backend": true,
+    "sender_records": 100000,
+    "serialized_sender_db_bytes": 24634064
+  },
+  "sender_records": 100000,
+  "simplepir_binary_sha256": "2ceacc5f772c908dfdd696cfdaf35e60ed6477f70d8a4367868ba0f0cfa0305b",
+  "simplepir_commit": "e9020b03bf2872c75b8954e749e32408b5db87ed",
+  "source_modified": false,
+  "version": "0.13.1"
+}

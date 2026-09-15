@@ -1,0 +1,74 @@
+{
+  "gateway_public_profile": {
+    "agent_specific_destination": false,
+    "common_endpoint": "TRUSTED_GATEWAY",
+    "profile": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+    "request_bytes": 1079,
+    "request_cells": 521,
+    "response_bytes": 800,
+    "response_cells": 521
+  },
+  "gateway_transport_evidence": {
+    "artifact": "V14_GATEWAY_ARTIFACT_PATH.json",
+    "frozen_runner_sha256": "84fc61e363ed587ba5c200be12ebb66c9a71c69daad39950f1b50e66cd363437",
+    "provisioned_unprovisioned_idle_profiles_equal": true,
+    "all_cases_complete_521_cell_transcript": true,
+    "unprovisioned_artifact_authenticated_after_four_private_chunks": true
+  },
+  "pir_patterns": [
+    [
+      36388,
+      37180
+    ]
+  ],
+  "projection_fields": [
+    "oprf_request_bytes",
+    "oprf_response_bytes",
+    "query_request_bytes",
+    "query_response_bytes",
+    "request_messages",
+    "response_messages",
+    "protocol_rounds",
+    "pir_query_bytes",
+    "pir_answer_bytes",
+    "gateway_public_profile"
+  ],
+  "provisioned_unprovisioned_idle_equal": true,
+  "full_psi_pir_gateway_structural_equivalence": true,
+  "psi_patterns": {
+    "IDLE": [
+      [
+        104,
+        104,
+        697972,
+        1579652,
+        2,
+        2,
+        2
+      ]
+    ],
+    "PROVISIONED": [
+      [
+        104,
+        104,
+        697972,
+        1579652,
+        2,
+        2,
+        2
+      ]
+    ],
+    "UNPROVISIONED": [
+      [
+        104,
+        104,
+        697972,
+        1579652,
+        2,
+        2,
+        2
+      ]
+    ]
+  },
+  "timing_excluded": true
+}

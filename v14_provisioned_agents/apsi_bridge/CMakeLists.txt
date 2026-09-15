@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.25)
+project(oae_v14_apsi_bridge LANGUAGES CXX C)
+
+if(NOT DEFINED APSI_SOURCE_ROOT)
+    message(FATAL_ERROR "APSI_SOURCE_ROOT must name pinned Microsoft APSI source")
+endif()
+set(APSI_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(APSI_BUILD_CLI ON CACHE BOOL "" FORCE)
+set(APSI_USE_ZMQ ON CACHE BOOL "" FORCE)
+add_subdirectory("${APSI_SOURCE_ROOT}" apsi-upstream)
+target_include_directories(apsi PRIVATE "${CMAKE_BINARY_DIR}/common")
+
+foreach(target sender_db_builder receiver_bridge sender_service)
+    add_executable(oae_v14_apsi_${target} ${target}.cpp)
+    target_link_libraries(oae_v14_apsi_${target} PRIVATE apsi)
+    target_compile_features(oae_v14_apsi_${target} PRIVATE cxx_std_17)
+endforeach()

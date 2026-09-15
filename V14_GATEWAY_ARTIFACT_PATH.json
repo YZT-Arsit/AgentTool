@@ -1,0 +1,41 @@
+{
+  "agent_specific_gateway_destinations": 0,
+  "cases": {
+    "IDLE": {
+      "agent_specific_gateway_destination": false,
+      "common_gateway_endpoint": true,
+      "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+      "public_transcript_complete": true,
+      "relay_cells": 521,
+      "request_bytes": 1079,
+      "response_bytes": 800
+    },
+    "PROVISIONED": {
+      "agent_specific_gateway_destination": false,
+      "common_gateway_endpoint": true,
+      "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+      "public_transcript_complete": true,
+      "relay_cells": 521,
+      "request_bytes": 1079,
+      "response_bytes": 800
+    },
+    "UNPROVISIONED": {
+      "agent_specific_gateway_destination": false,
+      "common_gateway_endpoint": true,
+      "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+      "public_transcript_complete": true,
+      "relay_cells": 521,
+      "request_bytes": 1079,
+      "response_bytes": 800
+    }
+  },
+  "frozen_v4r8_runner": "/root/autodl-tmp/v12_v4r7_smoke_exec/common_action_gateway_v2/bin/canonical-v12-v4r8-timing-runner",
+  "idle_gateway_real_actions": 0,
+  "protected_v4r8_runtime_modified": false,
+  "provisioned_gateway_real_actions": 0,
+  "public_profiles_equal": true,
+  "remote_provisioned_agent_executions": 0,
+  "unprovisioned_artifact_authenticated": true,
+  "unprovisioned_artifact_bytes": 1024,
+  "unprovisioned_gateway_real_actions": 4
+}

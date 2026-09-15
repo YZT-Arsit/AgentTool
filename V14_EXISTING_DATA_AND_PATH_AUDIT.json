@@ -1,0 +1,74 @@
+{
+  "schema": "AgentTool.V14ExistingDataAndPathAudit/1",
+  "status": "READ_ONLY_AUDIT_COMPLETE",
+  "paper_source": {
+    "path": "C:/Users/hasee/Downloads/ICASSP2026 (1).pdf",
+    "pages": 5,
+    "created": "2026-09-15T00:09:34-07:00",
+    "relevant_sections": ["3.1", "4.1", "4.2", "4.3", "Figure 1"],
+    "modified": false
+  },
+  "historical_corpora": [
+    {
+      "name": "ORIGINAL_SIMPLEPIR_100K",
+      "records": 100000,
+      "record_bytes": 1024,
+      "row_schema": "AgentCapsule/AGCTLIR1",
+      "classification": "TEMPLATE_CLONE",
+      "generator": "cryptographic_closure/pir_backend.py:40-54",
+      "result": "REAL_PIR_100K_RESULTS.csv",
+      "loadable_framework_agent": false
+    },
+    {
+      "name": "V8_DESCRIPTOR_100K",
+      "records": 100000,
+      "record_bytes": 1024,
+      "row_schema": "AgentDescriptorV7/7",
+      "classification": "DESCRIPTOR_ONLY",
+      "generator": "scripts/run_pir_v7_descriptor_v8.py:29-62",
+      "result": "PIR_V7_DESCRIPTOR_RESULTS_V8.csv",
+      "loadable_framework_agent": false
+    },
+    {
+      "name": "PIR_PRIVACY_16K_QUERY_WORKLOAD",
+      "records": 1000,
+      "queries": 16000,
+      "record_bytes": 1024,
+      "row_schema": "AgentCapsule/AGCTLIR1",
+      "classification": "TEMPLATE_CLONE",
+      "generator": "cryptographic_closure/pir_backend.py:40-54",
+      "result": "MULTIROUND_ATTACK_RESULTS.csv",
+      "loadable_framework_agent": false
+    },
+    {
+      "name": "HISTORICAL_240_END_TO_END",
+      "executions": 240,
+      "records_per_execution": 1000,
+      "record_bytes": 1024,
+      "row_schema": "AgentDescriptorV7/7",
+      "classification": "DESCRIPTOR_ONLY",
+      "generator": "v11_online/session.py:183-216",
+      "result": "results_v11_4_development/final_reliability.csv",
+      "loadable_framework_agent": false
+    }
+  ],
+  "pir_result_enters_agent_loader": false,
+  "can_instantiate_openai_agent": false,
+  "can_instantiate_microsoft_agent": false,
+  "one_schema_shared_by_100k_16k_and_240": false,
+  "legacy_remote_agent_path": {
+    "GatewayAgentDestination": true,
+    "private_execution_handle": true,
+    "REAL_AGENT_SERVICE": true,
+    "SUBMIT_RESOLVED_ACTION": true,
+    "paper_aligned": false
+  },
+  "existing_dataset_supports_new_design": false,
+  "required_new_evidence": [
+    "real framework Agent artifact corpus",
+    "100000 schema-valid synthetic ProvisionedAgentArtifactV1 records",
+    "real labeled APSI AgentID-to-PIR-row mapping",
+    "real SimplePIR artifact retrieval",
+    "trusted OpenAI and Microsoft Agent loading"
+  ]
+}

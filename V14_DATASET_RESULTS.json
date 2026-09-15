@@ -1,0 +1,28 @@
+{
+  "agent_id_equals_row": false,
+  "apsi_sender_input": {
+    "file_bytes": 4800020,
+    "item_bytes": 16,
+    "items": 100000,
+    "label_bytes": 32,
+    "sha256": "35d494db02cc73872af6fe887970ef5840663251e12e32a1e084863597415855"
+  },
+  "database_bytes": 102401024,
+  "database_sha256": "dbb1982bcfb72aa550cf7017565f1122619769cbbfbc7d695cf95d2a020d3975",
+  "dummy_rows": 1,
+  "functional_agent_artifacts": 12,
+  "functional_size_bytes": {
+    "max": 852,
+    "min": 819,
+    "minimum_headroom": 132,
+    "p50": 834.0,
+    "p95": 850.35
+  },
+  "pir_record_bytes": 1024,
+  "private_key_path": "/root/autodl-tmp/v14/work/artifact_aead_key.private",
+  "real_world_unique_agents": false,
+  "row_mapping": "j=((AgentID-1)*65537+17) mod 100000",
+  "scale_records": 100000,
+  "schema_valid_rows_decoded": 100000,
+  "simplepir_total_rows": 100001
+}
