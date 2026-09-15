@@ -188,7 +188,7 @@ def main() -> None:
                     "max_admitted": 3, "pipeline_offset_slots": 1},
         "raw_apsi_capture": "external tcpdump on localhost TCP; no protocol mutation",
         "simplepir_content_representation": "server-visible query SHA-256 plus frozen byte lengths",
-        "feature_freeze": "scripts/analyze_v15d_final_evaluation.py",
+        "feature_freeze": "scripts/analyze_v15d_access_privacy.py",
     }
     (output / "CAMPAIGN_FREEZE.json").write_text(json.dumps(public_freeze, indent=2) + "\n")
 
