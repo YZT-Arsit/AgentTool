@@ -183,6 +183,8 @@ def main() -> None:
     parser.add_argument("--equivalence", type=Path, required=True)
     parser.add_argument("--scale", type=Path, required=True)
     parser.add_argument("--joint-inventory", type=Path, required=True)
+    parser.add_argument("--pcap-diagnostic", type=Path)
+    parser.add_argument("--tcpdump-stderr", type=Path)
     parser.add_argument("--timing-preflight-abort", type=Path)
     parser.add_argument("--output", type=Path, default=ROOT if "ROOT" in globals() else Path.cwd())
     args = parser.parse_args(); output = args.output.resolve()
@@ -248,14 +250,25 @@ def main() -> None:
     binary_access_timing = [row for row in sequence if row.get("feature_view") == "TIMING" and "test_train_oriented_auc" in row]
     strongest_gateway = max(all_current_timing, key=lambda row: row["test_orientation_invariant_auc"])
     strongest_access = max(binary_access_timing, key=lambda row: row["test_orientation_invariant_auc"])
+    input_paths = {
+        "utility_core": args.core, "utility_supplement": args.supplement,
+        "access_statistics": args.access, "timing_statistics": args.timing,
+        "structural_statistics": args.structural, "structural_equivalence": args.equivalence,
+        "scale_results": args.scale, "joint_inventory": args.joint_inventory,
+    }
+    if args.pcap_diagnostic: input_paths["apsi_pcap_diagnostic"] = args.pcap_diagnostic
+    if args.tcpdump_stderr: input_paths["tcpdump_stderr"] = args.tcpdump_stderr
+    capture_diagnostic = None
+    if args.pcap_diagnostic:
+        raw_diagnostic = load(args.pcap_diagnostic)
+        capture_diagnostic = {key: value for key, value in raw_diagnostic.items() if key != "missing"}
     stats = {
         "schema": "AgentTool.V15DFinalStatisticalSummary/1", "base": BASE,
-        "input_sha256": {name: sha256(path) for name, path in {
-            "utility_core": args.core, "utility_supplement": args.supplement,
-            "access_statistics": args.access, "timing_statistics": args.timing,
-            "structural_statistics": args.structural, "structural_equivalence": args.equivalence,
-            "scale_results": args.scale, "joint_inventory": args.joint_inventory,
-        }.items()},
+        "input_sha256": {name: sha256(path) for name, path in input_paths.items()},
+        "access_capture_evidence": {
+            "pcap_byte_count_diagnostic": capture_diagnostic,
+            "tcpdump_stderr": args.tcpdump_stderr.read_text(encoding="utf-8", errors="replace").strip() if args.tcpdump_stderr else None,
+        },
         "final_system": {"APSI": "Microsoft APSI v0.13.1", "SimplePIR": "real", "artifacts": 100000,
                          "record_bytes": 1024, "R_A": 4, "Delta_A_ms": 350, "horizon_ms": 1425,
                          "max_admitted": 3, "gateway_cells": 521},
