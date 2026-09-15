@@ -138,14 +138,17 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
 
 
 def candidates(binary: bool) -> list[tuple[str, Any]]:
-    values: list[tuple[str, Any]] = []
+    # The three seeds apply where tree randomness exists. The other families
+    # are deterministic with their frozen solver/settings and are fitted once.
+    values: list[tuple[str, Any]] = [
+        ("LogisticRegression", make_pipeline(StandardScaler(), LogisticRegression(C=1.0, max_iter=3000))),
+        ("HistGradientBoosting", HistGradientBoostingClassifier(max_iter=150, learning_rate=.05, l2_regularization=1.0, early_stopping=False)),
+        ("RBF_SVM", make_pipeline(StandardScaler(), SVC(C=1.0, gamma="scale"))),
+    ]
     for seed in SEEDS:
-        values.extend([
-            (f"LogisticRegression_seed{seed}", make_pipeline(StandardScaler(), LogisticRegression(C=1.0, max_iter=3000, random_state=seed))),
-            (f"ExtraTrees_seed{seed}", ExtraTreesClassifier(n_estimators=300, min_samples_leaf=2, n_jobs=-1, random_state=seed)),
-            (f"HistGradientBoosting_seed{seed}", HistGradientBoostingClassifier(max_iter=200, learning_rate=.05, l2_regularization=1.0, early_stopping=False, random_state=seed)),
-            (f"RBF_SVM_seed{seed}", make_pipeline(StandardScaler(), SVC(C=1.0, gamma="scale", probability=False, random_state=seed))),
-        ])
+        values.append((f"ExtraTrees_seed{seed}", ExtraTreesClassifier(
+            n_estimators=200, min_samples_leaf=2, n_jobs=-1, random_state=seed,
+        )))
     return values
 
 
@@ -183,16 +186,19 @@ def binary_attack(name: str, view: str, x: np.ndarray, y: np.ndarray, split: np.
     train, val, test = split == "TRAIN", split == "VALIDATION", split == "TEST"
     selected = None
     for model_name, model in candidates(True):
-        oof = group_oof(model, x[train], y[train], groups[train], True)
-        train_auc = roc_auc_score(y[train], oof)
-        orientation = 1 if train_auc >= .5 else -1
         fitted = clone(model).fit(x[train], y[train])
-        val_auc = roc_auc_score(y[val], orientation * scores(fitted, x[val], True))
-        key = (val_auc, model_name)
+        raw_val_auc = roc_auc_score(y[val], scores(fitted, x[val], True))
+        # Model/seed selection is orientation invariant and uses validation
+        # only. Score direction is frozen later from grouped TRAIN OOF scores.
+        key = (max(raw_val_auc, 1 - raw_val_auc), model_name)
         if selected is None or key > selected[0]:
-            selected = (key, model_name, model, orientation, train_auc, val_auc)
+            selected = (key, model_name, model, raw_val_auc)
     assert selected is not None
-    _, model_name, model, orientation, train_auc, val_auc = selected
+    _, model_name, model, raw_val_auc = selected
+    oof = group_oof(model, x[train], y[train], groups[train], True)
+    train_auc = roc_auc_score(y[train], oof)
+    orientation = 1 if train_auc >= .5 else -1
+    val_auc = raw_val_auc if orientation == 1 else 1 - raw_val_auc
     development = train | val
     fitted = clone(model).fit(x[development], y[development])
     raw = scores(fitted, x[test], True); oriented = orientation * raw
