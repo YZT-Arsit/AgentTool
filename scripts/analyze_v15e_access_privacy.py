@@ -10,7 +10,6 @@ from typing import Any
 import numpy as np
 
 from analyze_v15d_access_privacy import (
-    FEATURE_VIEWS,
     balanced_cross_pairs,
     binary_attack,
     multiclass_attack,
@@ -20,6 +19,7 @@ from analyze_v15d_access_privacy import (
 
 EXPECTED_APSI = (104, 104, 697_972, 1_579_652)
 EXPECTED_PIR_SERIALIZED = (36_388, 37_196)
+FEATURE_VIEWS = ("CONTENT", "STRUCTURAL", "TIMING", "ALL")
 
 
 def jsonl(path: Path) -> list[dict[str, Any]]:
@@ -132,9 +132,9 @@ def main() -> None:
             accesses.append({
                 "session_id": session["session_id"], "split": session["split"],
                 "sequence_class": session["sequence_class"], "position": position,
-                "agent_id": int(agent_id), "CONTENT_CRYPTOGRAPHIC": content,
+                "agent_id": int(agent_id), "CONTENT": content,
                 "STRUCTURAL": structural, "TIMING": timing,
-                "ALL_ALLOWED": np.concatenate((content, structural, timing)),
+                "ALL": np.concatenate((content, structural, timing)),
             })
 
     sessions: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -232,10 +232,10 @@ def main() -> None:
         },
         "pipeline_binding": "APSI slot j + SimplePIR slot j+1",
         "feature_views": {
-            "CONTENT_CRYPTOGRAPHIC": "all six exact serialized protocol objects, represented by SHA-256, normalized 32-bin byte histogram, and 64 fixed-offset bytes",
+            "CONTENT": "all six exact serialized protocol objects, represented by SHA-256, normalized 32-bin byte histogram, and 64 fixed-offset bytes",
             "STRUCTURAL": "public slot, direction, message count and serialized length",
             "TIMING": "server-side application-protocol monotonic receive/send timing and gaps",
-            "ALL_ALLOWED": "union of CONTENT, STRUCTURAL and TIMING",
+            "ALL": "union of CONTENT, STRUCTURAL and TIMING",
             "excluded": ["AgentID", "PIR row", "PSI match", "real/dummy state", "artifact plaintext", "TEE diagnostics"],
         },
         "privacy": privacy_results,
