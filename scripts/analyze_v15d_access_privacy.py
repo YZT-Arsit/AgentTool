@@ -380,7 +380,13 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--port", type=int, default=12666)
     args = parser.parse_args(); root = args.campaign.resolve(); output = args.output.resolve()
-    output.mkdir(parents=True, exist_ok=False)
+    if output.exists():
+        allowed_resume_files = {"APSI_PCAP_FEATURES.npz", "APSI_PCAP_FEATURES.incomplete.json"}
+        unexpected = {path.name for path in output.iterdir()} - allowed_resume_files
+        if unexpected:
+            raise RuntimeError(f"analysis output is not a clean feature-cache resume directory: {sorted(unexpected)}")
+    else:
+        output.mkdir(parents=True)
     public = jsonl(root / "PUBLIC_ACCESS_OBSERVATIONS.jsonl")
     private = jsonl(root / "PRIVATE_SESSION_LABELS.jsonl")
     if len(public) != 16_000 or len(private) != 4_000:
@@ -430,7 +436,7 @@ def main() -> None:
 
     def attack_population(view: str) -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]:
         selected_accesses = (
-            accesses if view in ("STRUCTURAL", "TIMING")
+            accesses if view == "STRUCTURAL"
             else [row for row in accesses if row["session_id"] in complete_content_sessions]
         )
         selected_sessions: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -532,7 +538,7 @@ def main() -> None:
             "observations_with_incomplete_apsi_payload_capture": int((~exact_capture).sum()),
             "sessions_with_all_three_logical_apsi_payloads_complete": len(complete_content_sessions),
             "capture_diagnostic": str(pcap_cache.with_suffix(".incomplete.json")),
-            "policy": "CONTENT_CRYPTOGRAPHIC and ALL_ALLOWED exclude an entire session unless all three logical APSI payload captures have exact byte counts; STRUCTURAL and TIMING retain all sessions",
+            "policy": "CONTENT_CRYPTOGRAPHIC, TIMING and ALL_ALLOWED exclude an entire session unless all three logical APSI payload captures have exact byte counts; STRUCTURAL retains all sessions",
         },
         "feature_contract": {
             "content": "exact-byte-count APSI TCP payload stream represented by whole-stream SHA-256, 32-bin byte histograms and 64 fixed public-offset bytes per direction, plus SHA-256 representation of the actual SimplePIR query",
