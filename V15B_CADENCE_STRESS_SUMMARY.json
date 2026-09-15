@@ -1,0 +1,111 @@
+{
+    "schema":  "AgentTool.V15BCadenceStressSummary/1",
+    "slots_per_candidate":  1000,
+    "candidates_ms":  [
+                          100,
+                          125,
+                          150,
+                          200,
+                          250,
+                          350
+                      ],
+    "identical_private_sequence_sha256":  "6898947a3c648b5e000aec1c644320a87dcd0cc90185bff89c7d486e2ef6f7fb",
+    "candidates":  {
+                       "100":  {
+                                   "slots":  1000,
+                                   "slot_misses":  19,
+                                   "max_start_lateness_ms":  77.417882,
+                                   "max_completion_lateness_ms":  76.647252,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.206416,
+                                   "slot_work_ms":  {
+                                                        "p50":  66.8455865,
+                                                        "p90":  76.9402869,
+                                                        "p95":  81.97006664999999,
+                                                        "p99":  97.18988906999998,
+                                                        "max":  122.798563,
+                                                        "mean":  66.004810921
+                                                    }
+                               },
+                       "125":  {
+                                   "slots":  1000,
+                                   "slot_misses":  0,
+                                   "max_start_lateness_ms":  3.061765,
+                                   "max_completion_lateness_ms":  0.0,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.262938,
+                                   "slot_work_ms":  {
+                                                        "p50":  72.68012999999999,
+                                                        "p90":  82.40899560000001,
+                                                        "p95":  88.11009929999999,
+                                                        "p99":  101.34323298999998,
+                                                        "max":  119.870814,
+                                                        "mean":  72.716227251
+                                                    }
+                               },
+                       "150":  {
+                                   "slots":  1000,
+                                   "slot_misses":  0,
+                                   "max_start_lateness_ms":  6.475939,
+                                   "max_completion_lateness_ms":  0.0,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.250083,
+                                   "slot_work_ms":  {
+                                                        "p50":  76.5250675,
+                                                        "p90":  87.2815649,
+                                                        "p95":  91.50397284999998,
+                                                        "p99":  105.35397898999999,
+                                                        "max":  124.598491,
+                                                        "mean":  76.179468077
+                                                    }
+                               },
+                       "200":  {
+                                   "slots":  1000,
+                                   "slot_misses":  1,
+                                   "max_start_lateness_ms":  33.626829,
+                                   "max_completion_lateness_ms":  32.418523,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.568178,
+                                   "slot_work_ms":  {
+                                                        "p50":  80.5136775,
+                                                        "p90":  92.9182732,
+                                                        "p95":  98.12933494999999,
+                                                        "p99":  110.22236846,
+                                                        "max":  231.960008,
+                                                        "mean":  79.509386249
+                                                    }
+                               },
+                       "250":  {
+                                   "slots":  1000,
+                                   "slot_misses":  0,
+                                   "max_start_lateness_ms":  3.177416,
+                                   "max_completion_lateness_ms":  0.0,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.48806,
+                                   "slot_work_ms":  {
+                                                        "p50":  82.968793,
+                                                        "p90":  102.1186425,
+                                                        "p95":  107.99790945,
+                                                        "p99":  133.90533317999999,
+                                                        "max":  240.773468,
+                                                        "mean":  83.899838338
+                                                    }
+                               },
+                       "350":  {
+                                   "slots":  1000,
+                                   "slot_misses":  0,
+                                   "max_start_lateness_ms":  4.908785,
+                                   "max_completion_lateness_ms":  0.0,
+                                   "max_public_queue_depth":  0,
+                                   "final_start_lateness_ms":  0.609643,
+                                   "slot_work_ms":  {
+                                                        "p50":  88.46638899999999,
+                                                        "p90":  109.6028037,
+                                                        "p95":  114.66502829999999,
+                                                        "p99":  124.23163737,
+                                                        "max":  217.598675,
+                                                        "mean":  88.39937275999999
+                                                    }
+                               }
+                   }
+}

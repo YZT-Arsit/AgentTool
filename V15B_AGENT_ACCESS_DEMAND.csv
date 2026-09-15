@@ -1,0 +1,17 @@
+framework,workload,evidence_source,logical_actions,agent_access_requests_J,agent_access_causal_depth,profile_selection_scope,mechanical_basis
+OpenAI Agents SDK,provisioned ordinary Agent,V14_E2E_RESULTS.json,1,1,1,INCLUDED,V14 recorded one real Agent-access slot
+OpenAI Agents SDK,unprovisioned ordinary Agent,V14_E2E_RESULTS.json,1,1,1,INCLUDED,V14 recorded one real Agent-access slot
+OpenAI Agents SDK,provisioned nested Agent,V14_E2E_RESULTS.json,2,2,2,INCLUDED,V14 recorded parent plus child re-entry
+OpenAI Agents SDK,unprovisioned nested Agent,V14_E2E_RESULTS.json,2,2,2,INCLUDED,V14 recorded parent plus child re-entry
+Microsoft Agent Framework,provisioned ordinary Agent,V14_E2E_RESULTS.json,1,1,1,INCLUDED,V14 recorded one real Agent-access slot
+Microsoft Agent Framework,unprovisioned ordinary Agent,V14_E2E_RESULTS.json,1,1,1,INCLUDED,V14 recorded one real Agent-access slot
+Microsoft Agent Framework,provisioned nested Agent,V14_E2E_RESULTS.json,2,2,2,INCLUDED,V14 recorded parent plus child re-entry
+Microsoft Agent Framework,unprovisioned nested Agent,V14_E2E_RESULTS.json,2,2,2,INCLUDED,V14 recorded parent plus child re-entry
+OpenAI Agents SDK,Agent-as-Tool transition,scripts/run_v12_pir_capacity_development.py,2,2,2,HISTORICAL_CROSS_CHECK,"two distinct Agent IDs 10 then 11; pre-V14 descriptor path"
+Microsoft Agent Framework,Agent-as-Tool transition,scripts/run_v12_pir_capacity_development.py,2,2,2,HISTORICAL_CROSS_CHECK,"two distinct Agent IDs 10 then 11; pre-V14 descriptor path"
+OpenAI Agents SDK,repeated target 10,scripts/run_v12_duplex_functional.py,10,1,1,HISTORICAL_CROSS_CHECK,"all ten actions use AgentID 10; one resolution then trusted cache reuse"
+Microsoft Agent Framework,repeated target 10,scripts/run_v12_duplex_functional.py,10,1,1,HISTORICAL_CROSS_CHECK,"all ten actions use AgentID 10; one resolution then trusted cache reuse"
+OpenAI Agents SDK,cache reuse 30,scripts/run_v12_pir_capacity_development.py,30,1,1,HISTORICAL_CROSS_CHECK,"all thirty actions use AgentID 10; one resolution then trusted cache reuse"
+Microsoft Agent Framework,cache reuse 30,scripts/run_v12_pir_capacity_development.py,30,1,1,HISTORICAL_CROSS_CHECK,"all thirty actions use AgentID 10; one resolution then trusted cache reuse"
+OpenAI Agents SDK,distinct descriptor transitions K6,scripts/run_v12_pir_capacity_development.py,6,6,6,STALE_NOT_PROFILE_SELECTING,"six distinct Agent IDs; historical descriptor-only path"
+Microsoft Agent Framework,distinct descriptor transitions K6,scripts/run_v12_pir_capacity_development.py,6,6,6,STALE_NOT_PROFILE_SELECTING,"six distinct Agent IDs; historical descriptor-only path"

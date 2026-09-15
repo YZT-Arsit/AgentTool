@@ -1,0 +1,1197 @@
+{
+  "schema": "AgentTool.V15BFullSessionResults/1",
+  "profile": {
+    "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+    "R_A_public_slots": 4,
+    "Delta_A_ms": 350,
+    "initial_lead_ms": 25,
+    "Agent_access_horizon_ms": 1425,
+    "maximum_admitted_agent_requests": 3,
+    "guaranteed_serial_causal_depth": 2,
+    "bootstrap_slots": 1,
+    "drain_slots": 1
+  },
+  "sessions": [
+    {
+      "session": "ZERO_REQUEST",
+      "requested_agents_private": [],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 0,
+      "gateway_repository_requests_private": [],
+      "semantic_outputs": [],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.097465,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "DEPLOYED_ONLY",
+      "requested_agents_private": [
+        101
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 1,
+      "gateway_repository_requests_private": [],
+      "semantic_outputs": [
+        "v14:oai:provisioned-ordinary:101:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.090362,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "UNPROVISIONED_ONLY",
+      "requested_agents_private": [
+        1000101
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 1,
+      "gateway_repository_requests_private": [
+        1000101
+      ],
+      "semantic_outputs": [
+        "v14:oai:unprovisioned-ordinary:1000101:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.086102,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "REPEATED_SAME_AGENT",
+      "requested_agents_private": [
+        101,
+        101,
+        101
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 3,
+      "gateway_repository_requests_private": [],
+      "semantic_outputs": [
+        "v14:oai:provisioned-ordinary:101:ok",
+        "v14:oai:provisioned-ordinary:101:ok",
+        "v14:oai:provisioned-ordinary:101:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.079226,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "ALTERNATING_AGENTS",
+      "requested_agents_private": [
+        101,
+        1000101,
+        101
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 3,
+      "gateway_repository_requests_private": [
+        1000101
+      ],
+      "semantic_outputs": [
+        "v14:oai:provisioned-ordinary:101:ok",
+        "v14:oai:unprovisioned-ordinary:1000101:ok",
+        "v14:oai:provisioned-ordinary:101:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.080623,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "NESTED_AGENT",
+      "requested_agents_private": [
+        102
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 2,
+      "gateway_repository_requests_private": [],
+      "semantic_outputs": [
+        "v14:oai:provisioned-nested:102:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": true,
+      "nested_agent_ids_private": [
+        103
+      ],
+      "max_start_lateness_ms": 0.09058,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "MIXED_OPENAI",
+      "requested_agents_private": [
+        101,
+        1000101
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 2,
+      "gateway_repository_requests_private": [
+        1000101
+      ],
+      "semantic_outputs": [
+        "v14:oai:provisioned-ordinary:101:ok",
+        "v14:oai:unprovisioned-ordinary:1000101:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.121861,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    },
+    {
+      "session": "MIXED_MICROSOFT",
+      "requested_agents_private": [
+        201,
+        1000201
+      ],
+      "scheduled_public_slots": 4,
+      "apsi_operations": 4,
+      "simplepir_operations": 4,
+      "pipeline_results": 2,
+      "gateway_repository_requests_private": [
+        1000201
+      ],
+      "semantic_outputs": [
+        "v14:maf:provisioned-ordinary:201:ok",
+        "v14:maf:unprovisioned-ordinary:1000201:ok"
+      ],
+      "semantic_success": true,
+      "nested_reentry": false,
+      "nested_agent_ids_private": [],
+      "max_start_lateness_ms": 0.088575,
+      "public_projection": [
+        {
+          "slot": 0,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 1,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 2,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        },
+        {
+          "slot": 3,
+          "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+          "psi_public_endpoint": "ENTERPRISE_AGENT_STORE_PSI",
+          "psi_messages": 4,
+          "psi_framed_lengths": [
+            104,
+            104,
+            697972,
+            1579652
+          ],
+          "pir_public_endpoint": "ENTERPRISE_AGENT_STORE_PIR",
+          "pir_messages": 2,
+          "pir_framed_lengths": [
+            36388,
+            37180
+          ],
+          "gateway_public_endpoint": "TRUSTED_GATEWAY",
+          "gateway_frame_count": 521,
+          "gateway_directions": [
+            "TEE_TO_GATEWAY",
+            "GATEWAY_TO_TEE"
+          ],
+          "gateway_frame_lengths": [
+            1079,
+            800
+          ]
+        }
+      ],
+      "public_projection_sha256": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+      "gateway_public_projection": {
+        "profile_id": "V12-TIMING-INDIST-V4R8-H50-H4500-P10-B200-PIR60",
+        "relay_cells": 521,
+        "request_bytes": 1079,
+        "response_bytes": 800,
+        "public_transcript_complete": true,
+        "common_gateway_endpoint": true,
+        "agent_specific_gateway_destination": false
+      },
+      "real_apsi": true,
+      "real_simplepir": true,
+      "gateway_profile_changed": false
+    }
+  ],
+  "all_semantic_success": true,
+  "full_session_schedule_pass": true,
+  "structural_equivalence": true
+}

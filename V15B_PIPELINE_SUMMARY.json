@@ -1,0 +1,45 @@
+{
+  "schema": "AgentTool.V15BPipelineBenchmarkSummary/1",
+  "services": {
+    "persistent": true,
+    "per_slot_process_startup": false,
+    "sender_start_to_measurement_ready_wait_ms": 1000.397095,
+    "receiver_process_start_ms": 5.347712,
+    "simplepir_process_start_to_preprocessed_ready_ms": 77988.141504
+  },
+  "cold_slot_ms": 73.716988,
+  "warm_slots": 2500,
+  "slots_per_mix": 500,
+  "fresh_simplepir_query_transcripts": 2501,
+  "psi_stage_ms": {
+    "p50": 54.194359,
+    "p90": 62.0795424,
+    "p95": 65.07118724999997,
+    "p99": 74.18247921999998,
+    "max": 98.331758,
+    "mean": 55.5831521936
+  },
+  "pir_stage_ms": {
+    "p50": 57.104382,
+    "p90": 64.2968928,
+    "p95": 66.56043245,
+    "p99": 89.07543839999964,
+    "max": 231.902433,
+    "mean": 56.6459254228
+  },
+  "overlapped_slot_work_ms": {
+    "p50": 58.673373999999995,
+    "p90": 66.20239600000001,
+    "p95": 68.72673954999999,
+    "p99": 93.05786683999992,
+    "max": 232.08662,
+    "mean": 59.617469192
+  },
+  "wire_bytes_per_slot": 2351400,
+  "resource_peaks_kib": {
+    "apsi_sender": 608188,
+    "apsi_receiver": 12856,
+    "simplepir": 1412044,
+    "orchestrator": 38188
+  }
+}

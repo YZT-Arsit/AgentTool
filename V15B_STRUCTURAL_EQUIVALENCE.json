@@ -1,0 +1,59 @@
+{
+  "schema": "AgentTool.V15BStructuralEquivalence/1",
+  "profile_id": "OAE-AGENT-ACCESS-P2-RA4-D350",
+  "sessions": [
+    "ZERO_REQUEST",
+    "DEPLOYED_ONLY",
+    "UNPROVISIONED_ONLY",
+    "REPEATED_SAME_AGENT",
+    "ALTERNATING_AGENTS",
+    "NESTED_AGENT",
+    "MIXED_OPENAI",
+    "MIXED_MICROSOFT"
+  ],
+  "projection_fields": [
+    "slot",
+    "profile_id",
+    "psi_public_endpoint",
+    "psi_messages",
+    "psi_framed_lengths",
+    "pir_public_endpoint",
+    "pir_messages",
+    "pir_framed_lengths",
+    "gateway_public_endpoint",
+    "gateway_frame_count",
+    "gateway_directions",
+    "gateway_frame_lengths"
+  ],
+  "excluded": [
+    "realized_wall_clock_timestamps",
+    "AgentID",
+    "PIR row",
+    "hit/miss",
+    "queue occupancy",
+    "artifact",
+    "source class"
+  ],
+  "projection_sha256": {
+    "ZERO_REQUEST": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "DEPLOYED_ONLY": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "UNPROVISIONED_ONLY": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "REPEATED_SAME_AGENT": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "ALTERNATING_AGENTS": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "NESTED_AGENT": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "MIXED_OPENAI": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912",
+    "MIXED_MICROSOFT": "091b83a141ca2d24c8417ca980bf9fbd2080a20436b8a68fe422e802fcbd4912"
+  },
+  "gateway_projection_sha256": {
+    "ZERO_REQUEST": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "DEPLOYED_ONLY": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "UNPROVISIONED_ONLY": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "REPEATED_SAME_AGENT": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "ALTERNATING_AGENTS": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "NESTED_AGENT": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "MIXED_OPENAI": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f",
+    "MIXED_MICROSOFT": "5a927eaf3c15012ae26f1ea3b0af728ce61c59c5d107cfe1c5e095476909013f"
+  },
+  "exact_equality": true,
+  "timing_indistinguishability_claimed": false
+}

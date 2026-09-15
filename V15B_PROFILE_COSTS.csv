@@ -1,0 +1,4 @@
+profile,R_A_public_slots,Delta_A_ms,bootstrap_slots,drain_slots,total_agent_access_slots,public_horizon_ms,maximum_admitted_agent_requests,guaranteed_serial_causal_depth,psi_bytes_session,pir_bytes_session,agent_access_bytes_session,gateway_bytes_session,total_public_bytes_session,total_public_mib_session,median_admission_to_artifact_ready_ms,p95_admission_to_artifact_ready_ms,purpose
+P1,2,350,1,1,2,725,1,1,4555664,147136,4702800,978959,5681759,5.418547630310059,407.104382,416.56043245,ordinary single-Agent sessions
+P2,4,350,1,1,4,1425,3,2,9111328,294272,9405600,978959,10384559,9.903487205505371,407.104382,416.56043245,"default V14 functional corpus, including two-level nested retrieval"
+P3,12,350,1,1,12,4225,11,6,27333984,882816,28216800,978959,29195759,27.84324550628662,407.104382,416.56043245,higher-capacity option including historical six-level descriptor-transition demand
