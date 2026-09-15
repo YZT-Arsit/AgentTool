@@ -183,6 +183,7 @@ def main() -> None:
     parser.add_argument("--equivalence", type=Path, required=True)
     parser.add_argument("--scale", type=Path, required=True)
     parser.add_argument("--joint-inventory", type=Path, required=True)
+    parser.add_argument("--timing-preflight-abort", type=Path)
     parser.add_argument("--output", type=Path, default=ROOT if "ROOT" in globals() else Path.cwd())
     args = parser.parse_args(); output = args.output.resolve()
 
@@ -250,6 +251,11 @@ def main() -> None:
                          "record_bytes": 1024, "R_A": 4, "Delta_A_ms": 350, "horizon_ms": 1425,
                          "max_admitted": 3, "gateway_cells": 521},
         "joint_access_campaign": inventory,
+        "timing_preflight_abort": (
+            {"record": load(args.timing_preflight_abort), "sha256": sha256(args.timing_preflight_abort),
+             "executed_sessions": 0, "classification": "HARNESS_MANIFEST_PREFLIGHT_DEFECT"}
+            if args.timing_preflight_abort else None
+        ),
         "utility": {"measured_sessions": len(utility), "nonidle": len(nonidle),
                     "semantic_successes": len(successful), "profile_conformance": sum(row["profile_conformance"] for row in utility),
                     "retrieval_p50_ms": percentile(all_retrievals, .5), "retrieval_p95_ms": percentile(all_retrievals, .95),
@@ -405,6 +411,7 @@ def main() -> None:
 - Strongest final Gateway result: **{strongest_timing['experiment']} / {strongest_timing['framework']}**, AUC **{strongest_timing['test_train_oriented_auc']:.3f}**, 95% CI [{strongest_timing['ci95_low']:.3f}, {strongest_timing['ci95_high']:.3f}], p={strongest_timing['permutation_p']:.4g}.
 - Agent-access deployed/unprovisioned/idle timing-only classification: accuracy **{branch_timing['test_accuracy']:.3f}**, 95% CI [{branch_timing['ci95_low']:.3f}, {branch_timing['ci95_high']:.3f}], p={branch_timing['permutation_p']:.4g}.
 - **TIMING_PRIVACY = NOT_ESTABLISHED.** No timing result is omitted or averaged away.
+- A preserved preflight manifest mismatch aborted before any timing runtime session; it contributes zero observations and is not counted as a retry or failed sample.
 
 ## Scale
 
