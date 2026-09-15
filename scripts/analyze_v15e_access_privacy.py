@@ -44,6 +44,11 @@ def capture_complete(apsi: dict[str, Any], pir: dict[str, Any]) -> bool:
         == EXPECTED_PIR_SERIALIZED
         and all(apsi[name].get("sha256") for name in ("oprf_request", "oprf_response", "query", "result"))
         and all(pir[name].get("sha256") for name in ("query", "answer"))
+        and all(
+            sum(map(int, apsi[name]["message_serialized_lengths"]))
+            == int(apsi[name]["serialized_bytes"])
+            for name in ("oprf_request", "oprf_response", "query", "result")
+        )
     )
 
 
@@ -100,6 +105,7 @@ def main() -> None:
                 int(apsi_row["oprf_response"]["message_count"]), 104,
                 int(apsi_row["query"]["message_count"]), 697_972,
                 int(apsi_row["result"]["message_count"]), 1_579_652,
+                *map(int, apsi_row["result"]["message_serialized_lengths"]),
                 int(pir_row["query"]["message_count"]), 36_388,
                 int(pir_row["answer"]["message_count"]), 37_196,
                 int(public_psi["structural_projection"]["gateway_frame_count"]), 1079, 800,

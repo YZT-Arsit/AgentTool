@@ -53,18 +53,21 @@ class Observation:
                 "direction": "RECEIVER_TO_SERVER",
                 "server_receive_monotonic_ns": oprf_req_ns,
                 "message_count": 1,
+                "message_serialized_lengths": [sum(map(len, oprf_req))],
                 **summarize(oprf_req),
             },
             "oprf_response": {
                 "direction": "SERVER_TO_RECEIVER",
                 "server_send_monotonic_ns": oprf_resp_ns,
                 "message_count": 1,
+                "message_serialized_lengths": [sum(map(len, oprf_resp))],
                 **summarize(oprf_resp),
             },
             "query": {
                 "direction": "RECEIVER_TO_SERVER",
                 "server_receive_monotonic_ns": query_req_ns,
                 "message_count": 1,
+                "message_serialized_lengths": [sum(map(len, query_req))],
                 **summarize(query_req),
             },
             "result": {
@@ -72,6 +75,9 @@ class Observation:
                 "server_first_send_monotonic_ns": result_first_ns,
                 "server_last_send_monotonic_ns": result_last_ns,
                 "message_count": len(self.responses) - 1,
+                "message_serialized_lengths": [
+                    sum(map(len, frames)) for _, frames in self.responses[1:]
+                ],
                 **summarize(result_parts),
             },
         }
