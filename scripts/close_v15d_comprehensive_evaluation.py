@@ -252,6 +252,11 @@ def main() -> None:
                     "profile_instances": profile_instances, "summary_by_coordinate": summaries,
                     "overflow": sum(row["overflow_count"] for row in utility),
                     "silent_loss": sum(row["silent_loss_count"] for row in utility),
+                    "profile_capacity_failures": sum(row["profile_capacity_failures"] for row in utility),
+                    "retrieval_failures": sum(row["retrieval_failures"] for row in utility),
+                    "agent_loader_failures": sum(row["agent_loader_failures"] for row in utility),
+                    "real_psi_queries": real_psi, "dummy_psi_queries": total_slots - real_psi,
+                    "real_pir_queries": real_pir, "dummy_pir_queries": total_slots - real_pir,
                     "dummy_heavy_agent": sum(row["dummy_heavy_agent_executions"] for row in utility),
                     "dummy_heavy_llm": sum(row["dummy_heavy_llm_executions"] for row in utility),
                     "dummy_heavy_tool": sum(row["dummy_heavy_tool_executions"] for row in utility)},
@@ -374,6 +379,7 @@ def main() -> None:
 - Retrieval latency over {len(all_retrievals)} successful retrievals: **{percentile(all_retrievals,.5):.3f} ms p50 / {percentile(all_retrievals,.95):.3f} ms p95**.
 - Semantic task latency over successful non-idle executions: **{percentile([row['task_latency_ms'] for row in successful],.5):.3f} ms p50 / {percentile([row['task_latency_ms'] for row in successful],.95):.3f} ms p95**.
 - Overflow: **{sum(row['overflow_count'] for row in utility)}**; silent loss: **{sum(row['silent_loss_count'] for row in utility)}**.
+- Profile-capacity failures: **{sum(row['profile_capacity_failures'] for row in utility)}**; retrieval failures: **{sum(row['retrieval_failures'] for row in utility)}**; Agent Loader failures: **{sum(row['agent_loader_failures'] for row in utility)}**.
 
 ## Access privacy
 
