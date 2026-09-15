@@ -240,6 +240,12 @@ def main() -> None:
     strongest_access = max(binary_access_timing, key=lambda row: row["test_orientation_invariant_auc"])
     stats = {
         "schema": "AgentTool.V15DFinalStatisticalSummary/1", "base": BASE,
+        "input_sha256": {name: sha256(path) for name, path in {
+            "utility_core": args.core, "utility_supplement": args.supplement,
+            "access_statistics": args.access, "timing_statistics": args.timing,
+            "structural_statistics": args.structural, "structural_equivalence": args.equivalence,
+            "scale_results": args.scale, "joint_inventory": args.joint_inventory,
+        }.items()},
         "final_system": {"APSI": "Microsoft APSI v0.13.1", "SimplePIR": "real", "artifacts": 100000,
                          "record_bytes": 1024, "R_A": 4, "Delta_A_ms": 350, "horizon_ms": 1425,
                          "max_admitted": 3, "gateway_cells": 521},
