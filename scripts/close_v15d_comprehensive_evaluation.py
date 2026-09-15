@@ -180,6 +180,7 @@ def main() -> None:
     parser.add_argument("--access", type=Path, required=True)
     parser.add_argument("--timing", type=Path, required=True)
     parser.add_argument("--structural", type=Path, required=True)
+    parser.add_argument("--equivalence", type=Path, required=True)
     parser.add_argument("--scale", type=Path, required=True)
     parser.add_argument("--joint-inventory", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=ROOT if "ROOT" in globals() else Path.cwd())
@@ -187,6 +188,7 @@ def main() -> None:
 
     core, supplement = load(args.core), load(args.supplement)
     access, timing, structural = load(args.access), load(args.timing), load(args.structural)
+    equivalence = load(args.equivalence)
     inventory = load(args.joint_inventory)
     scale = csv_rows(args.scale)
     utility = normalize_utility(core, supplement); summaries = utility_summary(utility)
@@ -254,6 +256,7 @@ def main() -> None:
                     "dummy_heavy_llm": sum(row["dummy_heavy_llm_executions"] for row in utility),
                     "dummy_heavy_tool": sum(row["dummy_heavy_tool_executions"] for row in utility)},
         "access_privacy": access, "structural_and_branch": structural, "timing": timing,
+        "full_session_structural_equivalence": equivalence,
         "strongest_final_gateway_timing": strongest_gateway,
         "strongest_final_agent_access_binary_timing": strongest_access,
         "scale": scale, "overhead": overhead,
@@ -281,7 +284,7 @@ def main() -> None:
         ("access ordering privacy", "EMPIRICALLY_SUPPORTED" if multi_supported(primary_sequence, .25) else "NOT_ESTABLISHED", primary_sequence),
         ("recurrence privacy", "EMPIRICALLY_SUPPORTED" if binary_supported(selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")) else "NOT_ESTABLISHED", selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")),
         ("rare-Agent privacy", "EMPIRICALLY_SUPPORTED" if binary_supported(selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")) else "NOT_ESTABLISHED", selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")),
-        ("deployed/unprovisioned/idle structural privacy", "ESTABLISHED" if multi_supported(branch_struct, 1/3) else "NOT_ESTABLISHED", branch_struct),
+        ("deployed/unprovisioned/idle structural privacy", "ESTABLISHED" if equivalence.get("exact_equality") is True and multi_supported(branch_struct, 1/3) else "NOT_ESTABLISHED", branch_struct),
         ("execution-trajectory structural privacy", "EMPIRICALLY_SUPPORTED" if multi_supported(trajectory, .25) else "NOT_ESTABLISHED", trajectory),
         ("Agent-access realized timing privacy", "NOT_ESTABLISHED", branch_timing),
         ("Gateway realized timing privacy", "NOT_ESTABLISHED", strongest_gateway),
@@ -381,6 +384,7 @@ def main() -> None:
 
 ## Structural trajectory privacy
 
+- Full-session permitted structural projection: **{'PASS' if equivalence.get('exact_equality') else 'FAIL'}**, with Agent-access projection SHA-256 `{next(iter(equivalence['projection_sha256'].values()))}` across {len(equivalence['sessions'])} private patterns.
 - Final composed structural attack: accuracy **{trajectory['test_accuracy']:.3f}**, macro-F1 {trajectory['test_macro_f1']:.3f}, 95% CI [{trajectory['ci95_low']:.3f}, {trajectory['ci95_high']:.3f}] against 0.25 chance.
 - This result composes the historical matched action records with constant final Agent-access and unchanged Gateway structural fields; it is not mislabeled as a fresh integrated 800-session campaign.
 
