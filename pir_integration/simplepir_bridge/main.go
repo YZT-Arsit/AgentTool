@@ -93,6 +93,7 @@ type interactiveCompleted struct {
 	response interactiveResponse
 	client   clientTrace
 	server   serverTrace
+	capture  applicationCapture
 }
 
 type interactiveJob struct {
@@ -101,16 +102,62 @@ type interactiveJob struct {
 }
 
 type interactivePrepared struct {
-	request     interactiveRequest
-	clientState sp.State
-	query       sp.Msg
-	queryBytes  uint64
-	queryRows   uint64
-	queryCols   uint64
-	queryHash   string
-	queryMs     float64
-	err         error
-	completed   chan interactiveCompleted
+	request         interactiveRequest
+	clientState     sp.State
+	query           sp.Msg
+	queryBytes      uint64
+	queryRows       uint64
+	queryCols       uint64
+	queryHash       string
+	querySerialized []byte
+	queryMs         float64
+	err             error
+	completed       chan interactiveCompleted
+}
+
+type byteSummary struct {
+	SerializedBytes    int        `json:"serialized_bytes"`
+	SHA256             string     `json:"sha256"`
+	ByteHistogram32    [32]uint64 `json:"byte_histogram_32"`
+	FixedOffsetBytes64 [64]byte   `json:"fixed_offset_bytes_64"`
+}
+
+type capturedObject struct {
+	Direction           string `json:"direction"`
+	ServerReceiveMonoNS int64  `json:"server_receive_monotonic_ns,omitempty"`
+	ServerSendMonoNS    int64  `json:"server_send_monotonic_ns,omitempty"`
+	MessageCount        int    `json:"message_count"`
+	byteSummary
+}
+
+type applicationCapture struct {
+	Schema        string         `json:"schema"`
+	Ordinal       int            `json:"observation_ordinal"`
+	TimestampType string         `json:"timestamp_type"`
+	Query         capturedObject `json:"query"`
+	Answer        capturedObject `json:"answer"`
+}
+
+var monotonicOrigin = time.Now()
+
+func monotonicNowNS() int64 {
+	return time.Since(monotonicOrigin).Nanoseconds()
+}
+
+func summarizeBytes(raw []byte) byteSummary {
+	result := byteSummary{SerializedBytes: len(raw)}
+	digest := sha256.Sum256(raw)
+	result.SHA256 = hex.EncodeToString(digest[:])
+	for _, value := range raw {
+		result.ByteHistogram32[value/8]++
+	}
+	if len(raw) > 0 {
+		for index := range result.FixedOffsetBytes64 {
+			offset := index * (len(raw) - 1) / (len(result.FixedOffsetBytes64) - 1)
+			result.FixedOffsetBytes64[index] = raw[offset]
+		}
+	}
+	return result
 }
 
 type interactiveServerJob struct {
@@ -361,7 +408,8 @@ func prepareInteractive(pi sp.SimplePIR, shared sp.State, params sp.Params,
 	return interactivePrepared{
 		request: req, clientState: clientState, query: query,
 		queryBytes: uint64(len(serializedQuery)), queryRows: query.Data[0].Rows,
-		queryCols: query.Data[0].Cols, queryHash: hex.EncodeToString(hash[:]), queryMs: queryMs,
+		queryCols: query.Data[0].Cols, queryHash: hex.EncodeToString(hash[:]),
+		querySerialized: serializedQuery, queryMs: queryMs,
 		completed: make(chan interactiveCompleted, 1),
 	}
 }
@@ -370,8 +418,10 @@ func answerInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.S
 	params sp.Params, job interactiveServerJob) interactiveCompleted {
 	prepared := job.prepared
 	req := prepared.request
+	serverReceiveMonoNS := monotonicNowNS()
 	started := time.Now()
 	answer := answerUnpacked(db, prepared.query, params)
+	serializedAnswer := msgBytes(answer)
 	answerMs := float64(time.Since(started).Microseconds()) / 1000.0
 	started = time.Now()
 	record := recoverRecord(req.Index, hint, prepared.query, answer, shared, prepared.clientState, params, db.Info)
@@ -389,17 +439,33 @@ func answerInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.S
 		server: serverTrace{req.Ordinal, prepared.queryBytes, prepared.queryRows,
 			prepared.queryCols, prepared.queryHash, answer.Size() * 4, answerMs,
 			"SimplePIRServer", "ONLINE_PIR_QUERY", 0, job.arrivalNS, readyNS, 0},
+		capture: applicationCapture{
+			Schema:        "AgentTool.V15ESimplePIRApplicationCapture/1",
+			Ordinal:       req.Ordinal,
+			TimestampType: "APPLICATION_PROTOCOL_TIMESTAMP_MONOTONIC_NS",
+			Query: capturedObject{Direction: "RECEIVER_TO_SERVER", ServerReceiveMonoNS: serverReceiveMonoNS,
+				MessageCount: 1, byteSummary: summarizeBytes(prepared.querySerialized)},
+			Answer: capturedObject{Direction: "SERVER_TO_RECEIVER", MessageCount: 1,
+				byteSummary: summarizeBytes(serializedAnswer)},
+		},
 	}
 }
 
 func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.State, hint sp.Msg,
-	params sp.Params, recordCount uint64, clientPath, serverPath string) {
+	params sp.Params, recordCount uint64, clientPath, serverPath, capturePath string) {
 	clientFile, clientWriter := createJSONL(clientPath)
 	defer clientFile.Close()
 	defer clientWriter.Flush()
 	serverFile, serverWriter := createJSONL(serverPath)
 	defer serverFile.Close()
 	defer serverWriter.Flush()
+	var captureFile *os.File
+	var captureWriter *bufio.Writer
+	if capturePath != "" {
+		captureFile, captureWriter = createJSONL(capturePath)
+		defer captureFile.Close()
+		defer captureWriter.Flush()
+	}
 
 	// A public fixed pool of dummy queries is prepared before the session. If a
 	// committed real/dummy query is not ready by its public release deadline, a
@@ -567,8 +633,13 @@ func runInteractive(pi sp.SimplePIR, db *sp.Database, raw []byte, shared sp.Stat
 		}
 		previousReleaseNS = responseSendNS
 		completed.server.SendNs = responseSendNS
+		completed.capture.Answer.ServerSendMonoNS = monotonicNowNS()
 		writeJSON(clientWriter, completed.client)
 		writeJSON(serverWriter, completed.server)
+		if captureWriter != nil {
+			writeJSON(captureWriter, completed.capture)
+			captureWriter.Flush()
+		}
 		clientWriter.Flush()
 		serverWriter.Flush()
 	}
@@ -585,6 +656,7 @@ func main() {
 	metricsPath := flag.String("metrics", "metrics.json", "metrics JSON")
 	clientPath := flag.String("client-trace", "client.jsonl", "private client trace")
 	serverPath := flag.String("server-trace", "server.jsonl", "server-visible trace")
+	applicationCapturePath := flag.String("application-capture", "", "lossless-boundary compact application protocol capture JSONL")
 	recoveredPath := flag.String("recovered", "recovered.jsonl", "private recovered records")
 	rawQueryPath := flag.String("raw-queries", "raw_queries.bin", "length-prefixed raw server queries")
 	commit := flag.String("commit", "unknown", "pinned upstream commit")
@@ -615,7 +687,7 @@ func main() {
 	// expand the packed storage so the portable matrix-vector kernel can run.
 	db.Data.Unsquish(db.Info.Basis, db.Info.Squishing, db.Info.Cols)
 	if *interactive {
-		runInteractive(pi, db, raw, shared, hint, params, *records, *clientPath, *serverPath)
+		runInteractive(pi, db, raw, shared, hint, params, *records, *clientPath, *serverPath, *applicationCapturePath)
 		return
 	}
 

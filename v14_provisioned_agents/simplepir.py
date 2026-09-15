@@ -35,6 +35,7 @@ class PersistentSimplePIRArtifactClient:
         output: Path,
         *,
         expected_sha256: str | None = None,
+        application_capture_path: Path | None = None,
     ):
         bridge_binary = bridge_binary.resolve()
         database = database.resolve()
@@ -47,8 +48,7 @@ class PersistentSimplePIRArtifactClient:
         output.mkdir(parents=True, exist_ok=False)
         self.binary_sha256 = digest
         self.record_count = record_count
-        self.process = subprocess.Popen(
-            [
+        command = [
                 str(bridge_binary),
                 "--interactive",
                 "--database", str(database),
@@ -57,7 +57,13 @@ class PersistentSimplePIRArtifactClient:
                 "--client-trace", str(output / "client_private_trace.jsonl"),
                 "--server-trace", str(output / "server_visible_trace.jsonl"),
                 "--commit", SIMPLEPIR_COMMIT,
-            ],
+            ]
+        if application_capture_path is not None:
+            capture = application_capture_path.resolve()
+            capture.parent.mkdir(parents=True, exist_ok=True)
+            command.extend(["--application-capture", str(capture)])
+        self.process = subprocess.Popen(
+            command,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=(output / "bridge_stderr.txt").open("wb"),
