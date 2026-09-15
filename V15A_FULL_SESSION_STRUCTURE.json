@@ -1,0 +1,23 @@
+{
+  "schema": "AgentTool.V15AFullSessionStructure/1",
+  "status": "NOT_RUN",
+  "reason": "CURRENT_PROFILE_NOT_FEASIBLE",
+  "session_level_real_psi_pir_schedule": "NOT_RUN",
+  "full_session_structural_equivalence": "NOT_RUN",
+  "required_sessions": [
+    "no real Agent requests",
+    "one provisioned Agent request",
+    "one unprovisioned Agent request",
+    "repeated same-Agent accesses",
+    "alternating Agent IDs",
+    "nested Agent-to-Agent request"
+  ],
+  "per_slot_wire_equivalence_already_measured": {
+    "status": "PASS",
+    "cases": ["DEPLOYED", "UNPROVISIONED", "IDLE"],
+    "bytes_per_slot": 2351400,
+    "message_count": 6,
+    "protocol_round_count": 3
+  },
+  "claim_boundary": "Per-slot structural equality does not establish a complete session-level fixed schedule. Realized timestamps are excluded."
+}

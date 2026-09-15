@@ -1,0 +1,87 @@
+{
+  "schema": "AgentTool.V15ASessionCostProjection/1",
+  "basis": {
+    "status": "HISTORICAL_V4R8_REGISTRY_PROFILE_USED_AS_AGENT_ACCESS_CANDIDATE",
+    "v14_session_scheduler_implemented": false,
+    "slots_per_session": 100,
+    "slot_interval_ms": 60,
+    "public_epoch_ms": 6000,
+    "initial_lead_ms": 25,
+    "maximum_admitted_real_agent_accesses": 6
+  },
+  "per_slot": {
+    "apsi_bytes": 2277832,
+    "simplepir_bytes": 73568,
+    "combined_agent_access_bytes": 2351400,
+    "messages": 6,
+    "protocol_rounds": 3
+  },
+  "current_candidate_projection": {
+    "psi_bytes_per_session": 227783200,
+    "pir_bytes_per_session": 7356800,
+    "combined_agent_access_bytes_per_session": 235140000,
+    "gateway_channel_bytes_per_session": 978959,
+    "total_public_bytes_per_session": 236118959,
+    "required_psi_queries_per_second": 16.6666666667,
+    "required_pir_queries_per_second": 16.6666666667,
+    "cryptographic_server_work_ms_per_100_slots": {
+      "all_deployed_mean_projection": 7125.02711,
+      "all_unprovisioned_mean_projection": 7135.077017,
+      "all_idle_mean_projection": 6520.279961
+    }
+  },
+  "measured_capacity": {
+    "all_case_p50_slot_ms": 129.002936,
+    "all_case_p95_slot_ms": 155.00429935,
+    "all_case_p99_slot_ms": 178.42015614,
+    "all_case_max_slot_ms": 345.858409,
+    "p99_reciprocal_rate_per_second": 5.6047479255,
+    "strict_observed_max_reciprocal_rate_per_second": 2.8913566187,
+    "current_required_rate_per_second": 16.6666666667,
+    "minimum_empirical_zero_miss_interval_ms": 346,
+    "scope": "single persistent APSI receiver lane plus one persistent SimplePIR bridge on the measured host"
+  },
+  "candidate_profiles_not_activated": [
+    {
+      "profile": "Gamma_candidate_1",
+      "basis": "p99 rounded upward to a 10-ms public interval",
+      "slots": 34,
+      "interval_ms": 180,
+      "public_epoch_ms": 6000,
+      "last_slot_offset_including_25ms_lead_ms": 5965,
+      "agent_access_bytes_per_session": 79947600,
+      "total_public_bytes_per_session": 80926559,
+      "estimated_median_wait_plus_service_ms": 219.002936,
+      "supported_maximum_admitted_real_agent_accesses": 6,
+      "qualification": "PROPOSAL_ONLY_NOT_ZERO_MISS_QUALIFIED"
+    },
+    {
+      "profile": "Gamma_candidate_2",
+      "basis": "200-ms rounded engineering interval with p99 headroom",
+      "slots": 30,
+      "interval_ms": 200,
+      "public_epoch_ms": 6000,
+      "last_slot_offset_including_25ms_lead_ms": 5825,
+      "agent_access_bytes_per_session": 70542000,
+      "total_public_bytes_per_session": 71520959,
+      "estimated_median_wait_plus_service_ms": 229.002936,
+      "supported_maximum_admitted_real_agent_accesses": 6,
+      "qualification": "PROPOSAL_ONLY_NOT_ZERO_MISS_QUALIFIED"
+    },
+    {
+      "profile": "Gamma_candidate_3",
+      "basis": "350-ms interval exceeding the maximum observed 345.858409-ms slot",
+      "slots": 18,
+      "interval_ms": 350,
+      "public_epoch_ms": 6000,
+      "last_slot_offset_including_25ms_lead_ms": 5975,
+      "agent_access_bytes_per_session": 42325200,
+      "total_public_bytes_per_session": 43304159,
+      "estimated_median_wait_plus_service_ms": 304.002936,
+      "supported_maximum_admitted_real_agent_accesses": 6,
+      "qualification": "PROPOSAL_ONLY_EMPIRICAL_MAX_HEADROOM_NOT_FUTURE_GUARANTEE"
+    }
+  ],
+  "decision": "CURRENT_PROFILE_NOT_FEASIBLE",
+  "profile_redesign_required": true
+}

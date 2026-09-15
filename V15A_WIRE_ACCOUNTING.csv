@@ -1,0 +1,4 @@
+case,apsi_oprf_request_bytes,apsi_oprf_response_bytes,apsi_query_bytes,apsi_result_bytes,simplepir_query_bytes,simplepir_answer_bytes,message_count,protocol_round_count,psi_bytes,pir_bytes,bytes_per_public_agent_access_slot
+DEPLOYED,104,104,697972,1579652,36388,37180,6,3,2277832,73568,2351400
+UNPROVISIONED,104,104,697972,1579652,36388,37180,6,3,2277832,73568,2351400
+IDLE,104,104,697972,1579652,36388,37180,6,3,2277832,73568,2351400

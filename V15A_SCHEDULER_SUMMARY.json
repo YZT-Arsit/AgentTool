@@ -1,0 +1,42 @@
+{
+  "ALL_DEPLOYED": {
+    "final_completion_lateness_ms": 6360.648072,
+    "max_queue_depth": 52,
+    "max_start_lateness_ms": 6242.790739,
+    "missed_slots": 99,
+    "scheduled_offsets_identical": true,
+    "slots": 100
+  },
+  "ALL_IDLE": {
+    "final_completion_lateness_ms": 6389.257381,
+    "max_queue_depth": 52,
+    "max_start_lateness_ms": 6263.018427,
+    "missed_slots": 98,
+    "scheduled_offsets_identical": true,
+    "slots": 100
+  },
+  "ALL_UNPROVISIONED": {
+    "final_completion_lateness_ms": 6339.371582,
+    "max_queue_depth": 51,
+    "max_start_lateness_ms": 6216.516019,
+    "missed_slots": 98,
+    "scheduled_offsets_identical": true,
+    "slots": 100
+  },
+  "ALTERNATING": {
+    "final_completion_lateness_ms": 6570.54032,
+    "max_queue_depth": 52,
+    "max_start_lateness_ms": 6434.841265,
+    "missed_slots": 99,
+    "scheduled_offsets_identical": true,
+    "slots": 100
+  },
+  "RANDOMIZED": {
+    "final_completion_lateness_ms": 6109.033232,
+    "max_queue_depth": 51,
+    "max_start_lateness_ms": 5979.572882,
+    "missed_slots": 99,
+    "scheduled_offsets_identical": true,
+    "slots": 100
+  }
+}

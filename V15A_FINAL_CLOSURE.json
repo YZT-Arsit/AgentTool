@@ -1,0 +1,94 @@
+{
+  "schema": "AgentTool.V15APublicProfileFeasibilityClosure/1",
+  "base_v14_commit": "4d1b9b7acacac3eb7daf996b331550aad2ecddce",
+  "v14_checkpoint": {
+    "local_head": "4d1b9b7acacac3eb7daf996b331550aad2ecddce",
+    "remote_head": "4d1b9b7acacac3eb7daf996b331550aad2ecddce",
+    "worktree_clean_after_checkpoint": true,
+    "tests": "45/45 PASS",
+    "credential_scan": "PASS",
+    "paper_files_modified": false
+  },
+  "paper_model": "PREPROVISIONED_AGENT_ARTIFACT_STORE",
+  "real_apsi": "PASS",
+  "real_simplepir": "PASS",
+  "psi_sender_items": 100000,
+  "pir_artifact_records": 100000,
+  "pir_reserved_dummy_records": 1,
+  "pir_record_bytes": 1024,
+  "v14_previously_executed_only_logical_slots": true,
+  "session_level_agent_access_privacy_before_v15a": "NOT_IMPLEMENTED",
+  "public_agent_access_slots_per_session": {
+    "v14_implemented": null,
+    "historical_v4r8_candidate_tested": 100
+  },
+  "public_agent_access_interval": {
+    "v14_implemented_ms": null,
+    "historical_v4r8_candidate_tested_ms": 60
+  },
+  "candidate_public_epoch_ms": 6000,
+  "candidate_public_initial_lead_ms": 25,
+  "bytes_per_agent_access_slot": 2351400,
+  "projected_agent_access_bytes_per_session": 235140000,
+  "projected_gateway_channel_bytes_per_session": 978959,
+  "projected_total_public_bytes_per_session": 236118959,
+  "wire_structure": {
+    "deployed_unprovisioned_idle_equal": true,
+    "apsi_oprf_request_bytes": 104,
+    "apsi_oprf_response_bytes": 104,
+    "apsi_query_bytes": 697972,
+    "apsi_result_bytes": 1579652,
+    "simplepir_query_bytes": 36388,
+    "simplepir_answer_bytes": 37180,
+    "messages_per_slot": 6,
+    "protocol_rounds_per_slot": 3
+  },
+  "access_slot_measurement": {
+    "fresh_microbenchmark_slots": 300,
+    "fresh_scheduler_slots": 500,
+    "total_fresh_slots": 800,
+    "unique_simplepir_query_hashes": 800,
+    "latency_ms": {
+      "p50": 129.002936,
+      "p95": 155.00429935,
+      "p99": 178.42015614,
+      "max": 345.858409
+    },
+    "peak_rss_kib": {
+      "apsi_sender": 553228,
+      "apsi_receiver": 12804,
+      "simplepir": 1419064,
+      "orchestrator": 38376
+    }
+  },
+  "scheduler_capacity": {
+    "mixes": 5,
+    "slots_per_mix": 100,
+    "scheduled_timestamps_identical": true,
+    "missed_slots_range": [98, 99],
+    "maximum_queue_depth_range": [51, 52],
+    "final_completion_lateness_ms_range": [6109.033232, 6570.54032],
+    "required_rate_per_second": 16.6666666667,
+    "p99_reciprocal_rate_per_second": 5.6047479255,
+    "strict_observed_max_reciprocal_rate_per_second": 2.8913566187,
+    "minimum_empirical_zero_miss_interval_ms": 346
+  },
+  "max_sustainable_slot_rate": {
+    "reported_conservative_observed_per_second": 2.8913566187,
+    "basis": "reciprocal of maximum observed 345.858409-ms complete slot",
+    "not_a_future_host_guarantee": true
+  },
+  "current_profile_feasible": false,
+  "profile_redesign_required": true,
+  "full_session_real_psi_pir_schedule": "NOT_RUN",
+  "full_session_structural_equivalence": "NOT_RUN",
+  "max_admitted_agent_requests": {
+    "historical_candidate_contract": 6,
+    "v14_scheduler_enforced": false,
+    "future_overflow_semantics_required": "AGENT_ACCESS_NOT_ADMITTED"
+  },
+  "candidate_profiles": "V15A_SESSION_COST_PROJECTION.json",
+  "new_privacy_attack_experiments": 0,
+  "paper_files_modified": false,
+  "v15a_decision": "CURRENT_PROFILE_NOT_FEASIBLE"
+}
