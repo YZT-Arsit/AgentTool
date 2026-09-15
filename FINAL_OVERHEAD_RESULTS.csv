@@ -1,0 +1,22 @@
+metric,section,source,unit,value
+APSI_bytes_per_profile,AGENT_ACCESS,V15B measured wire,bytes,9111328
+SimplePIR_bytes_per_profile,AGENT_ACCESS,V15B measured wire,bytes,294272
+total_bytes_per_profile,AGENT_ACCESS,sum of four public slots,bytes,9405600
+bytes_per_profile,GATEWAY,frozen 521-cell V4R8 profile,bytes,978959
+bytes_per_profile,TOTAL,Agent-access plus Gateway,bytes,10384559
+MiB_per_profile,TOTAL,IEC conversion,MiB,9.903487205505371
+public_profiles_total,MEASURED_EXECUTION,final 280 sessions,profiles,320
+public_profiles_per_session_mean,MEASURED_EXECUTION,final 280 sessions,profiles/session,1.1428571428571428
+agent_access_bytes_per_session_mean,MEASURED_EXECUTION,final 280 sessions; continuation profiles retained,bytes/session,10749257.142857144
+gateway_bytes_per_session_mean,MEASURED_EXECUTION,final 280 sessions; continuation profiles retained,bytes/session,1118810.2857142857
+total_bytes_per_session_mean,MEASURED_EXECUTION,final 280 sessions; continuation profiles retained,bytes/session,11868067.42857143
+total_MiB_per_session_mean,MEASURED_EXECUTION,final 280 sessions; continuation profiles retained,MiB/session,11.318271092006139
+agent_access_horizon,PROFILE,frozen Gamma_A,ms,1425
+real_PSI_slot_utilization,PROFILE,final 280 sessions,fraction,0.375
+dummy_PSI_slot_utilization,PROFILE,final 280 sessions,fraction,0.625
+real_PIR_slot_utilization,PROFILE,final 280 sessions,fraction,0.25
+dummy_PIR_slot_utilization,PROFILE,final 280 sessions,fraction,0.75
+Delta_250_slot_misses,PROFILE_SENSITIVITY,V15B frozen 1000-slot stress,slots,0
+Delta_250_public_horizon,PROFILE_SENSITIVITY,fixed R_A=4,ms,1025
+Delta_350_slot_misses,PROFILE_SENSITIVITY,V15B frozen 1000-slot stress,slots,0
+Delta_350_public_horizon,PROFILE_SENSITIVITY,fixed R_A=4,ms,1425

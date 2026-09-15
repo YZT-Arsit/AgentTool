@@ -1,0 +1,14 @@
+category,evidence,metric,result,scope
+System,FINAL_SCALE_RESULTS.csv,Provisioned artifacts,100000,current system
+Utility,FINAL_UTILITY_RESULTS.csv,Semantic success,240/240,current system
+Utility,FINAL_UTILITY_RESULTS.csv,Profile conformance,280/280,current system
+Access privacy,FINAL_PRIVACY_RESULTS.csv,Same-Agent AUC,0.5139103887168902,current APSI+PIR
+Access privacy,FINAL_PRIVACY_RESULTS.csv,Cross-session AUC 1,0.46792132369055445,current APSI+PIR
+Access privacy,FINAL_PRIVACY_RESULTS.csv,Cross-session AUC 2,0.5209995088824537,current APSI+PIR
+Sequence privacy,FINAL_SEQUENCE_RESULTS.csv,Four-class accuracy,0.25245901639344265,current APSI+PIR
+Structural,FINAL_SEQUENCE_RESULTS.csv,Trajectory accuracy,0.2125,exact component composition
+Timing,FINAL_TIMING_RESULTS.csv,Strongest final Gateway AUC,0.645,current frozen Gateway
+Overhead,FINAL_OVERHEAD_RESULTS.csv,Total public MiB/profile,9.903487205505371,current system
+Overhead,FINAL_OVERHEAD_RESULTS.csv,Mean public MiB/measured execution,11.318271092006139,current 280-session mix; continuation profiles retained
+Latency,FINAL_UTILITY_RESULTS.csv,Retrieval p50/p95 ms,771.729/7466.234,successful current-system tasks
+Latency,FINAL_UTILITY_RESULTS.csv,Task p50/p95 ms,5002.551/14880.534,successful current-system tasks

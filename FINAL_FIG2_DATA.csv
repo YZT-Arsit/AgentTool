@@ -1,0 +1,11 @@
+attack,chance,ci95_high,ci95_low,condition,evidence_scope,metric,panel,value
+Four-class trajectory,0.25,1.0,1.0,Unnormalized positive control,MATCHED_UNNORMALIZED_COMPONENT_CONTROL,Accuracy,structural,1.0
+Four-class trajectory,0.25,0.275,0.15,OAE,EXACT_FINAL_COMPONENT_COMPOSITION,Accuracy,structural,0.2125
+Tool vs Agent-as-Tool / OpenAI Agents SDK,0.5,0.9909739583333333,0.9681232638888889,One-sided positive control,HISTORICAL_ONE_SIDED_COMPONENT_CONTROL,AUC,timing,0.980763888888889
+Tool vs Agent-as-Tool / OpenAI Agents SDK,0.5,0.7875,0.44,OAE,FRESH_FINAL_PROTECTED,AUC,timing,0.6225
+Tool vs Agent-as-Tool / Microsoft Agent Framework,0.5,0.9875694444444445,0.9468055555555556,One-sided positive control,HISTORICAL_ONE_SIDED_COMPONENT_CONTROL,AUC,timing,0.9693055555555555
+Tool vs Agent-as-Tool / Microsoft Agent Framework,0.5,0.8175,0.46499999999999997,OAE,FRESH_FINAL_PROTECTED,AUC,timing,0.645
+Provider readiness / OpenAI Agents SDK,0.5,0.9930555555555556,0.9579166666666666,One-sided positive control,HISTORICAL_ONE_SIDED_COMPONENT_CONTROL,AUC,timing,0.9779861111111111
+Provider readiness / OpenAI Agents SDK,0.5,0.63,0.2525,OAE,FRESH_FINAL_PROTECTED,AUC,timing,0.4425
+Provider readiness / Microsoft Agent Framework,0.5,0.9969444444444444,0.9809027777777778,One-sided positive control,HISTORICAL_ONE_SIDED_COMPONENT_CONTROL,AUC,timing,0.9902777777777778
+Provider readiness / Microsoft Agent Framework,0.5,0.7387812499999996,0.36625,OAE,FRESH_FINAL_PROTECTED,AUC,timing,0.55625

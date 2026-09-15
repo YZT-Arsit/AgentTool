@@ -185,6 +185,7 @@ def main() -> None:
     parser.add_argument("--joint-inventory", type=Path, required=True)
     parser.add_argument("--pcap-diagnostic", type=Path)
     parser.add_argument("--tcpdump-stderr", type=Path)
+    parser.add_argument("--private-session-labels", type=Path)
     parser.add_argument("--timing-preflight-abort", type=Path)
     parser.add_argument("--output", type=Path, default=ROOT if "ROOT" in globals() else Path.cwd())
     args = parser.parse_args(); output = args.output.resolve()
@@ -247,7 +248,10 @@ def main() -> None:
     write_csv(output / "FINAL_OVERHEAD_RESULTS.csv", overhead)
 
     all_current_timing = [row for row in timing["rows"] if row["condition"] == "FINAL_OAE_BIDIRECTIONAL_SHAPING"]
-    binary_access_timing = [row for row in sequence if row.get("feature_view") == "TIMING" and "test_train_oriented_auc" in row]
+    binary_access_timing = [
+        row for row in privacy + sequence
+        if row.get("feature_view") == "TIMING" and "test_train_oriented_auc" in row
+    ]
     strongest_gateway = max(all_current_timing, key=lambda row: row["test_orientation_invariant_auc"])
     strongest_access = max(binary_access_timing, key=lambda row: row["test_orientation_invariant_auc"])
     input_paths = {
@@ -258,15 +262,33 @@ def main() -> None:
     }
     if args.pcap_diagnostic: input_paths["apsi_pcap_diagnostic"] = args.pcap_diagnostic
     if args.tcpdump_stderr: input_paths["tcpdump_stderr"] = args.tcpdump_stderr
+    if args.private_session_labels: input_paths["private_session_labels"] = args.private_session_labels
     capture_diagnostic = None
+    capture_complete_distribution = None
     if args.pcap_diagnostic:
         raw_diagnostic = load(args.pcap_diagnostic)
         capture_diagnostic = {key: value for key, value in raw_diagnostic.items() if key != "missing"}
+        if args.private_session_labels:
+            incomplete_ordinals = {int(row["observation_ordinal"]) for row in raw_diagnostic["missing"]}
+            label_rows = [json.loads(line) for line in args.private_session_labels.read_text(encoding="utf-8").splitlines() if line]
+            complete_rows = []
+            for row in label_rows:
+                base = int(row["collection_ordinal"]) * 4
+                if all(base + position not in incomplete_ordinals for position in range(3)):
+                    complete_rows.append(row)
+            by_split_class: dict[str, int] = defaultdict(int)
+            for row in complete_rows:
+                by_split_class[f"{row['split']}|{row['sequence_class']}"] += 1
+            capture_complete_distribution = {
+                "sessions": len(complete_rows),
+                "by_split_and_sequence_class": dict(sorted(by_split_class.items())),
+            }
     stats = {
         "schema": "AgentTool.V15DFinalStatisticalSummary/1", "base": BASE,
         "input_sha256": {name: sha256(path) for name, path in input_paths.items()},
         "access_capture_evidence": {
             "pcap_byte_count_diagnostic": capture_diagnostic,
+            "complete_session_distribution": capture_complete_distribution,
             "tcpdump_stderr": args.tcpdump_stderr.read_text(encoding="utf-8", errors="replace").strip() if args.tcpdump_stderr else None,
         },
         "final_system": {"APSI": "Microsoft APSI v0.13.1", "SimplePIR": "real", "artifacts": 100000,
@@ -274,8 +296,9 @@ def main() -> None:
                          "max_admitted": 3, "gateway_cells": 521},
         "joint_access_campaign": inventory,
         "timing_preflight_abort": (
-            {"record": load(args.timing_preflight_abort), "sha256": sha256(args.timing_preflight_abort),
-             "executed_sessions": 0, "classification": "HARNESS_MANIFEST_PREFLIGHT_DEFECT"}
+            {"sha256": sha256(args.timing_preflight_abort), "executed_sessions": 0,
+             "classification": "HARNESS_MANIFEST_PREFLIGHT_DEFECT",
+             "paper_facing_semantic_task": "TOOL_VS_AGENT_AS_TOOL / OpenAI Agents SDK"}
             if args.timing_preflight_abort else None
         ),
         "utility": {"measured_sessions": len(utility), "nonidle": len(nonidle),
@@ -309,6 +332,7 @@ def main() -> None:
     primary_sequence = selected(access["sequence"], "FOUR_CLASS_ORDERING_RECURRENCE", "ALL_ALLOWED")
     primary_rare = selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")
     primary_recurrence = selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")
+    primary_return = selected(access["sequence"], "RETURN_PATTERN_ABA_VS_ABC", "ALL_ALLOWED")
     trajectory = selected(sequence, "FOUR_CLASS_EXECUTION_TRAJECTORY", "FINAL_OAE_STRUCTURAL_COMPOSITION")
     branch_struct = selected(privacy, "PROVISIONED_UNPROVISIONED_IDLE", "STRUCTURAL")
     branch_timing = selected(privacy, "PROVISIONED_UNPROVISIONED_IDLE", "TIMING")
@@ -329,6 +353,7 @@ def main() -> None:
         ("access ordering privacy", "PARTIALLY_SUPPORTED" if multi_supported(primary_sequence, .25) else "NOT_ESTABLISHED", primary_sequence),
         ("recurrence privacy", "PARTIALLY_SUPPORTED" if binary_supported(primary_recurrence) else "NOT_ESTABLISHED", primary_recurrence),
         ("rare-Agent privacy", "PARTIALLY_SUPPORTED" if binary_supported(primary_rare) else "NOT_ESTABLISHED", primary_rare),
+        ("return-pattern privacy", "PARTIALLY_SUPPORTED" if binary_supported(primary_return) else "NOT_ESTABLISHED", primary_return),
         ("deployed/unprovisioned/idle structural privacy", "ESTABLISHED" if equivalence.get("exact_equality") is True and multi_supported(branch_struct, 1/3) else "NOT_ESTABLISHED", branch_struct),
         ("execution-trajectory structural privacy", "PARTIALLY_SUPPORTED" if multi_supported(trajectory, .25) else "NOT_ESTABLISHED", trajectory),
         ("Agent-access realized timing privacy", "NOT_ESTABLISHED", branch_timing),
@@ -377,16 +402,21 @@ def main() -> None:
     fig = []
     positive_trajectory = selected(sequence, "FOUR_CLASS_EXECUTION_TRAJECTORY", "UNNORMALIZED_VISIBLE_ACTION_ENDPOINT_POSITIVE_CONTROL")
     fig.extend([
-        {"panel": "structural", "attack": "Four-class trajectory", "condition": "Unnormalized positive control", "metric": "Accuracy", "value": positive_trajectory["test_accuracy"], "chance": .25, "ci95_low": positive_trajectory["ci95_low"], "ci95_high": positive_trajectory["ci95_high"]},
-        {"panel": "structural", "attack": "Four-class trajectory", "condition": "OAE", "metric": "Accuracy", "value": trajectory["test_accuracy"], "chance": .25, "ci95_low": trajectory["ci95_low"], "ci95_high": trajectory["ci95_high"]},
+        {"panel": "structural", "attack": "Four-class trajectory", "condition": "Unnormalized positive control", "metric": "Accuracy", "value": positive_trajectory["test_accuracy"], "chance": .25, "ci95_low": positive_trajectory["ci95_low"], "ci95_high": positive_trajectory["ci95_high"], "evidence_scope": "MATCHED_UNNORMALIZED_COMPONENT_CONTROL"},
+        {"panel": "structural", "attack": "Four-class trajectory", "condition": "OAE", "metric": "Accuracy", "value": trajectory["test_accuracy"], "chance": .25, "ci95_low": trajectory["ci95_low"], "ci95_high": trajectory["ci95_high"], "evidence_scope": "EXACT_FINAL_COMPONENT_COMPOSITION"},
     ])
+    timing_display = {
+        "TOOL_VS_AGENT_AS_TOOL": "Tool vs Agent-as-Tool",
+        "PROVIDER_READINESS": "Provider readiness",
+    }
     for current in all_current_timing:
         historical = next(row for row in timing["rows"] if row["condition"] == "HISTORICAL_ONE_SIDED_POSITIVE_CONTROL" and row["experiment"] == current["experiment"] and row["framework"] == current["framework"])
-        label = f"{current['experiment']} / {current['framework']}"
+        label = f"{timing_display[current['experiment']]} / {current['framework']}"
         for condition, row in (("One-sided positive control", historical), ("OAE", current)):
             fig.append({"panel": "timing", "attack": label, "condition": condition, "metric": "AUC",
                         "value": row["test_train_oriented_auc"], "chance": .5,
-                        "ci95_low": row["ci95_low"], "ci95_high": row["ci95_high"]})
+                        "ci95_low": row["ci95_low"], "ci95_high": row["ci95_high"],
+                        "evidence_scope": "HISTORICAL_ONE_SIDED_COMPONENT_CONTROL" if condition.startswith("One-sided") else "FRESH_FINAL_PROTECTED"})
     write_csv(output / "FINAL_FIG2_DATA.csv", fig)
 
     map_lines = ["# Final paper number map", "", "All attack values below use final held-out test data unless explicitly labeled as a historical component positive control.", "",
@@ -394,17 +424,30 @@ def main() -> None:
                  "|---|---|---|---|---|---|"]
     def add_map(destination: str, metric: str, experiment: str, scope: str, evidence: str, wording: str) -> None:
         map_lines.append(f"| {destination} | {metric} | {experiment} | {scope} | {evidence} | {wording} |")
+    def paper_ms(value: Any) -> str:
+        return "N/A" if value is None else f"{float(value):.3f}"
     add_map("Abstract/Table 1", "100K artifacts", "Scale sweep; N=100000", "Current system", "Real APSI and SimplePIR", "100K schema-valid provisioned-Agent artifacts; not 100K independently sourced Agents.")
     add_map("Abstract/Table 1", f"Utility {len(successful)}/{len(nonidle)}", "Final utility; 240 non-idle + 40 idle", "Current system", "All failures retained", "All measured non-idle tasks completed semantically; all sessions checked separately for profile conformance.")
     for label, row in (("same-Agent", primary_same), ("cross-session same-slot", primary_cross1), ("cross-session cross-slot", primary_cross2)):
-        add_map("Fig. 2/Sec. 5", f"{label} AUC {row['test_train_oriented_auc']:.3f}", f"Joint APSI+PIR; test n={row['n_test']}", "APSI full-wire compact representation + SimplePIR query digest/sizes/timing", f"95% CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], permutation p={row['permutation_p']:.4g}", "Held-out attack performance with the recorded observer representation; do not interpret AUC below 0.5 as stronger privacy.")
+        add_map("Fig. 2/Sec. 5", f"{label} AUC {row['test_train_oriented_auc']:.3f}", f"Joint APSI+PIR; test n={row['n_test']}", "Exact-byte-count APSI capture subset + SimplePIR query digest/sizes/timing", f"95% CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], permutation p={row['permutation_p']:.4g}", "Held-out attack performance with the recorded observer representation; do not interpret AUC below 0.5 as stronger privacy.")
     add_map("Fig. 2/Sec. 5", f"Sequence accuracy {primary_sequence['test_accuracy']:.3f}", f"AAA/ABA/AAB/ABC; test n={primary_sequence['n_test']}", "Recorded joint-channel representation; raw SimplePIR answer payload unavailable", f"CI [{primary_sequence['ci95_low']:.3f},{primary_sequence['ci95_high']:.3f}], p={primary_sequence['permutation_p']:.4g}", "Direct ordering/recurrence task over the recorded observer representation against 25% chance.")
+    for label, row in (("rare insertion AAA/AAB", primary_rare), ("recurrence AAA/ABC", primary_recurrence), ("return ABA/ABC", primary_return)):
+        add_map("Sec. 5", f"{label} AUC {row['test_train_oriented_auc']:.3f}", f"Joint APSI+PIR sequence task; test n={row['n_test']}", "Recorded joint-channel representation; raw SimplePIR answer payload unavailable", f"CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], p={row['permutation_p']:.4g}", "Held-out direct sequence-property attack; preserve the observer-representation limitation.")
     add_map("Fig. 2/Sec. 5", f"Trajectory accuracy {trajectory['test_accuracy']:.3f}", "800 historical matched action records plus constant final access profile", "Exact mechanism composition; structural only", f"CI [{trajectory['ci95_low']:.3f},{trajectory['ci95_high']:.3f}]", "Mechanism-composed structural result, not a fresh integrated 800-session run.")
+    add_map("Sec. 5", f"Branch structural accuracy {branch_struct['test_accuracy']:.3f}", f"Provisioned/unprovisioned/idle; test n={branch_struct['n_test']}", "Final structural fields; timestamps excluded", f"CI [{branch_struct['ci95_low']:.3f},{branch_struct['ci95_high']:.3f}], p={branch_struct['permutation_p']:.4g}", "Pair classifier result with exact full-session structural equality; do not extend to timing.")
+    add_map("Sec. 5/Limitations", f"Branch timing accuracy {branch_timing['test_accuracy']:.3f}", f"Provisioned/unprovisioned/idle; test n={branch_timing['n_test']}", "Cloud-visible Agent-access timing", f"CI [{branch_timing['ci95_low']:.3f},{branch_timing['ci95_high']:.3f}], p={branch_timing['permutation_p']:.4g}", "Agent-access realized timing privacy is not established.")
     add_map("Table 1/Sec. 5", f"Strongest Gateway timing AUC {strongest_gateway['test_train_oriented_auc']:.3f}", f"{strongest_gateway['experiment']} / {strongest_gateway['framework']}; final held-out test", "Frozen Relay timing observer", f"CI [{strongest_gateway['ci95_low']:.3f},{strongest_gateway['ci95_high']:.3f}], p={strongest_gateway['permutation_p']:.4g}", "Realized timing privacy is not established; preserve the residual setting.")
+    for row in all_current_timing:
+        add_map("Sec. 5/Timing", f"{row['experiment']} / {row['framework']} train-oriented AUC {row['test_train_oriented_auc']:.3f} (orientation-invariant {row['test_orientation_invariant_auc']:.3f})", f"Fresh final protected campaign; test n={row['n_test']}", "Frozen Relay timing observer", f"CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], p={row['permutation_p']:.4g}", "Report every setting; do not average residuals or interpret reversed raw orientation on TEST.")
     add_map("Table 1/Sec. 5", f"Traffic {TOTAL_BYTES_PROFILE/2**20:.3f} MiB/profile", "4 real APSI+PIR public slots + 521-cell Gateway", "Current public profiles", "Exact measured wire sizes", "Channels overlap in time; bytes are additive, horizons are not.")
     add_map("Sec. 5", f"Mean traffic {aggregate_public_bytes/len(utility)/2**20:.3f} MiB/measured execution", f"Final 280 sessions using {profile_instances} public profiles", "Current utility workload mix", "Every continuation profile retained", "Do not conflate profile cost with workload-dependent execution cost.")
     add_map("Table 1/Sec. 5", f"Retrieval {percentile(all_retrievals,.5):.3f}/{percentile(all_retrievals,.95):.3f} ms p50/p95", f"All successful final retrievals, n={len(all_retrievals)}", "Current system", "Successful semantic runs only", "State the success-only denominator.")
     add_map("Table 1/Sec. 5", f"Task {percentile([row['task_latency_ms'] for row in successful],.5):.3f}/{percentile([row['task_latency_ms'] for row in successful],.95):.3f} ms p50/p95", f"Successful non-idle final sessions, n={len(successful)}", "Current system", "Successful semantic runs only", "Do not conflate with public-session wall time.")
+    for row in summaries:
+        add_map("Sec. 5/Utility", f"{row['framework']} / {row['workload']}: {row['semantic_successes']}/{row['semantic_applicable_n']} semantic; task p50/p95 {paper_ms(row['task_latency_p50_ms_successful'])}/{paper_ms(row['task_latency_p95_ms_successful'])} ms", f"Final utility n={row['n']}", "Current real PSI/PIR/loader path", f"Profile conformance {row['profile_conformance_successes']}/{row['n']}; failures retained", "Latency is over successful semantic executions; idle has no semantic denominator.")
+    for row in scale:
+        add_map("Sec. 5/Scale", f"N={row['N']}: combined p50/p95 {float(row['combined_pipelined_p50_ms']):.3f}/{float(row['combined_pipelined_p95_ms']):.3f} ms; wire {row['wire_bytes_per_access']} B", f"Persistent real APSI+SimplePIR; 30 measured queries", "Schema-valid provisioned-Agent artifacts", f"APSI DB {row['apsi_sender_db_bytes']} B; PIR DB {row['pir_database_bytes']} B", "Do not describe scale records as independently collected real-world Agents.")
+    add_map("Sec. 5", "Dummy heavy Agent/LLM/Tool executions 0/0/0", "Final 280-session utility campaign", "Current system", "Direct counters", "Dummy cryptographic accesses and padding frames still execute; no dummy heavy semantic operation executes.")
     map_lines += ["", "## Historical values excluded from final-system claims", "",
                   "Historical SimplePIR-only 16K linking AUCs and the historical 1.755 MiB/session overhead must not be presented as final joint APSI+PIR results.",
                   "Historical one-sided timing results appear only as matched component positive controls, never as the final protected condition; the 640 protected observations are fresh but those baseline controls were not recollected in this campaign.", ""]
@@ -432,6 +475,7 @@ ACCESS PRIVACY:
     sequence-ordering accuracy = {primary_sequence['test_accuracy']:.3f}
     recurrence AUC = {primary_recurrence['test_train_oriented_auc']:.3f}
     rare-Agent AUC = {primary_rare['test_train_oriented_auc']:.3f}
+    return-pattern AUC = {primary_return['test_train_oriented_auc']:.3f} (orientation-invariant diagnostic {primary_return['test_orientation_invariant_auc']:.3f})
 
 STRUCTURAL TRAJECTORY PRIVACY:
     exact permitted-projection equality = {'PASS' if equivalence.get('exact_equality') else 'FAIL'}
@@ -479,6 +523,7 @@ DUMMY HEAVY OPS:
 - Cross-session same-slot linking: AUC **{primary_cross1['test_train_oriented_auc']:.3f}**, 95% CI [{primary_cross1['ci95_low']:.3f}, {primary_cross1['ci95_high']:.3f}], p={primary_cross1['permutation_p']:.4g}.
 - Cross-session cross-slot linking: AUC **{primary_cross2['test_train_oriented_auc']:.3f}**, 95% CI [{primary_cross2['ci95_low']:.3f}, {primary_cross2['ci95_high']:.3f}], p={primary_cross2['permutation_p']:.4g}.
 - Four-class ordering/recurrence accuracy: **{primary_sequence['test_accuracy']:.3f}** (chance 0.25), macro-F1 {primary_sequence['test_macro_f1']:.3f}, 95% CI [{primary_sequence['ci95_low']:.3f}, {primary_sequence['ci95_high']:.3f}], p={primary_sequence['permutation_p']:.4g}.
+- Strongest binary Agent-access timing-only result: **{strongest_access['experiment']}**, train-oriented AUC **{strongest_access['test_train_oriented_auc']:.3f}**, orientation-invariant diagnostic {strongest_access['test_orientation_invariant_auc']:.3f}, 95% CI [{strongest_access['ci95_low']:.3f}, {strongest_access['ci95_high']:.3f}], p={strongest_access['permutation_p']:.4g}.
 - Capture integrity: **{access['pcap_capture_integrity']['observations_with_exact_apsi_payload_capture']}/{access['pcap_capture_integrity']['observations_executed']}** APSI observations had exact payload-byte capture; **{access['pcap_capture_integrity']['sessions_with_all_three_logical_apsi_payloads_complete']}** sessions were eligible for `CONTENT_CRYPTOGRAPHIC`, `TIMING`, and `ALL_ALLOWED`. Structural views retain all sessions.
 - Observer-representation boundary: exact-byte-count APSI captures are represented by frozen stream digests, byte histograms, and fixed public offsets. The SimplePIR adapter retained its actual query digest and public sizes/timing, but not the raw answer payload. Accordingly these are direct attacks on the recorded joint-channel representation, not an exhaustive empirical claim over every raw SimplePIR answer byte.
 
