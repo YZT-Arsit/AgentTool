@@ -432,6 +432,21 @@ def main() -> None:
         np.asarray(equality, dtype=float), np.asarray([r["sequence_class"] for r in ordered_sessions]),
         np.asarray([r["split"] for r in ordered_sessions]), np.asarray([r["session_id"] for r in ordered_sessions]),
     ))
+    equality_matrix = np.asarray(equality, dtype=float)
+    sequence_labels = np.asarray([r["sequence_class"] for r in ordered_sessions])
+    sequence_splits = np.asarray([r["split"] for r in ordered_sessions])
+    sequence_groups = np.asarray([r["session_id"] for r in ordered_sessions])
+    for binary_name, left_label, right_label in (
+        ("RARE_INSERTION_AAA_VS_AAB", "AAA", "AAB"),
+        ("RECURRENCE_AAA_VS_ABC", "AAA", "ABC"),
+        ("RETURN_PATTERN_ABA_VS_ABC", "ABA", "ABC"),
+    ):
+        keep = (sequence_labels == left_label) | (sequence_labels == right_label)
+        sequence_results.append(binary_attack(
+            binary_name, "UNPROTECTED_VISIBLE_AGENT_ID_POSITIVE_CONTROL",
+            equality_matrix[keep], (sequence_labels[keep] == left_label).astype(int),
+            sequence_splits[keep], sequence_groups[keep],
+        ))
 
     def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         keys = sorted({key for row in rows for key in row if key != "confusion_matrix"})
