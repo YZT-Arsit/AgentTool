@@ -77,7 +77,7 @@ def freeze_manifest() -> dict[str, Any]:
                 row.update({
                     "semantic_task": semantic_task, "coordinate_id": coordinate_id,
                     "planned_block": block, "pair_id": pair_id, "partition": split[block],
-                    "selection_priority": block, "claim_observers": ["RELAY"],
+                    "selection_priority": block,
                     "execution_ordinal": ordinal,
                 })
                 identities[workload.identity] = row
