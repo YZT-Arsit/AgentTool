@@ -136,7 +136,11 @@ def main() -> None:
         rows.append({
             "N": n, "schema_valid_artifacts": n, "real_world_unique_agents": False,
             "queries": REPETITIONS, "dataset_construction_ms": construction_ms,
-            "apsi_preprocessing_ms": apsi_build.get("build_ms") or apsi_build.get("total_ms"),
+            "apsi_preprocessing_ms": (
+                float(apsi_build["preprocessing_ns"]) / 1e6
+                if "preprocessing_ns" in apsi_build
+                else apsi_build.get("build_ms") or apsi_build.get("total_ms")
+            ),
             "apsi_sender_db_bytes": apsi_db.stat().st_size,
             "apsi_sender_startup_ms": sender_startup_ms,
             "persistent_services_startup_ms": persistent_services_startup_ms,
