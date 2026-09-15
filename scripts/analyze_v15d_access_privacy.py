@@ -70,7 +70,11 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
         key=lambda value: value[0],
     )
     n = len(public)
-    content = np.zeros((n, 64), dtype=np.float32)
+    # Fixed, compact representation of the full reassembled cryptographic wire:
+    # two whole-stream digests, two 32-bin byte histograms, and 64 evenly spaced
+    # public-offset bytes per direction. This is frozen before TEST analysis and
+    # avoids an infeasible dense 35-GiB raw-byte design matrix.
+    content = np.zeros((n, 256), dtype=np.float32)
     timing = np.zeros((n, 9), dtype=np.float64)
     with pcap.open("rb") as stream:
         header = stream.read(24)
@@ -85,17 +89,29 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
         linktype = struct.unpack(endian + "I", header[20:24])[0]
         index = 0
         req_hash = hashlib.sha256(); resp_hash = hashlib.sha256()
+        req_hist = np.zeros(32, dtype=np.int64); resp_hist = np.zeros(32, dtype=np.int64)
+        req_samples = np.zeros(64, dtype=np.uint8); resp_samples = np.zeros(64, dtype=np.uint8)
+        req_offsets = np.linspace(0, 104 + 697_972 - 1, 64, dtype=np.int64)
+        resp_offsets = np.linspace(0, 104 + 1_579_652 - 1, 64, dtype=np.int64)
+        req_seen = resp_seen = 0
         req_bytes = resp_bytes = req_packets = resp_packets = 0
         first_ts = last_ts = previous_ts = None
         gaps: list[float] = []
 
         def finish() -> None:
-            nonlocal req_hash, resp_hash, req_bytes, resp_bytes, req_packets, resp_packets
+            nonlocal req_hash, resp_hash, req_hist, resp_hist, req_samples, resp_samples
+            nonlocal req_seen, resp_seen, req_bytes, resp_bytes, req_packets, resp_packets
             nonlocal first_ts, last_ts, previous_ts, gaps
             if index >= len(intervals): return
             ordinal = intervals[index][2]
             content[ordinal, :32] = np.frombuffer(req_hash.digest(), dtype=np.uint8) / 255.0
-            content[ordinal, 32:] = np.frombuffer(resp_hash.digest(), dtype=np.uint8) / 255.0
+            content[ordinal, 32:64] = np.frombuffer(resp_hash.digest(), dtype=np.uint8) / 255.0
+            if req_bytes:
+                content[ordinal, 64:96] = req_hist / req_bytes
+            if resp_bytes:
+                content[ordinal, 96:128] = resp_hist / resp_bytes
+            content[ordinal, 128:192] = req_samples / 255.0
+            content[ordinal, 192:256] = resp_samples / 255.0
             duration = 0.0 if first_ts is None else (last_ts - first_ts) / 1e6
             timing[ordinal] = [req_bytes, resp_bytes, req_packets, resp_packets, duration,
                                0.0 if not gaps else np.median(gaps),
@@ -103,6 +119,8 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
                                0.0 if not gaps else max(gaps),
                                0.0 if first_ts is None else (first_ts - intervals[index][0]) / 1e6]
             req_hash = hashlib.sha256(); resp_hash = hashlib.sha256()
+            req_hist.fill(0); resp_hist.fill(0); req_samples.fill(0); resp_samples.fill(0)
+            req_seen = resp_seen = 0
             req_bytes = resp_bytes = req_packets = resp_packets = 0
             first_ts = last_ts = previous_ts = None; gaps = []
 
@@ -125,9 +143,21 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
             if previous_ts is not None: gaps.append((ts_ns - previous_ts) / 1e6)
             previous_ts = last_ts = ts_ns
             if dst == port:
+                values = np.frombuffer(payload, dtype=np.uint8)
+                req_hist += np.bincount(values // 8, minlength=32)
+                chosen = np.flatnonzero((req_offsets >= req_seen) & (req_offsets < req_seen + len(payload)))
+                for sample_index in chosen:
+                    req_samples[sample_index] = payload[int(req_offsets[sample_index] - req_seen)]
                 req_hash.update(payload); req_bytes += len(payload); req_packets += 1
+                req_seen += len(payload)
             elif src == port:
+                values = np.frombuffer(payload, dtype=np.uint8)
+                resp_hist += np.bincount(values // 8, minlength=32)
+                chosen = np.flatnonzero((resp_offsets >= resp_seen) & (resp_offsets < resp_seen + len(payload)))
+                for sample_index in chosen:
+                    resp_samples[sample_index] = payload[int(resp_offsets[sample_index] - resp_seen)]
                 resp_hash.update(payload); resp_bytes += len(payload); resp_packets += 1
+                resp_seen += len(payload)
         while index < len(intervals):
             finish(); index += 1
     if np.any(timing[:, 0] == 0) or np.any(timing[:, 1] == 0):
@@ -413,7 +443,7 @@ def main() -> None:
     (output / "ACCESS_STATISTICAL_SUMMARY.json").write_text(json.dumps({
         "schema": "AgentTool.V15DAccessStatistics/1",
         "feature_contract": {
-            "content": "SHA-256 representation of reassembled APSI TCP payload by direction plus SHA-256 representation of the actual SimplePIR query",
+            "content": "reassembled APSI wire represented by whole-stream SHA-256, 32-bin byte histograms and 64 fixed public-offset bytes per direction, plus SHA-256 representation of the actual SimplePIR query",
             "structural": "fixed message counts/sizes, public slot and fixed Gateway structure",
             "timing": "APSI packet timing and cloud-side SimplePIR answer timing only",
             "all": "content + structural + timing",
