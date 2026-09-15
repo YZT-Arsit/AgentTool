@@ -64,13 +64,24 @@ def tcp_payload(packet: bytes, linktype: int) -> tuple[int, int, bytes] | None:
 
 
 def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, cache: Path) -> dict[str, np.ndarray]:
+    if cache.exists():
+        saved = np.load(cache)
+        return {
+            "content": saved["content"],
+            "timing": saved["timing"],
+            "exact_capture": saved["exact_capture"],
+        }
     intervals = sorted(
         ((int(row["apsi"]["wall_start_ns"]), int(row["apsi"]["wall_end_ns"]),
           int(row["observation_ordinal"])) for row in public),
         key=lambda value: value[0],
     )
     n = len(public)
-    # Fixed, compact representation of the full reassembled cryptographic wire:
+    # APSI bridge counters exclude constant ZeroMQ framing; the pcap includes
+    # 15 request and 80 response framing bytes.
+    expected_request_bytes = 698_091
+    expected_response_bytes = 1_579_836
+    # Fixed, compact representation of each exact-byte-count TCP payload stream:
     # two whole-stream digests, two 32-bin byte histograms, and 64 evenly spaced
     # public-offset bytes per direction. This is frozen before TEST analysis and
     # avoids an infeasible dense 35-GiB raw-byte design matrix.
@@ -91,8 +102,8 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
         req_hash = hashlib.sha256(); resp_hash = hashlib.sha256()
         req_hist = np.zeros(32, dtype=np.int64); resp_hist = np.zeros(32, dtype=np.int64)
         req_samples = np.zeros(64, dtype=np.uint8); resp_samples = np.zeros(64, dtype=np.uint8)
-        req_offsets = np.linspace(0, 104 + 697_972 - 1, 64, dtype=np.int64)
-        resp_offsets = np.linspace(0, 104 + 1_579_652 - 1, 64, dtype=np.int64)
+        req_offsets = np.linspace(0, expected_request_bytes - 1, 64, dtype=np.int64)
+        resp_offsets = np.linspace(0, expected_response_bytes - 1, 64, dtype=np.int64)
         req_seen = resp_seen = 0
         req_bytes = resp_bytes = req_packets = resp_packets = 0
         first_ts = last_ts = previous_ts = None
@@ -160,11 +171,39 @@ def extract_pcap_features(pcap: Path, public: list[dict[str, Any]], port: int, c
                 resp_seen += len(payload)
         while index < len(intervals):
             finish(); index += 1
-    if np.any(timing[:, 0] == 0) or np.any(timing[:, 1] == 0):
-        missing = np.where((timing[:, 0] == 0) | (timing[:, 1] == 0))[0]
-        raise RuntimeError(f"pcap could not be mapped to {len(missing)} APSI observations")
-    np.savez_compressed(cache, content=content, timing=timing)
-    return {"content": content, "timing": timing}
+    exact_capture = ((timing[:, 0] == expected_request_bytes) &
+                     (timing[:, 1] == expected_response_bytes))
+    if not np.all(exact_capture):
+        missing = np.where(~exact_capture)[0]
+        # Preserve enough state to diagnose capture-boundary failures without
+        # silently substituting zeros or fitting an attacker on incomplete wire
+        # observations. The diagnostic contains no protected labels.
+        interval_by_ordinal = {ordinal: (start, end) for start, end, ordinal in intervals}
+        diagnostic = [
+            {
+                "observation_ordinal": int(ordinal),
+                "wall_start_ns": int(interval_by_ordinal[int(ordinal)][0]),
+                "wall_end_ns": int(interval_by_ordinal[int(ordinal)][1]),
+                "request_payload_bytes_mapped": int(timing[int(ordinal), 0]),
+                "response_payload_bytes_mapped": int(timing[int(ordinal), 1]),
+            }
+            for ordinal in missing
+        ]
+        cache.with_suffix(".incomplete.json").write_text(
+            json.dumps({
+                "expected_request_payload_bytes": expected_request_bytes,
+                "expected_response_payload_bytes": expected_response_bytes,
+                "exact_capture_observations": int(exact_capture.sum()),
+                "incomplete_capture_observations": int((~exact_capture).sum()),
+                "request_payload_min": int(timing[:, 0].min()),
+                "request_payload_max": int(timing[:, 0].max()),
+                "response_payload_min": int(timing[:, 1].min()),
+                "response_payload_max": int(timing[:, 1].max()),
+                "missing": diagnostic,
+            }, indent=2) + "\n", encoding="utf-8"
+        )
+    np.savez_compressed(cache, content=content, timing=timing, exact_capture=exact_capture)
+    return {"content": content, "timing": timing, "exact_capture": exact_capture}
 
 
 def candidates(binary: bool) -> list[tuple[str, Any]]:
@@ -352,6 +391,7 @@ def main() -> None:
     if len(server) != 16_000: raise RuntimeError("SimplePIR server trace denominator changed")
     by_obs = {int(row["observation_ordinal"]): row for row in public}
     pcap_content, pcap_timing = pcap["content"], pcap["timing"]
+    exact_capture = pcap["exact_capture"]
     accesses: list[dict[str, Any]] = []
     for session in private:
         base = int(session["collection_ordinal"]) * 4
@@ -377,24 +417,48 @@ def main() -> None:
                 "STRUCTURAL": structural, "TIMING": timing,
                 "ALL_ALLOWED": np.concatenate((content, structural, timing)),
                 "POSITIVE_CONTROL": np.asarray([float(agent_id)]),
+                "apsi_wire_capture_complete": bool(exact_capture[base + position]),
             })
 
     session_map: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for access in accesses: session_map[access["session_id"]].append(access)
-    within = []
-    for values in session_map.values():
-        values.sort(key=lambda row: row["position"])
-        within.append({"left": values[0], "right": values[2],
-                       "label": int(values[0]["agent_id"] == values[2]["agent_id"]),
-                       "split": values[0]["split"], "group": values[0]["session_id"]})
-    cross_same = balanced_cross_pairs(accesses, 0, 0, 0xC501)
-    cross_shift = balanced_cross_pairs(accesses, 0, 1, 0xC502)
+    for values in session_map.values(): values.sort(key=lambda row: row["position"])
+    complete_content_sessions = {
+        session_id for session_id, values in session_map.items()
+        if len(values) == 3 and all(value["apsi_wire_capture_complete"] for value in values)
+    }
+
+    def attack_population(view: str) -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]:
+        selected_accesses = (
+            accesses if view in ("STRUCTURAL", "TIMING")
+            else [row for row in accesses if row["session_id"] in complete_content_sessions]
+        )
+        selected_sessions: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for row in selected_accesses: selected_sessions[row["session_id"]].append(row)
+        for values in selected_sessions.values(): values.sort(key=lambda row: row["position"])
+        return selected_accesses, selected_sessions
+
+    def privacy_pairs(view: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+        selected_accesses, selected_sessions = attack_population(view)
+        within_pairs = [
+            {"left": values[0], "right": values[2],
+             "label": int(values[0]["agent_id"] == values[2]["agent_id"]),
+             "split": values[0]["split"], "group": values[0]["session_id"]}
+            for values in selected_sessions.values()
+        ]
+        return (
+            within_pairs,
+            balanced_cross_pairs(selected_accesses, 0, 0, 0xC501),
+            balanced_cross_pairs(selected_accesses, 0, 1, 0xC502),
+        )
+
     privacy_results = []
-    for name, pairs in (("SAME_AGENT_WITHIN_SESSION", within),
-                        ("CROSS_SESSION_SAME_SLOT", cross_same),
-                        ("CROSS_SESSION_CROSS_SLOT", cross_shift)):
+    privacy_names = ("SAME_AGENT_WITHIN_SESSION", "CROSS_SESSION_SAME_SLOT", "CROSS_SESSION_CROSS_SLOT")
+    for task_index, name in enumerate(privacy_names):
         for view in FEATURE_VIEWS:
+            pairs = privacy_pairs(view)[task_index]
             privacy_results.append(binary_attack(name, view, *pair_matrix(pairs, view)))
+        pairs = privacy_pairs("STRUCTURAL")[task_index]
         positive_x = np.asarray([[int(row["left"]["agent_id"] == row["right"]["agent_id"])] for row in pairs], dtype=float)
         privacy_results.append(binary_attack(
             name, "UNPROTECTED_VISIBLE_AGENT_ID_POSITIVE_CONTROL", positive_x,
@@ -403,10 +467,14 @@ def main() -> None:
         ))
 
     sequence_results = []
-    ordered_sessions = sorted(private, key=lambda row: row["session_id"])
     for view in FEATURE_VIEWS:
+        _, selected_sessions = attack_population(view)
+        ordered_sessions = sorted(
+            (row for row in private if row["session_id"] in selected_sessions),
+            key=lambda row: row["session_id"],
+        )
         matrix = np.asarray([
-            np.concatenate([next(a for a in session_map[row["session_id"]] if a["position"] == p)[view]
+            np.concatenate([next(a for a in selected_sessions[row["session_id"]] if a["position"] == p)[view]
                             for p in range(3)]) for row in ordered_sessions
         ])
         labels = np.asarray([row["sequence_class"] for row in ordered_sessions])
@@ -423,6 +491,7 @@ def main() -> None:
                 binary_name, view, matrix[keep], (labels[keep] == left_label).astype(int),
                 splits[keep], groups[keep],
             ))
+    ordered_sessions = sorted(private, key=lambda row: row["session_id"])
     equality = []
     for row in ordered_sessions:
         a, b, c = row["agent_ids"]
@@ -457,8 +526,16 @@ def main() -> None:
     write_csv(output / "FINAL_SEQUENCE_RESULTS.csv", sequence_results)
     (output / "ACCESS_STATISTICAL_SUMMARY.json").write_text(json.dumps({
         "schema": "AgentTool.V15DAccessStatistics/1",
+        "pcap_capture_integrity": {
+            "observations_executed": len(public),
+            "observations_with_exact_apsi_payload_capture": int(exact_capture.sum()),
+            "observations_with_incomplete_apsi_payload_capture": int((~exact_capture).sum()),
+            "sessions_with_all_three_logical_apsi_payloads_complete": len(complete_content_sessions),
+            "capture_diagnostic": str(pcap_cache.with_suffix(".incomplete.json")),
+            "policy": "CONTENT_CRYPTOGRAPHIC and ALL_ALLOWED exclude an entire session unless all three logical APSI payload captures have exact byte counts; STRUCTURAL and TIMING retain all sessions",
+        },
         "feature_contract": {
-            "content": "reassembled APSI wire represented by whole-stream SHA-256, 32-bin byte histograms and 64 fixed public-offset bytes per direction, plus SHA-256 representation of the actual SimplePIR query",
+            "content": "exact-byte-count APSI TCP payload stream represented by whole-stream SHA-256, 32-bin byte histograms and 64 fixed public-offset bytes per direction, plus SHA-256 representation of the actual SimplePIR query",
             "structural": "fixed message counts/sizes, public slot and fixed Gateway structure",
             "timing": "APSI packet timing and cloud-side SimplePIR answer timing only",
             "all": "content + structural + timing",

@@ -212,6 +212,9 @@ def main() -> None:
     profile_instances = sum(row["public_profile_instances"] for row in utility)
     total_slots = sum(row["scheduled_agent_access_slots"] for row in utility)
     real_psi = sum(row["real_psi_queries"] for row in utility); real_pir = sum(row["real_pir_queries"] for row in utility)
+    aggregate_agent_access_bytes = sum(row["agent_access_bytes"] for row in utility)
+    aggregate_gateway_bytes = sum(row["gateway_bytes"] for row in utility)
+    aggregate_public_bytes = sum(row["total_public_bytes"] for row in utility)
     overhead = [
         {"section": "AGENT_ACCESS", "metric": "APSI_bytes_per_profile", "value": APSI_BYTES_SLOT * 4, "unit": "bytes", "source": "V15B measured wire"},
         {"section": "AGENT_ACCESS", "metric": "SimplePIR_bytes_per_profile", "value": PIR_BYTES_SLOT * 4, "unit": "bytes", "source": "V15B measured wire"},
@@ -219,6 +222,12 @@ def main() -> None:
         {"section": "GATEWAY", "metric": "bytes_per_profile", "value": GATEWAY_BYTES_PROFILE, "unit": "bytes", "source": "frozen 521-cell V4R8 profile"},
         {"section": "TOTAL", "metric": "bytes_per_profile", "value": TOTAL_BYTES_PROFILE, "unit": "bytes", "source": "Agent-access plus Gateway"},
         {"section": "TOTAL", "metric": "MiB_per_profile", "value": TOTAL_BYTES_PROFILE / 2**20, "unit": "MiB", "source": "IEC conversion"},
+        {"section": "MEASURED_EXECUTION", "metric": "public_profiles_total", "value": profile_instances, "unit": "profiles", "source": "final 280 sessions"},
+        {"section": "MEASURED_EXECUTION", "metric": "public_profiles_per_session_mean", "value": profile_instances / len(utility), "unit": "profiles/session", "source": "final 280 sessions"},
+        {"section": "MEASURED_EXECUTION", "metric": "agent_access_bytes_per_session_mean", "value": aggregate_agent_access_bytes / len(utility), "unit": "bytes/session", "source": "final 280 sessions; continuation profiles retained"},
+        {"section": "MEASURED_EXECUTION", "metric": "gateway_bytes_per_session_mean", "value": aggregate_gateway_bytes / len(utility), "unit": "bytes/session", "source": "final 280 sessions; continuation profiles retained"},
+        {"section": "MEASURED_EXECUTION", "metric": "total_bytes_per_session_mean", "value": aggregate_public_bytes / len(utility), "unit": "bytes/session", "source": "final 280 sessions; continuation profiles retained"},
+        {"section": "MEASURED_EXECUTION", "metric": "total_MiB_per_session_mean", "value": aggregate_public_bytes / len(utility) / 2**20, "unit": "MiB/session", "source": "final 280 sessions; continuation profiles retained"},
         {"section": "PROFILE", "metric": "agent_access_horizon", "value": 1425, "unit": "ms", "source": "frozen Gamma_A"},
         {"section": "PROFILE", "metric": "real_PSI_slot_utilization", "value": real_psi / total_slots, "unit": "fraction", "source": "final 280 sessions"},
         {"section": "PROFILE", "metric": "dummy_PSI_slot_utilization", "value": 1 - real_psi / total_slots, "unit": "fraction", "source": "final 280 sessions"},
@@ -285,6 +294,8 @@ def main() -> None:
     primary_cross1 = selected(access["privacy"], "CROSS_SESSION_SAME_SLOT", "ALL_ALLOWED")
     primary_cross2 = selected(access["privacy"], "CROSS_SESSION_CROSS_SLOT", "ALL_ALLOWED")
     primary_sequence = selected(access["sequence"], "FOUR_CLASS_ORDERING_RECURRENCE", "ALL_ALLOWED")
+    primary_rare = selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")
+    primary_recurrence = selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")
     trajectory = selected(sequence, "FOUR_CLASS_EXECUTION_TRAJECTORY", "FINAL_OAE_STRUCTURAL_COMPOSITION")
     branch_struct = selected(privacy, "PROVISIONED_UNPROVISIONED_IDLE", "STRUCTURAL")
     branch_timing = selected(privacy, "PROVISIONED_UNPROVISIONED_IDLE", "TIMING")
@@ -296,13 +307,17 @@ def main() -> None:
         return row["ci95_low"] <= chance <= row["ci95_high"] and row["permutation_p"] >= .05
 
     claims = [
-        ("same-Agent unlinkability", "EMPIRICALLY_SUPPORTED" if binary_supported(primary_same) else "NOT_ESTABLISHED", primary_same),
-        ("cross-session unlinkability", "EMPIRICALLY_SUPPORTED" if binary_supported(primary_cross1) and binary_supported(primary_cross2) else "NOT_ESTABLISHED", [primary_cross1, primary_cross2]),
-        ("access ordering privacy", "EMPIRICALLY_SUPPORTED" if multi_supported(primary_sequence, .25) else "NOT_ESTABLISHED", primary_sequence),
-        ("recurrence privacy", "EMPIRICALLY_SUPPORTED" if binary_supported(selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")) else "NOT_ESTABLISHED", selected(access["sequence"], "RECURRENCE_AAA_VS_ABC", "ALL_ALLOWED")),
-        ("rare-Agent privacy", "EMPIRICALLY_SUPPORTED" if binary_supported(selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")) else "NOT_ESTABLISHED", selected(access["sequence"], "RARE_INSERTION_AAA_VS_AAB", "ALL_ALLOWED")),
+        # These joint-channel attacks are direct for APSI bytes and all public
+        # structure/timing, but the current SimplePIR bridge retained only the
+        # actual query digest plus sizes/timing rather than the raw answer
+        # payload. Preserve that observer-representation gap in the claim grade.
+        ("same-Agent unlinkability", "PARTIALLY_SUPPORTED" if binary_supported(primary_same) else "NOT_ESTABLISHED", primary_same),
+        ("cross-session unlinkability", "PARTIALLY_SUPPORTED" if binary_supported(primary_cross1) and binary_supported(primary_cross2) else "NOT_ESTABLISHED", [primary_cross1, primary_cross2]),
+        ("access ordering privacy", "PARTIALLY_SUPPORTED" if multi_supported(primary_sequence, .25) else "NOT_ESTABLISHED", primary_sequence),
+        ("recurrence privacy", "PARTIALLY_SUPPORTED" if binary_supported(primary_recurrence) else "NOT_ESTABLISHED", primary_recurrence),
+        ("rare-Agent privacy", "PARTIALLY_SUPPORTED" if binary_supported(primary_rare) else "NOT_ESTABLISHED", primary_rare),
         ("deployed/unprovisioned/idle structural privacy", "ESTABLISHED" if equivalence.get("exact_equality") is True and multi_supported(branch_struct, 1/3) else "NOT_ESTABLISHED", branch_struct),
-        ("execution-trajectory structural privacy", "EMPIRICALLY_SUPPORTED" if multi_supported(trajectory, .25) else "NOT_ESTABLISHED", trajectory),
+        ("execution-trajectory structural privacy", "PARTIALLY_SUPPORTED" if multi_supported(trajectory, .25) else "NOT_ESTABLISHED", trajectory),
         ("Agent-access realized timing privacy", "NOT_ESTABLISHED", branch_timing),
         ("Gateway realized timing privacy", "NOT_ESTABLISHED", strongest_gateway),
         ("utility", "ESTABLISHED" if len(successful) == len(nonidle) else "PARTIALLY_SUPPORTED", f"{len(successful)}/{len(nonidle)}"),
@@ -320,7 +335,13 @@ def main() -> None:
         else:
             detail = str(evidence)
         claim_lines.append(f"| {name} | **{status}** | {detail} |")
-    claim_lines += ["", "Realized timing is excluded from every structural claim and remains **NOT_ESTABLISHED**.", ""]
+    claim_lines += [
+        "",
+        "`PARTIALLY_SUPPORTED` for access attacks records that APSI wire content is used only for sessions whose three logical accesses have exact captured byte counts, while the SimplePIR adapter retained the actual query digest plus public sizes/timing but not the raw answer payload.",
+        "The trajectory result is an exact component composition, not a fresh integrated 800-session campaign.",
+        "Realized timing is excluded from every structural claim and remains **NOT_ESTABLISHED**.",
+        "",
+    ]
     (output / "FINAL_CLAIM_MATRIX.md").write_text("\n".join(claim_lines), encoding="utf-8")
 
     table_rows = [
@@ -334,6 +355,7 @@ def main() -> None:
         {"category": "Structural", "metric": "Trajectory accuracy", "result": trajectory["test_accuracy"], "evidence": "FINAL_SEQUENCE_RESULTS.csv", "scope": "exact component composition"},
         {"category": "Timing", "metric": "Strongest final Gateway AUC", "result": strongest_gateway["test_train_oriented_auc"], "evidence": "FINAL_TIMING_RESULTS.csv", "scope": "current frozen Gateway"},
         {"category": "Overhead", "metric": "Total public MiB/profile", "result": TOTAL_BYTES_PROFILE / 2**20, "evidence": "FINAL_OVERHEAD_RESULTS.csv", "scope": "current system"},
+        {"category": "Overhead", "metric": "Mean public MiB/measured execution", "result": aggregate_public_bytes / len(utility) / 2**20, "evidence": "FINAL_OVERHEAD_RESULTS.csv", "scope": "current 280-session mix; continuation profiles retained"},
         {"category": "Latency", "metric": "Retrieval p50/p95 ms", "result": f"{percentile(all_retrievals,.5):.3f}/{percentile(all_retrievals,.95):.3f}", "evidence": "FINAL_UTILITY_RESULTS.csv", "scope": "successful current-system tasks"},
         {"category": "Latency", "metric": "Task p50/p95 ms", "result": f"{percentile([row['task_latency_ms'] for row in successful],.5):.3f}/{percentile([row['task_latency_ms'] for row in successful],.95):.3f}", "evidence": "FINAL_UTILITY_RESULTS.csv", "scope": "successful current-system tasks"},
     ]
@@ -362,20 +384,65 @@ def main() -> None:
     add_map("Abstract/Table 1", "100K artifacts", "Scale sweep; N=100000", "Current system", "Real APSI and SimplePIR", "100K schema-valid provisioned-Agent artifacts; not 100K independently sourced Agents.")
     add_map("Abstract/Table 1", f"Utility {len(successful)}/{len(nonidle)}", "Final utility; 240 non-idle + 40 idle", "Current system", "All failures retained", "All measured non-idle tasks completed semantically; all sessions checked separately for profile conformance.")
     for label, row in (("same-Agent", primary_same), ("cross-session same-slot", primary_cross1), ("cross-session cross-slot", primary_cross2)):
-        add_map("Fig. 2/Sec. 5", f"{label} AUC {row['test_train_oriented_auc']:.3f}", f"Joint APSI+PIR; test n={row['n_test']}", "ALL_ALLOWED Agent-access metadata", f"95% CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], permutation p={row['permutation_p']:.4g}", "Held-out attack performance; do not interpret AUC below 0.5 as stronger privacy.")
-    add_map("Fig. 2/Sec. 5", f"Sequence accuracy {primary_sequence['test_accuracy']:.3f}", f"AAA/ABA/AAB/ABC; test n={primary_sequence['n_test']}", "ALL_ALLOWED Agent-access metadata", f"CI [{primary_sequence['ci95_low']:.3f},{primary_sequence['ci95_high']:.3f}], p={primary_sequence['permutation_p']:.4g}", "Direct ordering/recurrence evaluation against 25% chance.")
+        add_map("Fig. 2/Sec. 5", f"{label} AUC {row['test_train_oriented_auc']:.3f}", f"Joint APSI+PIR; test n={row['n_test']}", "APSI full-wire compact representation + SimplePIR query digest/sizes/timing", f"95% CI [{row['ci95_low']:.3f},{row['ci95_high']:.3f}], permutation p={row['permutation_p']:.4g}", "Held-out attack performance with the recorded observer representation; do not interpret AUC below 0.5 as stronger privacy.")
+    add_map("Fig. 2/Sec. 5", f"Sequence accuracy {primary_sequence['test_accuracy']:.3f}", f"AAA/ABA/AAB/ABC; test n={primary_sequence['n_test']}", "Recorded joint-channel representation; raw SimplePIR answer payload unavailable", f"CI [{primary_sequence['ci95_low']:.3f},{primary_sequence['ci95_high']:.3f}], p={primary_sequence['permutation_p']:.4g}", "Direct ordering/recurrence task over the recorded observer representation against 25% chance.")
     add_map("Fig. 2/Sec. 5", f"Trajectory accuracy {trajectory['test_accuracy']:.3f}", "800 historical matched action records plus constant final access profile", "Exact mechanism composition; structural only", f"CI [{trajectory['ci95_low']:.3f},{trajectory['ci95_high']:.3f}]", "Mechanism-composed structural result, not a fresh integrated 800-session run.")
     add_map("Table 1/Sec. 5", f"Strongest Gateway timing AUC {strongest_gateway['test_train_oriented_auc']:.3f}", f"{strongest_gateway['experiment']} / {strongest_gateway['framework']}; final held-out test", "Frozen Relay timing observer", f"CI [{strongest_gateway['ci95_low']:.3f},{strongest_gateway['ci95_high']:.3f}], p={strongest_gateway['permutation_p']:.4g}", "Realized timing privacy is not established; preserve the residual setting.")
     add_map("Table 1/Sec. 5", f"Traffic {TOTAL_BYTES_PROFILE/2**20:.3f} MiB/profile", "4 real APSI+PIR public slots + 521-cell Gateway", "Current public profiles", "Exact measured wire sizes", "Channels overlap in time; bytes are additive, horizons are not.")
+    add_map("Sec. 5", f"Mean traffic {aggregate_public_bytes/len(utility)/2**20:.3f} MiB/measured execution", f"Final 280 sessions using {profile_instances} public profiles", "Current utility workload mix", "Every continuation profile retained", "Do not conflate profile cost with workload-dependent execution cost.")
     add_map("Table 1/Sec. 5", f"Retrieval {percentile(all_retrievals,.5):.3f}/{percentile(all_retrievals,.95):.3f} ms p50/p95", f"All successful final retrievals, n={len(all_retrievals)}", "Current system", "Successful semantic runs only", "State the success-only denominator.")
     add_map("Table 1/Sec. 5", f"Task {percentile([row['task_latency_ms'] for row in successful],.5):.3f}/{percentile([row['task_latency_ms'] for row in successful],.95):.3f} ms p50/p95", f"Successful non-idle final sessions, n={len(successful)}", "Current system", "Successful semantic runs only", "Do not conflate with public-session wall time.")
     map_lines += ["", "## Historical values excluded from final-system claims", "",
                   "Historical SimplePIR-only 16K linking AUCs and the historical 1.755 MiB/session overhead must not be presented as final joint APSI+PIR results.",
-                  "Historical one-sided timing results appear only as matched component positive controls, never as the final protected condition.", ""]
+                  "Historical one-sided timing results appear only as matched component positive controls, never as the final protected condition; the 640 protected observations are fresh but those baseline controls were not recollected in this campaign.", ""]
     (output / "FINAL_PAPER_NUMBER_MAP.md").write_text("\n".join(map_lines), encoding="utf-8")
 
     strongest_timing = strongest_gateway
     comprehensive = f"""# Final comprehensive evaluation
+
+FINAL SYSTEM:
+    real APSI + real SimplePIR
+    100K Agent artifact store
+    TEE Agent Loader
+    R_A = 4
+    Delta_A = 350 ms
+    fixed one-slot pipeline
+    frozen Gateway profile
+
+UTILITY:
+    semantic success = {len(successful)}/{len(nonidle)}
+    profile conformance = {sum(row['profile_conformance'] for row in utility)}/{len(utility)}
+
+ACCESS PRIVACY:
+    same-Agent AUC = {primary_same['test_train_oriented_auc']:.3f}
+    cross-session AUC = {primary_cross1['test_train_oriented_auc']:.3f} / {primary_cross2['test_train_oriented_auc']:.3f}
+    sequence-ordering accuracy = {primary_sequence['test_accuracy']:.3f}
+    recurrence AUC = {primary_recurrence['test_train_oriented_auc']:.3f}
+    rare-Agent AUC = {primary_rare['test_train_oriented_auc']:.3f}
+
+STRUCTURAL TRAJECTORY PRIVACY:
+    exact permitted-projection equality = {'PASS' if equivalence.get('exact_equality') else 'FAIL'}
+    classifier accuracy = {trajectory['test_accuracy']:.3f}
+
+TIMING:
+    strongest final Gateway AUC = {strongest_timing['test_train_oriented_auc']:.3f}
+    exact residual setting = {strongest_timing['experiment']} / {strongest_timing['framework']}
+    deployed/unprovisioned/idle timing accuracy = {branch_timing['test_accuracy']:.3f}
+    TIMING_PRIVACY = NOT_ESTABLISHED
+
+SCALE:
+    100K schema-valid provisioned-Agent artifacts = PASS
+
+OVERHEAD:
+    {TOTAL_BYTES_PROFILE/2**20:.3f} MiB/public profile
+    {aggregate_public_bytes/len(utility)/2**20:.3f} MiB/measured execution mean
+    retrieval p50/p95 = {percentile(all_retrievals,.5):.3f}/{percentile(all_retrievals,.95):.3f} ms
+    task p50/p95 = {percentile([row['task_latency_ms'] for row in successful],.5):.3f}/{percentile([row['task_latency_ms'] for row in successful],.95):.3f} ms
+
+DUMMY HEAVY OPS:
+    Agent = {sum(row['dummy_heavy_agent_executions'] for row in utility)}
+    LLM = {sum(row['dummy_heavy_llm_executions'] for row in utility)}
+    Tool = {sum(row['dummy_heavy_tool_executions'] for row in utility)}
 
 ## Final system
 
@@ -399,6 +466,8 @@ def main() -> None:
 - Cross-session same-slot linking: AUC **{primary_cross1['test_train_oriented_auc']:.3f}**, 95% CI [{primary_cross1['ci95_low']:.3f}, {primary_cross1['ci95_high']:.3f}], p={primary_cross1['permutation_p']:.4g}.
 - Cross-session cross-slot linking: AUC **{primary_cross2['test_train_oriented_auc']:.3f}**, 95% CI [{primary_cross2['ci95_low']:.3f}, {primary_cross2['ci95_high']:.3f}], p={primary_cross2['permutation_p']:.4g}.
 - Four-class ordering/recurrence accuracy: **{primary_sequence['test_accuracy']:.3f}** (chance 0.25), macro-F1 {primary_sequence['test_macro_f1']:.3f}, 95% CI [{primary_sequence['ci95_low']:.3f}, {primary_sequence['ci95_high']:.3f}], p={primary_sequence['permutation_p']:.4g}.
+- Capture integrity: **{access['pcap_capture_integrity']['observations_with_exact_apsi_payload_capture']}/{access['pcap_capture_integrity']['observations_executed']}** APSI observations had exact payload-byte capture; **{access['pcap_capture_integrity']['sessions_with_all_three_logical_apsi_payloads_complete']}** sessions were eligible for `CONTENT_CRYPTOGRAPHIC`/`ALL_ALLOWED`. Structural and timing views retain all sessions.
+- Observer-representation boundary: exact-byte-count APSI captures are represented by frozen stream digests, byte histograms, and fixed public offsets. The SimplePIR adapter retained its actual query digest and public sizes/timing, but not the raw answer payload. Accordingly these are direct attacks on the recorded joint-channel representation, not an exhaustive empirical claim over every raw SimplePIR answer byte.
 
 ## Structural trajectory privacy
 
@@ -422,6 +491,7 @@ The scale sweep uses 1K, 10K, 50K and 100K schema-valid artifacts with persisten
 - Agent-access channel: **{ACCESS_BYTES_PROFILE:,} B ({ACCESS_BYTES_PROFILE/2**20:.3f} MiB) per public profile**.
 - Gateway channel: **{GATEWAY_BYTES_PROFILE:,} B ({GATEWAY_BYTES_PROFILE/2**20:.3f} MiB) per public profile**.
 - Total: **{TOTAL_BYTES_PROFILE:,} B ({TOTAL_BYTES_PROFILE/2**20:.3f} MiB) per public profile**.
+- The 280 measured executions used **{profile_instances}** public profiles; mean measured traffic was **{aggregate_public_bytes/len(utility):,.3f} B ({aggregate_public_bytes/len(utility)/2**20:.3f} MiB) per execution**. Unprovisioned nested workloads required a second bounded public profile rather than silently extending one profile.
 - The channels can overlap in wall-clock time; their byte counts are additive, their horizons are not.
 
 ## Dummy heavy operations
