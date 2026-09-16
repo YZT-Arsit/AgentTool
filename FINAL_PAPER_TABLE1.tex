@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{Final utility, reliability, and overhead results. Native/OAE entries report task-latency p50/p95; latency statistics use successful semantic executions.}
+\label{tab:final-results}
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{@{}p{0.15\columnwidth}p{0.27\columnwidth}p{0.52\columnwidth}@{}}
+\toprule
+Category & Metric & Result \\
+\midrule
+Scale & Provisioned-Agent store & 100,000 schema-valid artifacts \\
+Utility & Semantic success & 240/240 non-idle executions \\
+Utility & Profile conformance & 280/280 sessions \\
+Reliability & Overflow / silent loss & 0 / 0 \\
+Reliability & Retrieval / loader failure & 0 / 0 \\
+Latency & Retrieval p50 / p95 & 771.729 / 7466.234 ms \\
+Latency & Task p50 / p95 & 5002.551 / 14880.534 ms \\
+Communication & Base public profile & 9.903 MiB/session \\
+Communication & Measured workload mean & 11.318 MiB/execution \\
+Efficiency & Dummy Agent / LLM / Tool executions & 0 / 0 / 0 \\
+Matched latency & OAI: p50 range (5 workloads) & native 1.635--6.916 ms; OAE 1171.670--7292.604 ms; 223.8--4432.0x \\
+Matched latency & MAF: p50 range (5 workloads) & native 0.417--1.720 ms; OAE 1168.260--7287.492 ms; 921.8--17467.4x \\
+\bottomrule
+\end{tabular}
+\end{table}
