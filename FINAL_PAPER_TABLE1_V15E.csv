@@ -1,0 +1,15 @@
+Category,Metric,Result,Evidence scope
+Scale,Provisioned-Agent store,100000 schema-valid artifacts,Current real APSI + SimplePIR system; not independently sourced real-world Agents
+Privacy,Same-Agent linking (ALL),"AUC 0.487; invariant 0.513; 95% CI [0.446, 0.526]; p=0.7383",Current system; complete application-protocol capture; n_test=800
+Privacy,Cross-session same-slot linking (ALL),"AUC 0.519; 95% CI [0.490, 0.547]; p=0.1009",Current system; complete application-protocol capture; n_test=1574
+Privacy,Cross-session cross-slot linking (ALL),"AUC 0.472; invariant 0.528; 95% CI [0.444, 0.501]; p=0.9712",Current system; complete application-protocol capture; n_test=1558
+Privacy,Four-class ordering/recurrence (ALL),"Accuracy 0.256; macro-F1 0.256; 95% CI [0.226, 0.286]; p=0.3530",Current system; chance=0.25; n_test=800
+Privacy,Return pattern ABA vs ABC (ALL),"AUC 0.551; 95% CI [0.495, 0.608]; p=0.0389; NOT_ESTABLISHED",Current system; complete application-protocol capture; n_test=400
+Structural,Deployed/unprovisioned/idle equality,PASS,Preserved final-system V15D structural test; timing excluded
+Structural,Four-class trajectory classification,"Accuracy 0.2125; 95% CI [0.150, 0.275]",Exact final component composition; chance=0.25; matched control=1.0
+Utility,Semantic success,240/240,Preserved final-system V15D non-idle executions
+Utility,Profile conformance,280/280,Preserved final-system V15D sessions including 40 idle
+Latency,Agent retrieval p50 / p95,"771.729 ms / 7466.234 ms",Successful final-system retrievals; n=480
+Latency,Semantic task p50 / p95,"5002.551 ms / 14880.534 ms",Successful non-idle final-system sessions; n=240
+Overhead,Base public profile traffic,9.903 MiB/session,Four APSI+SimplePIR slots plus frozen 521-cell Gateway profile
+Overhead,Measured workload mean traffic,11.318 MiB/execution,Final 280-session workload mix including continuation profiles
